@@ -69,7 +69,7 @@ function renderBlock(block, i) {
     }
     case "cta_text": {
       const body = block.body ? `<p>${esc(block.body)}</p>` : "";
-      return `<section class="section section-dark cta"><div class="wrap reveal"><h2>${esc(block.heading)}</h2>${body}<a class="btn btn-gold" href="${esc(block.button_link || "/shop")}">${esc(block.button_label || "Book a Reading")}</a></div></section>`;
+      return `<section class="section section-dark cta"><div class="wrap reveal"><h2>${esc(block.heading)}</h2>${body}<a class="btn btn-gold" href="${esc(block.button_link || "/book-appointment")}">${esc(block.button_label || "Book a Reading")}</a></div></section>`;
     }
     case "cta_image": {
       return `<a class="img-banner dark" href="${esc(block.link || "/shop")}"><img src="${esc(block.image)}" alt="${esc(block.alt_text || "")}"></a>`;
@@ -127,7 +127,7 @@ ${GENERATED_MARKER}
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
     <nav class="primary-nav" id="primaryNav" aria-label="Primary">
       <ul><li><a href="/meet">Meet Cherry</a></li><li class="has-dropdown"><a href="/psychic-reading">Readings</a><ul class="dropdown"><li><a href="/psychic-reading">Psychic Reading</a></li><li><a href="/tarot">Tarot Card Reading</a></li><li><a href="/book-appointment">Request a Time</a></li></ul></li><li class="has-dropdown"><a href="/numerology">Numerology</a><ul class="dropdown"><li><a href="/free-karmic-reading">Free Numerology Reading</a></li></ul></li><li class="has-dropdown"><a href="/testimonials">Reviews</a><ul class="dropdown"><li><a href="/feedback">Leave Feedback</a></li></ul></li><li class="has-dropdown"><a href="/blog">Blog</a><ul class="dropdown"><li><a href="/articles">Guest Articles</a></li></ul></li><li class="has-dropdown"><a href="/tarot-pull">Free Tools</a><ul class="dropdown"><li><a href="/tarot-pull">Free Tarot Pull</a></li><li><a href="/tarot-spread">Free Tarot Spread</a></li><li><a href="/life-path">Life Path Calculator</a></li><li><a href="/horoscope">Daily Horoscope</a></li></ul></li><li><a href="/shop">Shop</a></li><li><a href="/contact">Contact</a></li><li><a href="/account" class="nav-utility">My Account</a></li></ul>
-      <a class="btn btn-primary" href="/shop">Book a Reading</a>
+      <a class="btn btn-primary" href="/book-appointment">Book a Reading</a>
     </nav>
   </div>
 </header>
@@ -150,7 +150,7 @@ ${blocksHtml}
 </footer>
 <div class="chat-widget" id="chatWidget" role="button" tabindex="0" aria-label="Chat with Ivy, Cherry's assistant — click to open">
   <span class="cw-hint" id="cwHint">Click to chat with Ivy</span>
-  <span class="cw-status"><span class="status-dot"></span>Cherry is Online</span>
+  <span class="cw-status" title="Cherry is Online"><span class="status-dot"></span>Chat with Ivy</span>
   <span class="cw-bubble"><img src="assets/mark-clean.png" alt=""></span>
 </div>
 <script src="app.js?v=9"></script>

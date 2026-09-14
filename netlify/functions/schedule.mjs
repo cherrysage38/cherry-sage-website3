@@ -1,6 +1,10 @@
-// Cherry Sage — availability schedule. GET returns the schedule; POST (with admin key) saves it.
-// The site's status pill + chat widget compute "online / away / offline" from this, live.
+// Cherry Sage — availability schedule. GET returns the schedule (no auth, read by every page's
+// status widget); POST saves it, gated by the same dashboard PIN pattern as shop-admin.mjs/
+// dashboard-summary.mjs (not the old STATUS_ADMIN_KEY env var, which was never actually set,
+// so Bev had no real way to mark herself away/on holiday -- found 2026-09-15).
 import { getStore } from "@netlify/blobs";
+
+const PIN = "0011";
 
 const DEFAULT = {
   tz: "America/New_York",
@@ -19,10 +23,10 @@ export default async (req) => {
     return json(s);
   }
   if (req.method === "POST") {
-    const KEY = process.env.STATUS_ADMIN_KEY;
+    const pin = req.headers.get("x-dashboard-pin") || "";
+    if (pin !== PIN) return json({ error: "unauthorized" }, 403);
     let d = {};
     try { d = await req.json(); } catch { return json({ error: "bad body" }, 400); }
-    if (!KEY || d.key !== KEY) return json({ error: "unauthorized" }, 401);
     const s = {
       tz: String(d.tz || DEFAULT.tz),
       hours: d.hours && typeof d.hours === "object" ? d.hours : DEFAULT.hours,

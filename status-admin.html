@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manage My Status — Cherry Sage</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#6E1A28">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=45">
+<link rel="icon" href="assets/favicon.ico?v=2" sizes="any">
+<style>
+body{background:var(--paper)}
+.sa-wrap{max-width:640px;margin:0 auto;padding:2.5rem 1.5rem}
+.sa-gate{max-width:380px;margin:5rem auto;text-align:center;padding:2.2rem;background:var(--cream);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm)}
+.sa-gate input{width:100%;padding:.8rem 1rem;border:1px solid var(--line-strong);border-radius:10px;margin:1rem 0;text-align:center;font-size:1.2rem;letter-spacing:.2em;box-sizing:border-box}
+.sa-gate .msg{color:var(--cherry);font-size:.85rem;min-height:1.2em;margin-top:.6rem}
+.sa-title{font-family:var(--font-display);color:var(--oxblood);font-size:1.6rem;margin:0 0 .3rem}
+.sa-sub{color:var(--ink-soft);font-size:.9rem;margin:0 0 1.6rem}
+.sa-group{margin-bottom:2.2rem;background:var(--cream);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.4rem 1.5rem}
+.sa-group h3{font-size:.95rem;color:var(--oxblood);text-transform:uppercase;letter-spacing:.06em;margin:0 0 .8rem}
+.sa-now{display:flex;align-items:center;gap:.6rem;font-size:.95rem;margin-bottom:.3rem}
+.sa-now .dot{width:12px;height:12px;border-radius:50%;flex:0 0 auto}
+.sa-away-row{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.sa-away-row p{margin:0;font-size:.85rem;color:var(--ink-soft)}
+.switch{position:relative;display:inline-block;width:48px;height:28px;flex:0 0 auto}
+.switch input{opacity:0;width:0;height:0}
+.switch .slider{position:absolute;cursor:pointer;inset:0;background:var(--line-strong);border-radius:999px;transition:.15s}
+.switch .slider::before{content:"";position:absolute;height:22px;width:22px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.15s;box-shadow:var(--shadow-sm)}
+.switch input:checked + .slider{background:var(--oxblood)}
+.switch input:checked + .slider::before{transform:translateX(20px)}
+.hol-list{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.hol-list li{display:flex;align-items:center;justify-content:space-between;background:var(--paper-2);border:1px solid var(--line);border-radius:10px;padding:.6rem .9rem;font-size:.9rem}
+.hol-list button{background:none;border:0;color:var(--cherry);cursor:pointer;font-size:.8rem;padding:.2rem .4rem}
+.hol-add{display:flex;gap:.6rem}
+.hol-add input{flex:1;padding:.65rem .9rem;border:1px solid var(--line-strong);border-radius:10px;font-family:var(--font-body)}
+.sa-status{font-size:.8rem;margin-top:.8rem;min-height:1.1em}
+.sa-status.ok{color:var(--sage)}
+.sa-status.err{color:var(--cherry)}
+.empty-note{color:var(--ink-soft);font-size:.88rem;padding:.6rem 0}
+</style>
+</head>
+<body>
+<div class="sa-wrap">
+
+  <div id="saGate" class="sa-gate">
+    <p class="eyebrow" style="color:var(--gold)">Cherry Sage</p>
+    <h1 class="sa-title">Manage My Status</h1>
+    <p style="color:var(--ink-soft);font-size:.9rem">Enter your dashboard PIN.</p>
+    <input type="password" inputmode="numeric" id="saGatePin" placeholder="PIN" autocomplete="off">
+    <button class="btn btn-primary" id="saGateSend" style="width:100%">Open</button>
+    <p class="msg" id="saGateMsg"></p>
+  </div>
+
+  <div id="saApp" hidden>
+    <h1 class="sa-title">Manage My Status</h1>
+    <p class="sa-sub">This controls the status dot and "Chat with Ivy" widget on every page of your site, and the status light other pages mention.</p>
+
+    <div class="sa-group">
+      <h3>Right now</h3>
+      <div class="sa-now"><span class="dot" id="saNowDot"></span><span id="saNowLabel">Loading…</span></div>
+    </div>
+
+    <div class="sa-group">
+      <h3>Away / vacation</h3>
+      <div class="sa-away-row">
+        <p>Turn this on and your site shows you as away, no matter the day or time, until you turn it back off.</p>
+        <label class="switch"><input type="checkbox" id="saAwayToggle"><span class="slider"></span></label>
+      </div>
+    </div>
+
+    <div class="sa-group">
+      <h3>Holidays &amp; days off</h3>
+      <p style="color:var(--ink-soft);font-size:.85rem;margin:0 0 .9rem">Add specific dates you want to show as away, even if "Away / vacation" above is off.</p>
+      <ul class="hol-list" id="saHolList"></ul>
+      <div class="hol-add">
+        <input type="date" id="saHolDate">
+        <button class="btn btn-ghost" id="saHolAdd" type="button">Add date</button>
+      </div>
+    </div>
+
+    <p class="sa-status" id="saStatusMsg"></p>
+  </div>
+
+</div>
+<script>
+(function(){
+  function getPin(){ try{ return sessionStorage.getItem('cs_dash_pin')||''; }catch(e){ return ''; } }
+  function setPin(p){ try{ sessionStorage.setItem('cs_dash_pin', p); }catch(e){} }
+  function esc(s){ return String(s||'').replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  var gate=document.getElementById('saGate'), app=document.getElementById('saApp');
+  var schedule=null;
+
+  function nowIn(tz){
+    try{
+      var parts={}; new Intl.DateTimeFormat('en-US',{timeZone:tz,weekday:'short',hour:'numeric',hour12:false,year:'numeric',month:'2-digit',day:'2-digit'})
+        .formatToParts(new Date()).forEach(function(p){parts[p.type]=p.value;});
+      var wd={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[parts.weekday];
+      return {day:wd, hour:parseInt(parts.hour,10)%24, date:parts.year+'-'+parts.month+'-'+parts.day};
+    }catch(e){ var d=new Date(); return {day:d.getDay(), hour:d.getHours(), date:''}; }
+  }
+  function compute(s){
+    var n=nowIn(s.tz||'America/New_York');
+    if(s.away) return {k:'offline',label:'Away'};
+    if(s.holidays && s.holidays.indexOf(n.date)>=0) return {k:'offline',label:'Away today (holiday)'};
+    if(s.always) return {k:'online',label:'Online'};
+    var h=(s.hours||{})[n.day];
+    if(h && n.hour>=h[0] && n.hour<h[1]) return {k:'online',label:'Online'};
+    return {k:'offline',label:'Offline (outside hours)'};
+  }
+
+  function renderNow(){
+    var c=compute(schedule);
+    var dotColors={online:'#54c46b',offline:'#b33'};
+    document.getElementById('saNowDot').style.background=dotColors[c.k];
+    document.getElementById('saNowLabel').textContent=c.label;
+  }
+  function renderHolidays(){
+    var list=(schedule.holidays||[]).slice().sort();
+    document.getElementById('saHolList').innerHTML = list.length
+      ? list.map(function(d){ return '<li><span>'+esc(d)+'</span><button type="button" data-date="'+esc(d)+'">Remove</button></li>'; }).join('')
+      : '<p class="empty-note">No dates added.</p>';
+  }
+  function render(){
+    document.getElementById('saAwayToggle').checked = !!schedule.away;
+    renderHolidays();
+    renderNow();
+  }
+
+  function loadSchedule(){
+    return fetch('/.netlify/functions/schedule').then(function(r){ return r.json(); }).then(function(s){
+      schedule=s; render();
+    });
+  }
+
+  function save(){
+    var statusEl=document.getElementById('saStatusMsg');
+    statusEl.className='sa-status'; statusEl.textContent='Saving…';
+    return fetch('/.netlify/functions/schedule', {
+      method:'POST', headers:{'content-type':'application/json','x-dashboard-pin':getPin()},
+      body: JSON.stringify(schedule)
+    }).then(function(r){ return r.json().then(function(d){ return {ok:r.ok, data:d}; }); })
+      .then(function(res){
+        if(!res.ok){ statusEl.className='sa-status err'; statusEl.textContent=(res.data&&res.data.error)||'Could not save.'; return; }
+        statusEl.className='sa-status ok'; statusEl.textContent='Saved, live on your site now.';
+        renderNow();
+        setTimeout(function(){ statusEl.textContent=''; }, 3000);
+      }).catch(function(){
+        statusEl.className='sa-status err'; statusEl.textContent='Something went wrong, please try again.';
+      });
+  }
+
+  document.getElementById('saAwayToggle').addEventListener('change', function(){
+    schedule.away = this.checked;
+    save();
+  });
+  document.getElementById('saHolAdd').addEventListener('click', function(){
+    var input=document.getElementById('saHolDate');
+    var val=input.value;
+    if(!val) return;
+    schedule.holidays = schedule.holidays || [];
+    if(schedule.holidays.indexOf(val)===-1) schedule.holidays.push(val);
+    input.value='';
+    renderHolidays();
+    save();
+  });
+  document.getElementById('saHolList').addEventListener('click', function(e){
+    var btn=e.target.closest('button[data-date]'); if(!btn) return;
+    var d=btn.getAttribute('data-date');
+    schedule.holidays = (schedule.holidays||[]).filter(function(x){ return x!==d; });
+    renderHolidays();
+    save();
+  });
+
+  // Validate the PIN with a read-only call (shop-admin's GET) rather than schedule's own
+  // POST, so a wrong PIN attempt here can never overwrite the live schedule as a side effect.
+  function tryOpen(pin){
+    return fetch('/.netlify/functions/shop-admin', { headers:{'x-dashboard-pin':pin} })
+      .then(function(r){ return r.ok; });
+  }
+
+  var existingPin=getPin();
+  if(existingPin){
+    tryOpen(existingPin).then(function(ok){
+      if(ok){ gate.hidden=true; app.hidden=false; loadSchedule(); }
+    });
+  }
+
+  document.getElementById('saGateSend').addEventListener('click', function(){
+    var pin=document.getElementById('saGatePin').value.trim();
+    var msg=document.getElementById('saGateMsg');
+    if(!pin){ msg.textContent='Enter your PIN.'; return; }
+    msg.textContent='Checking…';
+    tryOpen(pin).then(function(ok){
+      if(!ok){ msg.textContent='That PIN did not work.'; return; }
+      setPin(pin);
+      gate.hidden=true; app.hidden=false; loadSchedule();
+    });
+  });
+  document.getElementById('saGatePin').addEventListener('keydown', function(e){
+    if(e.key==='Enter') document.getElementById('saGateSend').click();
+  });
+})();
+</script>
+</body>
+</html>

@@ -22,12 +22,14 @@
   function paint(st){
     var dotColors={online:'#54c46b',brb:'#d99b2e',offline:'#b33'};
     document.querySelectorAll('.cw-status').forEach(function(el){
-      var txt=el.childNodes[el.childNodes.length-1];
-      // rebuild: dot + label
-      el.innerHTML='<span class="status-dot"></span>'+st.label;
+      // Widget text always says "Chat with Ivy" so it never reads as a live line to
+      // Cherry; the dot color carries her real phone-availability status, and the
+      // full label ("Cherry is Online", etc) is still available on hover via title.
+      el.innerHTML='<span class="status-dot"></span>Chat with Ivy';
+      el.setAttribute('title', st.label);
       var dot=el.querySelector('.status-dot'); if(dot){ dot.style.background=dotColors[st.k]; if(st.k!=='online') dot.style.animation='none'; }
     });
-    var w=document.getElementById('chatWidget'); if(w) w.setAttribute('data-status',st.k);
+    var w=document.getElementById('chatWidget'); if(w){ w.setAttribute('data-status',st.k); w.setAttribute('title', st.label); }
   }
   fetch('/.netlify/functions/schedule').then(function(r){return r.ok?r.json():null;})
     .then(function(s){ paint(compute(s)); })
