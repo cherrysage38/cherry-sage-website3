@@ -22,6 +22,8 @@
 .lg-tabs{display:flex;gap:.5rem;margin-bottom:1.2rem;justify-content:center}
 .lg-tab{background:none;border:1px solid var(--line-strong);border-radius:999px;padding:.5rem 1.1rem;font-family:var(--font-body);font-size:.85rem;color:var(--ink-soft);cursor:pointer}
 .lg-tab.on{background:var(--oxblood);color:var(--cream);border-color:var(--oxblood)}
+.lg-alt{font-size:.85rem;margin:1rem 0 0}
+.lg-alt a{color:var(--ink-soft);text-decoration:underline}
 </style>
 </head>
 <body>
@@ -36,38 +38,44 @@
   </div>
 </header>
 <main>
-<section class="page-hero banner"><div class="ph-glow" aria-hidden="true"></div><div class="ph-stars" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">My Account</p><h1>Sign In</h1><p class="lede">No password to remember. We'll email you a one-time link.</p></div></section>
+<section class="page-hero banner"><div class="ph-glow" aria-hidden="true"></div><div class="ph-stars" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">My Account</p><h1>Log In or Create an Account</h1><p class="lede">Whichever you prefer, both take under a minute.</p></div></section>
 <section class="section"><div class="wrap lg-wrap">
   <div class="lg-tabs" role="tablist">
-    <button type="button" class="lg-tab on" id="lgTabLink" role="tab">Email me a link</button>
-    <button type="button" class="lg-tab" id="lgTabPassword" role="tab">Use a password</button>
+    <button type="button" class="lg-tab on" id="lgTabLogin" role="tab">Log In</button>
+    <button type="button" class="lg-tab" id="lgTabRegister" role="tab">Create an Account</button>
   </div>
 
-  <div class="card reveal" id="lgFormCard">
-    <form id="lgForm" style="display:grid;gap:.9rem">
-      <input type="email" name="email" placeholder="Your email" required class="lg-field">
-      <button class="btn btn-primary" type="submit">Send me a login link</button>
-      <p id="lgError" class="lg-error" hidden></p>
-    </form>
-  </div>
-  <div class="card reveal" id="lgSentCard" hidden style="text-align:center">
-    <h3 style="margin:0 0 .5rem">Check your email</h3>
-    <p style="color:var(--ink-soft);margin:0" id="lgSentText"></p>
-  </div>
-
-  <div class="card reveal" id="lgPwCard" hidden>
-    <form id="lgPwForm" style="display:grid;gap:.9rem">
+  <div class="card reveal" id="lgLoginCard">
+    <form id="lgLoginForm" style="display:grid;gap:.9rem">
       <input type="email" name="email" placeholder="Your email" required class="lg-field">
       <input type="password" name="password" placeholder="Password" required autocomplete="current-password" class="lg-field">
-      <button class="btn btn-primary" type="submit" id="lgPwSubmit">Sign In</button>
-      <p id="lgPwError" class="lg-error" hidden></p>
-      <p style="margin:.2rem 0 0;font-size:.85rem;color:var(--ink-soft);text-align:center">
-        <a href="#" id="lgPwToggleMode">New here? Set up a password instead</a>
-      </p>
+      <button class="btn btn-primary" type="submit">Sign In</button>
+      <p id="lgLoginError" class="lg-error" hidden></p>
+    </form>
+    <p class="lg-alt"><a href="#" id="lgLoginLinkToggle">Don't have a password set? Email me a sign-in link instead</a></p>
+    <form id="lgLoginLinkForm" hidden style="display:grid;gap:.7rem;margin-top:.9rem">
+      <input type="email" name="email" placeholder="Your email" required class="lg-field">
+      <button class="btn btn-ghost" type="submit">Send Sign-In Link</button>
+      <p id="lgLoginLinkNote" class="lg-note" hidden></p>
     </form>
   </div>
 
-  <p class="lg-note" id="lgNote">This link signs you into cherrysage.com only, on this device. It's the same email address you used to book or buy.</p>
+  <div class="card reveal" id="lgRegisterCard" hidden>
+    <form id="lgRegisterForm" style="display:grid;gap:.9rem">
+      <input type="email" name="email" placeholder="Your email" required class="lg-field">
+      <input type="password" name="password" placeholder="Choose a password (8+ characters)" required autocomplete="new-password" class="lg-field">
+      <button class="btn btn-primary" type="submit">Create Account</button>
+      <p id="lgRegisterError" class="lg-error" hidden></p>
+    </form>
+    <p class="lg-alt"><a href="#" id="lgRegisterLinkToggle">Prefer no password? Email me a link to get started</a></p>
+    <form id="lgRegisterLinkForm" hidden style="display:grid;gap:.7rem;margin-top:.9rem">
+      <input type="email" name="email" placeholder="Your email" required class="lg-field">
+      <button class="btn btn-ghost" type="submit">Send Me a Link</button>
+      <p id="lgRegisterLinkNote" class="lg-note" hidden></p>
+    </form>
+  </div>
+
+  <p class="lg-note" id="lgNote">Your password is stored securely by Supabase, never seen by anyone at Cherry Sage.</p>
 </div></section>
 </main>
 <footer class="footer">
@@ -94,69 +102,80 @@
     if(res.data && res.data.session){ location.href='/account.html'; }
   });
 
-  var f=document.getElementById('lgForm');
-  f.addEventListener('submit', function(e){
-    e.preventDefault();
-    var err=document.getElementById('lgError'), btn=f.querySelector('button[type=submit]');
-    var email=(f.email.value||'').trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.hidden=false; err.textContent='Please enter a valid email address.'; return; }
-    err.hidden=true; btn.disabled=true; btn.textContent='Sending…';
-    sb.auth.signInWithOtp({ email: email, options: { emailRedirectTo: 'https://cherrysage.com/account.html' } })
-      .then(function(res){
-        btn.disabled=false; btn.textContent='Send me a login link';
-        if(res.error){ err.hidden=false; err.textContent=res.error.message||'Could not send the link, please try again.'; return; }
-        document.getElementById('lgFormCard').hidden=true;
-        document.getElementById('lgSentCard').hidden=false;
-        document.getElementById('lgSentText').textContent='We sent a sign-in link to '+email+'. Open it on this device to sign in.';
-      });
+  var tabLogin=document.getElementById('lgTabLogin'), tabRegister=document.getElementById('lgTabRegister');
+  var loginCard=document.getElementById('lgLoginCard'), registerCard=document.getElementById('lgRegisterCard'), note=document.getElementById('lgNote');
+  tabLogin.addEventListener('click', function(){
+    tabLogin.classList.add('on'); tabRegister.classList.remove('on');
+    loginCard.hidden=false; registerCard.hidden=true;
+    note.textContent='Your password is stored securely by Supabase, never seen by anyone at Cherry Sage.';
+  });
+  tabRegister.addEventListener('click', function(){
+    tabRegister.classList.add('on'); tabLogin.classList.remove('on');
+    registerCard.hidden=false; loginCard.hidden=true;
+    note.textContent="Use the same email address you've booked or bought with before, so your history shows up automatically.";
   });
 
-  // Second sign-in path: email + password, for anyone who'd rather not use a link at all.
-  var tabLink=document.getElementById('lgTabLink'), tabPw=document.getElementById('lgTabPassword');
-  var linkCard=document.getElementById('lgFormCard'), pwCard=document.getElementById('lgPwCard'), note=document.getElementById('lgNote');
-  tabLink.addEventListener('click', function(){
-    tabLink.classList.add('on'); tabPw.classList.remove('on');
-    linkCard.hidden=false; pwCard.hidden=true;
-    note.textContent="This link signs you into cherrysage.com only, on this device. It's the same email address you used to book or buy.";
-  });
-  tabPw.addEventListener('click', function(){
-    tabPw.classList.add('on'); tabLink.classList.remove('on');
-    linkCard.hidden=true; document.getElementById('lgSentCard').hidden=true; pwCard.hidden=false;
-    note.textContent='Your password is stored securely by Supabase, the same account system behind the email-link option, never seen by anyone at Cherry Sage.';
-  });
-
-  var pwForm=document.getElementById('lgPwForm'), pwSubmit=document.getElementById('lgPwSubmit'), pwToggle=document.getElementById('lgPwToggleMode');
-  var pwMode='signin';
-  pwToggle.addEventListener('click', function(e){
+  // Log in with password
+  var loginForm=document.getElementById('lgLoginForm');
+  loginForm.addEventListener('submit', function(e){
     e.preventDefault();
-    pwMode = pwMode === 'signin' ? 'signup' : 'signin';
-    pwSubmit.textContent = pwMode === 'signin' ? 'Sign In' : 'Create Password & Sign In';
-    pwToggle.textContent = pwMode === 'signin' ? 'New here? Set up a password instead' : 'Already set one up? Sign in instead';
-  });
-  pwForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    var err=document.getElementById('lgPwError');
-    var email=(pwForm.email.value||'').trim(), password=pwForm.password.value||'';
+    var err=document.getElementById('lgLoginError'), btn=loginForm.querySelector('button[type=submit]');
+    var email=(loginForm.email.value||'').trim(), password=loginForm.password.value||'';
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.hidden=false; err.textContent='Please enter a valid email address.'; return; }
-    if(password.length<8){ err.hidden=false; err.textContent='Password needs to be at least 8 characters.'; return; }
-    err.hidden=true; pwSubmit.disabled=true; pwSubmit.textContent='Working…';
-    var call = pwMode === 'signin'
-      ? sb.auth.signInWithPassword({ email: email, password: password })
-      : sb.auth.signUp({ email: email, password: password });
-    call.then(function(res){
+    err.hidden=true; btn.disabled=true; btn.textContent='Signing In…';
+    sb.auth.signInWithPassword({ email: email, password: password }).then(function(res){
       if(res.error){
-        err.hidden=false; err.textContent=res.error.message || 'Could not sign in, please try again.';
-        pwSubmit.disabled=false; pwSubmit.textContent = pwMode === 'signin' ? 'Sign In' : 'Create Password & Sign In';
-        return;
-      }
-      if(pwMode === 'signup' && res.data && res.data.user && !res.data.session){
-        err.hidden=false; err.textContent='Almost done, check your email to confirm your address before signing in.';
-        pwSubmit.disabled=false; pwSubmit.textContent='Create Password & Sign In';
+        err.hidden=false; err.textContent=res.error.message||'Could not sign in, please check your password and try again.';
+        btn.disabled=false; btn.textContent='Sign In';
         return;
       }
       location.href='/account.html';
     });
   });
+
+  // Create an account with password
+  var registerForm=document.getElementById('lgRegisterForm');
+  registerForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var err=document.getElementById('lgRegisterError'), btn=registerForm.querySelector('button[type=submit]');
+    var email=(registerForm.email.value||'').trim(), password=registerForm.password.value||'';
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.hidden=false; err.textContent='Please enter a valid email address.'; return; }
+    if(password.length<8){ err.hidden=false; err.textContent='Password needs to be at least 8 characters.'; return; }
+    err.hidden=true; btn.disabled=true; btn.textContent='Creating Account…';
+    sb.auth.signUp({ email: email, password: password }).then(function(res){
+      if(res.error){
+        err.hidden=false; err.textContent=res.error.message||'Could not create your account, please try again.';
+        btn.disabled=false; btn.textContent='Create Account';
+        return;
+      }
+      if(res.data && res.data.user && !res.data.session){
+        err.hidden=false; err.textContent='Almost done, check your email to confirm your address, then log in.';
+        btn.disabled=false; btn.textContent='Create Account';
+        return;
+      }
+      location.href='/account.html';
+    });
+  });
+
+  // Shared email-link request, offered as an option under both Log In and Create an Account
+  function wireLinkForm(toggleId, formId, noteId){
+    var toggle=document.getElementById(toggleId), form=document.getElementById(formId), noteEl=document.getElementById(noteId);
+    toggle.addEventListener('click', function(e){ e.preventDefault(); form.hidden=!form.hidden; });
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn=form.querySelector('button[type=submit]');
+      var email=(form.email.value||'').trim();
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ noteEl.hidden=false; noteEl.textContent='Please enter a valid email address.'; return; }
+      noteEl.hidden=true; btn.disabled=true; btn.textContent='Sending…';
+      sb.auth.signInWithOtp({ email: email, options: { emailRedirectTo: 'https://cherrysage.com/account.html' } }).then(function(res){
+        btn.disabled=false; btn.textContent=formId==='lgLoginLinkForm' ? 'Send Sign-In Link' : 'Send Me a Link';
+        noteEl.hidden=false;
+        noteEl.textContent = res.error ? (res.error.message||'Could not send the link, please try again.') : ('Sent, check '+email+' and open it on this device.');
+      });
+    });
+  }
+  wireLinkForm('lgLoginLinkToggle','lgLoginLinkForm','lgLoginLinkNote');
+  wireLinkForm('lgRegisterLinkToggle','lgRegisterLinkForm','lgRegisterLinkNote');
 })();
 </script>
 </body>
