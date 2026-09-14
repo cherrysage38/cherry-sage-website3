@@ -35,7 +35,7 @@
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
     <nav class="primary-nav" id="primaryNav" aria-label="Primary">
       <ul><li><a href="/meet">Meet Cherry</a></li><li class="has-dropdown"><a href="/psychic-reading">Readings</a><ul class="dropdown"><li><a href="/psychic-reading">Psychic Reading</a></li><li><a href="/tarot">Tarot Card Reading</a></li><li><a href="/book-appointment">Request a Time</a></li></ul></li><li class="has-dropdown"><a href="/numerology">Numerology</a><ul class="dropdown"><li><a href="/free-karmic-reading">Free Numerology Reading</a></li></ul></li><li class="has-dropdown"><a href="/testimonials">Reviews</a><ul class="dropdown"><li><a href="/feedback">Leave Feedback</a></li></ul></li><li class="has-dropdown"><a href="/blog" class="cur">Blog</a><ul class="dropdown"><li><a href="/articles">Guest Articles</a></li></ul></li><li class="has-dropdown"><a href="/tarot-pull">Free Tools</a><ul class="dropdown"><li><a href="/tarot-pull">Free Tarot Pull</a></li><li><a href="/tarot-spread">Free Tarot Spread</a></li><li><a href="/life-path">Life Path Calculator</a></li><li><a href="/horoscope">Daily Horoscope</a></li></ul></li><li><a href="/shop">Shop</a></li><li><a href="/contact">Contact</a></li><li><a href="/account" class="nav-utility">My Account</a></li></ul>
-      <a class='btn btn-primary' href='/shop'>Book a Reading</a>
+      <a class='btn btn-primary' href='/book-appointment'>Book a Reading</a>
     </nav>
   </div>
 </header>
@@ -185,7 +185,7 @@
   <aside class="blog-side">
     <div class="side-box reveal"><h4>Browse by topic</h4><div class="wordcloud"><button class="wc-tag" data-f="Psychic Readings" style="font-size:1.87rem">Psychic Readings<span class="wc-n">20</span></button><button class="wc-tag" data-f="Numerology" style="font-size:1.24rem">Numerology<span class="wc-n">8</span></button><button class="wc-tag" data-f="Other World" style="font-size:1.03rem">Other World<span class="wc-n">4</span></button><button class="wc-tag" data-f="Predicting Dates or Timelines" style="font-size:1.03rem">Predicting Dates or Timelines<span class="wc-n">4</span></button><button class="wc-tag" data-f="Gypsy Scams" style="font-size:0.98rem">Gypsy Scams<span class="wc-n">3</span></button><button class="wc-tag" data-f="Tarot Card Readings" style="font-size:0.87rem">Tarot Card Readings<span class="wc-n">1</span></button><button class="wc-tag" data-f="Online Psychic Readings" style="font-size:0.87rem">Online Psychic Readings<span class="wc-n">1</span></button><button class="wc-tag" data-f="Karma &amp; Past Lives" style="font-size:0.87rem">Karma & Past Lives<span class="wc-n">1</span></button></div></div>
     <div class="side-box reveal"><h4>Archive</h4><ul class="archive-list"><li><button class="arch-item" data-ym="2025-05">May 2025<span>(1)</span></button></li><li><button class="arch-item" data-ym="2025-04">April 2025<span>(4)</span></button></li><li><button class="arch-item" data-ym="2025-03">March 2025<span>(4)</span></button></li><li><button class="arch-item" data-ym="2025-01">January 2025<span>(8)</span></button></li><li><button class="arch-item" data-ym="2024-11">November 2024<span>(1)</span></button></li><li><button class="arch-item" data-ym="2024-02">February 2024<span>(1)</span></button></li><li><button class="arch-item" data-ym="2024-01">January 2024<span>(1)</span></button></li><li><button class="arch-item" data-ym="2023-08">August 2023<span>(1)</span></button></li><li><button class="arch-item" data-ym="2023-07">July 2023<span>(6)</span></button></li><li><button class="arch-item" data-ym="2023-06">June 2023<span>(3)</span></button></li><li><button class="arch-item" data-ym="2023-05">May 2023<span>(3)</span></button></li><li><button class="arch-item" data-ym="2022-11">November 2022<span>(1)</span></button></li><li><button class="arch-item" data-ym="2020-01">January 2020<span>(2)</span></button></li><li><button class="arch-item" data-ym="2019-12">December 2019<span>(1)</span></button></li><li><button class="arch-item" data-ym="2012-12">December 2012<span>(1)</span></button></li><li><button class="arch-item" data-ym="2011-02">February 2011<span>(1)</span></button></li><li><button class="arch-item" data-ym="2009-12">December 2009<span>(1)</span></button></li><li><button class="arch-item" data-ym="2009-11">November 2009<span>(2)</span></button></li></ul></div>
-    <div class="side-box side-cta reveal"><h4>Ready for a reading?</h4><p>An honest phone reading goes far beyond an article.</p><a class='btn btn-primary' href='/shop'>Book a Reading</a></div>
+    <div class="side-box side-cta reveal"><h4>Ready for a reading?</h4><p>An honest phone reading goes far beyond an article.</p><a class='btn btn-primary' href='/book-appointment'>Book a Reading</a></div>
     <div class="side-box reveal"><h4>More reading</h4><p style="margin:0"><a href="/articles">Guest &amp; featured articles →</a></p></div>
   </aside>
 </div></div></section><script>(function(){
@@ -196,7 +196,7 @@ function sel(el,grp){[].slice.call(document.querySelectorAll(grp)).forEach(funct
 [].slice.call(document.querySelectorAll('.bchip')).forEach(function(ch){ch.addEventListener('click',function(){sel(ch,'.bchip');apply('cat',ch.dataset.f);});});
 [].slice.call(document.querySelectorAll('.wc-tag')).forEach(function(t){t.addEventListener('click',function(){sel(null,'.bchip');apply('cat',t.dataset.f);});});
 [].slice.call(document.querySelectorAll('.arch-item')).forEach(function(a){a.addEventListener('click',function(){sel(null,'.bchip');apply('ym',a.dataset.ym);});});
-})();</script><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class='btn btn-gold' href='/shop'>Book a Reading</a></div></section>
+})();</script><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class='btn btn-gold' href='/book-appointment'>Book a Reading</a></div></section>
 </main>
 <footer class="footer">
   <div class="wrap footer-grid">
@@ -213,7 +213,7 @@ function sel(el,grp){[].slice.call(document.querySelectorAll(grp)).forEach(funct
 </footer>
 <div class="chat-widget" id="chatWidget" role="button" tabindex="0" aria-label="Chat with Ivy, Cherry's assistant — click to open">
   <span class="cw-hint" id="cwHint">Click to chat with Ivy</span>
-  <span class="cw-status"><span class="status-dot"></span>Cherry is Online</span>
+  <span class="cw-status" title="Cherry is Online"><span class="status-dot"></span>Chat with Ivy</span>
   <span class="cw-bubble"><img src="assets/mark-clean.png" alt=""></span>
 </div>
 <script src="app.js?v=9"></script>

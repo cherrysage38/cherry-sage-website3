@@ -34,7 +34,7 @@
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
     <nav class="primary-nav" id="primaryNav" aria-label="Primary">
       <ul><li><a href="/meet">Meet Cherry</a></li><li class="has-dropdown"><a href="/psychic-reading">Readings</a><ul class="dropdown"><li><a href="/psychic-reading">Psychic Reading</a></li><li><a href="/tarot">Tarot Card Reading</a></li><li><a href="/book-appointment">Request a Time</a></li></ul></li><li class="has-dropdown"><a href="/numerology">Numerology</a><ul class="dropdown"><li><a href="/free-karmic-reading">Free Numerology Reading</a></li></ul></li><li class="has-dropdown"><a href="/testimonials">Reviews</a><ul class="dropdown"><li><a href="/feedback">Leave Feedback</a></li></ul></li><li class="has-dropdown"><a href="/blog">Blog</a><ul class="dropdown"><li><a href="/articles">Guest Articles</a></li></ul></li><li class="has-dropdown"><a href="/tarot-pull">Free Tools</a><ul class="dropdown"><li><a href="/tarot-pull">Free Tarot Pull</a></li><li><a href="/tarot-spread">Free Tarot Spread</a></li><li><a href="/life-path">Life Path Calculator</a></li><li><a href="/horoscope">Daily Horoscope</a></li></ul></li><li><a href="/shop">Shop</a></li><li><a href="/contact" class="cur">Contact</a></li><li><a href="/account" class="nav-utility">My Account</a></li></ul>
-      <a class="btn btn-primary" href="/shop">Book a Reading</a>
+      <a class="btn btn-primary" href="/book-appointment">Book a Reading</a>
     </nav>
   </div>
 </header>
@@ -47,7 +47,7 @@
     <p><a href="tel:+13014741681" style="color:var(--cherry);font-weight:600;font-size:1.15rem;text-decoration:none">301-474-1681</a></p>
     <p>For questions before you book, send a note and Cherry will get back to you personally.</p>
     <p><a href="/book-appointment" style="color:var(--cherry);font-weight:600;text-decoration:none">Prefer a specific time? Request an appointment →</a></p>
-    <a class="btn btn-primary" href="/shop">Book a Reading</a>
+    <a class="btn btn-primary" href="/book-appointment">Book a Reading</a>
   </div>
   <form id="contactForm" class="story-card reveal" style="display:grid;gap:.8rem">
     <input type="text" name="name" placeholder="Your name" required style="padding:.8rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
@@ -70,7 +70,7 @@
       .then(function(ok){ f.innerHTML='<p style="margin:0;color:var(--oxblood);font-weight:600">Thank you. Your message reached Cherry Sage, and she will be in touch soon.</p>'; });
     });})();
   </script>
-</div></section><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class="btn btn-gold" href="/shop">Book a Reading</a></div></section>
+</div></section><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class="btn btn-gold" href="/book-appointment">Book a Reading</a></div></section>
 </main>
 <footer class="footer">
   <div class="wrap footer-grid">
@@ -87,7 +87,7 @@
 </footer>
 <div class="chat-widget" id="chatWidget" role="button" tabindex="0" aria-label="Chat with Ivy, Cherry's assistant — click to open">
   <span class="cw-hint" id="cwHint">Click to chat with Ivy</span>
-  <span class="cw-status"><span class="status-dot"></span>Cherry is Online</span>
+  <span class="cw-status" title="Cherry is Online"><span class="status-dot"></span>Chat with Ivy</span>
   <span class="cw-bubble"><img src="assets/mark-clean.png" alt=""></span>
 </div>
 <script src="app.js?v=9"></script>
