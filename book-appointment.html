@@ -24,6 +24,41 @@
 <link rel="icon" href="assets/favicon.ico?v=2" sizes="any">
 <link rel="icon" href="assets/icon-32.png?v=2" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/icon-180.png?v=2">
+<style>
+.ck-layout{display:grid;grid-template-columns:1.55fr 1fr;gap:clamp(1.6rem,4vw,2.8rem);align-items:start;grid-template-areas:"main side"}
+.ck-main{grid-area:main;min-width:0}
+.ck-side-rail{grid-area:side;align-self:stretch;border-left:1px solid var(--line);padding-left:clamp(1.3rem,3vw,2rem)}
+.ck-side{display:flex;flex-direction:column;gap:1.1rem;position:sticky;top:6.5rem}
+.ck-side-about{display:flex;gap:.9rem;align-items:center;background:var(--cream);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.1rem 1.3rem;box-shadow:var(--shadow-sm)}
+.ck-side-photo{width:58px;height:58px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--gold-soft)}
+.ck-side-about p{margin:0;font-size:.8rem;color:var(--ink-soft);line-height:1.5}
+.ck-side-about strong{display:block;color:var(--oxblood);font-family:var(--font-display);font-size:1rem;margin-bottom:.15rem}
+.ck-side-card{background:var(--cream);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.4rem 1.5rem;box-shadow:var(--shadow-sm)}
+.ck-side-label{font-family:var(--font-body);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:700;color:var(--gold);margin:0 0 .8rem}
+.ck-side-card p{margin:0 0 .8rem;font-size:.85rem;color:var(--ink-soft);line-height:1.6}
+.ck-side-card p:last-child{margin-bottom:0}
+.ck-side-card a{color:var(--oxblood)}
+.ck-side-trust{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.2rem 1.4rem;text-align:center}
+.ck-stars{color:var(--gold);font-size:1.1rem;letter-spacing:.15em;margin-bottom:.3rem}
+.ck-side-trust p{margin:0;font-size:.82rem;color:var(--ink-soft)}
+.ck-side-trust strong{color:var(--oxblood)}
+.ck-field{padding:.8rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body);width:100%;background:var(--cream)}
+.ck-field:focus-within{border-color:var(--gold)}
+.ck-pay-panel{background:var(--cream);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.6rem 1.6rem 1.8rem;box-shadow:var(--shadow-sm)}
+.ck-pay-panel h3{font-size:1.05rem;color:var(--oxblood);margin:0 0 1.1rem;font-family:var(--font-display);font-weight:600}
+.apt-label{display:block;font-size:.8rem;color:var(--ink-soft);margin-bottom:.4rem;font-weight:600}
+.apt-divider{border:0;border-top:1px solid var(--line);margin:1.6rem 0}
+.apt-slot-grid{display:flex;flex-wrap:wrap;gap:.5rem;max-height:220px;overflow-y:auto;padding:.2rem 0}
+.apt-slot-btn{padding:.55rem .9rem;border:1px solid var(--line-strong);border-radius:999px;background:#fff;cursor:pointer;font-size:.88rem;font-family:var(--font-body)}
+.apt-slot-btn:hover{border-color:var(--gold)}
+.apt-slot-btn.on{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
+.apt-note{font-size:.85rem;color:var(--cherry);margin-top:.6rem}
+@media (max-width:860px){
+  .ck-layout{grid-template-columns:1fr;grid-template-areas:"side" "main"}
+  .ck-side-rail{border-left:0;padding-left:0}
+  .ck-side{position:static;flex-direction:column-reverse}
+}
+</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": ["ProfessionalService", "Organization"], "@id": "https://cherrysage.com/#org", "name": "Cherry Sage", "url": "https://cherrysage.com/", "description": "Honest, accurate psychic, tarot, and numerology readings by phone since 1999.", "logo": "https://cherrysage.com/assets/logo.png", "image": "https://cherrysage.com/assets/bev_portrait.jpg", "founder": {"@type": "Person", "name": "Cherry Sage"}, "foundingDate": "1999", "areaServed": "Worldwide", "priceRange": "$$", "sameAs": ["https://cherrysage.com"], "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "390", "bestRating": "5"}}, {"@type": "WebSite", "@id": "https://cherrysage.com/#website", "url": "https://cherrysage.com/", "name": "Cherry Sage", "publisher": {"@id": "https://cherrysage.com/#org"}, "potentialAction": {"@type": "SearchAction", "target": "https://cherrysage.com/blog.html?q={search_term_string}", "query-input": "required name=search_term_string"}}]}</script>
 
 </head>
@@ -40,40 +75,56 @@
 </header>
 <main>
 <section class="page-hero banner"><div class="ph-glow" aria-hidden="true"></div><div class="ph-stars" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">Pick a time that works</p><h1>Request a Time</h1><p class="lede">Choose from Cherry's real open times below. She'll confirm your request by email or phone.</p></div></section>
-<section class="section"><div class="wrap story-grid">
-  <div class="reveal">
-    <h2>How this works</h2>
-    <p>Pick an open date and time below, then tell Cherry a bit about what you're after. She checks the request and confirms directly with you by email or phone, usually within a day.</p>
-    <p>This is a request, not an instant booking, so your exact time isn't guaranteed until she confirms. If you'd rather just call when she's online, watch the status light at the corner of any page instead.</p>
-    <p style="margin-top:1rem"><a href="/shop" style="color:var(--ink-soft);text-decoration:underline">Prefer to just buy minutes instead of scheduling? Go to Shop →</a></p>
+<section class="section"><div class="wrap">
+  <div class="ck-layout">
+    <div class="ck-main">
+      <form id="apptForm" class="ck-pay-panel reveal" style="display:grid;gap:1.1rem">
+        <div>
+          <h3>Pick a date &amp; time</h3>
+          <label class="apt-label" for="apptDate">Date</label>
+          <input type="date" id="apptDate" name="date" required aria-label="Choose a date" class="ck-field">
+          <div id="apptSlots" aria-live="polite" style="margin-top:.8rem"><p style="color:var(--ink-soft);font-size:.9rem;margin:0">Choose a date to see open times.</p></div>
+          <input type="hidden" name="slotIso" id="apptSlotIso">
+        </div>
+        <hr class="apt-divider">
+        <div style="display:grid;gap:.8rem">
+          <h3>Your details</h3>
+          <input type="text" name="name" placeholder="Your name" required class="ck-field">
+          <input type="email" name="email" placeholder="Your email" required class="ck-field">
+          <input type="tel" name="phone" placeholder="Phone (optional)" class="ck-field">
+          <select name="readingType" required class="ck-field" style="background:#fff">
+            <option value="">What kind of reading?</option>
+            <option>Psychic Reading</option>
+            <option>Tarot Card Reading</option>
+            <option>Numerology</option>
+            <option>Not sure yet</option>
+          </select>
+          <textarea name="message" rows="3" placeholder="Anything you'd like Cherry to know (optional)" class="ck-field"></textarea>
+        </div>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button class="btn btn-primary" type="submit">Request This Time</button>
+        <p id="apptNote" class="apt-note" hidden></p>
+      </form>
+    </div>
+    <div class="ck-side-rail">
+    <aside class="ck-side">
+      <div class="ck-side-card">
+        <p class="ck-side-label">How this works</p>
+        <p>Pick an open date and time, then tell Cherry a bit about what you're after. She checks the request and confirms directly with you by email or phone, usually within a day.</p>
+        <p>This is a request, not an instant booking, so your exact time isn't guaranteed until she confirms. If you'd rather just call when she's online, watch the status light at the corner of any page instead.</p>
+        <p><a href="/shop">Prefer to just buy minutes instead of scheduling? Go to Shop →</a></p>
+      </div>
+      <div class="ck-side-trust">
+        <div class="ck-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p><strong>4.9</strong> out of 5 &middot; 390 real client reviews</p>
+      </div>
+      <div class="ck-side-about">
+        <img src="assets/bev_portrait.jpg" alt="Cherry Sage" class="ck-side-photo" loading="lazy">
+        <p><strong>Cherry Sage</strong>Honest, accurate psychic, tarot, and numerology readings by phone. Trusted since 1999.</p>
+      </div>
+    </aside>
+    </div>
   </div>
-  <form id="apptForm" class="story-card reveal" style="display:grid;gap:.8rem">
-    <label style="display:grid;gap:.3rem;font-size:.85rem;color:var(--ink-soft)">Date
-      <input type="date" id="apptDate" name="date" required aria-label="Choose a date" style="padding:.8rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
-    </label>
-    <div id="apptSlots" aria-live="polite"><p style="color:var(--ink-soft);font-size:.9rem;margin:0">Choose a date to see open times.</p></div>
-    <input type="hidden" name="slotIso" id="apptSlotIso">
-    <input type="text" name="name" placeholder="Your name" required style="padding:.8rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
-    <input type="email" name="email" placeholder="Your email" required style="padding:.8rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
-    <input type="tel" name="phone" placeholder="Phone (optional)" style="padding:.8rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
-    <select name="readingType" required style="padding:.8rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body);background:#fff">
-      <option value="">What kind of reading?</option>
-      <option>Psychic Reading</option>
-      <option>Tarot Card Reading</option>
-      <option>Numerology</option>
-      <option>Not sure yet</option>
-    </select>
-    <textarea name="message" rows="3" placeholder="Anything you'd like Cherry to know (optional)" style="padding:.8rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)"></textarea>
-    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-    <button class="btn btn-primary" type="submit">Request This Time</button>
-    <p id="apptNote" style="margin:0;color:var(--cherry);font-size:.9rem" hidden></p>
-  </form>
-  <style>
-  .slot-btn{padding:.55rem .9rem;border:1px solid var(--line-strong);border-radius:999px;background:#fff;cursor:pointer;font-size:.88rem;font-family:var(--font-body)}
-  .slot-btn:hover{border-color:var(--gold)}
-  .slot-btn.on{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
-  .slot-grid{display:flex;flex-wrap:wrap;gap:.5rem;max-height:220px;overflow-y:auto;padding:.2rem 0}
-  </style>
   <script>
   (function(){
     var f=document.getElementById('apptForm');if(!f)return;var t0=Date.now();
@@ -98,16 +149,16 @@
         .then(function(d){
           var slots=d.slots||[];
           if(!slots.length){ slotsBox.innerHTML='<p style="color:var(--ink-soft);font-size:.9rem;margin:0">'+(d.reason==='day unavailable'?'Cherry is not taking appointments that day.':'No open times that day, try another date.')+'</p>'; return; }
-          slotsBox.innerHTML='<div class="slot-grid">'+slots.map(function(s){
-            return '<button type="button" class="slot-btn" data-iso="'+s+'">'+fmtSlot(s)+'</button>';
+          slotsBox.innerHTML='<div class="apt-slot-grid">'+slots.map(function(s){
+            return '<button type="button" class="apt-slot-btn" data-iso="'+s+'">'+fmtSlot(s)+'</button>';
           }).join('')+'</div>';
         })
         .catch(function(){ slotsBox.innerHTML='<p style="color:var(--cherry);font-size:.9rem;margin:0">Could not load open times, please try again.</p>'; });
     });
 
     slotsBox.addEventListener('click',function(e){
-      var btn=e.target.closest('.slot-btn'); if(!btn) return;
-      slotsBox.querySelectorAll('.slot-btn').forEach(function(b){b.classList.remove('on');});
+      var btn=e.target.closest('.apt-slot-btn'); if(!btn) return;
+      slotsBox.querySelectorAll('.apt-slot-btn').forEach(function(b){b.classList.remove('on');});
       btn.classList.add('on');
       slotIsoField.value=btn.getAttribute('data-iso');
     });
@@ -124,7 +175,7 @@
       fetch('/.netlify/functions/lead',{method:'POST',headers:{'Content-Type':'application/json'},
         body:JSON.stringify({email:email,name:f.name.value.trim(),message:details,source:'appointment',website:f.website.value,t:t0})})
       .then(function(r){return r.ok;}).catch(function(){return false;})
-      .then(function(ok){ f.innerHTML='<p style="margin:0;color:var(--oxblood);font-weight:600">Thank you. Your appointment request reached Cherry Sage, and she will confirm your time by email or phone soon.</p>'; });
+      .then(function(ok){ f.innerHTML='<p class="eyebrow" style="margin:0 0 .5rem">Request sent</p><p style="margin:0;color:var(--ink);font-weight:600;font-size:1.05rem">Thank you. Your appointment request reached Cherry Sage, and she will confirm your time by email or phone soon.</p>'; });
     });})();
   </script>
 </div></section><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class="btn btn-gold" href="/shop">Book a Reading</a></div></section>
