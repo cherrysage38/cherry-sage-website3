@@ -12,8 +12,12 @@
   function compute(s){
     if(!s) return {k:'online',label:'Cherry is Online'};
     var n=nowIn(s.tz||'America/New_York');
+    // Manual overrides (away / holiday) always win, since Bev sets those on purpose from
+    // the Dashboard. A real confirmed appointment happening right now comes next, ahead of
+    // the plain online/offline hours check, since it's a live fact about this exact moment.
     if(s.away) return {k:'offline',label:'Cherry is away'};
     if(s.holidays && s.holidays.indexOf(n.date)>=0) return {k:'offline',label:'Cherry is away today'};
+    if(s.busyNow) return {k:'brb',label:'Cherry is on a call right now'};
     if(s.always) return {k:'online',label:'Cherry is Online'};
     var h=(s.hours||{})[n.day];
     if(h && n.hour>=h[0] && n.hour<h[1]) return {k:'online',label:'Cherry is Online'};

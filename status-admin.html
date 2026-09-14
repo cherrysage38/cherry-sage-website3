@@ -105,6 +105,7 @@ body{background:var(--paper)}
     var n=nowIn(s.tz||'America/New_York');
     if(s.away) return {k:'offline',label:'Away'};
     if(s.holidays && s.holidays.indexOf(n.date)>=0) return {k:'offline',label:'Away today (holiday)'};
+    if(s.busyNow) return {k:'brb',label:'On a call right now'};
     if(s.always) return {k:'online',label:'Online'};
     var h=(s.hours||{})[n.day];
     if(h && n.hour>=h[0] && n.hour<h[1]) return {k:'online',label:'Online'};
@@ -113,7 +114,7 @@ body{background:var(--paper)}
 
   function renderNow(){
     var c=compute(schedule);
-    var dotColors={online:'#54c46b',offline:'#b33'};
+    var dotColors={online:'#54c46b',brb:'#d99b2e',offline:'#b33'};
     document.getElementById('saNowDot').style.background=dotColors[c.k];
     document.getElementById('saNowLabel').textContent=c.label;
   }
