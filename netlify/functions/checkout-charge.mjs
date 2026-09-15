@@ -33,8 +33,8 @@ function json(o, status = 200) {
 // Never blocks on Blobs being unavailable -- a monitoring failure must not take checkout down.
 const RATE_WINDOW_MS = 10 * 60 * 1000;
 const MAX_ATTEMPTS_PER_WINDOW = 8;
-const MAX_DECLINES_PER_WINDOW = 3;
-const BLOCK_MS = 30 * 60 * 1000;
+const MAX_DECLINES_PER_WINDOW = 5; // was 3 -- too tight, locked out a real customer over a few mistyped-card declines, 2026-09-16
+const BLOCK_MS = 10 * 60 * 1000; // was 30 min -- same incident
 
 async function checkAndRecordAttempt(ip) {
   try {
