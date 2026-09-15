@@ -53,6 +53,8 @@
 .apt-slot-btn:hover{border-color:var(--gold)}
 .apt-slot-btn.on{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
 .apt-note{font-size:.85rem;color:var(--cherry);margin-top:.6rem}
+.appt-form-grid{display:grid;gap:1.1rem}
+.appt-form-grid[hidden]{display:none}
 @media (max-width:860px){
   .ck-layout{grid-template-columns:1fr;grid-template-areas:"side" "main"}
   .ck-side-rail{border-left:0;padding-left:0}
@@ -84,7 +86,7 @@
         <p style="color:var(--ink-soft);font-size:.9rem;margin:0 0 1.2rem">So your request lands in your account and you can see its status, requesting a time needs you signed in first. Takes under a minute.</p>
         <a class="btn btn-primary" href="/login.html">Log In or Create an Account</a>
       </div>
-      <form id="apptForm" class="ck-pay-panel reveal" style="display:grid;gap:1.1rem" hidden>
+      <form id="apptForm" class="ck-pay-panel reveal appt-form-grid" hidden>
         <div>
           <h3>Pick a date &amp; time</h3>
           <label class="apt-label" for="apptDate">Date</label>
