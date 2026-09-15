@@ -180,7 +180,7 @@
     if(password.length<8){ err.hidden=false; err.textContent='Password needs to be at least 8 characters.'; return; }
     if(password!==passwordConfirm){ err.hidden=false; err.textContent='Those two passwords do not match, please check and try again.'; return; }
     err.hidden=true; btn.disabled=true; btn.textContent='Creating Account…';
-    sb.auth.signUp({ email: email, password: password }).then(function(res){
+    sb.auth.signUp({ email: email, password: password, options: { emailRedirectTo: 'https://cherrysage.com/login.html' } }).then(function(res){
       if(res.error){
         err.hidden=false; err.textContent=res.error.message||'Could not create your account, please try again.';
         btn.disabled=false; btn.textContent='Create Account';
