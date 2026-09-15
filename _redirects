@@ -60,3 +60,62 @@
 /how-to-spot-a-fake-psychic-changing-the-imitation-psychic-paradigm/    /how-to-spot-a-fake-psychic-changing-the-imitation-psychic-paradigm.html    200
 /real-psychic-readings-and-why-its-not-so-easy-to-find-an-authentic-psychic-and-tips-to-find-one/    /real-psychic-readings-and-why-its-not-so-easy-to-find-an-authentic-psychic-and-tips-to-find-one.html    200
 /im-in-a-9-personal-year-what-now/    /im-in-a-9-personal-year-what-now.html    200
+
+# --- Historical ranking-URL recovery (2026-09-16) ---
+# 301s from the pre-2018 slug eras (Title-Case .html, then underscore CMS, then WordPress plural)
+# to their real, verified-live canonical page. Source: 05_WEBSITE/URL_RECOVERY_MAP.md (Wayback CDX,
+# 7,457 captures). Only mapped where the target page genuinely exists on this live site today --
+# several of that doc's "proposed" canonicals were never built as separate pages, so those historical
+# URLs are intentionally left out of this batch rather than redirected to a guess.
+
+# Psychic reading (core)
+/Psychic-Reading.html    /psychic-reading/    301
+/psychic_readings/    /psychic-reading/    301
+/psychic-readings/    /psychic-reading/    301
+/psychic_readings.html    /psychic-reading/    301
+/psychicreadings.html    /psychic-reading/    301
+/professional_psychic_readings.html    /psychic-reading/    301
+
+# Tarot
+/Tarot-Reading.html    /tarot/    301
+/Tarot-Card-Reading.html    /tarot/    301
+/Online-Tarot-Readings.html    /tarot/    301
+/Psychic_Tarot_Card_Reading.html    /tarot/    301
+
+# Numerology (core + cluster -- these flat historical slugs match real flat live pages)
+/Numerology-Reading.html    /numerology/    301
+/Online-Numerology-Reading.html    /numerology/    301
+/numerology-1/    /numerology/    301
+/lifepath.html    /life-path/    301
+/lifepath/    /life-path/    301
+/Karmic_Debts.html    /karmic-debts/    301
+/karmic_debt    /karmic-debts/    301
+/Karmic_Lessons.html    /karmic-lessons/    301
+/what_is_karma/    /what-is-karma/    301
+
+# Compatibility / love reading
+/Psychic_Love_Reading.html    /compatibility/    301
+/compatibility.html    /compatibility/    301
+/compatibility-love-report/    /report-compatibility-love-report/    301
+
+# Signature honesty pieces (near-exact title matches to real posts)
+/how_to_spot_a_fake_psychic.html    /how-to-spot-a-fake-psychic-changing-the-imitation-psychic-paradigm/    301
+/what_can_a_psychic_tell_you.html    /what-can-a-psychic-really-tell-you/    301
+/real_psychic_reading_and_why.html    /real-and-genuine-psychic-readings/    301
+
+# Psychic ability / phenomenon
+/psychic_ability.html    /psychic-ability-how-to-have-visions/    301
+/psychic_phenomenon.html    /psychic-phenomenon-gifts-powers-or-abilities/    301
+/what_is_a_psychic_anyway.htm    /psychics-what-is-a-psychic-anyway/    301
+
+# Free reading / horoscope lead magnets
+/Free_Psychic_Reading.html    /free-karmic-reading/    301
+/free_psychic_readings.html    /free-karmic-reading/    301
+/freereading.html    /free-karmic-reading/    301
+/free.htm    /free-karmic-reading/    301
+/Free_Daily_Horoscope.htm    /horoscope/    301
+/free_daily_horoscope/    /horoscope/    301
+/Free-Daily-Horoscope.htm    /horoscope/    301
+
+# Trust / conversion pages
+/testimonials.html    /testimonials/    301
