@@ -47,6 +47,28 @@ export default async (req) => {
       return json({ ok: true, approved: true });
     }
 
+    // one-time admin bulk import (real historical comments from the old WordPress site --
+    // written straight to "approved" with their real original date, skips the pending/notify
+    // flow entirely since these already happened and were already public). PIN-gated like the
+    // site's other admin endpoints (dashboard/shop/status), not the STATUS_ADMIN_KEY, which is
+    // unreliable -- see schedule.mjs's history for why. 2026-09-16.
+    if (d.action === "import") {
+      if (String(d.pin || "") !== "0011") return json({ error: "unauthorized" }, 401);
+      const items = Array.isArray(d.comments) ? d.comments.slice(0, 500) : [];
+      let imported = 0, skipped = 0;
+      for (const c of items) {
+        const postSlug = String(c.postSlug || "");
+        const message = String(c.message || "").trim().slice(0, 4000);
+        const ts = String(c.ts || "");
+        if (!SLUG.test(postSlug) || !message || !ts) { skipped++; continue; }
+        const name = String(c.name || "Anonymous").slice(0, 120);
+        const id = `${postSlug}::wp-${c.wpId || Date.now()}`;
+        await store.setJSON(id, { id, postSlug, postTitle: postSlug, name, email: "", message, status: "approved", ts });
+        imported++;
+      }
+      return json({ ok: true, imported, skipped });
+    }
+
     // public new-comment submission
     if (String(d.website || d.hp || "").trim()) return json({ ok: true, bot: 1 });
     if (d.t && Date.now() - Number(d.t) < 1500) return json({ ok: true, bot: 1 });
