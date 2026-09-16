@@ -239,6 +239,17 @@ function esc(s) {
   return String(s || "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
+function brandShell(bodyHtml) {
+  return `<div style="background:#FAF6EF;padding:32px 16px;font-family:Georgia,'Times New Roman',serif;">` +
+    `<div style="max-width:520px;margin:0 auto;background:#FFFDF8;border:1px solid #EDE2CF;border-radius:12px;overflow:hidden;">` +
+    `<div style="background:linear-gradient(160deg,#6E1A28 0%,#4A0F19 100%);padding:28px 32px;text-align:center;">` +
+    `<img src="https://cherrysage.com/assets/logo-horizontal.png" alt="Cherry Sage" style="height:40px;max-width:220px;">` +
+    `</div><div style="padding:32px;color:#2b2620;font-size:15px;line-height:1.6;">${bodyHtml}</div>` +
+    `<div style="padding:20px 32px;border-top:1px solid #EDE2CF;color:#8a8072;font-size:12px;text-align:center;">` +
+    `Cherry Sage &middot; Honest, accurate psychic, tarot, and numerology readings by phone. Trusted since 1999.<br>` +
+    `<a href="https://cherrysage.com" style="color:#A0142B;">cherrysage.com</a></div></div></div>`;
+}
+
 async function notify(to, subject, htmlContent, replyTo) {
   const KEY = process.env.BREVO_KEY;
   if (!KEY || !to) return;
@@ -250,7 +261,7 @@ async function notify(to, subject, htmlContent, replyTo) {
         sender: { name: "Cherry Sage", email: "admin@cherrysage.com" },
         to: [{ email: to }],
         ...(replyTo ? { replyTo } : {}),
-        subject, htmlContent,
+        subject, htmlContent: brandShell(htmlContent),
       }),
     });
   } catch { /* non-fatal, matches the existing lead.mjs/comments.mjs notify pattern */ }
