@@ -81,5 +81,14 @@ export default async (req) => {
   });
   if (custErr || !customerId) return json({ error: "could not save customer: " + (custErr?.message || "unknown") }, 500);
 
+  // Marks this cart as "started" for the abandoned-cart follow-up (abandoned-cart-check.mjs).
+  // cart-charge.mjs clears this same record the moment payment actually succeeds, so a
+  // completed purchase never gets a "you left something" email.
+  try {
+    await getStore("abandoned-carts").setJSON(customerId, {
+      email, name: fullName, items: resolvedItems, startedAt: Date.now(),
+    });
+  } catch { /* non-fatal, worst case a follow-up email doesn't fire */ }
+
   return json({ ok: true, customerId, items: resolvedItems });
 };

@@ -167,6 +167,10 @@ export default async (req) => {
 
   const { data: customer } = await supabase.from("customers").select("email, full_name").eq("id", customerId).maybeSingle();
 
+  // Payment succeeded, this cart is no longer abandoned -- clear the pending record so
+  // abandoned-cart-check.mjs never emails a customer who already checked out.
+  try { await getStore("abandoned-carts").delete(customerId); } catch { /* non-fatal */ }
+
   const BREVO_KEY = process.env.BREVO_KEY;
   const money = (c) => "$" + (c / 100).toFixed(2);
   const NOTIFY_TO = process.env.NOTIFY_EMAIL;
