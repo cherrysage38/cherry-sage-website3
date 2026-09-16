@@ -38,6 +38,7 @@
 .ap-alt-form.open{display:flex}
 .ap-alt-form input[type=datetime-local],.ap-alt-form input[type=text]{padding:.5rem .7rem;border:1px solid var(--line-strong);border-radius:8px;font-family:var(--font-body)}
 .ap-note{font-size:.85rem;color:var(--ink-soft);margin-top:.5rem;font-style:italic}
+.ap-risk{display:inline-block;padding:.15rem .6rem;border-radius:999px;font-size:.72rem;font-weight:700;background:#f4d9a3;color:#6b4200;margin-left:.5rem}
 </style>
 </head>
 <body>
@@ -108,16 +109,30 @@
     return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+'T'+pad(d.getHours())+':'+pad(d.getMinutes());
   }
 
+  // Rough heuristic, not a science: flags requests worth a second look before approving,
+  // a short-notice ask or no phone on file are the two signals we actually have here.
+  function riskFlags(a){
+    var flags=[];
+    if(a.created_at && a.requested_start){
+      var noticeHrs=(new Date(a.requested_start)-new Date(a.created_at))/3600000;
+      if(noticeHrs<24) flags.push('Short notice');
+    }
+    if(!a.customer_phone) flags.push('No phone on file');
+    return flags;
+  }
+
   function render(items){
     var list=document.getElementById('apList');
     if(!items.length){ list.innerHTML='<p style="color:var(--ink-soft)">Nothing here right now.</p>'; return; }
     list.innerHTML=items.map(function(a){
       var suggested=toLocalInputValue(new Date(Date.now()+3600000));
+      var risks=a.status==='pending_approval'?riskFlags(a):[];
       return '<div class="ap-item" data-id="'+esc(a.id)+'">'+
         '<div class="ap-head"><span class="ap-name">'+esc(a.customer_name||'Unknown')+'</span><span class="ap-when">'+fmt(a.requested_start)+'</span></div>'+
         '<div class="ap-meta">'+esc(a.customer_email||'')+(a.customer_phone?' &middot; '+esc(a.customer_phone):'')+'</div>'+
         '<div class="ap-meta">'+esc(a.product_name||'')+' &middot; '+(a.duration_minutes||'')+' min &middot; '+money(a.amount_cents)+' ('+esc(a.order_status||'')+')</div>'+
         '<span class="ap-status '+esc(a.status)+'">'+esc((a.status||'').replace(/_/g,' '))+'</span>'+
+        risks.map(function(r){ return '<span class="ap-risk">'+esc(r)+'</span>'; }).join('')+
         (a.alternate_start?'<div class="ap-note">Alternate offered: '+fmt(a.alternate_start)+'</div>':'')+
         (a.decision_note?'<div class="ap-note">Note: '+esc(a.decision_note)+'</div>':'')+
         '<div class="ap-actions">'+

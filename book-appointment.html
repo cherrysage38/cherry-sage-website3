@@ -91,6 +91,7 @@
           <h3>Pick a date &amp; time</h3>
           <label class="apt-label" for="apptDate">Date</label>
           <input type="date" id="apptDate" name="date" required aria-label="Choose a date" class="ck-field">
+          <p id="apptTzNote" style="font-size:.82rem;color:var(--ink-soft);margin:.5rem 0 0"></p>
           <div id="apptSlots" aria-live="polite" style="margin-top:.8rem"><p style="color:var(--ink-soft);font-size:.9rem;margin:0">Choose a date to see open times.</p></div>
           <input type="hidden" name="slotIso" id="apptSlotIso">
         </div>
@@ -107,7 +108,12 @@
             <option>Numerology</option>
             <option>Not sure yet</option>
           </select>
-          <textarea name="message" rows="3" placeholder="Anything you'd like Cherry to know (optional)" class="ck-field"></textarea>
+          <select name="firstTime" class="ck-field" style="background:#fff">
+            <option value="">Have you read with Cherry before? (optional)</option>
+            <option value="First time">This is my first time</option>
+            <option value="Returning">I've read with her before</option>
+          </select>
+          <textarea name="message" rows="3" placeholder="What would you like to focus on? (optional)" class="ck-field"></textarea>
         </div>
         <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button class="btn btn-primary" type="submit">Request This Time</button>
@@ -161,6 +167,15 @@
     function fmtSlot(isoStr){
       return new Date(isoStr).toLocaleString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'});
     }
+    var visitorTz=(function(){ try{ return Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){ return null; } })();
+    function fmtSlotLocal(isoStr){
+      if(!visitorTz||visitorTz==='America/New_York') return '';
+      try{ return new Date(isoStr).toLocaleString('en-US',{timeZone:visitorTz,hour:'numeric',minute:'2-digit'}); }catch(e){ return ''; }
+    }
+    var tzNote=document.getElementById('apptTzNote');
+    if(visitorTz && visitorTz!=='America/New_York'){
+      tzNote.textContent='Times below are Cherry\'s hours, Eastern time. Your time zone looks like '+visitorTz.replace(/_/g,' ').split('/').pop()+', shown next to each time.';
+    }
 
     dateInput.addEventListener('change',function(){
       slotIsoField.value='';
@@ -172,7 +187,8 @@
           var slots=d.slots||[];
           if(!slots.length){ slotsBox.innerHTML='<p style="color:var(--ink-soft);font-size:.9rem;margin:0">'+(d.reason==='day unavailable'?'Cherry is not taking appointments that day.':'No open times that day, try another date.')+'</p>'; return; }
           slotsBox.innerHTML='<div class="apt-slot-grid">'+slots.map(function(s){
-            return '<button type="button" class="apt-slot-btn" data-iso="'+s+'">'+fmtSlot(s)+'</button>';
+            var local=fmtSlotLocal(s);
+            return '<button type="button" class="apt-slot-btn" data-iso="'+s+'">'+fmtSlot(s)+(local?' <span style="opacity:.65;font-size:.85em">('+local+' your time)</span>':'')+'</button>';
           }).join('')+'</div>';
         })
         .catch(function(){ slotsBox.innerHTML='<p style="color:var(--cherry);font-size:.9rem;margin:0">Could not load open times, please try again.</p>'; });
@@ -194,13 +210,15 @@
       btn.disabled=true;btn.textContent='Sending...';
       var details='Requested time: '+fmtSlot(slotIsoField.value)+' Eastern, on '+dateInput.value+' ('+slotIsoField.value+')\nReading type: '+f.readingType.value+
         (f.phone.value?('\nPhone: '+f.phone.value.trim()):'')+
-        (f.message.value.trim()?('\n\nNotes: '+f.message.value.trim()):'');
+        (f.firstTime.value?('\n'+f.firstTime.value):'')+
+        (f.message.value.trim()?('\n\nFocus: '+f.message.value.trim()):'');
+      var notesForRecord=(f.firstTime.value?f.firstTime.value+'. ':'')+f.message.value.trim();
 
       sb.rpc('request_appointment',{
         p_requested_start: slotIsoField.value,
         p_duration_minutes: 15,
         p_reading_type: f.readingType.value,
-        p_notes: f.message.value.trim()||null
+        p_notes: notesForRecord.trim()||null
       }).then(function(res){
         if(res.error){ note.hidden=false; note.textContent='Something went wrong saving your request, please try again.'; btn.disabled=false; btn.textContent='Request This Time'; return; }
         // Best-effort admin email notification -- the real record is already saved above,

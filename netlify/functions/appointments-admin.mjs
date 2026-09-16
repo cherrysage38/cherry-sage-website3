@@ -117,15 +117,40 @@ async function refundCloverCharge(chargeId, amountCents) {
   }
 }
 
+// A standard .ics calendar invite so "Add to calendar" is a real attachment, not just a
+// promise in the email copy. Built from scratch, no dependency -- it's a plain text format.
+function buildICS(details) {
+  const start = new Date(details.requested_start);
+  const minutes = Number(details.duration_minutes) || 30;
+  const end = new Date(start.getTime() + minutes * 60000);
+  const stamp = (d) => d.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+  const escIcs = (s) => String(s || "").replace(/[\\;,]/g, (c) => "\\" + c).replace(/\n/g, "\\n");
+  const lines = [
+    "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Cherry Sage//Appointments//EN",
+    "BEGIN:VEVENT",
+    `UID:${details.id || Date.now()}@cherrysage.com`,
+    `DTSTAMP:${stamp(new Date())}`,
+    `DTSTART:${stamp(start)}`,
+    `DTEND:${stamp(end)}`,
+    `SUMMARY:${escIcs((details.product_name || "Reading") + " with Cherry Sage")}`,
+    `DESCRIPTION:${escIcs("Your reading with Cherry Sage. Questions? Reply to your confirmation email.")}`,
+    "STATUS:CONFIRMED",
+    "END:VEVENT", "END:VCALENDAR",
+  ];
+  return lines.join("\r\n");
+}
+
 async function sendStatusEmail(details, status, refundResult) {
   const when = fmt(details.requested_start);
   const name = esc(details.customer_name || "");
-  let subject, body;
+  let subject, body, ics = null;
 
   if (status === "approved") {
     subject = "Your appointment with Cherry Sage is confirmed";
     body = `<p>Great news, ${name}. Your <strong>${esc(details.product_name)}</strong> reading is confirmed for ${when}.</p>` +
-      `<p>Cherry looks forward to speaking with you.</p>`;
+      `<p>Cherry looks forward to speaking with you.</p>` +
+      `<p style="font-size:.9em;color:#8a8072">A calendar invite is attached, so it's one tap to add to your phone.</p>`;
+    ics = buildICS(details);
   } else if (status === "alternate_offered") {
     const alt = fmt(details.alternate_start);
     subject = "A different time for your Cherry Sage reading";
@@ -152,6 +177,7 @@ async function sendStatusEmail(details, status, refundResult) {
         sender: { name: "Cherry Sage", email: "admin@cherrysage.com" },
         to: [{ email: details.customer_email }],
         subject, htmlContent: brandShell(body),
+        ...(ics ? { attachment: [{ content: Buffer.from(ics, "utf-8").toString("base64"), name: "cherry-sage-reading.ics" }] } : {}),
       }),
     });
   } catch { /* non-fatal */ }
