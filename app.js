@@ -58,17 +58,120 @@
     22:"A Master Number. The Master Builder. You can turn big dreams into real things that outlast you.",
     33:"A Master Number. The Master Teacher. Rare and devoted, here to uplift through compassion and truth."
   };
-  function reduce(n){ while(n>9 && n!==11 && n!==22 && n!==33){ n=String(n).split('').reduce(function(a,d){return a+ +d;},0); } return n; }
+  var EXPRESSION = {
+    1:"The Original. Bold, self-starting, resourceful. Your gift is initiating what others hesitate to begin.",
+    2:"The Collaborator. Warm, perceptive, fair. Your gift is bringing people together and smoothing what's rough.",
+    3:"The Storyteller. Expressive, witty, magnetic. Your gift is communication that lifts a room.",
+    4:"The Craftsman. Precise, reliable, patient. Your gift is building things that actually hold up.",
+    5:"The Explorer. Versatile, quick, unafraid of change. Your gift is adapting faster than anyone around you.",
+    6:"The Caretaker. Responsible, generous, steady. Your gift is making people and places feel safe.",
+    7:"The Analyst. Perceptive, private, exacting. Your gift is seeing what's underneath the surface.",
+    8:"The Executive. Confident, strategic, driven. Your gift is turning ambition into real results.",
+    9:"The Idealist. Generous, artistic, broad-minded. Your gift is caring about more than yourself.",
+    11:"A Master Number. The Illuminator. Your gift is inspiring others through your own sensitivity.",
+    22:"A Master Number. The Architect. Your gift is building something practical out of a big vision.",
+    33:"A Master Number. The Healer. Your gift is compassion put directly into action."
+  };
+  var SOUL_URGE = {
+    1:"You want to lead, and to be respected for standing on your own.",
+    2:"You want closeness, harmony, and to matter to the people near you.",
+    3:"You want to be heard, and to fill life with color and expression.",
+    4:"You want order, security, and something solid to stand on.",
+    5:"You want freedom, movement, and to never feel boxed in.",
+    6:"You want to love and be loved, and to belong somewhere real.",
+    7:"You want understanding, solitude enough to think, and real truth.",
+    8:"You want achievement, and recognition for what you've built.",
+    9:"You want to matter to something bigger than yourself.",
+    11:"You want to inspire, even when it asks more of you than most.",
+    22:"You want your work to outlast you.",
+    33:"You want to give more than most people think is possible."
+  };
+  var PERSONALITY = {
+    1:"You come across as capable and self-assured, someone people follow without being asked to.",
+    2:"You come across as easy to talk to, calm, and genuinely fair.",
+    3:"You come across as lively, warm, and a little bit magnetic.",
+    4:"You come across as dependable, someone people trust to get it right.",
+    5:"You come across as interesting, spontaneous, hard to predict.",
+    6:"You come across as caring, someone people bring their problems to.",
+    7:"You come across as thoughtful, a little private, quietly perceptive.",
+    8:"You come across as confident and in control.",
+    9:"You come across as generous, worldly, and a bit old-soul.",
+    11:"You come across as sensitive and unusually perceptive.",
+    22:"You come across as grounded, but somehow larger than the room.",
+    33:"You come across as warm in a way people don't forget."
+  };
+  var BIRTHDAY_NUM = {
+    1:"An added gift for independence and initiative.",2:"An added gift for sensitivity and partnership.",
+    3:"An added gift for creativity and self-expression.",4:"An added gift for discipline and structure.",
+    5:"An added gift for adaptability and curiosity.",6:"An added gift for responsibility and care.",
+    7:"An added gift for depth and reflection.",8:"An added gift for ambition and practical power.",
+    9:"An added gift for compassion and generosity.",11:"An added gift for intuition, sharper than most.",
+    22:"An added gift for building at scale.",33:"An added gift for selfless care."
+  };
+  var PERSONAL_YEAR = {
+    1:"A year for beginnings. New starts, planting seeds, choosing your own direction.",
+    2:"A year for patience. Relationships and cooperation move to the front.",
+    3:"A year for expression. A good year to create, share, and be seen.",
+    4:"A year for building. Steady effort now sets up what comes later.",
+    5:"A year for change. Expect movement, and let it happen instead of resisting it.",
+    6:"A year for responsibility. Home, family, and commitments take center stage.",
+    7:"A year for reflection. Slow down, look inward, trust what you learn.",
+    8:"A year for results. Effort from past years starts paying off.",
+    9:"A year for closing. Let go of what's finished so something new has room."
+  };
+  var LETTER_VAL = {a:1,j:1,s:1,b:2,k:2,t:2,c:3,l:3,u:3,d:4,m:4,v:4,e:5,n:5,w:5,f:6,o:6,x:6,g:7,p:7,y:7,h:8,q:8,z:8,i:9,r:9};
+  var VOWELS = {a:1,e:1,i:1,o:1,u:1};
+  function reduce(n, allowMaster){
+    allowMaster = allowMaster !== false;
+    while(n>9 && !(allowMaster && (n===11||n===22||n===33))){ n=String(n).split('').reduce(function(a,d){return a+ +d;},0); }
+    return n;
+  }
+  function nameSum(name, filter){
+    var letters=name.toLowerCase().replace(/[^a-z]/g,'');
+    var sum=0;
+    for(var i=0;i<letters.length;i++){
+      var ch=letters[i];
+      if(filter==='vowels' && !VOWELS[ch]) continue;
+      if(filter==='consonants' && VOWELS[ch]) continue;
+      sum += LETTER_VAL[ch]||0;
+    }
+    return sum;
+  }
+  function card(title, num, meaning){
+    return '<div class="card" style="padding:1.2rem 1.4rem"><div style="display:flex;align-items:baseline;gap:.8rem">'+
+      '<span style="font-family:var(--font-display);font-size:2.2rem;color:var(--oxblood)">'+num+'</span>'+
+      '<h4 style="margin:0">'+title+'</h4></div>'+
+      '<p style="color:var(--ink-soft);margin:.5rem 0 0">'+meaning+'</p></div>';
+  }
   var f=document.getElementById('lpForm');
   if(f){ f.addEventListener('submit',function(e){
     e.preventDefault();
     var v=document.getElementById('lpDate').value; if(!v) return;
+    var nameEl=document.getElementById('lpName');
+    var name=(nameEl && nameEl.value || '').trim();
+    var parts=v.split('-'); var yr=+parts[0], mo=+parts[1], dy=+parts[2];
     var digits=v.replace(/[^0-9]/g,'');
-    var sum=digits.split('').reduce(function(a,d){return a+ +d;},0);
-    var lp=reduce(sum);
-    document.getElementById('lpNum').textContent=lp;
-    document.getElementById('lpMeaning').textContent=LP[lp]||'';
-    document.getElementById('lpResult').hidden=false;
+    var lifePath=reduce(digits.split('').reduce(function(a,d){return a+ +d;},0));
+    var birthday=reduce(dy);
+
+    var out=[card('Life Path', lifePath, LP[lifePath]||'')];
+    if(name){
+      var expression=reduce(nameSum(name));
+      var soulUrge=reduce(nameSum(name,'vowels'));
+      var personality=reduce(nameSum(name,'consonants'));
+      out.push(card('Expression (Destiny)', expression, EXPRESSION[expression]||''));
+      out.push(card('Soul Urge (Heart\'s Desire)', soulUrge, SOUL_URGE[soulUrge]||''));
+      out.push(card('Personality', personality, PERSONALITY[personality]||''));
+    }
+    out.push(card('Birthday Number', birthday, BIRTHDAY_NUM[birthday]||''));
+    var currentYear=new Date().getFullYear();
+    var personalYear=reduce(mo+dy+currentYear, false);
+    out.push(card('Personal Year ('+currentYear+')', personalYear, PERSONAL_YEAR[personalYear]||''));
+    out.push('<div style="text-align:center;margin-top:.4rem"><a class="btn btn-primary" href="/shop">Go deeper with Cherry</a></div>');
+
+    var resultEl=document.getElementById('lpResult');
+    resultEl.innerHTML=out.join('');
+    resultEl.hidden=false;
   }); }
 
   // chat widget (front-end stub for concept)

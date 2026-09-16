@@ -43,18 +43,15 @@
 <section class="section" id="tools"><div class="wrap">
   <div class="card reveal" style="max-width:640px;margin:0 auto 2rem;text-align:center">
     <span class="chip">Free · Cherry's method</span>
-    <h3>Life Path Calculator</h3>
-    <p>Enter your birth date and get the number Cherry uses to open every reading.</p>
+    <h3>Your Numerology Profile</h3>
+    <p>Your full name at birth and your birth date unlock five numbers, not just one.</p>
     <form id="lpForm" style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin:.6rem 0">
+      <input type="text" id="lpName" required aria-label="Your full name at birth" placeholder="Full name at birth" style="padding:.7rem 1rem;border:1px solid var(--line-strong);border-radius:999px;font-family:var(--font-body);font-size:1rem;min-width:220px">
       <input type="date" id="lpDate" required aria-label="Your birth date" style="padding:.7rem 1rem;border:1px solid var(--line-strong);border-radius:999px;font-family:var(--font-body);font-size:1rem">
-      <button class="btn btn-gold" type="submit">Reveal my Life Path</button>
+      <button class="btn btn-gold" type="submit">Reveal my numbers</button>
     </form>
-    <div id="lpResult" hidden style="margin-top:1rem">
-      <div style="font-family:var(--font-display);font-size:3rem;color:var(--oxblood)" id="lpNum"></div>
-      <p id="lpMeaning" style="color:var(--ink-soft)"></p>
-      <a class="btn btn-primary" href="/shop">Go deeper with Cherry</a>
-    </div>
-    <p style="font-size:.78rem;color:var(--ink-soft);margin:.4rem 0 0">For reflection. A full reading with Cherry goes far beyond a single number.</p>
+    <div id="lpResult" hidden style="margin-top:1.4rem;display:grid;gap:1rem;text-align:left"></div>
+    <p style="font-size:.78rem;color:var(--ink-soft);margin:.8rem 0 0">For reflection. A full reading with Cherry goes far beyond a set of numbers.</p>
   </div>
   <div class="grid grid-3">
     <div class="card reveal"><span class="free-tag">Free</span><span class="chip">Tarot</span><h3>Tarot Card Pull</h3><p>Type your question, pull a card. Warm and personal, just for reflection.</p><a class="card-link" href="/tarot-pull">Pull a free card →</a></div>
