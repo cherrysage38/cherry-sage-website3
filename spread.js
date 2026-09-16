@@ -1,29 +1,9 @@
 /* Cherry Sage — Free Three-Card Tarot Spread (Past · Present · Future). For reflection only. */
 (function(){
-  var DECK=[
-    {n:"The Fool",g:"✦",k:"New beginnings · a leap of faith",r:"A fresh chapter is opening for you.",p:"Trust the first step even before you can see the whole staircase."},
-    {n:"The Magician",g:"✷",k:"Power · manifestation",r:"You already have everything you need.",p:"This is a moment to act, not to wait."},
-    {n:"The High Priestess",g:"☾",k:"Intuition · inner knowing",r:"The answer is quieter than the noise around it.",p:"Give yourself one still moment and let it rise."},
-    {n:"The Empress",g:"❀",k:"Nurturing · abundance",r:"Tend to what you love and it will grow.",p:"Softness is your strength right now, not your weakness."},
-    {n:"The Emperor",g:"◆",k:"Structure · stability",r:"A little order brings a lot of peace.",p:"Build the frame and the rest can settle into it."},
-    {n:"The Hierophant",g:"⌂",k:"Tradition · guidance",r:"There is wisdom in asking for help.",p:"Lean on a trusted voice and save yourself the long way round."},
-    {n:"The Lovers",g:"♡",k:"Connection · a choice",r:"A real choice of the heart is near.",p:"Choose from love, not from fear of losing."},
-    {n:"The Chariot",g:"➤",k:"Willpower · momentum",r:"Hold your direction.",p:"Keep both hands on the reins and do not turn back now."},
-    {n:"Strength",g:"∞",k:"Courage · gentle power",r:"You are stronger than the thing you fear.",p:"Quiet courage will open the door that pushing never could."},
-    {n:"The Hermit",g:"✦",k:"Reflection · wisdom",r:"A pause is not a step backward.",p:"Listen before you leap back in."},
-    {n:"Wheel of Fortune",g:"◍",k:"Cycles · a turning point",r:"Things are moving again.",p:"Say yes when the moment comes, it will not knock twice."},
-    {n:"Justice",g:"⚖",k:"Truth · balance",r:"Be honest with yourself first.",p:"Truth is on your side here."},
-    {n:"The Hanged Man",g:"⸙",k:"Surrender · new perspective",r:"Seeing this differently changes everything.",p:"The moment you stop forcing it, the answer turns to face you."},
-    {n:"Death",g:"❖",k:"Transformation · rebirth",r:"An ending is making room for who you are becoming.",p:"Let the old thing close so the new one can finally begin."},
-    {n:"Temperance",g:"⚗",k:"Balance · healing",r:"Gentle and steady wins here.",p:"There is no rush that serves you now."},
-    {n:"The Star",g:"★",k:"Hope · clarity",r:"After a hard stretch, the light is returning.",p:"The worst is behind you, and quiet good is on its way in."},
-    {n:"The Moon",g:"☽",k:"Intuition · the unseen",r:"Not everything is clear yet, and that is okay.",p:"What is hidden will show itself soon, do not force it early."},
-    {n:"The Sun",g:"☀",k:"Joy · success",r:"Warmth and good news are close.",p:"This is one of the brightest cards in the deck, and it came to you."},
-    {n:"Judgement",g:"❋",k:"Awakening · a calling",r:"Something is asking you to rise to it.",p:"You are more ready for the next chapter than you feel."},
-    {n:"The World",g:"◉",k:"Completion · wholeness",r:"A cycle is coming full circle.",p:"Honor how far you have come before the next chapter opens."},
-    {n:"The Tower",g:"⚡",k:"Sudden change · truth",r:"A shake-up is clearing what was not built to last.",p:"What remains afterward is real and truly yours."},
-    {n:"The Devil",g:"⛓",k:"Attachment · release",r:"Notice what quietly holds you.",p:"The chain is looser than it looks."}
-  ];
+  // Shared 78-card deck (tarot-deck.js), same one tarot-pull.html uses, instead of this
+  // page's own separate 22-card Major-Arcana-only copy, which had already drifted in
+  // wording and missed the 56 Minor Arcana cards entirely.
+  var DECK=window.CSTarotDeck||[];
   var HEAVY=/(suicide|kill myself|self.?harm|dying|death of|cancer|diagnos|pregnan|lawsuit|court|custody|medical|overdose)/i;
   var POS=[
     {key:"Past",    sub:"Where you are coming from", lead:"In what led here"},
@@ -48,7 +28,7 @@
     // own scrollIntoView is a known way for the page to jump unexpectedly on some phones.
     q.blur();
     var idx=[]; while(idx.length<3){ var r=Math.floor(Math.random()*DECK.length); if(idx.indexOf(r)<0) idx.push(r); }
-    picks=idx.map(function(i){return DECK[i];}); revealed=0;
+    picks=idx.map(function(i){return {card:DECK[i], reversed:Math.random()<0.35};}); revealed=0;
     s1.hidden=true; s2.hidden=false; result.hidden=true;
     spread.innerHTML='';
     POS.forEach(function(pos,i){
@@ -65,11 +45,12 @@
   function flip(btn,i){
     if(btn.classList.contains('chosen')) return;
     btn.classList.add('chosen'); btn.disabled=true;
-    var c=picks[i], pos=POS[i];
-    btn.innerHTML='<span class="t-glyph">'+c.g+'</span>';
+    var pick=picks[i], c=pick.card, pos=POS[i], reversed=pick.reversed;
+    btn.innerHTML='<span class="t-glyph"'+(reversed?' style="display:inline-block;transform:rotate(180deg)"':'')+'>'+c.g+'</span>';
     var card=document.createElement('div'); card.className='card sp-reveal reveal';
-    card.innerHTML='<h3 class="pull-name">'+c.n+'</h3><p class="t-keys">'+c.k+'</p>'+
-      '<p class="pull-refl">'+pos.lead+', '+lc(c.r)+' '+c.p+'</p>';
+    var body=reversed ? lc(c.rv) : (lc(c.r)+' '+c.p);
+    card.innerHTML='<h3 class="pull-name">'+c.n+(reversed?' <span style="font-size:.65em;color:var(--ink-soft);font-style:italic">(reversed)</span>':'')+'</h3><p class="t-keys">'+c.k+'</p>'+
+      '<p class="pull-refl">'+pos.lead+', '+body+'</p>';
     btn.parentNode.appendChild(card);
     revealed++;
     if(revealed===3) setTimeout(summary,650);
