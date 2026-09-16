@@ -76,6 +76,8 @@
   <div class="card reveal" id="lgRegisterCard" hidden>
     <form id="lgRegisterForm" style="display:grid;gap:.9rem">
       <input type="email" name="email" placeholder="Your email" required class="lg-field">
+      <input type="text" name="fullName" placeholder="Your name (optional)" autocomplete="name" class="lg-field">
+      <input type="tel" name="phone" placeholder="Phone number (optional)" autocomplete="tel" class="lg-field">
       <div class="lg-pw-wrap">
         <input type="password" name="password" placeholder="Choose a password (8+ characters)" required autocomplete="new-password" class="lg-field">
         <button type="button" class="lg-pw-toggle" aria-label="Show password">
@@ -176,6 +178,7 @@
     e.preventDefault();
     var err=document.getElementById('lgRegisterError'), btn=registerForm.querySelector('button[type=submit]');
     var email=(registerForm.email.value||'').trim(), password=registerForm.password.value||'', passwordConfirm=registerForm.passwordConfirm.value||'';
+    var fullName=(registerForm.fullName.value||'').trim(), phone=(registerForm.phone.value||'').trim();
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.hidden=false; err.textContent='Please enter a valid email address.'; return; }
     if(password.length<8){ err.hidden=false; err.textContent='Password needs to be at least 8 characters.'; return; }
     if(password!==passwordConfirm){ err.hidden=false; err.textContent='Those two passwords do not match, please check and try again.'; return; }
@@ -185,6 +188,12 @@
         err.hidden=false; err.textContent=res.error.message||'Could not create your account, please try again.';
         btn.disabled=false; btn.textContent='Create Account';
         return;
+      }
+      // Best-effort: link the name/phone she gave (both optional) to her customer record,
+      // so appointments and orders show a real name instead of "Unknown". Never blocks
+      // account creation itself if this fails for any reason.
+      if(fullName){
+        sb.rpc('create_customer_if_missing', { p_email: email, p_full_name: fullName, p_phone: phone || null }).catch(function(){});
       }
       if(res.data && res.data.user && !res.data.session){
         err.hidden=false; err.textContent='Almost done, check your email to confirm your address, then log in.';
