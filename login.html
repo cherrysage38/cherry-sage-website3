@@ -103,6 +103,12 @@
     </form>
   </div>
 
+  <div class="card reveal" id="lgCheckEmailCard" hidden>
+    <p style="font-size:1.1rem;font-weight:700;margin:0 0 .6rem;color:var(--oxblood)">Check your email</p>
+    <p style="color:var(--ink-soft);font-size:.92rem;margin:0 0 1.3rem">We've sent a confirmation link to <strong id="lgCheckEmailAddr"></strong>. Click it, then come back here to log in.</p>
+    <button class="btn btn-primary" id="lgGoToLogin" type="button" style="width:100%">Already confirmed your email? Log in</button>
+  </div>
+
   <p class="lg-note" id="lgNote">Your password is stored securely by Supabase, never seen by anyone at Cherry Sage.</p>
 </div></section>
 </main>
@@ -130,6 +136,17 @@
     if(res.data && res.data.session){ location.href='/account.html'; }
   });
 
+  // A stalled auth request (e.g. a slow SMTP send on signup) can leave the underlying fetch
+  // pending forever -- neither resolving nor rejecting, so a plain .then/.catch never fires and
+  // the button is stuck on its "…" label with no error shown. Racing against a timeout is the
+  // only way to guarantee the UI always recovers.
+  function withTimeout(promise, ms, message){
+    return new Promise(function(resolve, reject){
+      var timer=setTimeout(function(){ reject(new Error(message||'This is taking longer than expected, please try again.')); }, ms);
+      promise.then(function(v){ clearTimeout(timer); resolve(v); }, function(e){ clearTimeout(timer); reject(e); });
+    });
+  }
+
   // Show/hide password toggle, works for any .lg-pw-wrap on the page
   document.querySelectorAll('.lg-pw-toggle').forEach(function(btn){
     btn.addEventListener('click', function(){
@@ -143,15 +160,16 @@
 
   var tabLogin=document.getElementById('lgTabLogin'), tabRegister=document.getElementById('lgTabRegister');
   var loginCard=document.getElementById('lgLoginCard'), registerCard=document.getElementById('lgRegisterCard'), note=document.getElementById('lgNote');
+  var checkEmailCard=document.getElementById('lgCheckEmailCard');
   tabLogin.addEventListener('click', function(){
     tabLogin.classList.add('on'); tabRegister.classList.remove('on');
-    loginCard.hidden=false; registerCard.hidden=true;
-    note.textContent='Your password is stored securely by Supabase, never seen by anyone at Cherry Sage.';
+    loginCard.hidden=false; registerCard.hidden=true; checkEmailCard.hidden=true;
+    note.hidden=false; note.textContent='Your password is stored securely by Supabase, never seen by anyone at Cherry Sage.';
   });
   tabRegister.addEventListener('click', function(){
     tabRegister.classList.add('on'); tabLogin.classList.remove('on');
-    registerCard.hidden=false; loginCard.hidden=true;
-    note.textContent="Use the same email address you've booked or bought with before, so your history shows up automatically.";
+    registerCard.hidden=false; loginCard.hidden=true; checkEmailCard.hidden=true;
+    note.hidden=false; note.textContent="Use the same email address you've booked or bought with before, so your history shows up automatically.";
   });
 
   // Log in with password
@@ -162,13 +180,16 @@
     var email=(loginForm.email.value||'').trim(), password=loginForm.password.value||'';
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.hidden=false; err.textContent='Please enter a valid email address.'; return; }
     err.hidden=true; btn.disabled=true; btn.textContent='Signing In…';
-    sb.auth.signInWithPassword({ email: email, password: password }).then(function(res){
+    withTimeout(sb.auth.signInWithPassword({ email: email, password: password }), 15000).then(function(res){
       if(res.error){
         err.hidden=false; err.textContent=res.error.message||'Could not sign in, please check your password and try again.';
         btn.disabled=false; btn.textContent='Sign In';
         return;
       }
       location.href='/account.html';
+    }).catch(function(timeoutErr){
+      err.hidden=false; err.textContent=(timeoutErr && timeoutErr.message) || 'Something went wrong reaching the server, please try again.';
+      btn.disabled=false; btn.textContent='Sign In';
     });
   });
 
@@ -183,7 +204,10 @@
     if(password.length<8){ err.hidden=false; err.textContent='Password needs to be at least 8 characters.'; return; }
     if(password!==passwordConfirm){ err.hidden=false; err.textContent='Those two passwords do not match, please check and try again.'; return; }
     err.hidden=true; btn.disabled=true; btn.textContent='Creating Account…';
-    sb.auth.signUp({ email: email, password: password, options: { emailRedirectTo: 'https://cherrysage.com/login.html' } }).then(function(res){
+    withTimeout(
+      sb.auth.signUp({ email: email, password: password, options: { emailRedirectTo: 'https://cherrysage.com/login.html' } }),
+      15000
+    ).then(function(res){
       if(res.error){
         err.hidden=false; err.textContent=res.error.message||'Could not create your account, please try again.';
         btn.disabled=false; btn.textContent='Create Account';
@@ -196,12 +220,26 @@
         sb.rpc('create_customer_if_missing', { p_email: email, p_full_name: fullName, p_phone: phone || null }).catch(function(){});
       }
       if(res.data && res.data.user && !res.data.session){
-        err.hidden=false; err.textContent='Almost done, check your email to confirm your address, then log in.';
+        document.getElementById('lgCheckEmailAddr').textContent=email;
+        registerCard.hidden=true;
+        checkEmailCard.hidden=false;
+        note.hidden=true;
         btn.disabled=false; btn.textContent='Create Account';
         return;
       }
       location.href='/account.html';
+    }).catch(function(timeoutErr){
+      err.hidden=false; err.textContent=(timeoutErr && timeoutErr.message) || 'Something went wrong reaching the server, please try again.';
+      btn.disabled=false; btn.textContent='Create Account';
     });
+  });
+
+  document.getElementById('lgGoToLogin').addEventListener('click', function(){
+    var confirmedEmail=document.getElementById('lgCheckEmailAddr').textContent;
+    checkEmailCard.hidden=true;
+    tabLogin.click();
+    var loginEmailInput=loginForm.querySelector('input[name=email]');
+    if(loginEmailInput) loginEmailInput.value=confirmedEmail;
   });
 
   // Shared email-link request, offered as an option under both Log In and Create an Account
@@ -214,10 +252,14 @@
       var email=(form.email.value||'').trim();
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ noteEl.hidden=false; noteEl.textContent='Please enter a valid email address.'; return; }
       noteEl.hidden=true; btn.disabled=true; btn.textContent='Sending…';
-      sb.auth.signInWithOtp({ email: email, options: { emailRedirectTo: 'https://cherrysage.com/account.html' } }).then(function(res){
+      withTimeout(sb.auth.signInWithOtp({ email: email, options: { emailRedirectTo: 'https://cherrysage.com/account.html' } }), 15000).then(function(res){
         btn.disabled=false; btn.textContent=formId==='lgLoginLinkForm' ? 'Send Sign-In Link' : 'Send Me a Link';
         noteEl.hidden=false;
         noteEl.textContent = res.error ? (res.error.message||'Could not send the link, please try again.') : ('Sent, check '+email+' and open it on this device.');
+      }).catch(function(timeoutErr){
+        btn.disabled=false; btn.textContent=formId==='lgLoginLinkForm' ? 'Send Sign-In Link' : 'Send Me a Link';
+        noteEl.hidden=false;
+        noteEl.textContent=(timeoutErr && timeoutErr.message) || 'Something went wrong reaching the server, please try again.';
       });
     });
   }

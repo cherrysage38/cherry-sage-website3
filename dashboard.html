@@ -76,6 +76,7 @@
     <input type="password" inputmode="numeric" id="gatePin" placeholder="PIN" autocomplete="off">
     <button class="btn btn-primary" id="gateSend" style="width:100%">Open Dashboard</button>
     <p class="msg" id="gateMsg"></p>
+    <p style="margin:.9rem 0 0;font-size:.85rem;color:var(--ink-soft)">Already logged in with your account? <a href="/login.html">Log in here</a>, then reload this page.</p>
   </div>
 
   <div id="dashApp" hidden>
@@ -113,6 +114,7 @@
         <a class="btn btn-gold" href="/appointments-dashboard.html" target="_blank" rel="noopener">Manage Appointments</a>
         <a class="btn btn-gold" href="/shop-admin.html" target="_blank" rel="noopener">Manage Shop &amp; Prices</a>
         <a class="btn btn-gold" href="/status-admin.html" target="_blank" rel="noopener">Manage My Status</a>
+        <a class="btn btn-gold" href="/moderate-comments.html" target="_blank" rel="noopener">Moderate Comments</a>
       </div>
       <p style="font-size:.85rem;color:var(--ink-soft);margin:.6rem 0 0">The website editor needs a one-time GitHub access step before it will let you in, ask RJ if you haven't gotten that yet.</p>
       <h2 class="dash-section-title">Changes we made to your website</h2>
@@ -141,22 +143,33 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 (function(){
   var gate=document.getElementById('dashGate'), app=document.getElementById('dashApp');
   var gateMsg=document.getElementById('gateMsg');
+  var ownerToken='';
+  var OWNER_EMAILS=['cherry38@cherrysage.com','admin@cherrysage.com'];
+  var sb=window.supabase.createClient(
+    'https://ctoeuikxoqlhnebgsygp.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0b2V1aWt4b3FsaG5lYmdzeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0ODM4NTMsImV4cCI6MjA5NjA1OTg1M30.Cy0uf8hm-Biea7a1V3bLQBz70f1oyhP83vHDjefTce8',
+    {db:{schema:'cherry_sage'}}
+  );
 
   function money(c){ return '$'+((c||0)/100).toFixed(2); }
   function esc(s){ return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 
   function getPin(){ try{ return sessionStorage.getItem('cs_dash_pin')||''; }catch(e){ return ''; } }
+  function adminHeaders(explicitPin){ return ownerToken ? {'Authorization':'Bearer '+ownerToken} : {'x-dashboard-pin': explicitPin!=null?explicitPin:getPin()}; }
 
   async function tryEnterApp(pin){
-    pin = pin || getPin();
-    if(!pin) return false;
+    if(!ownerToken){
+      pin = pin || getPin();
+      if(!pin) return false;
+    }
     var res;
     try{
-      res=await fetch('/.netlify/functions/dashboard-summary',{headers:{'x-dashboard-pin':pin}});
+      res=await fetch('/.netlify/functions/dashboard-summary',{headers:adminHeaders(pin)});
     }catch(e){ return false; }
     if(res.status===403){
       gateMsg.className='msg err';
@@ -166,7 +179,7 @@
     }
     if(!res.ok) return false;
     var data=await res.json();
-    try{ sessionStorage.setItem('cs_dash_pin', pin); }catch(e){}
+    if(!ownerToken){ try{ sessionStorage.setItem('cs_dash_pin', pin); }catch(e){} }
     gate.hidden=true; app.hidden=false;
     lastData=data;
     renderHome(data);
@@ -177,6 +190,15 @@
   }
   var lastData=null;
 
+  sb.auth.getSession().then(function(res){
+    var session=res.data && res.data.session;
+    var email=(session && session.user && session.user.email || '').toLowerCase();
+    if(session && OWNER_EMAILS.indexOf(email)>=0){
+      ownerToken=session.access_token;
+      tryEnterApp();
+    }
+  });
+
   function changeListHtml(items){
     if(!items || !items.length) return '<p class="empty-note">Nothing logged yet.</p>';
     return '<ul class="change-list">'+items.map(function(i){
@@ -186,14 +208,14 @@
 
   async function postUpdate(body){
     var res=await fetch('/.netlify/functions/sage-updates',{
-      method:'POST', headers:{'content-type':'application/json','x-dashboard-pin':getPin()},
+      method:'POST', headers:Object.assign({'content-type':'application/json'},adminHeaders()),
       body:JSON.stringify(body),
     });
     return res.ok;
   }
 
   async function refreshAndRender(){
-    var res=await fetch('/.netlify/functions/dashboard-summary',{headers:{'x-dashboard-pin':getPin()}});
+    var res=await fetch('/.netlify/functions/dashboard-summary',{headers:adminHeaders()});
     if(!res.ok) return;
     var data=await res.json();
     lastData=data;
@@ -214,7 +236,8 @@
   document.getElementById('signOut').addEventListener('click', function(e){
     e.preventDefault();
     sessionStorage.removeItem('cs_dash_pin');
-    location.reload();
+    if(ownerToken){ sb.auth.signOut().then(function(){ location.reload(); }); }
+    else{ location.reload(); }
   });
 
   document.querySelectorAll('.dash-tab:not(.soon)').forEach(function(btn){

@@ -45,6 +45,7 @@ body{background:var(--paper)}
     <input type="password" inputmode="numeric" id="saGatePin" placeholder="PIN" autocomplete="off">
     <button class="btn btn-primary" id="saGateSend" style="width:100%">Open</button>
     <p class="msg" id="saGateMsg" style="color:var(--cherry);font-size:.85rem"></p>
+    <p style="margin:.9rem 0 0;font-size:.85rem;color:var(--ink-soft)">Already logged in with your account? <a href="/login.html">Log in here</a>, then reload this page.</p>
   </div>
 
   <div id="saApp" hidden>
@@ -54,12 +55,22 @@ body{background:var(--paper)}
   </div>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 (function(){
   function getPin(){ try{ return sessionStorage.getItem('cs_dash_pin')||''; }catch(e){ return ''; } }
   function setPin(p){ try{ sessionStorage.setItem('cs_dash_pin', p); }catch(e){} }
   function money(cents){ return ((cents||0)/100).toFixed(2); }
   function esc(s){ return String(s||'').replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  var ownerToken='';
+  var OWNER_EMAILS=['cherry38@cherrysage.com','admin@cherrysage.com'];
+  var sb=window.supabase.createClient(
+    'https://ctoeuikxoqlhnebgsygp.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0b2V1aWt4b3FsaG5lYmdzeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0ODM4NTMsImV4cCI6MjA5NjA1OTg1M30.Cy0uf8hm-Biea7a1V3bLQBz70f1oyhP83vHDjefTce8',
+    {db:{schema:'cherry_sage'}}
+  );
+  function adminHeaders(){ return ownerToken ? {'Authorization':'Bearer '+ownerToken} : {'x-dashboard-pin':getPin()}; }
 
   var gate=document.getElementById('saGate'), app=document.getElementById('saApp');
 
@@ -85,7 +96,7 @@ body{background:var(--paper)}
   }
 
   function loadProducts(){
-    fetch('/.netlify/functions/shop-admin', { headers:{'x-dashboard-pin':getPin()} })
+    fetch('/.netlify/functions/shop-admin', { headers:adminHeaders() })
       .then(function(r){ return r.json().then(function(d){ return {ok:r.ok, data:d}; }); })
       .then(function(res){
         if(!res.ok){ document.getElementById('saGroups').innerHTML='<p style="color:var(--cherry)">Could not load products.</p>'; return; }
@@ -107,7 +118,7 @@ body{background:var(--paper)}
     }
     btn.disabled=true; btn.textContent='Saving…'; statusEl.className='sa-status'; statusEl.textContent='';
     fetch('/.netlify/functions/shop-admin', {
-      method:'POST', headers:{'content-type':'application/json','x-dashboard-pin':getPin()},
+      method:'POST', headers:Object.assign({'content-type':'application/json'},adminHeaders()),
       body: JSON.stringify({ id:id, name:name, priceCents:priceCents, active:active })
     }).then(function(r){ return r.json().then(function(d){ return {ok:r.ok, data:d}; }); })
       .then(function(res){
@@ -131,6 +142,15 @@ body{background:var(--paper)}
       if(ok){ gate.hidden=true; app.hidden=false; loadProducts(); }
     });
   }
+
+  sb.auth.getSession().then(function(res){
+    var session=res.data && res.data.session;
+    var email=(session && session.user && session.user.email || '').toLowerCase();
+    if(session && OWNER_EMAILS.indexOf(email)>=0){
+      ownerToken=session.access_token;
+      gate.hidden=true; app.hidden=false; loadProducts();
+    }
+  });
 
   document.getElementById('saGateSend').addEventListener('click', function(){
     var pin=document.getElementById('saGatePin').value.trim();

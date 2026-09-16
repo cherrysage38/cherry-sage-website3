@@ -1,5 +1,5 @@
 // Cherry Sage — Bev's appointment approval dashboard backend.
-// Admin-key gated (same STATUS_ADMIN_KEY as set-hours.html/moderate-comments.html). The real
+// Admin-key gated (same STATUS_ADMIN_KEY as moderate-comments.html). The real
 // enforcement lives in the SECURITY DEFINER Postgres functions themselves (admin_list_appointments/
 // admin_update_appointment), which check the key again before touching anything -- this function's
 // own check is a fast-fail, not the actual security boundary.

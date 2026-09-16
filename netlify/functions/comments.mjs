@@ -5,6 +5,28 @@ import { getStore } from "@netlify/blobs";
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const SLUG = /^[a-z0-9-]{1,200}$/;
 
+// Bev's own real login as a second way in, alongside the raw STATUS_ADMIN_KEY. Matches
+// appointments-admin.mjs's pattern exactly.
+const OWNER_EMAILS = ["cherry38@cherrysage.com", "admin@cherrysage.com"];
+
+async function resolveAdminKey(req, suppliedKey, realKey) {
+  const auth = req.headers.get("authorization") || "";
+  const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
+  if (token) {
+    const SUPABASE_URL = process.env.SUPABASE_URL;
+    const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return null;
+    const { createClient } = await import("@supabase/supabase-js");
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { db: { schema: "cherry_sage" } });
+    const { data, error } = await supabase.auth.getUser(token);
+    const email = (data?.user?.email || "").toLowerCase();
+    if (!error && OWNER_EMAILS.includes(email)) return realKey;
+    return null;
+  }
+  if (realKey && suppliedKey === realKey) return realKey;
+  return null;
+}
+
 export default async (req) => {
   const store = getStore("comments");
   const url = new URL(req.url);
@@ -12,8 +34,8 @@ export default async (req) => {
   if (req.method === "GET") {
     const admin = url.searchParams.get("admin");
     if (admin) {
-      const KEY = process.env.STATUS_ADMIN_KEY;
-      if (!KEY || url.searchParams.get("key") !== KEY) return json({ error: "unauthorized" }, 401);
+      const KEY = await resolveAdminKey(req, url.searchParams.get("key"), process.env.STATUS_ADMIN_KEY);
+      if (!KEY) return json({ error: "unauthorized" }, 401);
       const { blobs } = await store.list();
       const all = await Promise.all(blobs.map((b) => store.get(b.key, { type: "json" })));
       const pending = all.filter((c) => c && c.status === "pending").sort((a, b) => b.ts.localeCompare(a.ts));
@@ -36,8 +58,8 @@ export default async (req) => {
 
     // admin moderation action
     if (d.action === "approve" || d.action === "reject") {
-      const KEY = process.env.STATUS_ADMIN_KEY;
-      if (!KEY || d.key !== KEY) return json({ error: "unauthorized" }, 401);
+      const KEY = await resolveAdminKey(req, d.key, process.env.STATUS_ADMIN_KEY);
+      if (!KEY) return json({ error: "unauthorized" }, 401);
       const id = String(d.id || "");
       const rec = await store.get(id, { type: "json" });
       if (!rec) return json({ error: "not found" }, 404);

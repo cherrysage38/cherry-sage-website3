@@ -35,12 +35,21 @@
       <input id="adminKey" type="password" placeholder="Enter your key" style="padding:.7rem 1rem;border:1px solid var(--line-strong);border-radius:10px">
     </label>
     <button id="loadBtn" class="btn btn-primary" style="margin-top:.9rem">Load pending comments</button>
+    <p style="margin:.9rem 0 0;font-size:.85rem;color:var(--ink-soft)">Already logged in with your account? <a href="/login.html">Log in here</a>, then reload this page.</p>
   </div>
   <div id="mcList"></div>
 </div></section>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 (function(){
-  var key='';
+  var key='', ownerToken='';
+  var OWNER_EMAILS=['cherry38@cherrysage.com','admin@cherrysage.com'];
+  var sb=window.supabase.createClient(
+    'https://ctoeuikxoqlhnebgsygp.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0b2V1aWt4b3FsaG5lYmdzeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0ODM4NTMsImV4cCI6MjA5NjA1OTg1M30.Cy0uf8hm-Biea7a1V3bLQBz70f1oyhP83vHDjefTce8',
+    {db:{schema:'cherry_sage'}}
+  );
+  function authHeaders(){ return ownerToken ? {'Authorization':'Bearer '+ownerToken} : {}; }
   function esc(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function render(items){
     var list=document.getElementById('mcList');
@@ -54,9 +63,12 @@
     }).join('');
   }
   function load(){
-    key=document.getElementById('adminKey').value.trim();
-    if(!key){ alert('Enter your access key first.'); return; }
-    fetch('/.netlify/functions/comments?admin=1&key='+encodeURIComponent(key))
+    if(!ownerToken){
+      key=document.getElementById('adminKey').value.trim();
+      if(!key){ alert('Enter your access key first.'); return; }
+    }
+    var url='/.netlify/functions/comments?admin=1'+(ownerToken?'':'&key='+encodeURIComponent(key));
+    fetch(url,{headers:authHeaders()})
       .then(function(r){ if(r.status===401){ alert('That key was not accepted.'); return null; } return r.json(); })
       .then(function(d){ if(d) render(d.pending||[]); });
   }
@@ -65,8 +77,18 @@
     var btn=e.target.closest('button[data-action]'); if(!btn) return;
     var item=btn.closest('.mc-item'), id=item.getAttribute('data-id'), action=btn.getAttribute('data-action');
     btn.disabled=true;
-    fetch('/.netlify/functions/comments',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key:key,id:id,action:action})})
+    var headers=Object.assign({'Content-Type':'application/json'},authHeaders());
+    fetch('/.netlify/functions/comments',{method:'POST',headers:headers,body:JSON.stringify({key:key,id:id,action:action})})
       .then(function(r){return r.json();}).then(function(res){ if(res.ok) item.remove(); else { alert('Could not update — try reloading.'); btn.disabled=false; } });
+  });
+
+  sb.auth.getSession().then(function(res){
+    var session=res.data && res.data.session;
+    var email=(session && session.user && session.user.email || '').toLowerCase();
+    if(session && OWNER_EMAILS.indexOf(email)>=0){
+      ownerToken=session.access_token;
+      load();
+    }
   });
 })();
 </script><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class='btn btn-gold' href='/book-appointment'>Book a Reading</a></div></section>

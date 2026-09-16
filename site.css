@@ -222,6 +222,14 @@ p{margin:0 0 1rem}
 .chat-widget{padding:.5rem .5rem .5rem 1.1rem}
 .chat-widget .cw-bubble{background:none !important;overflow:visible;width:auto;height:auto}
 .chat-widget .cw-bubble img{width:46px;height:46px;border-radius:0;object-fit:contain}
+/* the 2026-08-26 mobile shrink above (line ~201) was being silently overridden by this same
+   unconditional rule every time -- it always comes later in the cascade, so Ivy rendered at
+   the full 46px on phones too, sitting over hero copy (flagged by Bev, 2026-09-07 critique).
+   Re-applied here, after the override, so it actually wins on small screens. */
+@media(max-width:640px){
+  .chat-widget{right:.6rem;bottom:.6rem;padding:.35rem}
+  .chat-widget .cw-bubble img{width:34px;height:34px}
+}
 
 /* ---- inner pages + home additions (full site 2026-08-27) ---- */
 .page-hero{padding:calc(var(--header-h) + 3.2rem) 0 2.6rem;text-align:center;
