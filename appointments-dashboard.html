@@ -54,11 +54,16 @@
 <main>
 <section class="page-hero banner"><div class="ph-glow" aria-hidden="true"></div><div class="ph-stars" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">Cherry only &middot; private</p><h1>Appointment requests</h1><p class="lede">Approve, decline, or offer an alternate time for each request. Customers see your decision on their own account page.</p></div></section>
 <section class="section"><div class="wrap" style="max-width:820px">
-  <div class="card reveal" style="text-align:left;margin-bottom:1.6rem">
+  <div class="card reveal" style="text-align:left;margin-bottom:1.6rem" id="ownerGate" hidden>
+    <p style="margin:0 0 .8rem">Signed in as Cherry Sage &mdash; this dashboard is already unlocked.</p>
+    <button id="signOutBtn" class="btn btn-ghost" type="button">Sign out</button>
+  </div>
+  <div class="card reveal" style="text-align:left;margin-bottom:1.6rem" id="keyGate">
     <label style="display:grid;gap:.3rem">Your access key
       <input id="adminKey" type="password" placeholder="Enter your key" style="padding:.7rem 1rem;border:1px solid var(--line-strong);border-radius:10px">
     </label>
     <button id="loadBtn" class="btn btn-primary" style="margin-top:.9rem">Load requests</button>
+    <p style="margin:.9rem 0 0;font-size:.85rem;color:var(--ink-soft)">Cherry Sage: no need for a key, just <a href="/login.html">log in with your account</a>, then come back to this page.</p>
   </div>
   <div class="ap-toolbar">
     <div class="ap-filters" id="apFilters">
@@ -71,9 +76,30 @@
   </div>
   <div id="apList"></div>
 </div></section>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 (function(){
-  var key='', status='pending_approval';
+  var key='', status='pending_approval', ownerToken='';
+  var OWNER_EMAILS=['cherry38@cherrysage.com','admin@cherrysage.com'];
+  var SUPABASE_URL='https://ctoeuikxoqlhnebgsygp.supabase.co';
+  var SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0b2V1aWt4b3FsaG5lYmdzeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0ODM4NTMsImV4cCI6MjA5NjA1OTg1M30.Cy0uf8hm-Biea7a1V3bLQBz70f1oyhP83vHDjefTce8';
+  var sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON,{db:{schema:'cherry_sage'}});
+
+  function authHeaders(){ return ownerToken ? {'Authorization':'Bearer '+ownerToken} : {}; }
+
+  sb.auth.getSession().then(function(res){
+    var session=res.data && res.data.session;
+    var email=(session && session.user && session.user.email || '').toLowerCase();
+    if(session && OWNER_EMAILS.indexOf(email)>=0){
+      ownerToken=session.access_token;
+      document.getElementById('ownerGate').hidden=false;
+      document.getElementById('keyGate').hidden=true;
+      load();
+    }
+  });
+  document.getElementById('signOutBtn').addEventListener('click',function(){
+    sb.auth.signOut().then(function(){ window.location.reload(); });
+  });
   function esc(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function money(cents){ return '$'+((cents||0)/100).toFixed(2); }
   function fmt(iso){ if(!iso) return ''; return new Date(iso).toLocaleString(undefined,{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}); }
@@ -105,9 +131,12 @@
   }
 
   function load(){
-    key=document.getElementById('adminKey').value.trim();
-    if(!key){ alert('Enter your access key first.'); return; }
-    fetch('/.netlify/functions/appointments-admin?admin=1&key='+encodeURIComponent(key)+'&status='+encodeURIComponent(status))
+    if(!ownerToken){
+      key=document.getElementById('adminKey').value.trim();
+      if(!key){ alert('Enter your access key first.'); return; }
+    }
+    var url='/.netlify/functions/appointments-admin?status='+encodeURIComponent(status)+(ownerToken?'':'&admin=1&key='+encodeURIComponent(key));
+    fetch(url,{headers:authHeaders()})
       .then(function(r){ if(r.status===401){ alert('That key was not accepted.'); return null; } return r.json(); })
       .then(function(d){ if(d) render(d.appointments||[]); });
   }
@@ -119,7 +148,7 @@
     document.querySelectorAll('#apFilters button').forEach(function(b){ b.classList.remove('on'); });
     btn.classList.add('on');
     status=btn.getAttribute('data-status');
-    if(key) load();
+    if(key||ownerToken) load();
   });
 
   document.getElementById('apList').addEventListener('click', function(e){
@@ -141,7 +170,8 @@
     }
 
     btn.disabled=true;
-    fetch('/.netlify/functions/appointments-admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+    var headers=Object.assign({'Content-Type':'application/json'},authHeaders());
+    fetch('/.netlify/functions/appointments-admin',{method:'POST',headers:headers,body:JSON.stringify(body)})
       .then(function(r){return r.json();})
       .then(function(res){
         if(!res.ok){ alert('Could not update — try reloading.'); btn.disabled=false; return; }

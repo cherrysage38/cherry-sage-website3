@@ -15,6 +15,26 @@ function json(o, status = 200) {
 
 const ALLOWED_STATUS = ["approved", "declined", "alternate_offered", "cancelled"];
 
+// Bev's own real login as a second way in, alongside the raw STATUS_ADMIN_KEY (RJ's way in,
+// left working unchanged). A valid Supabase session for one of these emails gets the real
+// key applied server-side -- the browser never sees it either way.
+const OWNER_EMAILS = ["cherry38@cherrysage.com", "admin@cherrysage.com"];
+
+// Resolves the real admin key to use for the RPC calls, from either auth path. Returns null
+// if neither checks out.
+async function resolveAdminKey(req, suppliedKey, supabase, realKey) {
+  const auth = req.headers.get("authorization") || "";
+  const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
+  if (token) {
+    const { data, error } = await supabase.auth.getUser(token);
+    const email = (data?.user?.email || "").toLowerCase();
+    if (!error && OWNER_EMAILS.includes(email)) return realKey;
+    return null;
+  }
+  if (realKey && suppliedKey === realKey) return realKey;
+  return null;
+}
+
 export default async (req) => {
   const KEY = process.env.STATUS_ADMIN_KEY;
   const SUPABASE_URL = process.env.SUPABASE_URL;
@@ -24,8 +44,8 @@ export default async (req) => {
 
   if (req.method === "GET") {
     const url = new URL(req.url);
-    const key = url.searchParams.get("key");
-    if (!KEY || key !== KEY) return json({ error: "unauthorized" }, 401);
+    const key = await resolveAdminKey(req, url.searchParams.get("key"), supabase, KEY);
+    if (!key) return json({ error: "unauthorized" }, 401);
     const status = url.searchParams.get("status") || "pending_approval";
     const { data, error } = await supabase.rpc("admin_list_appointments", {
       p_admin_key: key,
@@ -38,13 +58,14 @@ export default async (req) => {
   if (req.method === "POST") {
     let d = {};
     try { d = await req.json(); } catch { return json({ error: "bad body" }, 400); }
-    if (!KEY || d.key !== KEY) return json({ error: "unauthorized" }, 401);
+    const key = await resolveAdminKey(req, d.key, supabase, KEY);
+    if (!key) return json({ error: "unauthorized" }, 401);
     const id = String(d.id || "");
     const status = String(d.status || "");
     if (!id || !ALLOWED_STATUS.includes(status)) return json({ error: "bad request" }, 400);
 
     const { data, error } = await supabase.rpc("admin_update_appointment", {
-      p_admin_key: d.key,
+      p_admin_key: key,
       p_id: id,
       p_status: status,
       p_alternate_start: d.alternateStart || null,
