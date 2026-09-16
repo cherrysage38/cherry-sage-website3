@@ -39,6 +39,9 @@ body{background:var(--paper)}
 .sa-status.ok{color:var(--sage)}
 .sa-status.err{color:var(--cherry)}
 .empty-note{color:var(--ink-soft);font-size:.88rem;padding:.6rem 0}
+.sa-state-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.sa-state-btn{flex:1 1 auto;min-width:120px}
+.sa-state-btn.active{background:var(--oxblood);color:#fff;border-color:var(--oxblood)}
 </style>
 </head>
 <body>
@@ -60,6 +63,17 @@ body{background:var(--paper)}
     <div class="sa-group">
       <h3>Right now</h3>
       <div class="sa-now"><span class="dot" id="saNowDot"></span><span id="saNowLabel">Loading…</span></div>
+    </div>
+
+    <div class="sa-group">
+      <h3>Set my status</h3>
+      <p style="color:var(--ink-soft);font-size:.85rem;margin:0 0 .9rem">One tap, takes over immediately on your site. Overrides your hours until you clear it.</p>
+      <div class="sa-state-row" id="saStateRow">
+        <button type="button" class="btn btn-ghost sa-state-btn" data-state="available">Available</button>
+        <button type="button" class="btn btn-ghost sa-state-btn" data-state="brb">Be Right Back</button>
+        <button type="button" class="btn btn-ghost sa-state-btn" data-state="not_available">Not Available</button>
+      </div>
+      <button type="button" class="btn btn-ghost" id="saStateClear" style="margin-top:.7rem;font-size:.8rem">Clear — back to automatic hours</button>
     </div>
 
     <div class="sa-group">
@@ -103,6 +117,9 @@ body{background:var(--paper)}
   }
   function compute(s){
     var n=nowIn(s.tz||'America/New_York');
+    if(s.manualState==='not_available') return {k:'offline',label:'Not available (set by you)'};
+    if(s.manualState==='brb') return {k:'brb',label:'Be right back (set by you)'};
+    if(s.manualState==='available') return {k:'online',label:'Available (set by you)'};
     if(s.away) return {k:'offline',label:'Away'};
     if(s.holidays && s.holidays.indexOf(n.date)>=0) return {k:'offline',label:'Away today (holiday)'};
     if(s.busyNow) return {k:'brb',label:'On a call right now'};
@@ -124,10 +141,16 @@ body{background:var(--paper)}
       ? list.map(function(d){ return '<li><span>'+esc(d)+'</span><button type="button" data-date="'+esc(d)+'">Remove</button></li>'; }).join('')
       : '<p class="empty-note">No dates added.</p>';
   }
+  function renderStateButtons(){
+    document.querySelectorAll('.sa-state-btn').forEach(function(btn){
+      btn.classList.toggle('active', schedule.manualState === btn.getAttribute('data-state'));
+    });
+  }
   function render(){
     document.getElementById('saAwayToggle').checked = !!schedule.away;
     renderHolidays();
     renderNow();
+    renderStateButtons();
   }
 
   function loadSchedule(){
@@ -153,6 +176,17 @@ body{background:var(--paper)}
       });
   }
 
+  document.getElementById('saStateRow').addEventListener('click', function(e){
+    var btn=e.target.closest('.sa-state-btn'); if(!btn) return;
+    schedule.manualState = btn.getAttribute('data-state');
+    renderStateButtons();
+    save();
+  });
+  document.getElementById('saStateClear').addEventListener('click', function(){
+    schedule.manualState = null;
+    renderStateButtons();
+    save();
+  });
   document.getElementById('saAwayToggle').addEventListener('change', function(){
     schedule.away = this.checked;
     save();

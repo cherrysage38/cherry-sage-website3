@@ -7,13 +7,17 @@ import { createClient } from "@supabase/supabase-js";
 
 const PIN = "0011";
 
+const MANUAL_STATES = ["available", "brb", "not_available"];
+
 const DEFAULT = {
   tz: "America/New_York",
   // 0=Sun ... 6=Sat. null = closed that day. [openHour, closeHour] in 24h local time.
   hours: { 0:null, 1:[9,21], 2:[9,21], 3:[9,21], 4:[9,21], 5:[9,21], 6:[10,18] },
   always: true,          // while true, always "online" (her current 24h mode) until she sets hours
   holidays: [],          // ["2026-12-25", ...] -> away those days
-  away: false            // manual vacation toggle -> away
+  away: false,           // manual vacation toggle -> away
+  manualState: null      // null = automatic (hours/away/holiday). Or "available"/"brb"/"not_available",
+                          // a one-tap override from the dashboard that beats everything else until cleared.
 };
 
 async function checkBusyNow() {
@@ -48,7 +52,8 @@ export default async (req) => {
       hours: d.hours && typeof d.hours === "object" ? d.hours : DEFAULT.hours,
       always: !!d.always,
       holidays: Array.isArray(d.holidays) ? d.holidays.slice(0, 60) : [],
-      away: !!d.away
+      away: !!d.away,
+      manualState: MANUAL_STATES.includes(d.manualState) ? d.manualState : null
     };
     try { await store().setJSON("current", s); } catch (e) { return json({ error: "save failed" }, 500); }
     return json({ ok: true, schedule: s });
