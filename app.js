@@ -119,6 +119,12 @@
     8:"A year for results. Effort from past years starts paying off.",
     9:"A year for closing. Let go of what's finished so something new has room."
   };
+  var KARMIC_DEBT = {
+    13:"Karmic Debt 13. In a past pattern, effort was avoided or shortcuts were taken. This life asks for real, steady work, and rewards it generously when it's given.",
+    14:"Karmic Debt 14. In a past pattern, freedom or excess was misused. This life asks for balance and self-control, and offers real freedom in return for it.",
+    16:"Karmic Debt 16. In a past pattern, ego or trust was broken. This life asks for humility and honesty, especially with yourself, and rebuilds something truer in its place.",
+    19:"Karmic Debt 19. In a past pattern, independence or power leaned only inward. This life asks you to use your strength for more than yourself."
+  };
   var LETTER_VAL = {a:1,j:1,s:1,b:2,k:2,t:2,c:3,l:3,u:3,d:4,m:4,v:4,e:5,n:5,w:5,f:6,o:6,x:6,g:7,p:7,y:7,h:8,q:8,z:8,i:9,r:9};
   var VOWELS = {a:1,e:1,i:1,o:1,u:1};
   function reduce(n, allowMaster){
@@ -151,13 +157,24 @@
     var name=(nameEl && nameEl.value || '').trim();
     var parts=v.split('-'); var yr=+parts[0], mo=+parts[1], dy=+parts[2];
     var digits=v.replace(/[^0-9]/g,'');
-    var lifePath=reduce(digits.split('').reduce(function(a,d){return a+ +d;},0));
+    var DEBT_NUMS=[13,14,16,19];
+    var debtsFound=[];
+
+    var lifePathRaw=digits.split('').reduce(function(a,d){return a+ +d;},0);
+    // Karmic Debts show up in the sum BEFORE it's reduced down to a single digit or master
+    // number, so this has to check the raw total, not the already-reduced result below.
+    if(DEBT_NUMS.indexOf(lifePathRaw)>=0) debtsFound.push(lifePathRaw);
+    var lifePath=reduce(lifePathRaw);
     var birthday=reduce(dy);
+    if(DEBT_NUMS.indexOf(dy)>=0) debtsFound.push(dy);
 
     var out=[card('Life Path', lifePath, LP[lifePath]||'')];
     if(name){
-      var expression=reduce(nameSum(name));
-      var soulUrge=reduce(nameSum(name,'vowels'));
+      var expressionRaw=nameSum(name), soulUrgeRaw=nameSum(name,'vowels');
+      if(DEBT_NUMS.indexOf(expressionRaw)>=0) debtsFound.push(expressionRaw);
+      if(DEBT_NUMS.indexOf(soulUrgeRaw)>=0) debtsFound.push(soulUrgeRaw);
+      var expression=reduce(expressionRaw);
+      var soulUrge=reduce(soulUrgeRaw);
       var personality=reduce(nameSum(name,'consonants'));
       out.push(card('Expression (Destiny)', expression, EXPRESSION[expression]||''));
       out.push(card('Soul Urge (Heart\'s Desire)', soulUrge, SOUL_URGE[soulUrge]||''));
@@ -167,6 +184,10 @@
     var currentYear=new Date().getFullYear();
     var personalYear=reduce(mo+dy+currentYear, false);
     out.push(card('Personal Year ('+currentYear+')', personalYear, PERSONAL_YEAR[personalYear]||''));
+    // Not everyone has one, only shown when a real debt number actually turns up.
+    debtsFound.filter(function(d,i){return debtsFound.indexOf(d)===i;}).forEach(function(d){
+      out.push(card('Karmic Debt', d, KARMIC_DEBT[d]));
+    });
     out.push('<div style="text-align:center;margin-top:.4rem"><a class="btn btn-primary" href="/shop">Go deeper with Cherry</a></div>');
 
     var resultEl=document.getElementById('lpResult');
