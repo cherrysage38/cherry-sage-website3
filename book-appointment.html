@@ -89,6 +89,8 @@
       <form id="apptForm" class="ck-pay-panel reveal appt-form-grid" hidden>
         <div>
           <h3>Pick a date &amp; time</h3>
+          <label class="apt-label" for="apptTz">Your time zone</label>
+          <select id="apptTz" class="ck-field" style="background:#fff;margin-bottom:.9rem"></select>
           <label class="apt-label" for="apptDate">Date</label>
           <input type="date" id="apptDate" name="date" required aria-label="Choose a date" class="ck-field">
           <p id="apptTzNote" style="font-size:.82rem;color:var(--ink-soft);margin:.5rem 0 0"></p>
@@ -167,15 +169,35 @@
     function fmtSlot(isoStr){
       return new Date(isoStr).toLocaleString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'});
     }
-    var visitorTz=(function(){ try{ return Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){ return null; } })();
+    // A visible, changeable time zone selector -- previously this only auto-detected silently
+    // and showed a small note, with no way for a visitor (or Bev testing) to pick a different
+    // zone to check how a time reads elsewhere. Populates from the browser's own IANA zone
+    // list when available (all modern evergreen browsers), falls back to a short common list.
+    var tzSelect=document.getElementById('apptTz');
+    var visitorTz=(function(){ try{ return Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){ return 'America/New_York'; } })();
+    var COMMON_TZ_FALLBACK=['America/New_York','America/Chicago','America/Denver','America/Los_Angeles','America/Anchorage','Pacific/Honolulu','America/Sao_Paulo','Europe/London','Europe/Paris','Europe/Berlin','Africa/Johannesburg','Asia/Dubai','Asia/Kolkata','Asia/Singapore','Asia/Shanghai','Asia/Tokyo','Australia/Sydney','Pacific/Auckland'];
+    var zoneList=(typeof Intl.supportedValuesOf==='function') ? Intl.supportedValuesOf('timeZone') : COMMON_TZ_FALLBACK;
+    if(zoneList.indexOf(visitorTz)===-1) zoneList=[visitorTz].concat(zoneList);
+    tzSelect.innerHTML=zoneList.map(function(z){
+      return '<option value="'+z+'"'+(z===visitorTz?' selected':'')+'>'+z.replace(/_/g,' ')+'</option>';
+    }).join('');
+    var selectedTz=visitorTz;
     function fmtSlotLocal(isoStr){
-      if(!visitorTz||visitorTz==='America/New_York') return '';
-      try{ return new Date(isoStr).toLocaleString('en-US',{timeZone:visitorTz,hour:'numeric',minute:'2-digit'}); }catch(e){ return ''; }
+      if(selectedTz==='America/New_York') return '';
+      try{ return new Date(isoStr).toLocaleString('en-US',{timeZone:selectedTz,hour:'numeric',minute:'2-digit'}); }catch(e){ return ''; }
     }
     var tzNote=document.getElementById('apptTzNote');
-    if(visitorTz && visitorTz!=='America/New_York'){
-      tzNote.textContent='Times below are Cherry\'s hours, Eastern time. Your time zone looks like '+visitorTz.replace(/_/g,' ').split('/').pop()+', shown next to each time.';
+    function renderTzNote(){
+      tzNote.textContent = selectedTz==='America/New_York'
+        ? 'Times below are Cherry\'s own hours, Eastern time.'
+        : 'Times below are Cherry\'s hours, Eastern time, with your selected zone shown next to each one.';
     }
+    renderTzNote();
+    tzSelect.addEventListener('change',function(){
+      selectedTz=tzSelect.value;
+      renderTzNote();
+      if(dateInput.value) dateInput.dispatchEvent(new Event('change'));
+    });
 
     dateInput.addEventListener('change',function(){
       slotIsoField.value='';
@@ -225,7 +247,16 @@
         // so a failure here (e.g. the email provider having a bad night) never loses the request.
         fetch('/.netlify/functions/lead',{method:'POST',headers:{'Content-Type':'application/json'},
           body:JSON.stringify({email:email,name:f.name.value.trim(),message:details,source:'appointment',website:f.website.value,t:t0})}).catch(function(){});
-        f.innerHTML='<p class="eyebrow" style="margin:0 0 .5rem">Request sent</p><p style="margin:0;color:var(--ink);font-weight:600;font-size:1.05rem">Thank you. Your appointment request reached Cherry Sage, and she will confirm your time by email or phone soon.</p><p style="margin:.8rem 0 0;color:var(--ink-soft);font-size:.85rem">Track its status any time in <a href="/account">My Account</a>.</p>';
+        // Best-effort customer-facing confirmation -- until this, a submitted request only ever
+        // confirmed on-screen; found 2026-09-17 (Bev's own test) that nothing was emailed to her.
+        fetch('/.netlify/functions/appointment-request-email',{method:'POST',headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({email:email,name:f.name.value.trim(),when:fmtSlot(slotIsoField.value),readingType:f.readingType.value})}).catch(function(){});
+        f.innerHTML='<div id="apptDone" tabindex="-1"><p class="eyebrow" style="margin:0 0 .5rem">Request sent</p><p style="margin:0;color:var(--ink);font-weight:600;font-size:1.05rem">Thank you. Your appointment request reached Cherry Sage, and she will confirm your time by email or phone soon. A confirmation is on its way to your email now.</p><p style="margin:.8rem 0 0;color:var(--ink-soft);font-size:.85rem">Track its status any time in <a href="/account">My Account</a>.</p></div>';
+        // The form was much taller than this confirmation, so without this the page stays
+        // scrolled to wherever it was (often the bottom, near the submit button) and the
+        // message ends up off-screen -- flagged directly by Bev's own test, 2026-09-17.
+        var done=document.getElementById('apptDone');
+        if(done && done.scrollIntoView){ done.scrollIntoView({behavior:'smooth', block:'center'}); done.focus({preventScroll:true}); }
       }).catch(function(){
         note.hidden=false; note.textContent='Something went wrong, please try again.'; btn.disabled=false; btn.textContent='Request This Time';
       });
