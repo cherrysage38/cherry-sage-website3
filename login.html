@@ -215,9 +215,14 @@
       }
       // Best-effort: link the name/phone she gave (both optional) to her customer record,
       // so appointments and orders show a real name instead of "Unknown". Never blocks
-      // account creation itself if this fails for any reason.
+      // account creation itself if this fails for any reason -- wrapped in try/catch and
+      // Promise.resolve() because some supabase-js builds (seen live in Safari, 2026-09-17)
+      // return a value from .rpc() that throws "…catch is not a function" if chained on
+      // directly, which previously surfaced as a raw uncaught error and froze the form.
       if(fullName){
-        sb.rpc('create_customer_if_missing', { p_email: email, p_full_name: fullName, p_phone: phone || null }).catch(function(){});
+        try{
+          Promise.resolve(sb.rpc('create_customer_if_missing', { p_email: email, p_full_name: fullName, p_phone: phone || null })).catch(function(){});
+        }catch(e){ /* non-fatal */ }
       }
       if(res.data && res.data.user && !res.data.session){
         document.getElementById('lgCheckEmailAddr').textContent=email;
