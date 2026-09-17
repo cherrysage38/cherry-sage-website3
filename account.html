@@ -35,6 +35,10 @@
 .ac-pill.approved{background:rgba(126,144,104,.16);color:var(--sage)}
 .ac-pill.declined{background:rgba(160,20,43,.12);color:var(--cherry)}
 .ac-empty{color:var(--ink-soft);font-size:.9rem;padding:1rem 0}
+.ac-settings{display:grid;gap:.9rem;max-width:420px}
+.ac-settings-msg{font-size:.85rem;min-height:1.1em}
+.ac-settings-msg.ok{color:var(--sage)}
+.ac-settings-msg.err{color:var(--cherry)}
 </style>
 </head>
 <body>
@@ -75,6 +79,28 @@
 
     <h3>Orders</h3>
     <div class="ac-list" id="acOrders"><p class="ac-empty">Loading…</p></div>
+
+    <h3>Account settings</h3>
+    <div class="card" style="max-width:420px">
+      <form id="acEmailForm" class="ac-settings">
+        <label class="apt-label" style="display:block;font-size:.8rem;color:var(--ink-soft);margin-bottom:.3rem;font-weight:600">Email address
+          <input type="email" name="newEmail" id="acNewEmail" class="lg-field" style="padding:.75rem 1rem;border:1px solid var(--line-strong);border-radius:12px;width:100%;box-sizing:border-box;margin-top:.3rem" required>
+        </label>
+        <button class="btn btn-ghost" type="submit" style="justify-self:start">Update Email</button>
+        <p class="ac-settings-msg" id="acEmailMsg"></p>
+      </form>
+      <hr style="border:0;border-top:1px solid var(--line);margin:1.4rem 0">
+      <form id="acPasswordForm" class="ac-settings">
+        <label style="display:block;font-size:.8rem;color:var(--ink-soft);margin-bottom:.3rem;font-weight:600">New password
+          <input type="password" name="newPassword" id="acNewPassword" placeholder="At least 8 characters" autocomplete="new-password" class="lg-field" style="padding:.75rem 1rem;border:1px solid var(--line-strong);border-radius:12px;width:100%;box-sizing:border-box;margin-top:.3rem" required>
+        </label>
+        <label style="display:block;font-size:.8rem;color:var(--ink-soft);margin-bottom:.3rem;font-weight:600">Confirm new password
+          <input type="password" name="confirmPassword" id="acConfirmPassword" autocomplete="new-password" class="lg-field" style="padding:.75rem 1rem;border:1px solid var(--line-strong);border-radius:12px;width:100%;box-sizing:border-box;margin-top:.3rem" required>
+        </label>
+        <button class="btn btn-ghost" type="submit" style="justify-self:start">Update Password</button>
+        <p class="ac-settings-msg" id="acPasswordMsg"></p>
+      </form>
+    </div>
   </div>
 
 </div></section><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class="btn btn-gold" href="/book-appointment">Book a Reading</a></div></section>
@@ -122,6 +148,42 @@
       return;
     }
     showAccount(session);
+    document.getElementById('acNewEmail').value = session.user.email || '';
+  });
+
+  // Account settings -- previously there was no way at all to change your own email or
+  // password (flagged directly, 2026-09-17). Both are plain Supabase Auth operations, no
+  // schema changes needed.
+  document.getElementById('acEmailForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var msg=document.getElementById('acEmailMsg'), btn=this.querySelector('button');
+    var newEmail=(document.getElementById('acNewEmail').value||'').trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail)){ msg.className='ac-settings-msg err'; msg.textContent='Please enter a valid email address.'; return; }
+    btn.disabled=true; msg.className='ac-settings-msg'; msg.textContent='Updating…';
+    sb.auth.updateUser({ email: newEmail }).then(function(res){
+      btn.disabled=false;
+      if(res.error){ msg.className='ac-settings-msg err'; msg.textContent=res.error.message||'Could not update your email.'; return; }
+      msg.className='ac-settings-msg ok'; msg.textContent='Check both your old and new email for a confirmation link before this takes effect.';
+    }).catch(function(){
+      btn.disabled=false; msg.className='ac-settings-msg err'; msg.textContent='Something went wrong, please try again.';
+    });
+  });
+
+  document.getElementById('acPasswordForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var msg=document.getElementById('acPasswordMsg'), btn=this.querySelector('button');
+    var pw=document.getElementById('acNewPassword').value||'', confirm=document.getElementById('acConfirmPassword').value||'';
+    if(pw.length<8){ msg.className='ac-settings-msg err'; msg.textContent='Password needs to be at least 8 characters.'; return; }
+    if(pw!==confirm){ msg.className='ac-settings-msg err'; msg.textContent='Those two passwords do not match.'; return; }
+    btn.disabled=true; msg.className='ac-settings-msg'; msg.textContent='Updating…';
+    sb.auth.updateUser({ password: pw }).then(function(res){
+      btn.disabled=false;
+      if(res.error){ msg.className='ac-settings-msg err'; msg.textContent=res.error.message||'Could not update your password.'; return; }
+      msg.className='ac-settings-msg ok'; msg.textContent='Password updated.';
+      document.getElementById('acPasswordForm').reset();
+    }).catch(function(){
+      btn.disabled=false; msg.className='ac-settings-msg err'; msg.textContent='Something went wrong, please try again.';
+    });
   });
 
   function showAccount(session){
