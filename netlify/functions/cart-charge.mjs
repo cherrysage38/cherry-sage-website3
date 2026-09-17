@@ -174,18 +174,28 @@ export default async (req) => {
   const BREVO_KEY = process.env.BREVO_KEY;
   const money = (c) => "$" + (c / 100).toFixed(2);
   const NOTIFY_TO = process.env.NOTIFY_EMAIL;
-  const itemsHtml = lineSummaries.map((l) => `<li>${esc(l.name)} — ${money(l.priceCents)}</li>`).join("");
+  const orderDate = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+  const orderNum = esc(String(cartOrderId).slice(0, 8).toUpperCase());
+  const itemsHtml = lineSummaries.map((l) =>
+    `<tr><td style="padding:6px 0">${esc(l.name)}</td><td style="padding:6px 0;text-align:right">${money(l.priceCents)}</td></tr>`
+  ).join("");
+  const receiptTable =
+    `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:16px 0;border-collapse:collapse">` +
+    `<tr><td style="padding:8px 0;color:#8a8072;font-size:12px;border-bottom:1px solid #EDE2CF">Order #</td><td style="padding:8px 0;text-align:right;border-bottom:1px solid #EDE2CF;font-size:12px;color:#8a8072">Date</td></tr>` +
+    `<tr><td style="padding:8px 0;border-bottom:1px solid #EDE2CF">${orderNum}</td><td style="padding:8px 0;text-align:right;border-bottom:1px solid #EDE2CF">${esc(orderDate)}</td></tr>` +
+    itemsHtml +
+    `<tr><td style="padding:14px 0 0;font-weight:bold;border-top:1px solid #EDE2CF">Total paid</td><td style="padding:14px 0 0;text-align:right;font-weight:bold;border-top:1px solid #EDE2CF">${money(totalCents)}</td></tr>` +
+    `</table>`;
   if (BREVO_KEY && NOTIFY_TO) {
     await notify(NOTIFY_TO, `New paid cart order — ${lineSummaries.length} item${lineSummaries.length > 1 ? "s" : ""}`,
       `<p><strong>${esc(customer?.full_name || "A customer")}</strong> just paid for ${lineSummaries.length} item${lineSummaries.length > 1 ? "s" : ""}.</p>` +
-      `<ul>${itemsHtml}</ul>` +
-      `<p>Total: ${money(totalCents)}<br>Email: ${esc(customer?.email || "")}</p>`);
+      receiptTable +
+      `<p>Email: ${esc(customer?.email || "")}</p>`);
   }
   if (BREVO_KEY && customer?.email) {
     await notify(customer.email, "Your order with Cherry Sage",
-      `<p>Thank you, ${esc(customer.full_name || "")}. Your payment for ${lineSummaries.length} item${lineSummaries.length > 1 ? "s" : ""} went through.</p>` +
-      `<ul>${itemsHtml}</ul>` +
-      `<p>Total charged: ${money(totalCents)}</p>` +
+      `<p>Thank you, ${esc(customer.full_name || "")}. Your payment went through, here's your receipt.</p>` +
+      receiptTable +
       `<p>Cherry will be in touch, or you can call/email anytime.</p>`);
   }
 

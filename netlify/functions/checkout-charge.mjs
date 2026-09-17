@@ -213,16 +213,26 @@ export default async (req) => {
     timeZone: "America/New_York", weekday: "long", month: "long", day: "numeric", hour: "numeric", minute: "2-digit",
   }) + " Eastern";
   const money = (c) => "$" + (c / 100).toFixed(2);
+  const orderDate = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
   const couponLine = couponCode ? `<br>Coupon used: ${esc(couponCode.toUpperCase())}` : "";
+  const receiptTable =
+    `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:16px 0;border-collapse:collapse">` +
+    `<tr><td style="padding:8px 0;color:#8a8072;font-size:12px;border-bottom:1px solid #EDE2CF">Order #</td><td style="padding:8px 0;text-align:right;border-bottom:1px solid #EDE2CF;font-size:12px;color:#8a8072">Date</td></tr>` +
+    `<tr><td style="padding:8px 0;border-bottom:1px solid #EDE2CF">${esc(String(orderId).slice(0, 8).toUpperCase())}</td><td style="padding:8px 0;text-align:right;border-bottom:1px solid #EDE2CF">${esc(orderDate)}</td></tr>` +
+    `<tr><td colspan="2" style="padding:14px 0 6px;font-weight:bold">${esc(product.name)}</td></tr>` +
+    `<tr><td style="padding:2px 0;color:#8a8072;font-size:14px">Appointment: ${esc(when)}</td><td></td></tr>` +
+    (couponCode ? `<tr><td style="padding:2px 0;color:#8a8072;font-size:14px">Coupon: ${esc(couponCode.toUpperCase())}</td><td></td></tr>` : "") +
+    `<tr><td style="padding:14px 0 0;font-weight:bold;border-top:1px solid #EDE2CF">Total paid</td><td style="padding:14px 0 0;text-align:right;font-weight:bold;border-top:1px solid #EDE2CF">${money(finalPriceCents)}</td></tr>` +
+    `</table>`;
   await notify(process.env.NOTIFY_EMAIL, `New paid booking — ${product.name}`,
     `<p><strong>${esc(customer?.full_name || "A customer")}</strong> just booked and paid for a reading.</p>` +
-    `<p>Reading: ${esc(product.name)}<br>When: ${esc(when)}<br>Amount: ${money(finalPriceCents)}${couponLine}<br>Email: ${esc(customer?.email || "")}</p>` +
+    `<p>Reading: ${esc(product.name)}<br>When: ${esc(when)}<br>Amount: ${money(finalPriceCents)}${couponLine}<br>Email: ${esc(customer?.email || "")}<br>Order #: ${esc(String(orderId).slice(0, 8).toUpperCase())}</p>` +
     `<p style="color:#888;font-size:12px">Approve, decline, or offer an alternate time at /appointments-dashboard.html</p>`,
     customer?.email ? { email: customer.email } : undefined);
   if (customer?.email) {
     await notify(customer.email, "Your reading with Cherry Sage — payment received",
-      `<p>Thank you, ${esc(customer.full_name || "")}. Your payment for <strong>${esc(product.name)}</strong> on ${esc(when)} went through.</p>` +
-      `<p>Amount charged: ${money(finalPriceCents)}</p>` +
+      `<p>Thank you, ${esc(customer.full_name || "")}. Your payment went through, here's your receipt.</p>` +
+      receiptTable +
       `<p>Cherry will review and confirm your appointment shortly. You'll hear from her directly once it's confirmed.</p>`);
   }
 
