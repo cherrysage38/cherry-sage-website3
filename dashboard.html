@@ -89,6 +89,7 @@
       <button class="dash-tab active" data-tab="home">Home</button>
       <button class="dash-tab" data-tab="website">Website</button>
       <button class="dash-tab" data-tab="crm">CRM</button>
+      <button class="dash-tab" data-tab="customers">Customers</button>
       <button class="dash-tab" data-tab="sitemap">Sitemap</button>
       <button class="dash-tab soon" disabled>Social <span class="badge">Coming soon</span></button>
     </div>
@@ -132,6 +133,11 @@
       <div id="crmLists"></div>
       <h2 class="dash-section-title">Changes we made to your CRM &amp; email</h2>
       <div id="crmChanges"></div>
+    </div>
+
+    <div class="dash-panel" id="panel-customers">
+      <p style="color:var(--ink-soft);font-size:.9rem;margin:0 0 1.2rem">Everyone who has an account, placed an order, or requested an appointment with you. "Real login" means they can sign in themselves, same as the access you use for this dashboard.</p>
+      <table class="dash-table"><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Real login</th><th>Orders</th><th>Spent</th><th>Appts</th><th>Since</th></tr></thead><tbody id="customersBody"><tr><td colspan="8" class="empty-note">Loading…</td></tr></tbody></table>
     </div>
 
     <div class="dash-panel" id="panel-sitemap">
@@ -240,14 +246,32 @@
     else{ location.reload(); }
   });
 
+  var customersLoaded=false;
   document.querySelectorAll('.dash-tab:not(.soon)').forEach(function(btn){
     btn.addEventListener('click', function(){
       document.querySelectorAll('.dash-tab').forEach(function(b){ b.classList.remove('active'); });
       document.querySelectorAll('.dash-panel').forEach(function(p){ p.classList.remove('active'); });
       btn.classList.add('active');
       document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
+      if(btn.dataset.tab==='customers' && !customersLoaded){ customersLoaded=true; loadCustomers(); }
     });
   });
+
+  function loadCustomers(){
+    fetch('/.netlify/functions/admin-customers',{headers:adminHeaders()})
+      .then(function(r){ return r.json(); })
+      .then(function(d){ renderCustomers(d.customers||[]); })
+      .catch(function(){ document.getElementById('customersBody').innerHTML='<tr><td colspan="8" class="empty-note" style="color:var(--cherry)">Could not load customers.</td></tr>'; });
+  }
+  function renderCustomers(list){
+    var body=document.getElementById('customersBody');
+    if(!list.length){ body.innerHTML='<tr><td colspan="8" class="empty-note">No customers yet.</td></tr>'; return; }
+    body.innerHTML=list.map(function(c){
+      return '<tr><td>'+esc(c.full_name||'—')+'</td><td>'+esc(c.email||'—')+'</td><td>'+esc(c.phone||'—')+'</td>'+
+        '<td>'+(c.has_login?'Yes':'No')+'</td><td>'+(c.total_orders||0)+'</td><td>'+money(c.total_spent_cents)+'</td>'+
+        '<td>'+(c.total_appointments||0)+'</td><td>'+esc((c.created_at||'').slice(0,10))+'</td></tr>';
+    }).join('');
+  }
 
   function renderHome(d){
     var urgent=document.getElementById('homeUrgent');
