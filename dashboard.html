@@ -54,6 +54,7 @@
   .dash-section-title{font-size:1.15rem;margin:2rem 0 1rem;color:var(--oxblood-deep)}
   table.dash-table{width:100%;border-collapse:collapse;font-size:.88rem}
   table.dash-table th{text-align:left;padding:.6rem .8rem;color:var(--ink-soft);border-bottom:1px solid var(--line-strong);font-weight:600}
+  table.dash-table th .sort-arrow{display:inline-block;width:.9em;color:var(--oxblood)}
   table.dash-table td{padding:.6rem .8rem;border-bottom:1px solid var(--line)}
   table.dash-table a{color:var(--cherry)}
   .empty-note{color:var(--ink-soft);font-size:.9rem;padding:1rem;text-align:center;background:var(--paper-2);border-radius:var(--r)}
@@ -147,7 +148,18 @@
 
     <div class="dash-panel" id="panel-customers">
       <p style="color:var(--ink-soft);font-size:.9rem;margin:0 0 1.2rem">Everyone who has an account, placed an order, or requested an appointment with you. "Real login" means they can sign in themselves, same as the access you use for this dashboard.</p>
-      <table class="dash-table"><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Real login</th><th>Orders</th><th>Spent</th><th>Appts</th><th>Since</th></tr></thead><tbody id="customersBody"><tr><td colspan="8" class="empty-note">Loading…</td></tr></tbody></table>
+      <input type="text" class="sitemap-search" id="customersSearch" placeholder="Search by name, email, or phone..." style="margin-bottom:1rem">
+      <p style="color:var(--ink-soft);font-size:.85rem;margin:0 0 1rem" id="customersCount"></p>
+      <table class="dash-table"><thead><tr>
+        <th data-sort="name" style="cursor:pointer">Name <span class="sort-arrow"></span></th>
+        <th data-sort="email" style="cursor:pointer">Email <span class="sort-arrow"></span></th>
+        <th>Phone</th>
+        <th data-sort="has_login" style="cursor:pointer">Real login <span class="sort-arrow"></span></th>
+        <th data-sort="total_orders" style="cursor:pointer">Orders <span class="sort-arrow"></span></th>
+        <th data-sort="total_spent_cents" style="cursor:pointer">Spent <span class="sort-arrow"></span></th>
+        <th data-sort="total_appointments" style="cursor:pointer">Appts <span class="sort-arrow"></span></th>
+        <th data-sort="created_at" style="cursor:pointer">Since <span class="sort-arrow"></span></th>
+      </tr></thead><tbody id="customersBody"><tr><td colspan="8" class="empty-note">Loading…</td></tr></tbody></table>
     </div>
 
     <div class="dash-panel" id="panel-coupons">
@@ -295,21 +307,56 @@
     });
   });
 
+  var allCustomers=[], customersSort={key:'created_at', dir:-1};
   function loadCustomers(){
     fetch('/.netlify/functions/admin-customers',{headers:adminHeaders()})
       .then(function(r){ return r.json(); })
-      .then(function(d){ renderCustomers(d.customers||[]); })
+      .then(function(d){ allCustomers=d.customers||[]; renderCustomers(); })
       .catch(function(){ document.getElementById('customersBody').innerHTML='<tr><td colspan="8" class="empty-note" style="color:var(--cherry)">Could not load customers.</td></tr>'; });
   }
-  function renderCustomers(list){
+  function customersFiltered(){
+    var q=(document.getElementById('customersSearch').value||'').trim().toLowerCase();
+    var list=!q ? allCustomers.slice() : allCustomers.filter(function(c){
+      return (c.full_name||'').toLowerCase().indexOf(q)>=0 ||
+        (c.email||'').toLowerCase().indexOf(q)>=0 ||
+        (c.phone||'').toLowerCase().indexOf(q)>=0;
+    });
+    var key=customersSort.key, dir=customersSort.dir;
+    list.sort(function(a,b){
+      var av=a[key], bv=b[key];
+      if(typeof av==='boolean'){ av=av?1:0; bv=bv?1:0; }
+      if(typeof av==='string'){ av=(av||'').toLowerCase(); bv=(bv||'').toLowerCase(); }
+      else{ av=av||0; bv=bv||0; }
+      if(av<bv) return -1*dir; if(av>bv) return 1*dir; return 0;
+    });
+    return list;
+  }
+  function renderCustomers(){
     var body=document.getElementById('customersBody');
-    if(!list.length){ body.innerHTML='<tr><td colspan="8" class="empty-note">No customers yet.</td></tr>'; return; }
+    var list=customersFiltered();
+    document.getElementById('customersCount').textContent=
+      allCustomers.length ? (list.length+' of '+allCustomers.length+' customer'+(allCustomers.length===1?'':'s')) : '';
+    document.querySelectorAll('#panel-customers th[data-sort]').forEach(function(th){
+      var arrow=th.querySelector('.sort-arrow');
+      arrow.textContent = th.dataset.sort===customersSort.key ? (customersSort.dir===1?'▲':'▼') : '';
+    });
+    if(!allCustomers.length){ body.innerHTML='<tr><td colspan="8" class="empty-note">No customers yet.</td></tr>'; return; }
+    if(!list.length){ body.innerHTML='<tr><td colspan="8" class="empty-note">No customers match that search.</td></tr>'; return; }
     body.innerHTML=list.map(function(c){
       return '<tr><td>'+esc(c.full_name||'—')+'</td><td>'+esc(c.email||'—')+'</td><td>'+esc(c.phone||'—')+'</td>'+
         '<td>'+(c.has_login?'Yes':'No')+'</td><td>'+(c.total_orders||0)+'</td><td>'+money(c.total_spent_cents)+'</td>'+
         '<td>'+(c.total_appointments||0)+'</td><td>'+esc((c.created_at||'').slice(0,10))+'</td></tr>';
     }).join('');
   }
+  document.getElementById('customersSearch').addEventListener('input', renderCustomers);
+  document.querySelectorAll('#panel-customers th[data-sort]').forEach(function(th){
+    th.addEventListener('click', function(){
+      var key=th.dataset.sort;
+      if(customersSort.key===key){ customersSort.dir*=-1; }
+      else{ customersSort={key:key, dir:1}; }
+      renderCustomers();
+    });
+  });
 
   var couponsLoaded=false;
   function loadCoupons(){
