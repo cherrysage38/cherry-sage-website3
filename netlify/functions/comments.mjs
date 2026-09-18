@@ -91,17 +91,29 @@ export default async (req) => {
       return json({ ok: true, imported, skipped });
     }
 
-    // public new-comment submission
+    // public new-comment submission -- requires being signed in (Bev asked twice: no guest
+    // comments, same as no guest booking). The email is taken from the verified session, never
+    // from the request body, so it can't be spoofed.
     if (String(d.website || d.hp || "").trim()) return json({ ok: true, bot: 1 });
     if (d.t && Date.now() - Number(d.t) < 1500) return json({ ok: true, bot: 1 });
+
+    const auth = req.headers.get("authorization") || "";
+    const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
+    if (!token) return json({ error: "unauthorized" }, 401);
+    const SUPABASE_URL = process.env.SUPABASE_URL;
+    const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return json({ error: "unauthorized" }, 401);
+    const { createClient } = await import("@supabase/supabase-js");
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { db: { schema: "cherry_sage" } });
+    const { data: userData, error: userErr } = await supabase.auth.getUser(token);
+    const email = (userData?.user?.email || "").toLowerCase();
+    if (userErr || !email || !EMAIL.test(email)) return json({ error: "unauthorized" }, 401);
 
     const postSlug = String(d.postSlug || "");
     const postTitle = String(d.postTitle || postSlug).slice(0, 200);
     const name = String(d.name || "").slice(0, 120);
-    const email = String(d.email || "").trim().toLowerCase();
     const message = String(d.message || "").trim().slice(0, 2000);
     if (!SLUG.test(postSlug)) return json({ error: "bad post" }, 400);
-    if (email && !EMAIL.test(email)) return json({ error: "invalid email" }, 422);
     if (!message) return json({ error: "empty message" }, 422);
 
     const ts = new Date().toISOString();
