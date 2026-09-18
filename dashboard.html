@@ -99,6 +99,7 @@
       <button class="dash-tab" data-tab="website">Website</button>
       <button class="dash-tab" data-tab="crm">CRM</button>
       <button class="dash-tab" data-tab="customers">Customers</button>
+      <button class="dash-tab" data-tab="coupons">Coupons</button>
       <button class="dash-tab" data-tab="sitemap">Sitemap</button>
       <button class="dash-tab soon" disabled>Social <span class="badge">Coming soon</span></button>
     </div>
@@ -147,6 +148,33 @@
     <div class="dash-panel" id="panel-customers">
       <p style="color:var(--ink-soft);font-size:.9rem;margin:0 0 1.2rem">Everyone who has an account, placed an order, or requested an appointment with you. "Real login" means they can sign in themselves, same as the access you use for this dashboard.</p>
       <table class="dash-table"><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Real login</th><th>Orders</th><th>Spent</th><th>Appts</th><th>Since</th></tr></thead><tbody id="customersBody"><tr><td colspan="8" class="empty-note">Loading…</td></tr></tbody></table>
+    </div>
+
+    <div class="dash-panel" id="panel-coupons">
+      <p style="color:var(--ink-soft);font-size:.9rem;margin:0 0 1.2rem">Create and manage discount codes yourself. Codes are checked automatically at checkout, no code changes needed.</p>
+      <form id="couponForm" style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:flex-end;margin-bottom:1.4rem;padding:1rem;border:1px solid var(--line-strong);border-radius:12px">
+        <label style="display:flex;flex-direction:column;font-size:.78rem;color:var(--ink-soft);gap:.25rem">Code
+          <input type="text" id="cpnCode" placeholder="SAVE20" required style="padding:.55rem .7rem;border:1px solid var(--line-strong);border-radius:8px;text-transform:uppercase">
+        </label>
+        <label style="display:flex;flex-direction:column;font-size:.78rem;color:var(--ink-soft);gap:.25rem">Type
+          <select id="cpnType" style="padding:.55rem .7rem;border:1px solid var(--line-strong);border-radius:8px">
+            <option value="percent">% off</option>
+            <option value="fixed">$ off (cents)</option>
+          </select>
+        </label>
+        <label style="display:flex;flex-direction:column;font-size:.78rem;color:var(--ink-soft);gap:.25rem">Value
+          <input type="number" id="cpnValue" min="1" required placeholder="20" style="padding:.55rem .7rem;border:1px solid var(--line-strong);border-radius:8px;width:6rem">
+        </label>
+        <label style="display:flex;flex-direction:column;font-size:.78rem;color:var(--ink-soft);gap:.25rem">Max total uses
+          <input type="number" id="cpnMax" min="1" placeholder="No limit" style="padding:.55rem .7rem;border:1px solid var(--line-strong);border-radius:8px;width:7rem">
+        </label>
+        <label style="display:flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--ink)">
+          <input type="checkbox" id="cpnOneTime" checked> One use per customer
+        </label>
+        <button class="btn btn-primary" type="submit">Create Coupon</button>
+        <p id="cpnNote" style="margin:0;font-size:.85rem" hidden></p>
+      </form>
+      <table class="dash-table"><thead><tr><th>Code</th><th>Discount</th><th>One-time</th><th>Used / Max</th><th>Status</th><th></th></tr></thead><tbody id="couponsBody"><tr><td colspan="6" class="empty-note">Loading…</td></tr></tbody></table>
     </div>
 
     <div class="dash-panel" id="panel-sitemap">
@@ -263,6 +291,7 @@
       btn.classList.add('active');
       document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
       if(btn.dataset.tab==='customers' && !customersLoaded){ customersLoaded=true; loadCustomers(); }
+      if(btn.dataset.tab==='coupons' && !couponsLoaded){ couponsLoaded=true; loadCoupons(); }
     });
   });
 
@@ -281,6 +310,62 @@
         '<td>'+(c.total_appointments||0)+'</td><td>'+esc((c.created_at||'').slice(0,10))+'</td></tr>';
     }).join('');
   }
+
+  var couponsLoaded=false;
+  function loadCoupons(){
+    fetch('/.netlify/functions/admin-coupons',{headers:adminHeaders()})
+      .then(function(r){ return r.json(); })
+      .then(function(d){ renderCoupons(d.coupons||[]); })
+      .catch(function(){ document.getElementById('couponsBody').innerHTML='<tr><td colspan="6" class="empty-note" style="color:var(--cherry)">Could not load coupons.</td></tr>'; });
+  }
+  function renderCoupons(list){
+    var body=document.getElementById('couponsBody');
+    if(!list.length){ body.innerHTML='<tr><td colspan="6" class="empty-note">No coupons yet.</td></tr>'; return; }
+    body.innerHTML=list.map(function(c){
+      var discount = c.discount_type==='percent' ? (c.discount_value+'% off') : money(c.discount_value)+' off';
+      var used = c.times_redeemed+' / '+(c.max_total_redemptions!=null?c.max_total_redemptions:'∞');
+      return '<tr><td>'+esc(c.code)+'</td><td>'+discount+'</td><td>'+(c.one_time_use_per_customer?'Yes':'No')+'</td><td>'+used+'</td>'+
+        '<td>'+(c.active?'Active':'Off')+'</td>'+
+        '<td><button class="btn btn-ghost" type="button" data-toggle="'+c.id+'" data-active="'+(!c.active)+'" style="padding:.35rem .8rem;font-size:.8rem">'+(c.active?'Turn off':'Turn on')+'</button></td></tr>';
+    }).join('');
+    [].slice.call(body.querySelectorAll('[data-toggle]')).forEach(function(btn){
+      btn.addEventListener('click', function(){
+        btn.disabled=true;
+        fetch('/.netlify/functions/admin-coupons',{method:'POST',headers:Object.assign({'content-type':'application/json'},adminHeaders()),
+          body:JSON.stringify({action:'set_active', id:btn.dataset.toggle, active: btn.dataset.active==='true', pin:getPin()})})
+          .then(function(r){return r.json();})
+          .then(function(){ loadCoupons(); })
+          .catch(function(){ btn.disabled=false; });
+      });
+    });
+  }
+  document.getElementById('couponForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var note=document.getElementById('cpnNote'), btn=this.querySelector('button[type=submit]');
+    var code=document.getElementById('cpnCode').value.trim();
+    var value=Number(document.getElementById('cpnValue').value);
+    if(!code || !value){ note.hidden=false; note.style.color='var(--cherry)'; note.textContent='Enter a code and a value.'; return; }
+    note.hidden=true; btn.disabled=true; btn.textContent='Creating…';
+    var maxRaw=document.getElementById('cpnMax').value.trim();
+    fetch('/.netlify/functions/admin-coupons',{method:'POST',headers:Object.assign({'content-type':'application/json'},adminHeaders()),
+      body:JSON.stringify({
+        action:'create', pin:getPin(), code:code,
+        discount_type:document.getElementById('cpnType').value,
+        discount_value:value,
+        one_time_use_per_customer:document.getElementById('cpnOneTime').checked,
+        max_total_redemptions:maxRaw?Number(maxRaw):null,
+      })})
+      .then(function(r){return r.json();})
+      .then(function(d){
+        btn.disabled=false; btn.textContent='Create Coupon';
+        if(d.error){ note.hidden=false; note.style.color='var(--cherry)'; note.textContent=d.error; return; }
+        note.hidden=false; note.style.color='var(--sage)'; note.textContent='Coupon created.';
+        document.getElementById('couponForm').reset();
+        document.getElementById('cpnOneTime').checked=true;
+        loadCoupons();
+      })
+      .catch(function(){ btn.disabled=false; btn.textContent='Create Coupon'; note.hidden=false; note.style.color='var(--cherry)'; note.textContent='Something went wrong, please try again.'; });
+  });
 
   function renderHome(d){
     var urgent=document.getElementById('homeUrgent');
