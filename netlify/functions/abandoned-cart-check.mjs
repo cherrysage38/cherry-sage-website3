@@ -10,7 +10,7 @@ function brandShell(bodyHtml) {
   return `<div style="background:#FAF6EF;padding:32px 16px;font-family:Georgia,'Times New Roman',serif;">` +
     `<div style="max-width:520px;margin:0 auto;background:#FFFDF8;border:1px solid #EDE2CF;border-radius:12px;overflow:hidden;">` +
     `<div style="background:linear-gradient(160deg,#6E1A28 0%,#4A0F19 100%);padding:28px 32px;text-align:center;">` +
-    `<img src="https://cherrysage.com/assets/logo-horizontal.png" alt="Cherry Sage" style="height:40px;max-width:220px;">` +
+    `<img src="https://cherrysage.com/assets/logo-horizontal.png" alt="Cherry Sage" width="152" height="40" style="height:40px;width:152px;max-width:220px;border:0;outline:none;text-decoration:none;display:block;margin:0 auto;">` +
     `</div><div style="padding:32px;color:#2b2620;font-size:15px;line-height:1.6;">${bodyHtml}</div>` +
     `<div style="padding:20px 32px;border-top:1px solid #EDE2CF;color:#8a8072;font-size:12px;text-align:center;">` +
     `Cherry Sage &middot; Honest, accurate psychic, tarot, and numerology readings by phone. Trusted since 1999.<br>` +
