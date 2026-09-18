@@ -18,11 +18,32 @@ export default async (req) => {
   if (String(d.website || d.hp || "").trim()) return json({ ok: true, bot: 1 });
   if (d.t && Date.now() - Number(d.t) < 1500) return json({ ok: true, bot: 1 });
 
-  const email = String(d.email || "").trim().toLowerCase();
   const source = String(d.source || "site").slice(0, 60);
   const name = String(d.name || "").slice(0, 120);
   const message = String(d.message || "").slice(0, 2000);
-  if (!EMAIL.test(email)) return json({ error: "invalid email" }, 422);
+
+  // Feedback is the one lead source Bev asked to require being signed in for ("users cannot
+  // leave feedback unless they are logged into their Account"). Every other source through this
+  // same endpoint (newsletter, contact, weekly tips) stays guest-open by design, so this check
+  // is scoped to source === "feedback" only. The email is taken from the verified session, never
+  // from the request body, so it can't be spoofed to dodge the has-history check downstream.
+  let email;
+  if (source === "feedback") {
+    const auth = req.headers.get("authorization") || "";
+    const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
+    if (!token) return json({ error: "unauthorized" }, 401);
+    const SUPABASE_URL = process.env.SUPABASE_URL;
+    const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return json({ error: "unauthorized" }, 401);
+    const { createClient } = await import("@supabase/supabase-js");
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { db: { schema: "cherry_sage" } });
+    const { data: userData, error: userErr } = await supabase.auth.getUser(token);
+    email = (userData?.user?.email || "").toLowerCase();
+    if (userErr || !email || !EMAIL.test(email)) return json({ error: "unauthorized" }, 401);
+  } else {
+    email = String(d.email || "").trim().toLowerCase();
+    if (!EMAIL.test(email)) return json({ error: "invalid email" }, 422);
+  }
 
   const record = { email, source, name, message, ts: new Date().toISOString(),
                    ua: req.headers.get("user-agent") || "" };

@@ -49,52 +49,79 @@
 </header>
 <main>
 <section class="page-hero banner"><div class="ph-glow" aria-hidden="true"></div><div class="ph-stars" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">Your feedback</p><h1>Tell Cherry how your reading felt</h1><p class="lede">Real words from real callers. Share your experience below. Once Cherry reads and approves it, it joins the testimonials.</p></div></section>
-<section class="section"><div class="wrap" style="max-width:640px">
-  <form id="feedbackForm" class="story-card reveal" style="display:grid;gap:.9rem">
-    <input type="text" name="name" placeholder="Your name (or how you'd like to appear)" style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
-    <input type="email" name="email" placeholder="Your email (kept private)" required style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
-    <div class="fb-stars" role="radiogroup" aria-label="Your rating">
-      <span>Your rating:</span>
-      <button type="button" class="fb-star" data-v="1">&#9733;</button><button type="button" class="fb-star" data-v="2">&#9733;</button><button type="button" class="fb-star" data-v="3">&#9733;</button><button type="button" class="fb-star" data-v="4">&#9733;</button><button type="button" class="fb-star" data-v="5">&#9733;</button>
-      <input type="hidden" name="rating" value="5">
-    </div>
-    <textarea name="message" rows="6" placeholder="Share your experience with Cherry..." required style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)"></textarea>
-    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-    <button class="btn btn-primary" type="submit">Send my feedback</button>
-    <p id="fbNote" style="margin:0;color:var(--cherry);font-size:.9rem" hidden></p>
-  </form>
+<section class="section"><div class="wrap" style="max-width:640px" id="fbWrap">
+  <p class="story-card reveal" style="text-align:center">Checking your account…</p>
 </div></section>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
-(function(){var f=document.getElementById('feedbackForm');if(!f)return;
-  var stars=[].slice.call(f.querySelectorAll('.fb-star')),rv=f.querySelector('[name=rating]'),t0=Date.now();
-  function paint(n){stars.forEach(function(s,i){s.classList.toggle('on',i<n);});rv.value=n;}
-  stars.forEach(function(s){s.addEventListener('click',function(){paint(+s.dataset.v);});});paint(5);
-  f.addEventListener('submit',function(e){e.preventDefault();
-    var note=document.getElementById('fbNote'),btn=f.querySelector('button[type=submit]');
-    var email=(f.email.value||'').trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){note.hidden=false;note.textContent='Please enter a valid email.';return;}
-    if(!(f.message.value||'').trim()){note.hidden=false;note.textContent='Please share a few words.';return;}
-    note.hidden=true; btn.disabled=true;btn.textContent='Checking...';
-    var SUPABASE_URL='https://ctoeuikxoqlhnebgsygp.supabase.co';
-    var SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0b2V1aWt4b3FsaG5lYmdzeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0ODM4NTMsImV4cCI6MjA5NjA1OTg1M30.Cy0uf8hm-Biea7a1V3bLQBz70f1oyhP83vHDjefTce8';
-    fetch(SUPABASE_URL+'/rest/v1/rpc/email_has_history',{method:'POST',headers:{apikey:SUPABASE_ANON,'Content-Type':'application/json','Content-Profile':'cherry_sage'},body:JSON.stringify({p_email:email})})
-    .then(function(r){return r.json();})
-    .then(function(hasHistory){
-      if(!hasHistory){
+(function(){
+  var wrap=document.getElementById('fbWrap'); if(!wrap) return;
+  var sb=window.supabase.createClient(
+    'https://ctoeuikxoqlhnebgsygp.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0b2V1aWt4b3FsaG5lYmdzeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0ODM4NTMsImV4cCI6MjA5NjA1OTg1M30.Cy0uf8hm-Biea7a1V3bLQBz70f1oyhP83vHDjefTce8',
+    { db: { schema: 'cherry_sage' } }
+  );
+
+  sb.auth.getSession().then(function(res){
+    var session=res.data && res.data.session;
+    if(!session){
+      wrap.innerHTML='<p class="story-card reveal" style="text-align:center">Feedback is open to Cherry\'s signed-in clients. Please <a href="/login.html">log in</a> to leave feedback.</p>';
+      return;
+    }
+    renderForm(session);
+  }).catch(function(){
+    wrap.innerHTML='<p class="story-card reveal" style="text-align:center">Please <a href="/login.html">log in</a> to leave feedback.</p>';
+  });
+
+  function renderForm(session){
+    wrap.innerHTML =
+      '<form id="feedbackForm" class="story-card reveal" style="display:grid;gap:.9rem">'+
+        '<p style="margin:0;font-size:.85rem;color:var(--ink-soft)">Posting feedback as '+esc(session.user.email)+'</p>'+
+        '<input type="text" name="name" placeholder="Your name (or how you\'d like to appear)" style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">'+
+        '<div class="fb-stars" role="radiogroup" aria-label="Your rating">'+
+          '<span>Your rating:</span>'+
+          '<button type="button" class="fb-star" data-v="1">&#9733;</button><button type="button" class="fb-star" data-v="2">&#9733;</button><button type="button" class="fb-star" data-v="3">&#9733;</button><button type="button" class="fb-star" data-v="4">&#9733;</button><button type="button" class="fb-star" data-v="5">&#9733;</button>'+
+          '<input type="hidden" name="rating" value="5">'+
+        '</div>'+
+        '<textarea name="message" rows="6" placeholder="Share your experience with Cherry..." required style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)"></textarea>'+
+        '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">'+
+        '<button class="btn btn-primary" type="submit">Send my feedback</button>'+
+        '<p id="fbNote" style="margin:0;color:var(--cherry);font-size:.9rem" hidden></p>'+
+      '</form>';
+
+    var f=document.getElementById('feedbackForm');
+    var stars=[].slice.call(f.querySelectorAll('.fb-star')),rv=f.querySelector('[name=rating]'),t0=Date.now();
+    function paint(n){stars.forEach(function(s,i){s.classList.toggle('on',i<n);});rv.value=n;}
+    stars.forEach(function(s){s.addEventListener('click',function(){paint(+s.dataset.v);});});paint(5);
+    f.addEventListener('submit',function(e){e.preventDefault();
+      var note=document.getElementById('fbNote'),btn=f.querySelector('button[type=submit]');
+      if(!(f.message.value||'').trim()){note.hidden=false;note.textContent='Please share a few words.';return;}
+      note.hidden=true; btn.disabled=true;btn.textContent='Checking...';
+      var email=session.user.email;
+      var SUPABASE_URL='https://ctoeuikxoqlhnebgsygp.supabase.co';
+      var SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0b2V1aWt4b3FsaG5lYmdzeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0ODM4NTMsImV4cCI6MjA5NjA1OTg1M30.Cy0uf8hm-Biea7a1V3bLQBz70f1oyhP83vHDjefTce8';
+      fetch(SUPABASE_URL+'/rest/v1/rpc/email_has_history',{method:'POST',headers:{apikey:SUPABASE_ANON,'Content-Type':'application/json','Content-Profile':'cherry_sage'},body:JSON.stringify({p_email:email})})
+      .then(function(r){return r.json();})
+      .then(function(hasHistory){
+        if(!hasHistory){
+          note.hidden=false; btn.disabled=false; btn.textContent='Send my feedback';
+          note.textContent='Feedback is open to Cherry\'s actual clients. We could not find a booking or purchase on file for this account. If you\'ve worked with Cherry before, make sure you\'re signed in with the same email you used.';
+          return;
+        }
+        btn.textContent='Sending...';
+        fetch('/.netlify/functions/lead',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+session.access_token},
+          body:JSON.stringify({name:f.name.value.trim(),message:'['+rv.value+' stars] '+f.message.value.trim(),source:'feedback',website:f.website.value,t:t0})})
+        .then(function(r){return r.ok;}).catch(function(){return false;})
+        .then(function(){ f.innerHTML='<p style="margin:0;color:var(--oxblood);font-weight:600;font-size:1.1rem">Thank you for sharing. Cherry reads every message herself, and once she approves it, your words will appear on the testimonials page.</p>'; });
+      }).catch(function(){
         note.hidden=false; btn.disabled=false; btn.textContent='Send my feedback';
-        note.textContent='Feedback is open to Cherry\'s actual clients. We could not find a booking or purchase on file for this email. If you\'ve worked with Cherry before, use the exact email from that order, or sign in.';
-        return;
-      }
-      btn.textContent='Sending...';
-      fetch('/.netlify/functions/lead',{method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({email:email,name:f.name.value.trim(),message:'['+rv.value+' stars] '+f.message.value.trim(),source:'feedback',website:f.website.value,t:t0})})
-      .then(function(r){return r.ok;}).catch(function(){return false;})
-      .then(function(){ f.innerHTML='<p style="margin:0;color:var(--oxblood);font-weight:600;font-size:1.1rem">Thank you for sharing. Cherry reads every message herself, and once she approves it, your words will appear on the testimonials page.</p>'; });
-    }).catch(function(){
-      note.hidden=false; btn.disabled=false; btn.textContent='Send my feedback';
-      note.textContent='Something went wrong checking your account, please try again.';
+        note.textContent='Something went wrong checking your account, please try again.';
+      });
     });
-  });})();
+  }
+
+  function esc(s){ return String(s||'').replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+})();
 </script><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class='btn btn-gold' href='/book-appointment'>Book a Reading</a></div></section>
 </main>
 <footer class="footer">
