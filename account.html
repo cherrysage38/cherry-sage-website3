@@ -56,7 +56,7 @@
     <a class="brand" href="/" aria-label="Cherry Sage home"><img src="assets/logo-horizontal.png" alt="Cherry Sage — Psychic, Tarot, Numerology"></a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
     <nav class="primary-nav" id="primaryNav" aria-label="Primary">
-      <ul><li><a href="/meet">Meet Cherry</a></li><li class="has-dropdown"><a href="/psychic-reading">Readings</a><ul class="dropdown"><li><a href="/psychic-reading">Psychic Reading</a></li><li><a href="/tarot">Tarot Card Reading</a></li><li><a href="/book-appointment">Request a Time</a></li></ul></li><li class="has-dropdown"><a href="/numerology">Numerology</a><ul class="dropdown"><li><a href="/free-karmic-reading">Free Numerology Reading</a></li></ul></li><li class="has-dropdown"><a href="/testimonials">Reviews</a><ul class="dropdown"><li><a href="/feedback">Leave Feedback</a></li></ul></li><li class="has-dropdown"><a href="/blog">Blog</a><ul class="dropdown"><li><a href="/articles">Guest Articles</a></li></ul></li><li class="has-dropdown"><a href="/tarot-pull">Free Tools</a><ul class="dropdown"><li><a href="/tarot-pull">Free Tarot Pull</a></li><li><a href="/tarot-spread">Free Tarot Spread</a></li><li><a href="/life-path">Life Path Calculator</a></li><li><a href="/horoscope">Daily Horoscope</a></li></ul></li><li><a href="/shop">Shop</a></li><li><a href="/contact">Contact</a></li><li><a href="/account" class="nav-utility cur">My Account</a></li></ul>
+      <ul><li><a href="/meet">Meet Cherry</a></li><li class="has-dropdown"><a href="/psychic-reading">Readings</a><ul class="dropdown"><li><a href="/psychic-reading">Psychic Reading</a></li><li><a href="/tarot">Tarot Card Reading</a></li><li><a href="/book-appointment">Request a Time</a></li></ul></li><li class="has-dropdown"><a href="/numerology">Numerology</a><ul class="dropdown"><li><a href="/free-karmic-reading">Free Numerology Reading</a></li></ul></li><li class="has-dropdown"><a href="/testimonials">Reviews</a><ul class="dropdown"><li><a href="/feedback">Leave Feedback</a></li></ul></li><li class="has-dropdown"><a href="/blog">Blog</a><ul class="dropdown"><li><a href="/articles">Guest Articles</a></li></ul></li><li class="has-dropdown"><a href="/tarot-pull">Free Tools</a><ul class="dropdown"><li><a href="/tarot-pull">Free Tarot Pull</a></li><li><a href="/tarot-spread">Free Tarot Spread</a></li><li><a href="/life-path">Life Path Calculator</a></li><li><a href="/horoscope">Daily Horoscope</a></li></ul></li><li><a href="/shop">Shop</a></li><li><a href="/contact">Contact</a></li><li><a href="/account" class="nav-utility cur">My Account</a></li><li id="navSignOutItem" hidden><a href="#" id="navSignOut">Sign Out</a></li></ul>
       <a class="btn btn-primary" href="/book-appointment">Book a Reading</a>
     </nav>
   </div>
@@ -197,9 +197,20 @@
 
   function showAccount(session){
     document.getElementById('acLoggedIn').hidden=false;
+    document.getElementById('navSignOutItem').hidden=false;
     document.getElementById('acTitle').textContent='Welcome back';
     document.getElementById('acLede').textContent='Here is everything tied to your account.';
     document.getElementById('acEmail').textContent=session.user.email;
+
+    // Landed here from the "Forgot your password?" email link -- she's already signed in
+    // via the recovery token, so jump straight to where she actually sets the new one
+    // instead of leaving her to find "Account settings" on her own.
+    if(/[?&]reset=1\b/.test(location.search)){
+      document.getElementById('acPasswordMsg').className='ac-settings-msg ok';
+      document.getElementById('acPasswordMsg').textContent='Set your new password below.';
+      var pwField=document.getElementById('acNewPassword');
+      if(pwField){ pwField.scrollIntoView({behavior:'smooth',block:'center'}); pwField.focus({preventScroll:true}); }
+    }
 
     sb.rpc('link_customer_to_auth_user').then(function(res){
       if(res.error || !res.data){
@@ -251,6 +262,10 @@
   }
 
   document.getElementById('acSignOut').addEventListener('click', function(){
+    sb.auth.signOut().then(function(){ location.href='/account.html'; });
+  });
+  document.getElementById('navSignOut').addEventListener('click', function(e){
+    e.preventDefault();
     sb.auth.signOut().then(function(){ location.href='/account.html'; });
   });
 })();

@@ -34,8 +34,8 @@
 .lg-alt{font-size:.85rem;margin:1rem 0 0}
 .lg-alt a{color:var(--ink-soft);text-decoration:underline}
 .lg-pw-wrap{position:relative}
-.lg-pw-wrap input{padding-right:2.6rem}
-.lg-pw-toggle{position:absolute;right:.5rem;top:50%;transform:translateY(-50%);background:none;border:none;padding:.3rem;margin:0;cursor:pointer;color:var(--ink-soft);display:flex;align-items:center}
+.lg-pw-wrap input{padding-right:3rem}
+.lg-pw-toggle{position:absolute;right:.15rem;top:50%;transform:translateY(-50%);background:none;border:none;padding:0;margin:0;cursor:pointer;color:var(--ink-soft);display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px}
 .lg-pw-toggle:hover{color:var(--oxblood)}
 .lg-pw-toggle .lg-eye-closed{display:none}
 .lg-pw-toggle.on .lg-eye-open{display:none}
@@ -79,6 +79,12 @@
       <input type="email" name="email" placeholder="Your email" required class="lg-field">
       <button class="btn btn-ghost" type="submit">Send Sign-In Link</button>
       <p id="lgLoginLinkNote" class="lg-note" hidden></p>
+    </form>
+    <p class="lg-alt"><a href="#" id="lgForgotToggle">Forgot your password?</a></p>
+    <form id="lgForgotForm" hidden style="display:grid;gap:.7rem;margin-top:.9rem">
+      <input type="email" name="email" placeholder="Your email" required class="lg-field">
+      <button class="btn btn-ghost" type="submit">Send Reset Link</button>
+      <p id="lgForgotNote" class="lg-note" hidden></p>
     </form>
   </div>
 
@@ -191,7 +197,15 @@
     err.hidden=true; btn.disabled=true; btn.textContent='Signing In…';
     withTimeout(sb.auth.signInWithPassword({ email: email, password: password }), 15000).then(function(res){
       if(res.error){
-        err.hidden=false; err.textContent=res.error.message||'Could not sign in, please check your password and try again.';
+        // Supabase returns the same generic wording whether the password is wrong or the
+        // account's email was never confirmed -- surfaced 2026-09-18 when Bev tried logging
+        // in seconds before clicking her own confirmation link and saw "invalid credentials"
+        // with no hint of why. Give the real reason when we can tell.
+        var isUnconfirmed = res.error.code==='email_not_confirmed' || /email.*not.*confirm/i.test(res.error.message||'');
+        err.hidden=false;
+        err.textContent = isUnconfirmed
+          ? 'Please confirm your email first. Check your inbox (and spam folder) for the confirmation link we sent when you signed up, then come back and log in.'
+          : (res.error.message||'Could not sign in, please check your password and try again.');
         btn.disabled=false; btn.textContent='Sign In';
         return;
       }
@@ -279,6 +293,27 @@
   }
   wireLinkForm('lgLoginLinkToggle','lgLoginLinkForm','lgLoginLinkNote');
   wireLinkForm('lgRegisterLinkToggle','lgRegisterLinkForm','lgRegisterLinkNote');
+
+  // Forgot password -- distinct from the magic-link option above, this actually resets
+  // her stored password rather than just signing her in without one.
+  var forgotToggle=document.getElementById('lgForgotToggle'), forgotForm=document.getElementById('lgForgotForm'), forgotNote=document.getElementById('lgForgotNote');
+  forgotToggle.addEventListener('click', function(e){ e.preventDefault(); forgotForm.hidden=!forgotForm.hidden; });
+  forgotForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn=forgotForm.querySelector('button[type=submit]');
+    var email=(forgotForm.email.value||'').trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ forgotNote.hidden=false; forgotNote.textContent='Please enter a valid email address.'; return; }
+    forgotNote.hidden=true; btn.disabled=true; btn.textContent='Sending…';
+    withTimeout(sb.auth.resetPasswordForEmail(email, { redirectTo: 'https://cherrysage.com/account.html?reset=1' }), 15000).then(function(res){
+      btn.disabled=false; btn.textContent='Send Reset Link';
+      forgotNote.hidden=false;
+      forgotNote.textContent = res.error ? (res.error.message||'Could not send the reset link, please try again.') : ('Sent, check '+email+' for a link to set a new password.');
+    }).catch(function(timeoutErr){
+      btn.disabled=false; btn.textContent='Send Reset Link';
+      forgotNote.hidden=false;
+      forgotNote.textContent=(timeoutErr && timeoutErr.message) || 'Something went wrong reaching the server, please try again.';
+    });
+  });
 })();
 </script>
 </body>

@@ -19,6 +19,7 @@
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);
   font-size:1.05rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+input,textarea,select{font-size:16px}
 img{max-width:100%;display:block}
 a{color:inherit}
 h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.12;color:var(--oxblood);margin:0}
@@ -484,6 +485,9 @@ main section>.wrap,.hero>.wrap,.page-hero>.wrap,.draw-section>.wrap{position:rel
 
 /* ================= Ivy chat widget ================= */
 .chat-widget{cursor:pointer}
+.chat-widget .cw-bubble{transition:transform .12s ease,box-shadow .12s ease}
+.chat-widget:active .cw-bubble{transform:scale(.88)}
+.chat-widget[aria-expanded="true"] .cw-bubble{box-shadow:0 0 0 4px var(--gold-soft)}
 .cs-chat{position:fixed;right:1.2rem;bottom:5.2rem;z-index:1300;width:min(360px,calc(100vw - 2rem));
   height:min(520px,70vh);display:flex;flex-direction:column;overflow:hidden;
   background:var(--cream);border:1px solid var(--gold-soft);border-radius:18px;
