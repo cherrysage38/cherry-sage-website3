@@ -315,7 +315,10 @@
   function loadCustomers(){
     fetch('/.netlify/functions/admin-customers',{headers:adminHeaders()})
       .then(function(r){ return r.json(); })
-      .then(function(d){ allCustomers=d.customers||[]; renderCustomers(); })
+      .then(function(d){
+        if(d.error){ document.getElementById('customersBody').innerHTML='<tr><td colspan="8" class="empty-note" style="color:var(--cherry)">'+esc(d.error==='login required'||d.error==='not the owner login'?'Please log in with cherry38@cherrysage.com to see your customers.':'Could not load customers.')+'</td></tr>'; return; }
+        allCustomers=d.customers||[]; renderCustomers();
+      })
       .catch(function(){ document.getElementById('customersBody').innerHTML='<tr><td colspan="8" class="empty-note" style="color:var(--cherry)">Could not load customers.</td></tr>'; });
   }
   function customersFiltered(){
@@ -366,7 +369,10 @@
   function loadCoupons(){
     fetch('/.netlify/functions/admin-coupons',{headers:adminHeaders()})
       .then(function(r){ return r.json(); })
-      .then(function(d){ renderCoupons(d.coupons||[]); })
+      .then(function(d){
+        if(d.error){ document.getElementById('couponsBody').innerHTML='<tr><td colspan="7" class="empty-note" style="color:var(--cherry)">'+esc(d.error==='login required'||d.error==='not the owner login'?'Please log in with cherry38@cherrysage.com to manage coupons.':'Could not load coupons.')+'</td></tr>'; return; }
+        renderCoupons(d.coupons||[]);
+      })
       .catch(function(){ document.getElementById('couponsBody').innerHTML='<tr><td colspan="7" class="empty-note" style="color:var(--cherry)">Could not load coupons.</td></tr>'; });
   }
   function renderCoupons(list){

@@ -2,23 +2,13 @@
 // do I find my users -- Admin, subscribers, customers"). "Admins" are just her + RJ's real
 // logins, "subscribers" are Brevo contacts already shown in the CRM tab -- this is the missing
 // piece, an actual list of the customers table with real login present, order count, spend,
-// and appointment count. Same PIN/owner-login pattern as dashboard-summary.mjs.
+// and appointment count.
+//
+// 2026-09-19: no PIN. The source repo is public, so a PIN written in it is not a secret, and
+// this RPC returns customer names, emails and phone numbers. The caller's own login token is
+// forwarded to Supabase and the database itself checks it against cherry_sage.owner_emails
+// (see cherry_sage.is_owner()). No valid owner login, no data.
 import { createClient } from "@supabase/supabase-js";
-
-const OWNER_EMAILS = ["cherry38@cherrysage.com", "admin@cherrysage.com"];
-const PIN = "0011";
-
-async function resolveAdminKey(req, suppliedPin, supabase, realKey) {
-  const auth = req.headers.get("authorization") || "";
-  const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
-  if (token) {
-    const { data, error } = await supabase.auth.getUser(token);
-    const email = (data?.user?.email || "").toLowerCase();
-    if (!error && OWNER_EMAILS.includes(email)) return realKey;
-    return null;
-  }
-  return suppliedPin || null;
-}
 
 function json(o, status = 200) {
   return new Response(JSON.stringify(o), {
@@ -30,15 +20,20 @@ export default async (req) => {
   const SUPABASE_URL = process.env.SUPABASE_URL;
   const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
   if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return json({ error: "not configured" }, 503);
-  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { db: { schema: "cherry_sage" } });
 
-  const pin = await resolveAdminKey(req, req.headers.get("x-dashboard-pin") || "", supabase, PIN);
-  if (!pin) return json({ error: "pin required" }, 401);
+  const auth = req.headers.get("authorization") || "";
+  if (!auth.startsWith("Bearer ")) return json({ error: "login required" }, 401);
 
-  const { data, error } = await supabase.rpc("admin_list_customers", { p_pin: pin });
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    db: { schema: "cherry_sage" },
+    global: { headers: { Authorization: auth } },
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+
+  const { data, error } = await supabase.rpc("admin_list_customers", { p_pin: "" });
   if (error) {
-    const msg = /unauthorized/i.test(error.message || "") ? "wrong pin" : "could not load customers";
-    return json({ error: msg }, error.message?.includes("unauthorized") ? 403 : 500);
+    const denied = /unauthorized/i.test(error.message || "");
+    return json({ error: denied ? "not the owner login" : "could not load customers" }, denied ? 403 : 500);
   }
   return json({ customers: data || [] });
 };
