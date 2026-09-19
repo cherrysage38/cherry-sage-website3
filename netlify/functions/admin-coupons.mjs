@@ -27,9 +27,11 @@ export default async (req) => {
     auth: { persistSession: false, autoRefreshToken: false },
   });
   const denied = (error) => /unauthorized/i.test(error?.message || "");
+  const expired = (error) => /jwt|token/i.test(error?.message || "");
 
   if (req.method === "GET") {
     const { data, error } = await supabase.rpc("admin_list_coupons", { p_pin: "" });
+    if (expired(error)) return json({ error: "login required" }, 401);
     if (error) return json({ error: denied(error) ? "not the owner login" : "could not load coupons" }, denied(error) ? 403 : 500);
     return json({ coupons: data || [] });
   }

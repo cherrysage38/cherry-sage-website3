@@ -32,6 +32,7 @@ export default async (req) => {
 
   const { data, error } = await supabase.rpc("admin_list_customers", { p_pin: "" });
   if (error) {
+    if (/jwt|token/i.test(error.message || "")) return json({ error: "login required" }, 401);
     const denied = /unauthorized/i.test(error.message || "");
     return json({ error: denied ? "not the owner login" : "could not load customers" }, denied ? 403 : 500);
   }
