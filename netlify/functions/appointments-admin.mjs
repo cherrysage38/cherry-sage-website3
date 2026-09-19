@@ -52,7 +52,13 @@ export default async (req) => {
       p_status: status === "all" ? null : status,
     });
     if (error) return json({ error: error.message }, 400);
-    return json({ appointments: data || [] });
+    // The database returns full_name/email/phone but the appointments page reads
+    // customer_name/customer_email/customer_phone, so every request showed "Unknown" (found
+    // 2026-09-18, Bev). Provide both spellings.
+    const appointments = (data || []).map((a) => ({
+      ...a, customer_name: a.full_name, customer_email: a.email, customer_phone: a.phone,
+    }));
+    return json({ appointments });
   }
 
   if (req.method === "POST") {

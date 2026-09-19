@@ -111,7 +111,7 @@
           <h3>Your details</h3>
           <input type="text" name="name" placeholder="Your name" required class="ck-field">
           <input type="email" name="email" placeholder="Your email" required class="ck-field">
-          <input type="tel" name="phone" placeholder="Phone (optional)" class="ck-field">
+          <input type="tel" name="phone" placeholder="Phone number (best number to reach you)" required autocomplete="tel" class="ck-field">
           <select name="readingType" required class="ck-field" style="background:#fff">
             <option value="">What kind of reading?</option>
             <option>Psychic Reading</option>
@@ -135,7 +135,7 @@
     <aside class="ck-side">
       <div class="ck-side-card">
         <p class="ck-side-label">How this works</p>
-        <p>Pick an open date and time, then tell Cherry a bit about what you're after. She checks the request and confirms directly with you by email or phone, usually within a day.</p>
+        <p>Pick an open date and time, then tell Cherry a bit about what you're after. She checks the request and confirms directly with you by email or phone. Most readings take place the same day.</p>
         <p>This is a request, not an instant booking, so your exact time isn't guaranteed until she confirms. If you'd rather just call when she's online, watch the status light at the corner of any page instead.</p>
         <p><a href="/shop">Prefer to just buy minutes instead of scheduling? Go to Shop →</a></p>
       </div>
@@ -238,6 +238,8 @@
       if(!currentSession){note.hidden=false;note.textContent='Please log in first.';return;}
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){note.hidden=false;note.textContent='Please enter a valid email address.';return;}
       if(!slotIsoField.value||!f.readingType.value){note.hidden=false;note.textContent='Please pick an open time and a reading type.';return;}
+      if((f.phone.value||'').replace(/\D/g,'').length<7){note.hidden=false;note.textContent='Please add a phone number Cherry can reach you at.';return;}
+      if(!(f.name.value||'').trim()){note.hidden=false;note.textContent='Please add your name.';return;}
       btn.disabled=true;btn.textContent='Sending...';
       var details='Requested time: '+fmtSlot(slotIsoField.value)+' Eastern, on '+dateInput.value+' ('+slotIsoField.value+')\nReading type: '+f.readingType.value+
         (f.phone.value?('\nPhone: '+f.phone.value.trim()):'')+
@@ -249,7 +251,9 @@
         p_requested_start: slotIsoField.value,
         p_duration_minutes: 15,
         p_reading_type: f.readingType.value,
-        p_notes: notesForRecord.trim()||null
+        p_notes: notesForRecord.trim()||null,
+        p_full_name: f.name.value.trim(),
+        p_phone: f.phone.value.trim()
       }).then(function(res){
         if(res.error){ note.hidden=false; note.textContent='Something went wrong saving your request, please try again.'; btn.disabled=false; btn.textContent='Request This Time'; return; }
         // Best-effort admin email notification -- the real record is already saved above,
@@ -271,7 +275,7 @@
       });
     });})();
   </script>
-</div></section><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class="btn btn-gold" href="/book-appointment">Book a Reading</a></div></section>
+</div></section><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class="btn btn-gold" href="/login.html">Log In or Create an Account</a> <a class="btn btn-ghost" href="/shop" style="margin-left:.6rem">Buy Minutes Instead</a></div></section>
 </main>
 <footer class="footer">
   <div class="wrap footer-grid">
