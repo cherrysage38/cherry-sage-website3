@@ -26,45 +26,46 @@
 <style>
 .ap-toolbar{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:1.4rem}
 .ap-filters{display:flex;gap:.4rem;flex-wrap:wrap}
-.ap-filters button{padding:.5rem 1rem;border-radius:999px;border:1px solid var(--line-strong);background:var(--paper-2);color:var(--ink);cursor:pointer;font-size:.88rem}
+.ap-filters button{padding:.5rem 1rem;border-radius:999px;border:1px solid var(--line-strong);background:var(--paper-2);color:var(--ink);cursor:pointer;font-size:1rem}
 .ap-filters button.on{background:var(--oxblood);color:#fff;border-color:var(--oxblood)}
 .ap-item{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r);padding:1.2rem 1.4rem;margin-bottom:1rem}
 .ap-head{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.5rem}
-.ap-name{font-weight:700;color:var(--oxblood);font-size:1.05rem}
-.ap-when{font-weight:600;color:var(--gold);font-size:.95rem}
-.ap-meta{font-size:.88rem;color:var(--ink-soft);margin-bottom:.3rem}
-.ap-status{display:inline-block;padding:.2rem .7rem;border-radius:999px;font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.ap-name{font-weight:700;color:var(--oxblood);font-size:1rem}
+.ap-when{font-weight:600;color:var(--gold);font-size:1rem}
+.ap-meta{font-size:1rem;color:var(--ink-soft);margin-bottom:.3rem}
+.ap-status{display:inline-block;padding:.2rem .7rem;border-radius:999px;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
 .ap-status.pending_approval{background:#f4e0a3;color:#6b4e00}
 .ap-status.approved{background:#c8e0c8;color:#2d5a2d}
 .ap-status.declined{background:#e8c8c8;color:#7a2d2d}
 .ap-status.alternate_offered{background:#d6e0f0;color:#2d4a7a}
 .ap-actions{display:flex;gap:.6rem;margin-top:.9rem;flex-wrap:wrap;align-items:center}
-.ap-actions button{padding:.5rem 1.1rem;border-radius:10px;border:0;cursor:pointer;font-weight:600;font-size:.9rem}
+.ap-actions button{padding:.5rem 1.1rem;border-radius:10px;border:0;cursor:pointer;font-weight:600;font-size:1rem}
 .ap-approve{background:#5c8a5c;color:#fff}
 .ap-decline{background:var(--line-strong);color:var(--ink)}
 .ap-alt{background:var(--gold);color:#3a2a08}
 .ap-alt-form{display:none;gap:.5rem;flex-wrap:wrap;align-items:center;margin-top:.7rem;padding-top:.7rem;border-top:1px solid var(--line)}
 .ap-alt-form.open{display:flex}
-.ap-alt-form input[type=datetime-local],.ap-alt-form input[type=text]{padding:.5rem .7rem;border:1px solid var(--line-strong);border-radius:8px;font-family:var(--font-body)}
-.ap-note{font-size:.85rem;color:var(--ink-soft);margin-top:.5rem;font-style:italic}
-.ap-risk{display:inline-block;padding:.15rem .6rem;border-radius:999px;font-size:.72rem;font-weight:700;background:#f4d9a3;color:#6b4200;margin-left:.5rem}
+.ap-alt-form input[type=datetime-local],.ap-alt-form input[type=text]{padding:.5rem .7rem;border:1px solid var(--line-strong);border-radius:8px;font-family:var(--font-body);font-size:1rem}
+.ap-alt-form button{padding:.5rem 1.1rem;border-radius:10px;border:0;cursor:pointer;font-weight:600;font-size:1rem}
+.ap-note{font-size:.8rem;color:var(--ink-soft);margin-top:.5rem;font-style:italic}
+.ap-risk{display:inline-block;padding:.15rem .6rem;border-radius:999px;font-size:.8rem;font-weight:700;background:#f4d9a3;color:#6b4200;margin-left:.5rem}
 .ap-table-wrap{overflow-x:auto;margin-bottom:1rem;border:1px solid var(--line);border-radius:var(--r);background:var(--paper-2)}
 table.ap-table{width:100%;border-collapse:collapse;min-width:820px}
-.ap-table th{text-align:left;padding:.7rem .9rem;color:var(--ink-soft);border-bottom:1px solid var(--line-strong);font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
-.ap-table td{padding:.9rem;border-bottom:1px solid var(--line);vertical-align:top;font-size:.92rem}
+.ap-table th{text-align:left;padding:.7rem .9rem;color:var(--ink-soft);border-bottom:1px solid var(--line-strong);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+.ap-table td{padding:.9rem;border-bottom:1px solid var(--line);vertical-align:top;font-size:1rem}
 .ap-table tr:last-child td{border-bottom:0}
 .ap-date{font-weight:700;color:var(--oxblood);display:block;white-space:nowrap}
-.ap-time{color:var(--gold);font-weight:600;font-size:.88rem;white-space:nowrap}
+.ap-time{color:var(--gold);font-weight:600;font-size:1rem;white-space:nowrap}
 .ap-cust-btn{background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--oxblood);text-decoration:underline;text-underline-offset:2px;cursor:pointer;text-align:left}
 .ap-cust-btn:hover{color:var(--cherry)}
-.ap-sub{font-size:.82rem;color:var(--ink-soft);margin-top:.15rem}
+.ap-sub{font-size:.8rem;color:var(--ink-soft);margin-top:.15rem}
 .ap-table .ap-actions{margin-top:0}
 .ap-alt-row td{background:var(--paper);padding-top:.4rem}
 .ap-history{background:var(--cream);border:1px solid var(--gold-soft);border-radius:var(--r);padding:1.1rem 1.3rem;margin-bottom:1.2rem}
-.ap-history h3{margin:0 0 .2rem;font-size:1.1rem}
-.ap-history .ap-hist-meta{font-size:.85rem;color:var(--ink-soft);margin-bottom:.8rem}
-.ap-history table{width:100%;border-collapse:collapse;font-size:.9rem}
-.ap-history th{text-align:left;font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);padding:.4rem .6rem;border-bottom:1px solid var(--line-strong)}
+.ap-history h3{margin:0 0 .2rem;font-size:1.25rem}
+.ap-history .ap-hist-meta{font-size:.8rem;color:var(--ink-soft);margin-bottom:.8rem}
+.ap-history table{width:100%;border-collapse:collapse;font-size:1rem}
+.ap-history th{text-align:left;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);padding:.4rem .6rem;border-bottom:1px solid var(--line-strong)}
 .ap-history td{padding:.5rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
 .ap-filters .ap-count{opacity:.75;font-weight:400}
 </style>
@@ -90,7 +91,7 @@ table.ap-table{width:100%;border-collapse:collapse;min-width:820px}
   <div class="card reveal" style="text-align:left;margin-bottom:1.6rem" id="keyGate">
     <p style="margin:0 0 .5rem;font-weight:600;color:var(--oxblood)">Cherry, no key needed.</p>
     <p style="margin:0 0 1rem;color:var(--ink)"><a class="btn btn-primary" href="/login.html">Log in</a> with your email <strong>cherry38@cherrysage.com</strong>, then come back to this page and it opens on its own. (Forgot the password? Use "Forgot your password?" on the login page with that same email.)</p>
-    <details style="font-size:.85rem;color:var(--ink-soft)"><summary style="cursor:pointer">Have a private access key instead?</summary>
+    <details style="font-size:.8rem;color:var(--ink-soft)"><summary style="cursor:pointer">Have a private access key instead?</summary>
       <label style="display:grid;gap:.3rem;margin-top:.7rem">Access key
         <input id="adminKey" type="password" placeholder="Enter your key" style="padding:.7rem 1rem;border:1px solid var(--line-strong);border-radius:10px">
       </label>
@@ -218,7 +219,7 @@ table.ap-table{width:100%;border-collapse:collapse;min-width:820px}
     box.innerHTML='<div style="display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;flex-wrap:wrap">'+
         '<div><h3>'+esc(custName(first))+'</h3><div class="ap-hist-meta">'+esc(first.customer_email||'')+(first.customer_phone?' &middot; '+esc(first.customer_phone):'')+
         ' &middot; '+mine.length+' request'+(mine.length===1?'':'s')+' ('+esc(summary)+')</div></div>'+
-        '<button type="button" class="btn btn-ghost" id="apHistClose" style="padding:.4rem .9rem;font-size:.85rem">Close</button></div>'+
+        '<button type="button" class="btn btn-ghost" id="apHistClose" style="padding:.4rem .9rem;font-size:.8rem">Close</button></div>'+
       '<table><thead><tr><th>Date &amp; time</th><th>Reading</th><th>Status</th><th>Notes</th></tr></thead><tbody>'+
       mine.map(function(a){
         var notes=[];
@@ -305,7 +306,7 @@ table.ap-table{width:100%;border-collapse:collapse;min-width:820px}
   <div class="wrap footer-grid">
     <div>
       <div class="footer-brand"><img src="assets/mark-clean.png" alt=""><span>Cherry Sage</span></div>
-      <p style="font-size:.9rem">Honest, accurate psychic, tarot, and numerology readings by phone. Trusted since 1999.</p>
+      <p style="font-size:1rem">Honest, accurate psychic, tarot, and numerology readings by phone. Trusted since 1999.</p>
     </div>
     <div><h4>Readings</h4><ul><li><a href='/psychic-reading'>Psychic Reading</a></li><li><a href='/tarot'>Tarot Card Reading</a></li><li><a href='/numerology'>Numerology</a></li><li><a href='/how-it-works'>How It Works</a></li></ul></div>
     <div><h4>Explore</h4><ul><li><a href='/meet'>Meet Cherry</a></li><li><a href='/blog'>Blog</a></li><li><a href='/articles'>Guest Articles</a></li><li><a href='/testimonials'>Testimonials</a></li><li><a href='/policies'>Policies</a></li></ul></div>

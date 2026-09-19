@@ -424,10 +424,21 @@ main section>.wrap,.hero>.wrap,.page-hero>.wrap,.draw-section>.wrap{position:rel
 .fc3{top:16%;right:-170px;transform:rotate(7deg);animation:fcFloat 7.6s ease-in-out infinite .3s}
 .fc4{bottom:8%;right:-185px;transform:rotate(-6deg);animation:fcFloat 9s ease-in-out infinite .9s}
 @keyframes fcFloat{0%,100%{translate:0 0}50%{translate:0 -16px}}
-/* below 1180px+gutter there's no safe margin left for a 112px card, so drop to 2 (top-only)
-   cards well before the columns get tight, then drop entirely on tablet/mobile. */
-@media(max-width:1400px){.fc2,.fc4{display:none}}
-@media(max-width:1120px){.hero-floats{display:none}}
+/* Bev, 2026-09-19: "why didn't you tell me you removed the tarot card design on the home page."
+   Below ~1400px the page has no side gutter for the four wide-screen cards above, and they used
+   to be hidden outright. A second set now hugs the corners of her photo instead, so the design
+   is on every screen size. Same buttons, same tap-to-draw behavior (funnel.js binds .float-card). */
+.art-cards{display:none}
+.art-card{width:clamp(58px,6.6vw,88px);height:auto;aspect-ratio:112/176;font-size:1.15rem;z-index:2;border-width:2px}
+.art-card::after{inset:5px;border-radius:6px}
+.ac1{top:-4%;left:-2%;transform:rotate(-8deg);animation:fcFloat 7s ease-in-out infinite}
+.ac2{bottom:-4%;left:-4%;transform:rotate(6deg);animation:fcFloat 8.6s ease-in-out infinite .6s}
+.ac3{top:2%;right:-2%;transform:rotate(7deg);animation:fcFloat 7.6s ease-in-out infinite .3s}
+.ac4{bottom:-2%;right:-3%;transform:rotate(-6deg);animation:fcFloat 9s ease-in-out infinite .9s}
+@media(max-width:1400px){
+  .hero-floats{display:none}
+  .art-cards{display:block}
+}
 @media(prefers-reduced-motion:reduce){.float-card{animation:none}}
 
 /* ================= funnel modal ================= */
