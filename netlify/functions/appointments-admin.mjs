@@ -15,43 +15,31 @@ function json(o, status = 200) {
 
 const ALLOWED_STATUS = ["approved", "declined", "alternate_offered", "cancelled"];
 
-// Bev's own real login as a second way in, alongside the raw STATUS_ADMIN_KEY (RJ's way in,
-// left working unchanged). A valid Supabase session for one of these emails gets the real
-// key applied server-side -- the browser never sees it either way.
-const OWNER_EMAILS = ["cherry38@cherrysage.com", "admin@cherrysage.com"];
-
-// Resolves the real admin key to use for the RPC calls, from either auth path. Returns null
-// if neither checks out.
-async function resolveAdminKey(req, suppliedKey, supabase, realKey) {
-  const auth = req.headers.get("authorization") || "";
-  const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
-  if (token) {
-    const { data, error } = await supabase.auth.getUser(token);
-    const email = (data?.user?.email || "").toLowerCase();
-    if (!error && OWNER_EMAILS.includes(email)) return realKey;
-    return null;
-  }
-  if (realKey && suppliedKey === realKey) return realKey;
-  return null;
-}
+// 2026-09-19: no shared key. The site's source is public, so the old hardcoded admin key was
+// readable by anyone. The caller's own login token is forwarded to Supabase and the database
+// functions check cherry_sage.is_owner() (owner_emails table) before touching anything.
+const notOwner = (e) => /unauthorized/i.test(e?.message || "");
+const badToken = (e) => /jwt|token/i.test(e?.message || "");
 
 export default async (req) => {
-  const KEY = process.env.STATUS_ADMIN_KEY;
   const SUPABASE_URL = process.env.SUPABASE_URL;
   const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
   if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return json({ error: "not configured" }, 503);
-  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { db: { schema: "cherry_sage" } });
+  const auth = req.headers.get("authorization") || "";
+  if (!auth.startsWith("Bearer ")) return json({ error: "login required" }, 401);
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    db: { schema: "cherry_sage" }, global: { headers: { Authorization: auth } },
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
 
   if (req.method === "GET") {
     const url = new URL(req.url);
-    const key = await resolveAdminKey(req, url.searchParams.get("key"), supabase, KEY);
-    if (!key) return json({ error: "unauthorized" }, 401);
     const status = url.searchParams.get("status") || "pending_approval";
     const { data, error } = await supabase.rpc("admin_list_appointments", {
-      p_admin_key: key,
+      p_admin_key: "",
       p_status: status === "all" ? null : status,
     });
-    if (error) return json({ error: error.message }, 400);
+    if (error) return json({ error: badToken(error) ? "login required" : notOwner(error) ? "not the owner login" : error.message }, badToken(error) ? 401 : notOwner(error) ? 403 : 400);
     // The database returns full_name/email/phone but the appointments page reads
     // customer_name/customer_email/customer_phone, so every request showed "Unknown" (found
     // 2026-09-18, Bev). Provide both spellings.
@@ -64,20 +52,18 @@ export default async (req) => {
   if (req.method === "POST") {
     let d = {};
     try { d = await req.json(); } catch { return json({ error: "bad body" }, 400); }
-    const key = await resolveAdminKey(req, d.key, supabase, KEY);
-    if (!key) return json({ error: "unauthorized" }, 401);
     const id = String(d.id || "");
     const status = String(d.status || "");
     if (!id || !ALLOWED_STATUS.includes(status)) return json({ error: "bad request" }, 400);
 
     const { data, error } = await supabase.rpc("admin_update_appointment", {
-      p_admin_key: key,
+      p_admin_key: "",
       p_id: id,
       p_status: status,
       p_alternate_start: d.alternateStart || null,
       p_decision_note: d.note || null,
     });
-    if (error) return json({ error: error.message }, 400);
+    if (error) return json({ error: badToken(error) ? "login required" : notOwner(error) ? "not the owner login" : error.message }, badToken(error) ? 401 : notOwner(error) ? 403 : 400);
     const details = (data && data[0]) || null;
 
     var refundResult = null;

@@ -5,11 +5,6 @@
 import { getStore } from "@netlify/blobs";
 import { createClient } from "@supabase/supabase-js";
 
-const PIN = "0011";
-
-// Bev's own real login as a second way in, alongside the raw PIN (unchanged). Matches
-// appointments-admin.mjs's pattern.
-const OWNER_EMAILS = ["cherry38@cherrysage.com", "admin@cherrysage.com"];
 
 function json(o, status = 200) {
   return new Response(JSON.stringify(o), {
@@ -17,26 +12,24 @@ function json(o, status = 200) {
   });
 }
 
-async function resolveAdminKey(req, suppliedPin, realKey) {
+// 2026-09-19: the site's source is public, so a PIN written here is not a secret. Ownership is
+// now decided by the database: the caller's own login token is forwarded to Supabase and
+// cherry_sage.is_owner() checks it against cherry_sage.owner_emails.
+async function isOwner(req) {
   const auth = req.headers.get("authorization") || "";
-  const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
-  if (token) {
-    const SUPABASE_URL = process.env.SUPABASE_URL;
-    const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
-    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return null;
-    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { db: { schema: "cherry_sage" } });
-    const { data, error } = await supabase.auth.getUser(token);
-    const email = (data?.user?.email || "").toLowerCase();
-    if (!error && OWNER_EMAILS.includes(email)) return realKey;
-    return null;
-  }
-  if (realKey && suppliedPin === realKey) return realKey;
-  return null;
+  const SUPABASE_URL = process.env.SUPABASE_URL;
+  const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+  if (!auth.startsWith("Bearer ") || !SUPABASE_URL || !SUPABASE_ANON_KEY) return false;
+  const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    db: { schema: "cherry_sage" }, global: { headers: { Authorization: auth } },
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+  const { data, error } = await sb.rpc("is_owner");
+  return !error && data === true;
 }
 
 export default async (req) => {
-  const pin = await resolveAdminKey(req, req.headers.get("x-dashboard-pin") || "", PIN);
-  if (!pin) return json({ error: "unauthorized" }, 403);
+  if (!(await isOwner(req))) return json({ error: "unauthorized" }, 403);
 
   const store = getStore("sage-updates");
 

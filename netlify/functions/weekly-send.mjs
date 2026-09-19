@@ -1,11 +1,27 @@
 // Cherry Sage — sends "This Week's Insight" (Brevo template 19) to everyone on the Weekly Tips
-// Subscribers list (14). Admin-key gated: this reaches real subscriber inboxes, so it is never
+// Subscribers list (14). Owner-login gated: this reaches real subscriber inboxes, so it is never
 // public and never auto-fires on a schedule without a human triggering this call. Tracks who's
 // already been sent a given week's content (Blobs store "weekly-sent") so re-running the same
 // week's send is idempotent, never double-emails anyone.
 import { getStore } from "@netlify/blobs";
+import { createClient } from "@supabase/supabase-js";
 
-const SERVER_KEY = "CherrySage-hours-2026";
+// 2026-09-19: the site's source is public, so a PIN written here is not a secret. Ownership is
+// now decided by the database: the caller's own login token is forwarded to Supabase and
+// cherry_sage.is_owner() checks it against cherry_sage.owner_emails.
+async function isOwner(req) {
+  const auth = req.headers.get("authorization") || "";
+  const SUPABASE_URL = process.env.SUPABASE_URL;
+  const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+  if (!auth.startsWith("Bearer ") || !SUPABASE_URL || !SUPABASE_ANON_KEY) return false;
+  const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    db: { schema: "cherry_sage" }, global: { headers: { Authorization: auth } },
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+  const { data, error } = await sb.rpc("is_owner");
+  return !error && data === true;
+}
+
 const LIST_ID = 14;
 const TEMPLATE_ID = 19;
 
@@ -30,7 +46,7 @@ export default async (req) => {
 
   let d = {};
   try { d = await req.json(); } catch { return json({ error: "bad body" }, 400); }
-  if (d.key !== SERVER_KEY) return json({ error: "unauthorized" }, 403);
+  if (!(await isOwner(req))) return json({ error: "unauthorized: log in as the owner" }, 403);
 
   const insightBody = String(d.insightBody || "").trim();
   if (!insightBody) return json({ error: "insightBody is required, no default content is invented here" }, 422);

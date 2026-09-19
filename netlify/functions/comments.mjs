@@ -1,30 +1,25 @@
 // Cherry Sage — per-post blog/article comments. Moderated: every comment starts "pending"
 // and only shows publicly once approved via moderate-comments.html (admin-key gated).
 import { getStore } from "@netlify/blobs";
+import { createClient } from "@supabase/supabase-js";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const SLUG = /^[a-z0-9-]{1,200}$/;
 
-// Bev's own real login as a second way in, alongside the raw STATUS_ADMIN_KEY. Matches
-// appointments-admin.mjs's pattern exactly.
-const OWNER_EMAILS = ["cherry38@cherrysage.com", "admin@cherrysage.com"];
-
-async function resolveAdminKey(req, suppliedKey, realKey) {
+// 2026-09-19: the site's source is public, so a PIN written here is not a secret. Ownership is
+// now decided by the database: the caller's own login token is forwarded to Supabase and
+// cherry_sage.is_owner() checks it against cherry_sage.owner_emails.
+async function isOwner(req) {
   const auth = req.headers.get("authorization") || "";
-  const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
-  if (token) {
-    const SUPABASE_URL = process.env.SUPABASE_URL;
-    const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
-    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return null;
-    const { createClient } = await import("@supabase/supabase-js");
-    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { db: { schema: "cherry_sage" } });
-    const { data, error } = await supabase.auth.getUser(token);
-    const email = (data?.user?.email || "").toLowerCase();
-    if (!error && OWNER_EMAILS.includes(email)) return realKey;
-    return null;
-  }
-  if (realKey && suppliedKey === realKey) return realKey;
-  return null;
+  const SUPABASE_URL = process.env.SUPABASE_URL;
+  const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+  if (!auth.startsWith("Bearer ") || !SUPABASE_URL || !SUPABASE_ANON_KEY) return false;
+  const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    db: { schema: "cherry_sage" }, global: { headers: { Authorization: auth } },
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+  const { data, error } = await sb.rpc("is_owner");
+  return !error && data === true;
 }
 
 export default async (req) => {
@@ -34,8 +29,7 @@ export default async (req) => {
   if (req.method === "GET") {
     const admin = url.searchParams.get("admin");
     if (admin) {
-      const KEY = await resolveAdminKey(req, url.searchParams.get("key"), process.env.STATUS_ADMIN_KEY);
-      if (!KEY) return json({ error: "unauthorized" }, 401);
+      if (!(await isOwner(req))) return json({ error: "unauthorized" }, 401);
       const { blobs } = await store.list();
       const all = await Promise.all(blobs.map((b) => store.get(b.key, { type: "json" })));
       const pending = all.filter((c) => c && c.status === "pending").sort((a, b) => b.ts.localeCompare(a.ts));
@@ -58,8 +52,7 @@ export default async (req) => {
 
     // admin moderation action
     if (d.action === "approve" || d.action === "reject") {
-      const KEY = await resolveAdminKey(req, d.key, process.env.STATUS_ADMIN_KEY);
-      if (!KEY) return json({ error: "unauthorized" }, 401);
+      if (!(await isOwner(req))) return json({ error: "unauthorized" }, 401);
       const id = String(d.id || "");
       const rec = await store.get(id, { type: "json" });
       if (!rec) return json({ error: "not found" }, 404);
@@ -75,7 +68,7 @@ export default async (req) => {
     // site's other admin endpoints (dashboard/shop/status), not the STATUS_ADMIN_KEY, which is
     // unreliable -- see schedule.mjs's history for why. 2026-09-16.
     if (d.action === "import") {
-      if (String(d.pin || "") !== "0011") return json({ error: "unauthorized" }, 401);
+      if (!(await isOwner(req))) return json({ error: "unauthorized" }, 401);
       const items = Array.isArray(d.comments) ? d.comments.slice(0, 500) : [];
       let imported = 0, skipped = 0;
       for (const c of items) {

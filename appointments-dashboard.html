@@ -91,12 +91,6 @@ table.ap-table{width:100%;border-collapse:collapse;min-width:820px}
   <div class="card reveal" style="text-align:left;margin-bottom:1.6rem" id="keyGate">
     <p style="margin:0 0 .5rem;font-weight:600;color:var(--oxblood)">Cherry, no key needed.</p>
     <p style="margin:0 0 1rem;color:var(--ink)"><a class="btn btn-primary" href="/login.html">Log in</a> with your email <strong>cherry38@cherrysage.com</strong>, then come back to this page and it opens on its own. (Forgot the password? Use "Forgot your password?" on the login page with that same email.)</p>
-    <details style="font-size:.8rem;color:var(--ink-soft)"><summary style="cursor:pointer">Have a private access key instead?</summary>
-      <label style="display:grid;gap:.3rem;margin-top:.7rem">Access key
-        <input id="adminKey" type="password" placeholder="Enter your key" style="padding:.7rem 1rem;border:1px solid var(--line-strong);border-radius:10px">
-      </label>
-      <button id="loadBtn" class="btn btn-ghost" style="margin-top:.7rem" type="button">Load requests</button>
-    </details>
   </div>
   <div class="ap-toolbar">
     <div class="ap-filters" id="apFilters">
@@ -233,18 +227,15 @@ table.ap-table{width:100%;border-collapse:collapse;min-width:820px}
   }
 
   function load(){
-    if(!ownerToken){
-      key=document.getElementById('adminKey').value.trim();
-      if(!key){ alert('Enter your access key first.'); return; }
-    }
+    if(!ownerToken){ alert('Please log in first with cherry38@cherrysage.com.'); return; }
     // Always load everything once; the filter buttons and customer history work from this one list.
-    var url='/.netlify/functions/appointments-admin?status=all'+(ownerToken?'':'&admin=1&key='+encodeURIComponent(key));
+    var url='/.netlify/functions/appointments-admin?status=all';
     fetch(url,{headers:authHeaders()})
-      .then(function(r){ if(r.status===401){ alert('That key was not accepted.'); return null; } return r.json(); })
+      .then(function(r){ if(r.status===401||r.status===403){ alert('Please log in again with cherry38@cherrysage.com.'); return null; } return r.json(); })
       .then(function(d){ if(d){ allAppts=d.appointments||[]; render(); } });
   }
 
-  document.getElementById('loadBtn').addEventListener('click', load);
+  var loadBtn=document.getElementById('loadBtn'); if(loadBtn) loadBtn.addEventListener('click', load);
 
   document.getElementById('apFilters').addEventListener('click', function(e){
     var btn=e.target.closest('button[data-status]'); if(!btn) return;

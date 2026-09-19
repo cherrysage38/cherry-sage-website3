@@ -6,31 +6,25 @@
 import { createClient } from "@supabase/supabase-js";
 import { getStore } from "@netlify/blobs";
 
-// Bev's own real login as a second way in, alongside the raw PIN below (unchanged). A valid
-// Supabase session for one of these emails resolves to the same fixed PIN server-side -- the
-// browser never needs to know or send it either way. Matches appointments-admin.mjs's pattern.
-const OWNER_EMAILS = ["cherry38@cherrysage.com", "admin@cherrysage.com"];
-const PIN = "0011";
+// 2026-09-19: no PIN (the site's source is public). The caller's own login token is forwarded to
+// Supabase and the database function checks cherry_sage.is_owner() itself.
+function ownerClient(req) {
+  const auth = req.headers.get("authorization") || "";
+  const SUPABASE_URL = process.env.SUPABASE_URL;
+  const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+  if (!auth.startsWith("Bearer ") || !SUPABASE_URL || !SUPABASE_ANON_KEY) return null;
+  return createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    db: { schema: "cherry_sage" }, global: { headers: { Authorization: auth } },
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+}
+const notOwner = (e) => /unauthorized/i.test(e?.message || "");
+const badToken = (e) => /jwt|token/i.test(e?.message || "");
 
 function json(o, status = 200) {
   return new Response(JSON.stringify(o), {
     status, headers: { "content-type": "application/json", "cache-control": "no-store" },
   });
-}
-
-// Resolves the pin to send to dashboard_summary(), from either auth path. Leaves the plain-PIN
-// path's behavior (including wrong-PIN handling below) completely unchanged when no bearer
-// token is present.
-async function resolveAdminKey(req, suppliedPin, supabase, realKey) {
-  const auth = req.headers.get("authorization") || "";
-  const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
-  if (token) {
-    const { data, error } = await supabase.auth.getUser(token);
-    const email = (data?.user?.email || "").toLowerCase();
-    if (!error && OWNER_EMAILS.includes(email)) return realKey;
-    return null;
-  }
-  return suppliedPin || null;
 }
 
 export default async (req) => {
@@ -39,15 +33,13 @@ export default async (req) => {
   const BREVO_KEY = process.env.BREVO_KEY;
   if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return json({ error: "not configured" }, 503);
 
-  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { db: { schema: "cherry_sage" } });
+  const supabase = ownerClient(req);
+  if (!supabase) return json({ error: "login required" }, 401);
 
-  const pin = await resolveAdminKey(req, req.headers.get("x-dashboard-pin") || "", supabase, PIN);
-  if (!pin) return json({ error: "pin required" }, 401);
-
-  const { data: summary, error: rpcErr } = await supabase.rpc("dashboard_summary", { p_pin: pin });
+  const { data: summary, error: rpcErr } = await supabase.rpc("dashboard_summary", { p_pin: "" });
   if (rpcErr) {
-    const msg = /unauthorized/i.test(rpcErr.message || "") ? "wrong pin" : "could not load summary";
-    return json({ error: msg }, rpcErr.message?.includes("unauthorized") ? 403 : 500);
+    if (badToken(rpcErr)) return json({ error: "login required" }, 401);
+    return json({ error: notOwner(rpcErr) ? "not the owner login" : "could not load summary" }, notOwner(rpcErr) ? 403 : 500);
   }
 
   // Contact-form leads (Netlify Blobs) -- best-effort, never fails the whole summary.
