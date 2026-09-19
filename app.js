@@ -256,7 +256,8 @@ window.CSCart = (function(){
       document.body.appendChild(el);
     }
     var money = '$'+(total()/100).toFixed(2);
-    el.innerHTML = '<span aria-hidden="true">&#128715;</span> Cart ('+items.length+') &middot; '+money;
+    // Was &#128715; (couch and lamp), meant to be a cart -- flagged in Bev's site review 2026-09-18.
+    el.innerHTML = '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.2L21 8H6"/></svg> Cart ('+items.length+') &middot; '+money;
   }
 
   if(document.readyState!=='loading') renderWidget(); else document.addEventListener('DOMContentLoaded', renderWidget);
