@@ -86,7 +86,7 @@
     <input type="password" inputmode="numeric" id="gatePin" placeholder="PIN" autocomplete="off">
     <button class="btn btn-primary" id="gateSend" style="width:100%">Open Dashboard</button>
     <p class="msg" id="gateMsg"></p>
-    <p style="margin:.9rem 0 0;font-size:.85rem;color:var(--ink-soft)">Already logged in with your account? <a href="/login.html">Log in here</a>, then reload this page.</p>
+    <p style="margin:.9rem 0 0;font-size:.85rem;color:var(--ink-soft)">Cherry, no PIN needed: <a href="/login.html">log in</a> with <strong>cherry38@cherrysage.com</strong> and this page opens on its own. (Forgot the password? Use "Forgot your password?" on the login page.)</p>
   </div>
 
   <div id="dashApp" hidden>
@@ -163,30 +163,34 @@
     </div>
 
     <div class="dash-panel" id="panel-coupons">
-      <p style="color:var(--ink-soft);font-size:.9rem;margin:0 0 1.2rem">Create and manage discount codes yourself. Codes are checked automatically at checkout, no code changes needed.</p>
-      <form id="couponForm" style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:flex-end;margin-bottom:1.4rem;padding:1rem;border:1px solid var(--line-strong);border-radius:12px">
-        <label style="display:flex;flex-direction:column;font-size:.78rem;color:var(--ink-soft);gap:.25rem">Code
+      <p style="color:var(--ink-soft);font-size:.9rem;margin:0 0 1.2rem">Create and manage discount codes yourself. Codes are checked automatically at checkout, no code changes needed. For a code only you can use (for testing), fill in "Only these emails."</p>
+      <form id="couponForm" style="display:flex;gap:.8rem 1rem;flex-wrap:wrap;align-items:flex-end;margin-bottom:1.4rem;padding:1rem;border:1px solid var(--line-strong);border-radius:12px">
+        <label style="display:flex;flex-direction:column;font-size:.78rem;color:var(--ink-soft);gap:.25rem">Code (what the customer types)
           <input type="text" id="cpnCode" placeholder="SAVE20" required style="padding:.55rem .7rem;border:1px solid var(--line-strong);border-radius:8px;text-transform:uppercase">
         </label>
-        <label style="display:flex;flex-direction:column;font-size:.78rem;color:var(--ink-soft);gap:.25rem">Type
+        <label style="display:flex;flex-direction:column;font-size:.78rem;color:var(--ink-soft);gap:.25rem">Discount type
           <select id="cpnType" style="padding:.55rem .7rem;border:1px solid var(--line-strong);border-radius:8px">
-            <option value="percent">% off</option>
-            <option value="fixed">$ off (cents)</option>
+            <option value="percent">Percent off (%)</option>
+            <option value="fixed">Dollars off ($)</option>
           </select>
         </label>
-        <label style="display:flex;flex-direction:column;font-size:.78rem;color:var(--ink-soft);gap:.25rem">Value
-          <input type="number" id="cpnValue" min="1" required placeholder="20" style="padding:.55rem .7rem;border:1px solid var(--line-strong);border-radius:8px;width:6rem">
+        <label style="display:flex;flex-direction:column;font-size:.78rem;color:var(--ink-soft);gap:.25rem"><span id="cpnValueLabel">Percent off (100 = free)</span>
+          <input type="number" id="cpnValue" min="1" step="any" required placeholder="20" style="padding:.55rem .7rem;border:1px solid var(--line-strong);border-radius:8px;width:8rem">
         </label>
         <label style="display:flex;flex-direction:column;font-size:.78rem;color:var(--ink-soft);gap:.25rem">Max total uses
           <input type="number" id="cpnMax" min="1" placeholder="No limit" style="padding:.55rem .7rem;border:1px solid var(--line-strong);border-radius:8px;width:7rem">
         </label>
+        <label style="display:flex;flex-direction:column;font-size:.78rem;color:var(--ink-soft);gap:.25rem;flex:1 1 260px">Only these emails (optional, comma-separated)
+          <input type="text" id="cpnEmails" placeholder="Leave blank so anyone can use it" style="padding:.55rem .7rem;border:1px solid var(--line-strong);border-radius:8px">
+        </label>
         <label style="display:flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--ink)">
           <input type="checkbox" id="cpnOneTime" checked> One use per customer
         </label>
+        <p id="cpnPreview" style="margin:0;font-size:.85rem;color:var(--ink-soft);flex-basis:100%"></p>
         <button class="btn btn-primary" type="submit">Create Coupon</button>
         <p id="cpnNote" style="margin:0;font-size:.85rem" hidden></p>
       </form>
-      <table class="dash-table"><thead><tr><th>Code</th><th>Discount</th><th>One-time</th><th>Used / Max</th><th>Status</th><th></th></tr></thead><tbody id="couponsBody"><tr><td colspan="6" class="empty-note">Loading…</td></tr></tbody></table>
+      <table class="dash-table"><thead><tr><th>Code</th><th>Discount</th><th>Who can use it</th><th>One-time</th><th>Used / Max</th><th>Status</th><th></th></tr></thead><tbody id="couponsBody"><tr><td colspan="7" class="empty-note">Loading…</td></tr></tbody></table>
     </div>
 
     <div class="dash-panel" id="panel-sitemap">
@@ -363,15 +367,16 @@
     fetch('/.netlify/functions/admin-coupons',{headers:adminHeaders()})
       .then(function(r){ return r.json(); })
       .then(function(d){ renderCoupons(d.coupons||[]); })
-      .catch(function(){ document.getElementById('couponsBody').innerHTML='<tr><td colspan="6" class="empty-note" style="color:var(--cherry)">Could not load coupons.</td></tr>'; });
+      .catch(function(){ document.getElementById('couponsBody').innerHTML='<tr><td colspan="7" class="empty-note" style="color:var(--cherry)">Could not load coupons.</td></tr>'; });
   }
   function renderCoupons(list){
     var body=document.getElementById('couponsBody');
-    if(!list.length){ body.innerHTML='<tr><td colspan="6" class="empty-note">No coupons yet.</td></tr>'; return; }
+    if(!list.length){ body.innerHTML='<tr><td colspan="7" class="empty-note">No coupons yet.</td></tr>'; return; }
     body.innerHTML=list.map(function(c){
-      var discount = c.discount_type==='percent' ? (c.discount_value+'% off') : money(c.discount_value)+' off';
+      var discount = c.discount_type==='percent' ? (c.discount_value+'% off'+(c.discount_value>=100?' (free)':'')) : money(c.discount_value)+' off';
       var used = c.times_redeemed+' / '+(c.max_total_redemptions!=null?c.max_total_redemptions:'∞');
-      return '<tr><td>'+esc(c.code)+'</td><td>'+discount+'</td><td>'+(c.one_time_use_per_customer?'Yes':'No')+'</td><td>'+used+'</td>'+
+      var who = (c.allowed_emails && c.allowed_emails.length) ? ('Only: '+c.allowed_emails.map(esc).join(', ')) : 'Anyone';
+      return '<tr><td>'+esc(c.code)+'</td><td>'+discount+'</td><td style="font-size:.85rem;max-width:260px;word-break:break-word">'+who+'</td><td>'+(c.one_time_use_per_customer?'Yes':'No')+'</td><td>'+used+'</td>'+
         '<td>'+(c.active?'Active':'Off')+'</td>'+
         '<td><button class="btn btn-ghost" type="button" data-toggle="'+c.id+'" data-active="'+(!c.active)+'" style="padding:.35rem .8rem;font-size:.8rem">'+(c.active?'Turn off':'Turn on')+'</button></td></tr>';
     }).join('');
@@ -390,17 +395,24 @@
     e.preventDefault();
     var note=document.getElementById('cpnNote'), btn=this.querySelector('button[type=submit]');
     var code=document.getElementById('cpnCode').value.trim();
-    var value=Number(document.getElementById('cpnValue').value);
-    if(!code || !value){ note.hidden=false; note.style.color='var(--cherry)'; note.textContent='Enter a code and a value.'; return; }
+    var type=document.getElementById('cpnType').value;
+    var entered=Number(document.getElementById('cpnValue').value);
+    if(!code || !entered){ note.hidden=false; note.style.color='var(--cherry)'; note.textContent='Enter a code and an amount.'; return; }
+    if(type==='percent' && (entered<1 || entered>100)){ note.hidden=false; note.style.color='var(--cherry)'; note.textContent='Percent off has to be between 1 and 100 (100 means free).'; return; }
+    // The database stores dollar discounts in cents, but nobody should have to think in cents.
+    var value = type==='percent' ? Math.round(entered) : Math.round(entered*100);
+    var emails=(document.getElementById('cpnEmails').value||'').split(/[,;\s]+/).map(function(s){return s.trim();}).filter(Boolean);
+    for(var i=0;i<emails.length;i++){ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emails[i])){ note.hidden=false; note.style.color='var(--cherry)'; note.textContent='"'+emails[i]+'" does not look like an email address.'; return; } }
     note.hidden=true; btn.disabled=true; btn.textContent='Creating…';
     var maxRaw=document.getElementById('cpnMax').value.trim();
     fetch('/.netlify/functions/admin-coupons',{method:'POST',headers:Object.assign({'content-type':'application/json'},adminHeaders()),
       body:JSON.stringify({
         action:'create', pin:getPin(), code:code,
-        discount_type:document.getElementById('cpnType').value,
+        discount_type:type,
         discount_value:value,
         one_time_use_per_customer:document.getElementById('cpnOneTime').checked,
         max_total_redemptions:maxRaw?Number(maxRaw):null,
+        allowed_emails:emails.length?emails:null,
       })})
       .then(function(r){return r.json();})
       .then(function(d){
@@ -409,10 +421,35 @@
         note.hidden=false; note.style.color='var(--sage)'; note.textContent='Coupon created.';
         document.getElementById('couponForm').reset();
         document.getElementById('cpnOneTime').checked=true;
+        updateCouponPreview();
         loadCoupons();
       })
       .catch(function(){ btn.disabled=false; btn.textContent='Create Coupon'; note.hidden=false; note.style.color='var(--cherry)'; note.textContent='Something went wrong, please try again.'; });
   });
+
+  // Plain-English readback of what the code will do, so there is never a question of whether
+  // the number is a percent or dollars (Bev, 2026-09-18: "I don't see where it calculates a percentage").
+  function updateCouponPreview(){
+    var type=document.getElementById('cpnType').value;
+    var v=Number(document.getElementById('cpnValue').value);
+    var code=(document.getElementById('cpnCode').value||'').trim().toUpperCase()||'this code';
+    var emails=(document.getElementById('cpnEmails').value||'').split(/[,;\s]+/).filter(Boolean);
+    var max=document.getElementById('cpnMax').value.trim();
+    document.getElementById('cpnValueLabel').textContent = type==='percent' ? 'Percent off (100 = free)' : 'Dollars off (e.g. 10 = $10)';
+    var what;
+    if(!v){ what='the discount you enter'; }
+    else if(type==='percent'){ what = v>=100 ? '100% off, so the order is free' : (v+'% off the price'); }
+    else { what='$'+v.toFixed(2)+' off the price'; }
+    var who = emails.length ? ('Only '+emails.join(', ')+' can use it') : 'Anyone can use it';
+    var extra=[];
+    if(document.getElementById('cpnOneTime').checked) extra.push('once per customer');
+    if(max) extra.push('up to '+max+' times total');
+    document.getElementById('cpnPreview').textContent='Result: entering '+code+' at checkout gives '+what+'. '+who+(extra.length?', '+extra.join(', '):'')+'.';
+  }
+  ['cpnCode','cpnType','cpnValue','cpnMax','cpnEmails','cpnOneTime'].forEach(function(id){
+    var el=document.getElementById(id); el.addEventListener('input',updateCouponPreview); el.addEventListener('change',updateCouponPreview);
+  });
+  updateCouponPreview();
 
   function renderHome(d){
     var urgent=document.getElementById('homeUrgent');

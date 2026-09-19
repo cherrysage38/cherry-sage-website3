@@ -52,6 +52,7 @@ export default async (req) => {
         p_discount_value: Number(d.discount_value),
         p_one_time_use_per_customer: !!d.one_time_use_per_customer,
         p_max_total_redemptions: d.max_total_redemptions ? Number(d.max_total_redemptions) : null,
+        p_allowed_emails: Array.isArray(d.allowed_emails) && d.allowed_emails.length ? d.allowed_emails.map((e) => String(e)) : null,
       });
       if (error) return json({ error: error.message || "could not create coupon" }, /unauthorized/i.test(error.message || "") ? 403 : 422);
       return json({ ok: true, id: data });
