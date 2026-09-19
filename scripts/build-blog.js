@@ -206,6 +206,8 @@ function main() {
       console.warn(`[build-blog] Skipping ${file}: "${data.category}" isn't one of blog.html's real categories.`);
       continue;
     }
+    // The editor's date widget can write a full timestamp depending on version/settings; only the day matters.
+    data.date = String(data.date).trim().slice(0, 10);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(data.date)) {
       console.warn(`[build-blog] Skipping ${file}: date must be YYYY-MM-DD.`);
       continue;

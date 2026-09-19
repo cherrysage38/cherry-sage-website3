@@ -36,7 +36,7 @@ collections:
     summary: "{{title}} — {{category}}"
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "The post's headline." }
-      - { label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD", hint: "Shown on the post and used to sort it into the right month in your Archive list." }
+      - { label: "Date", name: "date", widget: "datetime", type: "date", format: "YYYY-MM-DD", hint: "Shown on the post and used to sort it into the right month in your Archive list." }
       - { label: "Category", name: "category", widget: "select", hint: "Pick the topic this post belongs to — these are the exact topics shown on your Blog page.", options: ["Psychic Readings", "Numerology", "Other World", "Predicting Dates or Timelines", "Gypsy Scams", "Tarot Card Readings", "Online Psychic Readings", "Karma & Past Lives"] }
       - { label: "Author (optional)", name: "author", widget: "string", required: false, hint: "Leave blank to show as written by Cherry Sage." }
       - { label: "Featured image", name: "image", widget: "image", hint: "This shows on the post card and at the top of the post." }
