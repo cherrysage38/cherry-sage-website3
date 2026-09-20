@@ -7,11 +7,9 @@ import { createClient } from "@supabase/supabase-js";
 import { getStore } from "@netlify/blobs";
 
 const CLOVER_API_BASE = "https://api.clover.com";
-// The payment-confirmation key. The literal below is public (this repo is public) and is only a
-// TEMPORARY fallback so checkout keeps working until CS_SERVER_KEY is set in Netlify. Once it is
-// set and a $0 test order passes, the database stops accepting the literal and this fallback
-// is deleted. See 2026-09-19 notes.
-const SERVER_KEY = process.env.CS_SERVER_KEY || "CherrySage-hours-2026";
+// Payment-confirmation key: a secret Netlify setting (CS_SERVER_KEY), checked by the database
+// (cherry_sage.server_key_ok). Never write the value in this repo, it is public.
+const SERVER_KEY = process.env.CS_SERVER_KEY;
 
 function json(o, status = 200) {
   return new Response(JSON.stringify(o), {
