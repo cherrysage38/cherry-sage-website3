@@ -94,7 +94,7 @@
     res.innerHTML='<p class="eyebrow">Your card</p><p class="pull-name">'+card.n+'</p><p class="pull-keys">'+card.k+'</p>'+
       '<p class="pull-refl">'+lead+'<strong>'+card.n+'</strong>. '+card.r+'</p>'+
       '<p class="pull-note">For reflection only. A real reading with Cherry goes far beyond a single card.</p>'+
-      '<div class="btn-row" style="justify-content:center"><a class="btn btn-primary" href="/shop.html">Book a real reading</a> '+
+      '<div class="btn-row" style="justify-content:center"><a class="btn btn-primary" href="/book-appointment">Book a real reading</a> '+
       '<button class="btn btn-ghost" id="drawAgain" type="button">Pull another card</button></div>'+optin;
     document.getElementById('drawAgain').onclick=reset;
     if(window.CSFunnel&&window.CSFunnel.wireOptin) window.CSFunnel.wireOptin(res);

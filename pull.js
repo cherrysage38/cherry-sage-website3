@@ -90,7 +90,7 @@
           qline+
           '<p class="pull-refl">'+(reversed?c.rv:(c.r+' '+c.p))+'</p>'+
           '<p class="t-forreflection">A single card is a spark, not the whole story. Cherry reads the full picture with you, one to one.</p>'+
-          '<div class="t-actions"><a class="btn btn-gold" href="/shop">Book a reading with Cherry</a> <button class="btn btn-ghost" id="tAgain" type="button">Pull again</button></div>'+
+          '<div class="t-actions"><a class="btn btn-gold" href="/book-appointment">Book a reading with Cherry</a> <button class="btn btn-ghost" id="tAgain" type="button">Pull again</button></div>'+
           (window.CSFunnel?window.CSFunnel.optinHTML('tarot-pull',''):'')+
         '</div>';
         if(window.CSFunnel&&window.CSFunnel.wireOptin) window.CSFunnel.wireOptin(result);
@@ -105,7 +105,7 @@
       result.hidden=false;
       result.innerHTML='<div class="card t-reveal"><p class="eyebrow">A gentle pause</p><h2>Let\'s slow down a moment</h2>'+
         '<p class="pull-refl">That sounds heavy, and it deserves far more than a card. This little tool is only for reflection. For something real and caring, please talk it through with Cherry, or reach a professional who can truly help.</p>'+
-        '<a class="btn btn-primary" href="/shop">Book a reading with Cherry</a> <button class="btn btn-ghost" id="tAgain" type="button">Start over</button></div>';
+        '<a class="btn btn-primary" href="/book-appointment">Book a reading with Cherry</a> <button class="btn btn-ghost" id="tAgain" type="button">Start over</button></div>';
       var again=scope.querySelector('#tAgain');
       if(again) again.onclick=function(){ if(q)q.value=''; buildDeck(); };
     }

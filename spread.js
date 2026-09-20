@@ -63,7 +63,7 @@
       '<p class="eyebrow">Your spread</p>'+
       (question?'<p class="pull-q">Holding your question, '+esc(question.replace(/[.?!]+$/,''))+'…</p>':'')+
       '<p class="pull-refl">Three cards show the shape of a story: where it has been, where it stands, and where it is leaning. It is a spark for reflection, not the whole picture. Cherry reads the full story with you, one to one.</p>'+
-      '<div class="t-actions"><a class="btn btn-gold" href="/shop">Book a reading with Cherry</a> <button class="btn btn-ghost" id="sAgain" type="button">New spread</button></div>'+
+      '<div class="t-actions"><a class="btn btn-gold" href="/book-appointment">Book a reading with Cherry</a> <button class="btn btn-ghost" id="sAgain" type="button">New spread</button></div>'+
       (window.CSFunnel?window.CSFunnel.optinHTML('tarot-spread',''):'')+
     '</div>';
     if(window.CSFunnel&&window.CSFunnel.wireOptin) window.CSFunnel.wireOptin(result);
@@ -81,6 +81,6 @@
   function gentle(){ s1.hidden=true; s2.hidden=true; result.hidden=false;
     result.innerHTML='<div class="card"><p class="eyebrow">A gentle pause</p><h3>Let\'s slow down a moment</h3>'+
       '<p class="pull-refl">That sounds heavy, and it deserves far more than cards. This little tool is only for reflection. For something real and caring, please talk it through with Cherry, or reach a professional who can truly help.</p>'+
-      '<a class="btn btn-primary" href="/shop">Book a reading with Cherry</a></div>'; }
+      '<a class="btn btn-primary" href="/book-appointment">Book a reading with Cherry</a></div>'; }
   function reset(){ result.hidden=true; s2.hidden=true; s1.hidden=false; s1.scrollIntoView({behavior:'smooth',block:'center'}); }
 })();

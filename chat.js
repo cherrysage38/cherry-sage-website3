@@ -46,20 +46,20 @@
     "For something that personal, Cherry reads it with you herself by phone. I can get you booked, or point you to a free tool to try first. Which sounds good?",
     "Happy to help. I can share pricing, how a reading works, get you booked, or send you to a free card pull. Where would you like to start?"
   ];
-  function defaultReply(){ return DEFAULTS[_dc++ % DEFAULTS.length]+' '+cta('/shop.html','Book with Cherry'); }
+  function defaultReply(){ return DEFAULTS[_dc++ % DEFAULTS.length]+' '+cta('/book-appointment','Book with Cherry'); }
   function answer(key){
     switch(key){
-      case 'thanks': return 'You are so welcome. Whenever you are ready, Cherry is here for you. '+cta('/shop.html','Book a reading');
+      case 'thanks': return 'You are so welcome. Whenever you are ready, Cherry is here for you. '+cta('/book-appointment','Book a reading');
       case 'pricing': return 'Cherry reads by phone, one to one. First-time callers get a special rate (10 minutes for $24), and sessions run from 15 up to 60 minutes. There are also written numerology reports. '+cta('/shop.html','See all readings & pricing');
       case 'how': return 'It is simple: check availability, pick your time and how many minutes, and pay in one pass. No separate sign-up, no checking out twice. '+cta('/how-it-works.html','See how it works');
-      case 'book': return 'Lovely. Book your minutes and pick a time, then at your scheduled time you call Cherry for your reading. '+cta('/shop.html','Book a reading');
+      case 'book': return 'Lovely. Choose a time that works for you and send Cherry a request. She confirms it directly, and at your time you call her for your reading. '+cta('/book-appointment','Book a reading');
       case 'free': return 'Yes! There is a free card you can pull, just for reflection. Want me to take you to it?'+cta('#draw','Draw a free card');
       case 'numerology': return 'Cherry reads Life Path, Expression, Soul Urge, and Karmic Debt. You can try the free Life Path calculator, or get a full written profile. '+cta('/life-path.html','Try free numerology');
       case 'weekly': return 'I can set that up. Leave your email and Cherry will send a few quick questions to get to know you, then honest weekly tips made just for you.'+
         '<form class="cs-chat-optin"><input type="email" placeholder="Enter your email address" required><button type="submit">Send me weekly tips</button></form><p class="cs-chat-note"></p>';
-      case 'reading': return 'Cherry gives the readings herself, by phone, so they are truly personal. I am just her assistant here to help you find your way. Want to book, or pull a free card for reflection?'+cta('/shop.html','Book with Cherry');
+      case 'reading': return 'Cherry gives the readings herself, by phone, so they are truly personal. I am just her assistant here to help you find your way. Want to book, or pull a free card for reflection?'+cta('/book-appointment','Book with Cherry');
       case 'about': return 'Cherry has been reading since 1999, that is 27 years, and about 90% of her clients are repeat callers. She is honest over fantasy, always. '+cta('/meet.html','Meet Cherry');
-      case 'available': return 'Cherry reads by phone. Book a time that works for you, then you call her at that time. '+cta('/shop.html','Check times & book');
+      case 'available': return 'Cherry reads by phone. Choose a time that works for you and she will confirm it, then you call her at that time. '+cta('/book-appointment','Check times & book');
       case 'hi': return 'Hello, I am so glad you are here. I am Ivy, Cherry\'s assistant. I can help you book a reading, find pricing, or pull a free card. What would you like?';
       default: return defaultReply();
     }
@@ -102,7 +102,7 @@
   function scripted(t){ ivy(answer(intent(t))); }
   // turn Ivy's [[shop]]/[[free]]/[[contact]]/[[numerology]] tags into real CTA links
   function linkify(s){
-    var map={shop:['/shop.html','Book a reading'],free:['#draw','Draw a free card'],
+    var map={shop:['/book-appointment','Book a reading'],free:['#draw','Draw a free card'],
              contact:['/contact.html','Reach Cherry'],numerology:['/life-path.html','Try free numerology']};
     return esc(s).replace(/\[\[(shop|free|contact|numerology)\]\]/g,function(_,k){
       return '<a class="cs-cta" href="'+map[k][0]+'">'+map[k][1]+'</a>'; });

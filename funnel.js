@@ -81,7 +81,7 @@
       '<p class="cs-modal-keys">'+card.k+'</p>'+
       '<p class="cs-modal-refl">'+card.r+'</p>'+
       '<p class="cs-modal-fine">For reflection only. A real reading with Cherry goes far beyond a single card.</p>'+
-      '<a class="btn btn-gold cs-modal-cta" href="/shop.html">Book a real reading with Cherry</a>'+
+      '<a class="btn btn-gold cs-modal-cta" href="/book-appointment">Book a real reading with Cherry</a>'+
       optinHTML('weekly-tips-hero', card.n)
     );
     wireOptin(body);
@@ -131,7 +131,7 @@
       '<p class="cs-modal-keys">'+card.k+'</p>'+
       '<p class="cs-modal-refl">'+card.r+'</p>'+
       '<p class="cs-modal-fine">For reflection only. A real reading with Cherry goes far beyond a single card.</p>'+
-      '<a class="btn btn-gold cs-modal-cta" href="/shop.html">Book a real reading with Cherry</a>'+
+      '<a class="btn btn-gold cs-modal-cta" href="/book-appointment">Book a real reading with Cherry</a>'+
       optinHTML('popup-shuffle', card.n);
     wireOptin(body);
     var form=body.querySelector('.cs-optin-form');
