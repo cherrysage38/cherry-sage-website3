@@ -1,13 +1,11 @@
 ---
 title: "Real Psychic Readings and Why It's Not So Easy to Find An Authentic Psychic"
 category: "Psychic Readings"
+author: "Cherry Sage"
 date: "2017-07-13"
 image: "/assets/articles/real-psychic-readings-and-why-its-not-so-easy-to-find-an-authentic-psychic.jpg"
-description: "By Cherry Sage A psychic reading is something that can be a very rewarding as well as a valuable experience. It is something that is not so hard to find;..."
+description: "A psychic reading is something that can be a very rewarding as well as a valuable experience. It is something that is not so hard to find;..."
 ---
-
-By Cherry Sage
-
 A psychic reading is something that can be a very rewarding as well as a valuable experience. It is something that is not so hard to find; you can find them on networks on the web, you can find ads for them in the back of magazines, or promoted on television commercials. They are not hard to find–or are they?
 
 With the immediate availability of psychic readers all over the world, it should be a very simple process to find one. One of the most common ways to find a psychic is to do a search on the internet. You type in real psychic readings or “authentic psychic readings.” After all, with the very prevalent perception of all psychics being fake or tricksters, you definitely want to be careful in your search because you want to make sure that you are going to get a real one.

@@ -1,13 +1,11 @@
 ---
 title: "Weight Loss - There are No Quick Fixes"
 category: "Herbal Remedies"
+author: "Healthy My Way"
 date: "2017-07-12"
 image: "/assets/articles/weight-loss-there-are-no-quick-fixes.jpg"
-description: "By http://www.healthymyway.com 'We are so programmed to believe that everyone except us knows what is good for us,' says Mariel. 'It took me until my late..."
+description: "'We are so programmed to believe that everyone except us knows what is good for us,' says Mariel. 'It took me until my late..."
 ---
-
-By http://www.healthymyway.com
-
 *“We are so programmed to believe that everyone except us knows what is good for us,” says Mariel. “It took me until my late thirties before I truly mellowed out and learned to trust my own instincts rather than rely on a squadron of experts. I realized with a shock that I could be the expert on me.” Weight loss can be a battle for many people. You may feel like it’s a constant uphill battle that you’ll forever contend with. It can be discouraging. One of the problems with weight loss is that many people look for a quick fix to help them lose weight quickly. In truth, it’s an overall lifestyle change that will truly help you with your weight loss goals.*
 
 For weight loss, there are some excellent natural products that can help you manage your cravings, burn more calories and supplements that can deliver extra energy or protein to help you achieve your goals but these things have to be paired with your willingness to change your lifestyle. The key is that they help you when you are already working towards changing the things about your life that cause you to gain excessive weight.

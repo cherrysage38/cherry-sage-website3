@@ -1,14 +1,12 @@
 ---
 title: "Edgar Cayce and Future Prophecies"
 category: "Psychic & Paranormal"
+author: "David Maillie"
 date: "2017-07-12"
 image: "/assets/articles/edgar-cayce-and-future-prophecies.jpg"
-description: "By David Maillie p>Edgar Cayce is well known as the biggest psychic of the twentieth century and has even been featured on TV programs with the likes of..."
+description: "p>Edgar Cayce is well known as the biggest psychic of the twentieth century and has even been featured on TV programs with the likes of..."
 ---
-
-By David Maillie
-
-p\>Edgar Cayce is well known as the biggest psychic of the twentieth century and has even been featured on TV programs with the likes of Nostradamus and such – The Other Nostradamus on the History channel. The amazing thing is his prophecies are more exact and are still coming true – and they were all done while Edgar Cayce was asleep!
+Edgar Cayce is well known as the biggest psychic of the twentieth century and has even been featured on TV programs with the likes of Nostradamus and such – The Other Nostradamus on the History channel. The amazing thing is his prophecies are more exact and are still coming true – and they were all done while Edgar Cayce was asleep!
 
 Yes, many prophecies from Nostradamus to Sylvia Brown tell of forthcoming doom – earthquakes, fire from the skies, the second coming of Jesus, the Revelations coming true, etc… And yes Edgar Cayce does hint at some of these things coming true – A major earthquake in Japan where half or more of Japan falls into the sea, a restructuring of our continent, NYC under water or destroyed in some fashion, etc… But he also, in many of his readings tells of a more gradual change – a new birth for our world. A world with stronger religious ties and a global unified family.
 

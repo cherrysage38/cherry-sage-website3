@@ -1,13 +1,11 @@
 ---
 title: "Intuition: Intuition and Psychic Energy - Where Do They Come From?"
 category: "Psychic & Paranormal"
+author: "Sonia Choquette"
 date: "2017-07-13"
 image: "/assets/articles/intuition-intuition-and-psychic-energy-where-do-they-come-from.jpg"
-description: "By Sonia Choquette It is easier to train your senses to notice your intuitive impulses if you have an understanding of where those intuitive flashes..."
+description: "It is easier to train your senses to notice your intuitive impulses if you have an understanding of where those intuitive flashes..."
 ---
-
-By Sonia Choquette
-
 It is easier to train your senses to notice your intuitive impulses if you have an understanding of where those intuitive flashes originate. In every psychic development class I teach, I ask the students where they think psychic or intuitive feelings and impulses begin. Some answer, “from my subconscious mind.” Others say, “from my Higher Self.” Some believe, “it’s dead people talking to you,” or “your guides.” If you are going to convince your mind to listen to your intuitive feelings, your mind has to value those feelings. Your mind requires an acceptable reason to value psychic feelings.
 
 The best way to convince your mind to pay attention to these feelings is to introduce it to where these feelings come from. After all, there is a big difference between listening to Joe Nobody’s opinion on something, and listening to a highly knowledgeable expert. Whom would you listen to? Ask yourself: Where do I think my psychic information comes from? Why should I listen? Do I think it’s trustworthy? Do I think it comes from a helpful and knowledgeable source? Am I comfortable tuning in to it? It’s important to ask these questions. The good news is, the answers are very specific and enlightening.

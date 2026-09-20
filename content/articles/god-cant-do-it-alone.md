@@ -1,13 +1,11 @@
 ---
 title: "God Can't Do It Alone"
 category: "Business & Spirituality"
+author: "Dadi Janki"
 date: "2017-07-14"
 image: "/assets/articles/god-cant-do-it-alone.jpg"
-description: "By Dadi Janki 'It’s God’s task to purify the impure, to transform the world,' Dadi Janki tells us. 'But He can’t do it alone. He says, ‘I’ve got to get it..."
+description: "'It’s God’s task to purify the impure, to transform the world,' Dadi Janki tells us. 'But He can’t do it alone. He says, ‘I’ve got to get it..."
 ---
-
-By Dadi Janki
-
 “It’s God’s task to purify the impure, to transform the world,” Dadi Janki tells us. “But He can’t do it alone. He says, ‘I’ve got to get it done through you. You’ve created hell in the world, and so you have to be the instruments to create heaven. Then you can be the masters of heaven.’” This message is Dadi Janki’s mandate for leaders. And while this diminutive woman draped in a white sari might appear to be from an era long past, she is a guiding force to a bright future. “Those with a positive vision of the future,” she writes, “give us an image of a world . . . where the highest human potential is fully realized. But we can get to that stage only when there are leaders to take us there.”
 
 And she is determined to create those leaders. Through “Call of the Times” dialogues, she invites key figures in government, business, and the nonprofit sector from all five continents to engage in the deepest level of dialogue and reflection about the current human situation. After these dialogues, she has been known to select someone to continue to work directly with her—meditating and engaging in discussion—to insure that that person viscerally grasps our world crisis and is compelled to take action in new and profound ways.

@@ -1,13 +1,11 @@
 ---
 title: "Psychic Counseling"
 category: "Psychic Readings"
+author: "Dale Power"
 date: "2017-07-13"
 image: "/assets/articles/psychic-counseling.png"
-description: "By Dale Power Psychic Counseling is a serious topic, or at least it should be. Im not talking about 1-800 numbers here, or even the local palm reader. I..."
+description: "Psychic Counseling is a serious topic, or at least it should be. Im not talking about 1-800 numbers here, or even the local palm reader. I..."
 ---
-
-By Dale Power
-
 Psychic Counseling is a serious topic, or at least it should be. Im not talking about 1-800 numbers here, or even the local palm reader. I mean real and effective counseling that includes, mental and emotional issues, such as avoiding pitfalls and bad relationships. Counseling that helps the individual make better progress in all aspects their life.
 
 The use of psychic abilities to help someone improve their situation is nothing new. The rich and powerful often have advisors that warn them of potential difficulties and give them tips on how to get around them.

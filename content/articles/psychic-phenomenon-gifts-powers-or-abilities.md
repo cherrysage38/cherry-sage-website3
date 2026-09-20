@@ -1,13 +1,11 @@
 ---
 title: "Psychic Phenomenon: Gifts, Powers, or Abilities?"
 category: "Psychic & Paranormal"
+author: "Christin Snyder"
 date: "2017-07-12"
 image: "/assets/articles/psychic-phenomenon-gifts-powers-or-abilities.jpg"
-description: "By Christin Snyder In my work as a psychic who seeks to mentor those developing their own skills, I find it important to mention this subject. I refer to..."
+description: "In my work as a psychic who seeks to mentor those developing their own skills, I find it important to mention this subject. I refer to..."
 ---
-
-By Christin Snyder
-
 In my work as a psychic who seeks to mentor those developing their own skills, I find it important to mention this subject. I refer to psychic abilities as just what they are – skills or abilities. The other terms I find to be damaging as they infer that this is unattainable by others, or that psychic senses are much more supernatural than they actually are.
 
 Often I hear others speak of their developing abilities as gifts, as though they were so special that God gave them this unique and special ability and not others. Unfortunately, many famous psychics also do this, insinuate that some great mystical super-secret society power has been bestowed on them. This is harmful to those who would love to develop psychically but feel that they aren’t enough somehow, or haven’t been chosen.

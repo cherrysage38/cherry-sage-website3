@@ -19,13 +19,13 @@ I can’t explain enough how important this is. One of the first things you must
 
 Before a psychic can “become,” he or she has to learn how to clear the psyche. This is probably the most misunderstood metaphysical process and yet one of the most important. Without this “clearing” or releasing, many old patterns will:
 
-� Take energy away from the individual, keeping them from raising their consciousness up into the divine ethers.
+- Take energy away from the individual, keeping them from raising their consciousness up into the divine ethers.
 
-� Set limits on an individual’s perspective (making the perspective linear). Again, this will limit the psychic abilities.
+- Set limits on an individual’s perspective (making the perspective linear). Again, this will limit the psychic abilities.
 
-� Stop spiritual growth through “not knowing” they’re working on their own divinity.
+- Stop spiritual growth through “not knowing” they’re working on their own divinity.
 
-� Without growth, a psychic cannot achieve enlightenment. Once more, this will limit the person’s abilities. Clearing the psyche is removing karma, changing negative thought patterns and achieving spiritual lessons that will help you become a better and “purer” psychic.
+- Without growth, a psychic cannot achieve enlightenment. Once more, this will limit the person’s abilities. Clearing the psyche is removing karma, changing negative thought patterns and achieving spiritual lessons that will help you become a better and “purer” psychic.
 
 ### Acknowledgement
 

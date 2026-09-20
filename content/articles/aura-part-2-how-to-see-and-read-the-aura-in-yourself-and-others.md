@@ -1,13 +1,11 @@
 ---
 title: "Aura Part 2 – How to See and Read the Aura in Yourself and Others"
 category: "Psychic & Paranormal"
+author: "Sacha Tarkovsky"
 date: "2017-07-13"
 image: "/assets/articles/aura-part-2-how-to-see-and-read-the-aura-in-yourself-and-others.jpeg"
-description: "By Sacha Tarkovsky How to see the aura… To see the aura for the first time, it is best to begin with someone very familiar and patient. This exercise is..."
+description: "How to see the aura… To see the aura for the first time, it is best to begin with someone very familiar and patient. This exercise is..."
 ---
-
-By Sacha Tarkovsky
-
 ## How to see the aura…
 
 To see the aura for the first time, it is best to begin with someone very familiar and patient.

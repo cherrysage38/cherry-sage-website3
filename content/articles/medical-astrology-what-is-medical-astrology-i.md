@@ -1,13 +1,11 @@
 ---
 title: "Medical Astrology: What is Medical Astrology? I"
 category: "Astrology"
+author: "Ingrid Naiman"
 date: "2017-07-12"
 image: "/assets/articles/medical-astrology-what-is-medical-astrology-i.jpg"
-description: "By Ingrid Naiman Laboratory Science versus Clinical Medicine. Though I have been practicing as a medical astrologer for almost thirty years, it only..."
+description: "Laboratory Science versus Clinical Medicine. Though I have been practicing as a medical astrologer for almost thirty years, it only..."
 ---
-
-By Ingrid Naiman
-
 Laboratory Science versus Clinical Medicine.
 
 Though I have been practicing as a medical astrologer for almost thirty years, it only recently occurred to me that what is so obvious to me is not at all understood by my colleagues. Of course, I did know that it was difficult to explain what I do in one sentence at a dinner table, but I did not quite realize that this was equally true at banquets at astrology conferences!

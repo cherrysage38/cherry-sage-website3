@@ -1,13 +1,11 @@
 ---
 title: "Effective Use of Gems in Astrology"
 category: "Astrology"
+author: "Raveendranath Menon"
 date: "2017-07-12"
 image: "/assets/articles/effective-use-of-gems-in-astrology.png"
-description: "By Raveendranath Menon There is no need of an introduction to the world of Gems for it has become a house hold name in the recent past. Today there is no..."
+description: "There is no need of an introduction to the world of Gems for it has become a house hold name in the recent past. Today there is no..."
 ---
-
-By Raveendranath Menon
-
 There is no need of an introduction to the world of Gems for it has become a house hold name in the recent past. Today there is no Jewelers or Gem merchant in the world who does not boast of the mystical powers of gems and its multifarious uses.
 
 The oxford dictionary defines “Gem” as a ” precious stone something of great beauty or excellence”. It is therefore necessarily a stone , something that is natural, organic and derived from the mother earth. Though many a crystal and artificial glass piece is also termed as Gems they are in fact not Gems in the above sense and not a subject matter of discussion here..

@@ -1,13 +1,11 @@
 ---
 title: "Natural Treatments Are Becoming Popular In The Battle Against Sickness"
 category: "Herbal Remedies"
+author: "Cherry Sage"
 date: "2017-07-12"
 image: "/assets/articles/natural-remedies.jpg"
-description: "By Cherry Sage Herbal remedies have a lot to offer in terms of helping you deal with current health issues or bolstering your health and immunity to keep..."
+description: "Herbal remedies have a lot to offer in terms of helping you deal with current health issues or bolstering your health and immunity to keep..."
 ---
-
-By Cherry Sage
-
 Herbal remedies have a lot to offer in terms of helping you deal with current health issues or bolstering your health and immunity to keep you from getting sick.
 People have utilized natural or herbal medicines for centuries to help them stay well, improve some aspects of their appearance, or both.
 There are many natural and safe things you can do to take control of your health the way you desire.

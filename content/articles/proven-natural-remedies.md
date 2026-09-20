@@ -1,13 +1,11 @@
 ---
 title: "Proven Natural Remedies"
 category: "Herbal Remedies"
+author: "Beverly Cherry"
 date: "2017-07-12"
 image: "/assets/articles/proven-natural-remedies.jpg"
-description: "By Beverly Cherry If you’re looking for proven natural remedies to help you improve your health, you can take your health into your own hands with self..."
+description: "If you’re looking for proven natural remedies to help you improve your health, you can take your health into your own hands with self..."
 ---
-
-By Beverly Cherry
-
 If you’re looking for proven natural remedies to help you improve your health, you can take your health into your own hands with self education and complimentary medicine. Today, people often reach for a prescription when something doesn’t feel right. Often there are proven natural, healthier ways that they can combat what ails them.
 
 There are proven natural remedies for many ailments that can help you to be well both inside and outside. If you need help with problems that prescription medicine isn’t helping with or because you want to try to find a proven natural remedy for, you can utilize information and products here at healthymyway.com that can have a dramatic improvement on your life while allowing you to live as green (environmentally friendly/organic) a life as possible.

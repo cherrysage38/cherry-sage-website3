@@ -1,13 +1,11 @@
 ---
 title: "Psychics - What is a Psychic Anyway?"
 category: "Psychic & Paranormal"
+author: "Cherry Sage"
 date: "2017-07-12"
 image: "/assets/articles/psychics-what-is-a-psychic-anyway.jpg"
-description: "By Cherry Sage Everyone is so caught up with the word psychic. It seems to mean different things to different people I have noticed. What is in a name..."
+description: "Everyone is so caught up with the word psychic. It seems to mean different things to different people I have noticed. What is in a name..."
 ---
-
-By Cherry Sage
-
 Everyone is so caught up with the word psychic. It seems to mean different things to different people I have noticed. What is in a name after all? Well, if I put on my numerologist hat, there is quite a bit in a name, but, I will save that fascinating topic for a future newsletter. The word psychic does not confer any rare mystical power bestowed upon a select few. A dictionary definition states, “supposedly sensitive to supernatural forces: claiming, or believed to have, extraordinary sensitivity to nonphysical or supernatural forces.”
 
 In the way ‘psychic’ is used when it pertains to a psychic reading, psychic means using senses other than the five main physical senses most of us enjoy – the sense of sight, the sense of smell, the sense of hearing, the sense of taste and the sense of touch–are all very palpable to most of us and we pretty much take these for granted.

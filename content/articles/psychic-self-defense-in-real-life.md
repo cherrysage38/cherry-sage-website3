@@ -1,13 +1,11 @@
 ---
 title: "Psychic Self Defense in Real Life"
 category: "Psychic & Paranormal"
+author: "Dale Power"
 date: "2017-07-13"
 image: "/assets/articles/psychic-self-defense-in-real-life.png"
-description: "By Dale Power Been awhile? Most of us need to be a bit more worried about muggers than monsters. Road rage is a bigger danger than demonic possession in..."
+description: "Been awhile? Most of us need to be a bit more worried about muggers than monsters. Road rage is a bigger danger than demonic possession in..."
 ---
-
-By Dale Power
-
 Been awhile? Most of us need to be a bit more worried about muggers than monsters. Road rage is a bigger danger than demonic possession in day to day life. The point? We need to protect our bodies as well as our minds. While we are at it, maybe we could protect our wallets as well. Most of the time when you read an article on the topic of psychic self-defense, you get lectured about not using a ouija board and a basic primer on shielding. These are wonderful tools to use if a Svengalli is trying to take over your mind or your pushy neighbor is having a bad day and projecting it full power to everyone within fifty miles, just when you need to go to bed.
 
 How about protecting your body though? Can psychic self-defense help you out in that regard at all? Surprisingly, the answer is yes! Here, briefly, are some techniques that can help you protect yourself from physical harm. These are all methods I have used personally and tested in real life situations. One note of caution however, do not take these methods lightly. You must approach these techniques with a serious mind and proper intent if you wish to use them successfully. After all, you are not trying to make a plant grow a little taller or guess who will call you next on the phone, you are trying to protect your life.

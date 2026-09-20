@@ -1,13 +1,11 @@
 ---
 title: "Astrology and Career"
 category: "Astrology"
+author: "Madhushri M. Mukerjee"
 date: "2017-07-12"
 image: "/assets/articles/astrology-and-career.jpg"
-description: "By Madhushri M. Mukerjee The Katha-Upanishad refers to material manifestation as: 'A tree standing on the ground of material nature, bearing two types of..."
+description: "The Katha-Upanishad refers to material manifestation as: 'A tree standing on the ground of material nature, bearing two types of..."
 ---
-
-By Madhushri M. Mukerjee
-
 The Katha-Upanishad refers to material manifestation as:
 
 “A tree standing on the ground of material nature, bearing two types of fruit: sweet and sour, symbolic of happiness and distress. Its roots go in three direction represented by goodness, passion and ignorance. The first bird is the localized aspect of the Supreme One, referred to as Päramätmä the divine spirit, the Entity who needs neither food nor drink. The other bird representing the mortal, has to select his food from the offerings of the tree: a choice between distress and happiness. Sometimes he eats the fruits of happiness and sometimes the fruit of distress. Having eaten the fruit, he expands along the three directions of the roots, the modes of material existence, namely, goodness, passion and ignorance.”

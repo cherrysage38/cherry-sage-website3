@@ -1,13 +1,11 @@
 ---
 title: "The 55 Best Herbal Remedies"
 category: "Herbal Remedies"
+author: "Michael Castleman, Natural Health"
 date: "2017-07-12"
 image: "/assets/articles/the-55-best-herbal-remedies.jpg"
-description: "By Michael Castleman, Natural Health Not long ago, American herbalists had to rely on folklore and anecdote. There was little clinical data on herbs, and..."
+description: "Not long ago, American herbalists had to rely on folklore and anecdote. There was little clinical data on herbs, and..."
 ---
-
-By Michael Castleman, Natural Health
-
 Not long ago, American herbalists had to rely on folklore and anecdote. There was little clinical data on herbs, and what did exist was mostly published in German. But researchers (and translators) have been busy of late, and we now have proof that herbs are viable treatments for many ailments.
 
 “Herbs won’t replace pharmaceuticals, but the research shows that–for many conditions–herbs work well, are cheaper than drugs and cause fewer side effects,” says Mary Hardy, M.D., medical director of the integrative medicine program at Cedars-Sinai Medical Center in Los Angeles. “Herbs aren’t quite mainstream, but they’re moving in that direction. Patients are interested in them, and doctors are increasingly familiar with herb research.

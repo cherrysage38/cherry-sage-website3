@@ -1,13 +1,11 @@
 ---
 title: "Astrology Signs and Planets Reveal Who You Are"
 category: "Astrology"
+author: "Randall Curtis"
 date: "2017-07-12"
 image: "/assets/articles/astrology-signs-and-planets-reveal-who-you-are.jpg"
-description: "By Randall Curtis People Are Beginning to Take a New Look at Astrology The well-known astronomer/astrophysicist, Dr. Percy Seymour of Plymouth University,..."
+description: "People Are Beginning to Take a New Look at Astrology The well-known astronomer/astrophysicist, Dr. Percy Seymour of Plymouth University,..."
 ---
-
-By Randall Curtis
-
 People Are Beginning to Take a New Look at Astrology
 
 The well-known astronomer/astrophysicist, Dr. Percy Seymour of Plymouth University, wrote in his book “The Scientific Basis of Astrology,” that

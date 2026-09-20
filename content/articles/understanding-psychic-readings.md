@@ -1,13 +1,11 @@
 ---
 title: "Understanding Psychic Readings"
 category: "Psychic Readings"
+author: "Vitkiwiz"
 date: "2017-07-13"
 image: "/assets/articles/understanding-psychic-readings.jpg"
-description: "By Vitkiwiz Psychic reading is an occurrence where one person tries to perceive information and insights using extra-sensual- perception (esp) from a..."
+description: "Psychic reading is an occurrence where one person tries to perceive information and insights using extra-sensual- perception (esp) from a..."
 ---
-
-By Vitkiwiz
-
 Psychic reading is an occurrence where one person tries to perceive information and insights using extra-sensual- perception (esp) from a metaphysical realm. There are various methods and tools per se’ that a psychic reader may use to provide the reading such as Tarot cards, runes, astrological signs and charts, and numerology and more. There are some psychic readers that use a form of channeling spirits as a medium such as John Edward or Sylvia Brown.
 
 These psychics are usually referred to as being clairvoyant psychics. Most psychics consider themselves to be clairvoyant to a point since it is their own perception that they rely on when providing a reading for someone or for themselves.
