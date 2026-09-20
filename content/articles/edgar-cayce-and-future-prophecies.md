@@ -4,7 +4,7 @@ category: "Psychic & Paranormal"
 author: "David Maillie"
 date: "2017-07-12"
 image: "/assets/articles/edgar-cayce-and-future-prophecies.jpg"
-description: "p>Edgar Cayce is well known as the biggest psychic of the twentieth century and has even been featured on TV programs with the likes of..."
+description: "Edgar Cayce is well known as the biggest psychic of the twentieth century and has even been featured on TV programs with the likes of..."
 ---
 Edgar Cayce is well known as the biggest psychic of the twentieth century and has even been featured on TV programs with the likes of Nostradamus and such – The Other Nostradamus on the History channel. The amazing thing is his prophecies are more exact and are still coming true – and they were all done while Edgar Cayce was asleep!
 
