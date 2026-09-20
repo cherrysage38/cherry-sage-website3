@@ -27,14 +27,25 @@
     if(h && n.hour>=h[0] && n.hour<h[1]) return {k:'online',label:'Cherry is Online'};
     return {k:'offline',label:'Cherry is Offline'};
   }
+  // Short wording for the small line under "Chat with Ivy"; the full sentence stays in the hover title.
+  function shortLabel(st){
+    var m={'Cherry is Online':'Cherry is online','Cherry is Offline':'Cherry is offline','Cherry is away today':'Cherry is away today',
+           'Cherry is on a call right now':'Cherry is on a call','Cherry is not available right now':'Cherry is unavailable',
+           'Cherry will be right back':'Cherry is back soon'};
+    return m[st.label]||st.label;
+  }
   function paint(st){
     var dotColors={online:'#54c46b',brb:'#d99b2e',offline:'#b33'};
     document.querySelectorAll('.cw-status').forEach(function(el){
       // Widget text always says "Chat with Ivy" so it never reads as a live line to
       // Cherry; the dot color carries her real phone-availability status, and the
       // full label ("Cherry is Online", etc) is still available on hover via title.
-      el.innerHTML='<span class="status-dot"></span>Chat with Ivy';
+      // Two lines: "Chat with Ivy" stays the headline (so it never reads as a live line to Cherry),
+      // and a small line under it says in words what the dot means. Phones have no hover, so the
+      // words are the only way a phone visitor sees Cherry's status (Bev, 2026-09-20).
+      el.innerHTML='<span class="cw-ivy">Chat with Ivy</span><span class="cw-cherry"><span class="status-dot"></span><span class="cw-cherry-text"></span></span>';
       el.setAttribute('title', st.label);
+      el.querySelector('.cw-cherry-text').textContent=shortLabel(st);
       var dot=el.querySelector('.status-dot'); if(dot){ dot.style.background=dotColors[st.k]; if(st.k!=='online') dot.style.animation='none'; }
     });
     var w=document.getElementById('chatWidget'); if(w){ w.setAttribute('data-status',st.k); w.setAttribute('title', st.label); }

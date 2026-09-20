@@ -171,7 +171,9 @@ p{margin:0 0 1rem}
 .chat-widget{position:fixed;right:1.2rem;bottom:1.2rem;z-index:120;display:flex;align-items:center;gap:.6rem;
   background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:.45rem .5rem .45rem 1rem;
   box-shadow:var(--shadow);cursor:pointer}
-.chat-widget .cw-status{font-size:.82rem;font-weight:600;color:var(--sage);display:inline-flex;align-items:center;gap:.45rem}
+.chat-widget .cw-status{font-size:.82rem;font-weight:600;color:var(--sage);display:inline-flex;flex-direction:column;align-items:flex-start;gap:.1rem;line-height:1.15}
+.chat-widget .cw-ivy{font-size:.86rem;font-weight:700;color:var(--oxblood-deep,#4A0F19)}
+.chat-widget .cw-cherry{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:600;color:var(--ink-soft)}
 .chat-widget .cw-bubble{width:44px;height:44px;border-radius:50%;background:var(--oxblood);display:flex;align-items:center;justify-content:center}
 .chat-widget .cw-bubble img{width:26px}
 
@@ -232,8 +234,10 @@ p{margin:0 0 1rem}
   /* Bev, 2026-09-20: "No one really knows Ivy is there. I don't see the status button anymore on
      mobile." The label and status dot were hidden on phones (2026-09-07) to keep Ivy off the text.
      Show them again as one compact pill: dot + "Chat with Ivy" + the icon, in the corner. */
-  .chat-widget .cw-status{display:inline-flex;font-size:.8rem;gap:.35rem;white-space:nowrap}
-  .chat-widget .cw-status .status-dot{width:9px;height:9px}
+  .chat-widget .cw-status{display:inline-flex;white-space:nowrap}
+  .chat-widget .cw-ivy{font-size:.82rem}
+  .chat-widget .cw-cherry{font-size:.7rem}
+  .chat-widget .cw-status .status-dot{width:8px;height:8px}
 }
 
 /* ---- inner pages + home additions (full site 2026-08-27) ---- */
