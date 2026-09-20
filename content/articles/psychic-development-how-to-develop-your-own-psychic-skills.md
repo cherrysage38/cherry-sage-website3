@@ -95,4 +95,4 @@ Be ready for some hard karmic lessons if this is the path you wish to take. The 
 
 Finally, be careful what you ask for, you will get it!
 
-Vickie Springwolf is a Celtic Shaman, Reiki Master, trained as a metaphysical minister, spiritual counselor and multidimensional channel. More from her can be found at Pagans Path: http://www.paganspath.com.
+Vickie Springwolf is a Celtic Shaman, Reiki Master, trained as a metaphysical minister, spiritual counselor and multidimensional channel. More from her can be found at Pagans Path: <http://www.paganspath.com>.

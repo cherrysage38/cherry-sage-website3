@@ -37,4 +37,4 @@ I also found that I could use that same connection to make changes in the world 
 
 So the bottom line is that psychic abilities can be developed, and the abilities manifest in different ways for different people. Also, psychic abilities can be used for more than gathering information, but can be used to create changes in the world around you.
 
-Alan Tutt is the creator of the world-famous Keys To Power Mastery System, available at http://www.KeysToPower.com. Learn how to develop your psychic abilities and create the perfect life you want to live. Free mini-course available.
+Alan Tutt is the creator of the world-famous Keys To Power Mastery System, available at <http://www.KeysToPower.com>. Learn how to develop your psychic abilities and create the perfect life you want to live. Free mini-course available.
