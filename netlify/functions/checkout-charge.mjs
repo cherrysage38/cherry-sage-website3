@@ -191,7 +191,7 @@ export default async (req) => {
     // The card WAS charged successfully but we couldn't record the booking -- this needs a
     // human, not a silent failure. Surface enough detail to find it (real Clover charge id).
     return json({
-      error: "Your payment went through, but we could not finish reserving your appointment automatically. Please contact Cherry Sage directly and reference this: " + charge.id,
+      error: "Your payment was processed successfully, but we could not finish reserving your appointment automatically. Please contact Cherry Sage directly and reference this: " + charge.id,
       chargeSucceededButBookingFailed: true,
     }, 500);
   }
@@ -233,7 +233,7 @@ export default async (req) => {
     customer?.email ? { email: customer.email } : undefined);
   if (customer?.email) {
     await notify(customer.email, "Your reading with Cherry Sage — payment received",
-      `<p>Thank you, ${esc(customer.full_name || "")}. Your payment went through, here's your receipt.</p>` +
+      `<p>Thank you, ${esc(customer.full_name || "")}. Your payment was processed successfully. Here's your receipt.</p>` +
       receiptTable +
       `<p>Cherry will review and confirm your appointment shortly. You'll hear from her directly once it's confirmed.</p>`);
   }

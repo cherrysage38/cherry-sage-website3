@@ -162,7 +162,7 @@ export default async (req) => {
   });
   if (confirmErr || !cartOrderId) {
     return json({
-      error: "Your payment went through, but we could not finish recording your order automatically. Please contact Cherry Sage directly and reference this: " + charge.id,
+      error: "Your payment was processed successfully, but we could not finish recording your order automatically. Please contact Cherry Sage directly and reference this: " + charge.id,
       chargeSucceededButOrderFailed: true,
     }, 500);
   }
@@ -196,7 +196,7 @@ export default async (req) => {
   }
   if (BREVO_KEY && customer?.email) {
     await notify(customer.email, "Your order with Cherry Sage",
-      `<p>Thank you, ${esc(customer.full_name || "")}. Your payment went through, here's your receipt.</p>` +
+      `<p>Thank you, ${esc(customer.full_name || "")}. Your payment was processed successfully. Here's your receipt.</p>` +
       receiptTable +
       `<p>Cherry will be in touch, or you can call/email anytime.</p>`);
   }
