@@ -7,21 +7,47 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { marked } from "marked";
 import sanitizeHtml from "sanitize-html";
+import yaml from "js-yaml";
 
 // Article bodies come straight from the Guest Articles CMS. marked() renders raw HTML through
 // with zero sanitization by default, so anything typed into the body field could otherwise land
 // on the live site as real, executing markup. Strip it down to a safe prose subset instead.
-const BLOCK_TAGS = ["p", "br", "strong", "em", "b", "i", "a", "ul", "ol", "li", "blockquote", "h2", "h3", "h4", "code", "pre", "img"];
-const BLOCK_ATTRS = { a: ["href", "title", "target", "rel"], img: ["src", "alt", "title"] };
+const BLOCK_TAGS = ["p", "br", "strong", "em", "b", "i", "a", "ul", "ol", "li", "blockquote", "h2", "h3", "h4", "h5", "code", "pre", "img", "iframe", "hr"];
+const BLOCK_ATTRS = {
+  a: ["href", "title", "target", "rel"],
+  img: ["src", "alt", "title", "width", "height"],
+  iframe: ["src", "width", "height", "title", "allowfullscreen", "frameborder"],
+};
 const SAFE_SCHEMES = ["http", "https", "mailto"];
+// Only video players from these hosts may be embedded; anything else is stripped.
+const EMBED_HOSTS = ["www.youtube.com", "www.youtube-nocookie.com", "player.vimeo.com"];
+// Plain-text web addresses stay plain text (the old WordPress posts did not link them); links are made
+// deliberately with the editor's link button.
+marked.use({ tokenizer: { url() { return undefined; } } });
 function mdBlock(s) {
-  return sanitizeHtml(marked.parse(String(s || "").trim()), { allowedTags: BLOCK_TAGS, allowedAttributes: BLOCK_ATTRS, allowedSchemes: SAFE_SCHEMES });
+  return sanitizeHtml(marked.parse(String(s || "").trim()), {
+    allowedTags: BLOCK_TAGS, allowedAttributes: BLOCK_ATTRS, allowedSchemes: SAFE_SCHEMES,
+    allowedIframeHostnames: EMBED_HOSTS,
+    // Links to other sites open in a new tab, like the original WordPress posts did.
+    transformTags: {
+      a: (tagName, attribs) => {
+        const href = attribs.href || "";
+        if (/^https?:\/\//i.test(href) && !/^https?:\/\/(www\.)?cherrysage\.com/i.test(href)) {
+          return { tagName, attribs: { ...attribs, target: "_blank", rel: "noopener" } };
+        }
+        return { tagName, attribs };
+      },
+    },
+  });
 }
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT_DIR = join(ROOT, "content", "articles");
 const ARTICLES_HTML = join(ROOT, "articles.html");
 const SITEMAP = join(ROOT, "sitemap.xml");
+// JSON-LD is JSON, not HTML: escape for JSON only, so & stays & (not &amp;).
+const jstr = (s) => JSON.stringify(String(s || "")).slice(1, -1);
+const isPostPage = (html) => html.includes('"@type": "Article"');
 const GENERATED_MARKER = "<!-- cs-generated:articles -->";
 
 function esc(s) {
@@ -35,19 +61,10 @@ function esc(s) {
 function parseFrontMatter(raw) {
   const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!m) return { data: {}, body: raw };
-  const data = {};
-  for (const line of m[1].split(/\r?\n/)) {
-    const kv = line.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
-    if (!kv) continue;
-    let val = kv[2].trim();
-    if (
-      (val.startsWith('"') && val.endsWith('"')) ||
-      (val.startsWith("'") && val.endsWith("'"))
-    ) {
-      val = val.slice(1, -1);
-    }
-    data[kv[1]] = val;
-  }
+  // Real YAML (the editor writes quotes and colons safely). CORE_SCHEMA keeps dates as plain text.
+  let data = {};
+  try { data = yaml.load(m[1], { schema: yaml.CORE_SCHEMA }) || {}; } catch (e) { console.warn("[front matter] " + e.message); }
+  for (const k of Object.keys(data)) data[k] = data[k] == null ? "" : String(data[k]);
   return { data, body: m[2] };
 }
 
@@ -61,9 +78,10 @@ function plainExcerpt(md, len = 160) {
   return text.length > len ? text.slice(0, len).replace(/\s+\S*$/, "") + "…" : text;
 }
 
-function renderPage({ slug, title, category, author, image, bodyHtml, description }) {
+function renderPage({ slug, title, category, author, image, bodyHtml, description, seoTitle, date }) {
   const url = `https://cherrysage.com/${slug}.html`;
-  const today = new Date().toISOString().slice(0, 10);
+  const today = date || new Date().toISOString().slice(0, 10);
+  const pageTitle = seoTitle || `${title} — Cherry Sage`;
   const byline = author ? `By ${esc(author)} · ` : "";
   return `<!doctype html>
 <html lang="en">
@@ -79,18 +97,18 @@ function renderPage({ slug, title, category, author, image, bodyHtml, descriptio
 ${GENERATED_MARKER}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title)} — Cherry Sage</title>
+<title>${esc(pageTitle)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${url}">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Cherry Sage">
-<meta property="og:title" content="${esc(title)} — Cherry Sage">
+<meta property="og:title" content="${esc(pageTitle)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="https://cherrysage.com${image}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${esc(title)} — Cherry Sage">
+<meta name="twitter:title" content="${esc(pageTitle)}">
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="https://cherrysage.com${image}">
 <meta name="theme-color" content="#6E1A28">
@@ -101,7 +119,7 @@ ${GENERATED_MARKER}
 <link rel="icon" href="assets/icon-32.png?v=2" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/icon-180.png?v=2">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": ["ProfessionalService", "Organization"], "@id": "https://cherrysage.com/#org", "name": "Cherry Sage", "url": "https://cherrysage.com/", "description": "Honest, accurate psychic, tarot, and numerology readings by phone since 1999.", "logo": "https://cherrysage.com/assets/logo.png", "image": "https://cherrysage.com/assets/bev_portrait.jpg", "founder": {"@type": "Person", "name": "Cherry Sage"}, "foundingDate": "1999", "areaServed": "Worldwide", "priceRange": "$$", "sameAs": ["https://cherrysage.com"], "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "390", "bestRating": "5"}}, {"@type": "WebSite", "@id": "https://cherrysage.com/#website", "url": "https://cherrysage.com/", "name": "Cherry Sage", "publisher": {"@id": "https://cherrysage.com/#org"}, "potentialAction": {"@type": "SearchAction", "target": "https://cherrysage.com/blog.html?q={search_term_string}", "query-input": "required name=search_term_string"}}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "${esc(title)}", "description": "${esc(description)}", "image": ["https://cherrysage.com${image}"], "datePublished": "${today}T12:00:00", "dateModified": "${today}T12:00:00", "articleSection": "${esc(category)}", "author": {"@type": "Person", "name": "${esc(author || "Cherry Sage")}"}, "publisher": {"@type": "Organization", "name": "Cherry Sage", "logo": {"@type": "ImageObject", "url": "https://cherrysage.com/assets/logo.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "${url}"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cherrysage.com/"}, {"@type": "ListItem", "position": 2, "name": "Guest Articles", "item": "https://cherrysage.com/articles.html"}, {"@type": "ListItem", "position": 3, "name": "${esc(title)}"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "${jstr(title)}", "description": "${jstr(description)}", "image": ["https://cherrysage.com${image}"], "datePublished": "${today}T12:00:00", "dateModified": "${today}T12:00:00", "articleSection": "${jstr(category)}", "author": {"@type": "Person", "name": "${jstr(author || "Cherry Sage")}"}, "publisher": {"@type": "Organization", "name": "Cherry Sage", "logo": {"@type": "ImageObject", "url": "https://cherrysage.com/assets/logo.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "${url}"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cherrysage.com/"}, {"@type": "ListItem", "position": 2, "name": "Guest Articles", "item": "https://cherrysage.com/articles.html"}, {"@type": "ListItem", "position": 3, "name": "${jstr(title)}"}]}</script>
 </head>
 <body>
 <header class="site-header">
@@ -115,7 +133,7 @@ ${GENERATED_MARKER}
   </div>
 </header>
 <main>
-<section class="page-hero post-head"><div class="ph-glow" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">${byline}${esc(category)}</p><h1>${esc(title)}</h1></div></section>
+<section class="page-hero post-head"><div class="ph-glow" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">${byline}${esc(category)}${date ? ` · ${esc(date)}` : ""}</p><h1>${esc(title)}</h1></div></section>
 <section class="section"><div class="wrap post-wrap">
   <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="bc-sep">›</span><a href='/articles'>Guest Articles</a><span class="bc-sep">›</span><span aria-current="page">${esc(category)}</span></nav>
   <img class="post-hero-img" src="${image}" alt="${esc(title)}">
@@ -155,11 +173,11 @@ ${GENERATED_MARKER}
 `;
 }
 
-function upsertCard(html, { slug, title, category, image, isNew }) {
+function upsertCard(html, { slug, title, category, image, author, isNew }) {
   const cardRe = new RegExp(
     `<a class='bcard reveal' data-cat='[^']*' href='/${slug}'>[\\s\\S]*?</a>`
   );
-  const newCard = `<a class='bcard reveal' data-cat='${esc(category)}' href='/${slug}'>\n  <img class="bc-img" src="${image}" alt="" loading="lazy" decoding="async">\n  <div class="bc-body"><span class="cat-chip">${esc(category)}</span><h3>${esc(title)}</h3></div>\n</a>`;
+  const newCard = `<a class='bcard reveal' data-cat='${esc(category)}' href='/${slug}'>\n  <img class="bc-img" src="${image}" alt="" loading="lazy" decoding="async">\n  <div class="bc-body"><span class="cat-chip">${esc(category)}</span><h3>${esc(title)}</h3>${author ? `<p style="color:var(--ink-soft);font-size:.9rem;margin:.2rem 0 0">By ${esc(author)}</p>` : ""}<span class="bc-date" style="color:var(--cherry);font-weight:600;margin-top:auto">Read the article &rarr;</span></div>\n</a>`;
 
   if (cardRe.test(html)) {
     return { html: html.replace(cardRe, newCard), added: false };
@@ -225,9 +243,9 @@ function main() {
     const outPath = join(ROOT, `${slug}.html`);
     if (existsSync(outPath)) {
       const existing = readFileSync(outPath, "utf8");
-      if (!existing.includes(GENERATED_MARKER)) {
+      if (!existing.includes(GENERATED_MARKER) && !isPostPage(existing)) {
         console.warn(
-          `[build-articles] Skipping ${file}: /${slug}.html already exists and was not created by this pipeline.`
+          `[build-articles] Skipping ${file}: /${slug}.html already exists and is not a post page.`
         );
         continue;
       }
@@ -235,10 +253,12 @@ function main() {
 
     const isNew = !existsSync(outPath);
     const bodyHtml = mdBlock(body);
-    const description = plainExcerpt(body);
+    const description = data.description || plainExcerpt(body);
 
     const page = renderPage({
       slug,
+      seoTitle: data.seo_title,
+      date: data.date ? String(data.date).slice(0, 10) : "",
       title: data.title,
       category: data.category,
       author: data.author,
@@ -255,6 +275,7 @@ function main() {
       title: data.title,
       category: data.category,
       image: data.image,
+      author: data.author,
       isNew,
     });
     articlesHtml = result.html;

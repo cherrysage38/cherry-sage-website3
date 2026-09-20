@@ -1,0 +1,43 @@
+---
+title: "The Six Metaphysical Laws Of Prosperity"
+category: "Abundance"
+author: "Robert Taylor"
+date: "2017-07-13"
+image: "/assets/articles/the-six-metaphysical-laws-of-prosperity.jpg"
+description: "The Metaphysical Law of Human Radiation recognizes that each person is basically a powerful energy source that radiates a karma of thoughts and feelings,..."
+---
+
+By Robert Taylor
+
+The Metaphysical Law of Human Radiation recognizes that each person is basically a powerful energy source that radiates a karma of thoughts and feelings, emotions or “vibes,” if you will. In a philosophical way, we are both living magnets and power sources of human energy–a yin and yang in oriental thinking. This law teaches us that as we radiate out our unique energy, we attract into our lives those people and circumstances that are in tune with our unique thoughts. You attract to yourself what you radiate out from yourself, whether it is positive or negative. People of a similar mind tend to group together. Your close friends probably think much like you do. They have become your close friends because of this metaphysical law of human radiation. It confirms the old adage that birds of a feather flock together. Others immediately recognize fundamentally good people because of the aura they cast. They easily attract friends. People instinctively trust them. This occurs by the metaphysical Law of Human Attraction. Those who have few or no friends also operate under the Law of Attraction. Somehow the true natures of people shine through and others instinctively know who they really are inside.
+
+## **YOU ARE WHAT YOU EAT AND YOU BECOME WHAT YOU THINK ABOUT**
+
+For years you have heard that you are what you eat. It is true, but did you know that you become what you think about all the time? This is equally true. There is another maxim that guides your life: what you radiate out, you also attract to yourself. Stated differently, what a person thinks about all the time is attracted into his life. Show me someone who is passionately consumed with a belief or concept, who lives, breathes, and eats a particular idea, and I will show you a person who will have that preoccupation become a reality in his or her life.
+
+With this metaphysical law of attraction in mind, obviously you want to be very positive and optimistic in your outlook so that you will attract those developments in your life. This is much more than just “positive thinking,” although there is certainly nothing wrong with positive thinking. Success visualization is a process that changes our lives by creating images in our minds that ultimately become reality. These images are first just anticipation, but they quickly become an expectation, and finally an intrinsic belief. Over time you “know” that this will become a reality in your life. Since you are creating your life every day, you are also creating your future
+
+2\. The Metaphysical Law of Self-Determination is an acknowledgment of the role of personal responsibility. It is your “self” that determines your fate and nothing and no one else. The self-determination you feel within gives you the strength to overcome all the obstacles you will face in life. You must take personal responsibility for your actions and the results in your life. Your “self” must become strong and determined. You always succeed through self-determination.
+
+3\. The Metaphysical Law of Continuous Growth reveals that you cannot succeed in life if you stop growing mentally. Personal self-improvement and professional educational growth should be your never-ending quest. To enjoy continued success and prosperity, you must always be learning and striving for improvement. The Metaphysical Law of Continuous Growth is the accepted way of life for truly successful people. Remember, when you stop growing, you are ripe. And when you are ripe, you start to rot. If you are not reading and learning new things regularly, then your brain is withering away. To earn more, you must learn more.
+
+4\. The Metaphysical Law of Self-Direction basically dictates that you are happiest and feel the best about yourself and your work to the degree that you are self-directed in your vocational activities and in your personal life. From a vocational standpoint, you must be able to express your creativity and individuality or you become an unhappy robot. If you feel you are controlled by others or by circumstances out of your control, you will find yourself generally unhappy. People want to feel they are self-directed at work, even though they really may not be.
+
+This law was discovered decades ago during the period when factories dominated the U.S. economy. Employees were treated as machines and were not given even the slightest power to vary their activity. Unfortunately, this is still prevalent today in meat cutting plants, assembly lines and other low-level jobs. The factory worker who works on the assembly line has little control over his work and generally feels frustrated and unfulfilled. The secretary who pounds the word processor and routinely files meaningless papers day after day generally feels stifled and dehumanized. The positive aspect of this law has been rediscovered recently by companies like Saturn that advertise that their employees can now stop “the line” by pulling a cord when they see something wrong. To them it is a big deal.
+
+In your personal life it is also important to feel self-directed. Teenagers don’t like to be under the strict authority of their parents. Women don’t like to be bossed around by their husbands and vice versa. Everyone wants to be in control of his or her own life. The question you must ask yourself is “Who is in control of my life?” To be happy in life, the answer should be “you.”
+
+5\. Most successful people live The Metaphysical Law of Positive Choices. These people recognize that during each day there are literally hundreds of choices to make, most seemingly small but ultimately important, and with each choice there is a consequence. They recognize that there is a cause and effect in everything they do. Everything in your life today was brought about by the choices you made in the past-everything!
+
+Successful people make careful, thoughtful choices because they know that the events they cause create their future. They tend to be pro-active people who plan ahead and work toward predetermined goals. They function daily by the logical principle of cause and effect. Thoughtful people recognize that they cause the developments in their lives and are responsible for the results. They work hard and expect positive results.
+
+In contrast, unsuccessful people don’t make conscious choices. They believe that everything happens to them by accident and that they have no control over their destinies, when in fact they create their future daily by the choices they make. Unsuccessful people consider themselves victims. They have no long term goals, in fact, no plans beyond the short term. They hope for the best, but make absolutely no plans to make the best happen. The concept of positive choices and cause and effect are foreign to their way of thinking.
+
+6\. The Metaphysical Law of Strong Conviction and Positive Expectations mandates that whatever you believe with absolute conviction and confidently expect to happen becomes a self-fulfilling prophecy and will become a reality in your life. The two powerful parts of this law are conviction and expectation. They are really the same concept, because if you believe something with absolute conviction, you also expect it to become true. It recognizes the powerful force of your will to succeed.
+
+If you continuously build your convictions about your inevitable success in life, you will instinctively take the appropriate actions that will bring about the results you reverently desire. What we expect to happen, happens. Very successful people in life live by this law. They anticipate and expect success, and they achieve it. These positive expectations have a powerful impact on our relationships and on the events in our lives, such that the expectations really do influence the outcome.
+
+Worry is negative goal setting and negative expectations. It is thinking about, talking about and imagining exactly what we don’t want to happen. It is the exact opposite of the Metaphysical Law of Strong Conviction and Positive Expectations. To be successful, become obedient to the Law of Positive Expectations and visualize success daily in everything you do.
+
+About author:  
+More powerful thoughts like these are contained in the book “Achieving Your Personal Destiny.” For more details, visit the Success Training Academy, or write to Robert Taylor at rj******@*td.net.1\.

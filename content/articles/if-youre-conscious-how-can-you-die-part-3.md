@@ -1,0 +1,75 @@
+---
+title: "If You're Conscious, How Can You Die? Part 3"
+category: "Inspiration & Self-Mastery"
+author: "Andrew Cohen"
+date: "2017-07-14"
+image: "/assets/articles/if-youre-conscious-how-can-you-die-part-3.jpeg"
+description: "Continuation from Part 2, If You’re Conscious, How Can You Die? COHEN: Yes, that was amazing. RAGNAR: Well, we have the same faculty. COHEN: But let’s say..."
+---
+
+By Andrew Cohen
+
+Continuation from Part 2, If You’re Conscious, How Can You Die?
+
+**COHEN:** Yes, that was amazing.
+
+**RAGNAR:** Well, we have the same faculty.
+
+**COHEN:** But let’s say you’re driving through a town where the water has been completely polluted, and you don’t know it. And you happen to go to a diner and drink a cup of tea or something, and then eventually, you get cancer as a result.
+
+**RAGNAR:** You’d know it. You’d know it ahead of time.
+
+**COHEN**: But how would you know?
+
+**RAGNAR:** Are you familiar with behavioral kinesiology, or muscle testing?
+
+**COHEN:** Yes.
+
+**RAGNAR:** Okay. How is it that certain things weaken us and certain things strengthen us? Our body tells us. Our body sends us a signal, and that signal either weakens or strengthens us. The other day, someone was asking me about some testing equipment for kinesiology. And I said, “I don’t need the testing equipment. I’ve already got it; it’s inside me.” I can look at something or think of something, and I know the feedback loop. I know whether it comes back “this is good” or “this is bad.” It’s the same feedback loop that all animals have.
+
+**COHEN:** *So, in other words, you’re saying that when you become more and more conscious, you become more sensitive to what you should do and what you shouldn’t do, a direction to go in or a direction not to go in, a place to eat or a place you shouldn’t eat, that kind of thing? That your intuition will evolve in leaps and bounds, and you will experience a level of sensitivity and intuitive knowing that most people would ordinarily be unaware of, or wouldn’t even be able to imagine?*
+
+**RAGNAR:** Precisely. Now, I know people will say, “You’re making me feel guilty now. You’re making me feel uncomfortable because I don’t have that.” And I say, “But you can. It’s something that develops in time. It’s all called consciousness.” Some of us have been at it longer, that’s all. Some of us have grown up faster. It’s just a part of our evolution. We grow more conscious if we work at it, and if you make a commitment to work at it, then you have the ultimate protection. You’re always in the right place at the right time for the right reason—you are never not. Nothing can happen to you that you do not designate if you are that conscious.
+
+Now, let’s say my belief is wrong. Okay, we’ll find out. But the neat thing is that your confidence is bolstered once you realize that the process works. It works in little ways, and if one is conscious enough to see it working in little ways, then you will see it working in dramatic ways. I choose to believe that everything works because you are more conscious. If you’re conscious, everything works in your favor. And if you’re unconscious, everything works against you.
+
+**COHEN:** Is that because if you’re more conscious, you’re at one with the life process? So then the process itself opens up within you and before you and around you?
+
+**RAGNAR:** I’ll give you an example. The other day, a wild coyote came out of the forest, came right up to me. I was outside, and I opened the door and said, “Do you want to come in?” It said, “Sure.” And it came in. I said, “Let me fix you a meal.” So my wife and I fixed him a meal. I handed him a cookie, and he said, “Thank you, I really appreciate that.” I said, “Well, I appreciate your visit. It’s nice to meet you, Mr. Coyote.” And so now Mr. Coyote comes back and forth. But this is the relationship we have with all the animals because I see that as an extension of my own energy. This is life force, just the flow of life force. It’s like I have a kite, and he’s on the other end, and the wind is blowing, so he runs through the forest. And then when I wind up the kite, here he comes again.
+
+We have deer, a whole bunch of deer, and when we walk out there, they come up and nose me. We give them apples. I know the wildlife people in the park would go crazy if they heard me telling this story. But I say, “Hey, they love me, because I love them, and they have nothing stopping them from feeling that.” We have a wild boar—I mean, you ought to see this thing. He’s got a mane like a big black lion and burning red eyes—especially at night—and these big tusks. It would scare the hell out of anybody if they saw him. We call him by name; I call him Rasputin. He comes running up and dances around in a circle on the deck. He loves us. And this thing is totally wild. If a stranger came here, they’d never see this happen. They wouldn’t see a bear, they wouldn’t see a deer, and they certainly wouldn’t see the coyotes. The birds leave, too, when the vibrations are wrong or off.
+
+Now, what does that tell you about life? All life is one, and if you’re in harmony with it, you can walk out into the middle of a forest, walk up to a strange deer, and touch it. The first time a mama bear came, I was out in the woods. I laid down in front of her, and she came over and sniffed me. And I showed her that I was totally surrendered, that I wasn’t going to hurt her. I have not one ounce of fear or negativity about these animals. You know, she was pregnant, and she brought her three cubs. She brought them right to our bedroom door, and we babysat the cubs while she went off and had some free time. This is on a regular basis. I’ve got photographs of this. The cubs would come in the bedroom, and we’d watch them until she came back half an hour later. And then off they’d go with their mama, because there’s no disconnect. There is no separation. It’s all one beautiful picture. However, when people with other energies come—people with fears and apprehensions—they don’t see a thing. The world changes. It’s a different world. And between the two worlds, I choose this one.
+
+**COHEN:** Was there a particular moment in your life when you went through a transition where these things started to happen, when they hadn’t before?
+
+**RAGNAR:** Yes. I was a spiritual maniac. I would meditate, and I’d sit cross-legged into the deep hours of the night until my knees and back hurt like hell. Finally one day, I gave it all up. I said, “This is nuts; this is totally nuts. I’m not doing this anymore.” So I just went on doing what I usually do, and it sort of became a habit to sit before the fire. And one day, back in 1977 in May—I remember it, full moon night, sitting in front of the fire—something happened. I was never so frightened in all my life. Everything I knew about myself seemed to be evaporating and dying, spontaneously. I felt like I had turned into a pillar of stone, and the last vestige of what I knew as myself was leaking out. Once the fear evaporated and the experience ended, I was different.
+
+I don’t know how you explain that, but I can remember going out to my outhouse the following morning and sitting there with the moonlight coming in through the trees. I had the door open, and here a fox comes running up to me, and sits right before me while I’m sitting in the outhouse. Right by my knees, looking me in the eyes, and talking to me without words. Later that day, I went out to my garden. I took a little lunch with me so I didn’t have to go back to the cabin, and when I sat by a big tree to eat, a crow jumped down, sat on my knee, and said, “Can I have some of your food?” And I said, “Sure.”
+
+From that point on, everything was different. It’s the same world, you know. I get up, I wash, I use the bathroom, I brush my teeth, I do what everybody else does, I guess, at least to some degree. But it’s different, because my amnesia went away. I don’t know if I’m enlightened. I have no idea what the word means. All I know is that I’m now different, and I like this different feeling. Nothing has ever been the same.
+
+**COHEN:** How long had you been a seeker up until that point?
+
+**RAGNAR:** My entire life. From the time I was a child, in one form or another, there was something nagging me, an uncomfortable nagging that never went away.
+
+**COHEN**: Peter, in the way that you think about it today, is there any difference between the quest for enlightenment and the quest for physical immortality? Because most revered sages and masters have passed away.
+
+**RAGNAR:** I know I go out on a limb when I answer questions like this, but I have to say, master of what? Master of your thoughts? If you’re a master of your thoughts, you’re master of your body, master of your money, master of your life circumstances. If you have personal mastery, then it’s visible, measurable, and you can demonstrate it.
+
+Right now, at my age, I am master of my body. I’m master of my mind, my financial world, my emotional world, my personal environment. I don’t know, maybe it won’t always be that way. But I doubt it. Why would I give up now? People say, “You’re getting arrogant, you’re getting pompous, and life is going to show you.” You know, “Pride comes before the fall.” And I say, “Well, pride is something you’ve got to earn.” You earn the right to be proud of your accomplishment, and at the same time, once you realize how hard you had to work, you’re immensely humbled.
+
+**COHEN:** Right. But in relationship to this question, for example, in India, maybe even in the last century, there were people such as Ramakrishna or Ramana Maharshi who were undoubtedly highly enlightened beings, yet who died painful deaths. They died of cancer.
+
+**RAGNAR:** Well, I guess there was one thing they didn’t have mastery over, isn’t there?
+
+**COHEN:** The reason I’m asking is because those individuals were universally considered to be profoundly enlightened beings. The Buddha, too, seemed to have passed away from food poisoning. And it seems that the power of their awakening had everything to do with victory over the mind. Yet they all died painful deaths.
+
+**RAGNAR:** I don’t discount their reputations, and I would never say anything negative about them. But I immediately have doubts about the levels of mastery. I don’t understand how you can have mastery over your thoughts and not have mastery over your body, because the body, at least from my perspective, is your thoughts. Unless you simply choose to commit suicide. And then I have to wonder, why do you want to do that? Don’t you like the people around you? I mean, have these disciples absolutely eaten you up? I don’t know. But at least I’ll go on this particular track until I’m proven wrong. And when I’m proven wrong, I’ll apologize to them! I’ll say to all those dead gurus, “I apologize to you. You were right; you can’t get to keep this body.”
+
+I’m lonely. I’m out here by myself, Andrew. But I can say for sure that the little things give you confidence. If you can do the little things, you know that by the inch it’s a cinch and by the yard it’s hard. So you do the little things, and you keep building, and every little unit of consciousness that expands, every little breakthrough that you have, is living a life of victory. And pretty soon, the final victories, whatever they may be, are there on the horizon and you’re crashing through them. I’ve often said, “Okay, so you’ve climbed the mountain. Now we’re standing on the peak. What do you do next? You step off into space.”
+
+<strong>About author:</strong>  
+Andrew Cohen, founder of What Is Enlightenment? magazine, is a spiritual teacher and acclaimed author widely recognized as a defining voice in the emerging field of evolutionary spirituality. A life-changing awakening in 1986 brought Cohen to the end of his own search for liberation while simultaneously starting him on an exploration of the meaning and significance of enlightenment for our time. This has led him to a profound investigation of the human predicament and into dialogue with sages, saints, and spiritual luminaries from nearly every tradition and beyond.
+
+##

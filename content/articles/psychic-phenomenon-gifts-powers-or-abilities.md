@@ -1,0 +1,28 @@
+---
+title: "Psychic Phenomenon: Gifts, Powers, or Abilities?"
+category: "Psychic & Paranormal"
+date: "2017-07-12"
+image: "/assets/articles/psychic-phenomenon-gifts-powers-or-abilities.jpg"
+description: "By Christin Snyder In my work as a psychic who seeks to mentor those developing their own skills, I find it important to mention this subject. I refer to..."
+---
+
+By Christin Snyder
+
+In my work as a psychic who seeks to mentor those developing their own skills, I find it important to mention this subject. I refer to psychic abilities as just what they are – skills or abilities. The other terms I find to be damaging as they infer that this is unattainable by others, or that psychic senses are much more supernatural than they actually are.
+
+Often I hear others speak of their developing abilities as gifts, as though they were so special that God gave them this unique and special ability and not others. Unfortunately, many famous psychics also do this, insinuate that some great mystical super-secret society power has been bestowed on them. This is harmful to those who would love to develop psychically but feel that they aren’t enough somehow, or haven’t been chosen.
+
+Are psychic abilities gifts? Indeed they are. Those of us who have developed them recognize that we are blessed, but I also recognize that every breath I take on this planet is also a gift. I also know that we all breathe. Therefore oxygen, while still a beautiful, precious gift that should not be taken for granted, is something that we can all partake in.
+
+Psychic ability is no different. Just as everyone can pick up a pencil and write with it, everyone can also learn to develop some form of psychic skill set. Not everyone will become a Pulitzer prize winning novelist, or famous poet, but that doesn’t stop all of the rest of us from writing, so why should it stop beginners in Metaphysical studies from even trying? It is amazing to me the number of people who come to me and say I don’t think I am gifted? or Can you tell me if I have gifts?. My answer: Are you standing here, breathing, having a life experience right now? then yes you are gifted. The key is not focusing on lack or what one doesn’t have, but appreciating what is.
+
+Psychic abilities are not elusive foreign phenomenon that only the chosen few can bring forward, they are an innate set of senses, hidden deep within the psyche and soul of each being that must be allowed to be brought forward. Many people don’t agree with this, they believe that because they want psychic abilities that they must already be allowing it and it just isn’t coming. This is very untrue. Developing these skills means adjusting to a different reality that what is presently understood and accepted both by society and the individual. The body/mind have a natural resistance to this in place as a protective mechanism. In order to reach our fullest potential psychically, we have to work at peeling away the barriers. It can take considerable time and effort to allow these abilities to manifest to their fullest potential, and as with anything worth having they require persistence and dedication.
+
+We live in a society that pushes heavily the instant gratification syndrome, and this tends to cause many developing psychics to throw in the towel much to soon. When we add the stigma of being gifted to it, many don’t even try at all. They are falsely led to believe that these abilities just manifest in others who have been fortunate enough to have them bestowed upon them by Creator. News Flash, God/Creator loves all of creation, so why then would He/She/It only give gifts to some of the Earths children and not to all? That’s not unconditional love, but it is a human condition ;). Everyone of you reading this also has psychic ability, and yes it is a gift, but so is everything else.
+
+Another word I hear misused a lot is powers. Psychic ability does not give us power over anyone, and those psychics who believe it does usually find their careers short lived, or find that Karma catches up eventually. Any genuine psychic is humble enough to tell people that they too can do what he/she is doing. A good psychics goal is to empower others not to wield some false sense of power over them. When I hear psychics and/or aspirants refer to their powers it is one of my biggest pet peeves. That word implies not only that it is a super secret society elite thing again, but also propagates fear and contributes to the already abounding social ignorance surrounding psychic phenomenon. Those who do this to puff up their own egos by portending they have super-hero like powers make it difficult for genuine psychics to get established and the outlook for ever being taken seriously in our field becomes even more grim.
+
+I have the utmost respect for psychics and healers as well, who seek to empower others by demystifying this process. John Edward is one prime example of a mainstream psychic who has done a lot of work in this area. Thanks to his work, more people are seeing this as something that is not just a power for the chosen ones, but something anyone with the dedication to do so can develop. I hope that as more of us establish our careers we will also take the high road and continue to promote more personal empowerment and less hocus-pocus. Knowledge is the true power.
+
+About author:  
+Christin Snyder is an author, psychic, mentor, and personal success coach. She works on demystifying psychic phenomenon and helping others to expand their consciousness. Visit her website today for free guided meditations, spiritual guidance tarot readings, free psychic skills development courses and more: http://www.spiritualguidancetarot.com

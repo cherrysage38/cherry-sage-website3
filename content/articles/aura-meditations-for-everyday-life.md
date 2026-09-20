@@ -1,0 +1,114 @@
+---
+title: "Aura Meditations for Everyday Life"
+category: "Meditation"
+author: "Cynthia Sue Larson"
+date: "2017-07-13"
+image: "/assets/articles/aura-meditations-for-everyday-life.jpg"
+description: "Meditation has existed since the birth of humankind, and there are as many different kinds of meditations as there are different kinds of people in the..."
+---
+
+By Cynthia Sue Larson
+
+Meditation has existed since the birth of humankind, and there are as many different kinds of meditations as there are different kinds of people in the world. Meditation does not require any particular spiritual or religious beliefs, nor is there any one “right” way to meditate. Some meditations are walking meditations, some focus on clearing the mind, some emphasize breathing and breath control, some involve silently repeating a secret mantra over and over again, and some involve carefully sensing one small thing (like slowly rolling a grape in your mouth and tasting it).
+
+If you have tried a variety of meditations, then you might already know which kinds of meditation work best for you. If you are new to meditation, then you can try a variety of meditations in this chapter, and hopefully at least one of them will appeal to you.
+
+Many studies have shown the benefits of meditation to be real and profound. Simply by meditating, people have been able to reduce the amount of stress they feel in their lives, alleviate physical pain, deepen awareness, relax muscle tension, improve mind-body coordination, achieve a sense of peace and joy, see more possibilities, and even reduce biological age.
+
+In this chapter, different kinds of meditations are provided for assessing and transforming your aura to better suit the life you most wish to live. When you choose the area you most wish to improve (love, money, stress-relief), you can keep track of your progress in a journal by recording your observations as you undergo the process of changing your aura to change your life. Meditations can be done alone or in a group in which one person guides the meditation process and facilitates the sharing of experiences.
+
+Have you ever been awakened in the middle of the night and not been able to fall hack asleep again? Sometimes when you are under a great deal of stress, your mind will focus on problems so much that your sleep may be disrupted. Even when you know that such worries are a waste of your time and energy, they can seem to take on a life of their own in the wee hours. At such times, you may find yourself compelled to wake up and do something active, because so much adrenaline races through your system. In these situations, remember that the best solution might be to meditate. It may take some effort for you to remember that meditation is an option, because the urgency to do something can be so powerful.
+
+Another time when you can greatly benefit from meditating, but probably forget to do so, is when you’re frantically trying to get as many things done in as short a time as possible. Like a many-headed Hydra, you can lose your sense of unified vision and feel like you’re being pulled in several different directions at once. It can seem crazy to set aside twenty minutes to meditate at such times, since you are keenly aware of how much needs to be done. Try meditation out some time, and see if the twenty minutes you invest in meditation and/or prayer reaps returns that compensate for the delay and inconvenience involved. Instead of feeling stressed and tired, you can be feeling relaxed and energized. Instead of thinking you have few or no options available, you can see a wide variety of choices you can make. Instead of feeling confused, you can feel focused and centered. There are even times following meditation and/or prayer in which you might feel you are guided to do exactly the right things at the right times, and everything you do feels effortless — like you’re being assisted by fairies, elves, and angels!
+
+If you are looking for the best way to enhance your aura and turn your life around, studies have shown that meditation might be the best thing you could do. A five-year study of male felons who were paroled from federal prisons showed that those parolees who practiced meditation were 35 percent to 40 percent less likely to return to prison or be sentenced for a new crime than otherwise similar parolees who didn’t meditate. Meditation was proven to be much more effective than vocational training, psychotherapy, and prison education for helping parolees break free of a life of crime. While your problems may not be quite as severe as those of federal prisoners, it’s still good to know that such a powerful tool exists for making sweeping changes in your life.
+
+Most of the following meditations require that you have some quiet space to yourself for about twenty or thirty minutes. You can read through all of them to get an idea of which ones might be most helpful or interesting for you, and get a sense of what’s involved before you take the time to try them out.  
+**Best Possible Life Chakra Meditation**
+
+This meditation is a powerful one, capable of changing your life for the better in every possible way. It can require a commitment of a great deal of time at first, but as your focus and attention improve, it will become easier and less time-consuming. The goal of the best possible life chakra meditation is to envision your best possible future self while viewing all seven of the primary chakras — and to align your chakras with this ideal arrangement.
+
+As you begin this meditation process, you may experience some difficulty remaining focused on each chakra. The most important element and success factor for this meditation is that you strongly desire to align your chakras with your highest potential, and remain focused on each chakra as it feels and appears to you — waiting until your chakra changes to match the ideal configuration for you.
+
+1\. Imagine your best possible future self in energy form, with all seven primary chakras shining brightly. Feel your love for taking the path to becoming your best possible future self, and through this connection cord of love, sense your future self as if it were your own energy body right now through this energy cord.
+
+2\. Starting with the seventh chakra, the crown chakra, compare the way your best possible future self’s crown chakra feels with how your current energy body’s crown chakra feels. Especially note any differences in energy flow, color, and texture. If there is a big difference between the way your crown chakra feels now and the way it feels in your best possible future self, savor the feeling of your future self’s crown chakra. Bask in it; notice every nuance and detail of the experience.
+
+3\. Feel the energy line of love connecting your current energy body and your best possible future self’s energy body. Notice how the crown chakra on your best possible future self feels, and bring your current crown chakra up to feeling exactly like it. You may notice that other chakras in your energy body are affected by this change, and if this happens, relax in the knowledge that you are attuning your own energy body to its ideal configuration. Each chakra does affect its neighbors and is sensitive to changes. Go slowly and savor the way your crown chakra feels now.
+
+4\. Repeat steps 2 and 3 above for the sixth chakra, the third eye chakra. Feeling love for becoming as much like your best possible future self as you can, sense how the third eye chakra will feel when it is optimally configured for you. Take your time and use all your senses to savor this moment, and when you have noticed every important nuance of feeling, allow your current energy body’s third eye chakra to make the transition to its best possible configuration.
+
+5\. Repeat steps 2 and 3 above for the fifth chakra, the throat chakra. Feel how much you would love to have a perfectly configured throat chakra, and sense what this feels like. When you have a clear and complete feeling of this, bring it back to your current energy body’s throat chakra.
+
+6\. Repeat steps 2 and 3 above for the fourth chakra, the heart chakra. This is your chakra of love and compassion, and these are the feelings to focus on now for your best possible future self. How will your heart chakra feel when you are the living embodiment of your best possible future self? Bring this feeling back to your current energy body’s heart chakra, and hold that feeling — savoring and embracing it.
+
+7\. Repeat steps 2 and 3 above for the third chakra, the solar plexus chakra. This is your communication center between you and the outside world, and a powerful energy center for manifesting what you want in your life. Feel how your best possible future self is holding this solar plexus chakra energy — is it clear and strong, and vibrant and clean? Most likely it’s in a lot better shape than your current solar plexus chakra energy! You can remedy this by transforming your existing solar plexus chakra to match that of your best possible future self.
+
+8\. Repeat steps 2 and 3 above for the second chakra, the hara chakra just below your navel. This chakra is also known as the “dan tien” chakra, and it is a place you may he inadvertently picking up and carrying other peoples’ stuff. Feel how different your best possible future self’s second chakra is compared to your current energy body’s and allow your chakra to change to match your ideal self.
+
+9\. Repeat steps 2 and 3 above for the first chakra, the root chakra at the base of your spine. Feel how well grounded your best possible future self is, and how that allows you to stand up for yourself and feel centered and an important and integral part of all that is. Notice all the sensations in your best-balanced root chakra, and bring those qualities back to your current energy body root chakra.
+
+10\. Once you’ve viewed and transformed all your chakras, take a few more minutes to feel your chakras integrating with one another and interacting with the world around you. Pay attention to how your day goes differently than usual — hopefully in enjoyable ways, and in how you feel about yourself and events that unfold around you.
+
+The first time you do this, it’s a good idea to draw what you see and take notes about what you observe in this exercise. Your notes will help remind you of your highest energetic goal.
+
+**Good Health and Healing Meditation**
+
+Just as chronic worry and stress first cause damage to one’s aura and then create problems in one’s physical body, freedom from stress can eventually clear one’s aura and reverse physical health problems. All meditations that increase an overall sense of being simultaneously energized and relaxed are therefore good for one’s health. The following meditation is especially good for improving one’s physical health, since that is its primary emphasis and intention.
+
+I. Find a quiet time and space where you can have twenty to thirty minutes alone. Sit or lie down in the most comfortable position for you.
+
+2\. Close your eyes and feel your energy body around you. Notice if you can see any dark areas, holes, tears, rips, or sections of grainy energy.
+
+3\. Imagine that you are now calling on a brilliant angel/energy being of love, to help you repair the damaged areas in your aura. (Important: When you first call on angels, be sure to state that you only invite those who come in the purest form of unconditional love. Do not invite any energy beings who make demands upon you or do not feel completely loving.) This energy being is an expert at strengthening your energy field, and when you request assistance will immediately begin repairing all damaged areas of your aura.
+
+4\. If your energy body requires extensive assistance, call on another angel/energy being or two . . . or three! Know that whatever you need will be provided, as long as you ask with all your heart and feel grateful for the help you receive.
+
+5\. Observe what these angels are doing, and how much better you feel as they work to fluff, clear, and repair your aura. Note whatever physical sensations you feel as this healing continues.
+
+**Integrated Meditation**
+
+This meditation may seem rather exotic and unusual, because it involves visualizing all your possible selves. There is special value in this meditation, for it works to bring increasing order to the universe across all possible realities. As you find yourself becoming consciously connected to all your possible realities and becoming more relaxed and energized through this meditation, the benefits will he far-reaching and profound.
+
+1\. Imagine for a moment that you exist in many different forms across an infinite number of parallel universes. In one universe you are poor, in another you are wealthy, and in yet another you are the opposite gender from what you are today. What remains the same in every universe is some quality of uniqueness about your energy essence and who you truly are.
+
+2\. Imagine that as you become aware of all your possible selves, they become aware of you. When you intend to become more energized and relaxed through meditation, so will each of them.
+
+3\. Imagine that you and all your possible selves are grounded, so all negativity, stress, and tension slips down and away.
+
+4\. With each inhalation of love, all of your possible selves will feel loved and connected. With each exhalation of worries, doubts, anger and fear, all your possible selves feel stronger and more centered.
+
+5\. Imagine that you and all your possible selves are connected to a divine source and are receiving inspiration that will allow you to fulfill your unique purpose and special destiny.
+
+6\. As you finish this meditation, thank all your possible selves for joining you in this meditation.
+
+**Prosperity Meditation**
+
+You are already prosperous in many ways. This meditation will help you recognize how well you are doing, and increase your confidence that you are attracting all you desire to you right now. The key to success of the prosperity meditation is the feeling of it. It depends on your ability to feel gratitude and love, and to let go of fears and resentments.
+
+1\. Close your eyes, and see yourself as spirit or God would see you — shining brightly, like a star. You are surrounded by love and were created from love. You are precious beyond measure. You are blessed with the ability to help yourself and others in many ways. You have great potential within you to shine more brightly than ever before. The only things that have ever stopped you from shining so brightly have been your fears and resentments. Let go of all blame and anger, and all doubt and worry. You are a divine being of inner light who has become manifest in physical form. As you more fully embody this divine light, you will be blessed with abundant prosperity. Help is always here for you. All you ever need to do is ask spirit for guidance.
+
+2\. Open your eyes and say aloud three times, “The source of all prosperity is infinite, and blesses me with abundance. Thank you for fulfilling my every need today and always.”
+
+3\. Feel the loving energy of all those who support your endeavors.
+
+4\. Using all your high sensory perceptions (clairaudience, clairvoyance, clairsentience, clairgoutance, clairolorance), imagine your best possible future as fully and vibrantly as possible. See and feel yourself immersed in every aspect of life as you most need it to be. Say aloud, “All my favorite dreams have come true!” and feel the joy and exuberance of this being so.
+
+**A Fresh Start Meditation**
+
+To a large degree, your life is exactly what you create it to be. By virtue of your daily habitual thoughts and feelings, you create the foundation upon which the house of your life is built. The advantage of cleansing the foundation of your life of energetic clutter is that like a blank slate or tabula rasa, anything at all can be possible for you. This meditation is recommended for you if you have faced persistent problems in life, and wish to find an energetically clean point for starting fresh.
+
+1\. Do you remember a time when you were a child and felt wonderfully excited about something? You were not concerned with practicalities, and had not yet told anyone of how you were feeling and what you were thinking about. You were experiencing a moment that contained all possibility and tremendous enthusiasm.
+
+2\. Smell the smells around you as you feel this joyous state of being. You know in your heart and soul that anything is possible, and can look around at the world and feel your heart sing. See the colors and shapes of energy around you; feel their textures.
+
+3\. Wrap this special moment up energetically as a present from your past, and bring it to your life in this moment now. Feel the joyous sense of wonder you had and the sheer delight in being alive. This is the energy you can now bring to anything in your life you need it for — anything at all! With childlike wonder and creativity, you can face every situation with love, awe, and fearlessness. You are meant to succeed at bringing your special gifts to the world, and you can feel the sheer joy in reveling in the essence of all you are.
+
+4\. If you feel any negative thoughts or feelings, ground yourself and let them go down an auric energy cord to the earth. Look at that present of the bliss of your youthful excitement, and feel once again the sense of joy and wonder it brings to you. You are a whole new person today, refreshed with the youthful vigor of your spiritual energy and ready to do anything you put your mind to!  
+Bringing Meditation Home
+
+Once you make meditation a regular part of your daily life, you may notice that you feel at home wherever you may be. If you want to know how much of a difference meditation can make in your life, keep track of how often you meditate in a journal. When you feel rushed, meditation can bring you back to a sense of living in the eternal now. When you feel tired, meditation can refresh and renew your body and spirits. When you feel confused, meditation can bring you clarity. When you feel defeated, meditation can bring you inspiration and new ideas.
+
+<strong>About author:</strong>  
+Cynthia Sue Larson works with Aura Imaging Systems in California, consulting and developing cutting-edge technology to capture auras on film. She hosts a popular Web site, http://www.realityshifters.com, providing visitors with information about auras and a forum to discuss their own experiences. Her articles have appeared in magazines such as Magical Blend, Parabola, and Lightworker. Ms. Larson lives in Sacramento, CA.  
+http://www.realityshifters.com

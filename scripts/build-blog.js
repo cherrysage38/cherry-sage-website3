@@ -9,23 +9,49 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { marked } from "marked";
 import sanitizeHtml from "sanitize-html";
+import yaml from "js-yaml";
 
-const BLOCK_TAGS = ["p", "br", "strong", "em", "b", "i", "a", "ul", "ol", "li", "blockquote", "h2", "h3", "h4", "code", "pre", "img"];
-const BLOCK_ATTRS = { a: ["href", "title", "target", "rel"], img: ["src", "alt", "title"] };
+const BLOCK_TAGS = ["p", "br", "strong", "em", "b", "i", "a", "ul", "ol", "li", "blockquote", "h2", "h3", "h4", "h5", "code", "pre", "img", "iframe", "hr"];
+const BLOCK_ATTRS = {
+  a: ["href", "title", "target", "rel"],
+  img: ["src", "alt", "title", "width", "height"],
+  iframe: ["src", "width", "height", "title", "allowfullscreen", "frameborder"],
+};
 const SAFE_SCHEMES = ["http", "https", "mailto"];
+// Only video players from these hosts may be embedded; anything else is stripped.
+const EMBED_HOSTS = ["www.youtube.com", "www.youtube-nocookie.com", "player.vimeo.com"];
+// Plain-text web addresses stay plain text (the old WordPress posts did not link them); links are made
+// deliberately with the editor's link button.
+marked.use({ tokenizer: { url() { return undefined; } } });
 function mdBlock(s) {
-  return sanitizeHtml(marked.parse(String(s || "").trim()), { allowedTags: BLOCK_TAGS, allowedAttributes: BLOCK_ATTRS, allowedSchemes: SAFE_SCHEMES });
+  return sanitizeHtml(marked.parse(String(s || "").trim()), {
+    allowedTags: BLOCK_TAGS, allowedAttributes: BLOCK_ATTRS, allowedSchemes: SAFE_SCHEMES,
+    allowedIframeHostnames: EMBED_HOSTS,
+    // Links to other sites open in a new tab, like the original WordPress posts did.
+    transformTags: {
+      a: (tagName, attribs) => {
+        const href = attribs.href || "";
+        if (/^https?:\/\//i.test(href) && !/^https?:\/\/(www\.)?cherrysage\.com/i.test(href)) {
+          return { tagName, attribs: { ...attribs, target: "_blank", rel: "noopener" } };
+        }
+        return { tagName, attribs };
+      },
+    },
+  });
 }
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT_DIR = join(ROOT, "content", "blog");
 const BLOG_HTML = join(ROOT, "blog.html");
 const SITEMAP = join(ROOT, "sitemap.xml");
+// JSON-LD is JSON, not HTML: escape for JSON only, so & stays & (not &amp;).
+const jstr = (s) => JSON.stringify(String(s || "")).slice(1, -1);
+const isPostPage = (html) => html.includes('"@type": "Article"');
 const GENERATED_MARKER = "<!-- cs-generated:blog -->";
 
 // Same 8 categories blog.html's toolbar/word-cloud already use -- kept fixed rather than
 // free-text so a typo in the CMS can't silently create an unfiltered ninth category.
-const CATEGORIES = ["Psychic Readings", "Numerology", "Other World", "Predicting Dates or Timelines", "Gypsy Scams", "Tarot Card Readings", "Online Psychic Readings", "Karma & Past Lives"];
+const CATEGORIES = ["Psychic Readings", "Numerology", "Other World", "Predicting Dates or Timelines", "Gypsy Scams", "Tarot Card Readings", "Online Psychic Readings", "Karma & Past Lives", "Featured Articles", "Astrology", "Dreams"];
 
 function esc(s) {
   return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -34,14 +60,10 @@ function esc(s) {
 function parseFrontMatter(raw) {
   const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!m) return { data: {}, body: raw };
-  const data = {};
-  for (const line of m[1].split(/\r?\n/)) {
-    const kv = line.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
-    if (!kv) continue;
-    let val = kv[2].trim();
-    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) val = val.slice(1, -1);
-    data[kv[1]] = val;
-  }
+  // Real YAML (the editor writes quotes and colons safely). CORE_SCHEMA keeps dates as plain text.
+  let data = {};
+  try { data = yaml.load(m[1], { schema: yaml.CORE_SCHEMA }) || {}; } catch (e) { console.warn("[front matter] " + e.message); }
+  for (const k of Object.keys(data)) data[k] = data[k] == null ? "" : String(data[k]);
   return { data, body: m[2] };
 }
 
@@ -50,8 +72,9 @@ function plainExcerpt(md, len = 140) {
   return text.length > len ? text.slice(0, len).replace(/\s+\S*$/, "") + "…" : text;
 }
 
-function renderPage({ slug, title, category, author, image, date, bodyHtml, description }) {
+function renderPage({ slug, title, category, author, image, date, bodyHtml, description, seoTitle, relatedHtml }) {
   const url = `https://cherrysage.com/${slug}.html`;
+  const pageTitle = seoTitle || `${title} — Cherry Sage`;
   const byline = author ? `By ${esc(author)} · ` : "";
   return `<!doctype html>
 <html lang="en">
@@ -67,18 +90,18 @@ function renderPage({ slug, title, category, author, image, date, bodyHtml, desc
 ${GENERATED_MARKER}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title)} — Cherry Sage</title>
+<title>${esc(pageTitle)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${url}">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Cherry Sage">
-<meta property="og:title" content="${esc(title)} — Cherry Sage">
+<meta property="og:title" content="${esc(pageTitle)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="https://cherrysage.com${image}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${esc(title)} — Cherry Sage">
+<meta name="twitter:title" content="${esc(pageTitle)}">
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="https://cherrysage.com${image}">
 <meta name="theme-color" content="#6E1A28">
@@ -89,7 +112,7 @@ ${GENERATED_MARKER}
 <link rel="icon" href="assets/icon-32.png?v=2" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/icon-180.png?v=2">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": ["ProfessionalService", "Organization"], "@id": "https://cherrysage.com/#org", "name": "Cherry Sage", "url": "https://cherrysage.com/", "description": "Honest, accurate psychic, tarot, and numerology readings by phone since 1999.", "logo": "https://cherrysage.com/assets/logo.png", "image": "https://cherrysage.com/assets/bev_portrait.jpg", "founder": {"@type": "Person", "name": "Cherry Sage"}, "foundingDate": "1999", "areaServed": "Worldwide", "priceRange": "$$", "sameAs": ["https://cherrysage.com"], "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "390", "bestRating": "5"}}, {"@type": "WebSite", "@id": "https://cherrysage.com/#website", "url": "https://cherrysage.com/", "name": "Cherry Sage", "publisher": {"@id": "https://cherrysage.com/#org"}, "potentialAction": {"@type": "SearchAction", "target": "https://cherrysage.com/blog.html?q={search_term_string}", "query-input": "required name=search_term_string"}}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "${esc(title)}", "description": "${esc(description)}", "image": ["https://cherrysage.com${image}"], "datePublished": "${date}T12:00:00", "dateModified": "${date}T12:00:00", "articleSection": "${esc(category)}", "author": {"@type": "Person", "name": "${esc(author || "Cherry Sage")}"}, "publisher": {"@type": "Organization", "name": "Cherry Sage", "logo": {"@type": "ImageObject", "url": "https://cherrysage.com/assets/logo.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "${url}"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cherrysage.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://cherrysage.com/blog.html"}, {"@type": "ListItem", "position": 3, "name": "${esc(title)}"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "${jstr(title)}", "description": "${jstr(description)}", "image": ["https://cherrysage.com${image}"], "datePublished": "${date}T12:00:00", "dateModified": "${date}T12:00:00", "articleSection": "${jstr(category)}", "author": {"@type": "Person", "name": "${jstr(author || "Cherry Sage")}"}, "publisher": {"@type": "Organization", "name": "Cherry Sage", "logo": {"@type": "ImageObject", "url": "https://cherrysage.com/assets/logo.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "${url}"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cherrysage.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://cherrysage.com/blog.html"}, {"@type": "ListItem", "position": 3, "name": "${jstr(title)}"}]}</script>
 </head>
 <body>
 <header class="site-header">
@@ -103,14 +126,14 @@ ${GENERATED_MARKER}
   </div>
 </header>
 <main>
-<section class="page-hero post-head"><div class="ph-glow" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">${byline}${esc(category)}</p><h1>${esc(title)}</h1></div></section>
+<section class="page-hero post-head"><div class="ph-glow" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">${byline}${esc(category)} · ${esc(date)}</p><h1>${esc(title)}</h1></div></section>
 <section class="section"><div class="wrap post-wrap">
   <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="bc-sep">›</span><a href='/blog'>Blog</a><span class="bc-sep">›</span><span aria-current="page">${esc(category)}</span></nav>
   <img class="post-hero-img" src="${image}" alt="${esc(title)}">
   <article class="post-content reveal">${bodyHtml}</article>
   <div class="post-cta reveal"><p class="eyebrow">Ready for the real thing?</p><h3>Talk it through with Cherry</h3><p>An honest reading goes far beyond an article. First-timers get 10 minutes for $24.</p><a class='btn btn-primary' href='/book-appointment'>Book a Reading</a></div>
 </div></section>
-<section class="section cs-comments"><div class="wrap"><div id="csComments" data-post-title="${esc(title)}"></div></div></section>
+${relatedHtml}<section class="section cs-comments"><div class="wrap"><div id="csComments" data-post-title="${esc(title)}"></div></div></section>
 </main>
 <footer class="footer">
   <div class="wrap footer-grid">
@@ -141,6 +164,17 @@ ${GENERATED_MARKER}
 </body>
 </html>
 `;
+}
+
+// "Keep reading": up to 3 newest other posts in the same category. A post can switch it off
+// with related: false in its front matter.
+function relatedSection(post, all) {
+  if (post.related === "false") return "";
+  const same = all.filter((p) => p.slug !== post.slug && p.category === post.category)
+    .sort((a, b) => (b.date + b.slug).localeCompare(a.date + a.slug)).slice(0, 3);
+  if (!same.length) return "";
+  const cards = same.map((p) => `<a class='bcard reveal' href='/${p.slug}'><div class="bc-img" style="background-image:url('${p.image}')"></div><div class="bc-body"><span class="cat-chip">${esc(p.category)}</span><h3>${esc(p.title)}</h3></div></a>`).join("");
+  return `<section class="section section-tint"><div class="wrap"><div class="section-head reveal"><p class="eyebrow">Keep reading</p><h2>More on ${esc(post.category)}</h2></div><div class="blog-cards">${cards}</div></div></section>\n`;
 }
 
 function upsertCard(html, { slug, title, category, image, date, excerpt, isNew }) {
@@ -193,6 +227,13 @@ function main() {
   let blogHtml = readFileSync(BLOG_HTML, "utf8");
   let changed = false;
 
+  // First pass: read every post so each page can link to its category neighbours.
+  const all = [];
+  for (const file of files) {
+    const { data } = parseFrontMatter(readFileSync(join(CONTENT_DIR, file), "utf8"));
+    if (data.title && data.category && data.image && data.date) all.push({ slug: file.replace(/\.md$/, ""), title: data.title, category: data.category, image: data.image, date: String(data.date).slice(0, 10), related: data.related });
+  }
+
   for (const file of files) {
     const slug = file.replace(/\.md$/, "");
     const raw = readFileSync(join(CONTENT_DIR, file), "utf8");
@@ -216,21 +257,21 @@ function main() {
     const outPath = join(ROOT, `${slug}.html`);
     if (existsSync(outPath)) {
       const existing = readFileSync(outPath, "utf8");
-      if (!existing.includes(GENERATED_MARKER)) {
-        console.warn(`[build-blog] Skipping ${file}: /${slug}.html already exists and was not created by this pipeline.`);
+      if (!existing.includes(GENERATED_MARKER) && !isPostPage(existing)) {
+        console.warn(`[build-blog] Skipping ${file}: /${slug}.html already exists and is not a post page.`);
         continue;
       }
     }
 
     const isNew = !existsSync(outPath);
     const bodyHtml = mdBlock(body);
-    const description = plainExcerpt(body);
+    const description = data.description || plainExcerpt(body);
 
-    const page = renderPage({ slug, title: data.title, category: data.category, author: data.author, image: data.image, date: data.date, bodyHtml, description });
+    const page = renderPage({ slug, title: data.title, category: data.category, author: data.author, image: data.image, date: data.date, bodyHtml, description, seoTitle: data.seo_title, relatedHtml: relatedSection({ slug, category: data.category, related: data.related }, all) });
     writeFileSync(outPath, page);
     changed = true;
 
-    const result = upsertCard(blogHtml, { slug, title: data.title, category: data.category, image: data.image, date: data.date, excerpt: description, isNew });
+    const result = upsertCard(blogHtml, { slug, title: data.title, category: data.category, image: data.image, date: data.date, excerpt: plainExcerpt(body), isNew });
     blogHtml = result.html;
     if (result.added) {
       blogHtml = bumpWordCloud(blogHtml, data.category);

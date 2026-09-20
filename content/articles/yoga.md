@@ -1,0 +1,21 @@
+---
+title: "Yoga"
+category: "Yoga"
+author: "Steve Stiefel"
+date: "2017-07-13"
+image: "/assets/articles/yoga.jpg"
+description: "YOU MAY THINK YOU KNOW WHAT YOGA IS, BUT WHEN you ask someone who knows more about it than you do, suddenly you know less than you thought you did. In..."
+---
+
+By Steve Stiefel
+
+YOU MAY THINK YOU KNOW WHAT YOGA IS, BUT WHEN you ask someone who knows more about it than you do, suddenly you know less than you thought you did. In fact, you may not even know what you thought you knew. Yoga, Sara Ivanhoe might say, is an enigma wrapped in a riddle, shrouded in a mystery. By the time she inverts herself into her next unfathomable contortion, floating on water, she has inverted the equation: She herself is a riddle wrapped in her own mystery. What an enigma. To see Sara perform her existential poses of physiological perplexity is akin to watching Russian dolls performing at Cirque du Soleil.
+
+As the layers peel away, the physicality becomes dumbfounding. Ultimately, to understand yoga is to understand Sara herself: What is yoga? “Yoga is not a religion.” What is yoga? “Yoga is not a judgment.” What is yoga? “Yoga is not simply a form of exercise.” What is yoga? “Yoga is not just a way to get a great ass.” What is yoga? “Yoga is not ‘the answer.'” Well, okay, what isn’t yoga? “Yoga is a practice. Yoga is a union. It is to become One with. It is to harness your power. It is the opportunity to learn. Not only that, yoga is a form of exercise. It’s a way to get a great ass. It is the answer. It is what it is not.” There.
+
+“Sometimes you have to find the right question,” Sara says, and she flashes that quirky gorgeous smile that makes everything she said just make sense. She’s far more a woman out of a Sheryl Crow song than the philosophical contrarian or yoga dominatrix the previous exchange might suggest. It’s not hard to imagine Sara having fun till the sun comes up over Santa Monica Boulevard, then spending the rest of the day soaking up the sun.
+
+FROM HERE TO ETERNITY The infinity pool with the mountain backdrop is as stunning as the exquisite Ms. Ivanhoe herself. The house where these photos were shot is beautiful, compelling, terrible! A full bar and vast wine collection dominate the interior of this cavernous loft-style residence. The decor is a collage–a collision–of Pottery Barn art deco Crayola crayon. Outside, on the sedate lawn, Sara stretches, Zenlike, in the last heat of summer in a canyon of vast expanses west of Los Angeles. In a few moments, she’ll not only walk on water; she’ll transform herself into dramatic nouns: eagle, cobra, tree, camel! Sara will graduate this fall from the Yoga Philosophy program at Loyola Marymount University, where she is devoted to learning all that she can about the practice of yoga: “I’m learning Sanskrit and reading translations of the ancient texts because I want to understand them unfiltered through Western interpretation.” Sara is doing this in part, she says, so that she can present a less philosophical, less judgmental, less religious, more stripped-down, more accessible form of a yoga to her students at Yoga Works in Santa Monica. To know more is to preach less. “Many people think of yoga as a religion, and that’s not what it is,” she continues. “I want to make it mainstream and remove those preconceived barriers so that more people can participate.” What is religion? What is not religion? Consider: Alcoholics Anonymous, Christianity. Texas Hold’Em. Scientology. Ironman Triathlons. Buddhism. Pornography. Transcendental Meditation. Defined Abs. It’s a calling; it’s a drive; it takes over your life; it’s a need to let go; it’s a need to take it further. Participate and nothing else matters. “Come to my class for the reason you want to come to my class,” says Sara. “I don’t care why you come. Just come. Come because you want a nicer ass. Come because you want to get laid more. Come because you’re hot and sexy. Come because you’re ugly. Come because you want to escape something. Come because you want to go toward something. Come because you’re enlightened. Come because you don’t understand the universe.”
+
+About author:  
+For more on this interesting article, please see Muscle \& Fitness, Issue Jan. 2006 by Steve Stiefel.

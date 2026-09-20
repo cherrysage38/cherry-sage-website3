@@ -1,0 +1,168 @@
+---
+title: "About Auras – What We Know About the Human Energy Field"
+category: "Featured Articles"
+date: "2012-12-14"
+image: "/assets/blog/real-psychic-readings-3-new-1-1-768x361.jpg"
+seo_title: "About Auras - What We Know About the Human Energy Field"
+description: "About Auras - What We Know About the Human Energy Field"
+related: false
+---
+
+If one thinks of the universe as being a living, energetic and conscious realm, then auras are the domain of this consciousness and lie in dimensions not usually accessible to us. By being impenetrable to our normal physical senses, they cannot be scientifically “proven” to exist. However, recent advances in science, in medicine, and in psychology have been such that there is much more acceptance of the mind-body relationship in disease. Perhaps the time is soon coming when society at large can recognize the credibility, sincerity, and veracity of clairvoyants who “see” in a different manner. In quantum physics we have discovered that the human observer can affect the observed, and consequently the outcome of the experiment. Is it too much of a leap to postulate that human consciousness, or one’s spiritual field or aura, can affect matter?  
+To better understand ourselves and the interactions between our mind (emotions) and our body, we need to look at the whole person. The higher dimensions (or fields) of consciousness must then be included. Although we speak of levels or dimensions being “lower” or “higher”, the terms are used only to differentiate amongst them. All dimensions co-exist within the same space. They are not separate at all and influence and interact with each other. Dora van Gelder Kunz, in her book The Personal Aura explains this interaction as being “achieved in somewhat the same way that the unique sound of a musical chord is created by combining different tones, each of which can be distinguished by a trained ear. The experience of listening to music is the best analogy I can think of, because the differences between the subtle fields are essentially harmonic in nature. Each dimension of consciousness has its range of frequencies, and plays a particular part in the total orchestration of a human being.”
+
+There are as many explanations of the Human Aura and the Chakra System as there are books on the subject. The following descriptions of the chakras have been taken from a variety of sources. As in all searches for the truth, please make your own judgments as to the validity of the material presented.
+
+CHAKRAS
+
+The word chakra is a Sanskrit word meaning wheel. It is a wheel-like spinning vortex that interpenetrates the physical body, with the outer ends of each vortex forming a specific layer of the auric field. The whirling circular motion forms a cavity or vacuum in the center that draws in anything it encounters on its particular vibrational level. It is then processed and returned to the auric field. The major chakras of the human body are the seven chakras that are aligned along the spinal column. Secondary chakras of importance are located in the palms of the hands, the soles of the feet, and at major joints in the arms and legs.
+
+For the people of antiquity – Egyptians, Chinese, Hindus, Greeks, Romans, and aborigines of many lands – the chakras were an integrated part of daily lives. As these ancient civilizations were conquered, vast libraries of knowledge were destroyed. Only a few remnants of their information on the chakra system have survived – either through the preservation of ancient texts by sacred priesthood’s, or orally from generation to generation, as in the traditions of many aboriginal peoples.
+
+In any study of the anatomy of the aura it is important to understand the significance of the chakra system. The chakras exist on all levels of the aura and serve as linking mechanisms between the auric field and the physical body as well as linking mechanisms between the different levels of the auric field itself.
+
+It is usually believed that the three lower chakras correlate to basic primary needs – those of survival, procreation, and will – whereas the four higher chakras are concerned with our psychological makeup \-defining love, communication, and knowledge, and connection with the spiritual realms.
+
+The Seven Major Chakras
+
+First Chakra
+
+We must balance this chakra before moving on to the others. Otherwise our growth will be without roots, i.e., ungrounded
+
+Other Names: Root, base, muladhara, Kundalini (Sanskrit)  
+Situated: base of spine and the pubic bone (but encompasses genitals and reproductive organs)  
+Color: red  
+Element: Earth  
+Area of consciousness: physical body  
+This includes all physical sensations, such as pain, sensuality, pleasure and power. Also, our survival (as an individual and as a planet), our need for world peace and environmental balance.  
+Key Words: stability, solidity, unity and form.  
+Physical organ association: gonads, also the glomus coccygeum or coccygeal body, adrenal gland, the kidneys and the spinal column  
+Relationship: to the solid part of the body, especially the bones  
+Importance: location of the kundalini  
+Attributes: athletic, cares about survival, sensuality, pleasure and power  
+Governs: perception of the physical world, willpower, motivation and intent
+
+Second Chakra
+
+Here we encounter change, for without change we cannot grow.
+
+Other Names: Sacral, sexual, svadhisthana (Sanskrit)  
+Situated: behind and just below the navel  
+Color: orange  
+Element: Water  
+Area of consciousness: emotional  
+Change in that we now moving beyond our understanding of ourselves and realize the awareness of others – desire arises and with it our emotions and sexuality.  
+Key Words: difference, separation, change, duality, and movement  
+Physical organ association: spleen ( Peyer’s Patches) as well as the kidneys and bladder  
+Relationship: corresponds to the liquid part of the body – circulation, urinary elimination, and sexual body fluids.  
+Governs: feelings of sexuality, and creativity
+
+Third Chakra
+
+Transformation to a new state occurs through this chakra’s basic dynamic energy and our ability to find a balance between extremes.
+
+Other Names: Solar Plexus, manipura (Sanskrit)  
+Situated:solar plexus, in the V formed by the ribcage, above the navel  
+Color: yellow  
+Element: Fire  
+Area of consciousness: mental or intellectual body  
+This includes thoughts, opinions and judgments.  
+Key Words: combustion, fire, energy, action, power, and will  
+Physical organ association: adrenal glands, pancreas, liver, stomach, as well as the nervous system and the bladder.  
+Relationship: responsible for the regulation and distribution of metabolic energy throughout the body, as in digestion.  
+Governs: emotional issues and issues of personal power
+
+Fourth Chakra
+
+The task of this chakra is to integrate and balance the realms of spirit and mind with our physical body (matter).
+
+Other Names: Heart, anahata (Sanskrit)  
+Situated: midway between shoulder blades (over the sternum)  
+Color: Green  
+Element: Air  
+Area of Consciousness: astral body  
+This is the first level beyond 3-dimensional matter. Here we have the bridge between the dimensions of matter and the dimensions of spirit. Although we may refer to the “lower chakras” as being concerned with mankind, and the “upper chakras” as being concerned with spirituality and God, each chakra is no less important than the other. For instance, the first chakra has a number of frequencies (all within the Red vibration), ranging from very low to very high. The goal is to rise above a chakra’s lower frequencies into its higher ones.  
+Key Words: love, compassion, balance  
+Physical organ association: thymus gland (immune system), and the heart, blood, circulatory system, immune system, and the endocrine system.  
+Relationship: to the heart – to love as a state of being.  
+Governs: love, compassion, and unconditional acceptance for others
+
+Fifth Chakra
+
+Here we have the realm of consciousness where communication occurs, whether that be within ourselves or to and from another
+
+Other Names: Throat, visuddha (Sanskrit)  
+Situated: throat area  
+Color: blue  
+Element: Sound  
+Area of consciousness: etheric body  
+This etheric body is the template for the physical body, and represents our potential for perfection.  
+Key Words: sound, vibration, communication, and self-expression  
+Physical organ association: thyroid and parathyroid glands, lungs, vocal cords, and bronchial apparatus.  
+Relationship: the throat area where sound is created  
+Governs: communication, expression of thoughts and feelings
+
+Sixth Chakra
+
+The essence and function of this chakra is to “see” in the sense that we accept that complete vision will include both darkness and light.
+
+Other Names: Third Eye, Brow, ajna (Sanskrit)  
+Situated: centre of head, behind forehead  
+Color: indigo  
+Element: Light  
+Area of consciousness: celestial body  
+It is here that we have “sixth sight”, or the ability to “see” by way of clairvoyance. We use this chakra for visualization, receiving insight or inspiration.  
+Key Words: intuition, imagination and clairvoyance  
+Physical organ association: pineal (although some believe it is the pituitary gland)  
+Relationship: the storehouse and viewing screen of all visual input from our two physical eyes and our “third eye” (the etheric organ of psychic perception).  
+Governs: spirituality and the search for meaning in life, intuition, visualization
+
+Seventh Chakra
+
+This chakra represents our belief systems, both conscious and unconscious.
+
+Other Names: Crown, sahasrara (Sanskrit)  
+Situated:top of head  
+Color: white (some believe violet)  
+Element: Thought  
+Area of Consciousness: ketheric body  
+This chakra is associated with the spiritual realm. Here is where we merge with God, the All That Is.  
+Key Words: enlightenment, knowing and cosmic consciousness  
+Physical organ association: pituitary gland (although some believe it is the pineal gland)  
+Relationship: not of the material world but as a gateway to worlds beyond  
+Governs: our connection to the concept of “God” or a higher intelligence  
+Secondary Chakras
+
+Rosalyn L. Bruyere writes in her book Wheels of Light (click here to view this book) that there are 122 smaller secondary chakras. These have the same characteristics as the major seven chakras, although they are much smaller. They are located primarily wherever there is a joint in the body. She further states that it is the connective tissue that is primarily responsible for carrying electromagnetic energy in our bodies.
+
+Unfortunately we often tend to ignore the lower portion of our bodies, i.e., we are not grounded. As much of our connective tissue is in our legs and buttocks, the result is that our internal organs suffer from this lack of incoming energy.
+
+Glossary
+
+Allopathic – Refers to contemporary medical approaches (conventional medicine) which utilize drug therapy, surgery, etc to provide symptom relief.  
+Astral – This is the layer of the aura or frequency band located just beyond the etheric. The astral body is affected by emotionality, thus astral energy is often emotionally-linked. It is to be noted that there are lower, middle and higher astral planes. It is to the lower plane that we travel in our dreams and project ourselves during “astral travel”. To the clairvoyant, this field appears to extend fifteen to 18 inches beyond the physical body. It looks like an ovide, luminous cloud of ever changing colors and patterns. The texture is flexible, often described as fluidic, with a clearly defined periphery (although the material dissipates imperceptibly into the surrounding auric field).  
+Aura – An energy field that interpenetrates with and radiates out beyond the physical body. It is made up of different energy vibrations or frequencies. These, in turn, make up the physical, etheric, astral, mental, causal, and higher spiritual aspects of the multidimensional human form. The trained healer “sees”, within the aura, indications as to the spiritual, mental, physical and emotional state of the patient.  
+Causal – This is the layer of the aura or frequency band located just beyond the mental level. It is termed “causal” because, according to esotericism, it carries the Self’s (Soul or Spirit) fundamental intentionality tobe, and this is the ultimate cause of our existence. Seen clairvoyantly, the causal body is pale and ethereal, with iridescent colors like those of a soap bubble. At this level, the Self is not constrained by the usual limits of time and space and causality, but is able to experience the universality of life and to perceive meanings and interrelationships which are normally not available to us. This level does not disintegrate after the death of the physical body as the astral and mental bodies eventually do. It persists from life to life.  
+Chakra – A Sanskrit word meaning “wheel”. In additional to seven or 8 major chakras associated with the human body, there are many more secondary chakras that also play a lessor role. The main function of each chakra seems to be as a step-down transformer for the higher frequency subtle energies of the aura. These energies are converted into chemical, hormonal, and cellular changes in the physical body.  
+Channeling – The phenomenon whereby an individual allows a higher level of consciousness (higher self, guardian angel, angelic being, etc.), to come through them, often verbally, as in trance channeling (Edgar Cayce, Seth, Emmanual, etc.), or as thoughts and messages received internally or through automatic writing, etc.  
+Chi – Also spelt Ch’i, Qi or Ki, it refers to the nutritive subtle energy that surrounds us, that enters our physical body through breathing, and flows through the body along the acupuncture meridians.  
+Clairaudience – The psychic ability of hearing at higher vibrational levels. It is mediated through the use of the throat chakra.  
+Clairvoyance – The psychic ability of seeing higher subtle-energy patterns, i.e. the ability to see the aura with its colors, thought-forms, shape, etc. It is mediated through the use of the brow (third-eye) chakra.  
+Energy Blockage – A general term referring to the interruption of the natural flow of subtle energy through the human (or animal) energetic system, often due to abnormal function in one or more of the chakras.  
+Etheric – This is the layer of the aura or frequency band located just beyond the physical. Its most important function is the transfer of subtle energy from the universal field to the individual field, and thence to the physical body. It acts as a connecting link between the physical body and the emotional (astral) and mental bodies (fields), and furnishes the basic pattern according to which the physical body is built. To the clairvoyant, the etheric body looks like a luminous web of fine bright lines of force which, in a healthy person, stand out at right angles to the surface of the skin. Its color is usually blue-gray to violet-gray and it shimmers like heat waves above the earth on hot days. It extends two to 3 inches beyond the boundary of the physical body.  
+Holistic – A synergistic approach which deals with the combined physical, mental, emotional, and spiritual aspects of human health and illness.  
+Kundalini – The creative energy of spiritual illumination which is stored as potential energy within the root or base chakra. When properly released, it causes activation and alignment of all the major chakras of the body.  
+Mantra – A word or sound which, when repeated to oneself during meditation, helps one to achieve a deeper meditative state of consciousness.  
+Mental – This is the layer of the aura or frequency band located just beyond the astral level, but interpenetrates both the lower astral and etheric bodies (levels). It is the mental dimension that is in constant interplay with the other aspects of the personality throughout life, and its energy permeates every experience, even when we are not engaged in intellectual pursuits or even consciously thinking. It is ovoid in shape like the astral, but it is considerably larger and less dense. Its colors and quality are good indicators of the individual’s interests and mental powers, whether latent or active, for sometimes the capacities we are born with do not mature during life. The mental body extends about 3 feet beyond the periphery of the physical body.  
+Meridian – A microtubular channel that carries a nutritive subtle energy (chi) to the various organs, nerves, and blood vessels of the body.  
+Miasm – An energetic state which predisposes the organism to future illness, often due to the subtle effects of a particular toxic agent or noxious micro-organism. Miasms may be acquired or inherited.  
+Nadis – The threadlike subtle paths of energy flow from the chakras to the various regions of the physical body. Unlike meridians, which have physical components, nadis are nonphysical.  
+Prana – An ancient Hindu or yogic term that refers to the nutritive subtle-energy taken in during breathing. Also referred to as chi or ki.  
+Quantum Physics – That branch of science which studies the energetic characteristics of matter at the subatomic level.  
+Spiritual Healing – A form of healing that is mainly associated with the physical and etheric levels. However, the emotional (astral), mental and higher spiritual levels do also play a part in the healing process.  
+Subconscious – That part of the personality which dwells below the surface of waking consciousness and which controls automatic human functions. It is subliminally affected by all information taken in by our senses, and is conditioned or programmed by rewards, punishments, and messages (such as positive or negative affirmations) that subtly affect our internal belief system of our worthiness and self-esteem.  
+Subtle Body – A term referring to any of the subtle-energy bodies which exist in the higher frequency octaves beyond the physical, i.e., the etheric, the astral, mental and causal bodies.  
+Subtle Energy – A general term that denotes energy that exists outside our physical reality (often referred to as electromagnetic energy), and thus is not bound by the physical laws. This energy moves at speeds greater than the speed of light.  
+Superconscious – That part of the higher soul structure, of which we are not usually conscious, that nevertheless makes up part of our personality. It is here that we possess our higher wisdom.  
+Thought-form – Strong thoughts or emotions produce a manifestation that has has an actual energy structure that can be seen clairvoyantly in the auric field.  
+Vibration – Refers to subtle or electromagnetic energy in varying frequencies and amplitudes.

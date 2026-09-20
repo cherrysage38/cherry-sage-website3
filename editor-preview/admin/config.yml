@@ -23,8 +23,11 @@ collections:
       - { label: "Title", name: "title", widget: "string", hint: "The article's headline." }
       - { label: "Category", name: "category", widget: "select", hint: "Pick the topic this article belongs to — these are the exact topics shown on the Guest Articles page.", options: ["Abundance", "Astrology", "Business & Spirituality", "Dreams", "Feng Shui", "Herbal Remedies", "Inspiration & Self-Mastery", "Karma", "Meditation", "Metaphysics", "Natural Medicine", "New Age", "Numerology", "Psychic & Paranormal", "Psychic Medium", "Psychic Readings", "Reincarnation", "Tarot", "Wisdom", "Yoga"] }
       - { label: "Author (optional)", name: "author", widget: "string", required: false, hint: "The guest author's name, if there is one." }
+      - { label: "Date (optional)", name: "date", widget: "datetime", type: "date", format: "YYYY-MM-DD", required: false, hint: "When it was first published. Shown next to the topic at the top of the article." }
       - { label: "Featured image", name: "image", widget: "image", hint: "This shows on the article card and at the top of the article." }
       - { label: "Article", name: "body", widget: "markdown", hint: "The full article text. Use the toolbar for bold, headings, links." }
+      - { label: "Search title (optional)", name: "seo_title", widget: "string", required: false, hint: "The title Google shows in search results. Leave blank and it uses the title above followed by Cherry Sage." }
+      - { label: "Search description (optional)", name: "description", widget: "text", required: false, hint: "One or two sentences Google shows under the title. Leave blank and the first lines of the text are used." }
 
   - name: "blog"
     label: "Blog Posts"
@@ -37,10 +40,13 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "The post's headline." }
       - { label: "Date", name: "date", widget: "datetime", type: "date", format: "YYYY-MM-DD", hint: "Shown on the post and used to sort it into the right month in your Archive list." }
-      - { label: "Category", name: "category", widget: "select", hint: "Pick the topic this post belongs to — these are the exact topics shown on your Blog page.", options: ["Psychic Readings", "Numerology", "Other World", "Predicting Dates or Timelines", "Gypsy Scams", "Tarot Card Readings", "Online Psychic Readings", "Karma & Past Lives"] }
+      - { label: "Category", name: "category", widget: "select", hint: "Pick the topic this post belongs to — these are the exact topics shown on your Blog page.", options: ["Psychic Readings", "Numerology", "Other World", "Predicting Dates or Timelines", "Gypsy Scams", "Tarot Card Readings", "Online Psychic Readings", "Karma & Past Lives", "Featured Articles", "Astrology", "Dreams"] }
       - { label: "Author (optional)", name: "author", widget: "string", required: false, hint: "Leave blank to show as written by Cherry Sage." }
       - { label: "Featured image", name: "image", widget: "image", hint: "This shows on the post card and at the top of the post." }
       - { label: "Post", name: "body", widget: "markdown", hint: "The full post text. Use the toolbar for bold, headings, links." }
+      - { label: "Search title (optional)", name: "seo_title", widget: "string", required: false, hint: "The title Google shows in search results. Leave blank and it uses the title above followed by Cherry Sage." }
+      - { label: "Search description (optional)", name: "description", widget: "text", required: false, hint: "One or two sentences Google shows under the title. Leave blank and the first lines of the text are used." }
+      - { label: "Show related posts", name: "related", widget: "boolean", default: true, required: false, hint: "Adds a \"Keep reading\" row of other posts on the same topic under this post." }
 
   - name: "pages"
     label: "Pages"
