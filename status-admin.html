@@ -17,7 +17,7 @@
 <meta name="theme-color" content="#6E1A28">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=45">
+<link rel="stylesheet" href="site.css?v=47">
 <link rel="icon" href="assets/favicon.ico?v=2" sizes="any">
 <style>
 body{background:var(--paper)}
@@ -59,11 +59,12 @@ body{background:var(--paper)}
   <div id="saGate" class="sa-gate">
     <p class="eyebrow" style="color:var(--gold)">Cherry Sage</p>
     <h1 class="sa-title">Manage My Status</h1>
-    <p style="color:var(--ink-soft);font-size:.9rem">Enter your dashboard PIN.</p>
-    <input type="password" inputmode="numeric" id="saGatePin" placeholder="PIN" autocomplete="off">
-    <button class="btn btn-primary" id="saGateSend" style="width:100%">Open</button>
+    <p style="color:var(--ink-soft);font-size:.9rem">Log in with your email to open this page.</p>
+    <input type="password" inputmode="numeric" id="saGatePin" placeholder="PIN" autocomplete="off" hidden>
+    <a class="btn btn-primary" href="/login.html" style="width:100%;display:block;text-align:center;box-sizing:border-box">Log in</a>
+    <button class="btn btn-primary" id="saGateSend" style="width:100%;display:none" hidden>Open</button>
     <p class="msg" id="saGateMsg"></p>
-    <p style="margin:.9rem 0 0;font-size:.85rem;color:var(--ink-soft)">Cherry, no PIN needed: <a href="/login.html">log in</a> with <strong>cherry38@cherrysage.com</strong> and this page opens on its own. (Forgot the password? Use "Forgot your password?" on the login page.)</p>
+    <p style="margin:.9rem 0 0;font-size:.85rem;color:var(--ink-soft)">Log in with <strong>cherry38@cherrysage.com</strong>, then come back to this page and it opens on its own. Forgot the password? Use "Forgot your password?" on the login page.</p>
   </div>
 
   <div id="saApp" hidden>

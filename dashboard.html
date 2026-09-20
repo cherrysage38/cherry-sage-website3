@@ -17,7 +17,7 @@
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=45">
+<link rel="stylesheet" href="site.css?v=47">
 <link rel="icon" href="assets/favicon.ico?v=2" sizes="any">
 <link rel="manifest" href="/dashboard-manifest.json">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
@@ -82,11 +82,12 @@
   <div id="dashGate" class="dash-gate">
     <p class="eyebrow">Cherry Sage</p>
     <h1 style="font-size:1.5rem;margin:.2rem 0 1rem">Your Dashboard</h1>
-    <p style="color:var(--ink-soft);font-size:.92rem">Enter your PIN to open it.</p>
-    <input type="password" inputmode="numeric" id="gatePin" placeholder="PIN" autocomplete="off">
-    <button class="btn btn-primary" id="gateSend" style="width:100%">Open Dashboard</button>
+    <p style="color:var(--ink-soft);font-size:.92rem">Log in with your email to open it.</p>
+    <input type="password" inputmode="numeric" id="gatePin" placeholder="PIN" autocomplete="off" hidden>
+    <a class="btn btn-primary" href="/login.html" style="width:100%;display:block;text-align:center;box-sizing:border-box">Log in</a>
+    <button class="btn btn-primary" id="gateSend" style="width:100%;display:none" hidden>Open Dashboard</button>
     <p class="msg" id="gateMsg"></p>
-    <p style="margin:.9rem 0 0;font-size:.85rem;color:var(--ink-soft)">Cherry, no PIN needed: <a href="/login.html">log in</a> with <strong>cherry38@cherrysage.com</strong> and this page opens on its own. (Forgot the password? Use "Forgot your password?" on the login page.)</p>
+    <p style="margin:.9rem 0 0;font-size:.85rem;color:var(--ink-soft)">Log in with <strong>cherry38@cherrysage.com</strong>, then come back to this page and it opens on its own. Forgot the password? Use "Forgot your password?" on the login page.</p>
   </div>
 
   <div id="dashApp" hidden>

@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#6E1A28">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=45">
+<link rel="stylesheet" href="site.css?v=47">
 <link rel="icon" href="assets/favicon.ico?v=2" sizes="any">
 <link rel="icon" href="assets/icon-32.png?v=2" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/icon-180.png?v=2">
@@ -40,11 +40,11 @@
 <section class="page-hero banner"><div class="ph-glow" aria-hidden="true"></div><div class="ph-stars" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">Cherry only &middot; private</p><h1>Moderate comments</h1><p class="lede">New comments from blog posts and guest articles wait here until you approve or reject them.</p></div></section>
 <section class="section"><div class="wrap" style="max-width:720px">
   <div class="card reveal" style="text-align:left;margin-bottom:1.6rem">
-    <label style="display:grid;gap:.3rem">Your access key
+    <label style="display:none" hidden>Your access key
       <input id="adminKey" type="password" placeholder="Enter your key" style="padding:.7rem 1rem;border:1px solid var(--line-strong);border-radius:10px">
     </label>
-    <button id="loadBtn" class="btn btn-primary" style="margin-top:.9rem">Load pending comments</button>
-    <p style="margin:.9rem 0 0;font-size:.85rem;color:var(--ink-soft)">Cherry, no PIN needed: <a href="/login.html">log in</a> with <strong>cherry38@cherrysage.com</strong> and this page opens on its own. (Forgot the password? Use "Forgot your password?" on the login page.)</p>
+    <a class="btn btn-primary" href="/login.html" id="cmLogin" style="margin-top:.9rem;display:inline-block">Log in</a> <button id="loadBtn" class="btn btn-primary" style="margin-top:.9rem">Load pending comments</button>
+    <p style="margin:.9rem 0 0;font-size:.85rem;color:var(--ink-soft)">Log in with <strong>cherry38@cherrysage.com</strong>, then come back to this page and it opens on its own. Forgot the password? Use "Forgot your password?" on the login page.</p>
   </div>
   <div id="mcList"></div>
 </div></section>
@@ -73,12 +73,11 @@
   }
   function load(){
     if(!ownerToken){
-      key=document.getElementById('adminKey').value.trim();
-      if(!key){ alert('Enter your access key first.'); return; }
+      alert('Please log in first with cherry38@cherrysage.com.'); return;
     }
-    var url='/.netlify/functions/comments?admin=1'+(ownerToken?'':'&key='+encodeURIComponent(key));
+    var url='/.netlify/functions/comments?admin=1';
     fetch(url,{headers:authHeaders()})
-      .then(function(r){ if(r.status===401){ alert('That key was not accepted.'); return null; } return r.json(); })
+      .then(function(r){ if(r.status===401||r.status===403){ alert('Please log in again with cherry38@cherrysage.com.'); return null; } return r.json(); })
       .then(function(d){ if(d) render(d.pending||[]); });
   }
   document.getElementById('loadBtn').addEventListener('click', load);
@@ -96,6 +95,7 @@
     var email=(session && session.user && session.user.email || '').toLowerCase();
     if(session && OWNER_EMAILS.indexOf(email)>=0){
       ownerToken=session.access_token;
+      var lb=document.getElementById('cmLogin'); if(lb) lb.hidden=true;
       load();
     }
   });

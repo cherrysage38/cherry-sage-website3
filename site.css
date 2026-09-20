@@ -195,7 +195,6 @@ p{margin:0 0 1rem}
   .primary-nav.open ul{flex-direction:column;gap:.4rem}
   .brand img{height:44px}
   .footer-grid{grid-template-columns:1fr 1fr}
-  .chat-widget .cw-status{display:none}
   /* keep Ivy to a small corner button on mobile so it never sits over hero/body text */
   .chat-widget .cw-hint{display:none}
   .chat-widget{right:.6rem;bottom:.6rem;padding:0}
@@ -228,8 +227,13 @@ p{margin:0 0 1rem}
    the full 46px on phones too, sitting over hero copy (flagged by Bev, 2026-09-07 critique).
    Re-applied here, after the override, so it actually wins on small screens. */
 @media(max-width:640px){
-  .chat-widget{right:.6rem;bottom:.6rem;padding:.35rem}
+  .chat-widget{right:.6rem;bottom:.6rem;padding:.3rem .35rem .3rem .8rem;gap:.4rem}
   .chat-widget .cw-bubble img{width:34px;height:34px}
+  /* Bev, 2026-09-20: "No one really knows Ivy is there. I don't see the status button anymore on
+     mobile." The label and status dot were hidden on phones (2026-09-07) to keep Ivy off the text.
+     Show them again as one compact pill: dot + "Chat with Ivy" + the icon, in the corner. */
+  .chat-widget .cw-status{display:inline-flex;font-size:.8rem;gap:.35rem;white-space:nowrap}
+  .chat-widget .cw-status .status-dot{width:9px;height:9px}
 }
 
 /* ---- inner pages + home additions (full site 2026-08-27) ---- */
