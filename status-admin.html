@@ -21,7 +21,7 @@
 <link rel="icon" href="assets/favicon.ico?v=2" sizes="any">
 <style>
 body{background:var(--paper)}
-.sa-wrap{max-width:640px;margin:0 auto;padding:2.5rem 1.5rem}
+.sa-wrap{max-width:720px;margin:0 auto;padding:2.5rem 1.5rem}
 .sa-gate{max-width:380px;margin:5rem auto;text-align:center;padding:2.2rem;background:var(--cream);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm)}
 .sa-gate input{width:100%;padding:.8rem 1rem;border:1px solid var(--line-strong);border-radius:10px;margin:1rem 0;text-align:center;font-size:1.2rem;letter-spacing:.2em;box-sizing:border-box}
 .sa-gate .msg{color:var(--cherry);font-size:.85rem;min-height:1.2em;margin-top:.6rem}
@@ -51,6 +51,19 @@ body{background:var(--paper)}
 .sa-state-row{display:flex;gap:.6rem;flex-wrap:wrap}
 .sa-state-btn{flex:1 1 auto;min-width:120px}
 .sa-state-btn.active{background:var(--oxblood);color:#fff;border-color:var(--oxblood)}
+.hrs{display:flex;flex-direction:column;gap:.45rem;margin:.2rem 0 1rem}
+.hrs-row{display:grid;grid-template-columns:110px 90px 1fr;gap:.6rem;align-items:center;background:var(--paper-2);border:1px solid var(--line);border-radius:10px;padding:.5rem .8rem}
+.hrs-row .d{font-weight:600;color:var(--ink)}
+.hrs-row label.open{display:flex;align-items:center;gap:.4rem;font-size:.85rem;color:var(--ink-soft)}
+.hrs-row .t{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--ink-soft)}
+.hrs-row input[type=time],.aw-until input{padding:.45rem .6rem;border:1px solid var(--line-strong);border-radius:8px;font-family:var(--font-body);font-size:.95rem}
+.hrs-row.closed .t{opacity:.35;pointer-events:none}
+.aw-until{display:flex;align-items:center;gap:.6rem;margin-top:.9rem;font-size:.85rem;color:var(--ink-soft);flex-wrap:wrap}
+.hol-quick{display:flex;gap:.6rem;flex-wrap:wrap;margin:0 0 1rem}
+.hol-list .nm{color:var(--ink-soft);margin-left:.5rem}
+.hol-add input[type=text]{flex:1.2}
+@media (max-width:560px){.hrs-row{grid-template-columns:1fr 1fr}.hrs-row .t{grid-column:1/-1}}
+
 </style>
 </head>
 <body>
@@ -69,7 +82,7 @@ body{background:var(--paper)}
 
   <div id="saApp" hidden>
     <h1 class="sa-title">Manage My Status</h1>
-    <p class="sa-sub">This controls the status dot and "Chat with Ivy" widget on every page of your site, and the status light other pages mention.</p>
+    <p class="sa-sub">This controls the status dot and "Chat with Ivy" widget on every page of your site. It follows your hours below, shows Busy when you have an appointment, and lets you override it with one tap.</p>
 
     <div class="sa-group">
       <h3>Right now</h3>
@@ -77,38 +90,47 @@ body{background:var(--paper)}
     </div>
 
     <div class="sa-group">
-      <h3>Set my status</h3>
-      <p style="color:var(--ink-soft);font-size:.85rem;margin:0 0 .9rem">One tap, takes over immediately on your site. Overrides your hours until you clear it.</p>
+      <h3>Set my status for today</h3>
+      <p style="color:var(--ink-soft);font-size:.85rem;margin:0 0 .9rem">One tap and your site changes right away. It lasts until the end of today (Eastern time), then your hours take over again. Or press Clear.</p>
       <div class="sa-state-row" id="saStateRow">
-        <button type="button" class="btn btn-ghost sa-state-btn" data-state="available">Available</button>
+        <button type="button" class="btn btn-ghost sa-state-btn" data-state="available">Online</button>
+        <button type="button" class="btn btn-ghost sa-state-btn" data-state="busy">Busy</button>
         <button type="button" class="btn btn-ghost sa-state-btn" data-state="brb">Be Right Back</button>
         <button type="button" class="btn btn-ghost sa-state-btn" data-state="not_available">Not Available</button>
       </div>
-      <button type="button" class="btn btn-ghost" id="saStateClear" style="margin-top:.7rem;font-size:.8rem">Clear — back to automatic hours</button>
+      <button type="button" class="btn btn-ghost" id="saStateClear" style="margin-top:.7rem;font-size:.8rem">Clear, back to my hours</button>
     </div>
 
     <div class="sa-group">
       <h3>Away / vacation</h3>
       <div class="sa-away-row">
-        <p>Turn this on and your site shows you as away, no matter the day or time, until you turn it back off.</p>
+        <p>Turn this on and your site shows you as away, no matter the day or time, until you turn it back off. It beats everything else, including your one-tap status.</p>
         <label class="switch"><input type="checkbox" id="saAwayToggle"><span class="slider"></span></label>
       </div>
+      <div class="aw-until"><label for="saAwayUntil">Back on (optional):</label><input type="date" id="saAwayUntil"><span>If you pick a date, Away turns itself off after that day.</span></div>
+    </div>
+
+    <div class="sa-group">
+      <h3>My hours</h3>
+      <p style="color:var(--ink-soft);font-size:.85rem;margin:0 0 .9rem">When you are online. These are the same hours your booking page offers, so the status light and the appointment scheduler always agree. Times are Eastern.</p>
+      <div class="hrs" id="saHours"></div>
+      <button type="button" class="btn btn-primary" id="saHoursSave">Save my hours</button>
     </div>
 
     <div class="sa-group">
       <h3>Holidays &amp; days off</h3>
-      <p style="color:var(--ink-soft);font-size:.85rem;margin:0 0 .9rem">Add specific dates you want to show as away, even if "Away / vacation" above is off.</p>
+      <p style="color:var(--ink-soft);font-size:.85rem;margin:0 0 .9rem">On these days your site shows you as away, and the booking page will not offer times. Add the holidays you take off, then remove any you work.</p>
+      <div class="hol-quick" id="saHolQuick"></div>
       <ul class="hol-list" id="saHolList"></ul>
       <div class="hol-add">
         <input type="date" id="saHolDate">
-        <button class="btn btn-ghost" id="saHolAdd" type="button">Add date</button>
+        <input type="text" id="saHolNote" placeholder="Name (optional), e.g. Family day" maxlength="80">
+        <button class="btn btn-ghost" id="saHolAdd" type="button">Add day</button>
       </div>
     </div>
 
     <p class="sa-status" id="saStatusMsg"></p>
   </div>
-
-</div>
 <script src="/assets/vendor/supabase.js?v=2116"></script>
 <script>
 (function(){
@@ -127,107 +149,146 @@ body{background:var(--paper)}
 
   var gate=document.getElementById('saGate'), app=document.getElementById('saApp');
   var schedule=null;
+  var DAYS=[[1,'Monday'],[2,'Tuesday'],[3,'Wednesday'],[4,'Thursday'],[5,'Friday'],[6,'Saturday'],[0,'Sunday']];
+  var NOW_TEXT={
+    away:['offline','Away (your vacation switch is on)'],
+    holiday:['offline','Away today (a day off)'],
+    manual_unavailable:['offline','Not available (you set this for today)'],
+    manual_busy:['busy','Busy (you set this for today)'],
+    manual_brb:['busy','Be right back (you set this for today)'],
+    appointment:['busy','Busy, you have an appointment right now'],
+    manual_online:['online','Online (you set this for today)'],
+    hours_open:['online','Online, within your hours'],
+    hours_closed:['offline','Offline, outside your hours']
+  };
+  var DOT={online:'#54c46b',busy:'#d99b2e',offline:'#b33'};
 
-  function nowIn(tz){
-    try{
-      var parts={}; new Intl.DateTimeFormat('en-US',{timeZone:tz,weekday:'short',hour:'numeric',hour12:false,year:'numeric',month:'2-digit',day:'2-digit'})
-        .formatToParts(new Date()).forEach(function(p){parts[p.type]=p.value;});
-      var wd={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[parts.weekday];
-      return {day:wd, hour:parseInt(parts.hour,10)%24, date:parts.year+'-'+parts.month+'-'+parts.day};
-    }catch(e){ var d=new Date(); return {day:d.getDay(), hour:d.getHours(), date:''}; }
+  function pad(n){ return (n<10?'0':'')+n; }
+  function toTime(min){ return pad(Math.floor(min/60))+':'+pad(min%60); }
+  function toMin(t){ var p=String(t||'').split(':'); return parseInt(p[0],10)*60+parseInt(p[1]||'0',10); }
+  function prettyDate(iso){
+    var p=iso.split('-'); var d=new Date(+p[0],+p[1]-1,+p[2]);
+    return d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'});
   }
-  function compute(s){
-    var n=nowIn(s.tz||'America/New_York');
-    if(s.manualState==='not_available') return {k:'offline',label:'Not available (set by you)'};
-    if(s.manualState==='brb') return {k:'brb',label:'Be right back (set by you)'};
-    if(s.manualState==='available') return {k:'online',label:'Available (set by you)'};
-    if(s.away) return {k:'offline',label:'Away'};
-    if(s.holidays && s.holidays.indexOf(n.date)>=0) return {k:'offline',label:'Away today (holiday)'};
-    if(s.busyNow) return {k:'brb',label:'On a call right now'};
-    if(s.always) return {k:'online',label:'Online'};
-    var h=(s.hours||{})[n.day];
-    if(h && n.hour>=h[0] && n.hour<h[1]) return {k:'online',label:'Online'};
-    return {k:'offline',label:'Offline (outside hours)'};
-  }
+  function todayIso(){ var d=new Date(); return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
 
   function renderNow(){
-    var c=compute(schedule);
-    var dotColors={online:'#54c46b',brb:'#d99b2e',offline:'#b33'};
-    document.getElementById('saNowDot').style.background=dotColors[c.k];
-    document.getElementById('saNowLabel').textContent=c.label;
+    var c=(schedule.computed&&NOW_TEXT[schedule.computed.reason])||['online','Online'];
+    document.getElementById('saNowDot').style.background=DOT[c[0]];
+    document.getElementById('saNowLabel').textContent=c[1];
+  }
+  function renderHours(){
+    var h=schedule.hours||{};
+    document.getElementById('saHours').innerHTML=DAYS.map(function(d){
+      var v=h[d[0]]; var open=!!v;
+      return '<div class="hrs-row'+(open?'':' closed')+'" data-day="'+d[0]+'"><span class="d">'+d[1]+'</span>'+
+        '<label class="open"><input type="checkbox" class="h-open"'+(open?' checked':'')+'> Open</label>'+
+        '<span class="t"><input type="time" class="h-start" step="900" value="'+(open?toTime(v[0]):'11:30')+'"> to <input type="time" class="h-end" step="900" value="'+(open?toTime(v[1]):'20:30')+'"></span></div>';
+    }).join('');
+  }
+  function renderAway(){
+    document.getElementById('saAwayToggle').checked=!!schedule.away;
+    document.getElementById('saAwayUntil').value=schedule.awayUntil||'';
   }
   function renderHolidays(){
-    var list=(schedule.holidays||[]).slice().sort();
+    var list=(schedule.holidays||[]).slice().sort(function(a,b){ return a.date<b.date?-1:1; });
     document.getElementById('saHolList').innerHTML = list.length
-      ? list.map(function(d){ return '<li><span>'+esc(d)+'</span><button type="button" data-date="'+esc(d)+'">Remove</button></li>'; }).join('')
-      : '<p class="empty-note">No dates added.</p>';
+      ? list.map(function(h){ return '<li><span>'+esc(prettyDate(h.date))+(h.note?'<span class="nm">'+esc(h.note)+'</span>':'')+'</span><button type="button" data-date="'+esc(h.date)+'">Remove</button></li>'; }).join('')
+      : '<p class="empty-note">No days off added.</p>';
+    var y=new Date().getFullYear();
+    document.getElementById('saHolQuick').innerHTML=[y,y+1].map(function(yr){ return '<button type="button" class="btn btn-ghost" data-year="'+yr+'" style="font-size:.85rem">Add US holidays for '+yr+'</button>'; }).join('');
   }
   function renderStateButtons(){
     document.querySelectorAll('.sa-state-btn').forEach(function(btn){
-      btn.classList.toggle('active', schedule.manualState === btn.getAttribute('data-state'));
+      btn.classList.toggle('active', !!schedule.manualActive && schedule.manualState === btn.getAttribute('data-state'));
     });
   }
-  function render(){
-    document.getElementById('saAwayToggle').checked = !!schedule.away;
-    renderHolidays();
-    renderNow();
-    renderStateButtons();
+  function render(){ renderNow(); renderHours(); renderAway(); renderHolidays(); renderStateButtons(); }
+
+  var msgTimer=null;
+  function say(text, cls, autoClear){
+    var el=document.getElementById('saStatusMsg');
+    clearTimeout(msgTimer);
+    el.className='sa-status'+(cls?' '+cls:''); el.textContent=text||'';
+    if(autoClear) msgTimer=setTimeout(function(){ el.textContent=''; }, 3500);
   }
 
   function loadSchedule(){
-    return fetch('/.netlify/functions/schedule').then(function(r){ return r.json(); }).then(function(s){
-      schedule=s; render();
-    });
+    return fetch('/.netlify/functions/schedule').then(function(r){ return r.json(); }).then(function(s){ schedule=s; render(); });
   }
 
-  function save(){
-    var statusEl=document.getElementById('saStatusMsg');
-    statusEl.className='sa-status'; statusEl.textContent='Saving…';
+  // Send only what changed. The server answers with the fresh schedule, so the page always shows the truth.
+  function save(patch, okText){
+    say('Saving…');
     return fetch('/.netlify/functions/schedule', {
       method:'POST', headers:Object.assign({'content-type':'application/json'},adminHeaders()),
-      body: JSON.stringify(schedule)
+      body: JSON.stringify(patch)
     }).then(function(r){ return r.json().then(function(d){ return {ok:r.ok, data:d}; }); })
       .then(function(res){
-        if(!res.ok){ statusEl.className='sa-status err'; statusEl.textContent=(res.data&&res.data.error)||'Could not save.'; return; }
-        statusEl.className='sa-status ok'; statusEl.textContent='Saved, live on your site now.';
-        renderNow();
-        setTimeout(function(){ statusEl.textContent=''; }, 3000);
-      }).catch(function(){
-        statusEl.className='sa-status err'; statusEl.textContent='Something went wrong, please try again.';
-      });
+        if(!res.ok){ say((res.data&&res.data.error)||'Could not save.','err'); return loadSchedule(); }
+        schedule=res.data.schedule; render();
+        say(okText||'Saved, live on your site now.','ok',true);
+      }).catch(function(){ say('Something went wrong, please try again.','err'); });
+  }
+
+  function usHolidays(y){
+    function nth(month, weekday, n){ var d=new Date(y,month,1), c=0; while(true){ if(d.getDay()===weekday && ++c===n) return d; d.setDate(d.getDate()+1); } }
+    function last(month, weekday){ var d=new Date(y,month+1,0); while(d.getDay()!==weekday) d.setDate(d.getDate()-1); return d; }
+    function iso(d){ return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
+    return [
+      [iso(new Date(y,0,1)),"New Year's Day"],[iso(nth(0,1,3)),'Martin Luther King Jr. Day'],[iso(nth(1,1,3)),"Presidents' Day"],
+      [iso(last(4,1)),'Memorial Day'],[iso(new Date(y,5,19)),'Juneteenth'],[iso(new Date(y,6,4)),'Independence Day'],
+      [iso(nth(8,1,1)),'Labor Day'],[iso(nth(9,1,2)),'Columbus Day'],[iso(new Date(y,10,11)),'Veterans Day'],
+      [iso(nth(10,4,4)),'Thanksgiving Day'],[iso(new Date(y,11,24)),'Christmas Eve'],[iso(new Date(y,11,25)),'Christmas Day'],[iso(new Date(y,11,31)),"New Year's Eve"]
+    ].map(function(p){ return {date:p[0],note:p[1]}; });
   }
 
   document.getElementById('saStateRow').addEventListener('click', function(e){
     var btn=e.target.closest('.sa-state-btn'); if(!btn) return;
-    schedule.manualState = btn.getAttribute('data-state');
-    renderStateButtons();
-    save();
+    save({manualState:btn.getAttribute('data-state')}, 'Done. Your site shows this until the end of today.');
   });
-  document.getElementById('saStateClear').addEventListener('click', function(){
-    schedule.manualState = null;
-    renderStateButtons();
-    save();
-  });
+  document.getElementById('saStateClear').addEventListener('click', function(){ save({manualState:null}, 'Cleared. Your hours are in charge again.'); });
   document.getElementById('saAwayToggle').addEventListener('change', function(){
-    schedule.away = this.checked;
-    save();
+    save({away:this.checked, awayUntil:this.checked?(document.getElementById('saAwayUntil').value||null):null}, this.checked?'You are marked away on your site.':'Away is off.');
+  });
+  document.getElementById('saAwayUntil').addEventListener('change', function(){
+    if(!document.getElementById('saAwayToggle').checked){ this.value=''; return; }
+    save({away:true, awayUntil:this.value||null}, this.value?'Away until the end of '+prettyDate(this.value)+'.':'Away until you turn it off.');
+  });
+  document.getElementById('saHours').addEventListener('change', function(e){
+    var row=e.target.closest('.hrs-row'); if(row && e.target.classList.contains('h-open')) row.classList.toggle('closed', !e.target.checked);
+  });
+  document.getElementById('saHoursSave').addEventListener('click', function(){
+    var hours={}, bad=null;
+    document.querySelectorAll('#saHours .hrs-row').forEach(function(row){
+      if(!row.querySelector('.h-open').checked) return;
+      var st=toMin(row.querySelector('.h-start').value), en=toMin(row.querySelector('.h-end').value);
+      if(isNaN(st)||isNaN(en)||en<=st) bad=row.querySelector('.d').textContent;
+      hours[row.dataset.day]=[st,en];
+    });
+    if(bad){ say(bad+': the end time must be after the start time.','err'); return; }
+    save({hours:hours}, 'Hours saved. Your status and your booking page now use them.');
+  });
+  document.getElementById('saHolQuick').addEventListener('click', function(e){
+    var b=e.target.closest('[data-year]'); if(!b) return;
+    var have={}; (schedule.holidays||[]).forEach(function(h){ have[h.date]=true; });
+    var t=todayIso();
+    var add=usHolidays(parseInt(b.getAttribute('data-year'),10)).filter(function(h){ return !have[h.date] && h.date>=t; });
+    if(!add.length){ say('Those holidays are already on your list.','',true); return; }
+    save({holidays:(schedule.holidays||[]).concat(add)}, add.length+(add.length===1?' holiday':' holidays')+' added. Remove any you work.');
   });
   document.getElementById('saHolAdd').addEventListener('click', function(){
-    var input=document.getElementById('saHolDate');
-    var val=input.value;
-    if(!val) return;
-    schedule.holidays = schedule.holidays || [];
-    if(schedule.holidays.indexOf(val)===-1) schedule.holidays.push(val);
-    input.value='';
-    renderHolidays();
-    save();
+    var dateEl=document.getElementById('saHolDate'), noteEl=document.getElementById('saHolNote');
+    if(!dateEl.value) return;
+    var list=(schedule.holidays||[]).filter(function(h){ return h.date!==dateEl.value; });
+    list.push({date:dateEl.value, note:noteEl.value.trim()});
+    dateEl.value=''; noteEl.value='';
+    save({holidays:list}, 'Day off added.');
   });
   document.getElementById('saHolList').addEventListener('click', function(e){
     var btn=e.target.closest('button[data-date]'); if(!btn) return;
     var d=btn.getAttribute('data-date');
-    schedule.holidays = (schedule.holidays||[]).filter(function(x){ return x!==d; });
-    renderHolidays();
-    save();
+    save({holidays:(schedule.holidays||[]).filter(function(x){ return x.date!==d; })}, 'Removed.');
   });
 
   // Validate the PIN with a read-only call (shop-admin's GET) rather than schedule's own
