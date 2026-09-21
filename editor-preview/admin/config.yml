@@ -11,6 +11,146 @@ media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
+  - name: "homepage"
+    label: "Homepage"
+    description: "The words on your homepage, top to bottom. Change any text, then click Save. It goes live in about a minute. The layout, the tarot deck and the Life Path calculator stay as designed."
+    files:
+      - name: "home"
+        label: "Homepage text"
+        file: "content/home.yml"
+        fields:
+          - label: "1. Top of the page"
+            name: "hero"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Small line above the headline", name: "eyebrow", widget: "string" }
+              - { label: "Headline (first part)", name: "headline", widget: "string", hint: "The big headline. The second part below shows in gold." }
+              - { label: "Headline (gold part)", name: "headline_accent", widget: "string" }
+              - { label: "Short intro", name: "intro", widget: "text" }
+              - { label: "First button text", name: "button1_label", widget: "string" }
+              - { label: "First button goes to", name: "button1_link", widget: "string", hint: "A page like /book-appointment or a full web address." }
+              - { label: "Second button text", name: "button2_label", widget: "string" }
+              - { label: "Second button goes to", name: "button2_link", widget: "string" }
+              - { label: "Three short proof points", name: "trust", widget: "list", field: { label: "Proof point", name: "point", widget: "string" }, hint: "The three small lines under the buttons." }
+          - label: "2. Welcome and the three services"
+            name: "services"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Small line", name: "eyebrow", widget: "string" }
+              - { label: "Big quote", name: "heading", widget: "text" }
+              - { label: "Paragraph", name: "intro", widget: "text" }
+              - label: "The three service cards"
+                name: "cards"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Small tag", name: "tag", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+                  - { label: "Link text", name: "link_label", widget: "string" }
+                  - { label: "Link goes to", name: "link", widget: "string" }
+          - label: "3. Questions people bring (the quote cards)"
+            name: "situations"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Small line", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "text" }
+              - { label: "Paragraph", name: "intro", widget: "text" }
+              - label: "The quote cards"
+                name: "cards"
+                widget: "list"
+                summary: "{{fields.quote}}"
+                fields:
+                  - { label: "The question", name: "quote", widget: "string" }
+                  - { label: "Link text", name: "label", widget: "string" }
+                  - { label: "Link goes to", name: "link", widget: "string", default: "/shop" }
+          - label: "4. Your story"
+            name: "story"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Small line", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "First paragraph", name: "paragraph1", widget: "text" }
+              - { label: "Second paragraph", name: "paragraph2", widget: "text" }
+              - { label: "Button text", name: "button_label", widget: "string" }
+              - { label: "Button goes to", name: "button_link", widget: "string" }
+              - { label: "Quote in the card", name: "quote", widget: "text" }
+              - { label: "Quote signed by", name: "quote_by", widget: "string" }
+          - label: "5. Draw a card (heading only)"
+            name: "draw"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Small line", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Paragraph", name: "intro", widget: "text" }
+          - label: "6. Free tools"
+            name: "free"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Small line", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Paragraph", name: "intro", widget: "text" }
+              - label: "The three free tool cards"
+                name: "cards"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Small tag", name: "tag", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+                  - { label: "Link text", name: "link_label", widget: "string" }
+                  - { label: "Link goes to", name: "link", widget: "string" }
+          - label: "7. How it works"
+            name: "how"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Small line", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "The three steps"
+                name: "steps"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Step title", name: "title", widget: "string" }
+                  - { label: "Step text", name: "text", widget: "text" }
+              - { label: "Button text", name: "button_label", widget: "string" }
+              - { label: "Button goes to", name: "button_link", widget: "string" }
+          - label: "8. Reviews"
+            name: "testimonials"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Small line", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Paragraph", name: "intro", widget: "text" }
+              - label: "The reviews shown"
+                name: "quotes"
+                widget: "list"
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: "Review", name: "quote", widget: "text" }
+                  - { label: "Name or place", name: "name", widget: "string" }
+                  - { label: "Date", name: "date", widget: "string" }
+              - { label: "First button text", name: "button1_label", widget: "string" }
+              - { label: "First button goes to", name: "button1_link", widget: "string" }
+              - { label: "Second button text", name: "button2_label", widget: "string" }
+              - { label: "Second button goes to", name: "button2_link", widget: "string" }
+          - label: "9. Closing banner"
+            name: "closing"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Button text", name: "button_label", widget: "string" }
+              - { label: "Button goes to", name: "button_link", widget: "string" }
   - name: "articles"
     label: "Guest Articles"
     label_singular: "Guest Article"
