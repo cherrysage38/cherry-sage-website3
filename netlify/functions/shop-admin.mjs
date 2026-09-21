@@ -1,6 +1,6 @@
 // Cherry Sage — Bev's shop manager. Lets her rename products, change prices, edit the description shown
 // in the shop, choose which items show in the shop, edit the questions each numerology report asks the
-// customer, and delete a product nobody has ordered, all without touching code.
+// customer, and delete a product nobody has ordered, and add brand-new products, all without touching code.
 //
 // 2026-09-21: descriptions, "show in shop" and report questions moved into the database (Bev: "What
 // shows as the product description in the front end is nowhere in this product management").
@@ -32,7 +32,7 @@ function json(o, status = 200) {
 function fail(error, fallback) {
   if (badToken(error)) return json({ error: "login required" }, 401);
   if (notOwner(error)) return json({ error: "not the owner login" }, 403);
-  if (/^(has history|the product needs|the price is not|the description is too|the report questions|one of the report|product not found)/i.test(msg(error))) return json({ error: msg(error) }, 409);
+  if (/^(has history|the product needs|the price is not|the description is too|the report questions|one of the report|product not found|pick a product type|the length in minutes)/i.test(msg(error))) return json({ error: msg(error) }, 409);
   return json({ error: fallback }, 500);
 }
 
@@ -49,6 +49,28 @@ export default async (req) => {
   if (req.method === "POST") {
     let d = {};
     try { d = await req.json(); } catch { return json({ error: "bad body" }, 400); }
+    // Add a brand-new product (a written report with its questions, or a phone reading of N minutes).
+    if (d.action === "create") {
+      const kind = d.kind === "minutes" ? "minutes" : "report";
+      const { data, error } = await supabase.rpc("admin_create_product", {
+        p_pin: "",
+        p_name: String(d.name || "").trim(),
+        p_price_cents: d.priceCents != null ? Math.round(Number(d.priceCents)) : null,
+        p_kind: kind,
+        p_duration_minutes: kind === "minutes" && d.durationMinutes != null ? Math.round(Number(d.durationMinutes)) : null,
+        p_description: d.description != null ? String(d.description) : null,
+        p_report_fields: kind === "report" && Array.isArray(d.reportFields)
+          ? d.reportFields.slice(0, 20).map((f) => ({
+              key: String(f.key || "").slice(0, 31),
+              label: String(f.label || "").slice(0, 200),
+              type: String(f.type || "text"),
+              required: Boolean(f.required),
+            }))
+          : null,
+      });
+      return error ? fail(error, "could not add that product") : json({ ok: true, id: data });
+    }
+
     const id = String(d.id || "");
     if (!/^[0-9a-f-]{36}$/i.test(id)) return json({ error: "missing product id" }, 400);
 

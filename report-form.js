@@ -7,14 +7,25 @@
 (function () {
   var form = document.getElementById('reportForm');
   if (!form) return;
-  var pid = form.getAttribute('data-pid');
-  if (!pid) return;
+  // The six original report pages carry their product id in the markup. Reports added later in Manage
+  // Products all use the one page /report?p=<product id>, which is filled in entirely from the database.
+  var generic = form.hasAttribute('data-generic');
+  var pid = form.getAttribute('data-pid') || (generic ? new URLSearchParams(location.search).get('p') : '');
+  if (!pid) { if (generic) showGone(); return; }
 
   var SUPABASE_URL = 'https://ctoeuikxoqlhnebgsygp.supabase.co';
   var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0b2V1aWt4b3FsaG5lYmdzeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0ODM4NTMsImV4cCI6MjA5NjA1OTg1M30.Cy0uf8hm-Biea7a1V3bLQBz70f1oyhP83vHDjefTce8';
   var FIELD_STYLE = 'padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body);font-size:1rem;width:100%;box-sizing:border-box';
   var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  function showGone(text) {
+    if (!generic) return;
+    var lede = document.querySelector('.page-hero .lede');
+    if (lede) lede.textContent = '';
+    var msg = el('p', { style: 'margin:0;color:var(--cherry)' }, text || 'We could not find that report.');
+    var link = el('a', { href: '/shop', class: 'btn btn-primary', style: 'display:inline-block;margin-top:.8rem' }, 'Back to the shop');
+    form.innerHTML = ''; form.appendChild(msg); form.appendChild(link);
+  }
   function money(cents) { return '$' + ((cents || 0) / 100).toFixed(2).replace(/\.00$/, ''); }
   function el(tag, attrs, text) {
     var e = document.createElement(tag);
@@ -23,11 +34,17 @@
     return e;
   }
 
-  fetch(SUPABASE_URL + '/rest/v1/reading_products?select=id,name,price_cents,active,description,report_fields&id=eq.' + encodeURIComponent(pid), {
+  fetch(SUPABASE_URL + '/rest/v1/reading_products?select=id,name,price_cents,active,description,report_fields,duration_minutes&id=eq.' + encodeURIComponent(pid), {
     headers: { apikey: SUPABASE_ANON, 'Accept-Profile': 'cherry_sage' }
   }).then(function (r) { return r.json(); }).then(function (rows) {
     var p = rows && rows[0];
-    if (!p) return;
+    if (!p) { showGone(); return; }
+    if (generic) {
+      if (p.duration_minutes != null) { location.replace('/shop'); return; }      // a phone reading, not a report
+      var h1 = document.querySelector('.page-hero h1'); if (h1) h1.textContent = p.name;
+      var crumb = document.getElementById('rfCrumb'); if (crumb) crumb.textContent = p.name;
+      document.title = p.name + ' — Numerology Report — Cherry Sage';
+    }
 
     // description and price shown on this page
     var lede = document.querySelector('.page-hero .lede');
@@ -44,7 +61,7 @@
     }
 
     var fields = p.report_fields;
-    if (!Array.isArray(fields) || !fields.length) return;      // keep the built-in form
+    if (!Array.isArray(fields) || !fields.length) { if (generic) showGone('This report is not ready to order yet.'); return; }      // the static pages keep their built-in form
 
     // brand-new form element: drops the old page's submit handler, which only knows the old fields
     var nf = form.cloneNode(false);
@@ -77,5 +94,5 @@
       window.CSCart.add({ readingProductId: p.id, name: p.name, priceCents: p.price_cents, details: details });
       location.href = '/cart.html';
     });
-  }).catch(function () { /* the built-in form keeps working */ });
+  }).catch(function () { if (generic) showGone('We could not load this report. Please try again in a moment.'); /* the static pages keep their built-in form */ });
 })();

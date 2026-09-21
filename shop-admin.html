@@ -69,6 +69,7 @@ details.pm[open] summary::before{content:"−"}
 .pm-mini.bad,.pm-del{border-color:#c9868f;color:var(--cherry)}
 .pm-add{color:var(--oxblood);border-color:var(--oxblood)}
 .pm-actions{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;margin-top:1rem}
+details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new summary{color:var(--oxblood)}
 @media (max-width:640px){.pm-grid{grid-template-columns:1fr}.pm-qrow{grid-template-columns:1fr 1fr}.pm-qrow .q-label{grid-column:1/-1}}
 </style>
 </head>
@@ -88,8 +89,27 @@ details.pm[open] summary::before{content:"−"}
 
   <div id="saApp" hidden>
     <h1 class="sa-title">Manage Products</h1>
-    <p class="sa-sub">Open a product to change its name, price and description, choose whether it shows in the shop, and, for reports, edit the questions the customer answers. Changes go live right away. <a href="/shop" target="_blank" rel="noopener">See the shop</a></p>
+    <p class="sa-sub">Add a new product, or open one to change its name, price and description, choose whether it shows in the shop, and, for reports, edit the questions the customer answers. Changes go live right away. <a href="/shop" target="_blank" rel="noopener">See the shop</a></p>
     <p class="sa-status" id="saTop" role="status"></p>
+    <details class="pm pm-new" id="saNew">
+      <summary><span class="pm-name">Add a new product</span></summary>
+      <div class="pm-body">
+        <p class="pm-note">Choose what kind of product it is, fill in the details, and press Add. It shows in your shop right away.</p>
+        <div class="pm-checks">
+          <label class="sa-active"><input type="radio" name="newKind" value="report" checked> Written numerology report</label>
+          <label class="sa-active"><input type="radio" name="newKind" value="minutes"> Phone reading (buy minutes)</label>
+        </div>
+        <div class="pm-grid">
+          <label class="pm-l">Name<input type="text" id="newName" maxlength="120" placeholder="e.g. Yearly Forecast Report"></label>
+          <label class="pm-l pm-lprice">Price ($)<input type="text" id="newPrice" inputmode="decimal" placeholder="29"></label>
+        </div>
+        <label class="pm-l" id="newMinWrap" hidden>Length in minutes<input type="text" id="newMinutes" inputmode="numeric" placeholder="e.g. 25"></label>
+        <label class="pm-l">Description shown in the shop<textarea id="newDesc" rows="4" placeholder="What the customer gets, in your own words"></textarea></label>
+        <div class="pm-q" id="newQuestions"><h4>Questions the customer answers</h4><p class="pm-note">The report is sent to the email the customer gives, so keep one "Email address" question.</p>
+          <ul class="pm-qlist" id="newQList"></ul><button type="button" class="pm-add" data-q="add">+ Add a question</button></div>
+        <div class="pm-actions"><button class="sa-save" type="button" id="newCreate">Add this product</button><span class="sa-status" id="newStatus" role="status"></span></div>
+      </div>
+    </details>
     <div id="saGroups"><p style="color:var(--ink-soft)">Loading…</p></div>
   </div>
 
@@ -188,6 +208,64 @@ details.pm[open] summary::before{content:"−"}
     return out;
   }
   function setStatus(card, text, cls){ var s=card.querySelector('[data-status]'); s.className='sa-status'+(cls?' '+cls:''); s.textContent=text||''; }
+
+  // ---- Add a new product ----
+  var DEFAULT_QS=[{key:'fullname',label:'Full name at birth (as on your birth certificate)',type:'text',required:true},{key:'dob',label:'Date of birth',type:'date',required:true},{key:'email',label:'Your email (your report is sent here)',type:'email',required:true}];
+  var newBox=document.getElementById('saNew'), newList=document.getElementById('newQList');
+  function kindNow(){ var r=newBox.querySelector('input[name=newKind]:checked'); return r?r.value:'report'; }
+  function resetNew(){
+    newList.innerHTML=DEFAULT_QS.map(questionRow).join('');
+    ['newName','newPrice','newMinutes','newDesc'].forEach(function(id){ document.getElementById(id).value=''; });
+    newBox.querySelector('input[name=newKind][value=report]').checked=true; syncKind();
+  }
+  function syncKind(){
+    var rep=kindNow()==='report';
+    document.getElementById('newQuestions').hidden=!rep;
+    document.getElementById('newMinWrap').hidden=rep;
+  }
+  function newStatus(text,cls){ var s=document.getElementById('newStatus'); s.className='sa-status'+(cls?' '+cls:''); s.textContent=text||''; }
+  newBox.addEventListener('change', function(e){ if(e.target.name==='newKind') syncKind(); });
+  newBox.addEventListener('click', function(e){
+    var q=e.target.closest('[data-q]');
+    if(q){
+      var act=q.dataset.q;
+      if(act==='add'){ newList.insertAdjacentHTML('beforeend', questionRow({type:'text'})); newList.lastElementChild.querySelector('.q-label').focus(); return; }
+      var row=q.closest('.pm-qrow'); if(!row) return;
+      if(act==='del') row.remove();
+      else if(act==='up' && row.previousElementSibling) newList.insertBefore(row,row.previousElementSibling);
+      else if(act==='down' && row.nextElementSibling) newList.insertBefore(row.nextElementSibling,row);
+      return;
+    }
+  });
+  document.getElementById('newCreate').addEventListener('click', function(){
+    var kind=kindNow(), name=document.getElementById('newName').value.trim();
+    var priceCents=Math.round(parseFloat(document.getElementById('newPrice').value.replace(/[$,\s]/g,''))*100);
+    if(!name){ newStatus('Give the product a name.','err'); return; }
+    if(isNaN(priceCents)||priceCents<0){ newStatus('Enter a valid price, for example 29 or 29.50.','err'); return; }
+    var body={ action:'create', kind:kind, name:name, priceCents:priceCents, description:document.getElementById('newDesc').value };
+    if(kind==='minutes'){
+      var mins=parseInt(document.getElementById('newMinutes').value,10);
+      if(isNaN(mins)||mins<1||mins>240){ newStatus('Enter the length in minutes (1 to 240).','err'); return; }
+      body.durationMinutes=mins;
+    } else {
+      var qs=collectQuestions(newBox);
+      if(!qs.length){ newStatus('Add at least one question.','err'); return; }
+      if(!qs.some(function(x){ return x.type==='email'; })){ newStatus('Keep one "Email address" question, the report is sent there.','err'); return; }
+      body.reportFields=qs;
+    }
+    var btn=document.getElementById('newCreate'); btn.disabled=true; newStatus('Adding…');
+    fetch('/.netlify/functions/shop-admin',{method:'POST',headers:Object.assign({'content-type':'application/json'},adminHeaders()),body:JSON.stringify(body)})
+      .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
+      .then(function(res){
+        btn.disabled=false;
+        if(!res.ok){ newStatus((res.d&&res.d.error)||'Could not add it, please try again.','err'); return; }
+        var top=document.getElementById('saTop'); top.className='sa-status ok'; top.textContent='"'+name+'" was added and is in your shop now.';
+        newBox.open=false; newStatus(''); resetNew(); loadProducts();
+        window.scrollTo({top:0,behavior:'smooth'});
+      })
+      .catch(function(){ btn.disabled=false; newStatus('Something went wrong, please try again.','err'); });
+  });
+  resetNew();
 
   document.getElementById('saGroups').addEventListener('click', function(e){
     var card=e.target.closest('.pm'); if(!card) return;
