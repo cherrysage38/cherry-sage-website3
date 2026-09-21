@@ -264,3 +264,21 @@ window.CSCart = (function(){
 
   return { add: add, remove: remove, clear: clear, get: get, count: count, total: total };
 })();
+
+/* Sign Out in the menu (Bev, 2026-09-18: "We need Sign Out in the mobile navigation menu").
+   Appears in the menu only while someone is signed in; signs them out and returns to My Account. */
+(function(){
+  var KEY='sb-ctoeuikxoqlhnebgsygp-auth-token', SB='https://ctoeuikxoqlhnebgsygp.supabase.co';
+  var ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0b2V1aWt4b3FsaG5lYmdzeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0ODM4NTMsImV4cCI6MjA5NjA1OTg1M30.Cy0uf8hm-Biea7a1V3bLQBz70f1oyhP83vHDjefTce8';
+  var sess=null; try{ sess=JSON.parse(localStorage.getItem(KEY)||'null'); }catch(e){}
+  if(!sess||!sess.access_token) return;
+  var ul=document.querySelector('#primaryNav > ul'); if(!ul||document.getElementById('navSignOut')) return;
+  var li=document.createElement('li'), a=document.createElement('a');
+  a.href='#'; a.id='navSignOut'; a.className='nav-utility'; a.textContent='Sign Out';
+  a.addEventListener('click',function(e){
+    e.preventDefault(); a.textContent='Signing out…';
+    function done(){ try{ localStorage.removeItem(KEY); }catch(x){} location.href='/account.html'; }
+    fetch(SB+'/auth/v1/logout',{method:'POST',headers:{apikey:ANON,Authorization:'Bearer '+sess.access_token}}).then(done,done);
+  });
+  li.appendChild(a); ul.appendChild(li);
+})();

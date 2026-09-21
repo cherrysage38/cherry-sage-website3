@@ -902,3 +902,6 @@ main section>.wrap,.hero>.wrap,.page-hero>.wrap,.draw-section>.wrap{position:rel
 /* 2026-09-22: two-column grids stack on phones (policies page overflowed); wide worked examples scroll inside their own box */
 @media(max-width:700px){.grid-2{grid-template-columns:1fr}}
 .blk-prose pre{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+
+/* 2026-09-22: the phone menu got longer (About, all Readings pages, Numerology pages), so it scrolls inside itself instead of running off the screen */
+@media (max-width:1080px){.primary-nav.open{max-height:calc(100vh - var(--header-h));max-height:calc(100dvh - var(--header-h));overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}}
