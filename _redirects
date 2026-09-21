@@ -119,3 +119,21 @@
 
 # Trust / conversion pages
 /testimonials.html    /testimonials/    301
+
+# Old WordPress page addresses that had no redirect (added 2026-09-22 after Bev found pages missing)
+/psychicnumerology/  /numerology/  301
+/basic_numbers/  /basic-number-meanings/  301
+/soul_urge/  /soul-urge-number/  301
+/expression/  /expression-number/  301
+/birthday_number/  /birthday-number/  301
+/karmic_lessons/  /karmic-lessons/  301
+/karmic_debts/  /karmic-debts/  301
+/meetpsychicsage/  /meet/  301
+/tarot-card-reading/  /tarot/  301
+/leavefeedback/  /feedback/  301
+/book-an-appointment/  /book-appointment/  301
+/my-account/  /account/  301
+/login-register/  /login/  301
+/disclaimer/  /policies/  301
+/privacy/  /policies/  301
+/refund-policy/  /policies/  301
