@@ -4,6 +4,19 @@ import { getStore } from "@netlify/blobs";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Same look as every other Cherry Sage email: gold bar, full logo on cream, warm footer.
+function brandedEmail(inner) {
+  return `<div style="background:#FAF6EF;padding:32px 16px;font-family:Georgia,'Times New Roman',serif;">` +
+    `<div style="max-width:520px;margin:0 auto;background:#FFFDF8;border:1px solid #EDE2CF;border-radius:12px;overflow:hidden;">` +
+    `<div style="height:5px;background-color:#C0972F;background:linear-gradient(90deg,#C0972F,#D9B25E,#C0972F);font-size:0;line-height:0;">&nbsp;</div>` +
+    `<div style="padding:30px 32px 6px;text-align:center;background-color:#FFFDF8;">` +
+    `<img src="https://cherrysage.com/assets/logo-email-full.png" alt="Cherry Sage" width="280" height="74" style="width:280px;max-width:100%;height:auto;border:0;outline:none;text-decoration:none;display:block;margin:0 auto;">` +
+    `</div><div style="padding:32px;color:#2b2620;font-size:15px;line-height:1.6;">${inner}</div>` +
+    `<div style="padding:20px 32px;border-top:1px solid #EDE2CF;color:#8a8072;font-size:12px;text-align:center;">` +
+    `Cherry Sage &middot; Honest, accurate psychic, tarot, and numerology readings by phone. Trusted since 1999.<br>` +
+    `<a href="https://cherrysage.com" style="color:#A0142B;">cherrysage.com</a></div></div></div>`;
+}
+
 export default async (req) => {
   if (req.method !== "POST") return json({ error: "method" }, 405);
 
@@ -101,17 +114,55 @@ export default async (req) => {
           to: [{ email: NOTIFY_TO }],
           replyTo: { email },
           subject: `${label} — from ${name || email}`,
-          htmlContent: `<p><strong>${label}</strong></p>` +
-            `<p>From: ${name ? `${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;` : escapeHtml(email)}</p>` +
-            (message ? `<p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>` : "") +
-            `<p style="color:#888;font-size:12px">Reply to this email to write back directly to ${escapeHtml(email)}.</p>`,
+          htmlContent: brandedEmail(
+            `<p style="margin:0 0 12px"><strong>${label}</strong></p>` +
+            `<p style="margin:0 0 12px">From: ${name ? `${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;` : escapeHtml(email)}</p>` +
+            (message ? `<div style="margin:0 0 14px;padding:14px 16px;background:#FAF6EF;border-radius:8px">${escapeHtml(message).replace(/\n/g, "<br>")}</div>` : "") +
+            `<p style="margin:0;color:#8a8072;font-size:13px">Reply to this email to write back directly to ${escapeHtml(email)}.</p>`),
         }),
       });
       notified = r.ok ? "ok" : `error ${r.status}`;
     } catch { notified = "network"; }
   }
 
-  return json({ ok: true, stored, brevo, notified });
+  // 4) confirmation to the person who wrote to Cherry (contact form only). One per address per day, so the
+  // form can never be used to flood someone else's inbox with our email.
+  let confirmation = "skipped";
+  if (KEY && source === "contact" && message.trim().length >= 3) {
+    try {
+      let recentlySent = false;
+      try {
+        const marks = getStore("contact-confirmations");
+        const key = "c-" + email.replace(/[^a-z0-9]/g, "_");
+        const prev = await marks.get(key, { type: "json" });
+        if (prev && Date.now() - Number(prev.t || 0) < 24 * 3600 * 1000) recentlySent = true;
+        else await marks.setJSON(key, { t: Date.now() });
+      } catch { /* blobs unavailable: fall through and send */ }
+      if (!recentlySent) {
+        const first = escapeHtml((name || "").trim().split(/\s+/)[0] || "there");
+        const r2 = await fetch("https://api.brevo.com/v3/smtp/email", {
+          method: "POST",
+          headers: { "api-key": KEY, "content-type": "application/json", accept: "application/json" },
+          body: JSON.stringify({
+            sender: { name: "Cherry Sage", email: "admin@cherrysage.com" },
+            to: [{ email }],
+            replyTo: { email: "admin@cherrysage.com", name: "Cherry Sage" },
+            subject: "We received your message",
+            htmlContent: brandedEmail(
+              `<p>Hi ${first},</p>` +
+              `<p>Thank you for writing to Cherry Sage. Your message has reached Cherry, and she will reply to you herself by email.</p>` +
+              `<p style="margin:16px 0 6px;color:#8a8072;font-size:13px">What you sent:</p>` +
+              `<div style="margin:0 0 16px;padding:14px 16px;background:#FAF6EF;border-radius:8px">${escapeHtml(message).replace(/\n/g, "<br>")}</div>` +
+              `<p>If you would rather talk it through by phone, you can <a href="https://cherrysage.com/book-appointment" style="color:#A0142B;">request a time with Cherry</a>.</p>` +
+              `<p style="margin:24px 0 0">Warmly,<br>Cherry Sage</p>`),
+          }),
+        });
+        confirmation = r2.ok ? "ok" : `error ${r2.status}`;
+      } else confirmation = "already-sent-today";
+    } catch { confirmation = "network"; }
+  }
+
+  return json({ ok: true, stored, brevo, notified, confirmation });
 };
 
 function escapeHtml(s) {
