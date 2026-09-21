@@ -58,7 +58,7 @@
   <div class="card reveal" style="text-align:left">
     <h3 style="margin:0 0 .3rem">Your details for this report</h3>
     <p style="color:var(--ink-soft);font-size:.92rem;margin:0 0 1rem">Enter your full name and date of birth exactly as recorded on your birth certificate. If your reading is about someone else, add their name and date of birth too, then include your question.</p>
-    <form id="reportForm" style="display:grid;gap:.9rem">
+    <form id="reportForm" data-pid="215c58d2-898f-4671-9e8c-00c908ba56ab" style="display:grid;gap:.9rem">
       <input type="text" name="fullname" placeholder="Your full name at birth (as on your birth certificate)" required style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
       <input type="date" name="dob" required aria-label="Your date of birth" style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
       <input type="text" name="fullname2" placeholder="Name of the person this reading is about (leave blank if it is you)" style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
@@ -85,7 +85,8 @@
     window.CSCart.add({readingProductId:'215c58d2-898f-4671-9e8c-00c908ba56ab', name:'Numerology Reading by E-mail', priceCents:13000, details:details});
     location.href='/cart.html';
   });})();
-</script><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class="btn btn-gold" href="/book-appointment">Book a Reading</a></div></section>
+</script>
+<script src="report-form.js?v=1"></script><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class="btn btn-gold" href="/book-appointment">Book a Reading</a></div></section>
 </main>
 <footer class="footer">
   <div class="wrap footer-grid">

@@ -12,7 +12,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Manage Shop — Cherry Sage</title>
+<title>Manage Products — Cherry Sage</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#6E1A28">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,6 +42,34 @@ body{background:var(--paper)}
 .sa-status.ok{color:var(--sage)}
 .sa-status.err{color:var(--cherry)}
 @media (max-width:640px){.sa-row{grid-template-columns:1fr;}}
+.sa-wrap{max-width:900px}
+details.pm{border:1px solid var(--line-strong);border-radius:10px;background:var(--cream);margin-bottom:.6rem}
+details.pm[open]{box-shadow:var(--shadow-sm)}
+details.pm summary{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;padding:.8rem 1rem;cursor:pointer;list-style:none}
+details.pm summary::-webkit-details-marker{display:none}
+details.pm summary::before{content:"+";color:var(--oxblood);font-weight:700;width:1rem}
+details.pm[open] summary::before{content:"−"}
+.pm-name{font-weight:600;color:var(--ink);flex:1 1 220px}
+.pm-price{color:var(--oxblood);font-weight:600}
+.pm-tag{display:inline-block;margin-left:.35rem;padding:.1rem .55rem;border-radius:999px;font-size:.8rem;background:var(--paper-2);color:var(--ink-soft)}
+.pm-tag.off{background:#f6dcdc;color:#8a1f1f} .pm-tag.hid{background:#fbeed2;color:#8a5b00}
+.pm-body{padding:.2rem 1.1rem 1.2rem;border-top:1px solid var(--line)}
+.pm-grid{display:grid;grid-template-columns:1fr 140px;gap:.9rem;margin:1rem 0 .6rem}
+.pm-l{display:block;font-size:.9rem;color:var(--ink-soft);font-weight:600}
+.pm-l input,.pm-l textarea{display:block;width:100%;box-sizing:border-box;margin-top:.3rem;padding:.6rem .8rem;border:1px solid var(--line-strong);border-radius:8px;font-family:var(--font-body);font-size:1rem;color:var(--ink);background:#fff}
+.pm-checks{display:flex;gap:1.4rem;flex-wrap:wrap;margin:.4rem 0 .9rem}
+.pm-note{font-size:.85rem;color:var(--ink-soft);margin:.3rem 0 .8rem}
+.pm-q h4{margin:.8rem 0 .2rem;font-size:1rem;color:var(--oxblood)}
+.pm-qlist{list-style:none;margin:0 0 .6rem;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.pm-qrow{display:grid;grid-template-columns:1fr 150px auto auto;gap:.5rem;align-items:center}
+.pm-qrow input[type=text],.pm-qrow select{padding:.55rem .7rem;border:1px solid var(--line-strong);border-radius:8px;font-family:var(--font-body);font-size:.9rem;background:#fff;width:100%;box-sizing:border-box}
+.q-reqwrap{font-size:.85rem;color:var(--ink-soft);white-space:nowrap}
+.q-btns{display:flex;gap:.3rem}
+.pm-mini,.pm-add,.pm-del{border:1px solid var(--line-strong);background:#fff;border-radius:8px;padding:.4rem .7rem;font-family:var(--font-body);font-size:.8rem;font-weight:600;cursor:pointer;color:var(--ink)}
+.pm-mini.bad,.pm-del{border-color:#c9868f;color:var(--cherry)}
+.pm-add{color:var(--oxblood);border-color:var(--oxblood)}
+.pm-actions{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;margin-top:1rem}
+@media (max-width:640px){.pm-grid{grid-template-columns:1fr}.pm-qrow{grid-template-columns:1fr 1fr}.pm-qrow .q-label{grid-column:1/-1}}
 </style>
 </head>
 <body>
@@ -49,7 +77,7 @@ body{background:var(--paper)}
 
   <div id="saGate" class="sa-gate">
     <p class="eyebrow" style="color:var(--gold)">Cherry Sage</p>
-    <h1 class="sa-title">Manage Shop</h1>
+    <h1 class="sa-title">Manage Products</h1>
     <p style="color:var(--ink-soft);font-size:.9rem">Log in with your email to open this page.</p>
     <input type="password" inputmode="numeric" id="saGatePin" placeholder="PIN" autocomplete="off" hidden>
     <a class="btn btn-primary" href="/login.html" style="width:100%;display:block;text-align:center;box-sizing:border-box">Log in</a>
@@ -59,13 +87,15 @@ body{background:var(--paper)}
   </div>
 
   <div id="saApp" hidden>
-    <h1 class="sa-title">Manage Shop &amp; Prices</h1>
-    <p class="sa-sub">Change a name or price, then click Save on that row. Changes go live right away, no code needed.</p>
+    <h1 class="sa-title">Manage Products</h1>
+    <p class="sa-sub">Open a product to change its name, price and description, choose whether it shows in the shop, and, for reports, edit the questions the customer answers. Changes go live right away. <a href="/shop" target="_blank" rel="noopener">See the shop</a></p>
+    <p class="sa-status" id="saTop" role="status"></p>
     <div id="saGroups"><p style="color:var(--ink-soft)">Loading…</p></div>
   </div>
 
+
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/assets/vendor/supabase.js?v=2116"></script>
 <script>
 (function(){
   function getPin(){ try{ return sessionStorage.getItem('cs_dash_pin')||''; }catch(e){ return ''; } }
@@ -84,62 +114,128 @@ body{background:var(--paper)}
 
   var gate=document.getElementById('saGate'), app=document.getElementById('saApp');
 
+  var TYPES=[['text','Short answer'],['date','Date'],['email','Email address'],['textarea','Long answer']];
+  function typeOptions(sel){ return TYPES.map(function(t){ return '<option value="'+t[0]+'"'+(t[0]===sel?' selected':'')+'>'+t[1]+'</option>'; }).join(''); }
+  function questionRow(f){
+    return '<li class="pm-qrow" data-key="'+esc(f.key||'')+'">'+
+      '<input type="text" class="q-label" value="'+esc(f.label||'')+'" placeholder="The question, e.g. Full name at birth">'+
+      '<select class="q-type">'+typeOptions(f.type||'text')+'</select>'+
+      '<label class="q-reqwrap"><input type="checkbox" class="q-req"'+(f.required?' checked':'')+'> Required</label>'+
+      '<span class="q-btns"><button type="button" class="pm-mini" data-q="up" title="Move up">&uarr;</button><button type="button" class="pm-mini" data-q="down" title="Move down">&darr;</button><button type="button" class="pm-mini bad" data-q="del">Remove</button></span></li>';
+  }
+  function productCard(p){
+    var isReport = p.duration_minutes==null;
+    var tags=[];
+    if(!p.active) tags.push('<span class="pm-tag off">Not available</span>');
+    if(p.show_in_shop===false) tags.push('<span class="pm-tag hid">Hidden from shop</span>');
+    if(p.order_count) tags.push('<span class="pm-tag">'+p.order_count+' order'+(p.order_count===1?'':'s')+'</span>');
+    var body='<div class="pm-grid">'+
+      '<label class="pm-l">Name<input type="text" class="pm-f-name" value="'+esc(p.name)+'"></label>'+
+      '<label class="pm-l pm-lprice">Price ($)<input type="text" class="pm-f-price" value="'+money(p.price_cents)+'" inputmode="decimal"></label>'+
+      '</div>'+
+      '<div class="pm-checks"><label class="sa-active"><input type="checkbox" class="pm-f-active"'+(p.active?' checked':'')+'> Available to buy</label>'+
+      (p.requires_scheduling?'':'<label class="sa-active"><input type="checkbox" class="pm-f-show"'+(p.show_in_shop?' checked':'')+'> Show in the shop</label>')+'</div>'+
+      (p.requires_scheduling
+        ? '<p class="pm-note">This one is used by the "Request a Time" booking page. Its name and price show there.</p>'
+        : '<label class="pm-l">Description shown in the shop'+(isReport?' and on the report page':'')+'<textarea class="pm-f-desc" rows="4">'+esc(p.description||'')+'</textarea></label>');
+    if(isReport){
+      body+='<div class="pm-q"><h4>Questions the customer answers</h4><p class="pm-note">The report is sent to the email the customer gives, so keep one "Email address" question.</p>'+
+        '<ul class="pm-qlist">'+(p.report_fields||[]).map(questionRow).join('')+'</ul><button type="button" class="pm-add" data-q="add">+ Add a question</button></div>';
+    }
+    body+='<div class="pm-actions"><button class="sa-save" type="button" data-act="save">Save</button>'+
+      (p.order_count?'<span class="pm-note">Customers have ordered this, so it cannot be deleted. Turn off "Available to buy" to stop selling it.</span>'
+                    :'<button class="pm-del" type="button" data-act="delete">Delete this product</button>')+
+      '<span class="sa-status" data-status></span></div>';
+    return '<details class="pm" data-id="'+esc(p.id)+'" data-report="'+(isReport?1:0)+'"><summary><span class="pm-name">'+esc(p.name)+'</span><span class="pm-price">$'+money(p.price_cents)+'</span><span class="pm-tags">'+tags.join('')+'</span></summary><div class="pm-body">'+body+'</div></details>';
+  }
   function renderProducts(products){
-    var groups={ minutes: [], reports: [] };
-    products.forEach(function(p){ (p.duration_minutes!=null ? groups.minutes : groups.reports).push(p); });
+    var g={ shopMin:[], shopRep:[], booking:[], other:[] };
+    products.forEach(function(p){
+      if(p.requires_scheduling) g.booking.push(p);
+      else if(p.show_in_shop) (p.duration_minutes!=null ? g.shopMin : g.shopRep).push(p);
+      else g.other.push(p);
+    });
     var html='';
-    [['minutes','Buy Minutes'], ['reports','Numerology Reports']].forEach(function(pair){
-      var key=pair[0], label=pair[1], list=groups[key];
-      if(!list.length) return;
-      html += '<div class="sa-group"><h3>'+label+'</h3>';
-      html += list.map(function(p){
-        return '<div class="sa-row" data-id="'+p.id+'">'+
-          '<input type="text" class="sa-name" value="'+esc(p.name)+'">'+
-          '<div class="sa-price">$<input type="text" class="sa-priceval" value="'+money(p.price_cents)+'"></div>'+
-          '<label class="sa-active"><input type="checkbox" class="sa-activeval" '+(p.active?'checked':'')+'> Active</label>'+
-          '<button class="sa-save" type="button">Save</button>'+
-        '</div><p class="sa-status" data-status-for="'+p.id+'"></p>';
-      }).join('');
-      html += '</div>';
+    [['shopMin','In the shop: buy minutes'],['shopRep','In the shop: numerology reports'],['booking','Request a Time (appointment booking)'],['other','Not shown in the shop']].forEach(function(pair){
+      if(!g[pair[0]].length) return;
+      html+='<div class="sa-group"><h3>'+pair[1]+'</h3>'+g[pair[0]].map(productCard).join('')+'</div>';
     });
     document.getElementById('saGroups').innerHTML = html || '<p style="color:var(--ink-soft)">No products found.</p>';
   }
-
   function loadProducts(){
     fetch('/.netlify/functions/shop-admin', { headers:adminHeaders() })
       .then(function(r){ return r.json().then(function(d){ return {ok:r.ok, data:d}; }); })
       .then(function(res){
-        if(!res.ok){ document.getElementById('saGroups').innerHTML='<p style="color:var(--cherry)">Could not load products.</p>'; return; }
+        if(!res.ok){ document.getElementById('saGroups').innerHTML='<p style="color:var(--cherry)">'+esc((res.data&&res.data.error==='login required')?'Please log in with cherry38@cherrysage.com to manage your products.':'Could not load products.')+'</p>'; return; }
         renderProducts(res.data.products || []);
-      });
+      })
+      .catch(function(){ document.getElementById('saGroups').innerHTML='<p style="color:var(--cherry)">Could not load products.</p>'; });
   }
+  function slugKey(label, used){
+    var base=('q_'+String(label).toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'')).slice(0,28);
+    if(base==='q_') base='q_question';
+    var k=base, n=2; while(used.indexOf(k)>=0){ k=base.slice(0,26)+'_'+n; n++; }
+    return k;
+  }
+  function collectQuestions(card){
+    var used=[], out=[];
+    card.querySelectorAll('.pm-qrow').forEach(function(row){ if(row.dataset.key) used.push(row.dataset.key); });
+    card.querySelectorAll('.pm-qrow').forEach(function(row){
+      var label=row.querySelector('.q-label').value.trim(); if(!label) return;
+      var key=row.dataset.key || slugKey(label, used); if(!row.dataset.key){ used.push(key); row.dataset.key=key; }
+      out.push({key:key, label:label, type:row.querySelector('.q-type').value, required:row.querySelector('.q-req').checked});
+    });
+    return out;
+  }
+  function setStatus(card, text, cls){ var s=card.querySelector('[data-status]'); s.className='sa-status'+(cls?' '+cls:''); s.textContent=text||''; }
 
   document.getElementById('saGroups').addEventListener('click', function(e){
-    var btn=e.target.closest('.sa-save'); if(!btn) return;
-    var row=btn.closest('.sa-row');
-    var id=row.getAttribute('data-id');
-    var name=row.querySelector('.sa-name').value.trim();
-    var priceStr=row.querySelector('.sa-priceval').value.trim();
-    var active=row.querySelector('.sa-activeval').checked;
-    var priceCents=Math.round(parseFloat(priceStr)*100);
-    var statusEl=document.querySelector('[data-status-for="'+id+'"]');
-    if(!name || isNaN(priceCents) || priceCents<0){
-      statusEl.className='sa-status err'; statusEl.textContent='Enter a valid name and price.'; return;
+    var card=e.target.closest('.pm'); if(!card) return;
+    var q=e.target.closest('[data-q]');
+    if(q){
+      var act=q.dataset.q, list=card.querySelector('.pm-qlist');
+      if(act==='add'){ list.insertAdjacentHTML('beforeend', questionRow({type:'text'})); list.lastElementChild.querySelector('.q-label').focus(); }
+      else { var row=q.closest('.pm-qrow');
+        if(act==='del') row.remove();
+        else if(act==='up' && row.previousElementSibling) list.insertBefore(row,row.previousElementSibling);
+        else if(act==='down' && row.nextElementSibling) list.insertBefore(row.nextElementSibling,row); }
+      return;
     }
-    btn.disabled=true; btn.textContent='Saving…'; statusEl.className='sa-status'; statusEl.textContent='';
-    fetch('/.netlify/functions/shop-admin', {
-      method:'POST', headers:Object.assign({'content-type':'application/json'},adminHeaders()),
-      body: JSON.stringify({ id:id, name:name, priceCents:priceCents, active:active })
-    }).then(function(r){ return r.json().then(function(d){ return {ok:r.ok, data:d}; }); })
+    var btn=e.target.closest('button[data-act]'); if(!btn) return;
+    var id=card.dataset.id, isReport=card.dataset.report==='1';
+    if(btn.dataset.act==='delete'){
+      var nm=card.querySelector('.pm-f-name').value;
+      if(!confirm('Delete "'+nm+'" for good?\n\nThis cannot be undone. Customers will no longer be able to buy it.')) return;
+      btn.disabled=true; setStatus(card,'Deleting…');
+      fetch('/.netlify/functions/shop-admin',{method:'POST',headers:Object.assign({'content-type':'application/json'},adminHeaders()),body:JSON.stringify({action:'delete',id:id})})
+        .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
+        .then(function(res){ btn.disabled=false; if(!res.ok){ setStatus(card,(res.d&&res.d.error)||'Could not delete.','err'); return; } loadProducts(); document.getElementById('saTop').textContent='Deleted.'; document.getElementById('saTop').className='sa-status ok'; })
+        .catch(function(){ btn.disabled=false; setStatus(card,'Something went wrong, please try again.','err'); });
+      return;
+    }
+    // save
+    var name=card.querySelector('.pm-f-name').value.trim();
+    var priceCents=Math.round(parseFloat(card.querySelector('.pm-f-price').value.replace(/[$,\s]/g,''))*100);
+    if(!name || isNaN(priceCents) || priceCents<0){ setStatus(card,'Enter a name and a valid price.','err'); return; }
+    var body={ id:id, name:name, priceCents:priceCents, active:card.querySelector('.pm-f-active').checked };
+    var showEl=card.querySelector('.pm-f-show'); if(showEl) body.showInShop=showEl.checked;
+    var descEl=card.querySelector('.pm-f-desc'); if(descEl) body.description=descEl.value;
+    if(isReport){
+      var qs=collectQuestions(card);
+      if(!qs.length){ setStatus(card,'Add at least one question.','err'); return; }
+      if(!qs.some(function(x){ return x.type==='email'; })){ setStatus(card,'Keep one "Email address" question so the report can be sent.','err'); return; }
+      body.reportFields=qs;
+    }
+    btn.disabled=true; btn.textContent='Saving…'; setStatus(card,'');
+    fetch('/.netlify/functions/shop-admin',{method:'POST',headers:Object.assign({'content-type':'application/json'},adminHeaders()),body:JSON.stringify(body)})
+      .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
       .then(function(res){
         btn.disabled=false; btn.textContent='Save';
-        if(!res.ok){ statusEl.className='sa-status err'; statusEl.textContent=(res.data&&res.data.error)||'Could not save.'; return; }
-        statusEl.className='sa-status ok'; statusEl.textContent='Saved.';
-        setTimeout(function(){ statusEl.textContent=''; }, 2500);
-      }).catch(function(){
-        btn.disabled=false; btn.textContent='Save';
-        statusEl.className='sa-status err'; statusEl.textContent='Something went wrong, please try again.';
-      });
+        if(!res.ok){ setStatus(card,(res.d&&res.d.error)||'Could not save.','err'); return; }
+        setStatus(card,'Saved, live on your shop now.','ok');
+        card.querySelector('.pm-name').textContent=name; card.querySelector('.pm-price').textContent='$'+money(priceCents);
+        setTimeout(function(){ setStatus(card,''); }, 3500);
+      }).catch(function(){ btn.disabled=false; btn.textContent='Save'; setStatus(card,'Something went wrong, please try again.','err'); });
   });
 
   function tryOpen(pin){

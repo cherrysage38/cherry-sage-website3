@@ -58,7 +58,7 @@
   <div class="card reveal" style="text-align:left">
     <h3 style="margin:0 0 .3rem">Your details for this report</h3>
     <p style="color:var(--ink-soft);font-size:.92rem;margin:0 0 1rem">For an accurate reading, enter your full name exactly as recorded on your birth certificate, and your date of birth.</p>
-    <form id="reportForm" style="display:grid;gap:.9rem">
+    <form id="reportForm" data-pid="c18ae7f5-e570-49fb-8214-814a3fc0beb7" style="display:grid;gap:.9rem">
       <input type="text" name="fullname" placeholder="Full name at birth (as on your birth certificate)" required style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
       <input type="date" name="dob" required aria-label="Date of birth" style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
       <input type="email" name="email" placeholder="Your email (your report is sent here)" required style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
@@ -81,7 +81,8 @@
     window.CSCart.add({readingProductId:'c18ae7f5-e570-49fb-8214-814a3fc0beb7', name:'Short Profile', priceCents:1800, details:details});
     location.href='/cart.html'; return;
   });})();
-</script><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class="btn btn-gold" href="/book-appointment">Book a Reading</a></div></section>
+</script>
+<script src="report-form.js?v=1"></script><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class="btn btn-gold" href="/book-appointment">Book a Reading</a></div></section>
 </main>
 <footer class="footer">
   <div class="wrap footer-grid">
