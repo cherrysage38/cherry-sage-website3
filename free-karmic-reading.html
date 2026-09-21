@@ -71,7 +71,12 @@
 <script>
 (function(){
   var MAP={a:1,j:1,s:1,b:2,k:2,t:2,c:3,l:3,u:3,d:4,m:4,v:4,e:5,n:5,w:5,f:6,o:6,x:6,g:7,p:7,y:7,h:8,q:8,z:8,i:9,r:9};
-  function reduce(n){var master=[11,22,33];while(n>9&&master.indexOf(n)<0){n=(''+n).split('').reduce(function(a,b){return a+ +b;},0);}return n;}
+  function reduce9(n){while(n>9){n=(''+n).split('').reduce(function(a,b){return a+ +b;},0);}return n;}
+  var meaningsP=null;
+  function loadMeanings(){
+    if(!meaningsP) meaningsP=fetch('/assets/karmic-accumulation.json?v=1').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});
+    return meaningsP;
+  }
   var f=document.getElementById('karmicForm'),out=document.getElementById('karmicResult'),note=document.getElementById('karmicNote');
   f.addEventListener('submit',function(e){e.preventDefault();
     var name=(f.fullname.value||'').trim();
@@ -85,17 +90,27 @@
     var missing=[];
     for(var d=1;d<=9;d++){if(!present[d])missing.push(d);}
     var total=missing.reduce(function(a,b){return a+b;},0);
-    var red=reduce(total);
+    // Same rule as Cherry's original program: a total up to 22 (and 33) is the Karmic Accumulation as it stands;
+    // anything larger is added down to a single digit.
+    var acc=(total>22&&total!==33)?reduce9(total):total;
     out.hidden=false;
-    out.innerHTML='<div class="card reveal" style="text-align:center;border-color:var(--gold)">'+
-      '<p class="eyebrow">Your Karmic Accumulation</p>'+
-      '<div style="font-family:var(--font-display);font-size:3.4rem;color:var(--oxblood);line-height:1">'+total+'</div>'+
-      '<p style="color:var(--ink-soft);margin:.3rem 0 0">reduces to <strong style="color:var(--cherry)">'+red+'</strong></p>'+
-      '<p style="max-width:52ch;margin:1rem auto 0">Your Karmic Accumulation is the sum of the numbers missing from your birth name'+(missing.length?' ('+missing.join(', ')+')':'')+', the karmic lessons you carry into this lifetime. What this number means for <em>you</em>, in the detail Cherry actually gives it, is what she reads with you, one to one.</p>'+
-      '<a class="btn btn-gold" href="/shop.html" style="margin-top:1.2rem">Explore your number with Cherry</a>'+
-      (window.CSFunnel?window.CSFunnel.optinHTML('karmic',''):'')+
-    '</div>';
-    if(window.CSFunnel&&window.CSFunnel.wireOptin) window.CSFunnel.wireOptin(out);
+    function show(meaning){
+      var lead=total!==acc?'The numbers missing from your birth name'+(missing.length?' ('+missing.join(', ')+')':'')+' add up to <strong>'+total+'</strong>, which comes down to <strong style="color:var(--cherry)">'+acc+'</strong>.'
+                          :(total===0?'There are no numbers missing from your birth name.'
+                                     :'The numbers missing from your birth name ('+missing.join(', ')+') add up to <strong style="color:var(--cherry)">'+acc+'</strong>.');
+      out.innerHTML='<div class="card reveal" style="text-align:center;border-color:var(--gold)">'+
+        '<p class="eyebrow">Your Karmic Accumulation</p>'+
+        '<div style="font-family:var(--font-display);font-size:3.4rem;color:var(--oxblood);line-height:1">'+acc+'</div>'+
+        '<p style="color:var(--ink-soft);max-width:52ch;margin:.5rem auto 0">'+lead+'</p>'+
+        (meaning?'<div class="karmic-meaning" style="text-align:left;max-width:62ch;margin:1.4rem auto 0;line-height:1.7">'+meaning+'</div>':'')+
+        '<p style="max-width:52ch;margin:1.2rem auto 0;color:var(--ink-soft)">This is the general meaning of your number. What it means for <em>you</em>, in the detail Cherry actually gives it, is what she reads with you, one to one.</p>'+
+        '<a class="btn btn-gold" href="/shop.html" style="margin-top:1.2rem">Explore your number with Cherry</a>'+
+        (window.CSFunnel?window.CSFunnel.optinHTML('karmic',''):'')+
+      '</div>';
+      if(window.CSFunnel&&window.CSFunnel.wireOptin) window.CSFunnel.wireOptin(out);
+    }
+    show('');
+    loadMeanings().then(function(m){ if(m&&m[String(acc)]) show(m[String(acc)]); });
     out.scrollIntoView({behavior:'smooth',block:'center'});
   });
 })();
