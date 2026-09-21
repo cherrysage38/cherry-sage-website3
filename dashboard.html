@@ -74,6 +74,22 @@
   .todo-add{display:flex;gap:.6rem;margin-top:.8rem}
   .todo-add input{flex:1;padding:.6rem .9rem;border:1px solid var(--line-strong);border-radius:999px;font-family:var(--font-body);font-size:.88rem}
   .todo-add button{flex:0 0 auto}
+  .usr-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin:0 0 1rem}
+  .usr-chip{padding:.45rem .9rem;border-radius:999px;border:1px solid var(--line-strong);background:var(--paper-2);color:var(--ink);cursor:pointer;font-family:var(--font-body);font-size:.8rem}
+  .usr-chip.on{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
+  .usr-msg{min-height:1.3rem;margin:0 0 .6rem;font-size:.9rem;color:var(--ink-soft)}
+  .usr-msg.ok{color:var(--sage)} .usr-msg.err{color:var(--cherry)}
+  .usr-tag{display:inline-block;padding:.15rem .6rem;border-radius:999px;font-size:.8rem;font-weight:600;white-space:nowrap;background:var(--paper-2);color:var(--ink-soft)}
+  .usr-tag.act{background:#e3f1e6;color:#2f6b3f} .usr-tag.blk{background:#f6dcdc;color:#8a1f1f} .usr-tag.unc{background:#fbeed2;color:#8a5b00} .usr-tag.own{background:var(--gold-soft);color:var(--oxblood-deep)}
+  .usr-acts{white-space:nowrap}
+  .usr-btn{padding:.35rem .8rem;margin-left:.35rem;border-radius:8px;border:1px solid var(--line-strong);background:#fff;cursor:pointer;font-family:var(--font-body);font-size:.8rem;font-weight:600;color:var(--ink)}
+  .usr-btn.warn{border-color:#d9a441;color:#8a5b00} .usr-btn.danger{border-color:#c9868f;color:var(--cherry)}
+  .usr-block-add{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem}
+  .usr-block-add input{flex:1 1 240px;padding:.7rem 1rem;border:1px solid var(--line-strong);border-radius:999px;font-family:var(--font-body);font-size:1rem}
+  .usr-blocked{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+  .usr-blocked li{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:.6rem .9rem;font-size:.9rem}
+  .usr-blocked .usr-why{color:var(--ink-soft);font-size:.8rem;flex:1}
+  .usr-blocked .usr-none{color:var(--ink-soft)}
 </style>
 </head>
 <body>
@@ -100,7 +116,7 @@
       <button class="dash-tab active" data-tab="home">Home</button>
       <button class="dash-tab" data-tab="website">Website</button>
       <button class="dash-tab" data-tab="crm">CRM</button>
-      <button class="dash-tab" data-tab="customers">Customers</button>
+      <button class="dash-tab" data-tab="customers">Users</button>
       <button class="dash-tab" data-tab="coupons">Coupons</button>
       <button class="dash-tab" data-tab="sitemap">Sitemap</button>
       <button class="dash-tab soon" disabled>Social <span class="badge">Coming soon</span></button>
@@ -148,19 +164,34 @@
     </div>
 
     <div class="dash-panel" id="panel-customers">
-      <p style="color:var(--ink-soft);font-size:.9rem;margin:0 0 1.2rem">Everyone who has an account, placed an order, or requested an appointment with you. "Real login" means they can sign in themselves, same as the access you use for this dashboard.</p>
-      <input type="text" class="sitemap-search" id="customersSearch" placeholder="Search by name, email, or phone..." style="margin-bottom:1rem">
-      <p style="color:var(--ink-soft);font-size:.85rem;margin:0 0 1rem" id="customersCount"></p>
-      <table class="dash-table"><thead><tr>
-        <th data-sort="name" style="cursor:pointer">Name <span class="sort-arrow"></span></th>
+      <p style="color:var(--ink-soft);font-size:.9rem;margin:0 0 1rem">Everyone who has registered on your site, plus anyone who bought or booked without an account. <strong>Block</strong> signs a person out and stops them from logging in or registering again. <strong>Delete</strong> removes an account for good, but only when it has no orders or appointments (otherwise block it).</p>
+      <div class="usr-filters" id="usersFilters">
+        <button type="button" class="usr-chip on" data-filter="all">All <span class="usr-n"></span></button>
+        <button type="button" class="usr-chip" data-filter="unconfirmed">Never confirmed email <span class="usr-n"></span></button>
+        <button type="button" class="usr-chip" data-filter="noactivity">No orders or bookings <span class="usr-n"></span></button>
+        <button type="button" class="usr-chip" data-filter="blocked">Blocked <span class="usr-n"></span></button>
+      </div>
+      <input type="text" class="sitemap-search" id="customersSearch" placeholder="Search by name or email..." style="margin-bottom:1rem">
+      <p style="color:var(--ink-soft);font-size:.85rem;margin:0 0 .6rem" id="customersCount"></p>
+      <p class="usr-msg" id="usersMsg" role="status"></p>
+      <div style="overflow-x:auto"><table class="dash-table"><thead><tr>
+        <th data-sort="full_name" style="cursor:pointer">Name <span class="sort-arrow"></span></th>
         <th data-sort="email" style="cursor:pointer">Email <span class="sort-arrow"></span></th>
-        <th>Phone</th>
-        <th data-sort="has_login" style="cursor:pointer">Real login <span class="sort-arrow"></span></th>
+        <th data-sort="created_at" style="cursor:pointer">Signed up <span class="sort-arrow"></span></th>
+        <th data-sort="last_sign_in_at" style="cursor:pointer">Last login <span class="sort-arrow"></span></th>
         <th data-sort="total_orders" style="cursor:pointer">Orders <span class="sort-arrow"></span></th>
         <th data-sort="total_spent_cents" style="cursor:pointer">Spent <span class="sort-arrow"></span></th>
-        <th data-sort="total_appointments" style="cursor:pointer">Appts <span class="sort-arrow"></span></th>
-        <th data-sort="created_at" style="cursor:pointer">Since <span class="sort-arrow"></span></th>
-      </tr></thead><tbody id="customersBody"><tr><td colspan="8" class="empty-note">Loading…</td></tr></tbody></table>
+        <th>Status</th>
+        <th></th>
+      </tr></thead><tbody id="customersBody"><tr><td colspan="8" class="empty-note">Loading…</td></tr></tbody></table></div>
+
+      <h2 class="dash-section-title">Block an email address or a whole website in advance</h2>
+      <p style="color:var(--ink-soft);font-size:.88rem;margin:0 0 .8rem">Type an address such as <em>someone@example.com</em>, or <em>@example.com</em> to block everyone from that website. Blocked addresses cannot register.</p>
+      <div class="usr-block-add">
+        <input type="text" id="blockEmailInput" placeholder="name@example.com or @example.com" autocomplete="off">
+        <button class="btn btn-ghost" id="blockEmailBtn" type="button">Block</button>
+      </div>
+      <ul class="usr-blocked" id="blockedList"></ul>
     </div>
 
     <div class="dash-panel" id="panel-coupons">
@@ -312,57 +343,108 @@
     });
   });
 
-  var allCustomers=[], customersSort={key:'created_at', dir:-1};
+  // ---- Users tab (Bev, 2026-09-21): list, block, unblock, delete, and pre-block addresses
+  var allUsers=[], blockedList=[], usersFilter='all', customersSort={key:'created_at', dir:-1};
+  function usersMsg(text, bad){ var m=document.getElementById('usersMsg'); m.textContent=text||''; m.className='usr-msg'+(text?(bad?' err':' ok'):''); }
   function loadCustomers(){
-    fetch('/.netlify/functions/admin-customers',{headers:adminHeaders()})
+    fetch('/.netlify/functions/admin-users',{headers:adminHeaders()})
       .then(function(r){ return r.json(); })
       .then(function(d){
-        if(d.error){ document.getElementById('customersBody').innerHTML='<tr><td colspan="8" class="empty-note" style="color:var(--cherry)">'+esc(d.error==='login required'||d.error==='not the owner login'?'Please log in with cherry38@cherrysage.com to see your customers.':'Could not load customers.')+'</td></tr>'; return; }
-        allCustomers=d.customers||[]; renderCustomers();
+        if(d.error){ document.getElementById('customersBody').innerHTML='<tr><td colspan="8" class="empty-note" style="color:var(--cherry)">'+esc(d.error==='login required'||d.error==='not the owner login'?'Please log in with cherry38@cherrysage.com to manage your users.':'Could not load users.')+'</td></tr>'; return; }
+        allUsers=d.users||[]; blockedList=d.blocked||[]; renderUsers(); renderBlocked();
       })
-      .catch(function(){ document.getElementById('customersBody').innerHTML='<tr><td colspan="8" class="empty-note" style="color:var(--cherry)">Could not load customers.</td></tr>'; });
+      .catch(function(){ document.getElementById('customersBody').innerHTML='<tr><td colspan="8" class="empty-note" style="color:var(--cherry)">Could not load users.</td></tr>'; });
   }
-  function customersFiltered(){
+  function userStatus(u){
+    if(u.is_owner) return {t:'You (owner)', c:'own'};
+    if(u.blocked) return {t:'Blocked', c:'blk'};
+    if(!u.has_login) return {t:'Guest, no login', c:'gst'};
+    if(!u.email_confirmed) return {t:'Email not confirmed', c:'unc'};
+    return {t:'Active', c:'act'};
+  }
+  function usersFiltered(){
     var q=(document.getElementById('customersSearch').value||'').trim().toLowerCase();
-    var list=!q ? allCustomers.slice() : allCustomers.filter(function(c){
-      return (c.full_name||'').toLowerCase().indexOf(q)>=0 ||
-        (c.email||'').toLowerCase().indexOf(q)>=0 ||
-        (c.phone||'').toLowerCase().indexOf(q)>=0;
+    var list=allUsers.filter(function(u){
+      if(usersFilter==='unconfirmed' && !(u.has_login && !u.email_confirmed)) return false;
+      if(usersFilter==='noactivity' && !(u.has_login && !u.is_owner && !u.total_orders && !u.total_appointments)) return false;
+      if(usersFilter==='blocked' && !u.blocked) return false;
+      if(!q) return true;
+      return (u.full_name||'').toLowerCase().indexOf(q)>=0 || (u.email||'').toLowerCase().indexOf(q)>=0;
     });
     var key=customersSort.key, dir=customersSort.dir;
     list.sort(function(a,b){
       var av=a[key], bv=b[key];
-      if(typeof av==='boolean'){ av=av?1:0; bv=bv?1:0; }
-      if(typeof av==='string'){ av=(av||'').toLowerCase(); bv=(bv||'').toLowerCase(); }
-      else{ av=av||0; bv=bv||0; }
+      if(typeof av==='string'){ av=av.toLowerCase(); bv=(bv||'').toLowerCase(); } else { av=av||0; bv=bv||0; }
       if(av<bv) return -1*dir; if(av>bv) return 1*dir; return 0;
     });
     return list;
   }
-  function renderCustomers(){
-    var body=document.getElementById('customersBody');
-    var list=customersFiltered();
-    document.getElementById('customersCount').textContent=
-      allCustomers.length ? (list.length+' of '+allCustomers.length+' customer'+(allCustomers.length===1?'':'s')) : '';
-    document.querySelectorAll('#panel-customers th[data-sort]').forEach(function(th){
-      var arrow=th.querySelector('.sort-arrow');
-      arrow.textContent = th.dataset.sort===customersSort.key ? (customersSort.dir===1?'▲':'▼') : '';
+  function renderUsers(){
+    var body=document.getElementById('customersBody'), list=usersFiltered();
+    var counts={all:allUsers.length,
+      unconfirmed:allUsers.filter(function(u){return u.has_login&&!u.email_confirmed;}).length,
+      noactivity:allUsers.filter(function(u){return u.has_login&&!u.is_owner&&!u.total_orders&&!u.total_appointments;}).length,
+      blocked:allUsers.filter(function(u){return u.blocked;}).length};
+    document.querySelectorAll('#usersFilters .usr-chip').forEach(function(b){
+      b.classList.toggle('on', b.dataset.filter===usersFilter);
+      b.querySelector('.usr-n').textContent='('+counts[b.dataset.filter]+')';
     });
-    if(!allCustomers.length){ body.innerHTML='<tr><td colspan="8" class="empty-note">No customers yet.</td></tr>'; return; }
-    if(!list.length){ body.innerHTML='<tr><td colspan="8" class="empty-note">No customers match that search.</td></tr>'; return; }
-    body.innerHTML=list.map(function(c){
-      return '<tr><td>'+esc(c.full_name||'—')+'</td><td>'+esc(c.email||'—')+'</td><td>'+esc(c.phone||'—')+'</td>'+
-        '<td>'+(c.has_login?'Yes':'No')+'</td><td>'+(c.total_orders||0)+'</td><td>'+money(c.total_spent_cents)+'</td>'+
-        '<td>'+(c.total_appointments||0)+'</td><td>'+esc((c.created_at||'').slice(0,10))+'</td></tr>';
+    document.getElementById('customersCount').textContent=allUsers.length?(list.length+' of '+allUsers.length+' shown'):'';
+    document.querySelectorAll('#panel-customers th[data-sort]').forEach(function(th){
+      th.querySelector('.sort-arrow').textContent = th.dataset.sort===customersSort.key ? (customersSort.dir===1?'▲':'▼') : '';
+    });
+    if(!allUsers.length){ body.innerHTML='<tr><td colspan="8" class="empty-note">No users yet.</td></tr>'; return; }
+    if(!list.length){ body.innerHTML='<tr><td colspan="8" class="empty-note">Nobody matches that.</td></tr>'; return; }
+    body.innerHTML=list.map(function(u){
+      var st=userStatus(u), acts='';
+      if(u.has_login && !u.is_owner){
+        acts=(u.blocked?'<button type="button" class="usr-btn" data-act="unblock" data-id="'+esc(u.id)+'">Unblock</button>':'<button type="button" class="usr-btn warn" data-act="block" data-id="'+esc(u.id)+'" data-name="'+esc(u.email)+'">Block</button>')+
+          '<button type="button" class="usr-btn danger" data-act="delete" data-id="'+esc(u.id)+'" data-name="'+esc(u.email)+'">Delete</button>';
+      }
+      return '<tr><td>'+esc(u.full_name||'—')+'</td><td>'+esc(u.email||'—')+'</td><td>'+esc((u.created_at||'').slice(0,10))+'</td><td>'+esc((u.last_sign_in_at||'').slice(0,10)||'never')+'</td>'+
+        '<td>'+(u.total_orders||0)+'</td><td>'+money(u.total_spent_cents)+'</td><td><span class="usr-tag '+st.c+'">'+st.t+'</span></td><td class="usr-acts">'+acts+'</td></tr>';
     }).join('');
   }
-  document.getElementById('customersSearch').addEventListener('input', renderCustomers);
+  function renderBlocked(){
+    var ul=document.getElementById('blockedList');
+    ul.innerHTML = blockedList.length ? blockedList.map(function(b){
+      return '<li><span>'+esc(b.email)+'</span><span class="usr-why">'+esc(b.reason||'')+'</span><button type="button" class="usr-btn" data-unblock-email="'+esc(b.email)+'">Remove</button></li>';
+    }).join('') : '<li class="usr-none">Nothing blocked in advance yet.</li>';
+  }
+  function userAction(payload, okText){
+    usersMsg('Working…');
+    return fetch('/.netlify/functions/admin-users',{method:'POST',headers:Object.assign({'content-type':'application/json'},adminHeaders()),body:JSON.stringify(payload)})
+      .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
+      .then(function(res){
+        if(!res.ok){ usersMsg((res.d&&res.d.error)||'That did not work, please try again.', true); return; }
+        usersMsg(okText); loadCustomers();
+      }).catch(function(){ usersMsg('Something went wrong, please try again.', true); });
+  }
+  document.getElementById('customersBody').addEventListener('click', function(e){
+    var b=e.target.closest('button[data-act]'); if(!b) return;
+    var id=b.dataset.id, who=b.dataset.name||'this account';
+    if(b.dataset.act==='block'){ if(confirm('Block '+who+'?\n\nThey will be signed out and cannot log in or register again.')) userAction({action:'block',id:id},'Blocked.'); }
+    else if(b.dataset.act==='unblock'){ userAction({action:'unblock',id:id},'Unblocked.'); }
+    else if(b.dataset.act==='delete'){ if(confirm('Delete '+who+' for good?\n\nThis cannot be undone. It only works for accounts with no orders or appointments.')) userAction({action:'delete',id:id},'Deleted.'); }
+  });
+  document.getElementById('blockedList').addEventListener('click', function(e){
+    var b=e.target.closest('button[data-unblock-email]'); if(!b) return;
+    userAction({action:'unblock_email',email:b.dataset.unblockEmail},'Removed from the block list.');
+  });
+  document.getElementById('blockEmailBtn').addEventListener('click', function(){
+    var inp=document.getElementById('blockEmailInput'), v=(inp.value||'').trim();
+    if(!v){ usersMsg('Type an email address or @website.com first.', true); return; }
+    userAction({action:'block_email',email:v},'Blocked. They cannot register.').then(function(){ inp.value=''; });
+  });
+  document.getElementById('usersFilters').addEventListener('click', function(e){
+    var b=e.target.closest('.usr-chip'); if(!b) return; usersFilter=b.dataset.filter; renderUsers();
+  });
+  document.getElementById('customersSearch').addEventListener('input', renderUsers);
   document.querySelectorAll('#panel-customers th[data-sort]').forEach(function(th){
     th.addEventListener('click', function(){
       var key=th.dataset.sort;
-      if(customersSort.key===key){ customersSort.dir*=-1; }
-      else{ customersSort={key:key, dir:1}; }
-      renderCustomers();
+      if(customersSort.key===key){ customersSort.dir*=-1; } else { customersSort={key:key, dir:1}; }
+      renderUsers();
     });
   });
 
