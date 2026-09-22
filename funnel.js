@@ -166,17 +166,24 @@
 
 })();
 
-/* nl-form-handler */
+/* nl-form-handler
+   2026-09-23: this form had no bot protection at all (Bev found her signup list was mostly bots).
+   The honeypot field is in the markup now; this just wires it up the same way the contact form's
+   already does -- a hidden field real people never fill, plus how long the form sat open, both
+   sent to lead.mjs, which already knows how to reject them. */
 (function(){
   document.querySelectorAll('.nl-form').forEach(function(f){
+    var openedAt=Date.now();
     f.addEventListener('submit', function(e){
       e.preventDefault();
       var input=f.querySelector('input[type=email]');
+      var hp=f.querySelector('input[name=website]');
       var note=f.parentNode.querySelector('.nl-note');
       var email=(input && input.value || '').trim();
       if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ if(note)note.textContent='Please enter a valid email.'; return; }
+      if(hp && hp.value){ if(note)note.textContent='Thank you, you are on the list.'; if(input)input.value=''; return; }
       var btn=f.querySelector('button'); if(btn)btn.disabled=true; if(note)note.textContent='Signing you up...';
-      fetch('/.netlify/functions/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,source:'newsletter'})})
+      fetch('/.netlify/functions/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,source:'newsletter',website:hp?hp.value:'',t:openedAt})})
         .then(function(r){return r.json().catch(function(){return {};});})
         .then(function(){ if(note)note.textContent='Thank you, you are on the list.'; if(input)input.value=''; })
         .catch(function(){ if(note)note.textContent='Something went wrong, please try again.'; })
