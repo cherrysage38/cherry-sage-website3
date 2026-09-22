@@ -184,7 +184,7 @@ function brandShell(bodyHtml) {
     `</div><div style="padding:32px;color:#2b2620;font-size:15px;line-height:1.6;">${bodyHtml}</div>` +
     `<div style="padding:20px 32px;border-top:1px solid #EDE2CF;color:#8a8072;font-size:12px;text-align:center;">` +
     `Cherry Sage &middot; Honest, accurate psychic, tarot, and numerology readings by phone. Trusted since 1999.<br>` +
-    `<a href="https://www.facebook.com/PsychicReadingByCherrySage/" style="color:#A0142B;text-decoration:none;">Facebook</a> &middot; <a href="https://www.instagram.com/psychiccherrysage/" style="color:#A0142B;text-decoration:none;">Instagram</a> &middot; <a href="https://x.com/cherrysage" style="color:#A0142B;text-decoration:none;">X</a><br>` +
+    `<a href="https://www.facebook.com/PsychicReadingByCherrySage/" style="color:#A0142B;text-decoration:none;">Facebook</a> &middot; <a href="https://www.instagram.com/psychiccherrysage/" style="color:#A0142B;text-decoration:none;">Instagram</a><br>` +
     `<a href="https://cherrysage.com" style="color:#A0142B;">cherrysage.com</a></div></div></div>`;
 }
 
