@@ -5,7 +5,9 @@
 // own check is a fast-fail, not the actual security boundary.
 import { createClient } from "@supabase/supabase-js";
 
-const CLOVER_API_BASE = "https://api.clover.com";
+// Cherry's own number, so a customer who needs to reach her about an appointment can just call.
+const CHERRY_PHONE_DISPLAY = "301-474-1681";
+const CHERRY_PHONE_LINK = `<a href="tel:+13014741681" style="color:#A0142B;">${CHERRY_PHONE_DISPLAY}</a>`;
 
 function json(o, status = 200) {
   return new Response(JSON.stringify(o), {
@@ -66,48 +68,21 @@ export default async (req) => {
     if (error) return json({ error: badToken(error) ? "login required" : notOwner(error) ? "not the owner login" : error.message }, badToken(error) ? 401 : notOwner(error) ? 403 : 400);
     const details = (data && data[0]) || null;
 
-    var refundResult = null;
-    if (status === "declined" && details?.clover_payment_id) {
-      refundResult = await refundCloverCharge(details.clover_payment_id, details.amount_cents);
-    }
-
+    // Bev, 2026-09-22 (WhatsApp): "I NEVER give refunds unless some situation arises... I control
+    // that manually. Never automate refunds." Decline no longer touches Clover. If she wants to
+    // refund a particular customer she does it herself, directly in Clover.
     if (details?.customer_email) {
-      await sendStatusEmail(details, status, refundResult);
+      await sendStatusEmail(details, status);
       if (status === "approved") {
         await tagLastAppointment(details.customer_email, details.requested_start);
       }
     }
 
-    return json({ ok: true, refund: refundResult });
+    return json({ ok: true });
   }
 
   return json({ error: "method" }, 405);
 };
-
-async function refundCloverCharge(chargeId, amountCents) {
-  const CLOVER_PRIVATE_TOKEN = process.env.CLOVER_PRIVATE_TOKEN;
-  if (!CLOVER_PRIVATE_TOKEN) return { attempted: false, reason: "not configured" };
-  try {
-    const res = await fetch(`${CLOVER_API_BASE}/v1/refunds`, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${CLOVER_PRIVATE_TOKEN}`,
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-      },
-      body: JSON.stringify({ charge: chargeId, amount: amountCents, reason: "requested_by_customer" }),
-    });
-    const raw = await res.text();
-    let body = {};
-    try { body = raw ? JSON.parse(raw) : {}; } catch { /* non-JSON response, fall through with raw text below */ }
-    if (!res.ok || (body.status !== "succeeded" && body.status !== "pending")) {
-      return { attempted: true, succeeded: false, error: body?.message || raw?.slice(0, 200) || `refund failed (HTTP ${res.status})` };
-    }
-    return { attempted: true, succeeded: true, refundId: body.id, status: body.status };
-  } catch (e) {
-    return { attempted: true, succeeded: false, error: String(e) };
-  }
-}
 
 // A standard .ics calendar invite so "Add to calendar" is a real attachment, not just a
 // promise in the email copy. Built from scratch, no dependency -- it's a plain text format.
@@ -132,7 +107,7 @@ function buildICS(details) {
   return lines.join("\r\n");
 }
 
-async function sendStatusEmail(details, status, refundResult) {
+async function sendStatusEmail(details, status) {
   const when = fmt(details.requested_start);
   const name = esc(details.customer_name || "");
   let subject, body, ics = null;
@@ -140,21 +115,18 @@ async function sendStatusEmail(details, status, refundResult) {
   if (status === "approved") {
     subject = "Your appointment with Cherry Sage is confirmed";
     body = `<p>Great news, ${name}. Your <strong>${esc(details.product_name)}</strong> reading is confirmed for ${when}.</p>` +
-      `<p>Cherry looks forward to speaking with you.</p>` +
+      `<p>Cherry looks forward to speaking with you. Please call her at ${CHERRY_PHONE_LINK} at your appointment time.</p>` +
       `<p style="font-size:.9em;color:#8a8072">A calendar invite is attached, so it's one tap to add to your phone.</p>`;
     ics = buildICS(details);
   } else if (status === "alternate_offered") {
     const alt = fmt(details.alternate_start);
     subject = "A different time for your Cherry Sage reading";
     body = `<p>Hi ${name}, your requested time (${when}) doesn't quite work, but Cherry can do <strong>${alt}</strong> instead.</p>` +
-      `<p>Reply to this email to confirm, or to find another time.</p>`;
+      `<p>Please call Cherry at ${CHERRY_PHONE_LINK} to confirm this new time, or to set up one that works better for you.</p>`;
   } else if (status === "declined") {
     subject = "Your Cherry Sage appointment request";
-    var refundLine = refundResult?.succeeded
-      ? "<p>Your payment has been refunded.</p>"
-      : "<p>We're processing your refund now, if you don't see it in a few business days please reply to this email.</p>";
-    body = `<p>Hi ${name}, unfortunately Cherry isn't able to make ${when} work.</p>` + refundLine +
-      `<p>Please feel free to request a different time whenever you're ready.</p>`;
+    body = `<p>Hi ${name}, unfortunately Cherry isn't able to make ${when} work.</p>` +
+      `<p>Please call Cherry at ${CHERRY_PHONE_LINK} or reply to this email, and she'll help you sort out your payment and find a time that works.</p>`;
   } else {
     return;
   }
