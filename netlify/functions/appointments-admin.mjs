@@ -124,9 +124,13 @@ async function sendStatusEmail(details, status) {
     body = `<p>Hi ${name}, your requested time (${when}) doesn't quite work, but Cherry can do <strong>${alt}</strong> instead.</p>` +
       `<p>Please call Cherry at ${CHERRY_PHONE_LINK} to confirm this new time, or to set up one that works better for you.</p>`;
   } else if (status === "declined") {
+    // Bev, 2026-09-23: "Don't say anything about sorting out their payment. If the appoint is
+    // declined either they'll get an alternate suggestion. Or they can call or email with their
+    // own alternate. We only do alternate once." So this is not a dead end, it points them to
+    // whichever of the two paths is actually theirs to take next.
     subject = "Your Cherry Sage appointment request";
     body = `<p>Hi ${name}, unfortunately Cherry isn't able to make ${when} work.</p>` +
-      `<p>Please call Cherry at ${CHERRY_PHONE_LINK} or reply to this email, and she'll help you sort out your payment and find a time that works.</p>`;
+      `<p>She may offer you a different time. If you'd rather suggest your own, please call Cherry at ${CHERRY_PHONE_LINK} or reply to this email.</p>`;
   } else {
     return;
   }
