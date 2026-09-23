@@ -1,4 +1,3 @@
-# Homepage text (edited in the site editor: Homepage). Words only, the layout stays as designed.
 hero:
   eyebrow: Trusted since 1999 · 27 years in practice
   headline: Your story matters. Get clarity about your
@@ -9,56 +8,56 @@ hero:
   button2_label: Try Free Numerology
   button2_link: /life-path
   trust:
-  - 27 years in practice
-  - 90% repeat clients
-  - Honest over fantasy, always
+    - 27 years in practice
+    - 90% repeat clients
+    - Honest over fantasy, always
 services:
   eyebrow: Welcome to your path of peace and clarity
   heading: '"The universe speaks in quiet whispers. Let me be the voice that helps you listen."'
   intro: My name is Cherry Sage, and my intuitive abilities allow me to connect with the energies that shape your destiny. Whether you seek clarity through an online psychic reading, numerology insight, or a tarot session, each call is a step toward transformation.
   cards:
-  - tag: Psychic Reading
-    title: Live & Online Psychic Reading
-    text: Honest, in-depth phone readings on love, career, and family, delivered with real compassion.
-    link_label: Explore psychic readings →
-    link: /psychic-reading
-  - tag: Tarot
-    title: Tarot Card Reading
-    text: Clairvoyant, clairaudient, and empathic guidance through the Tarot's ancient symbolism.
-    link_label: Explore tarot readings →
-    link: /tarot
-  - tag: Numerology
-    title: Numerology
-    text: Life Path, Expression, Soul Urge, and Karmic Debt. Uncover the numbers that shape your path.
-    link_label: Try free numerology →
-    link: /numerology
+    - tag: Psychic Reading
+      title: Live & Online Psychic Reading
+      text: Honest, in-depth phone readings on love, career, and family, delivered with real compassion.
+      link_label: Explore psychic readings →
+      link: /psychic-reading
+    - tag: Tarot
+      title: Tarot Card Reading
+      text: Clairvoyant, clairaudient, and empathic guidance through the Tarot's ancient symbolism.
+      link_label: Explore tarot readings →
+      link: /tarot
+    - tag: Numerology
+      title: Numerology
+      text: Life Path, Expression, Soul Urge, and Karmic Debt. Uncover the numbers that shape your path.
+      link_label: Try free numerology →
+      link: /numerology
 situations:
   eyebrow: You're in good company
   heading: Big questions, small ones, and the ones you don't have a name for yet.
   intro: Whatever is sitting on your heart, Cherry gives you an honest, caring read on it, the kind that helps you decide for yourself.
   cards:
-  - quote: '"Should I stay, or is it finally time to go?"'
-    label: Talk it through →
-    link: /shop
-  - quote: '"He''s been on ''read'' for two days now."'
-    label: Let's read into it →
-    link: /shop
-  - quote: '"Not lost, exactly. Just not sure what''s next."'
-    label: Find your direction →
-    link: /shop
-  - quote: '"Is this the right move, or am I forcing it?"'
-    label: Get clarity →
-    link: /shop
-  - quote: '"Will this rough patch with money turn around?"'
-    label: See what's coming →
-    link: /shop
-  - quote: '"Are we meant to be, or am I holding on?"'
-    label: Ask about love →
-    link: /shop
+    - quote: '"Should I stay, or is it finally time to go?"'
+      label: Talk it through →
+      link: /shop
+    - quote: '"He''s been on ''read'' for two days now."'
+      label: Let's read into it →
+      link: /shop
+    - quote: '"Not lost, exactly. Just not sure what''s next."'
+      label: Find your direction →
+      link: /shop
+    - quote: '"Is this the right move, or am I forcing it?"'
+      label: Get clarity →
+      link: /shop
+    - quote: '"Will this rough patch with money turn around?"'
+      label: See what's coming →
+      link: /shop
+    - quote: '"Are we meant to be, or am I holding on?"'
+      label: Ask about love →
+      link: /shop
 story:
   eyebrow: A sacred gift
   heading: The Intuitive Connection
-  paragraph1: There was a time, many years ago, when the whispers of the universe first called me to serve. I remember sitting alone under the glow of the moon, gazing at the stars, when a single tarot card fell from the deck. The world seemed to pause, and I understood the answers were always here, hidden in the cards, in the numbers, in the quiet moments of reflection.
+  paragraph1: People always ask me when it started, and I think they're expecting some big dramatic moment. But there wasn't one, not really. I was a kid who just knew things. I knew who was on the phone before anybody picked it up, I could walk into a room and feel that something was wrong even when everyone was smiling at me, and every so often I'd hear something, clear as a bell, that turned out to be true a few days later. I thought everybody could do that. So I didn't say much about it, and for a long time I tried to ignore it, because it didn't fit into a normal life and I wanted a normal life. But it doesn't go away just because you ignore it. It gets LOUDER. And at some point I stopped fighting it and started listening, and that's how it became what I do now, helping people see what's really going on in their lives so they can make their own choices.
   paragraph2: Hi. I'm glad you're here. I am Cherry Sage. Spin Magazine found my site in 1999 and invited me to be their "Ask the Expert" guest.
   button_label: Meet Cherry →
   button_link: /meet
@@ -73,57 +72,57 @@ free:
   heading: No pressure, just a real first step.
   intro: Free tools built from Cherry's own methods, so you can feel what a reading is like before you book.
   cards:
-  - tag: Tarot
-    title: Tarot Card Pull
-    text: Type your question, pull a card. Warm and personal, just for reflection.
-    link_label: Pull a free card →
-    link: /tarot-pull
-  - tag: Numerology
-    title: Karmic Accumulation Reading
-    text: Cherry's own lead-in reading, a real look at what's following you into this chapter.
-    link_label: About numerology →
-    link: /numerology
-  - tag: Daily
-    title: Your Horoscope
-    text: Yesterday, today, and tomorrow. A quiet daily check-in, back by popular request.
-    link_label: Read today's →
-    link: /horoscope
+    - tag: Tarot
+      title: Tarot Card Pull
+      text: Type your question, pull a card. Warm and personal, just for reflection.
+      link_label: Pull a free card →
+      link: /tarot-pull
+    - tag: Numerology
+      title: Karmic Accumulation Reading
+      text: Cherry's own lead-in reading, a real look at what's following you into this chapter.
+      link_label: About numerology →
+      link: /numerology
+    - tag: Daily
+      title: Your Horoscope
+      text: Yesterday, today, and tomorrow. A quiet daily check-in, back by popular request.
+      link_label: Read today's →
+      link: /horoscope
 how:
   eyebrow: How it works
   heading: Book and pay in one pass
-  intro: ''
   steps:
-  - title: Check availability
-    text: Watch the status light above, or check open times directly.
-  - title: Pick your time & minutes
-    text: Choose your day, time, and reading length in the same flow.
-  - title: Pay & you're booked
-    text: Pay right there, no separate registration step and no checking out twice.
+    - title: Check availability
+      text: Watch the status light above, or check open times directly.
+    - title: Pick your time & minutes
+      text: Choose your day, time, and reading length in the same flow.
+    - title: Pay & you're booked
+      text: Pay right there, no separate registration step and no checking out twice.
   button_label: See the full how-it-works guide →
   button_link: /how-it-works
+  intro: ''
 testimonials:
   eyebrow: What clients say
   heading: Hundreds of honest reviews
   intro: Real words from real callers over years of readings. About 90% come back.
   quotes:
-  - quote: Cherry is incredibly connected and honest. Her Astrology readings are the best I’ve experienced so far. Cherry has an extraordinary spiritual talent. Nothing was pretentious or generic. She tells it like it is because she genuinely wants to give us the knowledge we need to make an informed…
-    name: Kevin Moore
-    date: April 21, 2025
-  - quote: Cherry is so lovely! She is very honest, very connected, and and so gifted. She delivers the good with the bad and celebrates those positive wins with you. 10/10, highly recommend calling Cherry!
-    name: Suruchi Bhatia
-    date: May 17, 2023
-  - quote: Cherry is phenomenal! She always tells it like it is with the kindest delivery. She’s been following my story for quite some time and helped me immensely along the way. Highly recommend!!
-    name: Mass
-    date: July 10, 2022
-  - quote: I always love speaking to Cherry and going over things that she said would happen. For years, so much comes to fruition as she says. I always appreciate her honesty. Before i call her, i always brace myself for truth. Thanks so much again.
-    name: Baltimore, Maryland
-    date: August 10, 2021
-  - quote: Cherry is absolutely SPOT ON! With very little information, she was able to describe someone’s personality with every bit of accuracy imaginable. She is real. She is authentic. If you’re not talking to Cherry, then what are you really doing with your time? I highly recommend.
-    name: North Carolina
-    date: February 15, 2021
-  - quote: Dear Cherry, Once again, thank you so very much! I can’t wait to talk to you again for more details, which will be very soon! You definitely made not only my day, but what I heard from you today will give me wings and confidence for a good while :)!!!
-    name: Montreal
-    date: May 14, 2019
+    - quote: Cherry is incredibly connected and honest. Her Astrology readings are the best I’ve experienced so far. Cherry has an extraordinary spiritual talent. Nothing was pretentious or generic. She tells it like it is because she genuinely wants to give us the knowledge we need to make an informed…
+      name: Kevin Moore
+      date: April 21, 2025
+    - quote: Cherry is so lovely! She is very honest, very connected, and and so gifted. She delivers the good with the bad and celebrates those positive wins with you. 10/10, highly recommend calling Cherry!
+      name: Suruchi Bhatia
+      date: May 17, 2023
+    - quote: Cherry is phenomenal! She always tells it like it is with the kindest delivery. She’s been following my story for quite some time and helped me immensely along the way. Highly recommend!!
+      name: Mass
+      date: July 10, 2022
+    - quote: I always love speaking to Cherry and going over things that she said would happen. For years, so much comes to fruition as she says. I always appreciate her honesty. Before i call her, i always brace myself for truth. Thanks so much again.
+      name: Baltimore, Maryland
+      date: August 10, 2021
+    - quote: Cherry is absolutely SPOT ON! With very little information, she was able to describe someone’s personality with every bit of accuracy imaginable. She is real. She is authentic. If you’re not talking to Cherry, then what are you really doing with your time? I highly recommend.
+      name: North Carolina
+      date: February 15, 2021
+    - quote: Dear Cherry, Once again, thank you so very much! I can’t wait to talk to you again for more details, which will be very soon! You definitely made not only my day, but what I heard from you today will give me wings and confidence for a good while :)!!!
+      name: Montreal
+      date: May 14, 2019
   button1_label: Read all reviews →
   button1_link: /testimonials
   button2_label: Leave your feedback
