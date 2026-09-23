@@ -2,6 +2,8 @@
 title: Compatibility
 description: Embark on a Soulful Journey of Love and Harmony with Cherry Sage! “Every sound, colour, fragrance and thought is a vibration, and each dances to the tune of…
 blocks:
+- type: compat_tool
+  heading: See how your numbers meet
 - type: text
   body: '## Embark on a Soulful Journey of Love and Harmony with Cherry Sage!
 

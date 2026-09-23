@@ -195,6 +195,79 @@
     resultEl.hidden=false;
   }); }
 
+  // Compatibility calculator (Pages builder "Compatibility Calculator" block, e.g. /compatibility).
+  // Compares two people's Life Path, Soul Urge and Expression, reusing the meanings above.
+  // Everything is worked out in the visitor's browser; nothing is saved or sent anywhere.
+  // Numbers group into three traditional families. Master numbers compare as their base
+  // (11 as 2, 22 as 4, 33 as 6) but are still shown as the master number.
+  var FAMILY = {1:'A',5:'A',7:'A',2:'B',4:'B',8:'B',3:'C',6:'C',9:'C'};
+  var FAMILY_NAME = {A:'independent, thinking',B:'steady, building',C:'creative, caring'};
+  var MEET = {
+    same:"You share the same number here. You understand each other without much explaining. The thing to watch is that you can share the same blind spots too, so notice when you are both pulling the same way too hard.",
+    AA:"Both numbers belong to the independent, thinking family (1, 5 and 7). You respect each other's need for space and your own way of doing things. Make a point of saying out loud what you might assume the other already knows.",
+    BB:"Both numbers belong to the steady, building family (2, 4 and 8). You value reliability and effort, and you tend to want the same kind of life. Remember to leave room for rest and fun, not only plans.",
+    CC:"Both numbers belong to the creative, caring family (3, 6 and 9). Warmth and feeling come easily between you. Keep an eye on practical matters, since neither of you may want to be the one to raise them.",
+    AC:"One number is independent and questioning (1, 5, 7), the other warm and expressive (3, 6, 9). This is a supportive mix: one brings direction and ideas, the other brings heart. It works best when the independent one shares their feelings and the caring one feels free to ask for what they need.",
+    BC:"One number is steady and practical (2, 4, 8), the other warm and expressive (3, 6, 9). This is a supportive mix: one gives the relationship a strong base, the other brings joy and feeling. It works best when you make room for both the plans and the moments.",
+    AB:"One number values freedom and its own way (1, 5, 7), the other values security and structure (2, 4, 8). This pairing asks more patience of both of you. The steady one can offer a safe home base, and the independent one can bring fresh air. Talk plainly about how much space and how much routine each of you needs."
+  };
+  function baseNum(n){ return n===11?2:n===22?4:n===33?6:n; }
+  function meetNote(a,b){
+    if(a===b) return MEET.same;
+    var fa=FAMILY[baseNum(a)], fb=FAMILY[baseNum(b)];
+    return MEET[[fa,fb].sort().join('')];
+  }
+  function escHtml(s){ return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+  function firstName(full, fallback){ var w=full.trim().split(/\s+/)[0]; return w ? escHtml(w) : fallback; }
+  function personNums(name, date){
+    return {
+      lifePath: reduce(date.replace(/[^0-9]/g,'').split('').reduce(function(a,d){return a+ +d;},0)),
+      soulUrge: reduce(nameSum(name,'vowels')),
+      expression: reduce(nameSum(name))
+    };
+  }
+  var cf=document.getElementById('cpForm');
+  if(cf){ cf.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n1=document.getElementById('cpName1').value, d1=document.getElementById('cpDate1').value;
+    var n2=document.getElementById('cpName2').value, d2=document.getElementById('cpDate2').value;
+    var note=document.getElementById('cpNote');
+    if(!/[a-z]/i.test(n1)||!/[a-z]/i.test(n2)||!d1||!d2){
+      note.textContent='Please add both full names at birth and both birth dates.'; note.hidden=false; return;
+    }
+    note.hidden=true;
+    var p1=personNums(n1,d1), p2=personNums(n2,d2);
+    var who1=firstName(n1,'You'), who2=firstName(n2,'Them');
+    var ASPECTS=[
+      ['lifePath','Life Path','How each of you moves through life',LP],
+      ['soulUrge','Soul Urge','What each of your hearts wants',SOUL_URGE],
+      ['expression','Expression','How each of you comes across to others',EXPRESSION]
+    ];
+    function side(who,num,meaning){
+      return '<div><div style="display:flex;align-items:baseline;gap:.6rem">'+
+        '<span style="font-family:var(--font-display);font-size:2rem;color:var(--oxblood)">'+num+'</span>'+
+        '<strong>'+who+'</strong></div>'+
+        '<p style="color:var(--ink-soft);margin:.3rem 0 0;font-size:.95rem">'+meaning+'</p></div>';
+    }
+    var out=ASPECTS.map(function(a){
+      var k=a[0], x=p1[k], y=p2[k];
+      return '<div class="card" style="padding:1.2rem 1.4rem">'+
+        '<h4 style="margin:0">'+a[1]+'</h4>'+
+        '<p style="margin:.1rem 0 .9rem;color:var(--ink-soft);font-size:.9rem">'+a[2]+'</p>'+
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">'+
+          side(who1,x,a[3][x]||'')+side(who2,y,a[3][y]||'')+
+        '</div>'+
+        '<p style="margin:1rem 0 0;padding-top:.8rem;border-top:1px solid var(--line-strong)"><strong>How you meet: </strong>'+meetNote(x,y)+'</p>'+
+      '</div>';
+    });
+    out.push('<p style="font-size:.85rem;color:var(--ink-soft);text-align:center;margin:.2rem 0 0">For reflection. Numbers show tendencies, not a verdict on any relationship.</p>');
+    out.push('<div style="text-align:center"><p style="margin:.2rem 0 .7rem">Cherry\'s <strong>Compatibility Love Report</strong> goes much deeper, written just for the two of you.</p>'+
+      '<a class="btn btn-gold" href="/report-compatibility-love-report">See the Love Report</a></div>');
+    var res=document.getElementById('cpResult');
+    res.innerHTML=out.join('');
+    res.hidden=false;
+  }); }
+
   // chat widget (front-end stub for concept)
   var cw=document.getElementById('chatWidget');
   cw && cw.addEventListener('click',function(){ window.location.hash='#book'; });
