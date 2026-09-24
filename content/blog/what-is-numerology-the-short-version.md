@@ -3,6 +3,7 @@ title: "What Is Numerology—the Short Version."
 category: "Numerology"
 date: "2023-05-01"
 image: "/assets/blog/WhatIsNumerologyimage-768x576.jpeg"
+seo_title: "What Is Numerology? A Quick, Clear Explanation"
 description: "Numerology is a belief system and metaphysical practice that sets forth that numbers have mystical or divine…"
 related: true
 ---

@@ -3,6 +3,7 @@ title: "How to Ask the Right Questions During Your Psychic Readings"
 category: "Psychic Readings"
 date: "2023-07-26"
 image: "/assets/blog/rhythmic-water-flow-768x514.jpeg"
+seo_title: "How to Ask the Right Questions in a Psychic Reading"
 description: "Today I did a reading for a lady whose energy felt very scattered, stressed and confused. In order to receive clear and…"
 related: true
 ---

@@ -3,6 +3,7 @@ title: "9 Amazing Tips About Your Numerology Health! What Does Your Life Path Nu
 category: "Numerology"
 date: "2019-12-05"
 image: "/assets/blog/numerology-blk-white-768x528.jpg"
+seo_title: "What Your Life Path Number Says About Your Health"
 description: "Ever wondered what your numerology health numbers are? Feeling sluggish, uninspired or just plain sick? Numerology…"
 related: true
 ---

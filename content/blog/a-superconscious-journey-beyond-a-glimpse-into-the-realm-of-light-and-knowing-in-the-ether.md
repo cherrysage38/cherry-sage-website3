@@ -3,6 +3,7 @@ title: "A Superconscious Journey Beyond: A Glimpse into the Realm of Light and K
 category: "Other World"
 date: "2023-08-21"
 image: "/assets/blog/superconscious-mind-min-768x512.jpeg"
+seo_title: "A Superconscious Journey Beyond | Cherry Sage"
 description: "ACQUIESCENCE INTO THE SUPERCONSCIOUS MIND Today was an unusual day. My long-time client called in a totally different…"
 related: true
 ---

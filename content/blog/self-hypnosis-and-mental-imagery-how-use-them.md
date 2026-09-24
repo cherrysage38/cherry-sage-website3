@@ -3,6 +3,7 @@ title: "Self-Hypnosis And Mental Imagery: How Use Them"
 category: "Featured Articles"
 date: "2012-11-28"
 image: "/assets/blog/real-psychic-readings-2-768x361.jpg"
+seo_title: "Self-Hypnosis and Mental Imagery: How They Work"
 description: "Hypnosis allows us all to experience thoughts, fantasies and images as almost real. It also plays a role in pain and…"
 related: false
 ---

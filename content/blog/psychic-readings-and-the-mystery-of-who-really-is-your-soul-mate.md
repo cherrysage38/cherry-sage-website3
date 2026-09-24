@@ -3,6 +3,7 @@ title: "Psychic Readings and the Mystery of Who Really Is Your Soul Mate!"
 category: "Other World"
 date: "2020-01-29"
 image: "/assets/blog/soul-mate-768x384.jpg"
+seo_title: "Can a Psychic Tell You Who Your Soul Mate Is?"
 description: "Can a psychic tell you who your soul mate is? Cherry Sage explains all about soul mate and twin flames energy."
 related: true
 ---

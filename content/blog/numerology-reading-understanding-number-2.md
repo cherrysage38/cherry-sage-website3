@@ -3,6 +3,7 @@ title: "Numerology Reading — Number 2 and What Does it Mean?"
 category: "Numerology"
 date: "2023-06-26"
 image: "/assets/blog/numerology-slider-min-768x210.jpeg"
+seo_title: "Numerology Number 2 Meaning: Traits and Life Path"
 description: "In numerology, the number 2 is considered a gentle, harmonious, and nurturing number, representing balance, diplomacy,…"
 related: true
 ---

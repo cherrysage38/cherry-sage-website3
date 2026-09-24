@@ -3,6 +3,7 @@ title: "Surprising Benefits of Being Single — What To Do If You Are Single And
 category: "Featured Articles"
 date: "2016-03-15"
 image: "/assets/blog/i-am-a-9-personal-year-768x361.jpg"
+seo_title: "Surprising Benefits of Being Single | Cherry Sage"
 description: "There comes a point in your life when you will want/need to be in a relationship. The special kind that makes you feel…"
 related: false
 ---

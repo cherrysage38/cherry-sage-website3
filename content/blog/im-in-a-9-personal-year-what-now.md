@@ -3,6 +3,7 @@ title: "I’m In A 9 Personal Year, What Now?"
 category: "Numerology"
 date: "2009-11-19"
 image: "/assets/blog/numeric-readings-new-1-768x361.jpg"
+seo_title: "Numerology: What a 9 Personal Year Means for You"
 description: "As you may have learned, we all have many personal vibrations that affect our lives and numerology offers specific…"
 related: true
 ---

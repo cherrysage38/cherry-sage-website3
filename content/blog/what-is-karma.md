@@ -3,6 +3,7 @@ title: "What Is Karma?"
 category: "Other World"
 date: "2023-07-25"
 image: "/assets/blog/karma-768x512.jpg"
+seo_title: "What Is Karma? A Clear, Simple Explanation"
 description: "What is Karma? Karma is the sum of a person’s actions in this and previous states of existence, viewed as affecting…"
 related: true
 ---

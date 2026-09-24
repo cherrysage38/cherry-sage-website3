@@ -3,6 +3,7 @@ title: "Numerology Reading – Number 1, What Does It Mean?"
 category: "Numerology"
 date: "2023-05-05"
 image: "/assets/blog/Numbers-Featured-Image-768x406.jpeg"
+seo_title: "Numerology Number 1 Meaning: Traits and Life Path"
 description: "NUMBER 1. As you may know, I am a professional numerologist with over two decades of experience giving numerology…"
 related: true
 ---
