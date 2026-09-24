@@ -74,6 +74,13 @@ function renderBlock(block, i) {
     case "cta_image": {
       return `<a class="img-banner dark" href="${esc(block.link || "/shop")}"><img src="${esc(block.image)}" alt="${esc(block.alt_text || "")}"></a>`;
     }
+    case "feature_cards": {
+      const eyebrow = block.eyebrow ? `<p class="eyebrow">${esc(block.eyebrow)}</p>` : "";
+      const cards = (block.cards || [])
+        .map((c) => `<div class="card reveal"><h3>${esc(c.title)}</h3><p>${esc(c.text)}</p></div>`)
+        .join("");
+      return `<section class="section section-tint"><div class="wrap"><div class="section-head reveal">${eyebrow}<h2>${esc(block.heading)}</h2></div><div class="grid grid-3">${cards}</div></div></section>`;
+    }
     case "faq": {
       const items = (block.items || [])
         .map((it) => `<div class="blk-faq-item"><h3>${esc(it.question)}</h3><p>${esc(it.answer)}</p></div>`)

@@ -247,6 +247,20 @@ collections:
               - { label: "Banner image", name: "image", widget: "image", hint: "Design the whole banner as one image, matching the ones already on the site." }
               - { label: "Alt text", name: "alt_text", widget: "string", hint: "Describe what the banner says, for accessibility and search." }
               - { label: "Link", name: "link", widget: "string", default: "/shop" }
+          - label: "Feature Cards (3-up)"
+            name: "feature_cards"
+            widget: "object"
+            summary: "Feature Cards — {{fields.heading}}"
+            fields:
+              - { label: "Small line (optional)", name: "eyebrow", widget: "string", required: false }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
           - label: "FAQ"
             name: "faq"
             widget: "object"

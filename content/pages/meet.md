@@ -1,0 +1,27 @@
+---
+title: "Meet Cherry Sage"
+description: "Clairvoyant, clairaudient, empath and numerologist, reading honestly by phone since 1999."
+hero_eyebrow: "Reading since 1999 · 27 years in practice"
+hero_lede: "A clairvoyant, clairaudient, empath, and numerologist known for honesty over fantasy."
+blocks:
+  - type: "image_text"
+    heading: "The Intuitive Connection"
+    body: "There was a time, many years ago, when the whispers of the universe first called me to serve. I remember sitting alone under the glow of the moon, gazing at the stars, when a single tarot card fell from the deck. The world seemed to pause, and I understood the answers were always here, hidden in the cards, in the numbers, in the quiet moments of reflection.\n\nHi. I'm glad you're here. I am Cherry Sage. I provide psychic advice and professional psychic readings. Spin Magazine found my site in 1999 and invited me to be their \"Ask the Expert\" guest."
+    image: "/assets/bev_portrait.jpg"
+    image_position: "right"
+  - type: "feature_cards"
+    eyebrow: "How I read"
+    heading: "Honest, and human"
+    cards:
+      - title: "Clairvoyant & clairaudient"
+        text: "I see and hear the energies around a question, then tell you plainly what I sense, and check that it resonates for you."
+      - title: "Empath & numerologist"
+        text: "I feel the emotional truth beneath a situation, and I read the numbers that shape your path, from Life Path to Karmic Debt."
+      - title: "Honest over fantasy"
+        text: "90% of my clients are repeat callers. I offer the truth with compassion and responsibility, never fear, never a script."
+  - type: "cta_text"
+    heading: "Let's talk soon"
+    body: "When you're ready, a real reading with me is a phone call away."
+    button_label: "Book a Reading"
+    button_link: "/book-appointment"
+---
