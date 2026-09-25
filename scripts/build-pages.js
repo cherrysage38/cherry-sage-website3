@@ -76,10 +76,14 @@ function renderBlock(block, i) {
     }
     case "feature_cards": {
       const eyebrow = block.eyebrow ? `<p class="eyebrow">${esc(block.eyebrow)}</p>` : "";
+      const cols = block.columns === "2" ? "grid-2" : "grid-3";
       const cards = (block.cards || [])
-        .map((c) => `<div class="card reveal"><h3>${esc(c.title)}</h3><p>${esc(c.text)}</p></div>`)
+        .map((c) => {
+          const tag = c.tag ? `<span class="chip">${esc(c.tag)}</span>` : "";
+          return `<div class="card reveal" style="text-align:left">${tag}<h3>${esc(c.title)}</h3><p>${esc(c.text)}</p></div>`;
+        })
         .join("");
-      return `<section class="section section-tint"><div class="wrap"><div class="section-head reveal">${eyebrow}<h2>${esc(block.heading)}</h2></div><div class="grid grid-3">${cards}</div></div></section>`;
+      return `<section class="section section-tint"><div class="wrap"><div class="section-head reveal">${eyebrow}<h2>${esc(block.heading)}</h2></div><div class="grid ${cols}" style="gap:1.6rem">${cards}</div></div></section>`;
     }
     case "faq": {
       const items = (block.items || [])
