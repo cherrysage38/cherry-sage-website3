@@ -131,9 +131,14 @@ for (const file of BUILDER_SCRIPTS) {
     failed.push(`${file}: embedded nav links don't match the live site (a link, its target, or its label differs). Re-copy the <header> block from a real page (e.g. index.html).`);
   }
 
-  const f = linkSignature(extractBlock(src, '<footer class="footer">', "</footer>"));
-  if (footer.sig !== null && !sigEqual(f, footer.sig)) {
-    failed.push(`${file}: embedded footer links don't match the live site.`);
+  // 2026-09-26: the footer moved out of these scripts entirely, into one shared source
+  // (content/footer.yml, rendered by scripts/footer.js) that every builder now imports, so
+  // it can no longer drift between them the way the header still can (copy-pasted per file).
+  // Checking the OLD way -- grepping for a literal <footer> block in this script's source --
+  // would now always fail, since there's no literal block left to find. Confirm the shared
+  // module is actually wired in instead of re-checking link-by-link text that can't drift.
+  if (!src.includes('from "./footer.js"') || !src.includes("renderFooter(")) {
+    failed.push(`${file}: no longer renders the footer through the shared scripts/footer.js module -- re-wire it instead of hand-copying footer HTML back in.`);
   }
 
   if (file === "scripts/build-articles.js" && postCta.sig !== null) {

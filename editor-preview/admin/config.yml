@@ -11,6 +11,31 @@ media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
+  - name: "footer"
+    label: "Site Footer"
+    description: "The footer at the bottom of every page on the site. Change it once here, and it updates everywhere the next time the site builds (about a minute after you Publish)."
+    files:
+      - name: "footer"
+        label: "Footer content"
+        file: "content/footer.yml"
+        fields:
+          - { label: "Tagline (under the logo)", name: "tagline", widget: "string" }
+          - { label: "Newsletter box heading", name: "newsletter_heading", widget: "string" }
+          - { label: "Newsletter box text", name: "newsletter_text", widget: "text" }
+          - { label: "Copyright line", name: "copyright", widget: "string" }
+          - label: "Link columns"
+            name: "columns"
+            widget: "list"
+            summary: "{{fields.heading}}"
+            fields:
+              - { label: "Column heading", name: "heading", widget: "string" }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: "Text shown", name: "label", widget: "string" }
+                  - { label: "Goes to", name: "url", widget: "string", hint: "A page like /faqs, or a full web address." }
   - name: "homepage"
     label: "Homepage"
     description: "The words on your homepage, top to bottom. Change any text, then click Save. It goes live in about a minute. The layout, the tarot deck and the Life Path calculator stay as designed."

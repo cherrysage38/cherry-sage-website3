@@ -1,0 +1,27 @@
+tagline: "Honest, accurate psychic, tarot, and numerology readings by phone. Trusted since 1999."
+newsletter_heading: "Cherry's Newsletter"
+newsletter_text: "Honest insight on the psychic path, numerology, and tarot, straight to your inbox, no spam, unsubscribe any time."
+copyright: "© Cherry Sage. Serving clients worldwide since 1999. · Site by Balay ni Bruno & Co."
+columns:
+  - heading: "Readings"
+    links:
+      - { label: "Psychic Reading", url: "/psychic-reading" }
+      - { label: "Tarot Card Reading", url: "/tarot" }
+      - { label: "Numerology", url: "/numerology" }
+      - { label: "How It Works", url: "/how-it-works" }
+  - heading: "Explore"
+    links:
+      - { label: "Meet Cherry", url: "/meet" }
+      - { label: "Blog", url: "/blog" }
+      - { label: "Guest Articles", url: "/articles" }
+      - { label: "Testimonials", url: "/testimonials" }
+      - { label: "FAQs", url: "/faqs" }
+      - { label: "Policies", url: "/policies" }
+  - heading: "Free"
+    links:
+      - { label: "Free Tarot Pull", url: "/tarot-pull" }
+      - { label: "Free Tarot Spread", url: "/tarot-spread" }
+      - { label: "Life Path Calculator", url: "/life-path" }
+      - { label: "Karmic Accumulation", url: "/free-karmic-reading" }
+      - { label: "Daily Horoscope", url: "/horoscope" }
+      - { label: "Leave Feedback", url: "/feedback" }

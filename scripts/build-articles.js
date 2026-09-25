@@ -8,6 +8,9 @@ import { fileURLToPath } from "url";
 import { marked } from "marked";
 import sanitizeHtml from "sanitize-html";
 import yaml from "js-yaml";
+import { loadFooterData, renderFooter } from "./footer.js";
+
+const FOOTER_DATA = loadFooterData();
 
 // Article bodies come straight from the Guest Articles CMS. marked() renders raw HTML through
 // with zero sanitization by default, so anything typed into the body field could otherwise land
@@ -142,19 +145,7 @@ ${GENERATED_MARKER}
 </div></section>
 <section class="section cs-comments"><div class="wrap"><div id="csComments" data-post-title="${esc(title)}"></div></div></section>
 </main>
-<footer class="footer">
-  <div class="wrap footer-grid">
-    <div>
-      <div class="footer-brand"><img src="assets/mark-clean.png" alt=""><span>Cherry Sage</span></div>
-      <p style="font-size:.9rem">Honest, accurate psychic, tarot, and numerology readings by phone. Trusted since 1999.</p>
-    </div>
-    <div><h4>Readings</h4><ul><li><a href='/psychic-reading'>Psychic Reading</a></li><li><a href='/tarot'>Tarot Card Reading</a></li><li><a href='/numerology'>Numerology</a></li><li><a href='/how-it-works'>How It Works</a></li></ul></div>
-    <div><h4>Explore</h4><ul><li><a href='/meet'>Meet Cherry</a></li><li><a href='/blog'>Blog</a></li><li><a href='/articles'>Guest Articles</a></li><li><a href='/testimonials'>Testimonials</a></li><li><a href='/faqs'>FAQs</a></li><li><a href='/policies'>Policies</a></li></ul></div>
-    <div><h4>Free</h4><ul><li><a href='/tarot-pull'>Free Tarot Pull</a></li><li><a href='/tarot-spread'>Free Tarot Spread</a></li><li><a href='/life-path'>Life Path Calculator</a></li><li><a href='/free-karmic-reading'>Karmic Accumulation</a></li><li><a href='/horoscope'>Daily Horoscope</a></li><li><a href='/feedback'>Leave Feedback</a></li></ul></div>
-  </div>
-  <div class="wrap footer-signup"><h4>Cherry's Newsletter</h4><p class="nl-lede">Honest insight on the psychic path, numerology, and tarot, straight to your inbox, no spam, unsubscribe any time.</p><form class="nl-form" novalidate><input type="email" placeholder="Your email" aria-label="Your email address" required><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"><button type="submit">Subscribe</button></form><p class="nl-note" aria-live="polite"></p></div>
-  <div class="wrap footer-bottom">© Cherry Sage. Serving clients worldwide since 1999. · Site by Balay ni Bruno &amp; Co.</div>
-</footer>
+${renderFooter(FOOTER_DATA)}
 <div class="chat-widget" id="chatWidget" role="button" tabindex="0" aria-label="Chat with Ivy, Cherry's assistant — click to open">
   <span class="cw-hint" id="cwHint">Click to chat with Ivy</span>
   <span class="cw-status" title="Cherry is Online"><span class="status-dot"></span>Chat with Ivy</span>
