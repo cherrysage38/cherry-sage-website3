@@ -100,6 +100,12 @@ table.ap-table{width:100%;border-collapse:collapse;min-width:820px}
       <button data-status="declined">Declined <span class="ap-count"></span></button>
       <button data-status="all">All <span class="ap-count"></span></button>
     </div>
+    <input type="search" id="apSearch" placeholder="Search by name or email" aria-label="Search appointments by name or email" style="padding:.5rem 1rem;border-radius:999px;border:1px solid var(--line-strong);font-family:var(--font-body);font-size:.95rem;min-width:220px">
+    <select id="apSort" aria-label="Sort appointments" style="padding:.5rem 1rem;border-radius:999px;border:1px solid var(--line-strong);font-family:var(--font-body);font-size:.95rem">
+      <option value="default">Sort: soonest first</option>
+      <option value="date-desc">Sort: newest first</option>
+      <option value="name">Sort: name A-Z</option>
+    </select>
   </div>
   <div id="apHistory" class="ap-history" hidden></div>
   <div id="apList"></div>
@@ -148,7 +154,7 @@ table.ap-table{width:100%;border-collapse:collapse;min-width:820px}
     return flags;
   }
 
-  var allAppts=[], historyEmail='';
+  var allAppts=[], historyEmail='', searchQuery='', sortBy='default';
 
   function custName(a){ return (a.customer_name||'').trim() || ((a.customer_email||'').split('@')[0]) || 'Unknown'; }
   function fmtDate(iso){ return iso ? new Date(iso).toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric'}) : ''; }
@@ -167,10 +173,17 @@ table.ap-table{width:100%;border-collapse:collapse;min-width:820px}
   function render(){
     updateCounts();
     var list=document.getElementById('apList');
-    var items=allAppts.filter(function(a){ return status==='all' || a.status===status; });
-    // Waiting requests: soonest first (what needs an answer next). Everything else: most recent first.
+    var items=allAppts.filter(function(a){
+      if(status!=='all' && a.status!==status) return false;
+      if(searchQuery && (custName(a)+' '+(a.customer_email||'')).toLowerCase().indexOf(searchQuery)<0) return false;
+      return true;
+    });
+    // Default: waiting requests soonest first (what needs an answer next), everything else most recent first.
+    // A manual sort choice (name or explicit date direction) overrides that default.
     items.sort(function(a,b){
+      if(sortBy==='name') return custName(a).localeCompare(custName(b));
       var d=new Date(a.requested_start)-new Date(b.requested_start);
+      if(sortBy==='date-desc') return -d;
       return status==='pending_approval' ? d : -d;
     });
     if(!items.length){ list.innerHTML='<p style="color:var(--ink-soft)">Nothing here right now.</p>'; renderHistory(); return; }
@@ -242,6 +255,16 @@ table.ap-table{width:100%;border-collapse:collapse;min-width:820px}
     document.querySelectorAll('#apFilters button').forEach(function(b){ b.classList.remove('on'); });
     btn.classList.add('on');
     status=btn.getAttribute('data-status');
+    render();
+  });
+
+  document.getElementById('apSearch').addEventListener('input', function(e){
+    searchQuery=e.target.value.trim().toLowerCase();
+    render();
+  });
+
+  document.getElementById('apSort').addEventListener('change', function(e){
+    sortBy=e.target.value;
     render();
   });
 
