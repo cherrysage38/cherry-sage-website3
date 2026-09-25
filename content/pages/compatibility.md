@@ -95,7 +95,7 @@ blocks:
     ## $29
 
 
-    ### See sample celebrity Numerology Compatibility Profiles for Brad Pitt and Angelina Jolie Tom Cruise and Katie Holmes You may need to download Adobe Acrobat Reader to view click here for the free download.
+    ### See What a Numerology Compatibility Profile Reveals
 
 
     Get a heads-up now! The Numerology Compatibility profile is the finest love relationship and compatibility detail that you will come across anywhere. There simply are none better. Now you can see why the two of you balance so well (or why not)! Totally in-depth. Definitely great for getting insight into your relationships. When you can see what makes a person tick (their true personality), their strengths, their weaknesses, then you have greater understanding; and it’s really a wonderful tool for bringing up things that may be difficult to approach with your partner. Use this numerology compatibility profile as a guide to steer your relationships! High level of accuracy. Very revealing. 50-60 pages. You know you want to know. Don’t wait another minute longer.
@@ -128,5 +128,20 @@ blocks:
     See also, >Live Psychic Readings> by Cherry Sage for immediate psychic phone reading or live numerology phone reading. Articles are constantly being added with regard to these and other related numerology reading terminology.
 
 
-    ## What people are saying about their numerology profiles'
+    ## What people are saying about their numerology profiles
+
+
+    > “Talking to u last year was the catalyst to many good things in my life so I thank you very much….”
+
+    > —Andrea
+
+
+    > “Thank You so much for my short profile – I love it – it is so me, I even acknowledge the negative sides of me which I am aware of….”
+
+    > —Elaine
+
+
+    > “Thank you very much for the reading, it is so complete I can’t imagine something like that. It was really great once more thank you so much. There is truth in it, which is so amazing.”
+
+    > —Regards from Jakarta….Irma'
 ---
