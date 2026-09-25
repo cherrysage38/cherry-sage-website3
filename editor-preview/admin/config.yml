@@ -273,6 +273,12 @@ collections:
                 fields:
                   - { label: "Question", name: "question", widget: "string" }
                   - { label: "Answer", name: "answer", widget: "text" }
+          - label: "Compatibility Calculator"
+            name: "compat_tool"
+            widget: "object"
+            summary: "Compatibility Calculator"
+            fields:
+              - { label: "Heading (optional)", name: "heading", widget: "string", required: false, hint: "Leave empty for \"See how your numbers meet\". The calculator itself fills in underneath. Use it once per page." }
           - label: "Gallery"
             name: "gallery"
             widget: "object"
