@@ -77,6 +77,7 @@
 .ck-summary dt:first-child{margin-top:0}
 .ck-summary dd{margin:.1rem 0 0;font-weight:600;color:var(--ink)}
 .ck-locked{opacity:.4;pointer-events:none}
+.apt-missing{border-color:var(--cherry)!important;box-shadow:0 0 0 1px var(--cherry)}
 .appt-form-grid{display:grid;gap:1.1rem}
 .appt-form-grid[hidden]{display:none}
 @media (max-width:860px){
@@ -374,14 +375,25 @@
     // Step 3 -> holds the chosen time for 10 minutes (checkout-start), then shows checkout.
     f.addEventListener('submit',function(e){e.preventDefault();
       var note=document.getElementById('apptNote'),btn=document.getElementById('apptContinue');
+      // Show the message right under the box that needs filling in, and take the client there,
+      // so it is not missed below the button (Bev's own preview test, 2026-09-26).
+      function missing(el,msg){
+        note.hidden=false; note.textContent=msg;
+        el.parentNode.insertBefore(note,el.nextSibling);
+        el.classList.add('apt-missing');
+        el.addEventListener('input',function(){ el.classList.remove('apt-missing'); },{once:true});
+        el.addEventListener('change',function(){ el.classList.remove('apt-missing'); },{once:true});
+        el.scrollIntoView({behavior:'smooth',block:'center'}); el.focus({preventScroll:true});
+      }
+      btn.parentNode.insertBefore(note,btn.nextSibling);
       var email=(f.email.value||'').trim();
       if(!currentSession){note.hidden=false;note.textContent='Please log in first.';return;}
       if(!selectedSlotIso||!selectedProduct){note.hidden=false;note.textContent='Please pick a time and how many minutes you would like.';return;}
       if(tooSoon(selectedSlotIso)){note.hidden=false;note.textContent='That time is now less than an hour away. Please pick a later time.';dateInput.dispatchEvent(new Event('change'));return;}
-      if(!(f.name.value||'').trim()){note.hidden=false;note.textContent='Please add your name.';return;}
-      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){note.hidden=false;note.textContent='Please enter a valid email address.';return;}
-      if((f.phone.value||'').replace(/\D/g,'').length<7){note.hidden=false;note.textContent='Please add a phone number Cherry can reach you at.';return;}
-      if(!f.readingType.value){note.hidden=false;note.textContent='Please choose a reading type.';return;}
+      if(!(f.name.value||'').trim()){missing(f.name,'Please add your name.');return;}
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){missing(f.email,'Please enter a valid email address.');return;}
+      if((f.phone.value||'').replace(/\D/g,'').length<7){missing(f.phone,'Please add a phone number Cherry can reach you at.');return;}
+      if(!f.readingType.value){missing(f.readingType,'Please choose a reading type.');return;}
       if(f.website.value){ return; }
       note.hidden=true; btn.disabled=true; btn.textContent='Holding your time…';
       fetch('/.netlify/functions/checkout-start',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
