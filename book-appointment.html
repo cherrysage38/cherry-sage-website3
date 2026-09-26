@@ -220,6 +220,11 @@
     // The step between each open time. A longer reading only fits a chosen start time when
     // every 15-minute block it covers is also open (same rule the old 15-minute request used).
     var SLOT_STEP=15;
+    // Bev, 2026-09-26: at least one hour's notice before any booking, since she may be on a
+    // call with a regular who phoned directly. Enforced here as well as by the open-times
+    // function's own setting, so a too-soon time is never shown whatever that setting says.
+    var LEAD_MINUTES=60;
+    function tooSoon(isoStr){ return new Date(isoStr).getTime() < Date.now()+LEAD_MINUTES*60000; }
     var openTimes={}; // ms timestamp -> true, for the chosen date
     var products=null, selectedSlotIso=null, selectedProduct=null;
     var currentHold=null, appliedCoupon=null, currentPriceCents=null;
@@ -300,7 +305,7 @@
       fetch('/.netlify/functions/scheduler-availability?date='+dateInput.value+'&duration='+SLOT_STEP)
         .then(function(r){return r.json();})
         .then(function(d){
-          var slots=d.slots||[];
+          var slots=(d.slots||[]).filter(function(s){ return !tooSoon(s); });
           slots.forEach(function(s){ openTimes[new Date(s).getTime()]=true; });
           if(!slots.length){ slotsBox.innerHTML='<p style="color:var(--ink-soft);font-size:1rem;margin:0">'+(d.reason==='day unavailable'?'Cherry is not taking appointments that day.':'No open times that day, try another date.')+'</p>'; return; }
           slotsBox.innerHTML='<div class="apt-slot-grid">'+slots.map(function(s){
@@ -372,6 +377,7 @@
       var email=(f.email.value||'').trim();
       if(!currentSession){note.hidden=false;note.textContent='Please log in first.';return;}
       if(!selectedSlotIso||!selectedProduct){note.hidden=false;note.textContent='Please pick a time and how many minutes you would like.';return;}
+      if(tooSoon(selectedSlotIso)){note.hidden=false;note.textContent='That time is now less than an hour away. Please pick a later time.';dateInput.dispatchEvent(new Event('change'));return;}
       if(!(f.name.value||'').trim()){note.hidden=false;note.textContent='Please add your name.';return;}
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){note.hidden=false;note.textContent='Please enter a valid email address.';return;}
       if((f.phone.value||'').replace(/\D/g,'').length<7){note.hidden=false;note.textContent='Please add a phone number Cherry can reach you at.';return;}
