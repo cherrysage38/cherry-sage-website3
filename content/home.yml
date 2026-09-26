@@ -4,7 +4,7 @@ hero:
   headline_accent: soul's destiny.
   intro: Honest, accurate psychic, tarot, and numerology readings by phone. Real guidance on love, relationships, and career, told with warmth and care.
   button1_label: Book a Reading
-  button1_link: /book-appointment
+  button1_link: /checkout-appointment
   button2_label: Try Free Numerology
   button2_link: /life-path
   trust:
@@ -131,4 +131,4 @@ closing:
   heading: Ready for clarity?
   text: Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.
   button_label: Book a Reading
-  button_link: /book-appointment
+  button_link: /checkout-appointment

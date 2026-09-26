@@ -29,5 +29,5 @@ blocks:
     heading: "Ready for clarity?"
     body: "Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you."
     button_label: "Book a Reading"
-    button_link: "/book-appointment"
+    button_link: "/checkout-appointment"
 ---
