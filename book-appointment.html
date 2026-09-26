@@ -186,7 +186,7 @@
     <aside class="ck-side">
       <div class="ck-side-card">
         <p class="ck-side-label">How this works</p>
-        <p>Pick an open date and time, choose how many minutes you'd like, and check out. Your time is held for 10 minutes while you pay.</p>
+        <p>Pick an open time today or another day, choose how many minutes you'd like, and check out. Your time is held for 10 minutes while you pay. Most readings take place the same day.</p>
         <p>Once you've paid, Cherry checks your booking and confirms it directly with you by email or phone. If that time no longer works for her, she'll reach out with another time.</p>
         <p><a href="/shop">Prefer to just buy minutes instead of scheduling? Go to Shop →</a></p>
       </div>
@@ -229,6 +229,8 @@
       if(!currentSession){ gate.hidden=false; return; }
       flow.hidden=false;
       if(currentSession.user.email){ f.email.value=currentSession.user.email; }
+      // Open on today's times straight away, since most clients want a reading today.
+      dateInput.value=dateInput.min; dateInput.dispatchEvent(new Event('change'));
     });
 
     // Reading lengths and prices come live from the Dashboard (Manage Products), never from this file.
@@ -241,11 +243,13 @@
     function money(cents){ return '$'+((cents||0)/100).toFixed(2); }
     function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
 
-    var today=new Date();
-    var min=new Date(today.getTime()+24*3600000);
-    var max=new Date(today.getTime()+30*24*3600000);
-    function iso(d){return d.toISOString().slice(0,10);}
-    dateInput.min=iso(min); dateInput.max=iso(max);
+    // Same-day readings are the norm (Bev, 2026-09-26), so today is bookable. Dates are Cherry's
+    // own Eastern calendar days; the open-times function itself drops any time sooner than her
+    // minimum notice, so a too-soon time is never offered.
+    function easternDate(daysAhead){
+      return new Date(Date.now()+daysAhead*24*3600000).toLocaleDateString('en-CA',{timeZone:'America/New_York'});
+    }
+    dateInput.min=easternDate(0); dateInput.max=easternDate(30);
 
     function fmtSlot(isoStr){
       return new Date(isoStr).toLocaleString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'});
