@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: rjbryantresreyes-cpu/cherry-sage-website3
+  repo: cherrysage38/cherry-sage-website3
   branch: main
 
 site_url: https://cherrysage.com
