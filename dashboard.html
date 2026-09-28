@@ -135,6 +135,15 @@
       <h2 class="dash-section-title">Our task list</h2>
       <div id="homeTasks"></div>
       <div class="todo-add"><input type="text" id="taskInput" placeholder="Add a task..."><button class="btn btn-ghost" id="taskAdd" type="button">Add</button></div>
+      <h2 class="dash-section-title">Back up your information</h2>
+      <p style="color:var(--ink-soft);font-size:.9rem;margin:0 0 .8rem">Download a copy to keep on your own computer. Each file opens in Excel, Numbers or Google Sheets. It is a good habit to do this once a month.</p>
+      <div class="website-actions" id="exportButtons">
+        <button class="btn btn-ghost" type="button" data-export="users">Customers and users</button>
+        <button class="btn btn-ghost" type="button" data-export="customers">Customer purchase totals</button>
+        <button class="btn btn-ghost" type="button" data-export="appointments">All appointments</button>
+        <button class="btn btn-ghost" type="button" data-export="orders">Recent orders</button>
+      </div>
+      <p class="usr-msg" id="exportMsg" role="status"></p>
     </div>
 
     <div class="dash-panel" id="panel-website">
@@ -685,6 +694,47 @@
   document.getElementById('sitemapSearch').addEventListener('input', function(){
     var q=this.value.toLowerCase();
     renderSitemap(sitemapPages.filter(function(p){ return p.loc.toLowerCase().indexOf(q)>-1; }));
+  });
+
+  // ---- Back up your information (Bev, 2026-09-28): download what the Dashboard can already see
+  // as spreadsheet (CSV) files. Read only: it uses the same owner-login requests the tabs use.
+  function csvCell(v){
+    if(v==null) return '';
+    if(typeof v==='object') v=JSON.stringify(v);
+    v=String(v);
+    if(/^[=+\-@\t\r]/.test(v)) v="'"+v; // stop a spreadsheet treating text as a formula
+    return /[",\n\r]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v;
+  }
+  function downloadCsv(rows, name){
+    var keys=[]; rows.forEach(function(r){ Object.keys(r).forEach(function(k){ if(keys.indexOf(k)<0) keys.push(k); }); });
+    var lines=[keys.join(',')].concat(rows.map(function(r){ return keys.map(function(k){ return csvCell(r[k]); }).join(','); }));
+    var blob=new Blob(['\ufeff'+lines.join('\r\n')],{type:'text/csv;charset=utf-8'});
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+    a.download='cherry-sage-'+name+'-'+new Date().toISOString().slice(0,10)+'.csv';
+    document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  }
+  var EXPORTS={
+    users:{ url:'/.netlify/functions/admin-users', pick:function(d){ return d.users; }, label:'customers-and-users' },
+    customers:{ url:'/.netlify/functions/admin-customers', pick:function(d){ return d.customers; }, label:'customer-totals' },
+    appointments:{ url:'/.netlify/functions/appointments-admin?status=all', pick:function(d){ return d.appointments; }, label:'appointments' },
+    orders:{ url:'/.netlify/functions/dashboard-summary', pick:function(d){ return d.recent; }, label:'recent-orders' },
+  };
+  document.querySelectorAll('[data-export]').forEach(function(btn){
+    btn.addEventListener('click', async function(){
+      var m=document.getElementById('exportMsg'), x=EXPORTS[btn.dataset.export];
+      m.className='usr-msg'; m.textContent='Preparing '+btn.textContent.toLowerCase()+'...';
+      try{
+        var res=await fetch(x.url,{headers:adminHeaders()});
+        var d=await res.json();
+        var rows=res.ok && x.pick(d);
+        if(!Array.isArray(rows)) throw new Error(d && d.error || 'could not load');
+        if(!rows.length){ m.className='usr-msg ok'; m.textContent='Nothing to download yet for '+btn.textContent.toLowerCase()+'.'; return; }
+        downloadCsv(rows, x.label);
+        m.className='usr-msg ok'; m.textContent='Downloaded '+rows.length+(rows.length===1?' row':' rows')+' of '+btn.textContent.toLowerCase()+'. Check your Downloads folder.';
+      }catch(e){
+        m.className='usr-msg err'; m.textContent='Could not download '+btn.textContent.toLowerCase()+' just now. Please try again in a moment.';
+      }
+    });
   });
 
   document.getElementById('taskAdd').addEventListener('click', async function(){
