@@ -154,7 +154,15 @@
           var a=document.createElement('a'); a.className='btn btn-primary'; a.href='/report?p='+encodeURIComponent(p.id); a.innerHTML='View &amp; request &rarr;';
           body.appendChild(a);
         }
-        card.appendChild(img); card.appendChild(body); grid.appendChild(card);
+        card.appendChild(img); card.appendChild(body);
+        // A new minutes product goes right after the longest one that is not longer than it
+        // (a new 20 Minutes (First Time) sits after 20 Minutes), not at the end of the list.
+        var after=null;
+        if(isMinutes) grid.querySelectorAll('.pcard[data-pid]').forEach(function(c){
+          var q=byId[c.getAttribute('data-pid')];
+          if(q && q.duration_minutes!=null && q.duration_minutes<=p.duration_minutes) after=c;
+        });
+        if(after) after.after(card); else grid.appendChild(card);
       });
   }).catch(function(){ /* the static text stays as a safe fallback */ });
 })();
