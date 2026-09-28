@@ -133,7 +133,14 @@
         var isMinutes=p.duration_minutes!=null, grid=grids[isMinutes?0:1]; if(!grid) return;
         var card=document.createElement('div'); card.className='pcard'; card.setAttribute('data-pid',p.id);
         var img=document.createElement('div'); img.className='pcard-img';
-        img.style.cssText="background:#f3ebdd url('/assets/mark-clean.png') center/34% no-repeat";
+        // Phone minutes get the matching clock picture; a "First Time" offer gets the Special Offer
+        // version where there is one (Bev, 2026-09-28). Anything else keeps the plain logo.
+        var CLOCK={15:'shop_b83f33301b.jpeg',20:'shop_95ff7271c2.jpeg',30:'shop_df513ccf92.jpeg',40:'shop_a0357eda1d.jpeg',50:'shop_47f1380aca.jpeg',60:'shop_f67f126b5a.jpeg'};
+        var FIRST_TIME={10:'shop_6d9dc2be2b.jpeg',20:'shop_db95a6ddce.jpeg'};
+        var pic=isMinutes && ((/first[\s-]*time/i.test(p.name) && FIRST_TIME[p.duration_minutes]) || CLOCK[p.duration_minutes]);
+        img.style.cssText = pic
+          ? "background-image:url('/assets/img/"+pic+"')"
+          : "background:#f3ebdd url('/assets/mark-clean.png') center/34% no-repeat";
         var body=document.createElement('div'); body.className='pcard-body';
         var h3=document.createElement('h3'); h3.textContent=p.name;
         var price=document.createElement('span'); price.className='pcard-price'; price.textContent=money(p.price_cents);
