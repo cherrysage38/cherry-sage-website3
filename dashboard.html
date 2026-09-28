@@ -103,6 +103,7 @@
     <a class="btn btn-primary" href="/login.html" style="width:100%;display:block;text-align:center;box-sizing:border-box">Log in</a>
     <button class="btn btn-primary" id="gateSend" style="width:100%;display:none" hidden>Open Dashboard</button>
     <p class="msg" id="gateMsg"></p>
+    <button class="btn btn-ghost" id="gateRetry" type="button" style="width:100%" hidden>Try again</button>
     <p style="margin:.9rem 0 0;font-size:.85rem;color:var(--ink-soft)">Log in with <strong>cherry38@cherrysage.com</strong>, then come back to this page and it opens on its own. Forgot the password? Use "Forgot your password?" on the login page.</p>
   </div>
 
@@ -259,9 +260,12 @@
       if(!pin) return false;
     }
     var res;
+    lastStatus=0;
     try{
       res=await fetch('/.netlify/functions/dashboard-summary',{headers:adminHeaders(pin)});
     }catch(e){ return false; }
+    lastStatus=res.status;
+    if(res.status===403 && ownerToken){ return false; }
     if(res.status===403){
       gateMsg.className='msg err';
       gateMsg.textContent='Wrong PIN, try again.';
@@ -279,16 +283,41 @@
     loadSitemap();
     return true;
   }
-  var lastData=null;
+  var lastData=null, lastStatus=0;
 
-  sb.auth.getSession().then(function(res){
-    var session=res.data && res.data.session;
-    var email=(session && session.user && session.user.email || '').toLowerCase();
-    if(session && OWNER_EMAILS.indexOf(email)>=0){
+  // Bev, 2026-09-28: the first try often failed (a stale login token, or the server waking up)
+  // and the page silently fell back to "Log in", which sent her round in a loop. Now it refreshes
+  // the login and tries a few times, and if it still can't open it says why and offers Try again.
+  // The owner check itself is unchanged: the server still decides.
+  var gateRetry=document.getElementById('gateRetry');
+  function wait(ms){ return new Promise(function(r){ setTimeout(r, ms); }); }
+  async function openAsOwner(){
+    gateRetry.hidden=true;
+    for(var attempt=0; attempt<3; attempt++){
+      if(attempt>0){
+        await wait(1500*attempt);
+        try{ await Promise.race([sb.auth.refreshSession(), wait(5000)]); }catch(e){}
+      }
+      var res=await Promise.race([sb.auth.getSession(), wait(5000).then(function(){ return {data:{session:null}}; })]);
+      var session=res.data && res.data.session;
+      var email=(session && session.user && session.user.email || '').toLowerCase();
+      if(!session || OWNER_EMAILS.indexOf(email)<0){
+        if(attempt===0) return;
+        break;
+      }
       ownerToken=session.access_token;
-      tryEnterApp();
+      gateMsg.className='msg'; gateMsg.textContent='You are logged in as '+email+'. Opening your Dashboard...';
+      if(await tryEnterApp()){ gateMsg.textContent=''; return; }
+      if(lastStatus===403) break;
     }
-  });
+    gateMsg.className='msg err';
+    gateMsg.textContent = lastStatus===403
+      ? 'This login is not allowed into the Dashboard. Sign out, then log in with cherry38@cherrysage.com.'
+      : 'Your Dashboard could not load just now. Please click Try again in a moment.';
+    if(lastStatus!==403) gateRetry.hidden=false;
+  }
+  gateRetry.addEventListener('click', openAsOwner);
+  openAsOwner();
 
   function changeListHtml(items){
     if(!items || !items.length) return '<p class="empty-note">Nothing logged yet.</p>';
