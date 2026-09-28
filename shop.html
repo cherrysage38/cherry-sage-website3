@@ -41,10 +41,9 @@
 @media (max-width:700px){.shop-banner-compact img{width:100%;max-height:none;-webkit-mask-image:none;mask-image:none}}
 /* Bev, 2026-09-28: show the whole square product pictures (all 500x500) so the Special Offer strip at the bottom is not cut off. */
 .shop-cards .pcard-img{aspect-ratio:1/1}
-/* TEMPORARY preview switch so Bev can compare 3 vs 4 per row: add ?cols=4 to the address. Remove before publishing. */
-@media (min-width:1000px){.shop-cols-4 .shop-cards{grid-template-columns:repeat(4,1fr);gap:1.2rem}}
+/* Bev, 2026-09-28: 4 per row on wider screens, like her old site, so the square pictures are not too big. */
+@media (min-width:1000px){.shop-cards{grid-template-columns:repeat(4,1fr);gap:1.2rem}}
 </style>
-<script>if(/[?&]cols=4\b/.test(location.search)) document.documentElement.className+=' shop-cols-4';</script>
 </head>
 <body>
 <header class="site-header">
