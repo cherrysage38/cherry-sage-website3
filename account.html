@@ -62,7 +62,7 @@
   </div>
 </header>
 <main>
-<section class="page-hero banner"><div class="ph-glow" aria-hidden="true"></div><div class="ph-stars" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">Your account</p><h1 id="acTitle">My Account</h1><p class="lede" id="acLede">Loading…</p></div></section>
+<section class="page-hero banner"><div class="ph-glow" aria-hidden="true"></div><div class="ph-stars" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">Your account</p><h1 id="acTitle">My Account</h1><p class="lede" id="acLede">Loading…</p><p id="acDashLink" hidden style="margin:1.2rem 0 0"><a class="btn btn-gold" href="/dashboard.html">Open my Dashboard</a></p></div></section>
 <section class="section"><div class="wrap ac-wrap">
 
   <div id="acLoggedOut" hidden style="text-align:center">
@@ -201,6 +201,11 @@
     document.getElementById('acTitle').textContent='Welcome back';
     document.getElementById('acLede').textContent='Here is everything tied to your account.';
     document.getElementById('acEmail').textContent=session.user.email;
+    // Owner shortcut (Bev, 2026-09-28): one button from here to the Dashboard instead of typing
+    // the address. Only a link; the Dashboard still does its own owner login check.
+    if(['cherry38@cherrysage.com','admin@cherrysage.com'].indexOf((session.user.email||'').toLowerCase())>=0){
+      document.getElementById('acDashLink').hidden=false;
+    }
 
     // Landed here from the "Forgot your password?" email link -- she's already signed in
     // via the recovery token, so jump straight to where she actually sets the new one
