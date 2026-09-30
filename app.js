@@ -126,22 +126,38 @@
     19:"Karmic Debt 19. In a past pattern, independence or power leaned only inward. This life asks you to use your strength for more than yourself."
   };
   var LETTER_VAL = {a:1,j:1,s:1,b:2,k:2,t:2,c:3,l:3,u:3,d:4,m:4,v:4,e:5,n:5,w:5,f:6,o:6,x:6,g:7,p:7,y:7,h:8,q:8,z:8,i:9,r:9};
-  var VOWELS = {a:1,e:1,i:1,o:1,u:1};
+  // Y always counts as a vowel (Bev, 2026-09-30).
+  var VOWELS = {a:1,e:1,i:1,o:1,u:1,y:1};
   function reduce(n, allowMaster){
     allowMaster = allowMaster !== false;
     while(n>9 && !(allowMaster && (n===11||n===22||n===33))){ n=String(n).split('').reduce(function(a,d){return a+ +d;},0); }
     return n;
   }
+  // Life Path: reduce month, day and year separately (keeping master numbers), add them,
+  // then reduce the total (Bev, 2026-09-30). Returns the unreduced total so Karmic Debt
+  // numbers (13, 14, 16, 19) can still be spotted before the final reduction.
+  function lifePathTotal(isoDate){
+    var p=isoDate.split('-');
+    return reduce(+p[1]) + reduce(+p[2]) + reduce(String(p[0]).split('').reduce(function(a,d){return a+ +d;},0));
+  }
+  // Each name (first, middle, last...; a hyphenated name like Mary-Jo counts as one) is reduced on its own, keeping 11/22/33, and the
+  // results are added (Bev, 2026-09-30). Returns that total before the final reduction so
+  // Karmic Debt numbers can still be spotted.
+  // Only the names on the birth certificate, up to four (Bev, 2026-09-30).
+  var MAX_NAMES = 4;
+  var TOO_MANY_NAMES = 'Please use only the names recorded on the birth certificate, up to four names (no confirmation or married names).';
+  function nameCount(name){ return name.trim().split(/\s+/).filter(function(w){ return /[a-z]/i.test(w); }).length; }
   function nameSum(name, filter){
-    var letters=name.toLowerCase().replace(/[^a-z]/g,'');
-    var sum=0;
-    for(var i=0;i<letters.length;i++){
-      var ch=letters[i];
-      if(filter==='vowels' && !VOWELS[ch]) continue;
-      if(filter==='consonants' && VOWELS[ch]) continue;
-      sum += LETTER_VAL[ch]||0;
-    }
-    return sum;
+    return name.toLowerCase().split(/\s+/).reduce(function(total, word){
+      var letters=word.replace(/[^a-z]/g,''), sum=0;
+      for(var i=0;i<letters.length;i++){
+        var ch=letters[i];
+        if(filter==='vowels' && !VOWELS[ch]) continue;
+        if(filter==='consonants' && VOWELS[ch]) continue;
+        sum += LETTER_VAL[ch]||0;
+      }
+      return total + (sum ? reduce(sum) : 0);
+    }, 0);
   }
   function card(title, num, meaning){
     return '<div class="card" style="padding:1.2rem 1.4rem"><div style="display:flex;align-items:baseline;gap:.8rem">'+
@@ -155,12 +171,14 @@
     var v=document.getElementById('lpDate').value; if(!v) return;
     var nameEl=document.getElementById('lpName');
     var name=(nameEl && nameEl.value || '').trim();
+    var lpNote=document.getElementById('lpNote');
+    if(nameCount(name)>MAX_NAMES){ if(lpNote){ lpNote.textContent=TOO_MANY_NAMES; lpNote.hidden=false; } return; }
+    if(lpNote) lpNote.hidden=true;
     var parts=v.split('-'); var yr=+parts[0], mo=+parts[1], dy=+parts[2];
-    var digits=v.replace(/[^0-9]/g,'');
     var DEBT_NUMS=[13,14,16,19];
     var debtsFound=[];
 
-    var lifePathRaw=digits.split('').reduce(function(a,d){return a+ +d;},0);
+    var lifePathRaw=lifePathTotal(v);
     // Karmic Debts show up in the sum BEFORE it's reduced down to a single digit or master
     // number, so this has to check the raw total, not the already-reduced result below.
     if(DEBT_NUMS.indexOf(lifePathRaw)>=0) debtsFound.push(lifePathRaw);
@@ -221,7 +239,7 @@
   function firstName(full, fallback){ var w=full.trim().split(/\s+/)[0]; return w ? escHtml(w) : fallback; }
   function personNums(name, date){
     return {
-      lifePath: reduce(date.replace(/[^0-9]/g,'').split('').reduce(function(a,d){return a+ +d;},0)),
+      lifePath: reduce(lifePathTotal(date)),
       soulUrge: reduce(nameSum(name,'vowels')),
       expression: reduce(nameSum(name))
     };
@@ -235,6 +253,7 @@
     if(!/[a-z]/i.test(n1)||!/[a-z]/i.test(n2)||!d1||!d2){
       note.textContent='Please add both full names at birth and both birth dates.'; note.hidden=false; return;
     }
+    if(nameCount(n1)>MAX_NAMES||nameCount(n2)>MAX_NAMES){ note.textContent=TOO_MANY_NAMES; note.hidden=false; return; }
     note.hidden=true;
     var p1=personNums(n1,d1), p2=personNums(n2,d2);
     var who1=firstName(n1,'You'), who2=firstName(n2,'Them');
