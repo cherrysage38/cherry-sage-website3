@@ -143,6 +143,10 @@
   // Each name (first, middle, last...; a hyphenated name like Mary-Jo counts as one) is reduced on its own, keeping 11/22/33, and the
   // results are added (Bev, 2026-09-30). Returns that total before the final reduction so
   // Karmic Debt numbers can still be spotted.
+  // Only the names on the birth certificate, up to four (Bev, 2026-09-30).
+  var MAX_NAMES = 4;
+  var TOO_MANY_NAMES = 'Please use only the names recorded on the birth certificate, up to four names (no confirmation or married names).';
+  function nameCount(name){ return name.trim().split(/\s+/).filter(function(w){ return /[a-z]/i.test(w); }).length; }
   function nameSum(name, filter){
     return name.toLowerCase().split(/\s+/).reduce(function(total, word){
       var letters=word.replace(/[^a-z]/g,''), sum=0;
@@ -167,6 +171,9 @@
     var v=document.getElementById('lpDate').value; if(!v) return;
     var nameEl=document.getElementById('lpName');
     var name=(nameEl && nameEl.value || '').trim();
+    var lpNote=document.getElementById('lpNote');
+    if(nameCount(name)>MAX_NAMES){ if(lpNote){ lpNote.textContent=TOO_MANY_NAMES; lpNote.hidden=false; } return; }
+    if(lpNote) lpNote.hidden=true;
     var parts=v.split('-'); var yr=+parts[0], mo=+parts[1], dy=+parts[2];
     var DEBT_NUMS=[13,14,16,19];
     var debtsFound=[];
@@ -246,6 +253,7 @@
     if(!/[a-z]/i.test(n1)||!/[a-z]/i.test(n2)||!d1||!d2){
       note.textContent='Please add both full names at birth and both birth dates.'; note.hidden=false; return;
     }
+    if(nameCount(n1)>MAX_NAMES||nameCount(n2)>MAX_NAMES){ note.textContent=TOO_MANY_NAMES; note.hidden=false; return; }
     note.hidden=true;
     var p1=personNums(n1,d1), p2=personNums(n2,d2);
     var who1=firstName(n1,'You'), who2=firstName(n2,'Them');
