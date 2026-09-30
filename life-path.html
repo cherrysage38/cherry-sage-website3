@@ -53,12 +53,13 @@
   <div class="card reveal" style="max-width:640px;margin:0 auto 2rem;text-align:center">
     <span class="chip">Free · Cherry's method</span>
     <h3>Your Numerology Profile</h3>
-    <p>Your full name at birth and your birth date unlock five numbers, not just one.</p>
+    <p>Your full name at birth and your birth date unlock five numbers, not just one. Use only the names on your birth certificate, up to four.</p>
     <form id="lpForm" style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin:.6rem 0">
-      <input type="text" id="lpName" required aria-label="Your full name at birth" placeholder="Full name at birth" style="padding:.7rem 1rem;border:1px solid var(--line-strong);border-radius:999px;font-family:var(--font-body);font-size:1rem;min-width:220px">
+      <input type="text" id="lpName" required aria-label="Your first, middle and last name at birth" placeholder="First, middle and last name at birth" style="padding:.7rem 1rem;border:1px solid var(--line-strong);border-radius:999px;font-family:var(--font-body);font-size:1rem;min-width:220px">
       <input type="date" id="lpDate" required aria-label="Your birth date" style="padding:.7rem 1rem;border:1px solid var(--line-strong);border-radius:999px;font-family:var(--font-body);font-size:1rem">
       <button class="btn btn-gold" type="submit">Reveal my numbers</button>
     </form>
+    <p id="lpNote" hidden role="alert" style="color:var(--oxblood);margin:.4rem 0 0"></p>
     <div id="lpResult" hidden style="margin-top:1.4rem;display:grid;gap:1rem;text-align:left"></div>
     <p style="font-size:.78rem;color:var(--ink-soft);margin:.8rem 0 0">For reflection. A full reading with Cherry goes far beyond a set of numbers.</p>
   </div>
@@ -87,7 +88,7 @@
   <span class="cw-status" title="Cherry is Online"><span class="status-dot"></span>Chat with Ivy</span>
   <span class="cw-bubble"><img src="assets/mark-clean.png" alt=""></span>
 </div>
-<script src="app.js?v=11"></script>
+<script src="app.js?v=12"></script>
 <script src="embers.js?v=4"></script>
 <script src="magic.js?v=2"></script>
 <script src="funnel.js?v=11"></script>

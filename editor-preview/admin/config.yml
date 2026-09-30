@@ -7,8 +7,10 @@ site_url: https://cherrysage.com
 display_url: https://cherrysage.com
 logo_url: https://cherrysage.com/assets/logo-horizontal.png
 
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
+# The whole assets folder, so the File (media) library shows every picture on the site,
+# including the ones in assets/img, assets/articles and assets/blog.
+media_folder: "assets"
+public_folder: "/assets"
 
 collections:
   - name: "footer"

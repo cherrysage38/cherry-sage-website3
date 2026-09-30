@@ -109,16 +109,16 @@ function renderBlock(block, i) {
   <div class="card reveal" style="max-width:760px;margin:0 auto;text-align:center">
     <span class="chip">Free · Cherry's method</span>
     <h2>${heading}</h2>
-    <p>Enter both full names at birth and both birth dates to compare your Life Path, Soul Urge and Expression numbers.</p>
+    <p>Enter both full names exactly as recorded on the birth certificate (first, middle and last, up to four names; no confirmation or married names) and both birth dates to compare your Life Path, Soul Urge and Expression numbers.</p>
     <form id="cpForm" novalidate style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:.8rem 0;text-align:left">
       <fieldset style="border:0;padding:0;margin:0;display:grid;gap:.6rem">
         <legend style="font-weight:600;margin-bottom:.4rem">You</legend>
-        <input type="text" id="cpName1" required aria-label="Your full name at birth" placeholder="Your full name at birth" style="${field}">
+        <input type="text" id="cpName1" required aria-label="Your first, middle and last name at birth" placeholder="Your first, middle and last name at birth" style="${field}">
         <input type="date" id="cpDate1" required aria-label="Your birth date" style="${field}">
       </fieldset>
       <fieldset style="border:0;padding:0;margin:0;display:grid;gap:.6rem">
         <legend style="font-weight:600;margin-bottom:.4rem">The other person</legend>
-        <input type="text" id="cpName2" required aria-label="Their full name at birth" placeholder="Their full name at birth" style="${field}">
+        <input type="text" id="cpName2" required aria-label="Their first, middle and last name at birth" placeholder="Their first, middle and last name at birth" style="${field}">
         <input type="date" id="cpDate2" required aria-label="Their birth date" style="${field}">
       </fieldset>
       <div style="grid-column:1/-1;text-align:center"><button class="btn btn-gold" type="submit">See how your numbers meet</button></div>
@@ -191,7 +191,7 @@ ${renderFooter(FOOTER_DATA)}
   <span class="cw-status" title="Cherry is Online"><span class="status-dot"></span>Chat with Ivy</span>
   <span class="cw-bubble"><img src="assets/mark-clean.png" alt=""></span>
 </div>
-<script src="app.js?v=11"></script>
+<script src="app.js?v=12"></script>
 <script src="embers.js?v=4"></script>
 <script src="magic.js?v=2"></script>
 <script src="funnel.js?v=11"></script>

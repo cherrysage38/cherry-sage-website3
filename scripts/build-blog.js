@@ -144,7 +144,7 @@ ${renderFooter(FOOTER_DATA)}
   <span class="cw-status" title="Cherry is Online"><span class="status-dot"></span>Chat with Ivy</span>
   <span class="cw-bubble"><img src="assets/mark-clean.png" alt=""></span>
 </div>
-<script src="app.js?v=11"></script>
+<script src="app.js?v=12"></script>
 <script src="embers.js?v=4"></script>
 <script src="magic.js?v=2"></script>
 <script src="funnel.js?v=11"></script>
@@ -176,6 +176,19 @@ function upsertCard(html, { slug, title, category, image, date, excerpt, isNew }
   if (cardRe.test(html)) return { html: html.replace(cardRe, newCard), added: false };
   if (!isNew) return { html, added: false };
   return { html: html.replace('<div class="blog-cards">', `<div class="blog-cards">${newCard}`), added: true, ym };
+}
+
+// The "Latest" feature at the top of blog.html was only ever set by hand, so it stayed on a May 2025
+// post however many new ones Bev published (found 2026-09-29). Point it at the newest post, unless
+// the one already featured is newer (the older posts not written in the editor aren't in content/blog).
+const FEATURED_RE = /<a class='blog-featured reveal' href='\/[^']*'>[\s\S]*?<\/a>/;
+function upsertFeatured(html, { slug, title, category, image, date, excerpt }) {
+  const current = html.match(FEATURED_RE);
+  if (!current) return html;
+  const curDate = (current[0].match(/<span class="bc-date">(\d{4}-\d{2}-\d{2})<\/span>/) || [])[1] || "";
+  if (curDate > date) return html;
+  const block = `<a class='blog-featured reveal' href='/${slug}'>\n  <div class="bf-img" style="background-image:url('${image}')"></div>\n  <div class="bf-body"><span class="cat-chip">Latest · ${esc(category)}</span><h2>${esc(title)}</h2><span class="bc-date">${date}</span><p style="color:var(--ink-soft)">${esc(excerpt)}</p><span class="card-link">Read the post →</span></div>\n</a>`;
+  return html.replace(FEATURED_RE, () => block);
 }
 
 function bumpWordCloud(html, category) {
@@ -217,6 +230,7 @@ function main() {
 
   let blogHtml = readFileSync(BLOG_HTML, "utf8");
   let changed = false;
+  let newest = null;
 
   // First pass: read every post so each page can link to its category neighbours.
   const all = [];
@@ -269,9 +283,13 @@ function main() {
       blogHtml = upsertArchive(blogHtml, result.ym);
       addToSitemap(slug);
     }
+    if (!newest || (data.date + slug) > (newest.date + newest.slug)) {
+      newest = { slug, title: data.title, category: data.category, image: data.image, date: data.date, excerpt: plainExcerpt(body, 120) };
+    }
     console.log(`[build-blog] ${isNew ? "Published" : "Updated"} /${slug}.html (${data.category})`);
   }
 
+  if (newest) blogHtml = upsertFeatured(blogHtml, newest);
   if (changed) writeFileSync(BLOG_HTML, blogHtml);
 }
 
