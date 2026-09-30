@@ -140,11 +140,11 @@
     var p=isoDate.split('-');
     return reduce(+p[1]) + reduce(+p[2]) + reduce(String(p[0]).split('').reduce(function(a,d){return a+ +d;},0));
   }
-  // Each name (first, middle, last...) is reduced on its own, keeping 11/22/33, and the
+  // Each name (first, middle, last...; a hyphenated name like Mary-Jo counts as one) is reduced on its own, keeping 11/22/33, and the
   // results are added (Bev, 2026-09-30). Returns that total before the final reduction so
   // Karmic Debt numbers can still be spotted.
   function nameSum(name, filter){
-    return name.toLowerCase().split(/[\s-]+/).reduce(function(total, word){
+    return name.toLowerCase().split(/\s+/).reduce(function(total, word){
       var letters=word.replace(/[^a-z]/g,''), sum=0;
       for(var i=0;i<letters.length;i++){
         var ch=letters[i];
