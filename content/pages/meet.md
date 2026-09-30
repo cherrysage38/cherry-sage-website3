@@ -19,6 +19,8 @@ blocks:
         text: "I feel the emotional truth beneath a situation, and I read the numbers that shape your path, from Life Path to Karmic Debt."
       - title: "Honest over fantasy"
         text: "90% of my clients are repeat callers. I offer the truth with compassion and responsibility, never fear, never a script."
+  - type: "text"
+    body: "Love is the question I hear most. If that's what's on your heart, [here's how I read it](/love-and-relationships)."
   - type: "cta_text"
     heading: "Let's talk soon"
     body: "When you're ready, a real reading with me is a phone call away."

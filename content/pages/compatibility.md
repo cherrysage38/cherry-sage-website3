@@ -17,6 +17,9 @@ blocks:
     Greetings, beautiful soul. I’m Cherry Sage, a guide and intuitive psychic reader, here to help you discover the mystical wisdom embedded in the numbers of your life. Through numerology, I reveal the energetic patterns that govern your relationships, your love life, and even your soul’s purpose. Together, we’ll unlock the sacred secrets that your Life Path, Expression Numbers, and Destiny Numbers hold, illuminating the path toward love, balance, and profound connection.
 
 
+    Prefer to talk it through directly instead of the numbers? [Book a love and relationship reading](/love-and-relationships).
+
+
     ### Discover the Heart of Your Love Number and Unveil Mystical Compatibility
 
 

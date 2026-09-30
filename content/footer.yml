@@ -11,6 +11,8 @@ columns:
         url: /tarot
       - label: Numerology
         url: /numerology
+      - label: Love & Relationships
+        url: /love-and-relationships
       - label: How It Works
         url: /how-it-works
   - heading: Explore
