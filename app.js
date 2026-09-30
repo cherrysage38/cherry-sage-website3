@@ -140,16 +140,20 @@
     var p=isoDate.split('-');
     return reduce(+p[1]) + reduce(+p[2]) + reduce(String(p[0]).split('').reduce(function(a,d){return a+ +d;},0));
   }
+  // Each name (first, middle, last...) is reduced on its own, keeping 11/22/33, and the
+  // results are added (Bev, 2026-09-30). Returns that total before the final reduction so
+  // Karmic Debt numbers can still be spotted.
   function nameSum(name, filter){
-    var letters=name.toLowerCase().replace(/[^a-z]/g,'');
-    var sum=0;
-    for(var i=0;i<letters.length;i++){
-      var ch=letters[i];
-      if(filter==='vowels' && !VOWELS[ch]) continue;
-      if(filter==='consonants' && VOWELS[ch]) continue;
-      sum += LETTER_VAL[ch]||0;
-    }
-    return sum;
+    return name.toLowerCase().split(/[\s-]+/).reduce(function(total, word){
+      var letters=word.replace(/[^a-z]/g,''), sum=0;
+      for(var i=0;i<letters.length;i++){
+        var ch=letters[i];
+        if(filter==='vowels' && !VOWELS[ch]) continue;
+        if(filter==='consonants' && VOWELS[ch]) continue;
+        sum += LETTER_VAL[ch]||0;
+      }
+      return total + (sum ? reduce(sum) : 0);
+    }, 0);
   }
   function card(title, num, meaning){
     return '<div class="card" style="padding:1.2rem 1.4rem"><div style="display:flex;align-items:baseline;gap:.8rem">'+

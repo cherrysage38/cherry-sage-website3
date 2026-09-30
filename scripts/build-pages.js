@@ -109,16 +109,16 @@ function renderBlock(block, i) {
   <div class="card reveal" style="max-width:760px;margin:0 auto;text-align:center">
     <span class="chip">Free · Cherry's method</span>
     <h2>${heading}</h2>
-    <p>Enter both full names at birth and both birth dates to compare your Life Path, Soul Urge and Expression numbers.</p>
+    <p>Enter both full names at birth (first, middle and last, as on the birth certificate) and both birth dates to compare your Life Path, Soul Urge and Expression numbers.</p>
     <form id="cpForm" novalidate style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:.8rem 0;text-align:left">
       <fieldset style="border:0;padding:0;margin:0;display:grid;gap:.6rem">
         <legend style="font-weight:600;margin-bottom:.4rem">You</legend>
-        <input type="text" id="cpName1" required aria-label="Your full name at birth" placeholder="Your full name at birth" style="${field}">
+        <input type="text" id="cpName1" required aria-label="Your first, middle and last name at birth" placeholder="Your first, middle and last name at birth" style="${field}">
         <input type="date" id="cpDate1" required aria-label="Your birth date" style="${field}">
       </fieldset>
       <fieldset style="border:0;padding:0;margin:0;display:grid;gap:.6rem">
         <legend style="font-weight:600;margin-bottom:.4rem">The other person</legend>
-        <input type="text" id="cpName2" required aria-label="Their full name at birth" placeholder="Their full name at birth" style="${field}">
+        <input type="text" id="cpName2" required aria-label="Their first, middle and last name at birth" placeholder="Their first, middle and last name at birth" style="${field}">
         <input type="date" id="cpDate2" required aria-label="Their birth date" style="${field}">
       </fieldset>
       <div style="grid-column:1/-1;text-align:center"><button class="btn btn-gold" type="submit">See how your numbers meet</button></div>
