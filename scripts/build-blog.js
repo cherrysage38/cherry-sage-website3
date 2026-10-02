@@ -4,7 +4,7 @@
 // card/word-cloud/archive layout and category taxonomy (different from Guest Articles' own).
 // Runs automatically on every Netlify deploy (see package.json build command). Safe to run
 // with an empty content/blog/ folder -- it just does nothing.
-import { readFileSync, writeFileSync, existsSync, readdirSync } from "fs";
+import { readFileSync, writeFileSync, existsSync, readdirSync, unlinkSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { marked } from "marked";
@@ -182,11 +182,12 @@ function upsertCard(html, { slug, title, category, image, date, excerpt, isNew }
 // post however many new ones Bev published (found 2026-09-29). Point it at the newest post, unless
 // the one already featured is newer (the older posts not written in the editor aren't in content/blog).
 const FEATURED_RE = /<a class='blog-featured reveal' href='\/[^']*'>[\s\S]*?<\/a>/;
-function upsertFeatured(html, { slug, title, category, image, date, excerpt }) {
+function upsertFeatured(html, { slug, title, category, image, date, excerpt }, hiddenSlugs) {
   const current = html.match(FEATURED_RE);
   if (!current) return html;
+  const curSlug = (current[0].match(/href='\/([^']*)'/) || [])[1] || "";
   const curDate = (current[0].match(/<span class="bc-date">(\d{4}-\d{2}-\d{2})<\/span>/) || [])[1] || "";
-  if (curDate > date) return html;
+  if (curDate > date && !hiddenSlugs.has(curSlug)) return html;
   const block = `<a class='blog-featured reveal' href='/${slug}'>\n  <div class="bf-img" style="background-image:url('${image}')"></div>\n  <div class="bf-body"><span class="cat-chip">Latest · ${esc(category)}</span><h2>${esc(title)}</h2><span class="bc-date">${date}</span><p style="color:var(--ink-soft)">${esc(excerpt)}</p><span class="card-link">Read the post →</span></div>\n</a>`;
   return html.replace(FEATURED_RE, () => block);
 }
@@ -206,6 +207,38 @@ function upsertArchive(html, ym) {
   const label = `${MONTH_NAMES[parseInt(mo, 10) - 1]} ${y}`;
   const newItem = `<li><button class="arch-item" data-ym="${ym}">${label}<span>(1)</span></button></li>`;
   return html.replace('<ul class="archive-list">', `<ul class="archive-list">${newItem}`);
+}
+
+// "Hide from site": take a post off the live site without deleting what was written. Removes its
+// page, its blog.html card (and the counts that card added) and its sitemap entry. Unticking it
+// brings everything back on the next build, because the page and card are rebuilt from the .md.
+function removeCard(html, slug) {
+  const cardRe = new RegExp(`<a class='bcard reveal' data-cat='([^']*)' data-ym='([^']*)' href='/${slug}'>[\\s\\S]*?</a>`);
+  const m = html.match(cardRe);
+  if (!m) return html;
+  html = html.replace(cardRe, "");
+  // data-cat is written escaped (&amp;), which is how the word cloud's data-f is written too.
+  const tagRe = new RegExp(`(data-f="${m[1]}"[^>]*>[^<]*<span class="wc-n">)(\\d+)(</span>)`);
+  html = html.replace(tagRe, (x, a, n, b) => `${a}${Math.max(0, parseInt(n, 10) - 1)}${b}`);
+  const itemRe = new RegExp(`<li><button class="arch-item" data-ym="${m[2]}">([^<]*)<span>\\((\\d+)\\)</span></button></li>`);
+  return html.replace(itemRe, (x, label, n) => (parseInt(n, 10) <= 1 ? "" : `<li><button class="arch-item" data-ym="${m[2]}">${label}<span>(${parseInt(n, 10) - 1})</span></button></li>`));
+}
+
+function removeFromSitemap(slug) {
+  const xml = readFileSync(SITEMAP, "utf8");
+  const entryRe = new RegExp(`[ \\t]*<url><loc>https://cherrysage\\.com/${slug}\\.html</loc>[\\s\\S]*?</url>\\n?`);
+  if (entryRe.test(xml)) writeFileSync(SITEMAP, xml.replace(entryRe, ""));
+}
+
+function hidePost(slug, html) {
+  const outPath = join(ROOT, `${slug}.html`);
+  // Only ever delete a page this script made, never a hand-built page that shares the name.
+  if (existsSync(outPath)) {
+    const existing = readFileSync(outPath, "utf8");
+    if (existing.includes(GENERATED_MARKER) || isPostPage(existing)) unlinkSync(outPath);
+  }
+  removeFromSitemap(slug);
+  return removeCard(html, slug);
 }
 
 function addToSitemap(slug) {
@@ -231,11 +264,13 @@ function main() {
   let blogHtml = readFileSync(BLOG_HTML, "utf8");
   let changed = false;
   let newest = null;
+  const hiddenSlugs = new Set();
 
   // First pass: read every post so each page can link to its category neighbours.
   const all = [];
   for (const file of files) {
     const { data } = parseFrontMatter(readFileSync(join(CONTENT_DIR, file), "utf8"));
+    if (data.hidden === "true") continue;
     if (data.title && data.category && data.image && data.date) all.push({ slug: file.replace(/\.md$/, ""), title: data.title, category: data.category, image: data.image, date: String(data.date).slice(0, 10), related: data.related });
   }
 
@@ -243,6 +278,14 @@ function main() {
     const slug = file.replace(/\.md$/, "");
     const raw = readFileSync(join(CONTENT_DIR, file), "utf8");
     const { data, body } = parseFrontMatter(raw);
+
+    if (data.hidden === "true") {
+      hiddenSlugs.add(slug);
+      blogHtml = hidePost(slug, blogHtml);
+      changed = true;
+      console.log(`[build-blog] Hidden /${slug}.html (Hide from site is ticked)`);
+      continue;
+    }
 
     if (!data.title || !data.category || !data.image || !data.date) {
       console.warn(`[build-blog] Skipping ${file}: missing title, category, image, or date.`);
@@ -289,7 +332,18 @@ function main() {
     console.log(`[build-blog] ${isNew ? "Published" : "Updated"} /${slug}.html (${data.category})`);
   }
 
-  if (newest) blogHtml = upsertFeatured(blogHtml, newest);
+  // A post deleted in the editor leaves its old page behind; take it down like a hidden one.
+  const slugs = new Set(files.map((f) => f.replace(/\.md$/, "")));
+  for (const page of readdirSync(ROOT).filter((f) => f.endsWith(".html"))) {
+    const slug = page.replace(/\.html$/, "");
+    if (slugs.has(slug) || !readFileSync(join(ROOT, page), "utf8").includes(GENERATED_MARKER)) continue;
+    hiddenSlugs.add(slug);
+    blogHtml = hidePost(slug, blogHtml);
+    changed = true;
+    console.log(`[build-blog] Removed /${slug}.html (its post was deleted in the editor)`);
+  }
+
+  if (newest) blogHtml = upsertFeatured(blogHtml, newest, hiddenSlugs);
   if (changed) writeFileSync(BLOG_HTML, blogHtml);
 }
 

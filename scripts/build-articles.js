@@ -2,7 +2,7 @@
 // into real, fully-styled pages on the live site, and lists them on articles.html + sitemap.xml.
 // Runs automatically on every Netlify deploy (see netlify.toml build command). Safe to run with
 // an empty content/articles/ folder — it just does nothing.
-import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync } from "fs";
+import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync, unlinkSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { marked } from "marked";
@@ -197,6 +197,38 @@ function bumpCounts(html, category) {
   return html;
 }
 
+// "Hide from site": take an article off the live site without deleting what was written. Removes
+// its page, its articles.html card (and the counts that card added) and its sitemap entry.
+// Unticking it brings everything back on the next build, because they are rebuilt from the .md.
+function removeCard(html, slug) {
+  const cardRe = new RegExp(`<a class='bcard reveal' data-cat='([^']*)' href='/${slug}'>[\\s\\S]*?</a>`);
+  const m = html.match(cardRe);
+  if (!m) return html;
+  html = html.replace(cardRe, "");
+  html = html.replace(/(\d+)(\s+guest articles)/, (x, n, b) => `${Math.max(0, parseInt(n, 10) - 1)}${b}`);
+  html = html.replace(/(All \()(\d+)(\))/, (x, a, n, b) => `${a}${Math.max(0, parseInt(n, 10) - 1)}${b}`);
+  // data-cat is written escaped (&amp;), which is how the chip's data-f is written too.
+  const chipRe = new RegExp(`(data-f="${m[1]}"[^>]*title=")(\\d+)( articles?")`);
+  return html.replace(chipRe, (x, a, n, b) => `${a}${Math.max(0, parseInt(n, 10) - 1)}${b}`);
+}
+
+function removeFromSitemap(slug) {
+  const xml = readFileSync(SITEMAP, "utf8");
+  const entryRe = new RegExp(`[ \\t]*<url><loc>https://cherrysage\\.com/${slug}\\.html</loc>[\\s\\S]*?</url>\\n?`);
+  if (entryRe.test(xml)) writeFileSync(SITEMAP, xml.replace(entryRe, ""));
+}
+
+function hideArticle(slug, html) {
+  const outPath = join(ROOT, `${slug}.html`);
+  // Only ever delete a page this script made, never a hand-built page that shares the name.
+  if (existsSync(outPath)) {
+    const existing = readFileSync(outPath, "utf8");
+    if (existing.includes(GENERATED_MARKER) || isPostPage(existing)) unlinkSync(outPath);
+  }
+  removeFromSitemap(slug);
+  return removeCard(html, slug);
+}
+
 function addToSitemap(slug) {
   let xml = readFileSync(SITEMAP, "utf8");
   const url = `https://cherrysage.com/${slug}.html`;
@@ -225,6 +257,13 @@ function main() {
     const slug = file.replace(/\.md$/, "");
     const raw = readFileSync(join(CONTENT_DIR, file), "utf8");
     const { data, body } = parseFrontMatter(raw);
+
+    if (data.hidden === "true") {
+      articlesHtml = hideArticle(slug, articlesHtml);
+      changed = true;
+      console.log(`[build-articles] Hidden /${slug}.html (Hide from site is ticked)`);
+      continue;
+    }
 
     if (!data.title || !data.category || !data.image) {
       console.warn(`[build-articles] Skipping ${file}: missing title, category, or image.`);
@@ -277,6 +316,16 @@ function main() {
     console.log(
       `[build-articles] ${isNew ? "Published" : "Updated"} /${slug}.html (${data.category})`
     );
+  }
+
+  // An article deleted in the editor leaves its old page behind; take it down like a hidden one.
+  const slugs = new Set(files.map((f) => f.replace(/\.md$/, "")));
+  for (const page of readdirSync(ROOT).filter((f) => f.endsWith(".html"))) {
+    const slug = page.replace(/\.html$/, "");
+    if (slugs.has(slug) || !readFileSync(join(ROOT, page), "utf8").includes(GENERATED_MARKER)) continue;
+    articlesHtml = hideArticle(slug, articlesHtml);
+    changed = true;
+    console.log(`[build-articles] Removed /${slug}.html (its article was deleted in the editor)`);
   }
 
   if (changed) writeFileSync(ARTICLES_HTML, articlesHtml);
