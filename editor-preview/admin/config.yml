@@ -190,6 +190,8 @@ collections:
     create: true
     slug: "{{slug}}"
     summary: "{{title}} — {{category}}"
+    # Newest first in the editor list. The sort menu still offers title and topic.
+    sortable_fields: { fields: ["date", "title", "category"], default: { field: "date", direction: "descending" } }
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "The article's headline." }
       - { label: "Category", name: "category", widget: "select", hint: "Pick the topic this article belongs to — these are the exact topics shown on the Guest Articles page.", options: ["Abundance", "Astrology", "Business & Spirituality", "Dreams", "Feng Shui", "Herbal Remedies", "Inspiration & Self-Mastery", "Karma", "Meditation", "Metaphysics", "Natural Medicine", "New Age", "Numerology", "Psychic & Paranormal", "Psychic Medium", "Psychic Readings", "Reincarnation", "Tarot", "Wisdom", "Yoga"] }
@@ -209,6 +211,8 @@ collections:
     create: true
     slug: "{{slug}}"
     summary: "{{title}} — {{category}}"
+    # Newest first in the editor list. The sort menu still offers title and topic.
+    sortable_fields: { fields: ["date", "title", "category"], default: { field: "date", direction: "descending" } }
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "The post's headline." }
       - { label: "Meta title (optional)", name: "seo_title", widget: "string", required: false, hint: "The title Google shows in search results. Leave blank and it uses the title above followed by Cherry Sage." }
