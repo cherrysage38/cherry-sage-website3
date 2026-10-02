@@ -3,6 +3,10 @@ backend:
   repo: cherrysage38/cherry-sage-website3
   branch: main
 
+# Draft and review mode: Save keeps a post as a draft (with its own Netlify preview link).
+# Nothing goes live until Publish is clicked in the editor's Workflow screen.
+publish_mode: editorial_workflow
+
 site_url: https://cherrysage.com
 display_url: https://cherrysage.com
 logo_url: https://cherrysage.com/assets/logo-horizontal.png
