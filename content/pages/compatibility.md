@@ -38,7 +38,9 @@ blocks:
       Here are just a few examples of Life Path Number Compatibility:
 
       - Life Path 1 : Independent and driven, best compatible with 1, 3, or 5.
+
       - Life Path 2 : Sensitive and cooperative, in harmony with 2, 4, or 8.
+
       - Life Path 3 : Creative and sociable, flourishes with 3, 5, or 7.
 
       Each combination offers unique insights that can enrich your relationship, leading you to a more profound understanding of each other. Allow me to help you connect the dots between your energies, and together, we’ll find the path to deeper, lasting love.
@@ -83,7 +85,7 @@ blocks:
 
       Orders are processed and delivered via e-mail within 24 hours (usually sooner). If you have any questions about your order, please contact cu \*\*\*\*\*\*\*\*\*\*\*\*\* @ \*\*\*\*\*\*\*\* ge.com . For Live Phone Numerology Reading, please click here.
 
-      Free Numerology Online Reading \~popular\~
+      Free Numerology Online Reading popular
 
       Please visit my Numerology pages to see a sample of my own personal analysis. Find out how to calculate your own numbers and see what this means about you and how this information can empower your life. Very interesting. —
 
