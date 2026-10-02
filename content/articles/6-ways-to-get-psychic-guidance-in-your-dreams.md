@@ -1,9 +1,12 @@
 ---
-title: "6 Ways to Get Psychic Guidance in Your Dreams"
-category: "Dreams"
-date: "2021-07-22"
-image: "/assets/articles/6-ways-to-get-psychic-guidance-in-your-dreams.jpeg"
-description: "Why do dreams occur? Underlying conditions trigger most dreams. For example, if you have ingested some prescribed meditation or had eaten something wrong,..."
+title: 6 Ways to Get Psychic Guidance in Your Dreams
+category: Dreams
+author: ''
+date: 2021-07-22
+image: /assets/articles/6-ways-to-get-psychic-guidance-in-your-dreams.jpeg
+seo_title: 6 Ways to Get Psychic Guidance in Your Dreams
+description: Why do dreams occur? Underlying conditions trigger most dreams. For example, if you have ingested some prescribed meditation or had eaten something wrong,...
+hidden: false
 ---
 
 Why do dreams occur? Underlying conditions trigger most dreams. For example, if you have ingested some prescribed meditation or had eaten something wrong, it can cause regular dream sessions. Medication like painkillers, for instance, oxy codeine, are notorious and can trigger dreams. These dreams can also be affected by brain damage due to disease or past inquires. It can involve a progressive impairment, can affect the thinking ability, behavior, and memory. Such patients can get difficult to handle and needs special care. These dreams sessions are most common in the elder age group who consumes numerous medications for different causes. It can lead to many health issues like sleepless nights (sleep disorders ), bloating, overeating, etc. Elder’s health care service providers like [Dementia Loving Home Care Inc](https://lovinghomecareinc.com/service-area/whittier-ca/) can help control them.
