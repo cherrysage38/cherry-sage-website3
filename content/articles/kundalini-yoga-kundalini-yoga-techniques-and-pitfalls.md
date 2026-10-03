@@ -64,6 +64,3 @@ Enlightenment experiences direct Knowing of a more expansive reality; transcende
 
 <strong>About author:</strong>  
 Dipankar Khanna  
-Recommend This Article To Your Friend:
-
-Want to tell someone about this page? It’s easy. Just enter the information requested below and click Send. Your message will be sent immediately. If you wish to send to multiple recipients, you can send up to 5 emails at once by placing a comma after each address (example: TO: em***@*****ss.com, em***@*****ss.com, em***@*****ss.com).

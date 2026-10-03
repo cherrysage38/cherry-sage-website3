@@ -27,6 +27,3 @@ Taking in to account all the benefits of ayurveda we can expect a rise in the po
 
 Dr. Tarun Sachdeva writes on ayurveda at Ayurvedic-Medicines.com – Treating diseases with the magic of ayurveda, also lists many home remedies.
 
-**Recommend This Article To Your Friend:**
-
-Want to tell someone about this page? It’s easy. Just enter the information requested below and click Send. Your message will be sent immediately. If you wish to send to multiple recipients, you can send up to 5 emails at once by placing a comma after each address (example: TO: em***@*****ss.com, em***@*****ss.com, em***@*****ss.com).

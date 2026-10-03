@@ -52,9 +52,12 @@ const jstr = (s) => JSON.stringify(String(s || "")).slice(1, -1);
 const isPostPage = (html) => html.includes('"@type": "Article"');
 const GENERATED_MARKER = "<!-- cs-generated:blog -->";
 
-// Same 8 categories blog.html's toolbar/word-cloud already use -- kept fixed rather than
-// free-text so a typo in the CMS can't silently create an unfiltered ninth category.
-const CATEGORIES = ["Psychic Readings", "Numerology", "Other World", "Predicting Dates or Timelines", "Gypsy Scams", "Tarot Card Readings", "Online Psychic Readings", "Karma & Past Lives", "Featured Articles", "Astrology", "Dreams"];
+// The topics Bev can pick, edited in the editor's Blog Topics screen (content/blog-topics.yml). The
+// Category dropdown only offers these, so a typo can't create a stray topic. A post whose topic is
+// missing from the list (renamed or removed there) is still built, with a warning, so it never drops
+// off the site; its topic button is added to blog.html like any other.
+const TOPICS_FILE = join(ROOT, "content", "blog-topics.yml");
+const CATEGORIES = existsSync(TOPICS_FILE) ? (yaml.load(readFileSync(TOPICS_FILE, "utf8"))?.topics || []).map(String) : [];
 
 function esc(s) {
   return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -168,14 +171,23 @@ function relatedSection(post, all) {
   return `<section class="section section-tint"><div class="wrap"><div class="section-head reveal"><p class="eyebrow">Keep reading</p><h2>More on ${esc(post.category)}</h2></div><div class="blog-cards">${cards}</div></div></section>\n`;
 }
 
-function upsertCard(html, { slug, title, category, image, date, excerpt, isNew }) {
+const CARD_RE = /<a class='bcard reveal' data-cat='[^']*' data-ym='[^']*' href='\/([^']*)'>[\s\S]*?<span class="bc-date">(\d{4}-\d{2}-\d{2})<\/span><\/div>\n<\/a>/g;
+// Every post gets a card, not only brand-new ones: 12 older posts (Featured Articles, Astrology,
+// Dreams) had pages but were never listed on blog.html (found 2026-10-03). A missing card is put
+// in date order among the others, which blog.html lists newest first.
+function upsertCard(html, { slug, title, category, image, date, excerpt }) {
   const ym = date.slice(0, 7);
   const cardRe = new RegExp(`<a class='bcard reveal' data-cat='[^']*' data-ym='[^']*' href='/${slug}'>[\\s\\S]*?</a>`);
   const newCard = `<a class='bcard reveal' data-cat='${esc(category)}' data-ym='${ym}' href='/${slug}'>\n  <img class="bc-img" src="${image}" alt="" loading="lazy" decoding="async">\n  <div class="bc-body"><span class="cat-chip">${esc(category)}</span><h3>${esc(title)}</h3><p>${esc(excerpt)}</p><span class="bc-date">${date}</span></div>\n</a>`;
 
   if (cardRe.test(html)) return { html: html.replace(cardRe, newCard), added: false };
-  if (!isNew) return { html, added: false };
-  return { html: html.replace('<div class="blog-cards">', `<div class="blog-cards">${newCard}`), added: true, ym };
+  const listStart = html.indexOf('<div class="blog-cards">') + '<div class="blog-cards">'.length;
+  let at = listStart;
+  for (const m of html.slice(listStart).matchAll(CARD_RE)) {
+    if (m[2] + m[1] < date + slug) { at = listStart + m.index; break; }
+    at = listStart + m.index + m[0].length;
+  }
+  return { html: html.slice(0, at) + newCard + html.slice(at), added: true, ym };
 }
 
 // The "Latest" feature at the top of blog.html was only ever set by hand, so it stayed on a May 2025
@@ -192,6 +204,33 @@ function upsertFeatured(html, { slug, title, category, image, date, excerpt }, h
   return html.replace(FEATURED_RE, () => block);
 }
 
+// Adds a topic's button to the toolbar and the "Browse by topic" cloud when blog.html doesn't have one
+// yet, so its posts can be filtered like the rest. Returns null when the topic is already there.
+function addTopic(html, category) {
+  const f = esc(category);
+  if (html.includes(`data-f="${f}"`)) return null;
+  const chipsEnd = html.indexOf("</div>", html.indexOf('<div class="bchips">'));
+  html = html.slice(0, chipsEnd) + `<button class="bchip" data-f="${f}">${f}</button>` + html.slice(chipsEnd);
+  const cloudEnd = html.indexOf("</div>", html.indexOf('<div class="wordcloud">'));
+  return html.slice(0, cloudEnd) + `<button class="wc-tag" data-f="${f}" style="font-size:0.87rem">${f}<span class="wc-n">0</span></button>` + html.slice(cloudEnd);
+}
+
+// Once counts are final: size the newly added cloud topics like the others (about 0.82rem plus
+// 0.05rem per post) and keep the cloud ordered biggest first.
+function tidyWordCloud(html, added) {
+  const start = html.indexOf('<div class="wordcloud">') + '<div class="wordcloud">'.length;
+  const end = html.indexOf("</div>", start);
+  const tags = html.slice(start, end).match(/<button class="wc-tag"[\s\S]*?<\/button>/g) || [];
+  const sized = tags.map((t) => {
+    const f = (t.match(/data-f="([^"]*)"/) || [])[1];
+    const n = parseInt((t.match(/<span class="wc-n">(\d+)/) || [])[1] || "0", 10);
+    const tag = added.has(f) ? t.replace(/font-size:[\d.]+rem/, `font-size:${(0.82 + 0.05 * n).toFixed(2)}rem`) : t;
+    return { n, tag };
+  });
+  sized.sort((a, b) => b.n - a.n);
+  return html.slice(0, start) + sized.map((x) => x.tag).join("") + html.slice(end);
+}
+
 function bumpWordCloud(html, category) {
   // The button's own visible text (the category name again) sits between the opening tag
   // and the count span, e.g. ...data-f="Numerology" style="...">Numerology<span class="wc-n">8</span>
@@ -206,7 +245,14 @@ function upsertArchive(html, ym) {
   const [y, mo] = ym.split("-");
   const label = `${MONTH_NAMES[parseInt(mo, 10) - 1]} ${y}`;
   const newItem = `<li><button class="arch-item" data-ym="${ym}">${label}<span>(1)</span></button></li>`;
-  return html.replace('<ul class="archive-list">', `<ul class="archive-list">${newItem}`);
+  // The archive is newest month first; put an older month in its place rather than at the top.
+  const listStart = html.indexOf('<ul class="archive-list">') + '<ul class="archive-list">'.length;
+  const listEnd = html.indexOf("</ul>", listStart);
+  let at = listEnd;
+  for (const m of html.slice(listStart, listEnd).matchAll(/<li><button class="arch-item" data-ym="(\d{4}-\d{2})">/g)) {
+    if (m[1] < ym) { at = listStart + m.index; break; }
+  }
+  return html.slice(0, at) + newItem + html.slice(at);
 }
 
 // "Hide from site": take a post off the live site without deleting what was written. Removes its
@@ -265,6 +311,7 @@ function main() {
   let changed = false;
   let newest = null;
   const hiddenSlugs = new Set();
+  const addedTopics = new Set();
 
   // First pass: read every post so each page can link to its category neighbours.
   const all = [];
@@ -292,8 +339,7 @@ function main() {
       continue;
     }
     if (!CATEGORIES.includes(data.category)) {
-      console.warn(`[build-blog] Skipping ${file}: "${data.category}" isn't one of blog.html's real categories.`);
-      continue;
+      console.warn(`[build-blog] ${file}: "${data.category}" isn't in the Blog Topics list (content/blog-topics.yml); building it anyway.`);
     }
     // The editor's date widget can write a full timestamp depending on version/settings; only the day matters.
     data.date = String(data.date).trim().slice(0, 10);
@@ -319,9 +365,11 @@ function main() {
     writeFileSync(outPath, page);
     changed = true;
 
-    const result = upsertCard(blogHtml, { slug, title: data.title, category: data.category, image: data.image, date: data.date, excerpt: plainExcerpt(body), isNew });
+    const result = upsertCard(blogHtml, { slug, title: data.title, category: data.category, image: data.image, date: data.date, excerpt: plainExcerpt(body) });
     blogHtml = result.html;
     if (result.added) {
+      const withTopic = addTopic(blogHtml, data.category);
+      if (withTopic) { blogHtml = withTopic; addedTopics.add(esc(data.category)); }
       blogHtml = bumpWordCloud(blogHtml, data.category);
       blogHtml = upsertArchive(blogHtml, result.ym);
       addToSitemap(slug);
@@ -343,6 +391,7 @@ function main() {
     console.log(`[build-blog] Removed /${slug}.html (its post was deleted in the editor)`);
   }
 
+  if (addedTopics.size) blogHtml = tidyWordCloud(blogHtml, addedTopics);
   if (newest) blogHtml = upsertFeatured(blogHtml, newest, hiddenSlugs);
   if (changed) writeFileSync(BLOG_HTML, blogHtml);
 }

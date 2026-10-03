@@ -40,4 +40,4 @@ If you continuously build your convictions about your inevitable success in life
 Worry is negative goal setting and negative expectations. It is thinking about, talking about and imagining exactly what we don’t want to happen. It is the exact opposite of the Metaphysical Law of Strong Conviction and Positive Expectations. To be successful, become obedient to the Law of Positive Expectations and visualize success daily in everything you do.
 
 About author:  
-More powerful thoughts like these are contained in the book “Achieving Your Personal Destiny.” For more details, visit the Success Training Academy, or write to Robert Taylor at rj******@*td.net.1\.
+More powerful thoughts like these are contained in the book “Achieving Your Personal Destiny.” For more details, visit the Success Training Academy.

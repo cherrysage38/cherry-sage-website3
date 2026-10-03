@@ -203,6 +203,16 @@ collections:
       - { label: "Search description (optional)", name: "description", widget: "text", required: false, hint: "One or two sentences Google shows under the title. Leave blank and the first lines of the text are used." }
       - { label: "Hide from site", name: "hidden", widget: "boolean", default: false, required: false, hint: "Tick this, then Publish, to take this article off the site for now. Nothing you wrote is deleted. Untick it and Publish to bring it back." }
 
+  - name: "blog_topics"
+    label: "Blog Topics"
+    description: "The topics you can pick for a blog post. Add a topic here and Publish, and it appears in every blog post's Category list. Its button shows on the Blog page once a post uses it."
+    files:
+      - name: "topics"
+        label: "Blog topics"
+        file: "content/blog-topics.yml"
+        fields:
+          - { label: "Topics", name: "topics", widget: "list", field: { label: "Topic", name: "topic", widget: "string" }, hint: "Renaming or removing a topic here does not change posts that already use it. Change those posts' Category too." }
+
   - name: "blog"
     label: "Blog Posts"
     label_singular: "Blog Post"
@@ -218,7 +228,7 @@ collections:
       - { label: "Meta title (optional)", name: "seo_title", widget: "string", required: false, hint: "The title Google shows in search results. Leave blank and it uses the title above followed by Cherry Sage." }
       - { label: "Meta description (optional)", name: "description", widget: "text", required: false, hint: "One or two sentences Google shows under the title. Leave blank and the first lines of the text are used." }
       - { label: "Date", name: "date", widget: "datetime", type: "date", format: "YYYY-MM-DD", hint: "Shown on the post and used to sort it into the right month in your Archive list." }
-      - { label: "Category", name: "category", widget: "select", hint: "Pick the topic this post belongs to — these are the exact topics shown on your Blog page.", options: ["Psychic Readings", "Numerology", "Other World", "Predicting Dates or Timelines", "Gypsy Scams", "Tarot Card Readings", "Online Psychic Readings", "Karma & Past Lives", "Featured Articles", "Astrology", "Dreams"] }
+      - { label: "Category", name: "category", widget: "relation", collection: "blog_topics", file: "topics", value_field: "topics.*", search_fields: ["topics.*"], display_fields: ["topics.*"], hint: "Pick the topic this post belongs to. To add a new topic, go to Blog Topics in the menu." }
       - { label: "Author (optional)", name: "author", widget: "string", required: false, hint: "Leave blank to show as written by Cherry Sage." }
       - { label: "Featured image", name: "image", widget: "image", hint: "This shows on the post card and at the top of the post." }
       - { label: "Post", name: "body", widget: "markdown", hint: "The full post text. Use the toolbar for bold, headings, links." }
