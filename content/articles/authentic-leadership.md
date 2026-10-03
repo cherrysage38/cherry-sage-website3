@@ -30,5 +30,3 @@ The thought of being a leader may seem like an appealing idea to the ego, but th
 
 <strong>About author:</strong>  
 Andrew Cohen, founder of What Is Enlightenment? magazine, is a spiritual teacher and acclaimed author widely recognized as a defining voice in the emerging field of evolutionary spirituality. A life-changing awakening in 1986 brought Cohen to the end of his own search for liberation while simultaneously starting him on an exploration of the meaning and significance of enlightenment for our time. This has led him to a profound investigation of the human predicament and into dialogue with sages, saints, and spiritual luminaries from nearly every tradition and beyond.
-
-Share This Story,Choose Your Platform!

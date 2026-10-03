@@ -33,9 +33,3 @@ her neck stand up. The director was very grateful for the bookstore’s “respo
 
 <strong>About author:</strong>  
 Amy Biddle has been a lifetime student and teacher of spiritual principles. Spiritual Healing Secrets is a fast-growing resource for anyone who wants to improve her or himself, or simply to learn practical spiritual principles. Let Amy help you improve your life! Discover the secrets at http://www.spiritual-healing-secrets.com
-
-https://cherrysage.com/wp-content/uploads/2017/07/googlelead.png
-
-Share This Story,Choose Your Platform!
-
-## **Most Recent Blog Posts by Cherry**

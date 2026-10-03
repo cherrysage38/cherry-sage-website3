@@ -91,4 +91,4 @@ Yes, but only if properly Custom Programmed Energy Tools (like Crystal Energy Fi
 
 **About author:**
 
-Janarrdhana Guptha is an Energy Consultant, Kabbalah Energy Numerologist, Crystal Master, Fengshui \& Vaastu Researcher \& Clairvoyant Karma Reader. His speciality is permanent Karma Energy Correction through custom-built Crystal Energy Fields. His E-Mail : cr***********@***oo.com. His website :http://www.crystal-vaastu.com/home.htm \& http://www.newage-kabbalah-numerology.com
+Janarrdhana Guptha is an Energy Consultant, Kabbalah Energy Numerologist, Crystal Master, Fengshui \& Vaastu Researcher \& Clairvoyant Karma Reader. His speciality is permanent Karma Energy Correction through custom-built Crystal Energy Fields. His website :http://www.crystal-vaastu.com/home.htm \& http://www.newage-kabbalah-numerology.com

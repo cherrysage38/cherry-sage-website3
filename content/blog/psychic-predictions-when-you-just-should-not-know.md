@@ -35,5 +35,3 @@ So why wasn’t I shown this?  Because it would have created a false belief that
 Other readings, of course, do show certain outcomes.  Certain probability of events based on current energy patterns. Some we don’t like, some we do. But each reading is different.  Lessons must be learned and cannot be bypassed. If we are in a difficult situation with another, you are being called to take stock of yourself and your own destiny. To be at cause in your life instead of affected by circumstances.
 
 Be careful of knowing too much of the future. Seek out psychic insight into another and find the path pointing to resolution and not just when you will have personal satisfaction. The universe does not work this way.
-
-Share This Story . Choose Your Platform!

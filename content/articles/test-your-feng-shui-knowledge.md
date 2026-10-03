@@ -113,4 +113,4 @@ ANSWERS:
 10\. Blue and black should never be used on ceilings or roofs.
 
 <strong>About author:</strong>  
-Kathryn Weber is the publisher of the Red Lotus Letter feng shui e-zine and is dedicated to helping her readers develop successful, prosperous, and supportive environments with feng shui. To subscribe, logon to www.redlotusletter.com and receive this special report Fr*ee “16 Feng Shui Secrets for Greater Prosperity.”\>kw****@****************ng.com
+Kathryn Weber is the publisher of the Red Lotus Letter feng shui e-zine and is dedicated to helping her readers develop successful, prosperous, and supportive environments with feng shui. To subscribe, logon to www.redlotusletter.com and receive this special report Free “16 Feng Shui Secrets for Greater Prosperity.”
