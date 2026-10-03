@@ -52,9 +52,12 @@ const jstr = (s) => JSON.stringify(String(s || "")).slice(1, -1);
 const isPostPage = (html) => html.includes('"@type": "Article"');
 const GENERATED_MARKER = "<!-- cs-generated:blog -->";
 
-// Same 8 categories blog.html's toolbar/word-cloud already use -- kept fixed rather than
-// free-text so a typo in the CMS can't silently create an unfiltered ninth category.
-const CATEGORIES = ["Psychic Readings", "Numerology", "Other World", "Predicting Dates or Timelines", "Gypsy Scams", "Tarot Card Readings", "Online Psychic Readings", "Karma & Past Lives", "Featured Articles", "Astrology", "Dreams"];
+// The topics Bev can pick, edited in the editor's Blog Topics screen (content/blog-topics.yml). The
+// Category dropdown only offers these, so a typo can't create a stray topic. A post whose topic is
+// missing from the list (renamed or removed there) is still built, with a warning, so it never drops
+// off the site; its topic button is added to blog.html like any other.
+const TOPICS_FILE = join(ROOT, "content", "blog-topics.yml");
+const CATEGORIES = existsSync(TOPICS_FILE) ? (yaml.load(readFileSync(TOPICS_FILE, "utf8"))?.topics || []).map(String) : [];
 
 function esc(s) {
   return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -336,8 +339,7 @@ function main() {
       continue;
     }
     if (!CATEGORIES.includes(data.category)) {
-      console.warn(`[build-blog] Skipping ${file}: "${data.category}" isn't one of blog.html's real categories.`);
-      continue;
+      console.warn(`[build-blog] ${file}: "${data.category}" isn't in the Blog Topics list (content/blog-topics.yml); building it anyway.`);
     }
     // The editor's date widget can write a full timestamp depending on version/settings; only the day matters.
     data.date = String(data.date).trim().slice(0, 10);
