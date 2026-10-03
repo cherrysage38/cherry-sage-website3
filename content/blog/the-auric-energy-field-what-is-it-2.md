@@ -14,9 +14,7 @@ related: true
 
 The aura is an intricate and ever-changing energy field produced by the Energy or Etheric Body. Only those gifted with “auric sight” or clairvoyance can perceive and observe this phenomenon. The aura is profoundly influenced not only by a person’s health and vitality but also by their emotional state or mood. As a person’s feelings shift, so does the appearance of their aura, reflecting the fluctuations in their inner energy.  The complex Energy fields of numerous strengths and colors can be likened to an open book of the life and evolutionary status of an individual; nothing at all can be hidden.
 
-## The Auric Energy Field — What Is It? The Auric Energy Field — What Is It?
-
-[![The Auric Energy Field — What Is It? 1](http://ws.assoc-amazon.com/widgets/q?_encoding=UTF8&ASIN=0970211813&Format=_SL110_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=cherrysagenumero "The Auric Energy Field — What Is It? 1")](https://www.amazon.com/gp/product/0970211813/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=0970211813&linkCode=as2&tag=cherrysagenumero)
+## The Auric Energy Field — What Is It?
 
 [Change Your Aura, Change Your Life: A Step-by-Step Guide to Unfolding Your Spiritual Power](https://www.amazon.com/gp/product/0970211813/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0970211813&linkCode=as2&tag=cherrysagenumero)
 
