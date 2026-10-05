@@ -25,5 +25,5 @@ blocks:
     heading: "Let's talk soon"
     body: "When you're ready, a real reading with me is a phone call away."
     button_label: "Book a Reading"
-    button_link: "/checkout-appointment"
+    button_link: "/book-appointment"
 ---

@@ -24,5 +24,5 @@ blocks:
     heading: "Ready for a straight answer?"
     body: "Book your reading and let's talk about what's really going on."
     button_label: "Book a Reading"
-    button_link: "/checkout-appointment"
+    button_link: "/book-appointment"
 ---
