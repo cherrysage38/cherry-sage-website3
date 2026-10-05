@@ -51,8 +51,8 @@
     switch(key){
       case 'thanks': return 'You are so welcome. Whenever you are ready, Cherry is here for you. '+cta('/book-appointment','Book a reading');
       case 'pricing': return 'Cherry reads by phone, one to one. First-time callers get a special rate (10 minutes for $24), and sessions run from 15 up to 60 minutes. There are also written numerology reports. '+cta('/shop.html','See all readings & pricing');
-      case 'how': return 'It is simple: log in or create a free account, pick one of Cherry\'s open times, and send your appointment. Cherry confirms it by email or phone. '+cta('/how-it-works.html','See how it works');
-      case 'book': return 'Lovely. Log in or create a free account, then pick an open time and Cherry will confirm it with you. '+cta('/book-appointment','Book a reading');
+      case 'how': return 'It is simple: log in or create a free account, pick your reading and one of Cherry\'s open times, then check out. Cherry confirms it by email or phone. '+cta('/how-it-works.html','See how it works');
+      case 'book': return 'Lovely. Log in or create a free account, pick your reading and an open time, then check out. Cherry will confirm the time with you. '+cta('/book-appointment','Book a reading');
       case 'free': return 'Yes! There is a free card you can pull, just for reflection. Want me to take you to it?'+cta('#draw','Draw a free card');
       case 'numerology': return 'Cherry reads Life Path, Expression, Soul Urge, and Karmic Debt. You can try the free Life Path calculator, or get a full written profile. '+cta('/life-path.html','Try free numerology');
       case 'weekly': return 'I can set that up. Leave your email and Cherry will send a few quick questions to get to know you, then honest weekly tips made just for you.'+

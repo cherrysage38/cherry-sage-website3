@@ -10,7 +10,7 @@ blocks:
     cards:
       - tag: "Pick a time"
         title: "Book an Appointment"
-        text: "Create a free account or log in, choose one of Cherry's open times, and send your request. Cherry confirms your time by email or phone."
+        text: "Log in or create a free account, choose your time zone, your reading and one of Cherry's open times, then pay securely by card. Cherry confirms your time by email or phone."
       - tag: "No account needed"
         title: "Buy Minutes"
         text: "Buy your minutes in the shop, no account needed. Your receipt comes by email. Then call Cherry or send her a message to arrange a time that suits you."

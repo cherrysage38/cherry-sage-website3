@@ -63,6 +63,12 @@
 .apt-slot-btn.on{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
 .apt-note{font-size:.8rem;color:var(--cherry);margin-top:.6rem}
 .appt-form-grid{display:grid;gap:1.1rem}
+.apt-picked{margin:.8rem 0 0;font-weight:600;color:var(--oxblood)}
+.apt-summary{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem}
+.apt-summary dl{margin:0}
+.apt-summary dt{font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);margin-top:.5rem}
+.apt-summary dt:first-child{margin-top:0}
+.apt-summary dd{margin:.1rem 0 0;font-weight:600;color:var(--ink)}
 .appt-form-grid[hidden]{display:none}
 @media (max-width:860px){
   .ck-layout{grid-template-columns:1fr;grid-template-areas:"side" "main"}
@@ -85,14 +91,14 @@
   </div>
 </header>
 <main>
-<section class="page-hero banner"><div class="ph-glow" aria-hidden="true"></div><div class="ph-stars" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">Pick a time that works</p><h1>Book an Appointment</h1><p class="lede">Choose from Cherry's real open times below. She'll confirm your request by email or phone.</p><div class="trust-strip"><span><span class="dot"></span>27 years in practice</span><span><span class="dot"></span>90% repeat clients</span><span><span class="dot"></span>Featured by Spin Magazine</span><span><span class="dot"></span>Private and confidential</span></div></div></section>
+<section class="page-hero banner"><div class="ph-glow" aria-hidden="true"></div><div class="ph-stars" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">Pick a time that works</p><h1>Book an Appointment</h1><p class="lede">Choose your time zone, your reading and an open time, then check out securely. Cherry confirms your time by email or phone.</p><div class="trust-strip"><span><span class="dot"></span>27 years in practice</span><span><span class="dot"></span>90% repeat clients</span><span><span class="dot"></span>Featured by Spin Magazine</span><span><span class="dot"></span>Private and confidential</span></div></div></section>
 <section class="section"><div class="wrap">
   <div class="ck-layout">
     <div class="ck-main">
       <div id="apptGate" class="ck-pay-panel reveal" hidden style="text-align:center">
         <p class="eyebrow" style="margin:0 0 .5rem">Account needed</p>
         <h3 style="margin:0 0 .8rem">Log in or create an account first</h3>
-        <p style="color:var(--ink-soft);font-size:1rem;margin:0 0 1.2rem">So your request lands in your account and you can see its status, requesting a time needs you signed in first. Takes under a minute.</p>
+        <p style="color:var(--ink-soft);font-size:1rem;margin:0 0 1.2rem">So your appointment lands in your account and you can see its status, booking needs you signed in first. Takes under a minute.</p>
         <a class="btn btn-primary" href="/login.html">Log In or Create an Account</a>
       </div>
       <form id="apptForm" class="ck-pay-panel reveal appt-form-grid" hidden>
@@ -100,11 +106,13 @@
           <h3>Pick a date &amp; time</h3>
           <label class="apt-label" for="apptTz">Your time zone</label>
           <select id="apptTz" class="ck-field" style="background:#fff;margin-bottom:.9rem"></select>
+          <label class="apt-label" for="apptProduct">Your reading</label>
+          <select id="apptProduct" class="ck-field" style="background:#fff;margin-bottom:.9rem"><option value="">Loading readings…</option></select>
           <label class="apt-label" for="apptDate">Date</label>
           <input type="date" id="apptDate" name="date" required aria-label="Choose a date" class="ck-field">
           <p id="apptTzNote" style="font-size:.8rem;color:var(--ink-soft);margin:.5rem 0 0"></p>
-          <div id="apptSlots" aria-live="polite" style="margin-top:.8rem"><p style="color:var(--ink-soft);font-size:1rem;margin:0">Choose a date to see open times.</p></div>
-          <input type="hidden" name="slotIso" id="apptSlotIso">
+          <div id="apptSlots" aria-live="polite" style="margin-top:.8rem"><p style="color:var(--ink-soft);font-size:1rem;margin:0">Choose your reading and a date to see open times.</p></div>
+          <p id="apptPicked" class="apt-picked" hidden></p>
         </div>
         <hr class="apt-divider">
         <div style="display:grid;gap:.8rem">
@@ -125,19 +133,52 @@
             <option value="Returning">I've read with her before</option>
           </select>
           <textarea name="message" rows="3" placeholder="What would you like to focus on? (optional)" class="ck-field"></textarea>
+          <label class="apt-label" style="margin:0">Birthday (optional, Cherry likes to send a little something on your day)
+            <input type="date" name="birthday" class="ck-field" style="margin-top:.4rem">
+          </label>
+        </div>
+        <div id="apptSummary" class="apt-summary" hidden>
+          <p class="ck-side-label" style="margin:0 0 .6rem">Your appointment</p>
+          <dl><dt>Reading</dt><dd id="sumProduct"></dd><dt>When</dt><dd id="sumTime"></dd><dt>Price</dt><dd id="sumPrice"></dd></dl>
         </div>
         <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button class="btn btn-primary" type="submit">Book This Appointment</button>
+        <button class="btn btn-primary" type="submit">Continue to Checkout</button>
         <p id="apptNote" class="apt-note" hidden></p>
       </form>
+      <div id="apptPay" class="ck-pay-panel" hidden>
+        <h3>Checkout</h3>
+        <p id="apptHoldNote" style="color:var(--ink-soft);font-size:.95rem;margin:0 0 1.1rem"></p>
+        <div style="display:flex;gap:.6rem;margin-bottom:1rem;align-items:flex-end">
+          <div style="flex:1"><label class="apt-label" for="ckCoupon">Coupon code (optional)</label><input type="text" id="ckCoupon" class="ck-field" style="background:#fff;text-transform:uppercase" placeholder="Enter your coupon code"></div>
+          <button class="btn btn-ghost" id="ckApplyCoupon" type="button" style="white-space:nowrap">Apply</button>
+        </div>
+        <p id="ckCouponNote" class="apt-note" hidden style="margin:0 0 1rem"></p>
+        <div style="display:grid;gap:.7rem">
+          <div><label class="apt-label">Card number</label><div id="ckCardNumber" class="ck-field" style="min-height:44px;background:#fff"></div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem">
+            <div><label class="apt-label">Expiry</label><div id="ckCardDate" class="ck-field" style="min-height:44px;background:#fff"></div></div>
+            <div><label class="apt-label">CVV</label><div id="ckCardCvv" class="ck-field" style="min-height:44px;background:#fff"></div></div>
+          </div>
+          <div><label class="apt-label">Postal code</label><div id="ckCardPostal" class="ck-field" style="min-height:44px;background:#fff"></div></div>
+        </div>
+        <p style="font-size:.8rem;color:var(--ink-soft);margin:.9rem 0 0">Encrypted and processed by Clover. Your card number never touches Cherry Sage's servers.</p>
+        <button class="btn btn-gold" id="ckPayBtn" type="button" style="margin-top:1.1rem">Pay &amp; Book</button>
+        <p id="ckPayNote" class="apt-note" hidden></p>
+      </div>
+      <div id="apptDone" class="ck-pay-panel" hidden tabindex="-1" style="text-align:center">
+        <p class="eyebrow" style="margin:0 0 .5rem">Payment received</p>
+        <h3 style="margin:0 0 .8rem">Thank you, your appointment is in</h3>
+        <p id="apptDoneText" style="margin:0 0 .8rem;color:var(--ink);font-weight:600"></p>
+        <p style="color:var(--ink-soft);font-size:.95rem;margin:0">Cherry will confirm your time by email or phone, or offer another time if that one doesn't work. Your receipt is on its way to your email. Track your appointment any time in <a href="/account.html">My Account</a>.</p>
+      </div>
     </div>
     <div class="ck-side-rail">
     <aside class="ck-side">
       <div class="ck-side-card">
         <p class="ck-side-label">How this works</p>
-        <p>Pick an open date and time, then tell Cherry a bit about what you're after. She checks the request and confirms directly with you by email or phone. Most readings take place the same day.</p>
-        <p>This is a request, not an instant booking, so your exact time isn't guaranteed until she confirms. If you'd rather just call when she's online, watch the status light at the corner of any page instead.</p>
-        <p><a href="/shop">Prefer to just buy minutes instead of scheduling? Go to Shop →</a></p>
+        <p>Choose your time zone, your reading and one of Cherry's open times, then check out securely by card.</p>
+        <p>Your time is held for 10 minutes while you pay. Cherry then confirms it with you by email or phone, or offers another time if that one doesn't work.</p>
+        <p><a href="/shop">Prefer to buy minutes now and arrange a time later? Go to Shop →</a></p>
       </div>
       <div class="ck-side-trust">
         <div class="ck-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -151,11 +192,17 @@
     </div>
   </div>
   <script src="/assets/vendor/supabase.js?v=2116"></script>
+  <script src="https://checkout.clover.com/sdk.js"></script>
   <script>
+  // One booking page (Bev, 2026-10-05): the look of the old "Request a Time" page (log in first,
+  // time zone first), then checkout through the same hold + Clover payment the old
+  // checkout-appointment page used (checkout-start / checkout-charge, unchanged).
   (function(){
     var f=document.getElementById('apptForm');if(!f)return;var t0=Date.now();
     var gate=document.getElementById('apptGate');
-    var dateInput=document.getElementById('apptDate'), slotsBox=document.getElementById('apptSlots'), slotIsoField=document.getElementById('apptSlotIso');
+    var dateInput=document.getElementById('apptDate'), slotsBox=document.getElementById('apptSlots');
+    var productSel=document.getElementById('apptProduct'), picked=document.getElementById('apptPicked');
+    var summary=document.getElementById('apptSummary');
 
     var SUPABASE_URL='https://ctoeuikxoqlhnebgsygp.supabase.co';
     var SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0b2V1aWt4b3FsaG5lYmdzeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0ODM4NTMsImV4cCI6MjA5NjA1OTg1M30.Cy0uf8hm-Biea7a1V3bLQBz70f1oyhP83vHDjefTce8';
@@ -169,19 +216,20 @@
       if(currentSession.user.email){ f.email.value=currentSession.user.email; }
     });
 
+    function money(c){ return '$'+((c||0)/100).toFixed(2); }
     var today=new Date();
     var min=new Date(today.getTime()+24*3600000);
     var max=new Date(today.getTime()+30*24*3600000);
     function iso(d){return d.toISOString().slice(0,10);}
     dateInput.min=iso(min); dateInput.max=iso(max);
-
     function fmtSlot(isoStr){
       return new Date(isoStr).toLocaleString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'});
     }
-    // A visible, changeable time zone selector -- previously this only auto-detected silently
-    // and showed a small note, with no way for a visitor (or Bev testing) to pick a different
-    // zone to check how a time reads elsewhere. Populates from the browser's own IANA zone
-    // list when available (all modern evergreen browsers), falls back to a short common list.
+    function fmtFull(isoStr){
+      return new Date(isoStr).toLocaleString('en-US',{timeZone:'America/New_York',weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+    }
+
+    // Time zone first: Cherry's hours are Eastern, the visitor's own zone is shown next to each time.
     var tzSelect=document.getElementById('apptTz');
     var visitorTz=(function(){ try{ return Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){ return 'America/New_York'; } })();
     var COMMON_TZ_FALLBACK=['America/New_York','America/Chicago','America/Denver','America/Los_Angeles','America/Anchorage','Pacific/Honolulu','America/Sao_Paulo','Europe/London','Europe/Paris','Europe/Berlin','Africa/Johannesburg','Asia/Dubai','Asia/Kolkata','Asia/Singapore','Asia/Shanghai','Asia/Tokyo','Australia/Sydney','Pacific/Auckland'];
@@ -205,14 +253,33 @@
     tzSelect.addEventListener('change',function(){
       selectedTz=tzSelect.value;
       renderTzNote();
-      if(dateInput.value) dateInput.dispatchEvent(new Event('change'));
+      loadSlots();
     });
 
-    dateInput.addEventListener('change',function(){
-      slotIsoField.value='';
+    // Reading lengths and prices come from the Dashboard (appointment-booking products).
+    var products={}, selectedProduct=null, selectedSlotIso=null;
+    fetch(SUPABASE_URL+'/rest/v1/reading_products?select=id,name,duration_minutes,price_cents,is_first_time_only&requires_scheduling=eq.true&active=eq.true&order=price_cents.asc',{
+      headers:{apikey:SUPABASE_ANON,'Accept-Profile':'cherry_sage'}
+    }).then(function(r){return r.json();}).then(function(list){
+      if(!list||!list.length){ productSel.innerHTML='<option value="">No readings available right now</option>'; return; }
+      productSel.innerHTML='<option value="">Choose your reading</option>'+list.map(function(p){
+        products[p.id]={id:p.id,name:p.name,priceCents:p.price_cents,duration:p.duration_minutes};
+        var label=p.name+' — '+money(p.price_cents)+(p.is_first_time_only?' (first-time clients only)':'');
+        return '<option value="'+p.id+'">'+label.replace(/</g,'&lt;')+'</option>';
+      }).join('');
+    }).catch(function(){ productSel.innerHTML='<option value="">Could not load readings, please refresh</option>'; });
+    productSel.addEventListener('change',function(){
+      selectedProduct=products[productSel.value]||null;
+      loadSlots();
+    });
+
+    function clearSlot(){ selectedSlotIso=null; picked.hidden=true; updateSummary(); }
+    function loadSlots(){
+      clearSlot();
+      if(!selectedProduct){ slotsBox.innerHTML='<p style="color:var(--ink-soft);font-size:1rem;margin:0">Choose your reading and a date to see open times.</p>'; return; }
       if(!dateInput.value){ slotsBox.innerHTML='<p style="color:var(--ink-soft);font-size:1rem;margin:0">Choose a date to see open times.</p>'; return; }
       slotsBox.innerHTML='<p style="color:var(--ink-soft);font-size:1rem;margin:0">Loading open times…</p>';
-      fetch('/.netlify/functions/scheduler-availability?date='+dateInput.value+'&duration=15')
+      fetch('/.netlify/functions/scheduler-availability?date='+dateInput.value+'&duration='+selectedProduct.duration)
         .then(function(r){return r.json();})
         .then(function(d){
           var slots=d.slots||[];
@@ -223,57 +290,146 @@
           }).join('')+'</div>';
         })
         .catch(function(){ slotsBox.innerHTML='<p style="color:var(--cherry);font-size:1rem;margin:0">Could not load open times, please try again.</p>'; });
-    });
-
+    }
+    dateInput.addEventListener('change',loadSlots);
     slotsBox.addEventListener('click',function(e){
       var btn=e.target.closest('.apt-slot-btn'); if(!btn) return;
       slotsBox.querySelectorAll('.apt-slot-btn').forEach(function(b){b.classList.remove('on');});
       btn.classList.add('on');
-      slotIsoField.value=btn.getAttribute('data-iso');
+      selectedSlotIso=btn.getAttribute('data-iso');
+      var local=fmtSlotLocal(selectedSlotIso);
+      picked.textContent='You picked '+fmtFull(selectedSlotIso)+' Eastern'+(local?' ('+local+' your time)':'')+'.';
+      picked.hidden=false;
+      updateSummary();
     });
+    function updateSummary(){
+      if(selectedProduct&&selectedSlotIso){
+        summary.hidden=false;
+        document.getElementById('sumProduct').textContent=selectedProduct.name;
+        document.getElementById('sumTime').textContent=fmtFull(selectedSlotIso)+' Eastern';
+        document.getElementById('sumPrice').textContent=money(selectedProduct.priceCents);
+      } else { summary.hidden=true; }
+    }
 
+    // Step 1 -> hold the time (checkout-start), then show checkout.
+    var currentHold=null, booking=null;
     f.addEventListener('submit',function(e){e.preventDefault();
-      var note=document.getElementById('apptNote'),btn=f.querySelector('button');
+      var note=document.getElementById('apptNote'),btn=f.querySelector('button[type=submit]');
       var email=(f.email.value||'').trim();
       if(!currentSession){note.hidden=false;note.textContent='Please log in first.';return;}
-      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){note.hidden=false;note.textContent='Please enter a valid email address.';return;}
-      if(!slotIsoField.value||!f.readingType.value){note.hidden=false;note.textContent='Please pick an open time and a reading type.';return;}
-      if((f.phone.value||'').replace(/\D/g,'').length<7){note.hidden=false;note.textContent='Please add a phone number Cherry can reach you at.';return;}
+      if(!selectedProduct){note.hidden=false;note.textContent='Please choose your reading.';return;}
+      if(!selectedSlotIso){note.hidden=false;note.textContent='Please pick an open time.';return;}
       if(!(f.name.value||'').trim()){note.hidden=false;note.textContent='Please add your name.';return;}
-      btn.disabled=true;btn.textContent='Sending...';
-      var details='Requested time: '+fmtSlot(slotIsoField.value)+' Eastern, on '+dateInput.value+' ('+slotIsoField.value+')\nReading type: '+f.readingType.value+
-        (f.phone.value?('\nPhone: '+f.phone.value.trim()):'')+
-        (f.firstTime.value?('\n'+f.firstTime.value):'')+
-        (f.message.value.trim()?('\n\nFocus: '+f.message.value.trim()):'');
-      var notesForRecord=(f.firstTime.value?f.firstTime.value+'. ':'')+f.message.value.trim();
-
-      sb.rpc('request_appointment',{
-        p_requested_start: slotIsoField.value,
-        p_duration_minutes: 15,
-        p_reading_type: f.readingType.value,
-        p_notes: notesForRecord.trim()||null,
-        p_full_name: f.name.value.trim(),
-        p_phone: f.phone.value.trim()
-      }).then(function(res){
-        if(res.error){ note.hidden=false; note.textContent='Something went wrong saving your request, please try again.'; btn.disabled=false; btn.textContent='Book This Appointment'; return; }
-        // Best-effort admin email notification -- the real record is already saved above,
-        // so a failure here (e.g. the email provider having a bad night) never loses the request.
-        fetch('/.netlify/functions/lead',{method:'POST',headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({email:email,name:f.name.value.trim(),message:details,source:'appointment',website:f.website.value,t:t0})}).catch(function(){});
-        // Best-effort customer-facing confirmation -- until this, a submitted request only ever
-        // confirmed on-screen; found 2026-09-17 (Bev's own test) that nothing was emailed to her.
-        fetch('/.netlify/functions/appointment-request-email',{method:'POST',headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({email:email,name:f.name.value.trim(),when:fmtSlot(slotIsoField.value),readingType:f.readingType.value})}).catch(function(){});
-        f.innerHTML='<div id="apptDone" tabindex="-1"><p class="eyebrow" style="margin:0 0 .5rem">Request sent</p><p style="margin:0;color:var(--ink);font-weight:600;font-size:1rem">Thank you. Your appointment request reached Cherry Sage, and she will confirm your time by email or phone soon. A confirmation is on its way to your email now.</p><p style="margin:.8rem 0 0;color:var(--ink-soft);font-size:.8rem">Track its status any time in <a href="/account">My Account</a>.</p></div>';
-        // The form was much taller than this confirmation, so without this the page stays
-        // scrolled to wherever it was (often the bottom, near the submit button) and the
-        // message ends up off-screen -- flagged directly by Bev's own test, 2026-09-17.
-        var done=document.getElementById('apptDone');
-        if(done && done.scrollIntoView){ done.scrollIntoView({behavior:'smooth', block:'center'}); done.focus({preventScroll:true}); }
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){note.hidden=false;note.textContent='Please enter a valid email address.';return;}
+      if((f.phone.value||'').replace(/\D/g,'').length<7){note.hidden=false;note.textContent='Please add a phone number Cherry can reach you at.';return;}
+      if(!f.readingType.value){note.hidden=false;note.textContent='Please choose what kind of reading.';return;}
+      if(f.website.value) return;
+      note.hidden=true; btn.disabled=true; btn.textContent='Holding your time…';
+      booking={product:selectedProduct, slotIso:selectedSlotIso, name:f.name.value.trim(), email:email, phone:f.phone.value.trim(),
+        readingType:f.readingType.value, firstTime:f.firstTime.value, message:f.message.value.trim()};
+      fetch('/.netlify/functions/checkout-start',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+        name:booking.name, email:email, phone:booking.phone, birthday:f.birthday.value,
+        slotIso:selectedSlotIso, durationMinutes:selectedProduct.duration, readingProductId:selectedProduct.id
+      })}).then(function(r){return r.json().then(function(d){return {ok:r.ok, data:d};});})
+      .then(function(res){
+        if(!res.ok||!res.data.ok){
+          note.hidden=false; note.textContent=(res.data&&res.data.error==='slot no longer available')?'That time was just taken, please pick another.':((res.data&&res.data.error&&res.status===429)?res.data.error:'Something went wrong, please try again.');
+          btn.disabled=false; btn.textContent='Continue to Checkout';
+          return;
+        }
+        currentHold={holdId:res.data.holdId, customerId:res.data.customerId};
+        currentPriceCents=selectedProduct.priceCents; appliedCoupon=null;
+        f.hidden=true;
+        var pay=document.getElementById('apptPay'); pay.hidden=false;
+        renderHoldNote();
+        initCloverFields();
+        pay.scrollIntoView({behavior:'smooth',block:'start'});
       }).catch(function(){
-        note.hidden=false; note.textContent='Something went wrong, please try again.'; btn.disabled=false; btn.textContent='Book This Appointment';
+        note.hidden=false; note.textContent='Something went wrong, please try again.';
+        btn.disabled=false; btn.textContent='Continue to Checkout';
       });
-    });})();
+    });
+
+    // Step 2 -> checkout (Clover hosted card fields + checkout-charge), same as the old booking page.
+    var CLOVER_PUBLIC_TOKEN='9cfc3848689bc857cafbfaa1f97b69a4';
+    var CLOVER_MERCHANT_ID='266062678880';
+    var cloverInstance=null, cloverFieldsReady=false;
+    var appliedCoupon=null, currentPriceCents=null;
+    function renderHoldNote(){
+      document.getElementById('apptHoldNote').textContent='Your time is held for the next 10 minutes while you pay. '+booking.product.name+', '+fmtFull(booking.slotIso)+' Eastern, '+money(currentPriceCents)+'.';
+    }
+
+    document.getElementById('ckApplyCoupon').addEventListener('click',function(){
+      var code=(document.getElementById('ckCoupon').value||'').trim();
+      var couponNote=document.getElementById('ckCouponNote');
+      if(!code){ couponNote.hidden=false; couponNote.textContent='Enter a code first.'; return; }
+      couponNote.hidden=false; couponNote.textContent='Checking…';
+      fetch(SUPABASE_URL+'/rest/v1/rpc/price_with_coupon',{
+        method:'POST',
+        headers:{apikey:SUPABASE_ANON,'Content-Type':'application/json','Content-Profile':'cherry_sage'},
+        body:JSON.stringify({ p_reading_product_id:booking.product.id, p_coupon_code:code, p_customer_id:currentHold.customerId })
+      }).then(function(r){return r.json();}).then(function(rows){
+        var row=Array.isArray(rows)?rows[0]:rows;
+        if(!row||row.error){
+          couponNote.textContent=(row&&row.error)||'That code is not valid.';
+          appliedCoupon=null; currentPriceCents=booking.product.priceCents;
+        }else{
+          appliedCoupon=code; currentPriceCents=row.final_price_cents;
+          couponNote.textContent='Coupon applied — new total '+money(currentPriceCents)+'.';
+        }
+        renderHoldNote();
+      }).catch(function(){ couponNote.textContent='Could not check that code, please try again.'; });
+    });
+
+    function initCloverFields(){
+      if(cloverFieldsReady) return;
+      cloverFieldsReady=true;
+      if(!window.Clover){ var n=document.getElementById('ckPayNote'); n.hidden=false; n.textContent='Payment form could not load, please refresh the page.'; return; }
+      cloverInstance=new Clover(CLOVER_PUBLIC_TOKEN,{merchantId:CLOVER_MERCHANT_ID});
+      var elements=cloverInstance.elements();
+      elements.create('CARD_NUMBER').mount('#ckCardNumber');
+      elements.create('CARD_DATE').mount('#ckCardDate');
+      elements.create('CARD_CVV').mount('#ckCardCvv');
+      elements.create('CARD_POSTAL_CODE').mount('#ckCardPostal');
+    }
+
+    document.getElementById('ckPayBtn').addEventListener('click',function(){
+      var payNote=document.getElementById('ckPayNote'), payBtn=this;
+      if(!currentHold){ payNote.hidden=false; payNote.textContent='Something went wrong, please start over.'; return; }
+      if(!cloverInstance){ payNote.hidden=false; payNote.textContent='Payment form is not ready yet, please wait a moment and try again.'; return; }
+      payNote.hidden=true; payBtn.disabled=true; payBtn.textContent='Processing…';
+      cloverInstance.createToken().then(function(result){
+        if(result.errors||!result.token){
+          payNote.hidden=false; payNote.textContent='Please check your card details and try again.';
+          payBtn.disabled=false; payBtn.textContent='Pay & Book';
+          return;
+        }
+        return fetch('/.netlify/functions/checkout-charge',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+          holdId:currentHold.holdId, customerId:currentHold.customerId, readingProductId:booking.product.id, cardToken:result.token, couponCode:appliedCoupon
+        })}).then(function(r){return r.json().then(function(d){return {ok:r.ok, data:d};});})
+        .then(function(res){
+          if(!res.ok||!res.data.ok){
+            payNote.hidden=false; payNote.textContent=(res.data&&res.data.error)||'Payment could not be completed, please try again.';
+            payBtn.disabled=false; payBtn.textContent='Pay & Book';
+            return;
+          }
+          // Best-effort note to Cherry with what the client wants to focus on (the payment is already recorded).
+          var details='Paid booking: '+booking.product.name+', '+fmtFull(booking.slotIso)+' Eastern ('+booking.slotIso+')\nReading type: '+booking.readingType+
+            '\nPhone: '+booking.phone+(booking.firstTime?('\n'+booking.firstTime):'')+(booking.message?('\n\nFocus: '+booking.message):'');
+          fetch('/.netlify/functions/lead',{method:'POST',headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({email:booking.email,name:booking.name,message:details,source:'appointment',website:'',t:t0})}).catch(function(){});
+          document.getElementById('apptPay').hidden=true;
+          var done=document.getElementById('apptDone'); done.hidden=false;
+          var when=res.data.requestedStart||booking.slotIso;
+          document.getElementById('apptDoneText').textContent=booking.product.name+' on '+fmtFull(when)+' Eastern. '+money(currentPriceCents)+' paid.';
+          done.scrollIntoView({behavior:'smooth',block:'center'}); done.focus({preventScroll:true});
+        });
+      }).catch(function(){
+        payNote.hidden=false; payNote.textContent='Something went wrong, please try again.';
+        payBtn.disabled=false; payBtn.textContent='Pay & Book';
+      });
+    });
+  })();
   </script>
 </div></section><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class="btn btn-gold" href="/login.html">Log In or Create an Account</a> <a class="btn btn-ghost" href="/shop" style="margin-left:.6rem">Buy Minutes Instead</a></div></section>
 </main>
