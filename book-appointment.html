@@ -222,6 +222,7 @@
     var today=new Date();
     var max=new Date(today.getTime()+30*24*3600000);
     function iso(d){return d.toISOString().slice(0,10);}
+    var LEAD_MINUTES=60;
     function easternToday(){ try{ return today.toLocaleDateString('en-CA',{timeZone:'America/New_York'}); }catch(e){ return iso(today); } }
     dateInput.min=easternToday(); dateInput.max=iso(max);
     function fmtSlot(isoStr){
@@ -284,8 +285,11 @@
       fetch('/.netlify/functions/scheduler-availability?date='+dateInput.value+'&duration='+selectedProduct.duration)
         .then(function(r){return r.json();})
         .then(function(d){
-          var slots=d.slots||[];
-          if(!slots.length){ slotsBox.innerHTML='<p style="color:var(--ink-soft);font-size:1rem;margin:0">'+(d.reason==='day unavailable'?'Cherry is not taking appointments that day.':'No open times that day, try another date.')+'</p>'; return; }
+          // Bev, 2026-10-05: at 6:47 PM the page still offered 7:00 PM. Never show a time less than
+          // an hour away, whatever the scheduling setting says.
+          var cutoff=Date.now()+LEAD_MINUTES*60000;
+          var slots=(d.slots||[]).filter(function(s){ return Date.parse(s)>=cutoff; });
+          if(!slots.length){ slotsBox.innerHTML='<p style="color:var(--ink-soft);font-size:1rem;margin:0">'+(d.reason==='day unavailable'?'Cherry is not taking appointments that day.':(dateInput.value===easternToday()?'No more open times today, please try another date.':'No open times that day, try another date.'))+'</p>'; return; }
           slotsBox.innerHTML='<div class="apt-slot-grid">'+slots.map(function(s){
             var local=fmtSlotLocal(s);
             return '<button type="button" class="apt-slot-btn" data-iso="'+s+'">'+fmtSlot(s)+(local?' <span style="opacity:.65;font-size:.8em">('+local+' your time)</span>':'')+'</button>';
@@ -321,6 +325,7 @@
       if(!currentSession){note.hidden=false;note.textContent='Please log in first.';return;}
       if(!selectedProduct){note.hidden=false;note.textContent='Please choose your reading.';return;}
       if(!selectedSlotIso){note.hidden=false;note.textContent='Please pick an open time.';return;}
+      if(Date.parse(selectedSlotIso)<Date.now()+LEAD_MINUTES*60000){note.hidden=false;note.textContent='That time is now less than an hour away, please pick a later time.';loadSlots();return;}
       if(!(f.name.value||'').trim()){note.hidden=false;note.textContent='Please add your name.';return;}
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){note.hidden=false;note.textContent='Please enter a valid email address.';return;}
       if((f.phone.value||'').replace(/\D/g,'').length<7){note.hidden=false;note.textContent='Please add a phone number Cherry can reach you at.';return;}
