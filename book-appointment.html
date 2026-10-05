@@ -177,7 +177,7 @@
       <div class="ck-side-card">
         <p class="ck-side-label">How this works</p>
         <p>Choose your time zone, your reading and one of Cherry's open times, then check out securely by card.</p>
-        <p>Your time is held for 10 minutes while you pay. Cherry then confirms it with you by email or phone, or offers another time if that one doesn't work.</p>
+        <p>Same-day appointments can be booked up to 1 hour ahead. Your time is held for 10 minutes while you pay. Cherry then confirms it with you by email or phone, or offers another time if that one doesn't work.</p>
         <p><a href="/shop">Prefer to buy minutes now and arrange a time later? Go to Shop →</a></p>
       </div>
       <div class="ck-side-trust">
@@ -217,11 +217,13 @@
     });
 
     function money(c){ return '$'+((c||0)/100).toFixed(2); }
+    // Same-day booking is allowed (Bev, 2026-10-05). The scheduler itself only offers times at
+    // least the lead time away (scheduling_settings.earliest_booking_minutes_from_now, 60 min).
     var today=new Date();
-    var min=new Date(today.getTime()+24*3600000);
     var max=new Date(today.getTime()+30*24*3600000);
     function iso(d){return d.toISOString().slice(0,10);}
-    dateInput.min=iso(min); dateInput.max=iso(max);
+    function easternToday(){ try{ return today.toLocaleDateString('en-CA',{timeZone:'America/New_York'}); }catch(e){ return iso(today); } }
+    dateInput.min=easternToday(); dateInput.max=iso(max);
     function fmtSlot(isoStr){
       return new Date(isoStr).toLocaleString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'});
     }
