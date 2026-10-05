@@ -10,7 +10,7 @@ blocks:
     cards:
       - tag: "Payment"
         title: "Simple, secure payment"
-        text: "Payment is taken by card when you book a reading or buy minutes. No account is needed to pay. Card details go straight to Clover, our payment processor, and are never stored by Cherry Sage."
+        text: "Payment is taken securely by card. Card details go straight to Clover, our payment processor, and are never stored by Cherry Sage."
       - tag: "Rescheduling"
         title: "Need a different time?"
         text: "Reach out to Cherry directly before your scheduled time and she'll work with you to find a time that fits."
