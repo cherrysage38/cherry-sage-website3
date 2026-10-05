@@ -43,6 +43,11 @@
 .ck-summary dd{margin:.1rem 0 0;font-weight:600;color:var(--ink)}
 .ck-note{font-size:.85rem;color:var(--cherry);margin-top:.6rem}
 .ck-locked{opacity:.4;pointer-events:none}
+.slot-grid{display:flex;flex-wrap:wrap;gap:.5rem;max-height:260px;overflow-y:auto;padding:.2rem 0}
+.slot-btn{padding:.55rem .95rem;border:1px solid var(--line-strong);border-radius:999px;background:#fff;color:var(--ink);cursor:pointer;font-size:.95rem;font-family:var(--font-body)}
+.slot-btn:hover{border-color:var(--gold)}
+.slot-btn.on{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
+.slot-picked{margin:.8rem 0 0;font-weight:600;color:var(--oxblood)}
 </style>
 </head>
 <body>
@@ -155,6 +160,7 @@
   var form=document.getElementById('ckForm'), summary=document.getElementById('ckSummary');
 
   function money(cents){ return '$'+((cents||0)/100).toFixed(2); }
+  function fmtTime(isoStr){ return new Date(isoStr).toLocaleString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'}); }
   function fmtSlot(isoStr){ return new Date(isoStr).toLocaleString('en-US',{timeZone:'America/New_York',weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}); }
 
   fetch(SUPABASE_URL+'/rest/v1/reading_products?select=id,name,duration_minutes,price_cents,is_first_time_only&requires_scheduling=eq.true&active=eq.true&order=price_cents.asc', {
@@ -191,7 +197,7 @@
       .then(function(d){
         var slots=d.slots||[];
         if(!slots.length){ slotsBox.innerHTML='<p style="color:var(--ink-soft);font-size:.9rem;margin:0">'+(d.reason==='day unavailable'?'Cherry is not taking appointments that day.':'No open times that day, try another date.')+'</p>'; return; }
-        slotsBox.innerHTML='<div class="slot-grid">'+slots.map(function(s){ return '<button type="button" class="slot-btn" data-iso="'+s+'">'+fmtSlot(s)+'</button>'; }).join('')+'</div>';
+        slotsBox.innerHTML='<p style="color:var(--ink-soft);font-size:.85rem;margin:0 0 .5rem">Times are Cherry\'s hours, Eastern time. Tap one to choose it.</p><div class="slot-grid">'+slots.map(function(s){ return '<button type="button" class="slot-btn" data-iso="'+s+'">'+fmtTime(s)+'</button>'; }).join('')+'</div>';
       }).catch(function(){ slotsBox.innerHTML='<p style="color:var(--cherry);font-size:.9rem;margin:0">Could not load open times, please try again.</p>'; });
   });
 
@@ -201,10 +207,16 @@
     btn.classList.add('on');
     selectedSlotIso=btn.getAttribute('data-iso');
     stepInfo.classList.remove('ck-locked');
+    // Bev, 2026-10-05: clicking a time showed no change at all, so it looked like nothing was chosen.
+    var picked=document.getElementById('ckSlotPicked');
+    if(!picked){ picked=document.createElement('p'); picked.id='ckSlotPicked'; picked.className='slot-picked'; slotsBox.parentNode.insertBefore(picked, slotsBox.nextSibling); }
+    picked.textContent='You picked '+fmtSlot(selectedSlotIso)+' Eastern.';
     updateSummary();
   });
 
   function updateSummary(){
+    var picked=document.getElementById('ckSlotPicked');
+    if(!selectedSlotIso){ if(picked) picked.remove(); stepInfo.classList.add('ck-locked'); }
     if(selectedProduct&&selectedSlotIso){
       summary.hidden=false;
       document.getElementById('ckSumProduct').textContent=selectedProduct.name;
