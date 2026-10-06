@@ -156,7 +156,7 @@ details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new s
       '<div class="pm-checks"><label class="sa-active"><input type="checkbox" class="pm-f-active"'+(p.active?' checked':'')+'> Available to buy</label>'+
       (p.requires_scheduling?'':'<label class="sa-active"><input type="checkbox" class="pm-f-show"'+(p.show_in_shop?' checked':'')+'> Show in the shop</label>')+'</div>'+
       (p.requires_scheduling
-        ? '<p class="pm-note">This one is used by the "Request a Time" booking page. Its name and price show there.</p>'
+        ? '<p class="pm-note">This one is used by the "Book a Reading" booking page. Its name and price show there.</p>'
         : '<label class="pm-l">Description shown in the shop'+(isReport?' and on the report page':'')+'<textarea class="pm-f-desc" rows="4">'+esc(p.description||'')+'</textarea></label>');
     if(isReport){
       body+='<div class="pm-q"><h4>Questions the customer answers</h4><p class="pm-note">The report is sent to the email the customer gives, so keep one "Email address" question.</p>'+
@@ -176,7 +176,7 @@ details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new s
       else g.other.push(p);
     });
     var html='';
-    [['shopMin','In the shop: buy minutes'],['shopRep','In the shop: numerology reports'],['booking','Request a Time (appointment booking)'],['other','Not shown in the shop']].forEach(function(pair){
+    [['shopMin','In the shop: buy minutes'],['shopRep','In the shop: numerology reports'],['booking','Book a Reading (appointment booking)'],['other','Not shown in the shop']].forEach(function(pair){
       if(!g[pair[0]].length) return;
       html+='<div class="sa-group"><h3>'+pair[1]+'</h3>'+g[pair[0]].map(productCard).join('')+'</div>';
     });
