@@ -16,7 +16,7 @@ blocks:
         text: "Buy your minutes in the shop, no account needed. Your receipt comes by email. Then call Cherry or send her a message to arrange a time that suits you."
   - type: "text"
     heading: "On the day of your reading"
-    body: "At your arranged time, call Cherry at 301-474-1681.\n\n[Book a Reading](/book-appointment) · [Shop](/shop) · [Contact Cherry](/contact)"
+    body: "At your arranged time, call Cherry at 301-474-1681.\n\n[Book a Reading](/book-appointment.html) · [Shop](/shop.html) · [Contact Cherry](/contact.html)"
   - type: "text"
     body: "First-timers get 10 minutes for $24 on their first call."
   - type: "faq"
@@ -36,5 +36,5 @@ blocks:
     heading: "Ready for clarity?"
     body: "Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you."
     button_label: "Book a Reading"
-    button_link: "/book-appointment"
+    button_link: "/book-appointment.html"
 ---

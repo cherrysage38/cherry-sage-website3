@@ -4,9 +4,9 @@ hero:
   headline_accent: soul's destiny.
   intro: Honest, accurate psychic, tarot, and numerology readings by phone. Real guidance on love, relationships, and career, told with warmth and care.
   button1_label: Book a Reading
-  button1_link: /book-appointment
+  button1_link: /book-appointment.html
   button2_label: Try Free Numerology
-  button2_link: /life-path
+  button2_link: /life-path.html
   trust:
     - 27 years in practice
     - 90% repeat clients
@@ -20,17 +20,17 @@ services:
       title: Live & Online Psychic Reading
       text: Honest, in-depth phone readings on love, career, and family, delivered with real compassion.
       link_label: Explore psychic readings →
-      link: /psychic-reading
+      link: /psychic-reading.html
     - tag: Tarot
       title: Tarot Card Reading
       text: Clairvoyant, clairaudient, and empathic guidance through the Tarot's ancient symbolism.
       link_label: Explore tarot readings →
-      link: /tarot
+      link: /tarot.html
     - tag: Numerology
       title: Numerology
       text: Life Path, Expression, Soul Urge, and Karmic Debt. Uncover the numbers that shape your path.
       link_label: Try free numerology →
-      link: /numerology
+      link: /numerology.html
 situations:
   eyebrow: You're in good company
   heading: Big questions, small ones, and the ones you don't have a name for yet.
@@ -38,29 +38,29 @@ situations:
   cards:
     - quote: '"Should I stay, or is it finally time to go?"'
       label: Talk it through →
-      link: /shop
+      link: /shop.html
     - quote: '"He''s been on ''read'' for two days now."'
       label: Let's read into it →
-      link: /shop
+      link: /shop.html
     - quote: '"Not lost, exactly. Just not sure what''s next."'
       label: Find your direction →
-      link: /shop
+      link: /shop.html
     - quote: '"Is this the right move, or am I forcing it?"'
       label: Get clarity →
-      link: /shop
+      link: /shop.html
     - quote: '"Will this rough patch with money turn around?"'
       label: See what's coming →
-      link: /shop
+      link: /shop.html
     - quote: '"Are we meant to be, or am I holding on?"'
       label: Ask about love →
-      link: /shop
+      link: /shop.html
 story:
   eyebrow: A sacred gift
   heading: The Intuitive Connection
   paragraph1: People always ask me when it started, and I think they're expecting some big dramatic moment. But there wasn't one, not really. I was a kid who just knew things. I knew who was on the phone before anybody picked it up, I could walk into a room and feel that something was wrong even when everyone was smiling at me, and every so often I'd hear something, clear as a bell, that turned out to be true a few days later. I thought everybody could do that. So I didn't say much about it, and for a long time I tried to ignore it, because it didn't fit into a normal life and I wanted a normal life. But it doesn't go away just because you ignore it. It gets LOUDER. And at some point I stopped fighting it and started listening, and that's how it became what I do now, helping people see what's really going on in their lives so they can make their own choices.
   paragraph2: Hi. I'm glad you're here. I am Cherry Sage. Spin Magazine found my site in 1999 and invited me to be their "Ask the Expert" guest.
   button_label: Meet Cherry →
-  button_link: /meet
+  button_link: /meet.html
   quote: '"90% of my client base are repeat callers. I offer the truth with compassion and responsibility."'
   quote_by: — Cherry Sage
 draw:
@@ -76,17 +76,17 @@ free:
       title: Tarot Card Pull
       text: Type your question, pull a card. Warm and personal, just for reflection.
       link_label: Pull a free card →
-      link: /tarot-pull
+      link: /tarot-pull.html
     - tag: Numerology
       title: Karmic Accumulation Reading
       text: Cherry's own lead-in reading, a real look at what's following you into this chapter.
       link_label: About numerology →
-      link: /numerology
+      link: /numerology.html
     - tag: Daily
       title: Your Horoscope
       text: Yesterday, today, and tomorrow. A quiet daily check-in, back by popular request.
       link_label: Read today's →
-      link: /horoscope
+      link: /horoscope.html
 how:
   eyebrow: How it works
   heading: Book and pay in one pass
@@ -98,7 +98,7 @@ how:
     - title: Pay & you're booked
       text: Pay right there, no separate registration step and no checking out twice.
   button_label: See the full how-it-works guide →
-  button_link: /how-it-works
+  button_link: /how-it-works.html
   intro: ''
 testimonials:
   eyebrow: What clients say
@@ -124,11 +124,11 @@ testimonials:
       name: Montreal
       date: May 14, 2019
   button1_label: Read all reviews →
-  button1_link: /testimonials
+  button1_link: /testimonials.html
   button2_label: Leave your feedback
-  button2_link: /feedback
+  button2_link: /feedback.html
 closing:
   heading: Ready for clarity?
   text: Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.
   button_label: Book a Reading
-  button_link: /book-appointment
+  button_link: /book-appointment.html

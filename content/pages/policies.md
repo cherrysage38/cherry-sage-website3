@@ -27,10 +27,10 @@ blocks:
         title: "Honest guidance, since 1999"
         text: "Reading professionally since 1999. Featured by Spin Magazine as their \"Ask the Expert\" guest. About 90% of Cherry's clients are repeat callers."
   - type: "text"
-    body: "Read our full [Privacy Policy](/privacy). Questions about any of this? [Reach out](/contact) before you book, and Cherry will answer personally."
+    body: "Read our full [Privacy Policy](/privacy.html). Questions about any of this? [Reach out](/contact.html) before you book, and Cherry will answer personally."
   - type: "cta_text"
     heading: "Ready for clarity?"
     body: "Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you."
     button_label: "Book a Reading"
-    button_link: "/book-appointment"
+    button_link: "/book-appointment.html"
 ---

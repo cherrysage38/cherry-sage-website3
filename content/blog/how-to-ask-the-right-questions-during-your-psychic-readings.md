@@ -29,7 +29,7 @@ In short, my client was feeling helpless and couldn’t see the light because sh
 
 In conclusion, be a part of the process.  Your choices are creating your destiny.  I will guide you based on what I see may be your real obstacles to fulfillment.  But be assured fulfillment is definitely possible.  What you want can manifest when you get out of your own way.  Are you ready for clarity? Clarity awaits you when you are ready to embrace it fully.
 
-Recommended Reading:  [Future Psychic Predictions.](/facing-the-future-with-accurate-psychic-predictions)
+Recommended Reading:  [Future Psychic Predictions.](/facing-the-future-with-accurate-psychic-predictions.html)
 
 *Cherry Sage is a renowned psychic and intuitive advisor, celebrated for her exceptional abilities and compassionate guidance. With over two decades of professional experience, Cherry has touched the lives of countless individuals, offering them clarity, insight, and spiritual support.  Cherry is the trusted advisor of hundreds of people around the world.*
 

@@ -6,42 +6,42 @@ columns:
   - heading: Readings
     links:
       - label: Psychic Reading
-        url: /psychic-reading
+        url: /psychic-reading.html
       - label: Tarot Card Reading
-        url: /tarot
+        url: /tarot.html
       - label: Numerology
-        url: /numerology
+        url: /numerology.html
       - label: Love & Relationships
-        url: /love-and-relationships
+        url: /love-and-relationships.html
       - label: How It Works
-        url: /how-it-works
+        url: /how-it-works.html
   - heading: Explore
     links:
       - label: Meet Cherry
-        url: /meet
+        url: /meet.html
       - label: Blog
-        url: /blog
+        url: /blog.html
       - label: Guest Articles
-        url: /articles
+        url: /articles.html
       - label: Testimonials
-        url: /testimonials
+        url: /testimonials.html
       - label: FAQs
-        url: /faqs
+        url: /faqs.html
       - label: Policies
-        url: /policies
+        url: /policies.html
       - label: Privacy
-        url: /privacy
+        url: /privacy.html
   - heading: Free
     links:
       - label: Free Tarot Pull
-        url: /tarot-pull
+        url: /tarot-pull.html
       - label: Free Tarot Spread
-        url: /tarot-spread
+        url: /tarot-spread.html
       - label: Life Path Calculator
-        url: /life-path
+        url: /life-path.html
       - label: Karmic Accumulation
-        url: /free-karmic-reading
+        url: /free-karmic-reading.html
       - label: Daily Horoscope
-        url: /horoscope
+        url: /horoscope.html
       - label: Leave Feedback
-        url: /feedback
+        url: /feedback.html

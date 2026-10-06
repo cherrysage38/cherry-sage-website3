@@ -140,5 +140,5 @@ blocks:
   heading: Go deeper with your own numbers
   body: Cherry reads all of these together for you in a full-life numerology report, or live by phone.
   button_label: See the Reports
-  button_link: /shop
+  button_link: /shop.html
 ---

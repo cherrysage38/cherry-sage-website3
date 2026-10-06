@@ -20,10 +20,10 @@ blocks:
       - title: "Honest over fantasy"
         text: "90% of my clients are repeat callers. I offer the truth with compassion and responsibility, never fear, never a script."
   - type: "text"
-    body: "Love is the question I hear most. If that's what's on your heart, [here's how I read it](/love-and-relationships)."
+    body: "Love is the question I hear most. If that's what's on your heart, [here's how I read it](/love-and-relationships.html)."
   - type: "cta_text"
     heading: "Let's talk soon"
     body: "When you're ready, a real reading with me is a phone call away."
     button_label: "Book a Reading"
-    button_link: "/book-appointment"
+    button_link: "/book-appointment.html"
 ---
