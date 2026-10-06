@@ -17,7 +17,7 @@ blocks:
 
       Greetings, beautiful soul. I’m Cherry Sage, a guide and intuitive psychic reader, here to help you discover the mystical wisdom embedded in the numbers of your life. Through numerology, I reveal the energetic patterns that govern your relationships, your love life, and even your soul’s purpose. Together, we’ll unlock the sacred secrets that your Life Path, Expression Numbers, and Destiny Numbers hold, illuminating the path toward love, balance, and profound connection.
 
-      Prefer to talk it through directly instead of the numbers? [Book a love and relationship reading](/book-appointment).
+      Prefer to talk it through directly instead of the numbers? [Book a love and relationship reading](/book-appointment.html).
 
       ### Discover the Heart of Your Love Number and Unveil Mystical Compatibility
 
@@ -83,7 +83,7 @@ blocks:
 
       How well do you know your lover/friend/employee? Your Full-Life Report explains YOU in compelling detail, with astounding accuracy. This is a very detailed analysis. Covers over 22 critical aspects of your life. And for $5.00 more, you get the Compatibility Love Report — a full powered profile in its own right for ONLY $5.00 for a total of $34.00. Best buy.
 
-      Orders are processed and delivered via e-mail within 24 hours (usually sooner). If you have any questions about your order, please [contact me](/contact). For a Live Phone Numerology Reading, please [book here](/book-appointment).
+      Orders are processed and delivered via e-mail within 24 hours (usually sooner). If you have any questions about your order, please [contact me](/contact.html). For a Live Phone Numerology Reading, please [book here](/book-appointment.html).
 
       Free Numerology Online Reading popular
 

@@ -9,7 +9,7 @@ blocks:
 
     The main emphasis of the attitudes and abilities for each **Birthday** is described by this single digit or master number. The master number 11 has attitudes and abilities related to its high level 11 and is reduced level 2. The master number 22 has attitudes and abilities related to its high level 22 or its reduced level 4.
 
-    This calendar day will have a strong vibratory force upon the life particularly felt during the middle or Productive Cycle (approximately 28-56). If this vibration is a [Master Number](/birthday-number) (11 & 22), it will be felt through the entire life.
+    This calendar day will have a strong vibratory force upon the life particularly felt during the middle or Productive Cycle (approximately 28-56). If this vibration is a [Master Number](/birthday-number.html) (11 & 22), it will be felt through the entire life.
 
     ## Example: JANE DENISE CLARINS (fictitious name)
 
@@ -26,5 +26,5 @@ blocks:
   heading: Go deeper with your own numbers
   body: Cherry reads all of these together for you in a full-life numerology report, or live by phone.
   button_label: See the Reports
-  button_link: /shop
+  button_link: /shop.html
 ---

@@ -53,12 +53,12 @@ blocks:
 
     The natural capabilities and talents are significant in determining the type of work in which the subject will be most productive and content. If the subject is involved with work in which his productivity is poor and his satisfaction minimal, these innate abilities may be only occasionally or partially manifested.
 
-    The individual’s attitudes when he puts his best foot forward will help him make progress along the [Life Path](/life-path-number-meanings)!
+    The individual’s attitudes when he puts his best foot forward will help him make progress along the [Life Path](/life-path-number-meanings.html)!
 
-    The Expression is the sum total of what each individual has to work with in life. In it is contained all of the positive and negative factors that comprise the individuality. The exaggeration or denial of the positive attitudes produces negative attitudes, deterrents to progress along the [Life Path](/life-path-number-meanings). Awareness of these negative attitudes may be the first step in converting them to a more productive direction.
+    The Expression is the sum total of what each individual has to work with in life. In it is contained all of the positive and negative factors that comprise the individuality. The exaggeration or denial of the positive attitudes produces negative attitudes, deterrents to progress along the [Life Path](/life-path-number-meanings.html). Awareness of these negative attitudes may be the first step in converting them to a more productive direction.
 - type: cta_text
   heading: Go deeper with your own numbers
   body: Cherry reads all of these together for you in a full-life numerology report, or live by phone.
   button_label: See the Reports
-  button_link: /shop
+  button_link: /shop.html
 ---

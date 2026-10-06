@@ -19,10 +19,10 @@ blocks:
       - title: "Why do I keep attracting the same pattern?"
         text: "Numerology and a straight reading of your history together can show the pattern you keep repeating, and where it started."
   - type: "text"
-    body: "A love reading with me isn't about being told what you want to hear. It's about someone who has genuinely done this a long time, telling you the truth with care, so you can make your own decision with a clear head. [See how numerology reads compatibility](/compatibility) if you want the numbers side of it too."
+    body: "A love reading with me isn't about being told what you want to hear. It's about someone who has genuinely done this a long time, telling you the truth with care, so you can make your own decision with a clear head. [See how numerology reads compatibility](/compatibility.html) if you want the numbers side of it too."
   - type: "cta_text"
     heading: "Ready for a straight answer?"
     body: "Book your reading and let's talk about what's really going on."
     button_label: "Book a Reading"
-    button_link: "/book-appointment"
+    button_link: "/book-appointment.html"
 ---
