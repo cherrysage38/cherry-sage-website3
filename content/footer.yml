@@ -29,6 +29,8 @@ columns:
         url: /faqs
       - label: Policies
         url: /policies
+      - label: Privacy
+        url: /privacy
   - heading: Free
     links:
       - label: Free Tarot Pull

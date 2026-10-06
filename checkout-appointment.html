@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Book Your Reading — Cherry Sage</title>
 <meta name="description" content="Choose your reading, pick a real open time, and reserve your spot with Cherry Sage.">
-<link rel="canonical" href="https://cherrysage.com/checkout-appointment.html">
+<link rel="canonical" href="https://cherrysage.com/book-appointment.html">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta name="theme-color" content="#6E1A28">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,6 +43,11 @@
 .ck-summary dd{margin:.1rem 0 0;font-weight:600;color:var(--ink)}
 .ck-note{font-size:.85rem;color:var(--cherry);margin-top:.6rem}
 .ck-locked{opacity:.4;pointer-events:none}
+.slot-grid{display:flex;flex-wrap:wrap;gap:.5rem;max-height:260px;overflow-y:auto;padding:.2rem 0}
+.slot-btn{padding:.55rem .95rem;border:1px solid var(--line-strong);border-radius:999px;background:#fff;color:var(--ink);cursor:pointer;font-size:.95rem;font-family:var(--font-body)}
+.slot-btn:hover{border-color:var(--gold)}
+.slot-btn.on{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
+.slot-picked{margin:.8rem 0 0;font-weight:600;color:var(--oxblood)}
 </style>
 </head>
 <body>
@@ -51,8 +56,8 @@
     <a aria-label='Cherry Sage home' class='brand' href='/'><img src="assets/logo-horizontal.png" alt="Cherry Sage — Psychic, Tarot, Numerology"></a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
     <nav class="primary-nav" id="primaryNav" aria-label="Primary">
-      <ul><li class="has-dropdown"><a href="/meet">About</a><ul class="dropdown"><li><a href="/meet">Meet Cherry</a></li><li><a href="/how-it-works">How It Works</a></li><li><a href="/faqs">FAQs</a></li></ul></li><li class="has-dropdown"><a href="/psychic-reading">Readings</a><ul class="dropdown"><li><a href="/psychic-reading">Psychic Reading</a></li><li><a href="/top-rated-psychic-readings">Top Rated Psychic Readings</a></li><li><a href="/real-and-genuine-psychic-readings">Real and Genuine Psychic Readings</a></li><li><a href="/specialized-psychic-readings">Specialized Psychic Readings</a></li><li><a href="/trustworthy-accurate-psychic-readings">Trustworthy Accurate Psychic Readings</a></li><li><a href="/tarot">Tarot Card Reading</a></li><li><a href="/compatibility">Compatibility</a></li><li><a href="/book-appointment">Request a Time</a></li></ul></li><li class="has-dropdown"><a href="/numerology">Numerology</a><ul class="dropdown"><li><a href="/free-karmic-reading">Free Numerology Reading</a></li><li><a href="/life-path-number-meanings">Life Path Number Meanings</a></li><li><a href="/basic-number-meanings">Basic Number Meanings</a></li><li><a href="/expression-number">Expression Number</a></li><li><a href="/soul-urge-number">Soul Urge Number</a></li><li><a href="/birthday-number">Birthday Number</a></li><li><a href="/karmic-lessons">Karmic Lessons</a></li><li><a href="/karmic-debts">Karmic Debts</a></li></ul></li><li class="has-dropdown"><a href="/testimonials">Reviews</a><ul class="dropdown"><li><a href="/feedback">Leave Feedback</a></li></ul></li><li class="has-dropdown"><a href="/blog">Blog</a><ul class="dropdown"><li><a href="/articles">Guest Articles</a></li></ul></li><li class="has-dropdown"><a href="/tarot-pull">Free Tools</a><ul class="dropdown"><li><a href="/tarot-pull">Free Tarot Pull</a></li><li><a href="/tarot-spread">Free Tarot Spread</a></li><li><a href="/life-path">Life Path Calculator</a></li><li><a href="/horoscope">Daily Horoscope</a></li></ul></li><li><a href="/shop">Shop</a></li><li><a href="/contact">Contact</a></li><li><a href="/account" class="nav-utility">My Account</a></li></ul>
-      <a class='btn btn-primary' href='/checkout-appointment'>Book a Reading</a>
+      <ul><li class="has-dropdown"><a href="/meet">About</a><ul class="dropdown"><li><a href="/meet">Meet Cherry</a></li><li><a href="/how-it-works">How It Works</a></li><li><a href="/faqs">FAQs</a></li></ul></li><li class="has-dropdown"><a href="/psychic-reading">Readings</a><ul class="dropdown"><li><a href="/psychic-reading">Psychic Reading</a></li><li><a href="/top-rated-psychic-readings">Top Rated Psychic Readings</a></li><li><a href="/real-and-genuine-psychic-readings">Real and Genuine Psychic Readings</a></li><li><a href="/specialized-psychic-readings">Specialized Psychic Readings</a></li><li><a href="/trustworthy-accurate-psychic-readings">Trustworthy Accurate Psychic Readings</a></li><li><a href="/tarot">Tarot Card Reading</a></li><li><a href="/compatibility">Compatibility</a></li><li><a href="/book-appointment">Book an Appointment</a></li></ul></li><li class="has-dropdown"><a href="/numerology">Numerology</a><ul class="dropdown"><li><a href="/free-karmic-reading">Free Numerology Reading</a></li><li><a href="/life-path-number-meanings">Life Path Number Meanings</a></li><li><a href="/basic-number-meanings">Basic Number Meanings</a></li><li><a href="/expression-number">Expression Number</a></li><li><a href="/soul-urge-number">Soul Urge Number</a></li><li><a href="/birthday-number">Birthday Number</a></li><li><a href="/karmic-lessons">Karmic Lessons</a></li><li><a href="/karmic-debts">Karmic Debts</a></li></ul></li><li class="has-dropdown"><a href="/testimonials">Reviews</a><ul class="dropdown"><li><a href="/feedback">Leave Feedback</a></li></ul></li><li class="has-dropdown"><a href="/blog">Blog</a><ul class="dropdown"><li><a href="/articles">Guest Articles</a></li></ul></li><li class="has-dropdown"><a href="/tarot-pull">Free Tools</a><ul class="dropdown"><li><a href="/tarot-pull">Free Tarot Pull</a></li><li><a href="/tarot-spread">Free Tarot Spread</a></li><li><a href="/life-path">Life Path Calculator</a></li><li><a href="/horoscope">Daily Horoscope</a></li></ul></li><li><a href="/shop">Shop</a></li><li><a href="/contact">Contact</a></li><li><a href="/account" class="nav-utility">My Account</a></li></ul>
+      <a class='btn btn-primary' href='/book-appointment'>Book a Reading</a>
     </nav>
   </div>
 </header>
@@ -131,7 +136,7 @@
       <p style="font-size:.9rem">Honest, accurate psychic, tarot, and numerology readings by phone. Trusted since 1999.</p>
     </div>
     <div><h4>Readings</h4><ul><li><a href='/psychic-reading'>Psychic Reading</a></li><li><a href='/tarot'>Tarot Card Reading</a></li><li><a href='/numerology'>Numerology</a></li><li><a href='/love-and-relationships'>Love &amp; Relationships</a></li><li><a href='/how-it-works'>How It Works</a></li></ul></div>
-    <div><h4>Explore</h4><ul><li><a href='/meet'>Meet Cherry</a></li><li><a href='/blog'>Blog</a></li><li><a href='/articles'>Guest Articles</a></li><li><a href='/testimonials'>Testimonials</a></li><li><a href='/faqs'>FAQs</a></li><li><a href='/policies'>Policies</a></li></ul></div>
+    <div><h4>Explore</h4><ul><li><a href='/meet'>Meet Cherry</a></li><li><a href='/blog'>Blog</a></li><li><a href='/articles'>Guest Articles</a></li><li><a href='/testimonials'>Testimonials</a></li><li><a href='/faqs'>FAQs</a></li><li><a href='/policies'>Policies</a></li><li><a href='/privacy'>Privacy</a></li></ul></div>
     <div><h4>Free</h4><ul><li><a href='/tarot-pull'>Free Tarot Pull</a></li><li><a href='/tarot-spread'>Free Tarot Spread</a></li><li><a href='/life-path'>Life Path Calculator</a></li><li><a href='/free-karmic-reading'>Karmic Accumulation</a></li><li><a href='/horoscope'>Daily Horoscope</a></li><li><a href='/feedback'>Leave Feedback</a></li></ul></div>
   </div>
   <div class="wrap footer-signup"><h4>Cherry's Newsletter</h4><p class="nl-lede">Honest insight on the psychic path, numerology, and tarot, straight to your inbox, no spam, unsubscribe any time.</p><form class="nl-form" novalidate><input type="email" placeholder="Your email" aria-label="Your email address" required><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"><button type="submit">Subscribe</button></form><p class="nl-note" aria-live="polite"></p></div>
@@ -155,6 +160,7 @@
   var form=document.getElementById('ckForm'), summary=document.getElementById('ckSummary');
 
   function money(cents){ return '$'+((cents||0)/100).toFixed(2); }
+  function fmtTime(isoStr){ return new Date(isoStr).toLocaleString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'}); }
   function fmtSlot(isoStr){ return new Date(isoStr).toLocaleString('en-US',{timeZone:'America/New_York',weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}); }
 
   fetch(SUPABASE_URL+'/rest/v1/reading_products?select=id,name,duration_minutes,price_cents,is_first_time_only&requires_scheduling=eq.true&active=eq.true&order=price_cents.asc', {
@@ -191,7 +197,7 @@
       .then(function(d){
         var slots=d.slots||[];
         if(!slots.length){ slotsBox.innerHTML='<p style="color:var(--ink-soft);font-size:.9rem;margin:0">'+(d.reason==='day unavailable'?'Cherry is not taking appointments that day.':'No open times that day, try another date.')+'</p>'; return; }
-        slotsBox.innerHTML='<div class="slot-grid">'+slots.map(function(s){ return '<button type="button" class="slot-btn" data-iso="'+s+'">'+fmtSlot(s)+'</button>'; }).join('')+'</div>';
+        slotsBox.innerHTML='<p style="color:var(--ink-soft);font-size:.85rem;margin:0 0 .5rem">Times are Cherry\'s hours, Eastern time. Tap one to choose it.</p><div class="slot-grid">'+slots.map(function(s){ return '<button type="button" class="slot-btn" data-iso="'+s+'">'+fmtTime(s)+'</button>'; }).join('')+'</div>';
       }).catch(function(){ slotsBox.innerHTML='<p style="color:var(--cherry);font-size:.9rem;margin:0">Could not load open times, please try again.</p>'; });
   });
 
@@ -201,10 +207,16 @@
     btn.classList.add('on');
     selectedSlotIso=btn.getAttribute('data-iso');
     stepInfo.classList.remove('ck-locked');
+    // Bev, 2026-10-05: clicking a time showed no change at all, so it looked like nothing was chosen.
+    var picked=document.getElementById('ckSlotPicked');
+    if(!picked){ picked=document.createElement('p'); picked.id='ckSlotPicked'; picked.className='slot-picked'; slotsBox.parentNode.insertBefore(picked, slotsBox.nextSibling); }
+    picked.textContent='You picked '+fmtSlot(selectedSlotIso)+' Eastern.';
     updateSummary();
   });
 
   function updateSummary(){
+    var picked=document.getElementById('ckSlotPicked');
+    if(!selectedSlotIso){ if(picked) picked.remove(); stepInfo.classList.add('ck-locked'); }
     if(selectedProduct&&selectedSlotIso){
       summary.hidden=false;
       document.getElementById('ckSumProduct').textContent=selectedProduct.name;
@@ -331,8 +343,8 @@
 <script src="app.js?v=12"></script>
 <script src="embers.js?v=4"></script>
 <script src="magic.js?v=2"></script>
-<script src="funnel.js?v=11"></script>
-<script src="chat.js?v=8"></script>
+<script src="funnel.js?v=12"></script>
+<script src="chat.js?v=9"></script>
 <script src="status.js?v=3"></script>
 </body>
 </html>

@@ -83,7 +83,7 @@ blocks:
 
       How well do you know your lover/friend/employee? Your Full-Life Report explains YOU in compelling detail, with astounding accuracy. This is a very detailed analysis. Covers over 22 critical aspects of your life. And for $5.00 more, you get the Compatibility Love Report — a full powered profile in its own right for ONLY $5.00 for a total of $34.00. Best buy.
 
-      Orders are processed and delivered via e-mail within 24 hours (usually sooner). If you have any questions about your order, please [contact me](/contact). For a Live Phone Numerology Reading, please [book here](/checkout-appointment).
+      Orders are processed and delivered via e-mail within 24 hours (usually sooner). If you have any questions about your order, please [contact me](/contact). For a Live Phone Numerology Reading, please [book here](/book-appointment).
 
       Free Numerology Online Reading popular
 

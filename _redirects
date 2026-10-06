@@ -135,5 +135,7 @@
 /my-account/  /account/  301
 /login-register/  /login/  301
 /disclaimer/  /policies/  301
-/privacy/  /policies/  301
 /refund-policy/  /policies/  301
+# Booking needs an account (Bev, 2026-10-05): the old pay-first booking page now goes to Book an Appointment
+/checkout-appointment       /book-appointment  301!
+/checkout-appointment.html  /book-appointment  301!
