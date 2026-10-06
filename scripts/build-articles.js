@@ -90,12 +90,12 @@ function renderPage({ slug, title, category, author, image, bodyHtml, descriptio
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J6XYLLVE93"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2K66J8RPQ6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-J6XYLLVE93');
+  gtag('config', 'G-2K66J8RPQ6');
 </script>
 ${GENERATED_MARKER}
 <meta charset="utf-8">
