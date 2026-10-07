@@ -124,7 +124,15 @@ export default async (req) => {
   const updates = getStore("sage-updates");
 
   const last = await state.get("last", { type: "json" }).catch(() => null);
-  const commits = await newCommits(repo, last?.sha, headSha);
+  let commits;
+  try {
+    commits = await newCommits(repo, last?.sha, headSha);
+  } catch (e) {
+    // GitHub sometimes refuses requests from Netlify's shared servers. Don't lose the entry:
+    // Netlify already tells us the title of what just went live, so use that.
+    console.log("GitHub unavailable, using the deploy title instead:", e.message);
+    commits = payload.title && last?.sha !== headSha ? [{ sha: headSha, commit: { message: payload.title } }] : [];
+  }
 
   if (commits.length) {
     const lines = [];
