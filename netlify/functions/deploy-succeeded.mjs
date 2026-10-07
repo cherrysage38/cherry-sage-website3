@@ -102,12 +102,26 @@ ${changes}`;
     .map((e) => ({ category: e.category === "website" ? "website" : "crm", text: e.text.trim().slice(0, 600) }));
 }
 
+// Which dashboard list a change belongs in, without AI. Bev's rule: checkout, payments, coupons,
+// bookings, customers, emails and the dashboard go to "CRM & email"; everything else to "Website".
+const CRM_FILES = [
+  /^netlify\/functions\//, /^_migrations\//, /^dashboard/, /^appointments-dashboard/, /^shop-admin/,
+  /^status-admin/, /^moderate-comments/, /^checkout/, /^cart/, /^buy-minutes/, /^book-appointment/,
+  /^report-payment/, /^account/, /^login/, /coupon/i, /email/i,
+];
+const CRM_WORDS = /\b(checkout|payments?|pay|coupons?|bookings?|appointments?|scheduler|customers?|e-?mails?|newsletters?|brevo|clover|dashboard|cart|orders?|refunds?|crm)\b/i;
+
+function categoryFor(title, files) {
+  if (files && files.length) return files.some((f) => CRM_FILES.some((re) => re.test(f))) ? "crm" : "website";
+  return CRM_WORDS.test(title) ? "crm" : "website";
+}
+
 // Plain fallback when there's no API key or Claude is unreachable: the commit's own title.
 function fallbackEntries(commits) {
   return commits
-    .map((c) => (c.commit?.message || "").split("\n")[0].trim())
-    .filter((t) => t && !/^merge (pull request|branch)/i.test(t))
-    .map((t) => ({ category: "website", text: t.replace(/\s*\(#\d+\)$/, "") }));
+    .map((c) => ({ title: (c.commit?.message || "").split("\n")[0].trim(), files: c._files }))
+    .filter(({ title }) => title && !/^merge (pull request|branch)/i.test(title))
+    .map(({ title, files }) => ({ category: categoryFor(title, files), text: title.replace(/\s*\(#\d+\)$/, "") }));
 }
 
 export default async (req) => {
@@ -138,6 +152,7 @@ export default async (req) => {
     const lines = [];
     for (const c of commits) {
       const files = commits.length <= 10 ? await filesFor(repo, c) : [];
+      c._files = files;
       lines.push(`- ${c.commit?.message?.trim() || "(no message)"}${files.length ? `\n  files: ${files.join(", ")}` : ""}`);
     }
 
