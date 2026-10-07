@@ -36,5 +36,8 @@ Writing: plain and warm.
   to change.
 - Admin pages (dashboard, manage products, status, appointments, comments) need a login with
   cherry38@cherrysage.com. Do not remove that check.
+- The dashboard's "Changes we made" lists fill themselves: after every live deploy,
+  `netlify/functions/deploy-succeeded.mjs` summarizes the new commits and files them. Write clear
+  commit messages, because they are what those summaries are made from.
 - The shop and the report order pages read live product data from the database. Product
   names, prices, descriptions and report questions are edited in the Dashboard, not in files.
