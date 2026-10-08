@@ -138,6 +138,7 @@
       <div class="ck-step ck-locked" id="ckStepInfo">
         <h2>Your information</h2>
         <form id="ckForm" style="display:grid;gap:.8rem;max-width:420px">
+          <p id="ckAcctNote" class="ck-acct-note" style="margin:0 0 .2rem;font-size:.9rem;color:var(--ink-soft)">Checking out as a guest, no account needed. Have an account? <a href="/login.html?next=/cart.html" style="color:var(--oxblood)">Log in</a> so this order shows in My Account.</p>
           <input type="text" name="name" placeholder="Your name" required class="ck-field">
           <input type="email" name="email" placeholder="Your email" required class="ck-field">
           <input type="tel" name="phone" placeholder="Phone (optional)" class="ck-field">
@@ -405,6 +406,19 @@
   });
 
   function esc(s){ return String(s||'').replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+})();
+</script>
+<script>
+// Bev, 2026-10-08: guests are told they can check out without an account; anyone already
+// logged in gets their email (and name, if saved) filled in so the order lands in My Account.
+(function(){
+  var sess=null; try{ sess=JSON.parse(localStorage.getItem('sb-ctoeuikxoqlhnebgsygp-auth-token')||'null'); }catch(e){}
+  var user=sess&&sess.access_token&&sess.user; if(!user||!user.email) return;
+  var form=document.getElementById('ckForm'), note=document.getElementById('ckAcctNote'); if(!form) return;
+  if(!form.email.value) form.email.value=user.email;
+  var meta=user.user_metadata||{}; var nm=meta.full_name||meta.name||'';
+  if(nm && !form.name.value) form.name.value=nm;
+  if(note){ note.textContent='Signed in as '+user.email+'. This order will show in My Account.'; }
 })();
 </script>
 </body>
