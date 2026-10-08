@@ -51,7 +51,7 @@ function mdBlock(s) {
 // other share one section so they sit together in a tidy column instead of a full section apiece.
 function renderBox(block) {
   const heading = block.heading
-    ? `<h2 style="font-size:clamp(1.3rem,2.6vw,1.6rem);margin:0 0 .7rem">${esc(block.heading)}</h2>`
+    ? `<h2 style="font-size:clamp(1.6rem,3vw,2.1rem);margin:0 0 .8rem">${esc(block.heading)}</h2>`
     : "";
   return `<div class="blk-box reveal" style="background:var(--cream);border:1px solid var(--gold);border-radius:var(--r-lg,16px);padding:clamp(1.2rem,3vw,1.7rem) clamp(1.2rem,3vw,1.9rem)">${heading}<div class="blk-prose" style="max-width:none">${mdBlock(block.body)}</div></div>`;
 }
