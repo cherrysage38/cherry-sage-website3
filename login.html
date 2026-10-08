@@ -146,9 +146,12 @@
   var SUPABASE_URL='https://ctoeuikxoqlhnebgsygp.supabase.co';
   var SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0b2V1aWt4b3FsaG5lYmdzeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0ODM4NTMsImV4cCI6MjA5NjA1OTg1M30.Cy0uf8hm-Biea7a1V3bLQBz70f1oyhP83vHDjefTce8';
   var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON, {db:{schema:'cherry_sage'}});
+  // After logging in, go back to the cart or booking page they came from (Bev, 2026-10-08).
+  // Only these pages are allowed, anything else goes to My Account as before.
+  var NEXT=(function(){ try{ var n=new URLSearchParams(location.search).get('next'); return ['/cart.html','/buy-minutes.html','/book-appointment'].indexOf(n)>-1 ? n : '/account.html'; }catch(e){ return '/account.html'; } })();
 
   sb.auth.getSession().then(function(res){
-    if(res.data && res.data.session){ location.href='/account.html'; }
+    if(res.data && res.data.session){ location.href=NEXT; }
   });
 
   // A stalled auth request (e.g. a slow SMTP send on signup) can leave the underlying fetch
@@ -209,7 +212,7 @@
         btn.disabled=false; btn.textContent='Sign In';
         return;
       }
-      location.href='/account.html';
+      location.href=NEXT;
     }).catch(function(timeoutErr){
       err.hidden=false; err.textContent=(timeoutErr && timeoutErr.message) || 'Something went wrong reaching the server, please try again.';
       btn.disabled=false; btn.textContent='Sign In';
@@ -255,7 +258,7 @@
         btn.disabled=false; btn.textContent='Create Account';
         return;
       }
-      location.href='/account.html';
+      location.href=NEXT;
     }).catch(function(timeoutErr){
       err.hidden=false; err.textContent=(timeoutErr && timeoutErr.message) || 'Something went wrong reaching the server, please try again.';
       btn.disabled=false; btn.textContent='Create Account';
