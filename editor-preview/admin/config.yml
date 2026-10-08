@@ -260,6 +260,7 @@ collections:
             fields:
               - { label: "Heading (optional)", name: "heading", widget: "string", required: false }
               - { label: "Text", name: "body", widget: "markdown" }
+              - { label: "Show in a box", name: "boxed", widget: "boolean", required: false, default: false, hint: "Puts this section in a cream box with a gold border. Boxed sections next to each other sit together in one column." }
           - label: "Image + Text"
             name: "image_text"
             widget: "object"
