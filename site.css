@@ -243,7 +243,7 @@ p{margin:0 0 1rem}
 /* ---- inner pages + home additions (full site 2026-08-27) ---- */
 .page-hero{padding:calc(var(--header-h) + 3.2rem) 0 2.6rem;text-align:center;
   background:radial-gradient(120% 90% at 80% 0%,#FBEFD8 0%,var(--paper) 55%)}
-.page-hero .lede{margin:0 auto}
+.page-hero .lede{margin:.9rem auto 0}
 .primary-nav a.cur{color:var(--cherry)}
 .blog-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.2rem}
 .blog-cat h3{margin-bottom:.7rem;color:var(--oxblood)}
