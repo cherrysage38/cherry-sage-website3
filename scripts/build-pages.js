@@ -46,6 +46,33 @@ function mdBlock(s) {
   return sanitizeHtml(raw, { allowedTags: BLOCK_TAGS, allowedAttributes: BLOCK_ATTRS, allowedSchemes: SAFE_SCHEMES });
 }
 
+// Text sections marked "Show in a box" (boxed: true) are drawn as cream cards with a gold border,
+// the same look as the guest / log-in box in the cart (Bev, 2026-10-08). Boxes that follow each
+// other share one section so they sit together in a tidy column instead of a full section apiece.
+function renderBox(block) {
+  const heading = block.heading
+    ? `<h2 style="font-size:clamp(1.6rem,3vw,2.1rem);margin:0 0 .8rem">${esc(block.heading)}</h2>`
+    : "";
+  return `<div class="blk-box reveal" style="background:var(--cream);border:1px solid var(--gold);border-radius:var(--r-lg,16px);padding:clamp(1.2rem,3vw,1.7rem) clamp(1.2rem,3vw,1.9rem)">${heading}<div class="blk-prose" style="max-width:none">${mdBlock(block.body)}</div></div>`;
+}
+
+function renderBlocks(blocks) {
+  const out = [];
+  let run = [];
+  const flush = () => {
+    if (!run.length) return;
+    out.push(`<section class="section"><div class="wrap" style="max-width:820px;display:grid;gap:1.2rem">${run.map(renderBox).join("")}</div></section>`);
+    run = [];
+  };
+  blocks.forEach((b, i) => {
+    if (b && b.type === "text" && b.boxed) { run.push(b); return; }
+    flush();
+    out.push(renderBlock(b, i));
+  });
+  flush();
+  return out.join("\n");
+}
+
 function renderBlock(block, i) {
   switch (block.type) {
     case "text": {
@@ -245,7 +272,7 @@ function main() {
     }
 
     const isNew = !existsSync(outPath);
-    const blocksHtml = (data.blocks || []).map((b, i) => renderBlock(b, i)).join("\n");
+    const blocksHtml = renderBlocks(data.blocks || []);
 
     const page = renderPage({
       slug,
