@@ -97,9 +97,6 @@ else:
 B.page("articles.html","Guest Articles","Featured and guest articles from Cherry Sage.",abody,"articles.html")
 print("blog + articles rebuilt. featured:",len(featured))
 
-# ---- SEO redirects: original /slug/ (trailing) -> the post ----
-lines=["# Cherry Sage post URL recovery (original WordPress slugs)"]
-for p in posts:
-    lines.append(f'/{p["slug"]}/    /{p["slug"]}.html    200')
-open(os.path.join(ROOT,"_redirects"),"w",encoding="utf-8").write("\n".join(lines)+"\n")
-print("wrote _redirects with", len(posts), "rules")
+# ---- SEO redirects ----
+# Removed 2026-10-06: this used to overwrite _redirects, which now holds the full
+# hand-checked redirect map (755 rules). Edit _redirects directly instead.
