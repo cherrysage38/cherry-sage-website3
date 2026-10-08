@@ -135,7 +135,7 @@
         <div class="ck-progress-step" id="ckProg3"><span class="ck-progress-dot">3</span>Payment</div>
       </div>
 
-      <div id="ckAcctBox" style="background:var(--cream);border:1px solid var(--gold);border-radius:var(--r-lg,16px);padding:1.1rem 1.3rem;margin:0 0 1.2rem;display:flex;flex-wrap:wrap;gap:.8rem 1rem;align-items:center;justify-content:space-between"><p id="ckAcctNote" style="margin:0;flex:1 1 260px;color:var(--ink)"><strong style="color:var(--oxblood)">No account needed.</strong> Check out as a guest, or log in so this order shows in My Account.</p><div id="ckAcctBtns" style="display:flex;gap:.6rem;flex-wrap:wrap"><a class="btn btn-primary" href="/login.html?next=/buy-minutes.html" style="padding:.6rem 1.2rem">Log in</a><a class="btn btn-ghost" href="#ckStepProduct" style="padding:.6rem 1.2rem">Continue as guest</a></div></div>
+      <div id="ckAcctBox" style="background:var(--cream);border:1px solid var(--gold);border-radius:var(--r-lg,16px);padding:1.1rem 1.3rem;margin:0 0 1.2rem;display:flex;flex-wrap:wrap;gap:.8rem 1rem;align-items:center;justify-content:space-between"><p id="ckAcctNote" style="margin:0;flex:1 1 260px;color:var(--ink)"><strong style="color:var(--oxblood)">No account needed.</strong> Check out as a guest, or log in so this order shows in My Account.</p><div id="ckAcctBtns" style="display:flex;gap:.6rem;flex-wrap:wrap"><a class="btn btn-primary" href="/login.html?next=/buy-minutes.html" style="padding:.6rem 1.2rem">Log in</a><a class="btn btn-ghost" id="ckGuestBtn" href="#ckStepProduct" style="padding:.6rem 1.2rem">Continue as guest</a></div></div>
       <div class="ck-secure">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         <div>
@@ -444,6 +444,20 @@
   if(nm && !form.name.value) form.name.value=nm;
   if(note){ note.textContent='Signed in as '+user.email+'. This order will show in My Account.'; }
   var btns=document.getElementById('ckAcctBtns'); if(btns) btns.remove();
+})();
+</script>
+<script>
+// Bev, 2026-10-08: "Continue as guest" jumped too far, under the fixed header. Scroll so the
+// step heading sits just below the header, then put the cursor in the first box.
+(function(){
+  var btn=document.getElementById('ckGuestBtn'), step=document.getElementById('ckStepProduct'); if(!btn||!step) return;
+  btn.addEventListener('click',function(e){
+    e.preventDefault();
+    var hdr=document.querySelector('.site-header'); var off=(hdr?hdr.getBoundingClientRect().height:0)+16;
+    window.scrollTo({top:step.getBoundingClientRect().top+window.pageYOffset-off, behavior:'smooth'});
+    var first=step.querySelector('input:not([type=hidden]):not([name=website]), button.ck-pcard, button');
+    if(first && !step.classList.contains('ck-locked')){ setTimeout(function(){ try{ first.focus({preventScroll:true}); }catch(err){} },450); }
+  });
 })();
 </script>
 </body>
