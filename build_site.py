@@ -59,7 +59,7 @@ FOOTER='''<footer class="footer">
   <span class="cw-bubble"><img src="assets/mark-clean.png" alt=""></span>
 </div>
 <script src="app.js?v=5"></script>
-<script src="embers.js?v=4"></script>
+<script src="embers.js?v=5"></script>
 <script src="magic.js?v=1"></script>
 <script src="funnel.js?v=5"></script>
 <script src="chat.js?v=4"></script>
