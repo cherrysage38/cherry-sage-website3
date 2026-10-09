@@ -69,12 +69,12 @@
 # URLs are intentionally left out of this batch rather than redirected to a guess.
 
 # Psychic reading (core)
-/Psychic-Reading.html    /psychic-reading.html    301
-/psychic_readings/    /psychic-reading.html    301
-/psychic-readings/    /psychic-reading.html    301
-/psychic_readings.html    /psychic-reading.html    301
-/psychicreadings.html    /psychic-reading.html    301
-/professional_psychic_readings.html    /psychic-reading.html    301
+/Psychic-Reading.html    /psychic-reading    301
+/psychic_readings/    /psychic-reading    301
+/psychic-readings/    /psychic-reading    301
+/psychic_readings.html    /psychic-reading    301
+/psychicreadings.html    /psychic-reading    301
+/professional_psychic_readings.html    /psychic-reading    301
 
 # Tarot
 /Tarot-Reading.html    /tarot.html    301
@@ -142,7 +142,7 @@
 
 # --- Legacy WordPress consolidation (2026-10-05, from Search Console exports) ---
 # Specific old WordPress pages with a different name on the new site
-/psychic_services/    /buy-minutes.html    301
+/psychic_services/    /psychic-reading    301
 /my-account/*    /account.html    301
 /cart/    /cart.html    301
 /articles/    /articles.html    301
@@ -252,7 +252,6 @@
 /psychic-medium/    /psychic-medium.html    301
 /psychic-mediums-how-psychic-mediums-contact-the-spirit-world-and-communicate-with-our-loved-ones/    /psychic-mediums-how-psychic-mediums-contact-the-spirit-world-and-communicate-with-our-loved-ones.html    301
 /psychic-phenomenon-gifts-powers-or-abilities/    /psychic-phenomenon-gifts-powers-or-abilities.html    301
-/psychic-reading/    /psychic-reading.html    301
 /psychic-readings-what-can-a-psychic-really-tell-you/    /psychic-readings-what-can-a-psychic-really-tell-you.html    301
 /psychic-self-defense-in-real-life/    /psychic-self-defense-in-real-life.html    301
 /psychics/    /psychics.html    301
@@ -452,7 +451,7 @@
 /avada_portfolio/psychic-mediums-how-psychic-mediums-contact-the-spirit-world-and-communicate-with-our-loved-ones/    /psychic-mediums-how-psychic-mediums-contact-the-spirit-world-and-communicate-with-our-loved-ones.html    301
 /avada_portfolio/psychic-phenomenon-gifts-powers-or-abilities/    /psychic-phenomenon-gifts-powers-or-abilities.html    301
 /avada_portfolio/psychic-predictions-when-you-just-should-not-know/    /psychic-predictions-when-you-just-should-not-know.html    301
-/avada_portfolio/psychic-reading/    /psychic-reading.html    301
+/avada_portfolio/psychic-reading/    /psychic-reading    301
 /avada_portfolio/psychic-readings/    /psychic-readings.html    301
 /avada_portfolio/psychic-readings-and-the-mystery-of-who-really-is-your-soul-mate/    /psychic-readings-and-the-mystery-of-who-really-is-your-soul-mate.html    301
 /avada_portfolio/psychic-readings-and-the-profound-wisdom-of-spiritual-guidance-and-the-trusted-advisor/    /psychic-readings-and-the-profound-wisdom-of-spiritual-guidance-and-the-trusted-advisor.html    301
@@ -673,7 +672,7 @@
 /article/psychic-mediums-how-psychic-mediums-contact-the-spirit-world-and-communicate-with-our-loved-ones/    /psychic-mediums-how-psychic-mediums-contact-the-spirit-world-and-communicate-with-our-loved-ones.html    301
 /article/psychic-phenomenon-gifts-powers-or-abilities/    /psychic-phenomenon-gifts-powers-or-abilities.html    301
 /article/psychic-predictions-when-you-just-should-not-know/    /psychic-predictions-when-you-just-should-not-know.html    301
-/article/psychic-reading/    /psychic-reading.html    301
+/article/psychic-reading/    /psychic-reading    301
 /article/psychic-readings/    /psychic-readings.html    301
 /article/psychic-readings-and-the-mystery-of-who-really-is-your-soul-mate/    /psychic-readings-and-the-mystery-of-who-really-is-your-soul-mate.html    301
 /article/psychic-readings-and-the-profound-wisdom-of-spiritual-guidance-and-the-trusted-advisor/    /psychic-readings-and-the-profound-wisdom-of-spiritual-guidance-and-the-trusted-advisor.html    301
