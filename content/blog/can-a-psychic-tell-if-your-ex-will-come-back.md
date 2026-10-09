@@ -5,7 +5,7 @@ description: Can a psychic tell if your ex will come back? Cherry Sage explains 
 date: 2026-10-09
 category: Psychic Readings
 author: Cherry Sage
-image: ''
+image: /assets/blog/can-a-psychic-tell-if-your-ex-will-come-back.jpg
 related: true
 hidden: false
 ---
