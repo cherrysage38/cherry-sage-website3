@@ -5,7 +5,7 @@ description: Can a psychic bring back your lover? Cherry Sage explains the diffe
 date: 2023-05-11
 category: Gypsy Scams
 author: Cherry Sage
-image: /assets/blog/psychic-power-min-768x432.jpeg
+image: /assets/blog/psychic-power-bring-lover-back.jpg
 related: true
 hidden: false
 ---
