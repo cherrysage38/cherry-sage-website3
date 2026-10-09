@@ -29,12 +29,10 @@ blocks:
     heading: ''
     body: |-
       A love reading with me isn't about being told what you want to hear. It's about someone who has genuinely done this a long time, telling you the truth with care, so you can make your own decision with a clear head. [See how numerology reads compatibility](/compatibility) if you want the numbers side of it too.
-
-      ## Explore your relationship questions
-
-      - [Can a psychic bring your lover back?](/do-psychics-really-have-the-power-to-bring-a-lover-back-into-your-life) — The difference between seeing a possible reunion and having the power to make someone return.
-      - [Can a psychic tell if your ex will come back?](/can-a-psychic-tell-if-your-ex-will-come-back) — What a reading can reveal about feelings, communication and the possibility of reconciliation.
     boxed: false
+  - type: pillar_posts
+    heading: Explore your relationship questions
+    intro: ''
   - type: cta_text
     heading: Ready for a straight answer?
     body: Book your reading and let's talk about what's really going on.

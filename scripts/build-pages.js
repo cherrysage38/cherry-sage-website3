@@ -56,7 +56,21 @@ function renderBox(block) {
   return `<div class="blk-box reveal" style="background:var(--cream);border:1px solid var(--gold);border-radius:var(--r-lg,16px);padding:clamp(1.2rem,3vw,1.7rem) clamp(1.2rem,3vw,1.9rem)">${heading}<div class="blk-prose" style="max-width:none">${mdBlock(block.body)}</div></div>`;
 }
 
-function renderBlocks(blocks) {
+// "Guide posts" section on a pillar page: lists every blog post whose front matter says
+// pillar: <this page's slug>, newest first, so a new post shows up here without editing the page.
+function pillarPosts(pageSlug) {
+  const dir = join(ROOT, "content", "blog");
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir).filter((f) => f.endsWith(".md")).map((f) => {
+    let data = {};
+    const m = readFileSync(join(dir, f), "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    try { data = (m && loadYaml(m[1], { schema: yaml.CORE_SCHEMA })) || {}; } catch (e) { console.warn(`[build-pages] ${f}: ${e.message}`); }
+    return { slug: f.replace(/\.md$/, ""), ...data };
+  }).filter((p) => String(p.pillar || "") === pageSlug && String(p.hidden) !== "true" && p.title)
+    .sort((a, b) => String(b.date).localeCompare(String(a.date)));
+}
+
+function renderBlocks(blocks, pageSlug) {
   const out = [];
   let run = [];
   const flush = () => {
@@ -67,13 +81,13 @@ function renderBlocks(blocks) {
   blocks.forEach((b, i) => {
     if (b && b.type === "text" && b.boxed) { run.push(b); return; }
     flush();
-    out.push(renderBlock(b, i));
+    out.push(renderBlock(b, i, pageSlug));
   });
   flush();
   return out.join("\n");
 }
 
-function renderBlock(block, i) {
+function renderBlock(block, i, pageSlug) {
   switch (block.type) {
     case "text": {
       const heading = block.heading
@@ -120,6 +134,13 @@ function renderBlock(block, i) {
         .map((it) => `<div class="blk-faq-item"><h3>${esc(it.question)}</h3>${mdBlock(it.answer)}</div>`)
         .join("");
       return `<section class="section"><div class="wrap"><div class="section-head reveal"><h2>${esc(block.heading || "Frequently Asked Questions")}</h2></div><div class="reveal">${items}</div></div></section>`;
+    }
+    case "pillar_posts": {
+      const posts = pillarPosts(pageSlug);
+      if (!posts.length) return "";
+      const intro = block.intro ? `<p style="color:var(--ink-soft)">${esc(block.intro)}</p>` : "";
+      const items = posts.map((p) => `<li><a href="/${esc(p.slug)}"><strong>${esc(p.title)}</strong></a>${p.description ? ` — ${esc(p.description)}` : ""}</li>`).join("");
+      return `<section class="section"><div class="wrap"><div class="section-head reveal"><h2>${esc(block.heading || "Explore your questions")}</h2></div><div class="blk-prose reveal">${intro}<ul>${items}</ul></div></div></section>`;
     }
     case "gallery": {
       const heading = block.heading ? `<div class="section-head reveal"><h2>${esc(block.heading)}</h2></div>` : "";
@@ -272,7 +293,7 @@ function main() {
     }
 
     const isNew = !existsSync(outPath);
-    const blocksHtml = renderBlocks(data.blocks || []);
+    const blocksHtml = renderBlocks(data.blocks || [], slug);
 
     const page = renderPage({
       slug,
