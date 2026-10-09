@@ -14,6 +14,7 @@ pages=sorted(os.path.basename(p) for p in glob.glob(os.path.join(ROOT,"*.html"))
 urls=[]
 for pg in pages:
     loc = B.SITE_URL + ("/" if pg=="index.html" else "/"+pg)
+    if pg=="psychic-reading.html": loc = B.SITE_URL + "/psychic-reading"  # canonical address, no .html or trailing slash
     pr = PRIORITY.get(pg,"0.5")
     urls.append(f"  <url><loc>{loc}</loc><lastmod>{today}</lastmod><changefreq>weekly</changefreq><priority>{pr}</priority></url>")
 xml='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"\n".join(urls)+"\n</urlset>\n"
