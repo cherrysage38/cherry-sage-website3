@@ -78,7 +78,41 @@ function plainExcerpt(md, len = 140) {
   return text.length > len ? text.slice(0, len).replace(/\s+\S*$/, "") + "…" : text;
 }
 
-function renderPage({ slug, title, category, author, image, date, bodyHtml, description, seoTitle, relatedHtml }) {
+// Pillar pages: a post with pillar: <page-slug> in its front matter belongs to that page's guide
+// (e.g. pillar: love-and-relationships). The post links back to the page, and the page lists its
+// posts by itself (see the pillar_posts section in build-pages.js).
+const PAGES_DIR = join(ROOT, "content", "pages");
+function pillarTitle(pillar) {
+  const f = join(PAGES_DIR, `${pillar}.md`);
+  if (!existsSync(f)) return "";
+  return parseFrontMatter(readFileSync(f, "utf8")).data.title || "";
+}
+function pillarBox(pillar) {
+  if (!pillar) return "";
+  const title = pillarTitle(pillar);
+  if (!title) { console.warn(`[build-blog] pillar "${pillar}" has no page in content/pages; no guide link added.`); return ""; }
+  return `<aside class="post-pillar reveal" style="max-width:760px;margin:2rem auto 0;background:var(--cream);border:1px solid var(--gold);border-radius:var(--r-lg,16px);padding:1.1rem 1.4rem"><p style="margin:0">This post is part of my guide to <a href="/${esc(pillar)}"><strong>${esc(title)}</strong></a>. Start there for more on love, relationships and what a reading can show you.</p></aside>`;
+}
+
+// Answer-engine markup: every "## Question?" heading in a pillar post, paired with the first
+// paragraph under it, becomes a question/answer pair search engines and AI assistants can quote.
+function faqSchema(body) {
+  const pairs = [];
+  const re = /^##\s+(.+\?)\s*$/gm;
+  let m;
+  while ((m = re.exec(body))) {
+    const rest = body.slice(m.index + m[0].length);
+    const next = rest.search(/^#{1,6}\s/m);
+    const section = (next < 0 ? rest : rest.slice(0, next)).trim();
+    const first = section.split(/\n\s*\n/)[0] || "";
+    const answer = plainExcerpt(first, 600);
+    if (answer) pairs.push({ "@type": "Question", name: m[1].replace(/[*_`]/g, "").trim(), acceptedAnswer: { "@type": "Answer", text: answer } });
+  }
+  if (pairs.length < 2) return "";
+  return `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: pairs }).replace(/</g, "\\u003c")}</script>`;
+}
+
+function renderPage({ slug, title, category, author, image, date, bodyHtml, description, seoTitle, relatedHtml, pillarHtml = "", faqHtml = "" }) {
   const url = `https://cherrysage.com/${slug}.html`;
   const pageTitle = seoTitle || `${title} — Cherry Sage`;
   const byline = author ? `By ${esc(author)} · ` : "";
@@ -118,7 +152,7 @@ ${GENERATED_MARKER}
 <link rel="icon" href="assets/icon-32.png?v=2" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/icon-180.png?v=2">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": ["ProfessionalService", "Organization"], "@id": "https://cherrysage.com/#org", "name": "Cherry Sage", "url": "https://cherrysage.com/", "description": "Honest, accurate psychic, tarot, and numerology readings by phone since 1999.", "logo": "https://cherrysage.com/assets/logo.png", "image": "https://cherrysage.com/assets/bev_portrait.jpg", "founder": {"@type": "Person", "name": "Cherry Sage"}, "foundingDate": "1999", "areaServed": "Worldwide", "priceRange": "$$", "sameAs": ["https://cherrysage.com"], "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "390", "bestRating": "5"}}, {"@type": "WebSite", "@id": "https://cherrysage.com/#website", "url": "https://cherrysage.com/", "name": "Cherry Sage", "publisher": {"@id": "https://cherrysage.com/#org"}, "potentialAction": {"@type": "SearchAction", "target": "https://cherrysage.com/blog.html?q={search_term_string}", "query-input": "required name=search_term_string"}}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "${jstr(title)}", "description": "${jstr(description)}", "image": ["https://cherrysage.com${image}"], "datePublished": "${date}T12:00:00", "dateModified": "${date}T12:00:00", "articleSection": "${jstr(category)}", "author": {"@type": "Person", "name": "${jstr(author || "Cherry Sage")}"}, "publisher": {"@type": "Organization", "name": "Cherry Sage", "logo": {"@type": "ImageObject", "url": "https://cherrysage.com/assets/logo.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "${url}"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cherrysage.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://cherrysage.com/blog.html"}, {"@type": "ListItem", "position": 3, "name": "${jstr(title)}"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "${jstr(title)}", "description": "${jstr(description)}", "image": ["https://cherrysage.com${image}"], "datePublished": "${date}T12:00:00", "dateModified": "${date}T12:00:00", "articleSection": "${jstr(category)}", "author": {"@type": "Person", "name": "${jstr(author || "Cherry Sage")}"}, "publisher": {"@type": "Organization", "name": "Cherry Sage", "logo": {"@type": "ImageObject", "url": "https://cherrysage.com/assets/logo.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "${url}"}}</script>${faqHtml}<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cherrysage.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://cherrysage.com/blog.html"}, {"@type": "ListItem", "position": 3, "name": "${jstr(title)}"}]}</script>
 </head>
 <body>
 <header class="site-header">
@@ -126,7 +160,7 @@ ${GENERATED_MARKER}
     <a class="brand" href="/" aria-label="Cherry Sage home"><img src="assets/logo-horizontal.png" alt="Cherry Sage — Psychic, Tarot, Numerology"></a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
     <nav class="primary-nav" id="primaryNav" aria-label="Primary">
-      <ul><li class="has-dropdown"><a href="/meet">About</a><ul class="dropdown"><li><a href="/meet">Meet Cherry</a></li><li><a href="/how-it-works">How It Works</a></li><li><a href="/faqs">FAQs</a></li></ul></li><li class="has-dropdown"><a href="/psychic-reading">Readings</a><ul class="dropdown"><li><a href="/psychic-reading">Psychic Reading</a></li><li><a href="/top-rated-psychic-readings">Top Rated Psychic Readings</a></li><li><a href="/real-and-genuine-psychic-readings">Real and Genuine Psychic Readings</a></li><li><a href="/specialized-psychic-readings">Specialized Psychic Readings</a></li><li><a href="/trustworthy-accurate-psychic-readings">Trustworthy Accurate Psychic Readings</a></li><li><a href="/tarot">Tarot Card Reading</a></li><li><a href="/compatibility">Compatibility</a></li><li><a href="/book-appointment">Book a Reading</a></li></ul></li><li class="has-dropdown"><a href="/numerology">Numerology</a><ul class="dropdown"><li><a href="/free-karmic-reading">Free Numerology Reading</a></li><li><a href="/life-path-number-meanings">Life Path Number Meanings</a></li><li><a href="/basic-number-meanings">Basic Number Meanings</a></li><li><a href="/expression-number">Expression Number</a></li><li><a href="/soul-urge-number">Soul Urge Number</a></li><li><a href="/birthday-number">Birthday Number</a></li><li><a href="/karmic-lessons">Karmic Lessons</a></li><li><a href="/karmic-debts">Karmic Debts</a></li></ul></li><li class="has-dropdown"><a href="/testimonials">Reviews</a><ul class="dropdown"><li><a href="/feedback">Leave Feedback</a></li></ul></li><li class="has-dropdown"><a href="/blog">Blog</a><ul class="dropdown"><li><a href="/articles">Guest Articles</a></li></ul></li><li class="has-dropdown"><a href="/tarot-pull">Free Tools</a><ul class="dropdown"><li><a href="/tarot-pull">Free Tarot Pull</a></li><li><a href="/tarot-spread">Free Tarot Spread</a></li><li><a href="/life-path">Life Path Calculator</a></li><li><a href="/horoscope">Daily Horoscope</a></li></ul></li><li><a href="/shop">Shop</a></li><li><a href="/contact">Contact</a></li><li><a href="/account" class="nav-utility">My Account</a></li></ul>
+      <ul><li class="has-dropdown"><a href="/meet">About</a><ul class="dropdown"><li><a href="/meet">Meet Cherry</a></li><li><a href="/how-it-works">How It Works</a></li><li><a href="/faqs">FAQs</a></li></ul></li><li class="has-dropdown"><a href="/psychic-reading">Readings</a><ul class="dropdown"><li><a href="/psychic-reading">Psychic Reading</a></li><li><a href="/love-and-relationships">Love &amp; Relationship Readings</a></li><li><a href="/top-rated-psychic-readings">Top Rated Psychic Readings</a></li><li><a href="/real-and-genuine-psychic-readings">Real and Genuine Psychic Readings</a></li><li><a href="/specialized-psychic-readings">Specialized Psychic Readings</a></li><li><a href="/trustworthy-accurate-psychic-readings">Trustworthy Accurate Psychic Readings</a></li><li><a href="/tarot">Tarot Card Reading</a></li><li><a href="/compatibility">Compatibility</a></li><li><a href="/book-appointment">Book a Reading</a></li></ul></li><li class="has-dropdown"><a href="/numerology">Numerology</a><ul class="dropdown"><li><a href="/free-karmic-reading">Free Numerology Reading</a></li><li><a href="/life-path-number-meanings">Life Path Number Meanings</a></li><li><a href="/basic-number-meanings">Basic Number Meanings</a></li><li><a href="/expression-number">Expression Number</a></li><li><a href="/soul-urge-number">Soul Urge Number</a></li><li><a href="/birthday-number">Birthday Number</a></li><li><a href="/karmic-lessons">Karmic Lessons</a></li><li><a href="/karmic-debts">Karmic Debts</a></li></ul></li><li class="has-dropdown"><a href="/testimonials">Reviews</a><ul class="dropdown"><li><a href="/feedback">Leave Feedback</a></li></ul></li><li class="has-dropdown"><a href="/blog">Blog</a><ul class="dropdown"><li><a href="/articles">Guest Articles</a></li></ul></li><li class="has-dropdown"><a href="/tarot-pull">Free Tools</a><ul class="dropdown"><li><a href="/tarot-pull">Free Tarot Pull</a></li><li><a href="/tarot-spread">Free Tarot Spread</a></li><li><a href="/life-path">Life Path Calculator</a></li><li><a href="/horoscope">Daily Horoscope</a></li></ul></li><li><a href="/shop">Shop</a></li><li><a href="/contact">Contact</a></li><li><a href="/account" class="nav-utility">My Account</a></li></ul>
       <a class="btn btn-primary" href="/book-appointment">Book a Reading</a>
     </nav>
   </div>
@@ -136,7 +170,7 @@ ${GENERATED_MARKER}
 <section class="section"><div class="wrap post-wrap">
   <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="bc-sep">›</span><a href='/blog'>Blog</a><span class="bc-sep">›</span><span aria-current="page">${esc(category)}</span></nav>
   <img class="post-hero-img" src="${image}" alt="${esc(title)}">
-  <article class="post-content reveal">${bodyHtml}</article>
+  <article class="post-content reveal">${bodyHtml}</article>${pillarHtml}
   <div class="post-cta reveal"><p class="eyebrow">Ready for the real thing?</p><h3>Talk it through with Cherry</h3><p>An honest reading goes far beyond an article. First-timers get 10 minutes for $24.</p><a class='btn btn-primary' href='/book-appointment'>Book a Reading</a></div>
 </div></section>
 ${relatedHtml}<section class="section cs-comments"><div class="wrap"><div id="csComments" data-post-title="${esc(title)}"></div></div></section>
@@ -361,7 +395,7 @@ function main() {
     const bodyHtml = mdBlock(body);
     const description = data.description || plainExcerpt(body);
 
-    const page = renderPage({ slug, title: data.title, category: data.category, author: data.author, image: data.image, date: data.date, bodyHtml, description, seoTitle: data.seo_title, relatedHtml: relatedSection({ slug, category: data.category, related: data.related }, all) });
+    const page = renderPage({ slug, title: data.title, category: data.category, author: data.author, image: data.image, date: data.date, bodyHtml, description, seoTitle: data.seo_title, relatedHtml: relatedSection({ slug, category: data.category, related: data.related }, all), pillarHtml: pillarBox(data.pillar), faqHtml: data.pillar ? faqSchema(body) : "" });
     writeFileSync(outPath, page);
     changed = true;
 

@@ -7,6 +7,7 @@ category: Psychic Readings
 author: Cherry Sage
 image: /assets/blog/can-a-psychic-tell-if-your-ex-will-come-back.jpg
 related: true
+pillar: love-and-relationships
 hidden: false
 ---
 

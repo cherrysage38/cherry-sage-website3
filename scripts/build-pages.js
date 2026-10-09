@@ -56,7 +56,21 @@ function renderBox(block) {
   return `<div class="blk-box reveal" style="background:var(--cream);border:1px solid var(--gold);border-radius:var(--r-lg,16px);padding:clamp(1.2rem,3vw,1.7rem) clamp(1.2rem,3vw,1.9rem)">${heading}<div class="blk-prose" style="max-width:none">${mdBlock(block.body)}</div></div>`;
 }
 
-function renderBlocks(blocks) {
+// "Guide posts" section on a pillar page: lists every blog post whose front matter says
+// pillar: <this page's slug>, newest first, so a new post shows up here without editing the page.
+function pillarPosts(pageSlug) {
+  const dir = join(ROOT, "content", "blog");
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir).filter((f) => f.endsWith(".md")).map((f) => {
+    let data = {};
+    const m = readFileSync(join(dir, f), "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    try { data = (m && loadYaml(m[1], { schema: yaml.CORE_SCHEMA })) || {}; } catch (e) { console.warn(`[build-pages] ${f}: ${e.message}`); }
+    return { slug: f.replace(/\.md$/, ""), ...data };
+  }).filter((p) => String(p.pillar || "") === pageSlug && String(p.hidden) !== "true" && p.title)
+    .sort((a, b) => String(b.date).localeCompare(String(a.date)));
+}
+
+function renderBlocks(blocks, pageSlug) {
   const out = [];
   let run = [];
   const flush = () => {
@@ -67,13 +81,13 @@ function renderBlocks(blocks) {
   blocks.forEach((b, i) => {
     if (b && b.type === "text" && b.boxed) { run.push(b); return; }
     flush();
-    out.push(renderBlock(b, i));
+    out.push(renderBlock(b, i, pageSlug));
   });
   flush();
   return out.join("\n");
 }
 
-function renderBlock(block, i) {
+function renderBlock(block, i, pageSlug) {
   switch (block.type) {
     case "text": {
       const heading = block.heading
@@ -120,6 +134,13 @@ function renderBlock(block, i) {
         .map((it) => `<div class="blk-faq-item"><h3>${esc(it.question)}</h3>${mdBlock(it.answer)}</div>`)
         .join("");
       return `<section class="section"><div class="wrap"><div class="section-head reveal"><h2>${esc(block.heading || "Frequently Asked Questions")}</h2></div><div class="reveal">${items}</div></div></section>`;
+    }
+    case "pillar_posts": {
+      const posts = pillarPosts(pageSlug);
+      if (!posts.length) return "";
+      const intro = block.intro ? `<p style="color:var(--ink-soft)">${esc(block.intro)}</p>` : "";
+      const items = posts.map((p) => `<li><a href="/${esc(p.slug)}"><strong>${esc(p.title)}</strong></a>${p.description ? ` — ${esc(p.description)}` : ""}</li>`).join("");
+      return `<section class="section"><div class="wrap"><div class="section-head reveal"><h2>${esc(block.heading || "Explore your questions")}</h2></div><div class="blk-prose reveal">${intro}<ul>${items}</ul></div></div></section>`;
     }
     case "gallery": {
       const heading = block.heading ? `<div class="section-head reveal"><h2>${esc(block.heading)}</h2></div>` : "";
@@ -203,7 +224,7 @@ ${GENERATED_MARKER}
     <a class="brand" href="/" aria-label="Cherry Sage home"><img src="assets/logo-horizontal.png" alt="Cherry Sage — Psychic, Tarot, Numerology"></a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
     <nav class="primary-nav" id="primaryNav" aria-label="Primary">
-      <ul><li class="has-dropdown"><a href="/meet">About</a><ul class="dropdown"><li><a href="/meet">Meet Cherry</a></li><li><a href="/how-it-works">How It Works</a></li><li><a href="/faqs">FAQs</a></li></ul></li><li class="has-dropdown"><a href="/psychic-reading">Readings</a><ul class="dropdown"><li><a href="/psychic-reading">Psychic Reading</a></li><li><a href="/top-rated-psychic-readings">Top Rated Psychic Readings</a></li><li><a href="/real-and-genuine-psychic-readings">Real and Genuine Psychic Readings</a></li><li><a href="/specialized-psychic-readings">Specialized Psychic Readings</a></li><li><a href="/trustworthy-accurate-psychic-readings">Trustworthy Accurate Psychic Readings</a></li><li><a href="/tarot">Tarot Card Reading</a></li><li><a href="/compatibility">Compatibility</a></li><li><a href="/book-appointment">Book a Reading</a></li></ul></li><li class="has-dropdown"><a href="/numerology">Numerology</a><ul class="dropdown"><li><a href="/free-karmic-reading">Free Numerology Reading</a></li><li><a href="/life-path-number-meanings">Life Path Number Meanings</a></li><li><a href="/basic-number-meanings">Basic Number Meanings</a></li><li><a href="/expression-number">Expression Number</a></li><li><a href="/soul-urge-number">Soul Urge Number</a></li><li><a href="/birthday-number">Birthday Number</a></li><li><a href="/karmic-lessons">Karmic Lessons</a></li><li><a href="/karmic-debts">Karmic Debts</a></li></ul></li><li class="has-dropdown"><a href="/testimonials">Reviews</a><ul class="dropdown"><li><a href="/feedback">Leave Feedback</a></li></ul></li><li class="has-dropdown"><a href="/blog">Blog</a><ul class="dropdown"><li><a href="/articles">Guest Articles</a></li></ul></li><li class="has-dropdown"><a href="/tarot-pull">Free Tools</a><ul class="dropdown"><li><a href="/tarot-pull">Free Tarot Pull</a></li><li><a href="/tarot-spread">Free Tarot Spread</a></li><li><a href="/life-path">Life Path Calculator</a></li><li><a href="/horoscope">Daily Horoscope</a></li></ul></li><li><a href="/shop">Shop</a></li><li><a href="/contact">Contact</a></li><li><a href="/account" class="nav-utility">My Account</a></li></ul>
+      <ul><li class="has-dropdown"><a href="/meet">About</a><ul class="dropdown"><li><a href="/meet">Meet Cherry</a></li><li><a href="/how-it-works">How It Works</a></li><li><a href="/faqs">FAQs</a></li></ul></li><li class="has-dropdown"><a href="/psychic-reading">Readings</a><ul class="dropdown"><li><a href="/psychic-reading">Psychic Reading</a></li><li><a href="/love-and-relationships">Love &amp; Relationship Readings</a></li><li><a href="/top-rated-psychic-readings">Top Rated Psychic Readings</a></li><li><a href="/real-and-genuine-psychic-readings">Real and Genuine Psychic Readings</a></li><li><a href="/specialized-psychic-readings">Specialized Psychic Readings</a></li><li><a href="/trustworthy-accurate-psychic-readings">Trustworthy Accurate Psychic Readings</a></li><li><a href="/tarot">Tarot Card Reading</a></li><li><a href="/compatibility">Compatibility</a></li><li><a href="/book-appointment">Book a Reading</a></li></ul></li><li class="has-dropdown"><a href="/numerology">Numerology</a><ul class="dropdown"><li><a href="/free-karmic-reading">Free Numerology Reading</a></li><li><a href="/life-path-number-meanings">Life Path Number Meanings</a></li><li><a href="/basic-number-meanings">Basic Number Meanings</a></li><li><a href="/expression-number">Expression Number</a></li><li><a href="/soul-urge-number">Soul Urge Number</a></li><li><a href="/birthday-number">Birthday Number</a></li><li><a href="/karmic-lessons">Karmic Lessons</a></li><li><a href="/karmic-debts">Karmic Debts</a></li></ul></li><li class="has-dropdown"><a href="/testimonials">Reviews</a><ul class="dropdown"><li><a href="/feedback">Leave Feedback</a></li></ul></li><li class="has-dropdown"><a href="/blog">Blog</a><ul class="dropdown"><li><a href="/articles">Guest Articles</a></li></ul></li><li class="has-dropdown"><a href="/tarot-pull">Free Tools</a><ul class="dropdown"><li><a href="/tarot-pull">Free Tarot Pull</a></li><li><a href="/tarot-spread">Free Tarot Spread</a></li><li><a href="/life-path">Life Path Calculator</a></li><li><a href="/horoscope">Daily Horoscope</a></li></ul></li><li><a href="/shop">Shop</a></li><li><a href="/contact">Contact</a></li><li><a href="/account" class="nav-utility">My Account</a></li></ul>
       <a class="btn btn-primary" href="/book-appointment">Book a Reading</a>
     </nav>
   </div>
@@ -272,7 +293,7 @@ function main() {
     }
 
     const isNew = !existsSync(outPath);
-    const blocksHtml = renderBlocks(data.blocks || []);
+    const blocksHtml = renderBlocks(data.blocks || [], slug);
 
     const page = renderPage({
       slug,
