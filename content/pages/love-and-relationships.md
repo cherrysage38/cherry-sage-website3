@@ -1,28 +1,43 @@
 ---
-title: "Love and Relationship Readings"
-description: "Honest guidance on love, relationships, and reconciliation, from a psychic reader who's been doing this since 1999."
-hero_eyebrow: "Matters of the heart"
-hero_lede: "Whatever is on your heart about love, you deserve a straight, caring answer, not a script."
+title: Love and Relationship Readings
+description: Honest guidance on love, relationships, and reconciliation, from a psychic reader who's been doing this since 1999.
+hero_eyebrow: Matters of the heart
+hero_lede: Whatever is on your heart about love, you deserve a straight, caring answer, not a script.
 blocks:
-  - type: "text"
+  - type: text
+    heading: ''
     body: "Love is the question I hear most, in every shape it comes in. Not sure where you stand with someone. Wondering if a relationship that ended is really over. Trying to tell the difference between patience and denial. I've sat with all of it for over two decades, and I read it the same way every time: honestly, and with your actual wellbeing in mind, never just what you want to hear."
-  - type: "feature_cards"
-    heading: "Questions I get asked most"
-    columns: "2"
+    boxed: false
+  - type: feature_cards
+    heading: Questions I get asked most
+    eyebrow: ''
+    columns: '2'
     cards:
-      - title: "Is this relationship right for me?"
-        text: "I read the real dynamic between you two, not just the good days, so you can see it clearly and decide for yourself."
-      - title: "Will we get back together?"
-        text: "A reconciliation reading looks honestly at both people's energy and intentions. Sometimes the answer is yes. Sometimes it's that you deserve better."
-      - title: "When will I meet someone?"
-        text: "Timing readings aren't a guarantee, but they can show you what's actually in motion, and what you can do now instead of waiting."
-      - title: "Why do I keep attracting the same pattern?"
-        text: "Numerology and a straight reading of your history together can show the pattern you keep repeating, and where it started."
-  - type: "text"
-    body: "A love reading with me isn't about being told what you want to hear. It's about someone who has genuinely done this a long time, telling you the truth with care, so you can make your own decision with a clear head. [See how numerology reads compatibility](/compatibility) if you want the numbers side of it too."
-  - type: "cta_text"
-    heading: "Ready for a straight answer?"
-    body: "Book your reading and let's talk about what's really going on."
-    button_label: "Book a Reading"
-    button_link: "/book-appointment"
+      - tag: ''
+        title: Is this relationship right for me?
+        text: I read the real dynamic between you two, not just the good days, so you can see it clearly and decide for yourself.
+      - tag: ''
+        title: Will we get back together?
+        text: A reconciliation reading looks honestly at both people's energy and intentions. Sometimes the answer is yes. Sometimes it's that you deserve better.
+      - tag: ''
+        title: When will I meet someone?
+        text: Timing readings aren't a guarantee, but they can show you what's actually in motion, and what you can do now instead of waiting.
+      - tag: ''
+        title: Why do I keep attracting the same pattern?
+        text: Numerology and a straight reading of your history together can show the pattern you keep repeating, and where it started.
+  - type: text
+    heading: ''
+    body: |-
+      A love reading with me isn't about being told what you want to hear. It's about someone who has genuinely done this a long time, telling you the truth with care, so you can make your own decision with a clear head. [See how numerology reads compatibility](/compatibility) if you want the numbers side of it too.
+
+      ## Explore your relationship questions
+
+      - [Can a psychic bring your lover back?](/do-psychics-really-have-the-power-to-bring-a-lover-back-into-your-life) — The difference between seeing a possible reunion and having the power to make someone return.
+      - [Can a psychic tell if your ex will come back?](/can-a-psychic-tell-if-your-ex-will-come-back) — What a reading can reveal about feelings, communication and the possibility of reconciliation.
+    boxed: false
+  - type: cta_text
+    heading: Ready for a straight answer?
+    body: Book your reading and let's talk about what's really going on.
+    button_label: Book a Reading
+    button_link: /book-appointment
 ---
