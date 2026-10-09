@@ -89,14 +89,14 @@ free:
       link: /horoscope
 how:
   eyebrow: How it works
-  heading: Book and pay in one pass
+  heading: Book in three simple steps
   steps:
-    - title: Check availability
-      text: Watch the status light above, or check open times directly.
-    - title: Pick your time & minutes
-      text: Choose your day, time, and reading length in the same flow.
-    - title: Pay & you're booked
-      text: Pay right there, no separate registration step and no checking out twice.
+    - title: Log in or create your free account
+      text: It takes a minute, and your appointments are kept together in My Account.
+    - title: Pick your reading & time
+      text: Choose your time zone, your reading, and one of Cherry's open times.
+    - title: Pay & Cherry confirms
+      text: Pay securely by card. Cherry confirms your time by email or phone.
   button_label: See the full how-it-works guide →
   button_link: /how-it-works
   intro: ''

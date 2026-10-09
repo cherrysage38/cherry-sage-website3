@@ -117,7 +117,7 @@ function renderBlock(block, i) {
     }
     case "faq": {
       const items = (block.items || [])
-        .map((it) => `<div class="blk-faq-item"><h3>${esc(it.question)}</h3><p>${esc(it.answer)}</p></div>`)
+        .map((it) => `<div class="blk-faq-item"><h3>${esc(it.question)}</h3>${mdBlock(it.answer)}</div>`)
         .join("");
       return `<section class="section"><div class="wrap"><div class="section-head reveal"><h2>${esc(block.heading || "Frequently Asked Questions")}</h2></div><div class="reveal">${items}</div></div></section>`;
     }
@@ -218,7 +218,7 @@ ${renderFooter(FOOTER_DATA)}
   <span class="cw-status" title="Cherry is Online"><span class="status-dot"></span>Chat with Ivy</span>
   <span class="cw-bubble"><img src="assets/mark-clean.png" alt=""></span>
 </div>
-<script src="app.js?v=12"></script>
+<script src="app.js?v=13"></script>
 <script src="embers.js?v=4"></script>
 <script src="magic.js?v=2"></script>
 <script src="funnel.js?v=12"></script>

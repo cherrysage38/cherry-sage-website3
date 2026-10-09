@@ -347,6 +347,31 @@ window.CSCart = (function(){
       el.onmouseleave=function(){ el.style.transform='none'; };
       document.body.appendChild(el);
     }
+    // 2026-10-09: the floating cart could sit on top of the hero's Book a Reading button on phones.
+    // It now fades out of the way whenever any button or link is underneath it.
+    if(!el._dodge){
+      el._dodge = true;
+      el.style.transition = 'transform .15s ease, opacity .2s ease';
+      var pending = false;
+      var dodge = function(){
+        pending = false;
+        var w = document.getElementById('csCartWidget'); if(!w) return;
+        w.style.visibility = 'hidden';
+        var r = w.getBoundingClientRect(), hit = false;
+        var pts = [[r.left+4,r.top+4],[r.right-4,r.top+4],[r.left+4,r.bottom-4],[r.right-4,r.bottom-4],[(r.left+r.right)/2,(r.top+r.bottom)/2]];
+        for(var i=0;i<pts.length && !hit;i++){
+          var under = document.elementFromPoint(pts[i][0], pts[i][1]);
+          if(under && under.closest && under.closest('a,button,input,select,textarea,.btn')) hit = true;
+        }
+        w.style.visibility = '';
+        w.style.opacity = hit ? '0' : '1';
+        w.style.pointerEvents = hit ? 'none' : '';
+      };
+      var schedule = function(){ if(!pending){ pending = true; requestAnimationFrame(dodge); } };
+      window.addEventListener('scroll', schedule, {passive:true});
+      window.addEventListener('resize', schedule);
+      setTimeout(schedule, 50);
+    }
     var money = '$'+(total()/100).toFixed(2);
     // Was &#128715; (couch and lamp), meant to be a cart -- flagged in Bev's site review 2026-09-18.
     el.innerHTML = '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.2L21 8H6"/></svg> Cart ('+items.length+') &middot; '+money;
