@@ -62,7 +62,7 @@
   <p>I have been reading and writing on the spiritual path since 1999. I add new reflections here often, so come back and see what is new.</p>
   <a class='card-link' href='/meet'>Meet Cherry →</a></div>
 </div>
-<div class="blog-toolbar reveal"><div class="bchips"><button class="bchip on" data-f="all">All topics</button><button class="bchip" data-f="Psychic Readings">Psychic Readings</button><button class="bchip" data-f="Numerology">Numerology</button><button class="bchip" data-f="Other World">Other World</button><button class="bchip" data-f="Predicting Dates or Timelines">Predicting Dates or Timelines</button><button class="bchip" data-f="Gypsy Scams">Gypsy Scams</button><button class="bchip" data-f="Tarot Card Readings">Tarot Card Readings</button><button class="bchip" data-f="Online Psychic Readings">Online Psychic Readings</button><button class="bchip" data-f="Karma &amp; Past Lives">Karma & Past Lives</button></div><span id="blogCount" class="blog-count">42 posts</span></div>
+<div class="blog-toolbar reveal"><div class="bchips"><button class="bchip on" data-f="all">All topics</button><button class="bchip" data-f="Psychic Readings">Psychic Readings</button><button class="bchip" data-f="Numerology">Numerology</button><button class="bchip" data-f="Other World">Other World</button><button class="bchip" data-f="Predicting Dates or Timelines">Predicting Dates or Timelines</button><button class="bchip" data-f="Gypsy Scams">Gypsy Scams</button><button class="bchip" data-f="Tarot Card Readings">Tarot Card Readings</button><button class="bchip" data-f="Online Psychic Readings">Online Psychic Readings</button><button class="bchip" data-f="Karma &amp; Past Lives">Karma & Past Lives</button></div><div class="blog-search"><input type="search" id="blogSearch" placeholder="Search the blog" aria-label="Search the blog" autocomplete="off"><span id="blogCount" class="blog-count">42 posts</span></div></div>
 <div class="blog-layout">
   <div class="blog-main"><div class="blog-cards"><a class='bcard reveal' data-cat='Psychic Readings' data-ym='2026-09' href='/can-too-many-psychic-readings-give-you-the-wrong-future'>
   <img class="bc-img" src="/assets/img/1805b4c12860.png" alt="" loading="lazy" decoding="async">
@@ -200,14 +200,33 @@
     <div class="side-box side-cta reveal"><h4>Ready for a reading?</h4><p>An honest phone reading goes far beyond an article.</p><a class='btn btn-primary' href='/book-appointment'>Book a Reading</a></div>
     <div class="side-box reveal"><h4>More reading</h4><p style="margin:0"><a href="/articles">Guest &amp; featured articles →</a></p></div>
   </aside>
-</div></div></section><script>(function(){
+</div></div></section><style>
+.blog-search{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.blog-search input{font:inherit;font-size:.95rem;padding:.55rem 1rem;border:1px solid var(--gold-soft);border-radius:999px;background:var(--cream,#fffdf7);color:var(--ink);width:15rem;max-width:100%}
+.blog-search input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.blog-none{display:none;grid-column:1/-1;text-align:center;color:var(--ink-soft);padding:2rem 0}
+@media (max-width:600px){.blog-search,.blog-search input{width:100%}}
+</style><script>(function(){
+// Topic chips, the topic cloud and the archive each show one group of posts; the search box
+// (Bev, 2026-10-09) shows the posts whose title, summary or topic contain every word typed.
+// cherrysage.com/blog.html?q=tarot opens with that search filled in, as Google is told it can.
 var cards=[].slice.call(document.querySelectorAll('.blog-cards .bcard'));
-function apply(attr,val){cards.forEach(function(cd){cd.style.display=(val==='all'||cd.dataset[attr]===val)?'':'none';});
-var c=document.getElementById('blogCount');if(c){var n=cards.filter(function(x){return x.style.display!=='none';}).length;c.textContent=n+' post'+(n===1?'':'s');}}
+var box=document.getElementById('blogSearch'), list=document.querySelector('.blog-cards');
+var none=document.createElement('p'); none.className='blog-none'; none.textContent='No posts match that search. Try a different word, or browse by topic.';
+if(list) list.appendChild(none);
+function show(test){var n=0;cards.forEach(function(cd){var on=test(cd);cd.style.display=on?'':'none';if(on)n++;});
+var c=document.getElementById('blogCount');if(c)c.textContent=n+' post'+(n===1?'':'s');none.style.display=n?'none':'block';}
+function apply(attr,val){if(box)box.value='';show(function(cd){return val==='all'||cd.dataset[attr]===val;});}
 function sel(el,grp){[].slice.call(document.querySelectorAll(grp)).forEach(function(x){x.classList.remove('on');});if(el)el.classList.add('on');}
+function search(q){var words=q.toLowerCase().split(/\s+/).filter(Boolean);
+if(!words.length){sel(document.querySelector('.bchip[data-f="all"]'),'.bchip');show(function(){return true;});return;}
+sel(null,'.bchip');show(function(cd){var t=cd.textContent.toLowerCase();return words.every(function(w){return t.indexOf(w)>-1;});});}
 [].slice.call(document.querySelectorAll('.bchip')).forEach(function(ch){ch.addEventListener('click',function(){sel(ch,'.bchip');apply('cat',ch.dataset.f);});});
 [].slice.call(document.querySelectorAll('.wc-tag')).forEach(function(t){t.addEventListener('click',function(){sel(null,'.bchip');apply('cat',t.dataset.f);});});
 [].slice.call(document.querySelectorAll('.arch-item')).forEach(function(a){a.addEventListener('click',function(){sel(null,'.bchip');apply('ym',a.dataset.ym);});});
+if(box){box.addEventListener('input',function(){search(box.value);});
+var q=(location.search.match(/[?&]q=([^&]*)/)||[])[1];
+if(q){try{q=decodeURIComponent(q.replace(/\+/g,' '));}catch(e){} box.value=q;}search(box.value);}
 })();</script><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class='btn btn-gold' href='/book-appointment'>Book a Reading</a></div></section>
 </main>
 <footer class="footer">

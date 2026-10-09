@@ -69,7 +69,7 @@ function parseFrontMatter(raw) {
   // Real YAML (the editor writes quotes and colons safely). CORE_SCHEMA keeps dates as plain text.
   let data = {};
   try { data = yaml.load(m[1], { schema: yaml.CORE_SCHEMA }) || {}; } catch (e) { console.warn("[front matter] " + e.message); }
-  for (const k of Object.keys(data)) data[k] = data[k] == null ? "" : String(data[k]);
+  for (const k of Object.keys(data)) data[k] = data[k] == null ? "" : Array.isArray(data[k]) ? data[k].map(String) : String(data[k]);
   return { data, body: m[2] };
 }
 
@@ -194,15 +194,22 @@ ${renderFooter(FOOTER_DATA)}
 `;
 }
 
-// "Keep reading": up to 3 newest other posts in the same category. A post can switch it off
-// with related: false in its front matter.
+// "Keep reading": the posts Bev picked in the editor's "Related posts" field come first, in her
+// order; any spots left of the 3 fill with the newest other posts in the same category. A post can
+// switch the row off with related: false in its front matter.
 function relatedSection(post, all) {
   if (post.related === "false") return "";
-  const same = all.filter((p) => p.slug !== post.slug && p.category === post.category)
-    .sort((a, b) => (b.date + b.slug).localeCompare(a.date + a.slug)).slice(0, 3);
-  if (!same.length) return "";
-  const cards = same.map((p) => `<a class='bcard reveal' href='/${p.slug}'><div class="bc-img" style="background-image:url('${p.image}')"></div><div class="bc-body"><span class="cat-chip">${esc(p.category)}</span><h3>${esc(p.title)}</h3></div></a>`).join("");
-  return `<section class="section section-tint"><div class="wrap"><div class="section-head reveal"><p class="eyebrow">Keep reading</p><h2>More on ${esc(post.category)}</h2></div><div class="blog-cards">${cards}</div></div></section>\n`;
+  const bySlug = new Map(all.map((p) => [p.slug, p]));
+  const picked = (Array.isArray(post.picks) ? post.picks : [])
+    .map((s) => bySlug.get(String(s).trim())).filter((p) => p && p.slug !== post.slug);
+  const chosen = [...new Set(picked)].slice(0, 3);
+  const same = all.filter((p) => p.slug !== post.slug && p.category === post.category && !chosen.includes(p))
+    .sort((a, b) => (b.date + b.slug).localeCompare(a.date + a.slug));
+  const shown = chosen.concat(same).slice(0, 3);
+  if (!shown.length) return "";
+  const heading = shown.every((p) => p.category === post.category) ? `More on ${esc(post.category)}` : "You may also enjoy";
+  const cards = shown.map((p) => `<a class='bcard reveal' href='/${p.slug}'><div class="bc-img" style="background-image:url('${p.image}')"></div><div class="bc-body"><span class="cat-chip">${esc(p.category)}</span><h3>${esc(p.title)}</h3></div></a>`).join("");
+  return `<section class="section section-tint"><div class="wrap"><div class="section-head reveal"><p class="eyebrow">Keep reading</p><h2>${heading}</h2></div><div class="blog-cards">${cards}</div></div></section>\n`;
 }
 
 const CARD_RE = /<a class='bcard reveal' data-cat='[^']*' data-ym='[^']*' href='\/([^']*)'>[\s\S]*?<span class="bc-date">(\d{4}-\d{2}-\d{2})<\/span><\/div>\n<\/a>/g;
@@ -395,7 +402,7 @@ function main() {
     const bodyHtml = mdBlock(body);
     const description = data.description || plainExcerpt(body);
 
-    const page = renderPage({ slug, title: data.title, category: data.category, author: data.author, image: data.image, date: data.date, bodyHtml, description, seoTitle: data.seo_title, relatedHtml: relatedSection({ slug, category: data.category, related: data.related }, all), pillarHtml: pillarBox(data.pillar), faqHtml: data.pillar ? faqSchema(body) : "" });
+    const page = renderPage({ slug, title: data.title, category: data.category, author: data.author, image: data.image, date: data.date, bodyHtml, description, seoTitle: data.seo_title, relatedHtml: relatedSection({ slug, category: data.category, related: data.related, picks: data.related_posts }, all), pillarHtml: pillarBox(data.pillar), faqHtml: data.pillar ? faqSchema(body) : "" });
     writeFileSync(outPath, page);
     changed = true;
 

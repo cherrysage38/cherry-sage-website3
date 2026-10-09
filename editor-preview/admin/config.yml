@@ -233,6 +233,7 @@ collections:
       - { label: "Featured image", name: "image", widget: "image", hint: "This shows on the post card and at the top of the post." }
       - { label: "Post", name: "body", widget: "markdown", hint: "The full post text. Use the toolbar for bold, headings, links." }
       - { label: "Show related posts", name: "related", widget: "boolean", default: true, required: false, hint: "Adds a \"Keep reading\" row of other posts on the same topic under this post." }
+      - { label: "Related posts (optional)", name: "related_posts", widget: "relation", collection: "blog", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], multiple: true, max: 3, required: false, hint: "Pick up to 3 posts to show in the Keep reading row, in the order you want them. Leave blank, or pick fewer than 3, and the rest are filled with the newest posts on the same topic." }
       - { label: "Part of a guide page (optional)", name: "pillar", widget: "select", required: false, options: [{ label: "Love and Relationships", value: "love-and-relationships" }], hint: "Pick a guide page and this post is listed on it automatically, with a link back to it at the end of the post." }
       - { label: "Hide from site", name: "hidden", widget: "boolean", default: false, required: false, hint: "Tick this, then Publish, to take this post off the site for now. Nothing you wrote is deleted. Untick it and Publish to bring it back." }
 
