@@ -1,14 +1,18 @@
 ---
-title: "How to Ask the Right Questions During Your Psychic Readings"
-category: "Psychic Readings"
-date: "2023-07-26"
-image: "/assets/blog/rhythmic-water-flow-768x514.jpeg"
-seo_title: "How to Ask the Right Questions in a Psychic Reading"
-description: "Today I did a reading for a lady whose energy felt very scattered, stressed and confused. In order to receive clear and…"
+title: How to Ask the Right Questions During Your Psychic Readings
+seo_title: How to Ask the Right Questions in a Psychic Reading
+description: Today I did a reading for a lady whose energy felt very scattered, stressed and confused. In order to receive clear and…
+date: 2023-07-26
+category: Psychic Readings
+author: ''
+image: /assets/blog/rhythmic-water-flow-768x514.jpeg
 related: true
+hidden: false
 ---
 
 Today I did a reading for a lady whose energy felt very scattered, stressed and confused.  In order to receive clear and accurate messages from Spirit there is a way to approach your psychic reading for that purpose.  Although I strive to give everyone a clear and powerful reading, those seeking psychic advice and messages should be aware that it’s necessary for them to be calm, receptive and breathing.  When you call a psychic, have your questions ready.  Write them down.
+
+Preparing good questions also means noticing when you’re asking the same one over and over. I explain why [too many psychic readings can leave you more confused about your future](/can-too-many-psychic-readings-give-you-the-wrong-future), and when it helps to give a reading time to unfold.
 
 Take deep breaths and calm yourself.  Call with a sense of openness because you don’t want to be resistant to the information that is flowing.  Resistance to your messages is like a clog in the energy stream (obstructing the energy flow)—making it more challenging for me to “see” or “feel” clearly the messages coming through.
 
