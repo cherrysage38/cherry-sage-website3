@@ -93,7 +93,9 @@ function renderBlock(block, i, pageSlug) {
       const heading = block.heading
         ? `<div class="section-head reveal"><h2>${esc(block.heading)}</h2></div>`
         : "";
-      return `<section class="section"><div class="wrap">${heading}<div class="blk-prose reveal">${mdBlock(block.body)}</div></div></section>`;
+      // article: true (Love & Relationships, 2026-10-10) styles ## headings inside the text as article subheads
+      const cls = String(block.article) === "true" ? "blk-prose blk-article" : "blk-prose";
+      return `<section class="section"><div class="wrap">${heading}<div class="${cls} reveal">${mdBlock(block.body)}</div></div></section>`;
     }
     case "image_text": {
       const side = block.image_position === "right" ? " right" : "";
@@ -183,7 +185,9 @@ function renderBlock(block, i, pageSlug) {
   }
 }
 
-function renderPage({ slug, title, description, hero_eyebrow, hero_lede, blocksHtml }) {
+function renderPage({ slug, title, seo_title, description, hero_eyebrow, hero_lede, blocksHtml }) {
+  // The Google title can differ from the big heading on the page (Bev, 2026-10-10, Love & Relationships).
+  const headTitle = seo_title ? esc(seo_title) : `${esc(title)} — Cherry Sage`;
   const url = `https://cherrysage.com/${slug}.html`;
   const eyebrow = hero_eyebrow ? `<p class="eyebrow">${esc(hero_eyebrow)}</p>` : "";
   const lede = hero_lede ? `<p class="lede">${esc(hero_lede)}</p>` : "";
@@ -201,19 +205,19 @@ function renderPage({ slug, title, description, hero_eyebrow, hero_lede, blocksH
 ${GENERATED_MARKER}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title)} — Cherry Sage</title>
+<title>${headTitle}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${url}">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Cherry Sage">
-<meta property="og:title" content="${esc(title)} — Cherry Sage">
+<meta property="og:title" content="${headTitle}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${url}">
 <meta name="theme-color" content="#6E1A28">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=51">
+<link rel="stylesheet" href="site.css?v=52">
 <link rel="icon" href="assets/favicon.ico?v=2" sizes="any">
 <link rel="icon" href="assets/icon-32.png?v=2" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/icon-180.png?v=2">
@@ -298,6 +302,7 @@ function main() {
     const page = renderPage({
       slug,
       title: data.title,
+      seo_title: data.seo_title,
       description: data.description,
       hero_eyebrow: data.hero_eyebrow,
       hero_lede: data.hero_lede,

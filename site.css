@@ -875,6 +875,8 @@ main section>.wrap,.hero>.wrap,.page-hero>.wrap,.draw-section>.wrap{position:rel
 .blk-prose{max-width:720px}
 .blk-prose p{margin:0 0 1.1rem;line-height:1.75}
 .blk-prose img{border-radius:var(--r);margin:.6rem 0}
+.blk-article h2{font-size:clamp(1.45rem,2.6vw,1.85rem);line-height:1.22;margin:2.6rem 0 .8rem;color:var(--oxblood-deep)}
+.blk-article h2:first-child{margin-top:0}
 
 .blk-imgtext{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;align-items:center}
 .blk-imgtext.right{direction:rtl}

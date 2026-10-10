@@ -247,6 +247,7 @@ collections:
     summary: "{{title}}"
     fields:
       - { label: "Page Title", name: "title", widget: "string", hint: "Shows as the big heading at the top of the page, and sets the page's web address (cherrysage.com/your-title)." }
+      - { label: "Meta title (optional)", name: "seo_title", widget: "string", required: false, hint: "The title Google shows in search results. Leave blank and it uses the Page Title followed by Cherry Sage." }
       - { label: "Search Description", name: "description", widget: "text", hint: "One or two sentences describing the page. This is what shows up under the title in a Google search, it isn't shown on the page itself." }
       - { label: "Small text above the title (optional)", name: "hero_eyebrow", widget: "string", required: false, hint: "A short line above the big heading, e.g. \"For new visitors\"." }
       - { label: "Intro paragraph (optional)", name: "hero_lede", widget: "text", required: false, hint: "A sentence or two right under the title, setting up what the page is about." }
@@ -263,6 +264,7 @@ collections:
               - { label: "Heading (optional)", name: "heading", widget: "string", required: false }
               - { label: "Text", name: "body", widget: "markdown" }
               - { label: "Show in a box", name: "boxed", widget: "boolean", required: false, default: false, hint: "Puts this section in a cream box with a gold border. Boxed sections next to each other sit together in one column." }
+              - { label: "Article style headings", name: "article", widget: "boolean", required: false, default: false, hint: "For a long section written like an article: headings typed with ## in the text are drawn a little smaller, with space above them." }
           - label: "Image + Text"
             name: "image_text"
             widget: "object"
