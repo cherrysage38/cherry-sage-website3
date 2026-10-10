@@ -15,9 +15,11 @@ blocks:
         title: "Buy Minutes"
         text: "Buy your minutes in the shop, no account needed. Your receipt comes by email. Then call Cherry or send her a message to arrange a time that suits you."
   - type: "text"
+    boxed: true
     heading: "On the day of your reading"
     body: "At your arranged time, call Cherry at 301-474-1681.\n\n[Book a Reading](/book-appointment) · [Shop](/shop) · [Contact Cherry](/contact)"
   - type: "text"
+    boxed: true
     body: "First-timers get 10 minutes for $24 on their first call."
   - type: "faq"
     heading: "Common questions"
