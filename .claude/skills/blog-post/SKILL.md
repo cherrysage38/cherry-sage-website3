@@ -25,7 +25,7 @@ already used by a `.md` in `content/blog` or an `.html` in the site root.
 title: Can a Psychic Tell If Your Ex Will Come Back?
 seo_title: Can a Psychic Tell If Your Ex Will Come Back? | Cherry Sage   # under 60 characters if possible
 description: One or two plain sentences, 140 to 160 characters, that answer the title.
-date: YYYY-MM-DD        # today unless Bev gives a date
+date: YYYY-MM-DD        # today unless Bev gives a date; a future date schedules it (held back until ~6 AM Eastern that day)
 category: Psychic Readings   # must be one of content/blog-topics.yml
 author: Cherry Sage
 image: /assets/blog/<slug>.jpg

@@ -39,5 +39,8 @@ Writing: plain and warm.
 - The dashboard's "Changes we made" lists fill themselves: after every live deploy,
   `netlify/functions/deploy-succeeded.mjs` summarizes the new commits and files them. Write clear
   commit messages, because they are what those summaries are made from.
+- Scheduled blog posts: a post dated after today (Eastern) is held off the site by `build-blog.js`.
+  Each morning `.github/workflows/scheduled-posts.yml` runs `scripts/release-scheduled.js`, which notes any
+  post that has come due in `content/.scheduled-log` and commits it; that commit makes Netlify rebuild.
 - The shop and the report order pages read live product data from the database. Product
   names, prices, descriptions and report questions are edited in the Dashboard, not in files.
