@@ -875,6 +875,14 @@ main section>.wrap,.hero>.wrap,.page-hero>.wrap,.draw-section>.wrap{position:rel
 .blk-prose{max-width:720px}
 .blk-prose p{margin:0 0 1.1rem;line-height:1.75}
 .blk-prose img{border-radius:var(--r);margin:.6rem 0}
+.blk-article h2{font-size:clamp(1.45rem,2.6vw,1.85rem);line-height:1.22;margin:2.6rem 0 .8rem;color:var(--oxblood-deep)}
+.blk-article h2:first-child{margin-top:0}
+.blk-side-card{background:var(--cream);border:1px solid var(--gold);border-radius:var(--r-lg,16px);padding:1.2rem 1.4rem;margin:1.8rem 0;box-shadow:0 10px 28px -18px rgba(80,20,30,.35)}
+.blk-side-card h3{font-size:1.15rem;margin:.2rem 0 .5rem;color:var(--oxblood-deep)}
+.blk-side-card p{margin:0;font-size:.97rem;line-height:1.65;color:var(--ink-soft)}
+.blk-side-card .chip{margin-bottom:.4rem}
+@media (min-width:1120px){.blk-side-card{float:right;clear:right;width:310px;margin:.4rem -370px 1.4rem 0}}
+.blk-article::after{content:"";display:block;clear:both}
 
 .blk-imgtext{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;align-items:center}
 .blk-imgtext.right{direction:rtl}
