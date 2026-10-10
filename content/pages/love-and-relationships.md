@@ -33,7 +33,15 @@ blocks:
       I've said for years that emotions control behavior. The question isn't simply whether someone has feelings for you; it's whether those feelings are likely to develop into the kind of relationship you're hoping for. There is a considerable difference between someone who misses you and someone who is actually willing to build a future with you.
 
       ## Will My Ex Come Back? What About Reconciliation?
-
+    boxed: false
+    article: true
+  - type: side_card
+    tag: ""
+    title: "Will we get back together?"
+    text: "A reconciliation reading looks honestly at both people's energy and intentions. Sometimes the answer is yes. Sometimes it's that you deserve better."
+  - type: text
+    heading: ""
+    body: |-
       Breakups generate some of the most emotionally difficult questions I encounter. When someone you love walks away, you may wonder whether the separation is temporary, whether they still have feelings, and whether you should continue hoping for reconciliation.
 
       In a reading, I look at the circumstances surrounding the breakup, the emotional connection between you, possible obstacles, and whether I perceive movement toward renewed communication. But I also want to understand why the relationship ended. If two people reconcile without addressing the circumstances that separated them, what exactly have they accomplished?
@@ -43,7 +51,15 @@ blocks:
       For a closer look at prediction and reconciliation, see my article [Can a Psychic Tell If Your Ex Will Come Back?](/can-a-psychic-tell-if-your-ex-will-come-back) I've also written about [whether psychics really have the power to bring a lover back into your life](/do-psychics-really-have-the-power-to-bring-a-lover-back-into-your-life). There is an important difference between perceiving the possibility of reconciliation and claiming to make someone return. Nobody should promise to override another person's free will.
 
       ## Where Is This Relationship Going?
-
+    boxed: false
+    article: true
+  - type: side_card
+    tag: ""
+    title: "Is this relationship right for me?"
+    text: "I read the real dynamic between you two, not just the good days, so you can see it clearly and decide for yourself."
+  - type: text
+    heading: ""
+    body: |-
       Relationships don't always announce when they're changing direction. Communication becomes less frequent, affection changes, disagreements become more common, or one person begins avoiding conversations about the future. Other times, everything appears to be progressing beautifully, but you're uncertain whether your partner shares your expectations.
 
       I may explore whether the connection seems to be deepening, remaining stagnant, or moving toward a significant decision. Commitment, emotional compatibility, unresolved conflict, and differing expectations can all matter. Two people may genuinely enjoy each other's company while having very different ideas about what the relationship should become. One may be thinking about marriage while the other is perfectly content seeing each other twice a week. Neither has to be dishonest for that difference to become a problem.
@@ -53,9 +69,25 @@ blocks:
       ## Can a Reading Help With Marriage, Commitment, or Meeting Someone New?
 
       Not every love reading is about a breakup. People also call about long marriages, new romances, commitment, compatibility, and the possibility of meeting someone after years of being single. A marriage can encounter difficulties even when two people love each other. Love doesn't automatically resolve conflicting priorities, family responsibilities, or years of accumulated resentment.
-
+    boxed: false
+    article: true
+  - type: side_card
+    tag: ""
+    title: "When will I meet someone?"
+    text: "Timing readings aren't a guarantee, but they can show you what's actually in motion, and what you can do now instead of waiting."
+  - type: text
+    heading: ""
+    body: |-
       If you're single, we can explore the possibility of a new connection and the circumstances that may affect it. Timing sometimes comes through, although I don't treat psychic timing as an appointment written into a calendar. People make choices, circumstances change, and opportunities develop in unexpected ways.
-
+    boxed: false
+    article: true
+  - type: side_card
+    tag: ""
+    title: "Why do I keep attracting the same pattern?"
+    text: "Numerology and a straight reading of your history together can show the pattern you keep repeating, and where it started."
+  - type: text
+    heading: ""
+    body: |-
       I also think it's worth examining recurring relationship patterns. If every relationship starts differently but ends in a remarkably similar way, there may be something important to understand. Perhaps you repeatedly choose emotionally unavailable partners, take responsibility for everyone else's happiness, or protect yourself so carefully that nobody has a chance to get close. Recognizing a pattern doesn't mean blaming yourself; it gives you an opportunity to make a different choice.
 
       ## What Questions Can I Ask During a Love Psychic Reading?

@@ -78,11 +78,27 @@ function renderBlocks(blocks, pageSlug) {
     out.push(`<section class="section"><div class="wrap" style="max-width:820px;display:grid;gap:1.2rem">${run.map(renderBox).join("")}</div></section>`);
     run = [];
   };
+  // Article-style text sections and the side cards between them read as one article: one section,
+  // no big gap between pieces. Each card sits beside the text that follows it (to the right on a
+  // computer, between paragraphs on a phone). Bev, 2026-10-10, Love & Relationships.
+  let article = [];
+  const flushArticle = () => {
+    if (!article.length) return;
+    const inner = article.map((b) => b.type === "side_card"
+      ? `<aside class="blk-side-card">${b.tag ? `<span class="chip">${esc(b.tag)}</span>` : ""}<h3>${esc(b.title)}</h3><p>${esc(b.text)}</p></aside>`
+      : `${b.heading ? `<h2>${esc(b.heading)}</h2>` : ""}${mdBlock(b.body)}`).join("");
+    out.push(`<section class="section"><div class="wrap"><div class="blk-prose blk-article reveal">${inner}</div></div></section>`);
+    article = [];
+  };
   blocks.forEach((b, i) => {
+    const inArticle = b && ((b.type === "text" && String(b.article) === "true" && !b.boxed) || b.type === "side_card");
+    if (inArticle) { flush(); article.push(b); return; }
+    flushArticle();
     if (b && b.type === "text" && b.boxed) { run.push(b); return; }
     flush();
     out.push(renderBlock(b, i, pageSlug));
   });
+  flushArticle();
   flush();
   return out.join("\n");
 }

@@ -265,6 +265,15 @@ collections:
               - { label: "Text", name: "body", widget: "markdown" }
               - { label: "Show in a box", name: "boxed", widget: "boolean", required: false, default: false, hint: "Puts this section in a cream box with a gold border. Boxed sections next to each other sit together in one column." }
               - { label: "Article style headings", name: "article", widget: "boolean", required: false, default: false, hint: "For a long section written like an article: headings typed with ## in the text are drawn a little smaller, with space above them." }
+          - label: "Side Card"
+            name: "side_card"
+            widget: "object"
+            summary: "Side Card — {{fields.title}}"
+            hint: "A small card with a question and a short answer. Put it between two Text sections that have Article style headings on, and it sits beside the text that comes after it."
+            fields:
+              - { label: "Small label (optional)", name: "tag", widget: "string", required: false }
+              - { label: "Question or title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
           - label: "Image + Text"
             name: "image_text"
             widget: "object"
