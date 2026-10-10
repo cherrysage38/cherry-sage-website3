@@ -189,7 +189,7 @@ collections:
     folder: "content/articles"
     create: true
     slug: "{{slug}}"
-    summary: "{{title}} — {{category}}"
+    summary: "{{hidden | ternary('HIDDEN · ', '')}}{{title}} — {{category}}"
     # Newest first in the editor list. The sort menu still offers title and topic.
     sortable_fields: { fields: ["date", "title", "category"], default: { field: "date", direction: "descending" } }
     fields:
@@ -220,7 +220,7 @@ collections:
     folder: "content/blog"
     create: true
     slug: "{{slug}}"
-    summary: "{{title}} — {{category}}"
+    summary: "{{hidden | ternary('HIDDEN · ', '')}}{{title}} — {{category}}"
     # Newest first in the editor list. The sort menu still offers title and topic.
     sortable_fields: { fields: ["date", "title", "category"], default: { field: "date", direction: "descending" } }
     fields:
