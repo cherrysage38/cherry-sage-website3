@@ -2,7 +2,7 @@
 title: "Accurate Psychic Predictions-The Baffling Mystery Why Your Future Psychic Predictions May Not Be Accurate"
 category: "Psychic Readings"
 date: "2011-02-19"
-image: "/assets/img/migrated/accurate-psychic-predictions-the-baffling-mystery-why-your-future-psychic-predictions-may-not-be-accurate-accu.png"
+image: "/assets/blog/accurate-psychic-predictions-card.jpg"
 seo_title: "Accurate Psychic Predictions--The Baffling Mystery Why Your Psychic Predictions May Not Be Accurate"
 description: "If you have been seeking accurate psychic predictions and have found that rarely are they accurate, you need to read this. Learn how to get accurate psychic predictions and learn exactly why your predictions can turn out to be incorrect."
 related: false
