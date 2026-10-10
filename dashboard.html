@@ -157,6 +157,8 @@
         <a class="btn btn-gold" href="/moderate-comments.html" target="_blank" rel="noopener">Moderate Comments</a>
       </div>
       <p style="font-size:.85rem;color:var(--ink-soft);margin:.6rem 0 0">The website editor needs a one-time GitHub access step before it will let you in, ask RJ if you haven't gotten that yet.</p>
+      <h2 class="dash-section-title">Drafts waiting</h2>
+      <div id="websiteDrafts"></div>
       <h2 class="dash-section-title">Changes we made to your website</h2>
       <div id="websiteChanges"></div>
     </div>
@@ -757,5 +759,7 @@
   tryEnterApp();
 })();
 </script>
+<script src="drafts-list.js?v=1"></script>
+<script>if(window.csDrafts&&document.getElementById('websiteDrafts')) window.csDrafts.render(document.getElementById('websiteDrafts'));</script>
 </body>
 </html>

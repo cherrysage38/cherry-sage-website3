@@ -78,6 +78,7 @@
     <div id="vhMain"></div>
   </div>
 </div></section>
+<script src="drafts-list.js?v=1"></script>
 <script>
 /* Version history (Bev, 2026-10-10: "it would be nice to restore previous version, a feature in other
    editors I've used"). Reads the site's own public history on GitHub: every published save of a post is a
@@ -132,15 +133,21 @@
 
   function picker(){
     main.innerHTML='<p class="vh-note">Loading your posts…</p>';
-    Promise.all(Object.keys(KINDS).map(function(k){ return gh(API+'/contents/'+KINDS[k].dir+'?ref=main').then(function(list){ return {k:k,list:list}; }); }))
-    .then(function(groups){
-      var html='<input id="vhFilter" type="search" placeholder="Type part of a title to find it" aria-label="Find a post">';
+    // One read for the whole list: the site's file tree, filtered to the three editor folders.
+    gh(API+'/git/trees/main?recursive=1').then(function(tree){
+      var files=(tree.tree||[]).map(function(t){ return t.path; });
+      return Object.keys(KINDS).map(function(k){ var pre=KINDS[k].dir+'/';
+        return {k:k, list:files.filter(function(f){ return f.indexOf(pre)===0 && f.indexOf('/',pre.length)<0; }).map(function(f){ return {name:f.slice(pre.length)}; })}; });
+    }).then(function(groups){
+      var html='<div class="card" style="text-align:left;margin-bottom:1.4rem"><h2 style="font-size:1.2rem;margin:0 0 .5rem">Drafts waiting</h2><div id="vhDrafts"></div></div>'+
+        '<input id="vhFilter" type="search" placeholder="Type part of a title to find it" aria-label="Find a post">';
       groups.forEach(function(g){
         var items=g.list.filter(function(f){ return /\.md$/.test(f.name); }).map(function(f){ var s=f.name.replace(/\.md$/,'');
           return '<a href="?p='+g.k+'/'+encodeURIComponent(s)+'" data-t="'+esc(s.replace(/-/g,' '))+'">'+esc(pretty(s))+'</a>'; }).join('');
         html+='<div class="card vh-pick" style="text-align:left;margin-bottom:1.2rem"><h2 style="font-size:1.2rem;margin:0 0 .4rem">'+KINDS[g.k].label+'</h2>'+items+'</div>';
       });
       main.innerHTML=html;
+      if(window.csDrafts) window.csDrafts.render(document.getElementById('vhDrafts'));
       document.getElementById('vhFilter').addEventListener('input',function(){ var q=this.value.toLowerCase().trim();
         [].forEach.call(main.querySelectorAll('.vh-pick a'),function(a){ a.style.display=!q||a.getAttribute('data-t').indexOf(q)>-1?'':'none'; }); });
     }).catch(fail);
@@ -153,7 +160,7 @@
     gh(API+'/commits?sha=main&per_page=100&path='+encodeURIComponent(path)).then(function(commits){
       if(!commits.length){ main.innerHTML='<p class="vh-note">No published versions found for this '+noun+'.</p>'; return; }
       var html='<p style="margin:0 0 1rem"><a href="?">&larr; All posts and pages</a> &middot; <a href="/'+esc(slug)+'">See it on the site</a> &middot; <a href="'+editor+'" target="_blank" rel="noopener">Open in the editor</a></p>'+
-        '<h2 style="font-size:1.4rem;margin:0 0 .3rem">'+esc(pretty(slug))+'</h2><p class="vh-note" style="margin:0 0 1.2rem">'+commits.length+' published version'+(commits.length===1?'':'s')+', newest first.</p>';
+        '<h2 style="font-size:1.4rem;margin:0 0 .3rem">'+esc(pretty(slug))+'</h2><div id="vhDraftNote"></div><p class="vh-note" style="margin:0 0 1.2rem">'+commits.length+' published version'+(commits.length===1?'':'s')+', newest first.</p>';
       commits.forEach(function(c,i){
         var msg=(c.commit.message||'').split('\n')[0];
         html+='<div class="vh-item" data-sha="'+c.sha+'"><div class="vh-top"><div><span class="vh-date">'+esc(when(c.commit.committer.date))+'</span>'+
@@ -161,6 +168,9 @@
           '<p class="vh-msg">'+esc(msg)+'</p></div><button class="vh-btn" data-show>Show this version</button></div><div class="vh-view" hidden></div></div>';
       });
       main.innerHTML=html;
+      if(window.csDrafts) window.csDrafts.forPost(kind, slug).then(function(d){ if(!d) return;
+        document.getElementById('vhDraftNote').innerHTML='<div class="card" style="text-align:left;border:1px solid var(--gold);margin:.4rem 0 1rem"><b>There is an unpublished draft of this '+noun+'</b> ('+esc(d.status)+', saved '+esc(when(d.saved))+'). The live version is the one marked Live now below. '+
+          '<a href="'+d.preview+'" target="_blank" rel="noopener">Preview the draft</a> \u00b7 <a href="/editor-preview/admin/#/workflow" target="_blank" rel="noopener">Open the Workflow screen</a></div>'; }).catch(function(){});
       main.addEventListener('click',function(e){
         var b=e.target.closest('button'); if(!b) return;
         var item=b.closest('.vh-item'); if(!item) return;
