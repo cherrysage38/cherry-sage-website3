@@ -317,6 +317,18 @@ function removeFromSitemap(slug) {
   if (entryRe.test(xml)) writeFileSync(SITEMAP, xml.replace(entryRe, ""));
 }
 
+// Scheduled posts (Bev, 2026-10-10): a post dated after today stays off the site, like a hidden one,
+// until the morning of its date. "Today" is Cherry's day in Eastern time, so a post dated the 11th
+// appears on the 11th wherever the build runs. The daily timer (.github/workflows/scheduled-posts.yml)
+// rebuilds the site each morning a post is due.
+function todayEastern() {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+}
+function isScheduled(data) {
+  const d = String(data.date || "").trim().slice(0, 10);
+  return /^\d{4}-\d{2}-\d{2}$/.test(d) && d > todayEastern();
+}
+
 function hidePost(slug, html) {
   const outPath = join(ROOT, `${slug}.html`);
   // Only ever delete a page this script made, never a hand-built page that shares the name.
@@ -358,7 +370,7 @@ function main() {
   const all = [];
   for (const file of files) {
     const { data } = parseFrontMatter(readFileSync(join(CONTENT_DIR, file), "utf8"));
-    if (data.hidden === "true") continue;
+    if (data.hidden === "true" || isScheduled(data)) continue;
     if (data.title && data.category && data.image && data.date) all.push({ slug: file.replace(/\.md$/, ""), title: data.title, category: data.category, image: data.image, date: String(data.date).slice(0, 10), related: data.related });
   }
 
@@ -372,6 +384,14 @@ function main() {
       blogHtml = hidePost(slug, blogHtml);
       changed = true;
       console.log(`[build-blog] Hidden /${slug}.html (Hide from site is ticked)`);
+      continue;
+    }
+
+    if (isScheduled(data)) {
+      hiddenSlugs.add(slug);
+      blogHtml = hidePost(slug, blogHtml);
+      changed = true;
+      console.log(`[build-blog] Scheduled /${slug}.html for ${String(data.date).slice(0, 10)}; it stays off the site until then`);
       continue;
     }
 

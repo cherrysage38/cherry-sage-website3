@@ -66,7 +66,9 @@ function pillarPosts(pageSlug) {
     const m = readFileSync(join(dir, f), "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/);
     try { data = (m && loadYaml(m[1], { schema: yaml.CORE_SCHEMA })) || {}; } catch (e) { console.warn(`[build-pages] ${f}: ${e.message}`); }
     return { slug: f.replace(/\.md$/, ""), ...data };
-  }).filter((p) => String(p.pillar || "") === pageSlug && String(p.hidden) !== "true" && p.title)
+  }).filter((p) => String(p.pillar || "") === pageSlug && String(p.hidden) !== "true" && p.title
+    // a post dated after today (Eastern) is scheduled and not live yet, so the guide doesn't list it
+    && String(p.date || "").slice(0, 10) <= new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date()))
     .sort((a, b) => String(b.date).localeCompare(String(a.date)));
 }
 
