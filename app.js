@@ -399,3 +399,30 @@ window.CSCart = (function(){
   });
   li.appendChild(a); ul.appendChild(li);
 })();
+
+/* "Edit this post / page" button (Bev, 2026-10-10: "I'm supposed to have an edit button on pages
+   and posts"). Shows only to Bev, signed in with her own email, on pages made in the website editor
+   (blog posts, guest articles, editor pages). It opens that same post in the editor; the editor still
+   asks for its own login, so this is a shortcut, not a way in. */
+(function(){
+  var KEY='sb-ctoeuikxoqlhnebgsygp-auth-token', OWNERS=['cherry38@cherrysage.com','admin@cherrysage.com'];
+  var sess=null; try{ sess=JSON.parse(localStorage.getItem(KEY)||'null'); }catch(e){}
+  var email=sess&&sess.user&&String(sess.user.email||'').toLowerCase();
+  if(!email||OWNERS.indexOf(email)<0) return;
+  var kind=null, nodes=document.head?document.head.childNodes:[];
+  for(var i=0;i<nodes.length;i++){
+    if(nodes[i].nodeType===8){ var m=/cs-generated:(blog|articles|pages)/.exec(nodes[i].nodeValue); if(m){ kind=m[1]; break; } }
+  }
+  var slug=decodeURIComponent(location.pathname.replace(/^\/+|\/+$/g,'').replace(/\.html$/,''));
+  if(!kind||!slug||slug.indexOf('/')>-1) return;
+  var label={blog:'Edit this post',articles:'Edit this article',pages:'Edit this page'}[kind];
+  var a=document.createElement('a');
+  a.id='csEditBtn'; a.href='/editor-preview/admin/#/collections/'+kind+'/entries/'+encodeURIComponent(slug);
+  a.target='_blank'; a.rel='noopener';
+  a.innerHTML='<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> '+label;
+  a.style.cssText='position:fixed;left:20px;bottom:76px;z-index:901;display:flex;align-items:center;gap:.45rem;'+
+    'background:#C9A24A;color:#3A0F18;font-family:Lora,Georgia,serif;font-size:.85rem;font-weight:600;'+
+    'padding:.6rem 1rem;border-radius:999px;box-shadow:0 8px 26px -12px rgba(74,15,25,.5);text-decoration:none';
+  function add(){ if(!document.getElementById('csEditBtn')) document.body.appendChild(a); }
+  if(document.body) add(); else document.addEventListener('DOMContentLoaded',add);
+})();
