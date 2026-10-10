@@ -3,11 +3,12 @@ title: "Love & Relationship Psychic Readings"
 seo_title: "Love Psychic Readings & Relationship Guidance | Cherry Sage"
 description: "Explore love, breakups, reconciliation, commitment and compatibility with Cherry Sage's direct, experienced love and relationship psychic readings."
 hero_eyebrow: "Matters of the heart"
-hero_lede: "Can a psychic reading help you understand what's really happening in your love life?"
 blocks:
   - type: text
     heading: ""
     body: |-
+      **Can a psychic reading help you understand what's really happening in your love life?**
+
       Yes. A love and relationship psychic reading can offer insight into someone's feelings, intentions, emotional connection, and the possible direction of a relationship. Whether you're wondering if an ex will return, questioning a partner's commitment, or hoping to meet someone new, a reading can help you understand the circumstances surrounding your love life and make more informed decisions.
 
       I've been doing psychic readings professionally since 1999, and if there's one subject that has remained constant throughout those years, it's love. People call me about marriages, breakups, new relationships, complicated relationships, and sometimes relationships that haven't even started yet. The circumstances vary enormously, but the questions are remarkably familiar: Does he love me? Is she being honest? Are we going to get back together? Am I wasting my time? Should I wait, or should I move on?
