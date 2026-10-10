@@ -423,6 +423,17 @@ window.CSCart = (function(){
   a.style.cssText='position:fixed;left:20px;bottom:76px;z-index:901;display:flex;align-items:center;gap:.45rem;'+
     'background:#C9A24A;color:#3A0F18;font-family:Lora,Georgia,serif;font-size:.85rem;font-weight:600;'+
     'padding:.6rem 1rem;border-radius:999px;box-shadow:0 8px 26px -12px rgba(74,15,25,.5);text-decoration:none';
-  function add(){ if(!document.getElementById('csEditBtn')) document.body.appendChild(a); }
+  // Next to it, "History": every published version of this post, to bring an earlier one back (post-history.html).
+  var h=document.createElement('a');
+  h.id='csHistoryBtn'; h.href='/post-history.html?p='+kind+'/'+encodeURIComponent(slug); h.target='_blank'; h.rel='noopener';
+  h.textContent='History';
+  h.style.cssText='position:fixed;bottom:76px;z-index:901;display:flex;align-items:center;'+
+    'background:#FFFDF8;color:#6E1A28;border:1px solid #C9A24A;font-family:Lora,Georgia,serif;font-size:.85rem;font-weight:600;'+
+    'padding:.55rem .95rem;border-radius:999px;box-shadow:0 8px 26px -12px rgba(74,15,25,.5);text-decoration:none';
+  function add(){
+    if(document.getElementById('csEditBtn')) return;
+    document.body.appendChild(a); document.body.appendChild(h);
+    h.style.left=(20+a.offsetWidth+8)+'px';
+  }
   if(document.body) add(); else document.addEventListener('DOMContentLoaded',add);
 })();
