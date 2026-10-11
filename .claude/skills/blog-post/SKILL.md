@@ -57,6 +57,15 @@ Pictures go in `assets/blog/`, named after the slug, ideally 1200 px wide and un
   (the `.md`, the picture). Build output pages are rebuilt by Netlify.
 - Commit message in plain words, e.g. `Add blog post: Can a Psychic Tell If Your Ex Will Come Back?`
   (it feeds the dashboard's "Changes we made" list).
-- Push to the working branch, give Bev the Netlify preview link, and wait for "publish".
+- Save the draft where Bev's editor can see it (Bev, 2026-10-11: a post Claude added on its own
+  branch never showed in her editor, so she could not find it). The editor only lists drafts that
+  sit on a `cms/blog/<slug>` branch with an open pull request labeled `sveltia-cms/pending_review`:
+  1. Branch `cms/blog/<slug>` from `main`, holding only the post (and its picture). This is the one
+     exception to the session's working branch; Bev asked for it.
+  2. Push it and open a pull request into `main` titled `Create Blog Post “<slug>”`.
+  3. Add the label `sveltia-cms/pending_review` to that pull request.
+  The post then shows in Blog Posts with a yellow DRAFT tag and "In Review", and Bev can open,
+  edit and publish it in the editor. Give her the Netlify preview link from the pull request
+  (`https://deploy-preview-<number>--cherry-sage-website3.netlify.app/<slug>.html`) and wait for "publish".
 - Tell her how to undo: delete the post in the editor (or tick "Hide from site"), or revert
   the commit.
