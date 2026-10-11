@@ -1,8 +1,8 @@
 ---
 title: "Meet Cherry Sage"
 seo_title: "Meet Cherry Sage | My Story & Psychic Journey"
-description: "Discover Cherry Sage’s journey from childhood empath and spiritual seeker to professional clairvoyant, Tarot reader, and numerologist."
-hero_lede: "Professional Psychic, Clairvoyant, Clairaudient, Tarot Reader & Numerologist"
+description: "Discover Cherry Sage’s journey from sensitive child and spiritual seeker to professional clairvoyant, clairaudient, empath, and numerologist."
+hero_lede: "Clairvoyant, Clairaudient, Empath and Numerologist"
 blocks:
   - type: "image_text"
     body: |-
