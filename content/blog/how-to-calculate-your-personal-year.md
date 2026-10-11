@@ -2,7 +2,7 @@
 title: "Numerology – How to Calculate Your Personal Year"
 category: "Numerology"
 date: "2009-12-02"
-image: "/assets/img/migrated/how-to-calculate-your-personal-year-how-to-spot-a-fake-psychic-1-1.jpg"
+image: "/assets/blog/personal-year-numerology-card.jpg"
 seo_title: "Numerology -- How To Calculate Your Personal Year"
 description: "How to calculate your personal year number using numerology."
 related: false
