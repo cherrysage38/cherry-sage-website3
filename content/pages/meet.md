@@ -1,8 +1,8 @@
 ---
 title: "Meet Cherry Sage"
 seo_title: "Meet Cherry Sage | My Story & Psychic Journey"
-description: "Discover Cherry Sage’s journey from childhood empath and spiritual seeker to professional clairvoyant, Tarot reader, and numerologist."
-hero_lede: "Professional Psychic, Clairvoyant, Clairaudient, Tarot Reader & Numerologist"
+description: "Discover Cherry Sage’s journey from sensitive child and spiritual seeker to professional clairvoyant, clairaudient, empath, and numerologist."
+hero_lede: "Clairvoyant, Clairaudient, Empath and Numerologist"
 blocks:
   - type: "image_text"
     body: |-
@@ -12,6 +12,16 @@ blocks:
     image: "/assets/bev_portrait.jpg"
     image_alt: "Cherry Sage"
     image_position: "right"
+  - type: "feature_cards"
+    eyebrow: "How I read"
+    heading: "Honest, and human"
+    cards:
+      - title: "Clairvoyant & clairaudient"
+        text: "I see and hear the energies around a question, then tell you plainly what I sense, and check that it resonates for you."
+      - title: "Empath & numerologist"
+        text: "I feel the emotional truth beneath a situation, and I read the numbers that shape your path, from Life Path to Karmic Debt."
+      - title: "Honest over fantasy"
+        text: "90% of my clients are repeat callers. I offer the truth with compassion and responsibility, never fear, never a script."
   - type: "text"
     article: "true"
     heading: "The Little Girl Who Felt Everything"
@@ -97,6 +107,26 @@ blocks:
       I look forward to hearing from you.
 
       — Cherry Sage
+  - type: "feature_cards"
+    eyebrow: "You are not alone in wondering"
+    heading: "Questions I am most often asked"
+    cards:
+      - title: "Love & relationships"
+        text: "Where is this relationship going? Does he really love me? Is he being honest with me? Will there be a reconciliation?"
+      - title: "Career & money"
+        text: "Will I get that job, or that settlement? Is this the right move? When will things turn around for me?"
+      - title: "Clarity & direction"
+        text: "I do not understand him, or her. What am I not seeing? What should I focus on next? Where is my life heading?"
+  - type: "feature_cards"
+    eyebrow: "What a reading with me offers"
+    heading: "More than a glimpse of the future"
+    cards:
+      - title: "A personal journey"
+        text: "Every reading is a sacred moment where I tune into your energy and connect with what the universe wants to share. First-time callers get a special introductory offer to experience it for themselves."
+      - title: "Numerology & karmic wisdom"
+        text: "Numbers shape our lives more than most people realize. Through numerology and a look at your karmic debts, we can uncover the deeper lessons your soul is here to learn."
+      - title: "Real stories, real change"
+        text: "I remember a caller, uncertain about her next step, who discovered through a reading that an old fear from her past was holding her back. Understanding it was what finally let her move forward."
   - type: "cta_text"
     heading: "Let's talk soon"
     body: "When you're ready, a real reading with me is a phone call away."
