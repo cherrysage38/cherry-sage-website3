@@ -120,7 +120,7 @@ function renderBlock(block, i, pageSlug) {
       const heading = block.heading ? `<h2>${esc(block.heading)}</h2>` : "";
       const body = esc(block.body).replace(/\n/g, "<br>");
       return `<section class="section"><div class="wrap"><div class="blk-imgtext${side} reveal">
-        <div><img src="${esc(block.image)}" alt="${esc(block.heading || "")}"></div>
+        <div><img src="${esc(block.image)}" alt="${esc(block.image_alt || block.heading || "")}"></div>
         <div>${heading}<p>${body}</p></div>
       </div></div></section>`;
     }
