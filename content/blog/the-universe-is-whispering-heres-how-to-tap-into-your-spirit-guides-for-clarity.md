@@ -2,7 +2,8 @@
 title: "The Universe Is Whispering: Here’s How To Tap Into Your Spirit Guides For Clarity!"
 category: "Psychic Readings"
 date: "2024-11-06"
-image: "/assets/blog/Real-Psychic-Readings-300x200.jpg"
+image: "/assets/blog/the-universe-is-whispering-heres-how-to-tap-into-your-spirit-guides-for-clarity-card.jpg"
+image_alt: "A woman meditating on a mountaintop at sunrise, with glowing figures of light beside her"
 seo_title: "The Universe Is Whispering: Here’s How To Tap Into Your Spirit Guides For Clarity!"
 description: "The universe guides you to your best self. Open your heart, listen to your spirit guides, and explore life’s path through real psychic readings and profound insights."
 related: true

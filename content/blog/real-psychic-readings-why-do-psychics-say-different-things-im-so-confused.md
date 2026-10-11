@@ -2,7 +2,8 @@
 title: "Why Do Psychics Say Different Things? I’m So Confused. How Can Psychic Readings Be Different?"
 category: "Psychic Readings"
 date: "2009-12-14"
-image: "/assets/img/migrated/real-psychic-readings-why-do-psychics-say-different-things-im-so-confused-lll.jpg"
+image: "/assets/blog/real-psychic-readings-why-do-psychics-say-different-things-im-so-confused-card.jpg"
+image_alt: "A thoughtful woman looking up, surrounded by signposts pointing in different directions"
 seo_title: "Why Do Psychics Say Different Things? I'm So Confused Why Given Different Predictions?"
 description: "So you've been getting different psychic readings by different psychics. If you've been wondering why psychics say different things and why this only makes you confused, read this detailed perspective."
 related: false

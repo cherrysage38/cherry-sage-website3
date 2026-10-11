@@ -2,7 +2,8 @@
 title: "About Auras – What We Know About the Human Energy Field"
 category: "Featured Articles"
 date: "2012-12-14"
-image: "/assets/blog/real-psychic-readings-3-new-1-1-768x361.jpg"
+image: "/assets/blog/about-auras-what-we-know-about-the-human-energy-field-card.jpg"
+image_alt: "A serene woman with eyes closed, surrounded by a rainbow-colored glow"
 seo_title: "About Auras - What We Know About the Human Energy Field"
 description: "About Auras - What We Know About the Human Energy Field"
 related: false

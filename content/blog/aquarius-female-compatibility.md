@@ -2,7 +2,8 @@
 title: "Aquarius Female Compatibility"
 category: "Astrology"
 date: "2012-11-26"
-image: "/assets/blog/real-psychic-readings-2-main-768x361.jpg"
+image: "/assets/blog/aquarius-female-compatibility-card.jpg"
+image_alt: "An Aquarius water-bearer plaque beside two wedding rings, white flowers and amethyst, overlooking a lake"
 seo_title: "Aquarius Woman Compatibility & Personality Traits | Cherry Sage"
 description: "What is an Aquarius woman like in love, friendship and money? A clear breakdown of her personality, compatibility and how to understand her better."
 related: false

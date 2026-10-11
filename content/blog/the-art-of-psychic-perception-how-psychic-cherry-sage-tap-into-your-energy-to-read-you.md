@@ -2,7 +2,8 @@
 title: "The Art of Psychic Perception: How Psychic Cherry Sage Taps Into Your Energy to Read You!"
 category: "Psychic Readings"
 date: "2025-04-03"
-image: "/assets/blog/How-do-psychics-read-people-768x433.jpg"
+image: "/assets/blog/the-art-of-psychic-perception-how-psychic-cherry-sage-tap-into-your-energy-to-read-you-card.jpg"
+image_alt: "A thoughtful man at a table with a crystal ball and cards laid out before him"
 seo_title: "The Art of Psychic Perception: How Cherry Sage Reads You!"
 description: "How do psychics read people? Discover the power of energy, intuition, and aura readings. Learn how psychics tap into emotions, past experiences, and hidden insights"
 related: true

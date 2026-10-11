@@ -2,7 +2,8 @@
 title: "Real Psychic Readings–How to Tell If Your Psychic Is Really ACCURATE or Just Selling You A Dream!!"
 category: "Featured Articles"
 date: "2011-02-25"
-image: "/assets/blog/real-psychic-readings-3-768x361.jpg"
+image: "/assets/blog/how-to-tell-if-your-psychic-is-really-accurate-or-just-selling-you-a-dream-card.jpg"
+image_alt: "A shiny golden mask in front of a cracked, worn mask"
 seo_title: "How to Tell If Your Psychic Is Really Accurate or Just Selling You A Dream."
 description: "Can You Tell If Your Psychic Is Selling You a Dream, Or if Your Psychic Reading is Really Accurate? Here is some useful information to help you become skilled in telling if your psychic is telling you the truth or to tell the signs that a psychic is legitimate."
 related: false

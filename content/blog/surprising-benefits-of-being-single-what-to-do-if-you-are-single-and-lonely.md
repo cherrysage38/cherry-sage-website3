@@ -2,7 +2,8 @@
 title: "Surprising Benefits of Being Single — What To Do If You Are Single And Lonely"
 category: "Featured Articles"
 date: "2016-03-15"
-image: "/assets/blog/i-am-a-9-personal-year-768x361.jpg"
+image: "/assets/blog/surprising-benefits-of-being-single-what-to-do-if-you-are-single-and-lonely-card.jpg"
+image_alt: "A smiling woman relaxing with a cup of tea on a terrace overlooking a lake and mountains"
 seo_title: "Surprising Benefits of Being Single | Cherry Sage"
 description: "There comes a point in your life when you will want/need to be in a relationship. The special kind that makes you feel…"
 related: false

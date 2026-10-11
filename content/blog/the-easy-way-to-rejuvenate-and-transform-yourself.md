@@ -2,7 +2,8 @@
 title: "The Easy Way To Rejuvenate And Transform Yourself"
 category: "Featured Articles"
 date: "2012-12-17"
-image: "/assets/blog/numeric-readings-new-2-768x361.jpg"
+image: "/assets/blog/the-easy-way-to-rejuvenate-and-transform-yourself-card.jpg"
+image_alt: "A joyful woman with curly silver-streaked hair dancing in a sunlit room"
 seo_title: "The Easy Way To Rejuvenate And Transform Yourself"
 description: "Spiritual retreats are like spa for the souls. It reinvigorates and transforms folk in alternative ways."
 related: false

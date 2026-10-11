@@ -2,7 +2,8 @@
 title: "Accurate Psychic Predictions: My Psychic Reading Was Accurate, The Dates Were Wrong!"
 category: "Predicting Dates or Timelines"
 date: "2011-02-22"
-image: "/assets/blog/psychic-readings-1-768x361.jpg"
+image: "/assets/blog/accurate-psychic-predictions-my-reading-was-accurate-the-dates-were-wrong-card.jpg"
+image_alt: "A calendar with days crossed off and one date circled, beside a wristwatch"
 seo_title: "Accurate Psychic Predictions: My Reading Was Accurate, The Dates Were Wrong!"
 description: "A little something about predicting dates and timing in a psychic reading. If you are wondering why so many dates turn out to be wrong, then this information will help to clear up your questions about psychic accuracy when it comes to predicting WHEN a future event will happen."
 related: true

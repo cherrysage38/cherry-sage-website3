@@ -2,7 +2,8 @@
 title: "What Are the Akashic Records and What Do They Do?"
 category: "Featured Articles"
 date: "2012-12-17"
-image: "/assets/blog/real-psychic-readings-3-new-1-1-768x361.jpg"
+image: "/assets/blog/what-are-the-akashic-records-and-just-what-they-do-card.jpg"
+image_alt: "An open glowing book in a vast library of shelves filled with light"
 seo_title: "What Are the Akashic Records? A Simple Explanation | Cherry Sage"
 description: "The Akashic Records are a complete energetic record of every soul's experiences, past and present. Here's what they are and how they can help you."
 related: false

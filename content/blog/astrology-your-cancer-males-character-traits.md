@@ -2,7 +2,8 @@
 title: "Astrology: Your Cancer Male's Character Traits"
 category: "Astrology"
 date: "2012-11-26"
-image: "/assets/blog/lll-768x361.jpg"
+image: "/assets/blog/astrology-your-cancer-males-character-traits-card.jpg"
+image_alt: "A crab on a rock by the sea under a full moon, beside the Cancer zodiac symbol"
 seo_title: "Cancer Man Personality Traits & Compatibility | Cherry Sage"
 description: "What is a Cancer man really like? His personality, moods, money habits and how to understand the man behind the shell."
 related: false

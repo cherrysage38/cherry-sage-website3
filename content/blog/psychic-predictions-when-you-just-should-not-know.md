@@ -2,7 +2,8 @@
 title: "Psychic Predictions–When You Just Should Not Know the Future"
 category: "Featured Articles"
 date: "2009-11-23"
-image: "/assets/blog/real-psychic-readings-2-main-768x361.jpg"
+image: "/assets/blog/psychic-predictions-when-you-just-should-not-know-card.jpg"
+image_alt: "A closed wooden door at the end of a warm, sunlit stone hallway, with light glowing beneath it"
 seo_title: "Psychic Predictions--When You Just Should Not Know the Future"
 description: "Psychic predictions you should not know. Understanding when a psychic should not predict the future."
 related: false

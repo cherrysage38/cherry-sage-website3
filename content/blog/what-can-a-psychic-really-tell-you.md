@@ -2,7 +2,8 @@
 title: "Psychic Readings — What Can A Psychic Really Tell You?"
 category: "Featured Articles"
 date: "2023-07-22"
-image: "/assets/blog/psychic-readings-1-768x361.jpg"
+image: "/assets/blog/what-can-a-psychic-really-tell-you-card.jpg"
+image_alt: "A man looking at floating pictures of love, home, family, travel and career"
 seo_title: "Psychic Readings -- What Can a Psychic Really Tell You?"
 description: "Psychic Readings and what you should expect from a psychic reading and clearing up of false ideas brought about by fake psychics."
 related: false

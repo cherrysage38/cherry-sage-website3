@@ -2,7 +2,8 @@
 title: "Phone Psychic Readings-Can a Psychic Really Read A Person Over the Phone?"
 category: "Psychic Readings"
 date: "2011-02-18"
-image: "/assets/img/migrated/phone-psychic-readings-can-a-psychic-really-read-a-person-over-the-phone-real-psychic-readings-2-main.jpg"
+image: "/assets/blog/phone-psychic-readings-can-a-psychic-really-read-a-person-over-the-phone-card.jpg"
+image_alt: "A smartphone on a marble counter with arcs of light reaching out over a city at dusk"
 seo_title: "Phone Psychic Readings-Can a Psychic Really Read A Person Over the Phone?"
 description: "Many people wonder how is it that a phone psychic can read people over the telephone and be accurate. Phone psychic readings are just as reliable as in-person readings with some exceptions. A well-known phone psychic, Cherry Sage, details how accurate phone psychic readings can be."
 related: false

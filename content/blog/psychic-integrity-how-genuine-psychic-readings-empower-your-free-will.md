@@ -2,7 +2,8 @@
 title: "Psychic Integrity: How Genuine Psychic Readings Empower Your Free Will!"
 category: "Psychic Readings"
 date: "2025-03-03"
-image: "/assets/blog/Genuine-Psychic-Readings-Online-300x168.jpg"
+image: "/assets/blog/psychic-integrity-how-genuine-psychic-readings-empower-your-free-will-card.jpg"
+image_alt: "A man in conversation with a woman across a desk, with a set of balance scales behind him"
 seo_title: "Psychic Integrity: How Genuine Psychic Readings Empower Your Free Will!"
 description: "Get genuine psychic readings from Cherry Sage! Unveil your destiny with accurate insights. Trust the experts for your life-changing reading today!"
 related: true
