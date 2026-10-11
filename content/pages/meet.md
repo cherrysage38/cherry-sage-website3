@@ -107,6 +107,26 @@ blocks:
       I look forward to hearing from you.
 
       — Cherry Sage
+  - type: "feature_cards"
+    eyebrow: "You are not alone in wondering"
+    heading: "Questions I am most often asked"
+    cards:
+      - title: "Love & relationships"
+        text: "Where is this relationship going? Does he really love me? Is he being honest with me? Will there be a reconciliation?"
+      - title: "Career & money"
+        text: "Will I get that job, or that settlement? Is this the right move? When will things turn around for me?"
+      - title: "Clarity & direction"
+        text: "I do not understand him, or her. What am I not seeing? What should I focus on next? Where is my life heading?"
+  - type: "feature_cards"
+    eyebrow: "What a reading with me offers"
+    heading: "More than a glimpse of the future"
+    cards:
+      - title: "A personal journey"
+        text: "Every reading is a sacred moment where I tune into your energy and connect with what the universe wants to share. First-time callers get a special introductory offer to experience it for themselves."
+      - title: "Numerology & karmic wisdom"
+        text: "Numbers shape our lives more than most people realize. Through numerology and a look at your karmic debts, we can uncover the deeper lessons your soul is here to learn."
+      - title: "Real stories, real change"
+        text: "I remember a caller, uncertain about her next step, who discovered through a reading that an old fear from her past was holding her back. Understanding it was what finally let her move forward."
   - type: "cta_text"
     heading: "Let's talk soon"
     body: "When you're ready, a real reading with me is a phone call away."
