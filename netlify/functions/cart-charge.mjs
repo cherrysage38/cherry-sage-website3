@@ -167,7 +167,24 @@ export default async (req) => {
     }, 500);
   }
 
-  const { data: customer } = await supabase.from("customers").select("email, full_name").eq("id", customerId).maybeSingle();
+  // Who to send the receipt to. This program cannot read the protected customers table, so the lookup
+  // came back empty and no receipt was ever sent (found 2026-10-12, Bev's test orders). cart-start.mjs
+  // saved the name and email the customer typed at checkout in the abandoned-cart record: read them
+  // from there, just before clearing it.
+  let customer = null;
+  try {
+    const { data } = await supabase.from("customers").select("email, full_name").eq("id", customerId).maybeSingle();
+    customer = data || null;
+  } catch { /* fall back to the checkout record below */ }
+  let started = null;
+  try { started = await getStore("abandoned-carts").get(customerId, { type: "json" }); } catch { /* non-fatal */ }
+  // Last resort (the record is cleared after an hour by abandoned-cart-check.mjs): what the checkout
+  // page sends, the same name and email the customer typed there.
+  const typedEmail = String(d.email || "").trim().toLowerCase();
+  customer = {
+    email: String(customer?.email || started?.email || (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(typedEmail) ? typedEmail : "")).trim().slice(0, 200),
+    full_name: String(customer?.full_name || started?.name || d.name || "").trim().slice(0, 200),
+  };
 
   // Payment succeeded, this cart is no longer abandoned -- clear the pending record so
   // abandoned-cart-check.mjs never emails a customer who already checked out.
