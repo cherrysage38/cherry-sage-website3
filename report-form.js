@@ -39,11 +39,19 @@
   }).then(function (r) { return r.json(); }).then(function (rows) {
     var p = rows && rows[0];
     if (!p) { showGone(); return; }
+    // A phone reading uses this page only when Bev gave it questions (2026-10-12: the phone numerology
+    // reading asks for birth details first). Its wording talks about the call, not a report.
+    var phone = p.duration_minutes != null;
     if (generic) {
-      if (p.duration_minutes != null) { location.replace('/shop'); return; }      // a phone reading, not a report
+      if (phone && !(Array.isArray(p.report_fields) && p.report_fields.length)) { location.replace('/shop'); return; }
       var h1 = document.querySelector('.page-hero h1'); if (h1) h1.textContent = p.name;
       var crumb = document.getElementById('rfCrumb'); if (crumb) crumb.textContent = p.name;
-      document.title = p.name + ' — Numerology Report — Cherry Sage';
+      document.title = p.name + (phone ? ' — Phone Reading' : ' — Numerology Report') + ' — Cherry Sage';
+      if (phone) {
+        var eyebrow = document.querySelector('.page-hero .eyebrow'); if (eyebrow) eyebrow.textContent = 'Phone reading';
+        var dh = document.getElementById('rfDetailsHead'); if (dh) dh.textContent = 'Your details for this reading';
+        var dn = document.getElementById('rfDetailsNote'); if (dn) dn.textContent = 'Please fill in the details below so Cherry can prepare for your call.';
+      }
     }
 
     // description and price shown on this page
@@ -55,7 +63,7 @@
     if (priceEl) priceEl.textContent = money(p.price_cents);
 
     if (p.active === false) {
-      var note = el('p', { style: 'margin:0;color:var(--cherry)' }, 'This report is not available right now. Please check back soon.');
+      var note = el('p', { style: 'margin:0;color:var(--cherry)' }, 'This ' + (phone ? 'reading' : 'report') + ' is not available right now. Please check back soon.');
       form.parentNode.replaceChild(note, form);
       return;
     }
@@ -66,7 +74,12 @@
     // brand-new form element: drops the old page's submit handler, which only knows the old fields
     var nf = form.cloneNode(false);
     fields.forEach(function (f) {
-      var wrap = el('label', { style: 'display:grid;gap:.35rem;font-size:.92rem;color:var(--ink-soft)' }, f.label + (f.required ? '' : ' (optional)'));
+      // A question ending in "(... only if ...)" shows that part as a small note under it, and without
+      // "(optional)", so a married caller does not read the current-name question as skippable.
+      var only = /^(.*?)\s*\(([^()]*\bonly if\b[^()]*)\)\s*$/i.exec(f.label);
+      var text = only ? only[1] : f.label + (f.required ? '' : ' (optional)');
+      var wrap = el('label', { style: 'display:grid;gap:.35rem;font-size:.92rem;color:var(--ink-soft)' }, text);
+      if (only) wrap.appendChild(el('span', { style: 'font-size:.85rem;font-style:italic' }, only[2].charAt(0).toUpperCase() + only[2].slice(1) + '.'));
       var input = f.type === 'textarea'
         ? el('textarea', { name: f.key, rows: '4', style: FIELD_STYLE })
         : el('input', { name: f.key, type: f.type === 'date' ? 'date' : f.type === 'email' ? 'email' : 'text', style: FIELD_STYLE });
