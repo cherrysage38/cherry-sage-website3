@@ -15,7 +15,7 @@ hidden: false
 
 When you still love someone, “Will my ex come back?” can feel like the only question that matters. You want to know whether the silence is temporary, whether the breakup was really the end, and whether you are holding on to something that still has a future.
 
-I understand why you want an answer. I have been reading professionally since 1999, and love and reconciliation are central to my work. But I want you to understand the answer, too. A return can mean a conversation, another attempt, or the beginning of a different relationship with the same person. Those are very different possibilities.
+I understand why you want an answer. Love and reconciliation are central to my work. But I want you to understand the answer, too. A return can mean a conversation, another attempt, or the beginning of a different relationship with the same person. Those are very different possibilities.
 
 Before you build your future around someone coming back, we need to look at what “back” would actually mean.
 
