@@ -10,6 +10,8 @@ Writing: plain and warm.
   - It lives in the site footer ("Serving clients worldwide since 1999", content/footer.yml), which
     shows on every page. Pages themselves don't repeat it; the one exception is Bev's story on Meet
     Cherry Sage, where 1999 is part of her history.
+  - When length of experience fits naturally, say "for more than two decades" (Bev's wording) or
+    "for many years". Vary them; don't put either in every paragraph.
 - Pages and posts open with the reader's question in bold, then the plain answer right under it
   (not the answer alone). Question-style headings below follow the same pattern.
 
