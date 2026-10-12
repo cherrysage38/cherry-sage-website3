@@ -119,7 +119,7 @@ function faqSchema(body) {
   return `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: pairs }).replace(/</g, "\\u003c")}</script>`;
 }
 
-function renderPage({ slug, title, category, author, image, date, bodyHtml, description, seoTitle, relatedHtml, pillarHtml = "", faqHtml = "" }) {
+function renderPage({ slug, title, category, author, image, imageAlt, date, bodyHtml, description, seoTitle, relatedHtml, pillarHtml = "", faqHtml = "" }) {
   const url = `https://cherrysage.com/${slug}.html`;
   const pageTitle = seoTitle || `${title} — Cherry Sage`;
   const byline = author ? `By ${esc(author)} · ` : "";
@@ -176,7 +176,7 @@ ${GENERATED_MARKER}
 <section class="page-hero post-head"><div class="ph-glow" aria-hidden="true"></div><div class="wrap reveal"><p class="eyebrow">${byline}${esc(category)} · ${esc(date)}</p><h1>${esc(title)}</h1></div></section>
 <section class="section"><div class="wrap post-wrap">
   <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="bc-sep">›</span><a href='/blog'>Blog</a><span class="bc-sep">›</span><span aria-current="page">${esc(category)}</span></nav>
-  <img class="post-hero-img" src="${image}" alt="${esc(title)}">
+  <img class="post-hero-img" src="${image}" alt="${esc(imageAlt || title)}">
   <article class="post-content reveal">${bodyHtml}</article>${pillarHtml}
   <div class="post-cta reveal"><p class="eyebrow">Ready for the real thing?</p><h3>Talk it through with Cherry</h3><p>An honest reading goes far beyond an article. First-timers get 10 minutes for $24.</p><a class='btn btn-primary' href='/book-appointment'>Book a Reading</a></div>
 </div></section>
@@ -429,7 +429,7 @@ function main() {
     const bodyHtml = mdBlock(body);
     const description = data.description || plainExcerpt(body);
 
-    const page = renderPage({ slug, title: data.title, category: data.category, author: data.author, image: data.image, date: data.date, bodyHtml, description, seoTitle: data.seo_title, relatedHtml: relatedSection({ slug, category: data.category, related: data.related, picks: data.related_posts }, all), pillarHtml: pillarBox(data.pillar), faqHtml: data.pillar ? faqSchema(body) : "" });
+    const page = renderPage({ slug, title: data.title, category: data.category, author: data.author, image: data.image, imageAlt: data.image_alt, date: data.date, bodyHtml, description, seoTitle: data.seo_title, relatedHtml: relatedSection({ slug, category: data.category, related: data.related, picks: data.related_posts }, all), pillarHtml: pillarBox(data.pillar), faqHtml: data.pillar ? faqSchema(body) : "" });
     writeFileSync(outPath, page);
     changed = true;
 

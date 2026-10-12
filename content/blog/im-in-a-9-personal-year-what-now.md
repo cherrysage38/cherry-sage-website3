@@ -2,7 +2,8 @@
 title: "I’m In A 9 Personal Year, What Now?"
 category: "Numerology"
 date: "2009-11-19"
-image: "/assets/blog/numeric-readings-new-1-768x361.jpg"
+image: "/assets/blog/im-in-a-9-personal-year-what-now-card.jpg"
+image_alt: "A large golden number 9 beside old books and white petals, with a sunset valley beyond"
 seo_title: "Numerology: What a 9 Personal Year Means for You"
 description: "As you may have learned, we all have many personal vibrations that affect our lives and numerology offers specific…"
 related: true

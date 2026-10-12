@@ -2,7 +2,8 @@
 title: "Align with the Universe: Let Your Soul Guide You to a Spiritual Love Connection"
 category: "Psychic Readings"
 date: "2025-01-22"
-image: "/assets/blog/accurate-love-reading-200x300.jpg"
+image: "/assets/blog/align-with-the-universe-let-your-soul-guide-you-to-a-spiritual-love-connection-card.jpg"
+image_alt: "A couple sitting together on a hillside, watching the sun set over a lake"
 seo_title: "Align with the Universe: Let Your Soul Guide You to a Spiritual Love Connection"
 description: "Discover the path to soulful love with accurate psychic readings. Uncover your heart's true desires, align with spiritual awareness, and embrace transformative connections."
 related: true

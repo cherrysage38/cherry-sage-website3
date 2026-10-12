@@ -2,7 +2,8 @@
 title: "The Practice of Meditation"
 category: "Featured Articles"
 date: "2012-12-15"
-image: "/assets/blog/real-psychic-readings-2-main-768x361.jpg"
+image: "/assets/blog/the-practice-of-meditation-card.jpg"
+image_alt: "A woman in white linen meditating cross-legged on a rug in a bright room overlooking a garden"
 seo_title: "The Practice of Meditation"
 description: "Meditation is a very effective technique for improving many areas of your life."
 related: false

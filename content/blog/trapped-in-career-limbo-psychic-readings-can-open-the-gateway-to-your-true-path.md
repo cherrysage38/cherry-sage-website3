@@ -2,7 +2,8 @@
 title: "Trapped In Career Limbo? Psychic Readings Can Open The Gateway To Your True Path!"
 category: "Psychic Readings"
 date: "2025-01-03"
-image: "/assets/blog/professional-psychic-readings-300x200.jpg"
+image: "/assets/blog/trapped-in-career-limbo-psychic-readings-can-open-the-gateway-to-your-true-path-card.jpg"
+image_alt: "A woman in a long dress standing where a mountain path splits in two at sunset"
 seo_title: "Trapped In Career Limbo? Psychic Readings Can Open The Gateway To Your True Path!"
 description: "Feeling stuck in your career? Professional psychic readings offer clarity, uncover hidden opportunities, and help you navigate career changes with confidence and purpose."
 related: true
