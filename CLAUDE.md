@@ -3,6 +3,13 @@
 Owner: Beverly Cherry. This is her live business site (cherrysage.com).
 Brand: professional, warm, traditional. Never witchy, never fortune-telling language.
 Writing: plain and warm.
+- 1999 (or "since 1999", "27 years"): Bev, 2026-10-12, "there doesn't need to be a mention of 1999
+  on every post. That's still too much." So:
+  - Blog posts, guest articles and Readings pages: do not mention it. If Bev's own text includes it,
+    point it out to her and ask before keeping it.
+  - Only the homepage, Meet Cherry Sage and Psychic Reading pages may mention it, once each.
+- Pages and posts open with the reader's question in bold, then the plain answer right under it
+  (not the answer alone). Question-style headings below follow the same pattern.
 
 ## How to work (always)
 - Never change the live site directly. Work on a new branch, push it, and let Netlify build a
