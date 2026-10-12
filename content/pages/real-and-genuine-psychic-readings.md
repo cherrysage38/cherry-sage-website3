@@ -13,7 +13,7 @@ blocks:
 
       Look for a professional with a long track record, a clear way of working, and respect for your free will. A real psychic tells you what they genuinely receive, even when it isn’t what you were hoping to hear. A real psychic won’t promise guaranteed outcomes, won’t ask you for money to remove a curse or “cleanse” your energy, and won’t keep you calling with stories designed to make you feel good.
 
-      I’ve been giving psychic readings professionally since 1999, and some of my clients have been calling me for more than twenty years. I’ve also been on the other side of the phone. Over the years I’ve had readings from dozens of so-called psychic advisers, and I’ve seen exactly how people who are not real work their magic.
+      I’m a professional psychic, and some of my clients have been calling me for more than twenty years. I’ve also been on the other side of the phone. Over the years I’ve had readings from dozens of so-called psychic advisers, and I’ve seen exactly how people who are not real work their magic.
 
       So many people come to me after being hurt, misled, or simply confused by other readings. This page is my honest advice on how to find a psychic you can trust.
 
