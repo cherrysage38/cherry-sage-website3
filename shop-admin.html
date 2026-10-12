@@ -69,7 +69,9 @@ details.pm[open] summary::before{content:"−"}
 .pm-mini.bad,.pm-del{border-color:#c9868f;color:var(--cherry)}
 .pm-add{color:var(--oxblood);border-color:var(--oxblood)}
 .pm-actions{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;margin-top:1rem}
-details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new summary{color:var(--oxblood)}
+details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}
+.pm-kind-q{margin:.6rem 0 0;font-weight:600;color:var(--oxblood)}
+.pm-checks.pm-need{outline:2px solid var(--cherry);outline-offset:6px;border-radius:6px}details.pm-new summary{color:var(--oxblood)}
 @media (max-width:640px){.pm-grid{grid-template-columns:1fr}.pm-qrow{grid-template-columns:1fr 1fr}.pm-qrow .q-label{grid-column:1/-1}}
 </style>
 </head>
@@ -94,9 +96,10 @@ details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new s
     <details class="pm pm-new" id="saNew">
       <summary><span class="pm-name">Add a new product</span></summary>
       <div class="pm-body">
-        <p class="pm-note">Choose what kind of product it is, fill in the details, and press Add. It shows in your shop right away.</p>
-        <div class="pm-checks">
-          <label class="sa-active"><input type="radio" name="newKind" value="report" checked> Written numerology report</label>
+        <p class="pm-note">First choose what kind of product it is, then fill in the details and press Add. It shows in your shop right away.</p>
+        <p class="pm-kind-q">What kind of product is this?</p>
+        <div class="pm-checks" id="newKinds">
+          <label class="sa-active"><input type="radio" name="newKind" value="report"> Written numerology report</label>
           <label class="sa-active"><input type="radio" name="newKind" value="minutes"> Phone reading (buy minutes)</label>
         </div>
         <div class="pm-grid">
@@ -226,17 +229,21 @@ details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new s
   // ---- Add a new product ----
   var DEFAULT_QS=[{key:'fullname',label:'Full name at birth (as on your birth certificate)',type:'text',required:true},{key:'dob',label:'Date of birth',type:'date',required:true},{key:'email',label:'Your email (your report is sent here)',type:'email',required:true}];
   var newBox=document.getElementById('saNew'), newList=document.getElementById('newQList');
-  function kindNow(){ var r=newBox.querySelector('input[name=newKind]:checked'); return r?r.value:'report'; }
+  // Nothing is chosen at the start (Bev, 2026-10-12: "you could forget to choose the right kind"),
+  // and a product cannot be added until "report" or "phone reading" is picked.
+  function kindNow(){ var r=newBox.querySelector('input[name=newKind]:checked'); return r?r.value:''; }
   function resetNew(){
-    newList.innerHTML=DEFAULT_QS.map(questionRow).join('');
+    newList.innerHTML='';
     ['newName','newPrice','newMinutes','newDesc'].forEach(function(id){ document.getElementById(id).value=''; });
-    newBox.querySelector('input[name=newKind][value=report]').checked=true; syncKind();
+    newBox.querySelectorAll('input[name=newKind]').forEach(function(r){ r.checked=false; }); syncKind();
   }
   function syncKind(){
-    var rep=kindNow()==='report';
+    var kind=kindNow(), rep=kind==='report';
+    document.getElementById('newKinds').classList.remove('pm-need');
+    document.getElementById('newQuestions').hidden=!kind;      // questions appear once the kind is chosen
     document.getElementById('newQNote').textContent=rep?REPORT_QNOTE:PHONE_QNOTE;
-    document.getElementById('newBirthBtn').hidden=rep;
-    document.getElementById('newMinWrap').hidden=rep;
+    document.getElementById('newBirthBtn').hidden=kind!=='minutes';
+    document.getElementById('newMinWrap').hidden=kind!=='minutes';
   }
   function newStatus(text,cls){ var s=document.getElementById('newStatus'); s.className='sa-status'+(cls?' '+cls:''); s.textContent=text||''; }
   newBox.addEventListener('change', function(e){
@@ -260,6 +267,11 @@ details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new s
   });
   document.getElementById('newCreate').addEventListener('click', function(){
     var kind=kindNow(), name=document.getElementById('newName').value.trim();
+    if(!kind){
+      document.getElementById('newKinds').classList.add('pm-need');
+      document.getElementById('newKinds').scrollIntoView({behavior:'smooth',block:'center'});
+      newStatus('Choose what kind of product this is first: a written report or a phone reading.','err'); return;
+    }
     var priceCents=Math.round(parseFloat(document.getElementById('newPrice').value.replace(/[$,\s]/g,''))*100);
     if(!name){ newStatus('Give the product a name.','err'); return; }
     if(isNaN(priceCents)||priceCents<0){ newStatus('Enter a valid price, for example 29 or 29.50.','err'); return; }
