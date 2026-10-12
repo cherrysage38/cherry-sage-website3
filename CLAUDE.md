@@ -3,6 +3,10 @@
 Owner: Beverly Cherry. This is her live business site (cherrysage.com).
 Brand: professional, warm, traditional. Never witchy, never fortune-telling language.
 Writing: plain and warm.
+- Mention 1999 (or "since 1999", "27 years") at most once per page or post, counting the
+  headline area, the text and the Google description. Bev, 2026-10-12: repeating it reads as filler.
+- Pages and posts open with the reader's question in bold, then the plain answer right under it
+  (not the answer alone). Question-style headings below follow the same pattern.
 
 ## How to work (always)
 - Never change the live site directly. Work on a new branch, push it, and let Netlify build a
