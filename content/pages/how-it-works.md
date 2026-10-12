@@ -1,6 +1,6 @@
 ---
 title: "How It Works"
-description: "Two simple ways to have your phone reading with Cherry. First-timers get 10 minutes for $24."
+description: "Two simple ways to have your phone reading with Cherry. First-time callers get a special introductory offer."
 hero_eyebrow: "How it works"
 hero_lede: "Every reading is by phone, one on one with Cherry. There are two easy ways to get started."
 blocks:
@@ -20,7 +20,7 @@ blocks:
     body: "At your arranged time, call Cherry at 301-474-1681.\n\n[Book a Reading](/book-appointment) · [Shop](/shop) · [Contact Cherry](/contact)"
   - type: "text"
     boxed: true
-    body: "First-timers get 10 minutes for $24 on their first call."
+    body: "First-time callers get a special introductory offer on their first call."
   - type: "faq"
     heading: "Common questions"
     items:
