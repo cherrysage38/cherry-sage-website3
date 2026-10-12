@@ -173,14 +173,12 @@
         var price=document.createElement('span'); price.className='pcard-price'; price.textContent=money(p.price_cents);
         body.appendChild(h3); body.appendChild(price);
         if(p.description){ var d=document.createElement('p'); d.textContent=p.description; body.appendChild(d); }
-        // A phone reading with questions (e.g. birth details for numerology) opens its short form first.
+        // A phone reading with questions (e.g. birth details for numerology) is answered at checkout:
+        // an empty "details" tells the cart to ask them (2026-10-12).
         var asks=Array.isArray(p.report_fields) && p.report_fields.length>0;
-        if(isMinutes && asks){
-          var f=document.createElement('a'); f.className='btn btn-primary'; f.href='/report?p='+encodeURIComponent(p.id); f.innerHTML='View &amp; book &rarr;';
-          body.appendChild(f);
-        } else if(isMinutes){
+        if(isMinutes){
           var b=document.createElement('button'); b.type='button'; b.className='btn btn-primary'; b.textContent='Add to Cart';
-          b.addEventListener('click', function(){ window.CSCart.add({readingProductId:p.id,name:p.name,priceCents:p.price_cents}); location.href='/cart.html'; });
+          b.addEventListener('click', function(){ window.CSCart.add({readingProductId:p.id,name:p.name,priceCents:p.price_cents,details:asks?{}:null}); location.href='/cart.html'; });
           body.appendChild(b);
         } else {
           var a=document.createElement('a'); a.className='btn btn-primary'; a.href='/report?p='+encodeURIComponent(p.id); a.innerHTML='View &amp; request &rarr;';

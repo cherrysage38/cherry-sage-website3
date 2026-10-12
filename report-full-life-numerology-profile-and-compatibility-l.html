@@ -64,7 +64,7 @@
       <input type="text" name="fullname2" placeholder="Second person: full name at birth" required style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
       <input type="date" name="dob2" required aria-label="Second person date of birth" style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
       <input type="email" name="email" placeholder="Your email (your report is sent here)" required style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
-      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <input type="text" name="cs_hp_field" tabindex="-1" autocomplete="off" aria-hidden="true" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="btn btn-primary" type="submit">Add to Cart</button>
       <p id="rfNote" style="margin:0;color:var(--cherry);font-size:.9rem" hidden></p>
     </form>
@@ -78,7 +78,7 @@
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){note.hidden=false;note.textContent='Please enter a valid email.';return;}
     if(!(f.fullname.value||'').trim()||!f.dob.value){note.hidden=false;note.textContent='Please add your full birth name and date of birth.';return;}
     if(!(f.fullname2.value||'').trim()||!f.dob2.value){note.hidden=false;note.textContent='Please add the second person\'s full name and date of birth.';return;}
-    if(f.website.value){ return; }
+    if(f.cs_hp_field.value){ return; }
     note.hidden=true; btn.disabled=true;btn.textContent='Adding...';
     var details={fullname:f.fullname.value.trim(), dob:f.dob.value, fullname2:(f.fullname2.value||'').trim(), dob2:f.dob2.value||'', email:email};
     window.CSCart.add({readingProductId:'679c979b-42b1-4cb0-a5fa-debe411f6638', name:'Full-Life Numerology Profile and Compatibility Love Report', priceCents:3400, details:details});

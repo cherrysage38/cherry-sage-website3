@@ -1,9 +1,9 @@
 /* Cherry Sage — report order forms driven by the database (2026-09-21).
    Bev asked where to manage "the attributes needed for the numerology reports" and what the product
    description says. Each report page still carries its original form as a safe fallback; when the
-   database answers, this script rewrites the description and price, rebuilds the form from the
-   questions Bev set in Manage Products, and adds the order to the cart with the same answer keys
-   (fullname, dob, email ...) the order emails and Clover receipts already use. */
+   database answers, this script rewrites the description and price and swaps the form for an
+   "Add to Cart" button; since 2026-10-12 the questions Bev set in Manage Products are answered at
+   checkout (cart.html). If the database cannot be reached, the page's built-in form still works. */
 (function () {
   var form = document.getElementById('reportForm');
   if (!form) return;
@@ -15,8 +15,6 @@
 
   var SUPABASE_URL = 'https://ctoeuikxoqlhnebgsygp.supabase.co';
   var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0b2V1aWt4b3FsaG5lYmdzeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0ODM4NTMsImV4cCI6MjA5NjA1OTg1M30.Cy0uf8hm-Biea7a1V3bLQBz70f1oyhP83vHDjefTce8';
-  var FIELD_STYLE = 'padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body);font-size:1rem;width:100%;box-sizing:border-box';
-  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   function showGone(text) {
     if (!generic) return;
@@ -47,11 +45,7 @@
       var h1 = document.querySelector('.page-hero h1'); if (h1) h1.textContent = p.name;
       var crumb = document.getElementById('rfCrumb'); if (crumb) crumb.textContent = p.name;
       document.title = p.name + (phone ? ' — Phone Reading' : ' — Numerology Report') + ' — Cherry Sage';
-      if (phone) {
-        var eyebrow = document.querySelector('.page-hero .eyebrow'); if (eyebrow) eyebrow.textContent = 'Phone reading';
-        var dh = document.getElementById('rfDetailsHead'); if (dh) dh.textContent = 'Your details for this reading';
-        var dn = document.getElementById('rfDetailsNote'); if (dn) dn.textContent = 'Please fill in the details below so Cherry can prepare for your call.';
-      }
+      if (phone) { var eyebrow = document.querySelector('.page-hero .eyebrow'); if (eyebrow) eyebrow.textContent = 'Phone reading'; }
     }
 
     // description and price shown on this page
@@ -71,40 +65,37 @@
     var fields = p.report_fields;
     if (!Array.isArray(fields) || !fields.length) { if (generic) showGone('This report is not ready to order yet.'); return; }      // the static pages keep their built-in form
 
-    // brand-new form element: drops the old page's submit handler, which only knows the old fields
-    var nf = form.cloneNode(false);
-    fields.forEach(function (f) {
-      // A question ending in "(... only if ...)" shows that part as a small note under it, and without
-      // "(optional)", so a married caller does not read the current-name question as skippable.
-      var only = /^(.*?)\s*\(([^()]*\bonly if\b[^()]*)\)\s*$/i.exec(f.label);
-      var text = only ? only[1] : f.label + (f.required ? '' : ' (optional)');
-      var wrap = el('label', { style: 'display:grid;gap:.35rem;font-size:.92rem;color:var(--ink-soft)' }, text);
-      if (only) wrap.appendChild(el('span', { style: 'font-size:.85rem;font-style:italic' }, only[2].charAt(0).toUpperCase() + only[2].slice(1) + '.'));
-      var input = f.type === 'textarea'
-        ? el('textarea', { name: f.key, rows: '4', style: FIELD_STYLE })
-        : el('input', { name: f.key, type: f.type === 'date' ? 'date' : f.type === 'email' ? 'email' : 'text', style: FIELD_STYLE });
-      if (f.required) input.setAttribute('required', '');
-      wrap.appendChild(input);
-      nf.appendChild(wrap);
-    });
-    nf.appendChild(el('input', { type: 'text', name: 'website', tabindex: '-1', autocomplete: 'off', 'aria-hidden': 'true', style: 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0' }));
-    var btn = el('button', { class: 'btn btn-primary', type: 'submit' }, 'Add to Cart');
+    // The questions are answered at checkout, under the item in the cart (Bev, 2026-10-12): some
+    // browsers with privacy add-ons could not use the form that used to be here. This page now only
+    // says what will be asked and adds the item; an empty "details" marks it as needing answers.
+    var card = form.closest('.card');
+    var head = card ? card.querySelector('h3') : null;
+    var intro = head ? head.nextElementSibling : null;
+    if (head) head.textContent = phone ? 'Book this reading' : 'Order this report';
+    if (intro && intro.tagName === 'P') {
+      intro.textContent = (phone ? 'Before your call, Cherry needs a few details. ' : '') +
+        'You will answer these at checkout: ' + fields.map(function (f) {
+          return String(f.label || '').replace(/\s*\([^()]*\)\s*$/, '');
+        }).join(', ') + '.';
+    }
+    var box = el('div', { id: 'reportForm', style: 'display:grid;gap:.9rem' });
+    var btn = el('button', { class: 'btn btn-primary', type: 'button' }, 'Add to Cart');
     var msg = el('p', { id: 'rfNote', style: 'margin:0;color:var(--cherry);font-size:.9rem', hidden: '' });
-    nf.appendChild(btn); nf.appendChild(msg);
-    form.parentNode.replaceChild(nf, form);
+    box.appendChild(btn); box.appendChild(msg);
+    form.parentNode.replaceChild(box, form);
 
-    nf.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (nf.elements['website'] && nf.elements['website'].value) return;      // bot
-      var details = {};
-      for (var i = 0; i < fields.length; i++) {
-        var f = fields[i], v = String((nf.elements[f.key] || {}).value || '').trim();
-        if (f.required && !v) { msg.hidden = false; msg.textContent = 'Please fill in: ' + f.label; return; }
-        if (v && f.type === 'email' && !EMAIL.test(v)) { msg.hidden = false; msg.textContent = 'Please enter a valid email.'; return; }
-        if (v) details[f.key] = v;
+    btn.addEventListener('click', function () {
+      function fail(text) { msg.hidden = false; msg.textContent = text; btn.disabled = false; btn.textContent = 'Add to Cart'; }
+      btn.disabled = true; btn.textContent = 'Adding...';
+      try {
+        var before = window.CSCart.count();
+        window.CSCart.add({ readingProductId: p.id, name: p.name, priceCents: p.price_cents, details: {} });
+        if (window.CSCart.count() <= before) {
+          return fail('Your browser is not letting this site keep your cart. Please allow cookies and site data for cherrysage.com, or pause privacy add-ons for this site, or try another browser.');
+        }
+      } catch (e) {
+        return fail('Something went wrong. Please try again, or call or email Cherry and she will help you order.');
       }
-      msg.hidden = true; btn.disabled = true; btn.textContent = 'Adding...';
-      window.CSCart.add({ readingProductId: p.id, name: p.name, priceCents: p.price_cents, details: details });
       location.href = '/cart.html';
     });
   }).catch(function () { if (generic) showGone('We could not load this report. Please try again in a moment.'); /* the static pages keep their built-in form */ });
