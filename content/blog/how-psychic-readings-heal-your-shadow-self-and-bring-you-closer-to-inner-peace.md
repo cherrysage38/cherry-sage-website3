@@ -1,6 +1,8 @@
 ---
 title: "How Psychic Readings Heal Your Shadow Self and Bring You Closer to Inner Peace"
 category: "Psychic Readings"
+topics:
+  - "Energy & Healing"
 date: "2025-03-03"
 image: "/assets/blog/how-psychic-readings-heal-your-shadow-self-and-bring-you-closer-to-inner-peace-card.jpg"
 image_alt: "A woman in warm light touching a cracked mirror that shows her darker reflection"

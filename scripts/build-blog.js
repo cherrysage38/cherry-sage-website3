@@ -219,14 +219,15 @@ function relatedSection(post, all) {
   return `<section class="section section-tint"><div class="wrap"><div class="section-head reveal"><p class="eyebrow">Keep reading</p><h2>${heading}</h2></div><div class="blog-cards">${cards}</div></div></section>\n`;
 }
 
-const CARD_RE = /<a class='bcard reveal' data-cat='[^']*' data-ym='[^']*' href='\/([^']*)'>[\s\S]*?<span class="bc-date">(\d{4}-\d{2}-\d{2})<\/span><\/div>\n<\/a>/g;
+const CARD_RE = /<a class='bcard reveal' data-cat='[^']*' data-ym='[^']*' href='\/([^']*)'[^>]*>[\s\S]*?<span class="bc-date">(\d{4}-\d{2}-\d{2})<\/span><\/div>\n<\/a>/g;
 // Every post gets a card, not only brand-new ones: 12 older posts (Featured Articles, Astrology,
 // Dreams) had pages but were never listed on blog.html (found 2026-10-03). A missing card is put
 // in date order among the others, which blog.html lists newest first.
-function upsertCard(html, { slug, title, category, image, date, excerpt }) {
+function upsertCard(html, { slug, title, category, topics, image, date, excerpt }) {
   const ym = date.slice(0, 7);
-  const cardRe = new RegExp(`<a class='bcard reveal' data-cat='[^']*' data-ym='[^']*' href='/${slug}'>[\\s\\S]*?</a>`);
-  const newCard = `<a class='bcard reveal' data-cat='${esc(category)}' data-ym='${ym}' href='/${slug}'>\n  <img class="bc-img" src="${image}" alt="" loading="lazy" decoding="async">\n  <div class="bc-body"><span class="cat-chip">${esc(category)}</span><h3>${esc(title)}</h3><p>${esc(excerpt)}</p><span class="bc-date">${date}</span></div>\n</a>`;
+  const cardRe = new RegExp(`<a class='bcard reveal' data-cat='[^']*' data-ym='[^']*' href='/${slug}'[^>]*>[\\s\\S]*?</a>`);
+  // data-topics: the main topic plus the post's "More topics", so a topic button finds it under each.
+  const newCard = `<a class='bcard reveal' data-cat='${esc(category)}' data-ym='${ym}' href='/${slug}' data-topics='${topics.map(esc).join("|")}'>\n  <img class="bc-img" src="${image}" alt="" loading="lazy" decoding="async">\n  <div class="bc-body"><span class="cat-chip">${esc(category)}</span><h3>${esc(title)}</h3><p>${esc(excerpt)}</p><span class="bc-date">${date}</span></div>\n</a>`;
 
   if (cardRe.test(html)) return { html: html.replace(cardRe, newCard), added: false };
   const listStart = html.indexOf('<div class="blog-cards">') + '<div class="blog-cards">'.length;
@@ -252,38 +253,24 @@ function upsertFeatured(html, { slug, title, category, image, date, excerpt }, h
   return html.replace(FEATURED_RE, () => block);
 }
 
-// Adds a topic's button to the toolbar and the "Browse by topic" cloud when blog.html doesn't have one
-// yet, so its posts can be filtered like the rest. Returns null when the topic is already there.
-function addTopic(html, category) {
-  const f = esc(category);
-  if (html.includes(`data-f="${f}"`)) return null;
-  const chipsEnd = html.indexOf("</div>", html.indexOf('<div class="bchips">'));
-  html = html.slice(0, chipsEnd) + `<button class="bchip" data-f="${f}">${f}</button>` + html.slice(chipsEnd);
-  const cloudEnd = html.indexOf("</div>", html.indexOf('<div class="wordcloud">'));
-  return html.slice(0, cloudEnd) + `<button class="wc-tag" data-f="${f}" style="font-size:0.87rem">${f}<span class="wc-n">0</span></button>` + html.slice(cloudEnd);
-}
-
-// Once counts are final: size the newly added cloud topics like the others (about 0.82rem plus
-// 0.05rem per post) and keep the cloud ordered biggest first.
-function tidyWordCloud(html, added) {
-  const start = html.indexOf('<div class="wordcloud">') + '<div class="wordcloud">'.length;
-  const end = html.indexOf("</div>", start);
-  const tags = html.slice(start, end).match(/<button class="wc-tag"[\s\S]*?<\/button>/g) || [];
-  const sized = tags.map((t) => {
-    const f = (t.match(/data-f="([^"]*)"/) || [])[1];
-    const n = parseInt((t.match(/<span class="wc-n">(\d+)/) || [])[1] || "0", 10);
-    const tag = added.has(f) ? t.replace(/font-size:[\d.]+rem/, `font-size:${(0.82 + 0.05 * n).toFixed(2)}rem`) : t;
-    return { n, tag };
-  });
-  sized.sort((a, b) => b.n - a.n);
-  return html.slice(0, start) + sized.map((x) => x.tag).join("") + html.slice(end);
-}
-
-function bumpWordCloud(html, category) {
-  // The button's own visible text (the category name again) sits between the opening tag
-  // and the count span, e.g. ...data-f="Numerology" style="...">Numerology<span class="wc-n">8</span>
-  const tagRe = new RegExp(`(data-f="${category.replace(/&/g, "&amp;")}"[^>]*>[^<]*<span class="wc-n">)(\\d+)(</span>)`);
-  return html.replace(tagRe, (m, a, n, b) => `${a}${parseInt(n, 10) + 1}${b}`);
+// The topic buttons and the "Browse by topic" cloud are rebuilt from the cards on every build (2026-10-12,
+// when posts got more than one topic): each topic counts every post listed under it, biggest first,
+// sized about 0.82rem plus 0.05rem per post. A topic with no posts left drops out by itself.
+function rebuildTopics(html) {
+  const counts = new Map();
+  for (const m of html.matchAll(/<a class='bcard reveal' data-cat='([^']*)' data-ym='[^']*' href='\/[^']*'(?: data-topics='([^']*)')?>/g)) {
+    for (const t of new Set((m[2] || m[1]).split("|").filter(Boolean))) counts.set(t, (counts.get(t) || 0) + 1);
+  }
+  const order = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  const chips = `<button class="bchip on" data-f="all">All topics</button>` + order.map(([t]) => `<button class="bchip" data-f="${t}">${t}</button>`).join("");
+  const cloud = order.map(([t, n]) => `<button class="wc-tag" data-f="${t}" style="font-size:${Math.min(2.1, 0.82 + 0.05 * n).toFixed(2)}rem">${t}<span class="wc-n">${n}</span></button>`).join("");
+  const swap = (h, open, inner) => {
+    const a = h.indexOf(open);
+    if (a < 0) return h;
+    const b = h.indexOf("</div>", a);
+    return h.slice(0, a + open.length) + inner + h.slice(b);
+  };
+  return swap(swap(html, '<div class="bchips">', chips), '<div class="wordcloud">', cloud);
 }
 
 const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -307,13 +294,10 @@ function upsertArchive(html, ym) {
 // page, its blog.html card (and the counts that card added) and its sitemap entry. Unticking it
 // brings everything back on the next build, because the page and card are rebuilt from the .md.
 function removeCard(html, slug) {
-  const cardRe = new RegExp(`<a class='bcard reveal' data-cat='([^']*)' data-ym='([^']*)' href='/${slug}'>[\\s\\S]*?</a>`);
+  const cardRe = new RegExp(`<a class='bcard reveal' data-cat='([^']*)' data-ym='([^']*)' href='/${slug}'[^>]*>[\\s\\S]*?</a>`);
   const m = html.match(cardRe);
   if (!m) return html;
-  html = html.replace(cardRe, "");
-  // data-cat is written escaped (&amp;), which is how the word cloud's data-f is written too.
-  const tagRe = new RegExp(`(data-f="${m[1]}"[^>]*>[^<]*<span class="wc-n">)(\\d+)(</span>)`);
-  html = html.replace(tagRe, (x, a, n, b) => `${a}${Math.max(0, parseInt(n, 10) - 1)}${b}`);
+  html = html.replace(cardRe, "");      // topic counts are recounted at the end (rebuildTopics)
   const itemRe = new RegExp(`<li><button class="arch-item" data-ym="${m[2]}">([^<]*)<span>\\((\\d+)\\)</span></button></li>`);
   return html.replace(itemRe, (x, label, n) => (parseInt(n, 10) <= 1 ? "" : `<li><button class="arch-item" data-ym="${m[2]}">${label}<span>(${parseInt(n, 10) - 1})</span></button></li>`));
 }
@@ -371,7 +355,6 @@ function main() {
   let changed = false;
   let newest = null;
   const hiddenSlugs = new Set();
-  const addedTopics = new Set();
 
   // First pass: read every post so each page can link to its category neighbours.
   const all = [];
@@ -406,8 +389,11 @@ function main() {
       console.warn(`[build-blog] Skipping ${file}: missing title, category, image, or date.`);
       continue;
     }
-    if (!CATEGORIES.includes(data.category)) {
-      console.warn(`[build-blog] ${file}: "${data.category}" isn't in the Blog Topics list (content/blog-topics.yml); building it anyway.`);
+    // Main topic first, then up to 2 more from the editor's "More topics" field.
+    const extra = (Array.isArray(data.topics) ? data.topics : data.topics ? [data.topics] : []).map((t) => String(t).trim()).filter(Boolean);
+    const topics = [...new Set([data.category, ...extra])].slice(0, 3);
+    for (const t of topics) {
+      if (!CATEGORIES.includes(t)) console.warn(`[build-blog] ${file}: "${t}" isn't in the Blog Topics list (content/blog-topics.yml); building it anyway.`);
     }
     // The editor's date widget can write a full timestamp depending on version/settings; only the day matters.
     data.date = String(data.date).trim().slice(0, 10);
@@ -433,12 +419,9 @@ function main() {
     writeFileSync(outPath, page);
     changed = true;
 
-    const result = upsertCard(blogHtml, { slug, title: data.title, category: data.category, image: data.image, date: data.date, excerpt: plainExcerpt(body) });
+    const result = upsertCard(blogHtml, { slug, title: data.title, category: data.category, topics, image: data.image, date: data.date, excerpt: plainExcerpt(body) });
     blogHtml = result.html;
     if (result.added) {
-      const withTopic = addTopic(blogHtml, data.category);
-      if (withTopic) { blogHtml = withTopic; addedTopics.add(esc(data.category)); }
-      blogHtml = bumpWordCloud(blogHtml, data.category);
       blogHtml = upsertArchive(blogHtml, result.ym);
       addToSitemap(slug);
     }
@@ -459,7 +442,7 @@ function main() {
     console.log(`[build-blog] Removed /${slug}.html (its post was deleted in the editor)`);
   }
 
-  if (addedTopics.size) blogHtml = tidyWordCloud(blogHtml, addedTopics);
+  blogHtml = rebuildTopics(blogHtml);
   if (newest) blogHtml = upsertFeatured(blogHtml, newest, hiddenSlugs);
   if (changed) writeFileSync(BLOG_HTML, blogHtml);
 }

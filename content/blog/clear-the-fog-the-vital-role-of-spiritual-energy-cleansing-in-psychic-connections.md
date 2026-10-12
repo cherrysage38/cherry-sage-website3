@@ -1,6 +1,8 @@
 ---
 title: "Clear The Fog: The Vital Role Of Spiritual Energy Cleansing In Psychic Connections!"
 category: "Psychic Readings"
+topics:
+  - "Energy & Healing"
 date: "2025-01-03"
 image: "/assets/blog/clear-the-fog-the-vital-role-of-spiritual-energy-cleansing-in-psychic-connections-card.jpg"
 image_alt: "A man with arms open and eyes closed in the mountains at sunrise, wrapped in flowing ribbons of light"

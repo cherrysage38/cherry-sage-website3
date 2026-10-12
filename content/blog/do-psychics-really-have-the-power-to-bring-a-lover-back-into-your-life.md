@@ -1,6 +1,8 @@
 ---
 title: "Do Psychics Really Have The Power To Bring A Lover Back Into Your Life?"
 category: "Gypsy Scams"
+topics:
+  - "Love & Relationships"
 date: "2023-05-11"
 image: "/assets/blog/psychic-power-min-768x432.jpeg"
 seo_title: "Do Psychics Really Have The Power To Bring A Lover Back Into Your Life?"

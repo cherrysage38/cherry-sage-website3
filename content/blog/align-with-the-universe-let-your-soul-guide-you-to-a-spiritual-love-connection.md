@@ -1,6 +1,8 @@
 ---
 title: "Align with the Universe: Let Your Soul Guide You to a Spiritual Love Connection"
 category: "Psychic Readings"
+topics:
+  - "Love & Relationships"
 date: "2025-01-22"
 image: "/assets/blog/align-with-the-universe-let-your-soul-guide-you-to-a-spiritual-love-connection-card.jpg"
 image_alt: "A couple sitting together on a hillside, watching the sun set over a lake"

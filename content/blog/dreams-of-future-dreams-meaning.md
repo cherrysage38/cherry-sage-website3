@@ -1,6 +1,9 @@
 ---
 title: "Dreams Of Future & Dreams Meaning"
 category: "Dreams"
+topics:
+  - "Predicting Dates or Timelines"
+  - "Other World"
 date: "2012-12-05"
 image: "/assets/blog/dreams-of-future-dreams-meaning-card.jpg"
 image_alt: "A softly lit bedroom with a wide window looking out at a full moon and a sunrise over a sea of clouds"

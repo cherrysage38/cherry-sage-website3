@@ -1,6 +1,8 @@
 ---
 title: "Aquarius Female Compatibility"
 category: "Astrology"
+topics:
+  - "Love & Relationships"
 date: "2012-11-26"
 image: "/assets/blog/aquarius-female-compatibility-card.jpg"
 image_alt: "An Aquarius water-bearer plaque beside two wedding rings, white flowers and amethyst, overlooking a lake"

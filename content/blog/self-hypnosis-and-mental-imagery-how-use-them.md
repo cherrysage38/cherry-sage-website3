@@ -1,6 +1,6 @@
 ---
 title: "Self-Hypnosis And Mental Imagery: How Use Them"
-category: "Featured Articles"
+category: "Energy & Healing"
 date: "2012-11-28"
 image: "/assets/blog/real-psychic-readings-2-768x361.jpg"
 seo_title: "Self-Hypnosis and Mental Imagery: How They Work"

@@ -1,6 +1,8 @@
 ---
 title: "The Universe Is Whispering: Here’s How To Tap Into Your Spirit Guides For Clarity!"
 category: "Psychic Readings"
+topics:
+  - "Other World"
 date: "2024-11-06"
 image: "/assets/blog/the-universe-is-whispering-heres-how-to-tap-into-your-spirit-guides-for-clarity-card.jpg"
 image_alt: "A woman meditating on a mountaintop at sunrise, with glowing figures of light beside her"

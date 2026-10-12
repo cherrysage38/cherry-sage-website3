@@ -1,6 +1,8 @@
 ---
 title: "Psychic Predictions–When You Just Should Not Know the Future"
-category: "Featured Articles"
+category: "Predicting Dates or Timelines"
+topics:
+  - "Psychic Readings"
 date: "2009-11-23"
 image: "/assets/blog/psychic-predictions-when-you-just-should-not-know-card.jpg"
 image_alt: "A closed wooden door at the end of a warm, sunlit stone hallway, with light glowing beneath it"

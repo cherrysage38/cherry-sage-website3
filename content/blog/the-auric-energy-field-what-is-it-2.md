@@ -1,6 +1,8 @@
 ---
 title: "The Auric Energy Field — What Is It?"
 category: "Other World"
+topics:
+  - "Energy & Healing"
 date: "2012-12-07"
 image: "/assets/blog/the-auric-energy-field-what-is-it-2-card.jpg"
 image_alt: "A man with eyes closed, surrounded by swirling layers of blue, violet and gold light"
