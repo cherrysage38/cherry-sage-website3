@@ -7,7 +7,9 @@ Writing: plain and warm.
   on every post. That's still too much." So:
   - Blog posts, guest articles and Readings pages: do not mention it. If Bev's own text includes it,
     point it out to her and ask before keeping it.
-  - Only the homepage, Meet Cherry Sage and Psychic Reading pages may mention it, once each.
+  - It lives in the site footer ("Serving clients worldwide since 1999", content/footer.yml), which
+    shows on every page. Pages themselves don't repeat it; the one exception is Bev's story on Meet
+    Cherry Sage, where 1999 is part of her history.
 - Pages and posts open with the reader's question in bold, then the plain answer right under it
   (not the answer alone). Question-style headings below follow the same pattern.
 
