@@ -223,6 +223,7 @@ collections:
     summary: "{{hidden | ternary('HIDDEN · ', '')}}{{title}} — {{category}}"
     # Newest first in the editor list. The sort menu still offers title and topic.
     sortable_fields: { fields: ["date", "title", "category"], default: { field: "date", direction: "descending" } }
+    view_filters: [{ label: "Featured", field: "featured", pattern: true }]
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "The post's headline." }
       - { label: "Meta title (optional)", name: "seo_title", widget: "string", required: false, hint: "The title Google shows in search results. Leave blank and it uses the title above followed by Cherry Sage." }
@@ -238,6 +239,8 @@ collections:
       - { label: "Related posts (optional)", name: "related_posts", widget: "relation", collection: "blog", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], multiple: true, max: 3, required: false, hint: "Pick up to 3 posts to show in the Keep reading row, in the order you want them. Leave blank, or pick fewer than 3, and the rest are filled with the newest posts on the same topic." }
       - { label: "Part of a guide page (optional)", name: "pillar", widget: "select", required: false, options: [{ label: "Love and Relationships", value: "love-and-relationships" }], hint: "Pick a guide page and this post is listed on it automatically, with a link back to it at the end of the post." }
       - { label: "Hide from site", name: "hidden", widget: "boolean", default: false, required: false, hint: "Tick this, then Publish, to take this post off the site for now. Nothing you wrote is deleted. Untick it and Publish to bring it back." }
+      - { label: "Feature at the top of the Blog", name: "featured", widget: "boolean", default: false, required: false, hint: "Tick this, then Publish, to show this post in the big spot at the top of the Blog page, labelled Featured. It runs for 60 days, then the newest post takes the spot again by itself and the Blog Posts list tells you it has ended." }
+      - { label: "Feature until (optional)", name: "featured_until", widget: "datetime", type: "date", format: "YYYY-MM-DD", required: false, hint: "Leave blank for 60 days, filled in for you the next morning. Or pick the last day you want it featured." }
 
   - name: "pages"
     label: "Pages"

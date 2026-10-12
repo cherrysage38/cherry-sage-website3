@@ -243,13 +243,15 @@ function upsertCard(html, { slug, title, category, topics, image, date, excerpt 
 // post however many new ones Bev published (found 2026-09-29). Point it at the newest post, unless
 // the one already featured is newer (the older posts not written in the editor aren't in content/blog).
 const FEATURED_RE = /<a class='blog-featured reveal' href='\/[^']*'>[\s\S]*?<\/a>/;
-function upsertFeatured(html, { slug, title, category, image, date, excerpt }, hiddenSlugs) {
+// A post Bev features (2026-10-12) takes this spot instead, labelled "Featured", until its end date.
+function upsertFeatured(html, { slug, title, category, image, date, excerpt }, hiddenSlugs, featured = false) {
   const current = html.match(FEATURED_RE);
   if (!current) return html;
   const curSlug = (current[0].match(/href='\/([^']*)'/) || [])[1] || "";
   const curDate = (current[0].match(/<span class="bc-date">(\d{4}-\d{2}-\d{2})<\/span>/) || [])[1] || "";
-  if (curDate > date && !hiddenSlugs.has(curSlug)) return html;
-  const block = `<a class='blog-featured reveal' href='/${slug}'>\n  <div class="bf-img" style="background-image:url('${image}')"></div>\n  <div class="bf-body"><span class="cat-chip">Latest · ${esc(category)}</span><h2>${esc(title)}</h2><span class="bc-date">${date}</span><p style="color:var(--ink-soft)">${esc(excerpt)}</p><span class="card-link">Read the post →</span></div>\n</a>`;
+  const wasFeatured = current[0].includes('class="cat-chip">Featured');
+  if (!featured && !wasFeatured && curDate > date && !hiddenSlugs.has(curSlug)) return html;
+  const block = `<a class='blog-featured reveal' href='/${slug}'>\n  <div class="bf-img" style="background-image:url('${image}')"></div>\n  <div class="bf-body"><span class="cat-chip">${featured ? "Featured" : "Latest"} · ${esc(category)}</span><h2>${esc(title)}</h2><span class="bc-date">${date}</span><p style="color:var(--ink-soft)">${esc(excerpt)}</p><span class="card-link">Read the post →</span></div>\n</a>`;
   return html.replace(FEATURED_RE, () => block);
 }
 
@@ -355,6 +357,7 @@ function main() {
   let changed = false;
   let newest = null;
   const hiddenSlugs = new Set();
+  const featuredPosts = [];
 
   // First pass: read every post so each page can link to its category neighbours.
   const all = [];
@@ -425,8 +428,12 @@ function main() {
       blogHtml = upsertArchive(blogHtml, result.ym);
       addToSitemap(slug);
     }
-    if (!newest || (data.date + slug) > (newest.date + newest.slug)) {
-      newest = { slug, title: data.title, category: data.category, image: data.image, date: data.date, excerpt: plainExcerpt(body, 120) };
+    const info = { slug, title: data.title, category: data.category, image: data.image, date: data.date, excerpt: plainExcerpt(body, 120) };
+    if (!newest || (data.date + slug) > (newest.date + newest.slug)) newest = info;
+    if (data.featured === "true") {
+      // No end date yet: the morning job (release-scheduled.js) writes one 60 days on; until then it's on.
+      const until = /^\d{4}-\d{2}-\d{2}/.test(data.featured_until || "") ? data.featured_until.slice(0, 10) : "";
+      featuredPosts.push({ ...info, until });
     }
     console.log(`[build-blog] ${isNew ? "Published" : "Updated"} /${slug}.html (${data.category})`);
   }
@@ -443,7 +450,16 @@ function main() {
   }
 
   blogHtml = rebuildTopics(blogHtml);
-  if (newest) blogHtml = upsertFeatured(blogHtml, newest, hiddenSlugs);
+  // Featured post (Bev, 2026-10-12): the one still running (no end date yet, or ending today or later)
+  // goes at the top; if several are, the one ending last. featured.json tells the editor add-on
+  // (editor-preview/admin/status-bar.js) which post is featured and which has run out.
+  const today = todayEastern();
+  const running = featuredPosts.filter((p) => !p.until || p.until >= today).sort((a, b) => (b.until || "9999").localeCompare(a.until || "9999"))[0];
+  const ended = featuredPosts.filter((p) => p.until && p.until < today).sort((a, b) => b.until.localeCompare(a.until));
+  if (running) blogHtml = upsertFeatured(blogHtml, running, hiddenSlugs, true);
+  else if (newest) blogHtml = upsertFeatured(blogHtml, newest, hiddenSlugs);
+  const pick = (p) => p && { slug: p.slug, title: p.title, until: p.until };
+  writeFileSync(join(ROOT, "featured.json"), JSON.stringify({ featured: pick(running) || null, ended: ended.map(pick) }) + "\n");
   if (changed) writeFileSync(BLOG_HTML, blogHtml);
 }
 

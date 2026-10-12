@@ -1,6 +1,7 @@
 # Scheduled blog posts (Bev, 2026-10-10). Every morning at about 6 AM Eastern this checks whether a blog
 # post's date has arrived. If one has, it adds a one-line note to content/.scheduled-log and saves it,
-# which makes Netlify rebuild the site and put the post up. On days with nothing due it does nothing.
+# which makes Netlify rebuild the site and put the post up. It also gives a newly featured post its 60-day
+# end date, and rebuilds the morning after a feature ends. On days with nothing to do it does nothing.
 # Uses only GitHub's own built-in permission for this repository; no keys or secrets.
 name: Scheduled posts
 
@@ -36,6 +37,6 @@ jobs:
         run: |
           git config user.name "Cherry Sage scheduler"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/.scheduled-log
-          git commit -m "Scheduled post goes live: $TITLES"
+          git add content/.scheduled-log content/blog
+          git commit -m "Blog, this morning: $TITLES"
           git push
