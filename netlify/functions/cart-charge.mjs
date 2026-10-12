@@ -87,7 +87,7 @@ export default async (req) => {
 
   const { data: products, error: productErr } = await supabase
     .from("reading_products")
-    .select("id, name, price_cents, active, requires_scheduling")
+    .select("id, name, price_cents, active, requires_scheduling, report_fields")
     .in("id", productIds);
   if (productErr) return json({ error: "could not load products" }, 500);
   const byId = new Map((products || []).map((p) => [p.id, p]));
@@ -109,7 +109,7 @@ export default async (req) => {
       return json({ error: priceRow?.error || "could not price this cart" }, 422);
     }
     totalCents += priceRow.final_price_cents;
-    lineSummaries.push({ name: p.name, priceCents: priceRow.final_price_cents });
+    lineSummaries.push({ name: p.name, priceCents: priceRow.final_price_cents, answers: answerLines(p.report_fields, it.details) });
   }
 
   let charge;
@@ -179,7 +179,10 @@ export default async (req) => {
   const orderDate = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
   const orderNum = esc(String(cartOrderId).slice(0, 8).toUpperCase());
   const itemsHtml = lineSummaries.map((l) =>
-    `<tr><td style="padding:6px 0">${esc(l.name)}</td><td style="padding:6px 0;text-align:right">${money(l.priceCents)}</td></tr>`
+    `<tr><td style="padding:6px 0">${esc(l.name)}</td><td style="padding:6px 0;text-align:right">${money(l.priceCents)}</td></tr>` +
+    (l.answers.length
+      ? `<tr><td colspan="2" style="padding:0 0 8px;font-size:13px;color:#5c544a">${l.answers.map(([q, a]) => `${esc(q)}: ${esc(a)}`).join("<br>")}</td></tr>`
+      : "")
   ).join("");
   const receiptTable =
     `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:16px 0;border-collapse:collapse">` +
@@ -209,6 +212,29 @@ export default async (req) => {
     totalCents,
   });
 };
+
+// The customer's answers to a product's questions (birth name, date of birth ...), labelled with the
+// question wording Bev set in Manage Products, for both order emails (Bev, 2026-10-12). Text only:
+// nothing here changes what is charged.
+function answerLines(fields, details) {
+  try {
+    return answerLinesUnsafe(fields, details);
+  } catch {
+    return [];      // never let the email text get in the way of the order
+  }
+}
+function answerLinesUnsafe(fields, details) {
+  if (!details || typeof details !== "object") return [];
+  const labels = new Map((Array.isArray(fields) ? fields : []).filter((f) => f && typeof f === "object").map((f) => [f.key, String(f.label || f.key)]));
+  return Object.keys(details).slice(0, 20).map((k) => {
+    let v = String(details[k] ?? "").trim().slice(0, 300);
+    if (!v) return null;
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v);
+    if (m) v = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3])).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
+    const label = (labels.get(k) || k).replace(/\s*\([^()]*\)\s*$/, "");
+    return [label, v];
+  }).filter(Boolean);
+}
 
 function esc(s) {
   return String(s || "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));

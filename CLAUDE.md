@@ -19,11 +19,17 @@ Writing: plain and warm.
   previous deploy, Publish deploy).
 - Talk to Bev in plain English. Explain any technical word right after you use it.
 
-## Do not touch. Ask Bev to contact RJ (Balay ni Bruno & Co.) instead
-- Anything in `netlify/functions` (payments, checkout, email sending, admin tools)
-- Database structure, coupon logic, pricing, refunds
-- Passwords, API keys, tokens. Never print them and never put them in a file. This repository
-  may be public, so anything committed here can be read by anyone.
+## Bev or RJ (Balay ni Bruno & Co.) may change (Bev, 2026-10-12)
+- Anything in the database, and `netlify/functions/shop-admin.mjs`. Claude cannot reach the database:
+  give Bev step-by-step instructions for the Supabase SQL Editor, look first (a read-only query) before
+  changing anything, and give an undo step for each change. Save each change and its undo in `_migrations`.
+- Some database commands set the final price, apply coupons and record paid orders. Before changing one,
+  say so plainly and suggest a small test purchase on the preview before publishing.
+
+## Do not touch. Ask Bev to contact RJ instead
+- Everything else in `netlify/functions` (payments, checkout, email sending, other admin tools)
+- Passwords, API keys, tokens, for anyone. Never print them and never put them in a file. This
+  repository may be public, so anything committed here can be read by anyone.
 
 ## Safe to do
 - Page wording, images, colors, spacing, layout

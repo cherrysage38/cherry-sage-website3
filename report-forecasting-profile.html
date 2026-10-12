@@ -62,7 +62,7 @@
       <input type="text" name="fullname" placeholder="Full name at birth (as on your birth certificate)" required style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
       <input type="date" name="dob" required aria-label="Date of birth" style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
       <input type="email" name="email" placeholder="Your email (your report is sent here)" required style="padding:.85rem 1rem;border:1px solid var(--line-strong);border-radius:12px;font-family:var(--font-body)">
-      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <input type="text" name="cs_hp_field" tabindex="-1" autocomplete="off" aria-hidden="true" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="btn btn-primary" type="submit">Add to Cart</button>
       <p id="rfNote" style="margin:0;color:var(--cherry);font-size:.9rem" hidden></p>
     </form>
@@ -75,14 +75,14 @@
     var email=(f.email.value||'').trim();
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){note.hidden=false;note.textContent='Please enter a valid email.';return;}
     if(!(f.fullname.value||'').trim()||!f.dob.value){note.hidden=false;note.textContent='Please add your full birth name and date of birth.';return;}
-    if(f.website.value){ return; }
+    if(f.cs_hp_field.value){ return; }
     note.hidden=true; btn.disabled=true;btn.textContent='Adding...';
     var details={fullname:f.fullname.value.trim(), dob:f.dob.value, email:email};
     window.CSCart.add({readingProductId:'c4fb2e7a-0088-4812-958f-149171edf20c', name:'Forecasting Profile', priceCents:1800, details:details});
     location.href='/cart.html';
   });})();
 </script>
-<script src="report-form.js?v=2"></script><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class="btn btn-gold" href="/book-appointment">Book a Reading</a></div></section>
+<script src="report-form.js?v=3"></script><section class="section section-dark cta" id="book"><div class="wrap reveal"><h2>Ready for clarity?</h2><p>Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you.</p><a class="btn btn-gold" href="/book-appointment">Book a Reading</a></div></section>
 </main>
 <footer class="footer">
   <div class="wrap footer-grid">

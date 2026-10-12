@@ -89,7 +89,7 @@ details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new s
 
   <div id="saApp" hidden>
     <h1 class="sa-title">Manage Products</h1>
-    <p class="sa-sub">Add a new product, or open one to change its name, price and description, choose whether it shows in the shop, and, for reports, edit the questions the customer answers. Changes go live right away. <a href="/shop" target="_blank" rel="noopener">See the shop</a></p>
+    <p class="sa-sub">Add a new product, or open one to change its name, price and description, choose whether it shows in the shop, and edit the questions the customer answers (for reports, and for any phone reading where Cherry needs details before the call). Changes go live right away. <a href="/shop" target="_blank" rel="noopener">See the shop</a></p>
     <p class="sa-status" id="saTop" role="status"></p>
     <details class="pm pm-new" id="saNew">
       <summary><span class="pm-name">Add a new product</span></summary>
@@ -105,8 +105,8 @@ details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new s
         </div>
         <label class="pm-l" id="newMinWrap" hidden>Length in minutes<input type="text" id="newMinutes" inputmode="numeric" placeholder="e.g. 25"></label>
         <label class="pm-l">Description shown in the shop<textarea id="newDesc" rows="4" placeholder="What the customer gets, in your own words"></textarea></label>
-        <div class="pm-q" id="newQuestions"><h4>Questions the customer answers</h4><p class="pm-note">The report is sent to the email the customer gives, so keep one "Email address" question.</p>
-          <ul class="pm-qlist" id="newQList"></ul><button type="button" class="pm-add" data-q="add">+ Add a question</button></div>
+        <div class="pm-q" id="newQuestions"><h4>Questions the customer answers</h4><p class="pm-note" id="newQNote"></p>
+          <ul class="pm-qlist" id="newQList"></ul><button type="button" class="pm-add" data-q="add">+ Add a question</button> <button type="button" class="pm-add" data-q="birth" id="newBirthBtn" hidden>Use the birth-details questions</button></div>
         <div class="pm-actions"><button class="sa-save" type="button" id="newCreate">Add this product</button><span class="sa-status" id="newStatus" role="status"></span></div>
       </div>
     </details>
@@ -143,8 +143,21 @@ details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new s
       '<label class="q-reqwrap"><input type="checkbox" class="q-req"'+(f.required?' checked':'')+'> Required</label>'+
       '<span class="q-btns"><button type="button" class="pm-mini" data-q="up" title="Move up">&uarr;</button><button type="button" class="pm-mini" data-q="down" title="Move down">&darr;</button><button type="button" class="pm-mini bad" data-q="del">Remove</button></span></li>';
   }
+  // A phone reading can ask questions too (Bev, 2026-10-12: the phone numerology reading needs the birth name,
+  // date of birth and current name). They are optional, and no email question is needed: checkout asks for it.
+  var REPORT_QNOTE='Customers answer these at checkout. The report is sent to the email the customer gives, so keep one "Email address" question.';
+  var PHONE_QNOTE='Optional. Add questions only if Cherry needs details before the call, for example birth details for a numerology reading. Customers answer them at checkout. No email question is needed, checkout asks for it.';
+  var BIRTH_QS=[
+    {key:'fullname',label:'Full name as recorded on your birth certificate',type:'text',required:true},
+    {key:'dob',label:'Date of birth',type:'date',required:true},
+    {key:'current_name',label:'Current name, such as a married name or a legal name change (fill in only if your birth name has changed)',type:'text',required:false}];
+  function useBirthQuestions(list){
+    if(list.querySelector('.pm-qrow') && !confirm('Replace the questions here with the birth-details questions?')) return;
+    list.innerHTML=BIRTH_QS.map(questionRow).join('');
+  }
   function productCard(p){
     var isReport = p.duration_minutes==null;
+    var hasQs = !!(p.report_fields && p.report_fields.length);
     var tags=[];
     if(!p.active) tags.push('<span class="pm-tag off">Not available</span>');
     if(p.show_in_shop===false) tags.push('<span class="pm-tag hid">Hidden from shop</span>');
@@ -158,15 +171,16 @@ details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new s
       (p.requires_scheduling
         ? '<p class="pm-note">This one is used by the "Book a Reading" booking page. Its name and price show there.</p>'
         : '<label class="pm-l">Description shown in the shop'+(isReport?' and on the report page':'')+'<textarea class="pm-f-desc" rows="4">'+esc(p.description||'')+'</textarea></label>');
-    if(isReport){
-      body+='<div class="pm-q"><h4>Questions the customer answers</h4><p class="pm-note">The report is sent to the email the customer gives, so keep one "Email address" question.</p>'+
-        '<ul class="pm-qlist">'+(p.report_fields||[]).map(questionRow).join('')+'</ul><button type="button" class="pm-add" data-q="add">+ Add a question</button></div>';
+    if(isReport || !p.requires_scheduling){
+      body+='<div class="pm-q"><h4>Questions the customer answers</h4><p class="pm-note">'+(isReport?REPORT_QNOTE:PHONE_QNOTE)+'</p>'+
+        '<ul class="pm-qlist">'+(p.report_fields||[]).map(questionRow).join('')+'</ul><button type="button" class="pm-add" data-q="add">+ Add a question</button>'+
+        (isReport?'':' <button type="button" class="pm-add" data-q="birth">Use the birth-details questions</button>')+'</div>';
     }
     body+='<div class="pm-actions"><button class="sa-save" type="button" data-act="save">Save</button>'+
       (p.order_count?'<span class="pm-note">Customers have ordered this, so it cannot be deleted. Turn off "Available to buy" to stop selling it.</span>'
                     :'<button class="pm-del" type="button" data-act="delete">Delete this product</button>')+
       '<span class="sa-status" data-status></span></div>';
-    return '<details class="pm" data-id="'+esc(p.id)+'" data-report="'+(isReport?1:0)+'"><summary><span class="pm-name">'+esc(p.name)+'</span><span class="pm-price">$'+money(p.price_cents)+'</span><span class="pm-tags">'+tags.join('')+'</span></summary><div class="pm-body">'+body+'</div></details>';
+    return '<details class="pm" data-id="'+esc(p.id)+'" data-report="'+(isReport?1:0)+'" data-hadq="'+(hasQs?1:0)+'"><summary><span class="pm-name">'+esc(p.name)+'</span><span class="pm-price">$'+money(p.price_cents)+'</span><span class="pm-tags">'+tags.join('')+'</span></summary><div class="pm-body">'+body+'</div></details>';
   }
   function renderProducts(products){
     var g={ shopMin:[], shopRep:[], booking:[], other:[] };
@@ -220,16 +234,23 @@ details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new s
   }
   function syncKind(){
     var rep=kindNow()==='report';
-    document.getElementById('newQuestions').hidden=!rep;
+    document.getElementById('newQNote').textContent=rep?REPORT_QNOTE:PHONE_QNOTE;
+    document.getElementById('newBirthBtn').hidden=rep;
     document.getElementById('newMinWrap').hidden=rep;
   }
   function newStatus(text,cls){ var s=document.getElementById('newStatus'); s.className='sa-status'+(cls?' '+cls:''); s.textContent=text||''; }
-  newBox.addEventListener('change', function(e){ if(e.target.name==='newKind') syncKind(); });
+  newBox.addEventListener('change', function(e){
+    if(e.target.name!=='newKind') return;
+    // a report starts with the usual questions, a phone reading with none
+    newList.innerHTML = kindNow()==='report' ? DEFAULT_QS.map(questionRow).join('') : '';
+    syncKind();
+  });
   newBox.addEventListener('click', function(e){
     var q=e.target.closest('[data-q]');
     if(q){
       var act=q.dataset.q;
       if(act==='add'){ newList.insertAdjacentHTML('beforeend', questionRow({type:'text'})); newList.lastElementChild.querySelector('.q-label').focus(); return; }
+      if(act==='birth'){ useBirthQuestions(newList); return; }
       var row=q.closest('.pm-qrow'); if(!row) return;
       if(act==='del') row.remove();
       else if(act==='up' && row.previousElementSibling) newList.insertBefore(row,row.previousElementSibling);
@@ -247,6 +268,8 @@ details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new s
       var mins=parseInt(document.getElementById('newMinutes').value,10);
       if(isNaN(mins)||mins<1||mins>240){ newStatus('Enter the length in minutes (1 to 240).','err'); return; }
       body.durationMinutes=mins;
+      var pq=collectQuestions(newBox);
+      if(pq.length) body.reportFields=pq;
     } else {
       var qs=collectQuestions(newBox);
       if(!qs.length){ newStatus('Add at least one question.','err'); return; }
@@ -273,6 +296,7 @@ details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new s
     if(q){
       var act=q.dataset.q, list=card.querySelector('.pm-qlist');
       if(act==='add'){ list.insertAdjacentHTML('beforeend', questionRow({type:'text'})); list.lastElementChild.querySelector('.q-label').focus(); }
+      else if(act==='birth') useBirthQuestions(list);
       else { var row=q.closest('.pm-qrow');
         if(act==='del') row.remove();
         else if(act==='up' && row.previousElementSibling) list.insertBefore(row,row.previousElementSibling);
@@ -303,6 +327,10 @@ details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new s
       if(!qs.length){ setStatus(card,'Add at least one question.','err'); return; }
       if(!qs.some(function(x){ return x.type==='email'; })){ setStatus(card,'Keep one "Email address" question so the report can be sent.','err'); return; }
       body.reportFields=qs;
+    } else {
+      // a phone reading: questions are optional; only send them when there are some, or to clear old ones
+      var pq=collectQuestions(card);
+      if(pq.length || card.dataset.hadq==='1') body.reportFields=pq;
     }
     btn.disabled=true; btn.textContent='Saving…'; setStatus(card,'');
     fetch('/.netlify/functions/shop-admin',{method:'POST',headers:Object.assign({'content-type':'application/json'},adminHeaders()),body:JSON.stringify(body)})
@@ -311,6 +339,7 @@ details.pm-new{margin-bottom:1.6rem;border-color:var(--oxblood)}details.pm-new s
         btn.disabled=false; btn.textContent='Save';
         if(!res.ok){ setStatus(card,(res.d&&res.d.error)||'Could not save.','err'); return; }
         setStatus(card,'Saved, live on your shop now.','ok');
+        if(body.reportFields) card.dataset.hadq=body.reportFields.length?'1':'0';
         card.querySelector('.pm-name').textContent=name; card.querySelector('.pm-price').textContent='$'+money(priceCents);
         setTimeout(function(){ setStatus(card,''); }, 3500);
       }).catch(function(){ btn.disabled=false; btn.textContent='Save'; setStatus(card,'Something went wrong, please try again.','err'); });
