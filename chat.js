@@ -50,7 +50,7 @@
   function answer(key){
     switch(key){
       case 'thanks': return 'You are so welcome. Whenever you are ready, Cherry is here for you. '+cta('/book-appointment','Book a reading');
-      case 'pricing': return 'Cherry reads by phone, one to one. First-time callers get a special rate (10 minutes for $24), and sessions run from 15 up to 60 minutes. There are also written numerology reports. '+cta('/shop.html','See all readings & pricing');
+      case 'pricing': return 'Cherry reads by phone, one to one. First-time callers get a special introductory offer, and sessions run from 15 up to 60 minutes. There are also written numerology reports. '+cta('/shop.html','See all readings & pricing');
       case 'how': return 'It is simple: log in or create a free account, pick your reading and one of Cherry\'s open times, then check out. Cherry confirms it by email or phone. '+cta('/how-it-works.html','See how it works');
       case 'book': return 'Lovely. Log in or create a free account, pick your reading and an open time, then check out. Cherry will confirm the time with you. '+cta('/book-appointment','Book a reading');
       case 'free': return 'Yes! There is a free card you can pull, just for reflection. Want me to take you to it?'+cta('#draw','Draw a free card');

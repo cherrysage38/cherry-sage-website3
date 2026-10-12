@@ -141,7 +141,7 @@ ${GENERATED_MARKER}
   <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="bc-sep">›</span><a href='/articles'>Guest Articles</a><span class="bc-sep">›</span><span aria-current="page">${esc(category)}</span></nav>
   <img class="post-hero-img" src="${image}" alt="${esc(title)}">
   <article class="post-content reveal">${bodyHtml}</article>
-  <div class="post-cta reveal"><p class="eyebrow">Ready for the real thing?</p><h3>Talk it through with Cherry</h3><p>An honest reading goes far beyond an article. First-timers get 10 minutes for $24.</p><a class='btn btn-primary' href='/book-appointment'>Book a Reading</a></div>
+  <div class="post-cta reveal"><p class="eyebrow">Ready for the real thing?</p><h3>Talk it through with Cherry</h3><p>An honest reading goes far beyond an article. First-time callers get a special introductory offer.</p><a class='btn btn-primary' href='/book-appointment'>Book a Reading</a></div>
 </div></section>
 <section class="section cs-comments"><div class="wrap"><div id="csComments" data-post-title="${esc(title)}"></div></div></section>
 </main>
@@ -155,7 +155,7 @@ ${renderFooter(FOOTER_DATA)}
 <script src="embers.js?v=5"></script>
 <script src="magic.js?v=2"></script>
 <script src="funnel.js?v=12"></script>
-<script src="chat.js?v=9"></script>
+<script src="chat.js?v=10"></script>
 <script src="status.js?v=3"></script>
 <script src="/assets/vendor/supabase.js?v=2116"></script>
 <script src="comments.js?v=1"></script>
