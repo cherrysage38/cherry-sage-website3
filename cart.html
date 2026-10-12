@@ -53,6 +53,7 @@
 .ck-cart-item{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 1.2rem;
   border:1px solid var(--line-strong);border-radius:var(--r);background:var(--cream)}
 .ck-cart-item-name{font-weight:600;color:var(--oxblood)}
+.ck-cart-answers{margin:.3rem 0 .2rem;font-size:.85rem;color:var(--ink-soft);line-height:1.45}
 .ck-cart-item-price{font-family:var(--font-display);font-weight:600;color:var(--ink)}
 .ck-cart-remove{background:none;border:0;color:var(--cherry);font-size:.8rem;cursor:pointer;text-decoration:underline;padding:0}
 .ck-cart-empty{text-align:center;padding:2.5rem 1rem;color:var(--ink-soft)}
@@ -248,6 +249,21 @@
     document.getElementById('ckLine2').classList.toggle('done', step>2);
   }
 
+  // The customer's answers from a report or reading form, shown under the item so they can see they
+  // went through (Bev, 2026-10-12). They are sent with the order either way.
+  var ANSWER_LABELS={fullname:'Full name at birth',dob:'Date of birth',email:'Email',current_name:'Current name'};
+  function answersHtml(details){
+    if(!details || typeof details!=='object') return '';
+    var out=Object.keys(details).map(function(k){
+      var v=String(details[k]||''); if(!v) return '';
+      var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(v);
+      if(m) v=new Date(+m[1],+m[2]-1,+m[3]).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+      var label=ANSWER_LABELS[k] || k.replace(/^q_/,'').replace(/_/g,' ').replace(/^./,function(c){ return c.toUpperCase(); });
+      return esc(label)+': '+esc(v);
+    }).filter(Boolean);
+    return out.length ? '<div class="ck-cart-answers">'+out.join('<br>')+'</div>' : '';
+  }
+
   function renderCart(){
     var items = window.CSCart ? window.CSCart.get() : [];
     var empty = document.getElementById('ckSideEmpty');
@@ -264,7 +280,7 @@
 
     itemsBox.innerHTML = items.map(function(it){
       return '<div class="ck-cart-item">'+
-        '<div><div class="ck-cart-item-name">'+esc(it.name)+'</div>'+
+        '<div><div class="ck-cart-item-name">'+esc(it.name)+'</div>'+answersHtml(it.details)+
         '<button type="button" class="ck-cart-remove" data-line="'+it.lineId+'">Remove</button></div>'+
         '<div class="ck-cart-item-price">'+money(it.priceCents)+'</div></div>';
     }).join('');
