@@ -322,8 +322,8 @@
         var sl=splitLabel(f.label), text=sl?sl.text:(f.label||'')+(f.required?'':' (optional)');
         var type=f.type==='date'?'date':f.type==='email'?'email':'text', val=esc(cur[f.key]||'');
         var input=f.type==='textarea'
-          ? '<textarea rows="3" class="ck-field" data-key="'+esc(f.key)+'">'+val+'</textarea>'
-          : '<input type="'+type+'" class="ck-field" data-key="'+esc(f.key)+'" value="'+val+'">';
+          ? '<textarea rows="3" class="ck-field" data-key="'+esc(f.key)+'"'+(f.required?' data-req="1"':'')+'>'+val+'</textarea>'
+          : '<input type="'+type+'" class="ck-field" data-key="'+esc(f.key)+'"'+(f.required?' data-req="1"':'')+' value="'+val+'">';
         return '<label class="ck-q-l">'+esc(text)+(sl?'<span class="ck-q-note">'+esc(sl.note)+'</span>':'')+input+'</label>';
       }).join('')+'</div>';
   }
@@ -546,6 +546,15 @@
   btn.addEventListener('click',function(e){
     e.preventDefault();
     var hdr=document.querySelector('.site-header'); var off=(hdr?hdr.getBoundingClientRect().height:0)+16;
+    // Bev, 2026-10-12: the questions for a reading sit above "Your information", and this jumped past
+    // them. If a required answer is still empty, go to that question first.
+    var todo=[].filter.call(document.querySelectorAll('.ck-q [data-req]'), function(f){ return !String(f.value||'').trim(); })[0];
+    if(todo){
+      var box=todo.closest('.ck-q')||todo;
+      window.scrollTo({top:box.getBoundingClientRect().top+window.pageYOffset-off, behavior:'smooth'});
+      setTimeout(function(){ try{ todo.focus({preventScroll:true}); }catch(err){} },450);
+      return;
+    }
     window.scrollTo({top:step.getBoundingClientRect().top+window.pageYOffset-off, behavior:'smooth'});
     var first=step.querySelector('input:not([type=hidden]):not([name=cs_hp_field]), button.ck-pcard, button');
     if(first && !step.classList.contains('ck-locked')){ setTimeout(function(){ try{ first.focus({preventScroll:true}); }catch(err){} },450); }
