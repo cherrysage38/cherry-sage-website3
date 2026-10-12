@@ -113,15 +113,15 @@ export default async (req) => {
         body: JSON.stringify({
           sender: { name: "Cherry Sage Website", email: "admin@cherrysage.com" },
           to: [{ email: NOTIFY_TO }],
-          // No replyTo on purpose (Bev, 2026-10-11): Gmail shows a yellow "be careful" box on mail that
-          // comes from her own domain but replies to someone else. The visitor's address is a button instead.
+          // Reply goes straight to the visitor again (Bev, 2026-10-12). The yellow Gmail box came from
+          // cherrysage.com not being authenticated in Brevo (DMARC failed), fixed in Brevo and Netlify DNS.
+          replyTo: { email },
           subject: `${label} — from ${name || email}`,
           htmlContent: brandedEmail(
             `<p style="margin:0 0 12px"><strong>${label}</strong></p>` +
             `<p style="margin:0 0 12px">From: ${name ? `${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;` : escapeHtml(email)}</p>` +
             (message ? `<div style="margin:0 0 14px;padding:14px 16px;background:#FAF6EF;border-radius:8px">${escapeHtml(message).replace(/\n/g, "<br>")}</div>` : "") +
-            `<p style="margin:0 0 14px"><a href="mailto:${escapeHtml(email)}?subject=${encodeURIComponent("Re: your message to Cherry Sage")}" style="display:inline-block;background:#A0142B;color:#FFFDF8;text-decoration:none;padding:10px 18px;border-radius:8px;font-size:14px">Write back to ${escapeHtml(name || email)}</a></p>` +
-            `<p style="margin:0;color:#8a8072;font-size:13px">To answer, use the button above or write to ${escapeHtml(email)}. Pressing Reply on this notice will not reach them.</p>`),
+            `<p style="margin:0;color:#8a8072;font-size:13px">Reply to this email to write back directly to ${escapeHtml(email)}.</p>`),
         }),
       });
       notified = r.ok ? "ok" : `error ${r.status}`;
