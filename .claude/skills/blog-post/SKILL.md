@@ -38,7 +38,7 @@ hidden: false
 Body, written so search engines and AI assistants can quote it (AEO):
 - Open with the title question in bold on its own line, then a short paragraph that answers it
   directly (Bev, 2026-10-12: not the answer alone).
-- Mention 1999 at most once in the whole post (see CLAUDE.md).
+- Do not mention 1999 in the post (see CLAUDE.md). If Bev's text includes it, point it out and ask.
 - Use `##` headings phrased as the questions people ask, each ending in `?`. The first
   paragraph under each one should answer it plainly in two to four sentences. For pillar posts
   the build turns these into question-and-answer data (FAQPage) automatically.
