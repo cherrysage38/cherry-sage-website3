@@ -14,12 +14,17 @@ import { loadFooterData, renderFooter } from "./footer.js";
 
 const FOOTER_DATA = loadFooterData();
 
-const BLOCK_TAGS = ["p", "br", "strong", "em", "b", "i", "a", "ul", "ol", "li", "blockquote", "h2", "h3", "h4", "h5", "code", "pre", "img", "iframe", "hr"];
+const BLOCK_TAGS = ["p", "br", "strong", "em", "b", "i", "a", "ul", "ol", "li", "blockquote", "h2", "h3", "h4", "h5", "code", "pre", "img", "iframe", "hr", "div"];
 const BLOCK_ATTRS = {
+  div: ["class"],
   a: ["href", "title", "target", "rel"],
   img: ["src", "alt", "title", "width", "height"],
   iframe: ["src", "width", "height", "title", "allowfullscreen", "frameborder"],
 };
+const ALIGN_CLASSES = ["align-left", "align-center", "align-right"];
+// Inline, so it works without bumping site.css?v= on every page. Pictures are block-level here, so they
+// need their margins set to follow the alignment.
+const ALIGN_CSS = `<style>.post-content .align-left{text-align:left}.post-content .align-center{text-align:center}.post-content .align-right{text-align:right}.post-content .align-center img{margin-left:auto;margin-right:auto}.post-content .align-right img{margin-left:auto;margin-right:0}</style>`;
 const SAFE_SCHEMES = ["http", "https", "mailto"];
 // Only video players from these hosts may be embedded; anything else is stripped.
 const EMBED_HOSTS = ["www.youtube.com", "www.youtube-nocookie.com", "player.vimeo.com"];
@@ -30,6 +35,8 @@ function mdBlock(s) {
   return sanitizeHtml(marked.parse(String(s || "").trim()), {
     allowedTags: BLOCK_TAGS, allowedAttributes: BLOCK_ATTRS, allowedSchemes: SAFE_SCHEMES,
     allowedIframeHostnames: EMBED_HOSTS,
+    // The editor's Align left / center / right buttons wrap text in <div class="align-…">; no other classes.
+    allowedClasses: { div: ALIGN_CLASSES },
     // Links to other sites open in a new tab, like the original WordPress posts did.
     transformTags: {
       a: (tagName, attribs) => {
@@ -74,7 +81,7 @@ function parseFrontMatter(raw) {
 }
 
 function plainExcerpt(md, len = 140) {
-  const text = md.replace(/!\[[^\]]*\]\([^)]*\)/g, "").replace(/\[([^\]]*)\]\([^)]*\)/g, "$1").replace(/[#*_>`]/g, "").replace(/\s+/g, " ").trim();
+  const text = md.replace(/<\/?div[^>]*>/g, " ").replace(/!\[[^\]]*\]\([^)]*\)/g, "").replace(/\[([^\]]*)\]\([^)]*\)/g, "$1").replace(/[#*_>`]/g, "").replace(/\s+/g, " ").trim();
   return text.length > len ? text.slice(0, len).replace(/\s+\S*$/, "") + "…" : text;
 }
 
@@ -147,7 +154,7 @@ ${GENERATED_MARKER}
 <meta name="theme-color" content="#6E1A28">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=52">
+<link rel="stylesheet" href="site.css?v=52">${bodyHtml.includes('class="align-') ? "\n" + ALIGN_CSS : ""}
 <link rel="icon" href="assets/favicon.ico?v=2" sizes="any">
 <link rel="icon" href="assets/icon-32.png?v=2" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/icon-180.png?v=2">

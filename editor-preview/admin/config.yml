@@ -198,7 +198,7 @@ collections:
       - { label: "Author (optional)", name: "author", widget: "string", required: false, hint: "The guest author's name, if there is one." }
       - { label: "Date (optional)", name: "date", widget: "datetime", type: "date", format: "YYYY-MM-DD", required: false, hint: "When it was first published. Shown next to the topic at the top of the article." }
       - { label: "Featured image", name: "image", widget: "image", hint: "This shows on the article card and at the top of the article." }
-      - { label: "Article", name: "body", widget: "markdown", hint: "The full article text. Use the toolbar for bold, headings, links." }
+      - { label: "Article", name: "body", widget: "markdown", editor_components: ["image", "code-block"], hint: "The full article text. Use the toolbar for bold, headings, links." }
       - { label: "Search title (optional)", name: "seo_title", widget: "string", required: false, hint: "The title Google shows in search results. Leave blank and it uses the title above followed by Cherry Sage." }
       - { label: "Search description (optional)", name: "description", widget: "text", required: false, hint: "One or two sentences Google shows under the title. Leave blank and the first lines of the text are used." }
       - { label: "Hide from site", name: "hidden", widget: "boolean", default: false, required: false, hint: "Tick this, then Publish, to take this article off the site for now. Nothing you wrote is deleted. Untick it and Publish to bring it back." }
@@ -231,7 +231,7 @@ collections:
       - { label: "Category", name: "category", widget: "relation", collection: "blog_topics", file: "topics", value_field: "topics.*", search_fields: ["topics.*"], display_fields: ["topics.*"], hint: "Pick the topic this post belongs to. To add a new topic, go to Blog Topics in the menu." }
       - { label: "Author (optional)", name: "author", widget: "string", required: false, hint: "Leave blank to show as written by Cherry Sage." }
       - { label: "Featured image", name: "image", widget: "image", hint: "This shows on the post card and at the top of the post." }
-      - { label: "Post", name: "body", widget: "markdown", hint: "The full post text. Use the toolbar for bold, headings, links." }
+      - { label: "Post", name: "body", widget: "markdown", editor_components: ["image", "code-block", "align-left", "align-center", "align-right"], hint: "The full post text. Use the toolbar for bold, headings, links. To center text (or line it up left or right), click an align button and type the text in the box it adds." }
       - { label: "Show related posts", name: "related", widget: "boolean", default: true, required: false, hint: "Adds a \"Keep reading\" row of other posts on the same topic under this post." }
       - { label: "Related posts (optional)", name: "related_posts", widget: "relation", collection: "blog", value_field: "{{slug}}", search_fields: ["title"], display_fields: ["title"], multiple: true, max: 3, required: false, hint: "Pick up to 3 posts to show in the Keep reading row, in the order you want them. Leave blank, or pick fewer than 3, and the rest are filled with the newest posts on the same topic." }
       - { label: "Part of a guide page (optional)", name: "pillar", widget: "select", required: false, options: [{ label: "Love and Relationships", value: "love-and-relationships" }], hint: "Pick a guide page and this post is listed on it automatically, with a link back to it at the end of the post." }
@@ -262,7 +262,7 @@ collections:
             summary: "Text — {{fields.heading}}"
             fields:
               - { label: "Heading (optional)", name: "heading", widget: "string", required: false }
-              - { label: "Text", name: "body", widget: "markdown" }
+              - { label: "Text", name: "body", widget: "markdown", editor_components: ["image", "code-block"] }
               - { label: "Show in a box", name: "boxed", widget: "boolean", required: false, default: false, hint: "Puts this section in a cream box with a gold border. Boxed sections next to each other sit together in one column." }
               - { label: "Article style headings", name: "article", widget: "boolean", required: false, default: false, hint: "For a long section written like an article: headings typed with ## in the text are drawn a little smaller, with space above them." }
           - label: "Side Card"
