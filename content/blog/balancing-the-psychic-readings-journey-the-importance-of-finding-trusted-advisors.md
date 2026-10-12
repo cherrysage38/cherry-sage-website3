@@ -1,6 +1,8 @@
 ---
 title: "Balancing the Psychic Readings Journey: The Importance of Finding Trusted Advisors"
 category: "Psychic Readings"
+topics:
+  - "Finding a Genuine Psychic"
 date: "2023-07-13"
 image: "/assets/blog/meet-sage-banner-min-768x479.jpeg"
 seo_title: "How to Find a Trusted Psychic Advisor | Cherry Sage"

@@ -1,6 +1,8 @@
 ---
 title: "Why Do Psychics Say Different Things? I’m So Confused. How Can Psychic Readings Be Different?"
 category: "Psychic Readings"
+topics:
+  - "Finding a Genuine Psychic"
 date: "2009-12-14"
 image: "/assets/blog/real-psychic-readings-why-do-psychics-say-different-things-im-so-confused-card.jpg"
 image_alt: "A woman lying on her bed at night, looking at her phone with a puzzled, worried expression"

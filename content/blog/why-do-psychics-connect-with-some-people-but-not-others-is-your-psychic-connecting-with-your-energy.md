@@ -1,6 +1,8 @@
 ---
 title: "Why Do Psychics Connect With Some People But Not Others—Is Your Psychic Connecting With Your Energy?"
 category: "Psychic Readings"
+topics:
+  - "Energy & Healing"
 date: "2024-02-05"
 image: "/assets/blog/7FDB8B16-670A-4B2F-A5CE-D412BEB8F272-768x435.jpeg"
 seo_title: "Why Psychics Connect With Some People, Not Others"

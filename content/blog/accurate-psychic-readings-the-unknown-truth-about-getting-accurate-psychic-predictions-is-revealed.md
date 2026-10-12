@@ -1,6 +1,8 @@
 ---
 title: "Accurate Psychic Readings–The Unknown Truth About Getting Accurate Psychic Predictions Is Revealed"
 category: "Psychic Readings"
+topics:
+  - "Finding a Genuine Psychic"
 date: "2011-02-16"
 image: "/assets/articles/accurate-psychic-readings-the-unknown-truth-about-getting-accurate-psychic-predictions-is-revealed.jpg"
 seo_title: "Accurate Psychic Readings--The Unknown Truth About Getting Accurate Psychic Predictions Is Revealed"

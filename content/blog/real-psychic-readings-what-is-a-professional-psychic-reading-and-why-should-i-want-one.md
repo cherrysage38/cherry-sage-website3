@@ -1,6 +1,8 @@
 ---
 title: "Professional Psychic Readings–What Is A Real Professional Psychic Reading and Why Should I Want One?"
 category: "Psychic Readings"
+topics:
+  - "Finding a Genuine Psychic"
 date: "2011-02-16"
 image: "/assets/blog/professional-psychic-readings-card.jpg"
 seo_title: "Real Psychic Readings--What Is A Real Professional Psychic Reading and Why Should I Want One?"

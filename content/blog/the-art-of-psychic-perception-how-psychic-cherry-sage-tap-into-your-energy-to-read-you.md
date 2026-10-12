@@ -1,6 +1,8 @@
 ---
 title: "The Art of Psychic Perception: How Psychic Cherry Sage Taps Into Your Energy to Read You!"
 category: "Psychic Readings"
+topics:
+  - "Energy & Healing"
 date: "2025-04-03"
 image: "/assets/blog/the-art-of-psychic-perception-how-psychic-cherry-sage-tap-into-your-energy-to-read-you-card.jpg"
 image_alt: "Flowing ribbons of gold, violet and blue light swirling out from a bright center against a dark background"

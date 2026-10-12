@@ -1,6 +1,8 @@
 ---
 title: "About Auras – What We Know About the Human Energy Field"
-category: "Featured Articles"
+category: "Energy & Healing"
+topics:
+  - "Other World"
 date: "2012-12-14"
 image: "/assets/blog/about-auras-what-we-know-about-the-human-energy-field-card.jpg"
 image_alt: "A serene woman with eyes closed, surrounded by a rainbow-colored glow"

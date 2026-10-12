@@ -1,6 +1,8 @@
 ---
 title: "From Turmoil To Tranquility: Aligning Your Energy For Deeper Psychic Understanding!"
 category: "Psychic Readings"
+topics:
+  - "Energy & Healing"
 date: "2025-01-03"
 image: "/assets/blog/from-turmoil-to-tranquility-aligning-your-energy-for-deeper-psychic-understanding-card.jpg"
 image_alt: "Stacked stones on a rocky shore, with crashing storm waves on one side and a calm sunset sea on the other"

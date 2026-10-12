@@ -1,6 +1,8 @@
 ---
 title: "A Superconscious Journey Beyond: A Glimpse into the Realm of Light and Knowing in the Ether."
 category: "Other World"
+topics:
+  - "Energy & Healing"
 date: "2023-08-21"
 image: "/assets/blog/superconscious-mind-min-768x512.jpeg"
 seo_title: "A Superconscious Journey Beyond | Cherry Sage"

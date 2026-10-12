@@ -1,6 +1,8 @@
 ---
 title: "Accurate Psychic Predictions-The Baffling Mystery Why Your Future Psychic Predictions May Not Be Accurate"
 category: "Psychic Readings"
+topics:
+  - "Predicting Dates or Timelines"
 date: "2011-02-19"
 image: "/assets/blog/accurate-psychic-predictions-card.jpg"
 seo_title: "Accurate Psychic Predictions--The Baffling Mystery Why Your Psychic Predictions May Not Be Accurate"

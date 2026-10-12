@@ -1,6 +1,8 @@
 ---
 title: "Psychic Readings and the Mystery of Who Really Is Your Soul Mate!"
 category: "Other World"
+topics:
+  - "Love & Relationships"
 date: "2020-01-29"
 image: "/assets/blog/soul-mate-768x384.jpg"
 seo_title: "Can a Psychic Tell You Who Your Soul Mate Is?"

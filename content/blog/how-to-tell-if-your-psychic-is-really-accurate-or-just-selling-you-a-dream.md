@@ -1,6 +1,8 @@
 ---
 title: "Real Psychic Readings–How to Tell If Your Psychic Is Really ACCURATE or Just Selling You A Dream!!"
-category: "Featured Articles"
+category: "Finding a Genuine Psychic"
+topics:
+  - "Gypsy Scams"
 date: "2011-02-25"
 image: "/assets/blog/how-to-tell-if-your-psychic-is-really-accurate-or-just-selling-you-a-dream-card.jpg"
 image_alt: "A shiny golden mask in front of a cracked, worn mask"

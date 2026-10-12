@@ -1,6 +1,8 @@
 ---
 title: "Finding Solace in a Restless World: The Healing Power of Psychic Readings!"
 category: "Online Psychic Readings"
+topics:
+  - "Energy & Healing"
 date: "2025-01-22"
 image: "/assets/blog/Phone-Psychic-Readings-300x195.png"
 seo_title: "Finding Solace in a Restless World: The Healing Power of Psychic Readings!"

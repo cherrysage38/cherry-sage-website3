@@ -216,14 +216,30 @@ var none=document.createElement('p'); none.className='blog-none'; none.textConte
 if(list) list.appendChild(none);
 function show(test){var n=0;cards.forEach(function(cd){var on=test(cd);cd.style.display=on?'':'none';if(on)n++;});
 var c=document.getElementById('blogCount');if(c)c.textContent=n+' post'+(n===1?'':'s');none.style.display=n?'none':'block';}
-function apply(attr,val){if(box)box.value='';show(function(cd){return val==='all'||cd.dataset[attr]===val;});}
+// A post can have up to 3 topics (data-topics, 2026-10-12), so a topic finds it under each of them.
+var all=document.createElement('button');all.type='button';all.className='blog-count';all.textContent='Show all';
+all.style.cssText='background:none;border:0;padding:0 0 0 .6rem;color:var(--oxblood);text-decoration:underline;cursor:pointer;display:none';
+var cnt=document.getElementById('blogCount');if(cnt)cnt.parentNode.insertBefore(all,cnt.nextSibling);
+function label(attr,val){if(!cnt||val==='all')return;var n=cnt.textContent;
+var name=attr==='ym'?(document.querySelector('.arch-item[data-ym="'+val+'"]')||{}).firstChild:null;
+cnt.textContent=(attr==='ym'?(name?name.textContent.trim():val):val)+': '+n;}
+// The topic cloud and the archive sit below all the posts on a phone (beside them on a computer), so
+// after a click the results could be thousands of pixels away and it looked as if nothing happened
+// (Bev, 2026-10-12). Bring the results into view.
+function toResults(){var bar=document.querySelector('.blog-toolbar');if(!bar)return;
+var hdr=document.querySelector('.site-header'),off=(hdr?hdr.getBoundingClientRect().height:0)+12,top=bar.getBoundingClientRect().top;
+if(top<off||top>innerHeight*0.5)window.scrollTo({top:top+pageYOffset-off,behavior:'smooth'});}
+function apply(attr,val){if(box)box.value='';show(function(cd){if(val==='all')return true;
+if(attr==='cat')return (cd.dataset.topics||cd.dataset.cat||'').split('|').indexOf(val)>-1;return cd.dataset[attr]===val;});
+label(attr,val);all.style.display=val==='all'?'none':'';}
+all.addEventListener('click',function(){sel(document.querySelector('.bchip[data-f="all"]'),'.bchip');apply('cat','all');});
 function sel(el,grp){[].slice.call(document.querySelectorAll(grp)).forEach(function(x){x.classList.remove('on');});if(el)el.classList.add('on');}
 function search(q){var words=q.toLowerCase().split(/\s+/).filter(Boolean);
 if(!words.length){sel(document.querySelector('.bchip[data-f="all"]'),'.bchip');show(function(){return true;});return;}
-sel(null,'.bchip');show(function(cd){var t=cd.textContent.toLowerCase();return words.every(function(w){return t.indexOf(w)>-1;});});}
+sel(null,'.bchip');all.style.display='none';show(function(cd){var t=cd.textContent.toLowerCase();return words.every(function(w){return t.indexOf(w)>-1;});});}
 [].slice.call(document.querySelectorAll('.bchip')).forEach(function(ch){ch.addEventListener('click',function(){sel(ch,'.bchip');apply('cat',ch.dataset.f);});});
-[].slice.call(document.querySelectorAll('.wc-tag')).forEach(function(t){t.addEventListener('click',function(){sel(null,'.bchip');apply('cat',t.dataset.f);});});
-[].slice.call(document.querySelectorAll('.arch-item')).forEach(function(a){a.addEventListener('click',function(){sel(null,'.bchip');apply('ym',a.dataset.ym);});});
+[].slice.call(document.querySelectorAll('.wc-tag')).forEach(function(t){t.addEventListener('click',function(){sel(document.querySelector('.bchip[data-f="'+t.dataset.f+'"]'),'.bchip');apply('cat',t.dataset.f);toResults();});});
+[].slice.call(document.querySelectorAll('.arch-item')).forEach(function(a){a.addEventListener('click',function(){sel(null,'.bchip');apply('ym',a.dataset.ym);toResults();});});
 if(box){box.addEventListener('input',function(){search(box.value);});
 var q=(location.search.match(/[?&]q=([^&]*)/)||[])[1];
 if(q){try{q=decodeURIComponent(q.replace(/\+/g,' '));}catch(e){} box.value=q;}search(box.value);}

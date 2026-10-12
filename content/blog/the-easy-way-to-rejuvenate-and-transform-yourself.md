@@ -1,6 +1,6 @@
 ---
 title: "The Easy Way To Rejuvenate And Transform Yourself"
-category: "Featured Articles"
+category: "Energy & Healing"
 date: "2012-12-17"
 image: "/assets/blog/the-easy-way-to-rejuvenate-and-transform-yourself-card.jpg"
 image_alt: "A joyful woman with curly silver-streaked hair dancing in a sunlit room"

@@ -1,6 +1,8 @@
 ---
 title: "How to Spot A Fake Psychic-Changing the “Imitation” Psychic Paradigm"
 category: "Gypsy Scams"
+topics:
+  - "Finding a Genuine Psychic"
 date: "2009-11-20"
 image: "/assets/blog/bright-sun-rise-768x505.jpeg"
 seo_title: "How to Spot A Fake Psychic-Changing the \"Imitation\" Psychic Paradigm"

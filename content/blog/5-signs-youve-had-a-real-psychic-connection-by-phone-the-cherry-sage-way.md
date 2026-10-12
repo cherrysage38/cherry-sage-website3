@@ -1,6 +1,9 @@
 ---
 title: "5 Signs You’ve Had a Real Psychic Connection by Phone – The Cherry Sage Way!"
 category: "Psychic Readings"
+topics:
+  - "Finding a Genuine Psychic"
+  - "Online Psychic Readings"
 date: "2025-05-05"
 image: "/assets/blog/5-signs-youve-had-a-real-psychic-connection-by-phone-the-cherry-sage-way-card.jpg"
 image_alt: "A woman talking on the phone by candlelight, with ribbons of golden light flowing from the call"

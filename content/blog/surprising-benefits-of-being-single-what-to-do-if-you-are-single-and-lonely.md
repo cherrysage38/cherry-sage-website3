@@ -1,6 +1,6 @@
 ---
 title: "Surprising Benefits of Being Single — What To Do If You Are Single And Lonely"
-category: "Featured Articles"
+category: "Love & Relationships"
 date: "2016-03-15"
 image: "/assets/blog/surprising-benefits-of-being-single-what-to-do-if-you-are-single-and-lonely-card.jpg"
 image_alt: "A smiling woman relaxing with a cup of tea in a wicker chair on a sunny terrace overlooking the sea and mountains"
