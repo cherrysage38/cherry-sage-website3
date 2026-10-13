@@ -1,3 +1,11 @@
+# Readings menu consolidation (Bev, 2026-10-12): three overlapping pages retired, their addresses forward
+/top-rated-psychic-readings    /psychic-reading.html    301
+/top-rated-psychic-readings.html    /psychic-reading.html    301
+/specialized-psychic-readings    /psychic-reading.html    301
+/specialized-psychic-readings.html    /psychic-reading.html    301
+/trustworthy-accurate-psychic-readings    /real-and-genuine-psychic-readings.html    301
+/trustworthy-accurate-psychic-readings.html    /real-and-genuine-psychic-readings.html    301
+
 # Cherry Sage post URL recovery (original WordPress slugs)
 /5-signs-youve-had-a-real-psychic-connection-by-phone-the-cherry-sage-way/    /5-signs-youve-had-a-real-psychic-connection-by-phone-the-cherry-sage-way.html    301
 /discover-your-personal-year-in-numerology-how-it-shapes-your-path/    /discover-your-personal-year-in-numerology-how-it-shapes-your-path.html    301
@@ -273,7 +281,7 @@
 /site-map/    /site-map.html    301
 /soul-level-astrology-a-multi-dimensional-look-at-the-birth-chart/    /soul-level-astrology-a-multi-dimensional-look-at-the-birth-chart.html    301
 /soul-urge-number/    /soul-urge-number.html    301
-/specialized-psychic-readings/    /specialized-psychic-readings.html    301
+/specialized-psychic-readings/    /psychic-reading.html    301
 /spirituality-and-business-corporate-personal-search-for-identity/    /spirituality-and-business-corporate-personal-search-for-identity.html    301
 /submit-post/    /submit-post.html    301
 /tarot/    /tarot.html    301
@@ -290,9 +298,9 @@
 /the-principals-of-reincarnation/    /the-principals-of-reincarnation.html    301
 /the-six-metaphysical-laws-of-prosperity/    /the-six-metaphysical-laws-of-prosperity.html    301
 /the-truth-about-numerology-and-why-it-works/    /the-truth-about-numerology-and-why-it-works.html    301
-/top-rated-psychic-readings/    /top-rated-psychic-readings.html    301
+/top-rated-psychic-readings/    /psychic-reading.html    301
 /travel-as-meditation/    /travel-as-meditation.html    301
-/trustworthy-accurate-psychic-readings/    /trustworthy-accurate-psychic-readings.html    301
+/trustworthy-accurate-psychic-readings/    /real-and-genuine-psychic-readings.html    301
 /understanding-a-tarot-card-reading/    /understanding-a-tarot-card-reading.html    301
 /understanding-psychic-readings/    /understanding-psychic-readings.html    301
 /understanding-the-tarot-card-deck-part-i/    /understanding-the-tarot-card-deck-part-i.html    301
@@ -482,7 +490,7 @@
 /avada_portfolio/site-map/    /site-map.html    301
 /avada_portfolio/soul-level-astrology-a-multi-dimensional-look-at-the-birth-chart/    /soul-level-astrology-a-multi-dimensional-look-at-the-birth-chart.html    301
 /avada_portfolio/soul-urge-number/    /soul-urge-number.html    301
-/avada_portfolio/specialized-psychic-readings/    /specialized-psychic-readings.html    301
+/avada_portfolio/specialized-psychic-readings/    /psychic-reading.html    301
 /avada_portfolio/spirituality-and-business-corporate-personal-search-for-identity/    /spirituality-and-business-corporate-personal-search-for-identity.html    301
 /avada_portfolio/submit-post/    /submit-post.html    301
 /avada_portfolio/surprising-benefits-of-being-single-what-to-do-if-you-are-single-and-lonely/    /surprising-benefits-of-being-single-what-to-do-if-you-are-single-and-lonely.html    301
@@ -505,10 +513,10 @@
 /avada_portfolio/the-six-metaphysical-laws-of-prosperity/    /the-six-metaphysical-laws-of-prosperity.html    301
 /avada_portfolio/the-truth-about-numerology-and-why-it-works/    /the-truth-about-numerology-and-why-it-works.html    301
 /avada_portfolio/the-universe-is-whispering-heres-how-to-tap-into-your-spirit-guides-for-clarity/    /the-universe-is-whispering-heres-how-to-tap-into-your-spirit-guides-for-clarity.html    301
-/avada_portfolio/top-rated-psychic-readings/    /top-rated-psychic-readings.html    301
+/avada_portfolio/top-rated-psychic-readings/    /psychic-reading.html    301
 /avada_portfolio/trapped-in-career-limbo-psychic-readings-can-open-the-gateway-to-your-true-path/    /trapped-in-career-limbo-psychic-readings-can-open-the-gateway-to-your-true-path.html    301
 /avada_portfolio/travel-as-meditation/    /travel-as-meditation.html    301
-/avada_portfolio/trustworthy-accurate-psychic-readings/    /trustworthy-accurate-psychic-readings.html    301
+/avada_portfolio/trustworthy-accurate-psychic-readings/    /real-and-genuine-psychic-readings.html    301
 /avada_portfolio/understanding-a-tarot-card-reading/    /understanding-a-tarot-card-reading.html    301
 /avada_portfolio/understanding-psychic-readings/    /understanding-psychic-readings.html    301
 /avada_portfolio/understanding-the-tarot-card-deck-part-i/    /understanding-the-tarot-card-deck-part-i.html    301
@@ -703,7 +711,7 @@
 /article/site-map/    /site-map.html    301
 /article/soul-level-astrology-a-multi-dimensional-look-at-the-birth-chart/    /soul-level-astrology-a-multi-dimensional-look-at-the-birth-chart.html    301
 /article/soul-urge-number/    /soul-urge-number.html    301
-/article/specialized-psychic-readings/    /specialized-psychic-readings.html    301
+/article/specialized-psychic-readings/    /psychic-reading.html    301
 /article/spirituality-and-business-corporate-personal-search-for-identity/    /spirituality-and-business-corporate-personal-search-for-identity.html    301
 /article/submit-post/    /submit-post.html    301
 /article/surprising-benefits-of-being-single-what-to-do-if-you-are-single-and-lonely/    /surprising-benefits-of-being-single-what-to-do-if-you-are-single-and-lonely.html    301
@@ -726,10 +734,10 @@
 /article/the-six-metaphysical-laws-of-prosperity/    /the-six-metaphysical-laws-of-prosperity.html    301
 /article/the-truth-about-numerology-and-why-it-works/    /the-truth-about-numerology-and-why-it-works.html    301
 /article/the-universe-is-whispering-heres-how-to-tap-into-your-spirit-guides-for-clarity/    /the-universe-is-whispering-heres-how-to-tap-into-your-spirit-guides-for-clarity.html    301
-/article/top-rated-psychic-readings/    /top-rated-psychic-readings.html    301
+/article/top-rated-psychic-readings/    /psychic-reading.html    301
 /article/trapped-in-career-limbo-psychic-readings-can-open-the-gateway-to-your-true-path/    /trapped-in-career-limbo-psychic-readings-can-open-the-gateway-to-your-true-path.html    301
 /article/travel-as-meditation/    /travel-as-meditation.html    301
-/article/trustworthy-accurate-psychic-readings/    /trustworthy-accurate-psychic-readings.html    301
+/article/trustworthy-accurate-psychic-readings/    /real-and-genuine-psychic-readings.html    301
 /article/understanding-a-tarot-card-reading/    /understanding-a-tarot-card-reading.html    301
 /article/understanding-psychic-readings/    /understanding-psychic-readings.html    301
 /article/understanding-the-tarot-card-deck-part-i/    /understanding-the-tarot-card-deck-part-i.html    301

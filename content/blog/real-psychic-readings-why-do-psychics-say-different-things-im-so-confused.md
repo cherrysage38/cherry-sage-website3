@@ -9,6 +9,7 @@ image_alt: "A woman lying on her bed at night, looking at her phone with a puzzl
 seo_title: "Why Do Psychics Say Different Things? | Cherry Sage"
 description: "Getting different answers from different psychics? Why psychics can say different things, and how to make sense of readings that disagree."
 related: false
+pillar: real-and-genuine-psychic-readings
 ---
 
 Getting real, accurate psychic readings predictions can actually be very elusive these days.  You may have received a number of readings and now you are wondering why psychics make different predictions or say different things and which. There are so many psychic venues--psychic lines, psychic websites, bookstores, gypsy psychic houses, etc., where you can get a psychic reading.  In addition, there are several types of readings that can be experienced.  There are clairvoyants, tarot card readers; there are psychics who read runes or tea leaves; or psychics who use other tools to conduct a reading such as numerology and astrology.

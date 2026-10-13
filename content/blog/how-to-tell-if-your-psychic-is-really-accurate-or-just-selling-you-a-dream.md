@@ -9,6 +9,7 @@ image_alt: "A shiny golden mask in front of a cracked, worn mask"
 seo_title: "Is Your Psychic Accurate or Just Selling You a Dream?"
 description: "Is your psychic telling you the truth, or just what you want to hear? Useful signs that a psychic is legitimate and that your reading is accurate."
 related: false
+pillar: real-and-genuine-psychic-readings
 ---
 
 If you found this article, you may have recently received a psychic reading and something made you wonder if what you heard was accurate. Perhaps you had a nagging feeling that what you heard sounded to good to be true and you needed to do some research about psychics and how accurate they are; or maybe you are thinking about getting a psychic reading and decided since the internet seems to be the first stop in finding out just about anything you want to learn about, you searched for ***how accurate are psychics***.

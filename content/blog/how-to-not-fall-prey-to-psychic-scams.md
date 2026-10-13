@@ -9,6 +9,7 @@ image_alt: "A half-gold, half-black mask on a desk beside a laptop, a candle and
 seo_title: "A Caring Warning About Psychic Scams | Cherry Sage"
 description: "Details of another horrible psychic scammer in Texas and more. Unbelievable and unconscionable tactics are related in this post."
 related: true
+pillar: real-and-genuine-psychic-readings
 ---
 
 ## How to Not Fall Prey to Psychic Scams

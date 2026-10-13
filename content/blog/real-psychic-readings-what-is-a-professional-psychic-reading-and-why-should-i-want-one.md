@@ -8,6 +8,7 @@ image: "/assets/blog/professional-psychic-readings-card.jpg"
 seo_title: "What Is a Professional Psychic Reading? | Cherry Sage"
 description: "Are you speaking with a professional psychic or an entertainment psychic? How to tell the difference, and why a professional reading matters."
 related: false
+pillar: real-and-genuine-psychic-readings
 ---
 
 When you call for a [psychic reading](https://cherrysage.com), you need to determine if you are speaking with a [real professional psychic](https://cherrysage.com) or an entertainment psychic.  Find out how to find a professional psychic now.
