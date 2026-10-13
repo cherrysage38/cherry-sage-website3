@@ -72,6 +72,13 @@ function pillarPosts(pageSlug) {
     .sort((a, b) => String(b.date).localeCompare(String(a.date)));
 }
 
+// The bold reader's question that opens a post or page stands out a little (Bev, 2026-10-13).
+// Only the first paragraph (after a lone picture) is touched, and only when it is a bold question.
+function leadQuestion(html) {
+  const m = html.match(/^(\s*(?:<p><img[^>]*><\/p>\s*)?)<p><strong>([^<]*\?)<\/strong><\/p>/);
+  if (!m) return html;
+  return m[1] + `<p class="lead-question" style="font-size:1.28em;line-height:1.4;margin:0 0 .6rem"><strong>${m[2]}</strong></p>` + html.slice(m[0].length);
+}
 function renderBlocks(blocks, pageSlug) {
   const out = [];
   let run = [];
@@ -89,7 +96,7 @@ function renderBlocks(blocks, pageSlug) {
     const inner = article.map((b) => b.type === "side_card"
       ? `<aside class="blk-side-card">${b.tag ? `<span class="chip">${esc(b.tag)}</span>` : ""}<h3>${esc(b.title)}</h3><p>${esc(b.text)}</p></aside>`
       : `${b.heading ? `<h2>${esc(b.heading)}</h2>` : ""}${mdBlock(b.body)}`).join("");
-    out.push(`<section class="section"><div class="wrap"><div class="blk-prose blk-article reveal">${inner}</div></div></section>`);
+    out.push(`<section class="section"><div class="wrap"><div class="blk-prose blk-article reveal">${leadQuestion(inner)}</div></div></section>`);
     article = [];
   };
   blocks.forEach((b, i) => {
