@@ -48,6 +48,6 @@ With the anonymity and privacy of **genuine psychic readings online**, you have 
 
 ## **Parting Note: Honoring Your Free Will in Every Session**
 
-The most powerful readings come from a place of trust, honesty, and integrity. As a spiritual counselor, my priority is to honor your free will. When a reading honors your free will, it becomes a sacred exchange—a moment of clarity that leads you toward a future where you are in control. Whether through **genuine psychic readings** or [**accurate psychic readings online**](/), you’ll find that real empowerment comes from trusting yourself, listening to your intuition, and making choices that are aligned with your highest good.
+The most powerful readings come from a place of trust, honesty, and integrity. As a spiritual counselor, my priority is to honor your free will. When a reading honors your free will, it becomes a sacred exchange—a moment of clarity that leads you toward a future where you are in control. Whether through **genuine psychic readings** or [accurate psychic readings online](/psychic-reading), you’ll find that real empowerment comes from trusting yourself, listening to your intuition, and making choices that are aligned with your highest good.
 
 Remember, you are the creator of your path, and my role is to offer insight. I want to help you see what’s available to you, but the power to move forward is in your hands. You are the one who decides how to proceed, what to embrace, and how to heal.

@@ -27,4 +27,4 @@ Cherry Sage owns and operates one of the top quality psychic web sites on the in
 
 If you are looking for an authentic and accurate tarot card reading by a professional Tarot Master, you could get real psychic answers today from Cherry Sage for a personal consultation by phone or through e-mail. If this is your first time trying Cherry Sage, your first 3 minutes are free! Please browse her website here
 
-> [Homepage](https://cherrysage.com/)
+> [Homepage](/)

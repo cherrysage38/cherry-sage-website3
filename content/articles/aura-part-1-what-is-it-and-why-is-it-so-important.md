@@ -34,7 +34,7 @@ The emanating colors of the aura are often tied to special or hidden meanings. S
 
 Auras exists and we often say someone has it without realizing what it actually is this is a basic introduction what aura is and following articles will show you how to get an aura that will help you derive more from life.
 
-Continue [Aura Part 2 —How to See and Read the Aura in Yourself and Others.](https://cherrysage.com/aura-part-2-how-to-see-and-read-the-aura-in-yourself-and-others)
+Continue [Aura Part 2 —How to See and Read the Aura in Yourself and Others.](/aura-part-2-how-to-see-and-read-the-aura-in-yourself-and-others)
 
 About author:  
 For more FREE Information on aura and other alternative thought please visit our website and get articles features magazines and free downloads: http://www.net-planet.org/newage.html

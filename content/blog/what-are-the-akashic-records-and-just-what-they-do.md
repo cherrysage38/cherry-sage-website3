@@ -31,4 +31,4 @@ The most common reason people seek out the Akashic Records is for healing. Maybe
 
 Working with the Akashic Records for healing works at a soul level. We're each here with a spiritual purpose, a reason for choosing this lifetime, and much of that purpose becomes clearer once you understand whether you're living up to your soul's potential. Accessing the Akashic Records is one more real tool for understanding why you're here.
 
-Curious what your own Akashic Records might reveal? [Book a reading with Cherry Sage](https://cherrysage.com/book-appointment.html) to explore it further.
+Curious what your own Akashic Records might reveal? [Book a reading with Cherry Sage](/book-appointment.html) to explore it further.

@@ -39,7 +39,7 @@ These transitions often come with intense emotions, but the right guidance can t
 
 ### **Real-Life Stories of Transformation During Life Transitions with Psychic Insight**
 
-*I’ve had the honor of walking with many individuals through their life transitions. One of the most heartwarming stories is about a client named Mark. He came to me feeling lost after a divorce, unsure of his place in the world. Through our [**authentic psychic readings**](/), I helped him see that his divorce was not a failure but a shift toward personal empowerment. By understanding the energies around him and his own inner strength, Mark was able to embrace a new chapter in his life—one where he rediscovered his passions and began to thrive independently.*
+*I’ve had the honor of walking with many individuals through their life transitions. One of the most heartwarming stories is about a client named Mark. He came to me feeling lost after a divorce, unsure of his place in the world. Through our [authentic psychic readings](/psychic-reading), I helped him see that his divorce was not a failure but a shift toward personal empowerment. By understanding the energies around him and his own inner strength, Mark was able to embrace a new chapter in his life—one where he rediscovered his passions and began to thrive independently.*
 
 ## **Last Thoughts: Navigating Change with Psychic Insight and Empowerment**
 

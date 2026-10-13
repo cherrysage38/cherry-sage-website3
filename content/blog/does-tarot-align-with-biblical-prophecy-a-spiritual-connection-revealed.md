@@ -26,7 +26,7 @@ When we look at tarot readings with an open heart, it’s not about predicting a
 
 ### **Aligning Tarot with Spiritual Discernment**
 
-The Bible speaks extensively about discernment and the importance of seeking God’s guidance. In 1 Corinthians 12, we are taught about the gifts of the Spirit—prophecy, wisdom, and knowledge. Tarot can serve as a tool to enhance your connection to these gifts. **[What does the Bible say about tarot cards](/)?** I would say—if approached with respect, it’s about asking for wisdom and guidance, not about worshipping the cards themselves.
+The Bible speaks extensively about discernment and the importance of seeking God’s guidance. In 1 Corinthians 12, we are taught about the gifts of the Spirit—prophecy, wisdom, and knowledge. Tarot can serve as a tool to enhance your connection to these gifts. **What does the Bible say about tarot cards?** I would say—if approached with respect, it’s about asking for wisdom and guidance, not about worshipping the cards themselves.
 
 Let me share something deeply meaningful: in my years of healing, I’ve found that when tarot readings are done with the intention to seek peace, clarity, and higher understanding, they can be a bridge to understanding the divine plan for your life. The cards reflect the energies and intentions we project—so what’s your intention when you approach a tarot reading?
 

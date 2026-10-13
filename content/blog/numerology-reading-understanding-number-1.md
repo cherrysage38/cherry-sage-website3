@@ -42,4 +42,4 @@ If you are interested in finding out more in-depth information, try a numerology
 
 It’s also important to note that WHERE your 1 energy resides is important—meaning out of your four core elements in your Soul’s Map. i.e., Life Path, Soul Urge Number, Expression, and Birthday Number, where is your 1\.  Getting expert analysis of these energy placements is very important to getting the full picture of yourself or someone in your life.
 
-Cherry Sage is a professional psychic and numerologist who is able to crack the code of your Soul’s Map.  Learn who you are and all your intricacies and how to use it to navigate life.  [Contact](/) Cherry today for a psychic or numerology reading.
+Cherry Sage is a professional psychic and numerologist who is able to crack the code of your Soul’s Map.  Learn who you are and all your intricacies and how to use it to navigate life.  [Contact](/contact) Cherry today for a psychic or numerology reading.

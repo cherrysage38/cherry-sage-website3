@@ -27,4 +27,4 @@ For those who have found themselves feeling out of control because of their need
 <strong>About author:</strong>  
 Cherry Sage owns and operates one of the top quality psychic web sites on the internet today. Her main focus is authenticity, honesty and integrity. One of her missions is to make sure that everyone looking for a real psychic reading or tarot card reading will be able to find certified authenticity and quality service–to change the existing “imitation” psychic paradigm. Her many followers trust in her advice and her accurate predictions. You can read hundreds of inspiring testimonials on her website here: Cherry Sage.
 
-> [Homepage](https://cherrysage.com/)
+> [Homepage](/)

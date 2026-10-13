@@ -59,7 +59,7 @@ Sometimes, the most powerful part of a reading is not the words—but the space 
 
 Many of my clients have shared, *“I felt like you just understood me without me saying much.”* That’s because in a real connection, your energy speaks louder than your voice. I listen to what your spirit is saying—and that’s where real healing begins.
 
-Even across distance, [**phone psychic readings online**](/) can tune into your energetic field and reveal what your soul wants you to know. You don’t need to explain every detail. The truth finds its way through the quiet.
+Even across distance, [phone psychic readings online](/psychic-reading) can tune into your energetic field and reveal what your soul wants you to know. You don’t need to explain every detail. The truth finds its way through the quiet.
 
 ## **So, Have You Felt It Too?**
 

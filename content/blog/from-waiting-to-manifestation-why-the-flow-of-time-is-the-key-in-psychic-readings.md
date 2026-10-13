@@ -58,7 +58,7 @@ Here’s how I make it a point to guide in my sessions –
 
 ## **Concluding Note: How I Guide You Through Timing**
 
-As a spiritual counselor, my role is to provide clarity, calmness, and direction. When timing feels uncertain, I help you interpret the messages of [**genuine psychic readings**](https://cherrysage.com/) and guide you toward actions that can shift your energy into alignment. Together, we work through the layers of resistance, allowing you to embrace life’s unfolding with grace.
+As a spiritual counselor, my role is to provide clarity, calmness, and direction. When timing feels uncertain, I help you interpret the messages of [genuine psychic readings](/psychic-reading) and guide you toward actions that can shift your energy into alignment. Together, we work through the layers of resistance, allowing you to embrace life’s unfolding with grace.
 
 Remember, timing isn’t a test—it’s a process. Your journey is uniquely yours, and every moment carries its own purpose. By trusting in your path, you’ll see how even delayed predictions often arrive right when they’re meant to.
 

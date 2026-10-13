@@ -45,4 +45,4 @@ Just as he's skilled at growing his savings, he's often a genuinely gifted garde
 
 The real contradiction in a Cancer man is that he can be the most romantic dreamer you know and also remarkably hard-nosed in a financial negotiation. A genuinely bad Cancer man is rare.
 
-Curious how your own chart matches up with a Cancer man in your life? [Book a reading with Cherry Sage](https://cherrysage.com/book-appointment.html) for a closer look at your compatibility.
+Curious how your own chart matches up with a Cancer man in your life? [Book a reading with Cherry Sage](/book-appointment.html) for a closer look at your compatibility.

@@ -34,7 +34,7 @@ Psychic advisors have their own strengths, areas of expertise, and preferred met
 
 ## Building a Supportive Network:
 
-Having one or two [trusted psychic advisors](https://cherrysage.com) forms the core of your spiritual support network. These advisors can provide a sense of stability, acting as a sounding board for your concerns, aspirations, and spiritual growth; so, they can become confidants who understand your journey and can offer guidance through both joyful and challenging times. A supportive network of trusted advisors offers a sense of continuity, encouragement, and a safe space to explore your spiritual path.
+Having one or two [trusted psychic advisors](/psychic-reading) forms the core of your spiritual support network. These advisors can provide a sense of stability, acting as a sounding board for your concerns, aspirations, and spiritual growth; so, they can become confidants who understand your journey and can offer guidance through both joyful and challenging times. A supportive network of trusted advisors offers a sense of continuity, encouragement, and a safe space to explore your spiritual path.
 
 ## Conclusion:
 
@@ -43,4 +43,4 @@ While exploring multiple psychics can offer diverse perspectives, it is essentia
 > *Cherry Sage is a renowned psychic and intuitive advisor, celebrated for her exceptional abilities and compassionate guidance. With over two decades of professional experience, Cherry has touched the lives of countless individuals, offering them clarity, insight, and spiritual support.  Cherry is the trusted advisor of hundreds of people around the world.*
 >
 >
-> *What sets Cherry apart is not only her profound psychic insights but also her warm and nurturing approach. She understands the delicate nature of the human experience and endeavors to provide a safe space for her clients to explore their deepest concerns.  Book an appointment with [Cherry Sage](https://cherrysage.com) today!*
+> *What sets Cherry apart is not only her profound psychic insights but also her warm and nurturing approach. She understands the delicate nature of the human experience and endeavors to provide a safe space for her clients to explore their deepest concerns.  Book an appointment with Cherry Sage today!*
