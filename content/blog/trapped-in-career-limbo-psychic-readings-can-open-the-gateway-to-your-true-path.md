@@ -23,7 +23,7 @@ Career blocks often arise when we feel disconnected from our true calling. Many 
 
 With the insights provided through psychic readings, we can uncover the root cause of your struggles and create a healing pathway forward. Psychic readings help you release any emotional blocks or limiting beliefs that may be preventing you from achieving success.
 
-<em>According to a survey by the American Psychological Association, 65% of people who sought spiritual counseling found it helpful in overcoming personal challenges, including career decisions.</em>When you receive a reading, you’re connecting with deep spiritual wisdom that transcends logical thinking, providing insights that are often beyond our immediate understanding.
+When you receive a reading, you’re connecting with deep spiritual wisdom that transcends logical thinking, providing insights that are often beyond our immediate understanding.
 
 ### **Navigating Career Change with Confidence**
 

@@ -23,7 +23,7 @@ Have you ever felt an unexplained fear, frustration, or emotional pain? It could
 
 By engaging with your shadow self through psychic readings, we can uncover these deep emotions and buried fears. Psychics, through intuitive and clairvoyant abilities, can gently guide you to recognize the parts of yourself that need nurturing. Only then can we start to transform pain into growth and limitations into empowerment.
 
-In fact, research shows that embracing our shadow selves leads to emotional well-being.<em>A study published by the American Psychological Association found that individuals who engage in self-reflection and address their emotional struggles are more likely to achieve long-term emotional healing (Source: APA).</em>So, yes, there is scientific proof that facing our hidden selves leads to real transformation.
+Embracing our shadow selves leads to emotional well-being. Facing our hidden selves leads to real transformation.
 
 ### **How to Recognize When a Reading Reveals Deeper Emotional Truths**
 

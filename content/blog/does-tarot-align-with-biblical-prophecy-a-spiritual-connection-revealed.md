@@ -30,7 +30,7 @@ The Bible speaks extensively about discernment and the importance of seeking God
 
 Let me share something deeply meaningful: in my years of healing, I’ve found that when tarot readings are done with the intention to seek peace, clarity, and higher understanding, they can be a bridge to understanding the divine plan for your life. The cards reflect the energies and intentions we project—so what’s your intention when you approach a tarot reading?
 
-<em>A beautiful statistic I’d like to share comes from a 2022 survey by the Pew Research Center, which found that 41% of Americans have used some form of divination or spiritual guidance.</em>This shows that many people turn to spiritual tools—whether it’s tarot, astrology, or meditation—to navigate life’s challenges. This widespread use shows that people are seeking answers beyond what they see in the physical world, reaching out for deeper understanding.
+Many people turn to spiritual tools—whether it’s tarot, astrology, or meditation—to navigate life’s challenges. People are seeking answers beyond what they see in the physical world, reaching out for deeper understanding.
 
 ### **Moving Forward with Peace and Clarity**
 

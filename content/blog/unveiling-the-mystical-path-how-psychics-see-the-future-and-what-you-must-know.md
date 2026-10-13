@@ -26,7 +26,7 @@ Each of these methods connects me to different dimensions of energy that I inter
 
 Now, let’s talk about **how accurate are psychic readings**. Some people ask, “Can psychics predict the future with certainty?” The truth is, I believe in the power of intuition and psychic abilities, but even I will tell you that accuracy in psychic readings can be a little like weather forecasts. The future is not set in stone; it’s malleable, shaped by your actions and choices.
 
-<em>According to a 2019 study by the American Psychological Association, about 10-15% of people who have psychic readings report feeling that the predictions came true in a very clear way.</em>That’s a pretty solid track record, wouldn’t you agree? It shows that while predictions aren’t always guaranteed, they can provide helpful insights that guide your decisions.
+While predictions aren’t always guaranteed, they can provide helpful insights that guide your decisions.
 
 So, when I offer you a reading, think of it as guidance, not a rigid fate. The beauty of having a reading is that it opens up possibilities, and once you see those possibilities, you’re empowered to create the life you desire.
 
