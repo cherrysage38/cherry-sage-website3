@@ -37,6 +37,6 @@ There are exceptions. Sometimes a psychic or medium needs to be in a person's ph
 
 ## Why choose a phone psychic reading?
 
-A phone psychic reading is an excellent way to get true, spiritually based answers and predictions, find solutions, and feel empowered in your life. You are not missing anything by having your reading over the phone. A professional psychic accesses the very same energy as if you were sitting in front of them, connects with you just by talking with you, and gives you an accurate reading.
+A phone reading is an excellent way to get true, spiritually based answers and predictions, find solutions, and feel empowered in your life. You are not missing anything by having your reading over the phone. A professional psychic accesses the very same energy as if you were sitting in front of them, connects with you just by talking with you, and gives you an accurate reading.
 
-*Cherry Sage has been providing phone psychic readings for over two decades. Her main focus is authenticity, honesty and integrity, and one of her missions is to change the existing "imitation" psychic paradigm. You can read hundreds of her clients' [testimonials](/testimonials) on her site.*
+*Cherry Sage has been providing phone readings for over two decades. Her main focus is authenticity, honesty and integrity, and one of her missions is to change the existing "imitation" psychic paradigm. You can read hundreds of her clients' [testimonials](/testimonials) on her site.*
