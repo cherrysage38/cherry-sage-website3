@@ -48,8 +48,6 @@ If you know your Life Path Number, here’s what numerology has to say about you
 
 ### **Life tip:** Exercise regularly to keep stress level under check and boost your metabolism.
 
-![Numerology Reading](/assets/blog/numerology-blk-white.jpg)
-
 ## Numerology Health Number 4
 
 **Problem Areas:** you may have trouble with melancholy and depression, urinary infections, frequent breathlessness, cough and cold.

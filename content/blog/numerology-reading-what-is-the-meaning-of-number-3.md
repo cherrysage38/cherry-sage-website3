@@ -12,7 +12,7 @@ related: true
 
 ## **CREATIVITY, BEAUTY, WORDS, SELF-EXPRESSION**
 
-![Numerology Number 3](/assets/blog/Number-3-self-expression-min-300x200.jpeg)Number 3 is one of my favorite numbers in numerology.  How did we get to Number 3?  Well, first there was 1, the beginning of human experience, the ego, the self; then there was 2, others, in relation to others, feminine energy, submissive, supportive, dependent.  Then there was 3\.  Bearing fruit, creativity, art, self-expression.  Many 3’s are artists or have talent, it’s the number of the voice.  Let’s sing.  See how this is adding up.  3’s bring the fun and the party in life.  It’s always nice to have 3’s around.
+Number 3 is one of my favorite numbers in numerology.  How did we get to Number 3?  Well, first there was 1, the beginning of human experience, the ego, the self; then there was 2, others, in relation to others, feminine energy, submissive, supportive, dependent.  Then there was 3\.  Bearing fruit, creativity, art, self-expression.  Many 3’s are artists or have talent, it’s the number of the voice.  Let’s sing.  See how this is adding up.  3’s bring the fun and the party in life.  It’s always nice to have 3’s around.
 
 Each number is a progression of the soul’s journey in human experience.  A journey in the physical world that offers many lessons.  We all will journey through all the human experiences until we become Masters.  I guess you wonder what comes after we have mastered the human experience.  \~\~We ascend\~\~  We elevate beyond the need to exist in human form.  We are spirit.  I digress.
 
