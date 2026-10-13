@@ -1,3 +1,7 @@
+# Country block (Bev, 2026-10-13): visitors from China (cn) see a short "not available" page.
+# Singapore is NOT blocked on purpose: Bev has real clients there. To undo: delete these 3 lines.
+/*    /unavailable.html    403!    Country=cn
+
 /real-psychic-readings-and-why-its-not-so-easy-to-find-an-authentic-psychic    /real-psychic-readings-and-why-its-not-so-easy-to-find-an-authentic-psychic-and-tips-to-find-one    301
 /real-psychic-readings-and-why-its-not-so-easy-to-find-an-authentic-psychic.html    /real-psychic-readings-and-why-its-not-so-easy-to-find-an-authentic-psychic-and-tips-to-find-one    301
 /real-psychic-readings-and-why-its-not-so-easy-to-find-an-authentic-psychic/    /real-psychic-readings-and-why-its-not-so-easy-to-find-an-authentic-psychic-and-tips-to-find-one    301
