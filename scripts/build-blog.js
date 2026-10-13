@@ -89,6 +89,13 @@ function plainExcerpt(md, len = 140) {
 // (e.g. pillar: love-and-relationships). The post links back to the page, and the page lists its
 // posts by itself (see the pillar_posts section in build-pages.js).
 const PAGES_DIR = join(ROOT, "content", "pages");
+// The bold reader's question that opens a post or page stands out a little (Bev, 2026-10-13).
+// Only the first paragraph (after a lone picture) is touched, and only when it is a bold question.
+function leadQuestion(html) {
+  const m = html.match(/^(\s*(?:<p><img[^>]*><\/p>\s*)?)<p><strong>([^<]*\?)<\/strong><\/p>/);
+  if (!m) return html;
+  return m[1] + `<p class="lead-question" style="font-size:1.28em;line-height:1.4;margin:0 0 .6rem"><strong>${m[2]}</strong></p>` + html.slice(m[0].length);
+}
 function pillarData(pillar) {
   const f = join(PAGES_DIR, `${pillar}.md`);
   if (!existsSync(f)) return {};
@@ -418,7 +425,7 @@ function main() {
     }
 
     const isNew = !existsSync(outPath);
-    const bodyHtml = mdBlock(body);
+    const bodyHtml = leadQuestion(mdBlock(body));
     const description = data.description || plainExcerpt(body);
 
     const page = renderPage({ slug, title: data.title, category: data.category, author: data.author, image: data.image, imageAlt: data.image_alt, date: data.date, bodyHtml, description, seoTitle: data.seo_title, relatedHtml: relatedSection({ slug, category: data.category, related: data.related, picks: data.related_posts }, all), pillarHtml: pillarBox(data.pillar), faqHtml: data.pillar ? faqSchema(body) : "" });
