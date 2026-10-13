@@ -1,6 +1,7 @@
 ---
 title: Numerology Karmic Debt 13,14,19
 description: A karmic debt is a significant difficulty encountered in this life as payment for the misapplication of energies in a past life. This is a very important…
+og_image: "/assets/numerology-header.jpg"
 blocks:
 - type: text
   body: 'A karmic debt is a significant difficulty encountered in this life as payment for the misapplication of energies in a past life. This is a very important aspect of a reading as it colors the core of an individual and could explain a dominant (perhaps negative or extreme) behavior of an individual. This indicator reveals that the person usually starts at the negative extreme until they are willing to accept the burden and exert the effort necessary to nullify the karma whereby they can then proceed to a more positive expression of the energy. For those who still will not accept the theory of unpaid Karmic debts and reincarnation, they are free to explain away these unanswered life questions in any fashion they wish.

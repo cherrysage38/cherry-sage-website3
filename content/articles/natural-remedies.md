@@ -1,5 +1,6 @@
 ---
 title: "Natural Treatments Are Becoming Popular In The Battle Against Sickness"
+seo_title: "Why Natural Treatments Are Becoming Popular | Cherry Sage"
 category: "Herbal Remedies"
 author: "Cherry Sage"
 date: "2017-07-12"

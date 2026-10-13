@@ -1,5 +1,6 @@
 ---
 title: "Spirituality and Business: Corporate Personal Search for Identity"
+seo_title: "Spirituality and Business: The Search for Identity"
 category: "Business & Spirituality"
 author: "Anant G Nadkarni"
 date: "2017-09-20"

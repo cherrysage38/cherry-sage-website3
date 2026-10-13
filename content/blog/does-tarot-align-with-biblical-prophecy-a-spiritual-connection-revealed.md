@@ -3,7 +3,7 @@ title: "Does Tarot Align with Biblical Prophecy? A Spiritual Connection Revealed
 category: "Tarot Card Readings"
 date: "2025-04-03"
 image: "/assets/blog/Are-psychic-tarot-readings-accurate-768x433.png"
-seo_title: "Does Tarot Align with Biblical Prophecy? A Spiritual Connection Revealed!"
+seo_title: "Does Tarot Align With Biblical Prophecy? | Cherry Sage"
 description: "Does Tarot align with Biblical prophecy? Explore how tarot, prophecy, and divine wisdom connect while uncovering what the Bible says about spiritual guidance."
 related: false
 ---

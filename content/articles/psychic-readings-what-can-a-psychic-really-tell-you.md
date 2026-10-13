@@ -1,5 +1,6 @@
 ---
 title: "Psychic Readings - What Can a Psychic Really Tell You?"
+seo_title: "What Can a Psychic Really Tell You? | Cherry Sage"
 category: "Psychic Readings"
 author: "Cherry Sage"
 date: "2017-07-13"

@@ -3,7 +3,7 @@ title: "Discover Your Personal Year in Numerology: How It Shapes Your Path!"
 category: "Numerology"
 date: "2025-04-03"
 image: "/assets/blog/Full-Numerology-Readings-Online-768x433.jpg"
-seo_title: "Discover Your Personal Year in Numerology: How It Shapes Your Path!"
+seo_title: "Your Personal Year in Numerology: How It Shapes Your Path"
 description: "Find your personal year in numerology! Learn how to calculate it and see what opportunities, challenges, and growth await you in the year ahead."
 related: true
 ---

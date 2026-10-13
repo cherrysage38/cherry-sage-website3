@@ -1,5 +1,6 @@
 ---
 title: "Aura Part 1 – What is It and Why is It So Important?"
+seo_title: "The Aura, Part 1: What It Is and Why It Matters"
 category: "Metaphysics"
 date: "2017-07-12"
 image: "/assets/articles/aura-part-1-what-is-it-and-why-is-it-so-important.jpeg"

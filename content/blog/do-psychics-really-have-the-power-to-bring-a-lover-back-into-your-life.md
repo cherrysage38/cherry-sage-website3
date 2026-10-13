@@ -5,7 +5,7 @@ topics:
   - "Love & Relationships"
 date: "2023-05-11"
 image: "/assets/blog/psychic-power-min-768x432.jpeg"
-seo_title: "Do Psychics Really Have The Power To Bring A Lover Back Into Your Life?"
+seo_title: "Can a Psychic Bring a Lover Back Into Your Life?"
 description: "Can psychic power bring your lover back? Is this a lie or is there any truth in it? Discover what a psychic’s power really can do."
 related: true
 pillar: love-and-relationships

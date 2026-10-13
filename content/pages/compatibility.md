@@ -1,6 +1,7 @@
 ---
 title: Compatibility
 description: Embark on a Soulful Journey of Love and Harmony with Cherry Sage! “Every sound, colour, fragrance and thought is a vibration, and each dances to the tune of…
+og_image: "/assets/numerology-header.jpg"
 hero_eyebrow: ''
 hero_lede: ''
 blocks:

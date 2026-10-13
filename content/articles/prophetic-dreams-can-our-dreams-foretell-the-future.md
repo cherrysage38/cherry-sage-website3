@@ -1,5 +1,6 @@
 ---
 title: "Prophetic Dreams: Can Our Dreams Foretell the Future?"
+seo_title: "Prophetic Dreams: Can Dreams Foretell the Future?"
 category: "Dreams"
 author: "Brian Alan Burhoe"
 date: "2017-07-13"

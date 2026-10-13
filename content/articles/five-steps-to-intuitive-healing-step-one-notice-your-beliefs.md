@@ -1,5 +1,6 @@
 ---
 title: "Five Steps to Intuitive Healing.: Step One: Notice Your Beliefs"
+seo_title: "Intuitive Healing, Step One: Notice Your Beliefs"
 category: "Natural Medicine"
 author: "Dr. Judith Orloff"
 image: "/assets/img/migrated/five-steps-to-intuitive-healing-step-one-notice-your-beliefs-five-steps-to-intuitive-healing-step-one-notice-y.jpg"

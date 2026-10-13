@@ -4,7 +4,7 @@ category: "Numerology"
 date: "2009-12-02"
 image: "/assets/blog/personal-year-numerology-card.jpg"
 seo_title: "Numerology -- How To Calculate Your Personal Year"
-description: "How to calculate your personal year number using numerology."
+description: "How to calculate your Personal Year number in numerology, step by step, and what it says about the energy and focus of your year ahead."
 related: false
 ---
 

@@ -5,8 +5,8 @@ topics:
   - "Finding a Genuine Psychic"
 date: "2011-02-16"
 image: "/assets/blog/professional-psychic-readings-card.jpg"
-seo_title: "Real Psychic Readings--What Is A Real Professional Psychic Reading and Why Should I Want One?"
-description: "When you call for a psychic reading, you need to determine if you are speaking with a real professional psychic or an entertainment psychic. Find out how to find a professional psychic now."
+seo_title: "What Is a Professional Psychic Reading? | Cherry Sage"
+description: "Are you speaking with a professional psychic or an entertainment psychic? How to tell the difference, and why a professional reading matters."
 related: false
 ---
 

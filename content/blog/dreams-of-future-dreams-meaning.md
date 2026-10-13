@@ -8,7 +8,7 @@ date: "2012-12-05"
 image: "/assets/blog/dreams-of-future-dreams-meaning-card.jpg"
 image_alt: "A softly lit bedroom with a wide window looking out at a full moon and a sunrise over a sea of clouds"
 seo_title: "DREAMS OF FUTURE & DREAMS MEANING"
-description: "Dreams are images in motion. These images are ideas and feelings that tell a private story. When you begin to investigate the amazing world of dreams, it is often difficult to know how to begin."
+description: "Dreams are ideas and feelings that tell a private story. How to begin understanding your dreams, including dreams that seem to show the future."
 related: false
 ---
 

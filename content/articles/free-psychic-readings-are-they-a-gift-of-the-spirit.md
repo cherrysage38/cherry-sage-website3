@@ -1,5 +1,6 @@
 ---
 title: "Free Psychic Readings - Are They A Gift of the Spirit?"
+seo_title: "Free Psychic Readings: Are They a Gift of the Spirit?"
 category: "Tarot"
 author: "Cherry Sage"
 image: "/assets/img/migrated/free-psychic-readings-are-they-a-gift-of-the-spirit-free-psychic-readings-are-they-a-gift-of-the-spirit.jpg"

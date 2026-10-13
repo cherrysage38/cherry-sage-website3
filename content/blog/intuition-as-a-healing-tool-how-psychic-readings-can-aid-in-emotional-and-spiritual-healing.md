@@ -5,7 +5,7 @@ topics:
   - "Energy & Healing"
 date: "2025-01-22"
 image: "/assets/blog/legitimate-phone-psychic-readings-300x214.jpg"
-seo_title: "Intuition as a Healing Tool: How Psychic Readings Can Aid in Emotional and Spiritual Healing!"
+seo_title: "Intuition as a Healing Tool: Psychic Readings and Healing"
 description: "Discover the transformative power of psychic readings to heal emotional wounds, release trauma, and find inner peace through intuitive guidance and support."
 related: true
 ---

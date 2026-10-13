@@ -7,7 +7,7 @@ date: "2012-12-07"
 image: "/assets/blog/the-auric-energy-field-what-is-it-2-card.jpg"
 image_alt: "A man with eyes closed, surrounded by swirling layers of blue, violet and gold light"
 seo_title: "The Auric Energy Field -- What Is It?"
-description: "What is the auric energy field? Get clarity about what surrounds you."
+description: "What is the auric energy field? A clear explanation of the energy that surrounds you, its layers, and how it reflects your emotional and spiritual state."
 related: true
 ---
 

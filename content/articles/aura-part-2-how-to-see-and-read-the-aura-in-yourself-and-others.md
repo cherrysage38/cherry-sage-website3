@@ -1,5 +1,6 @@
 ---
 title: "Aura Part 2 – How to See and Read the Aura in Yourself and Others"
+seo_title: "The Aura, Part 2: How to See and Read an Aura | Cherry Sage"
 category: "Psychic & Paranormal"
 author: "Sacha Tarkovsky"
 date: "2017-07-13"

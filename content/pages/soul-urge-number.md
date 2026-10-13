@@ -1,6 +1,7 @@
 ---
 title: The Soul Urge or Heart’s Desire
 description: Discover your Soul Urge or Heart’s Desire with our Full-Life Numerology Profiles and Numerology Love Compatibility Profiles. Get a Live Numerology Reading…
+og_image: "/assets/numerology-header.jpg"
 hero_eyebrow: Numerology
 blocks:
 - type: text

@@ -5,8 +5,8 @@ topics:
   - "Predicting Dates or Timelines"
 date: "2011-02-19"
 image: "/assets/blog/accurate-psychic-predictions-card.jpg"
-seo_title: "Accurate Psychic Predictions--The Baffling Mystery Why Your Psychic Predictions May Not Be Accurate"
-description: "If you have been seeking accurate psychic predictions and have found that rarely are they accurate, you need to read this. Learn how to get accurate psychic predictions and learn exactly why your predictions can turn out to be incorrect."
+seo_title: "Why Accurate Psychic Predictions Sometimes Miss"
+description: "Why do some psychic predictions turn out wrong? Learn what can change a prediction and how to get more accurate answers from your reading."
 related: false
 ---
 
