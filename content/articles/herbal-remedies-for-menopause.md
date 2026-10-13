@@ -1,5 +1,6 @@
 ---
 title: "HERBAL REMEDIES FOR MENOPAUSE – HOW TO SAIL THROUGH MENOPAUSE"
+seo_title: "Herbal Remedies for Menopause: Sailing Through the Change"
 category: "Herbal Remedies"
 author: "Healthy My Way"
 date: "2017-07-12"

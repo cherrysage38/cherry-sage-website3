@@ -1,5 +1,6 @@
 ---
 title: "Five Steps to Intuitive Healing.: Step Two: Be In Your Body"
+seo_title: "Intuitive Healing, Step Two: Be in Your Body | Cherry Sage"
 category: "Natural Medicine"
 author: "Dr. Judith Orloff"
 image: "/assets/img/migrated/five-steps-to-intuitive-healing-step-two-be-in-your-body-five-steps-to-intuitive-healing-step-two-be-in-your-b.jpg"

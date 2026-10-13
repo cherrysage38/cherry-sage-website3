@@ -1,7 +1,7 @@
 ---
 title: Real Psychic Readings and Why It’s Not So Easy to Find An Authentic Psychic and Tips to Find One
-seo_title: Real Psychic Readings and Why It's Not So Easy to Find An Authentic Psychic and Tips to Find One
-description: So many have been disillusioned by psychic readings. This information is very valuable to know before seeking and finding a real psychic and to explain what to actually expect..
+seo_title: "Why It's Hard to Find an Authentic Psychic, and Tips"
+description: "Disappointed by psychic readings before? What to know before looking for a real psychic, tips for finding one, and what to actually expect."
 date: 2009-11-20
 category: "Psychic Readings"
 topics:

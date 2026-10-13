@@ -1,5 +1,6 @@
 ---
 title: "Soul-Level Astrology: A Multi-Dimensional Look at the Birth Chart"
+seo_title: "Soul-Level Astrology: A Deeper Look at the Birth Chart"
 category: "Astrology"
 date: "2017-07-12"
 image: "/assets/articles/soul-level-astrology-a-multi-dimensional-look-at-the-birth-chart.jpg"

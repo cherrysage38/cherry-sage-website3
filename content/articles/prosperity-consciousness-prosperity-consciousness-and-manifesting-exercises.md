@@ -1,5 +1,6 @@
 ---
 title: "Prosperity Consciousness: Prosperity Consciousness and Manifesting Exercises"
+seo_title: "Prosperity Consciousness and Manifesting Exercises"
 category: "Abundance"
 author: "Julia Jablonski"
 date: "2017-07-13"

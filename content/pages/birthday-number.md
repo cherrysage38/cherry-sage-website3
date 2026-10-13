@@ -1,6 +1,7 @@
 ---
 title: Birthday Number
 description: Purchase Full-Life Numerology Profiles, Numerology Compatibility Profiles and much more…
+og_image: "/assets/numerology-header.jpg"
 hero_eyebrow: Numerology
 blocks:
 - type: text

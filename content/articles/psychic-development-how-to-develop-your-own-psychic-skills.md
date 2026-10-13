@@ -1,5 +1,6 @@
 ---
 title: "Psychic Development: How to develop your own psychic skills"
+seo_title: "Psychic Development: How to Develop Your Psychic Skills"
 category: "Psychic & Paranormal"
 author: "Vicki SpringWolf"
 image: "/assets/img/migrated/psychic-development-how-to-develop-your-own-psychic-skills-psychic-development-how-to-develop-your-own-psychic.jpg"

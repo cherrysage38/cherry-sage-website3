@@ -1,5 +1,6 @@
 ---
 title: "Could Practicing Yoga Bring Any Benefit To The One Practicing It?"
+seo_title: "What Are the Benefits of Practicing Yoga? | Cherry Sage"
 category: "Yoga"
 author: "Carol Haily"
 image: "/assets/img/migrated/could-practicing-yoga-bring-any-benefit-to-the-one-practicing-it-could-practicing-yoga-bring-any-benefit-to-th.jpg"

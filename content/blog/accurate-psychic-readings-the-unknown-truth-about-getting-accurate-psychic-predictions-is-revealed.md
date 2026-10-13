@@ -5,8 +5,8 @@ topics:
   - "Finding a Genuine Psychic"
 date: "2011-02-16"
 image: "/assets/articles/accurate-psychic-readings-the-unknown-truth-about-getting-accurate-psychic-predictions-is-revealed.jpg"
-seo_title: "Accurate Psychic Readings--The Unknown Truth About Getting Accurate Psychic Predictions Is Revealed"
-description: "Getting an accurate psychic reading is a little harder than one might think. Do you assume that if you call a psychic, they have all the answers? Find out some pretty surprising facts about true psychic readings and what you can do to assure yourself that you are indeed getting accurate psychic answers."
+seo_title: "The Truth About Getting Accurate Psychic Predictions"
+description: "Getting an accurate psychic reading is harder than you might think. Surprising facts about real readings, and how to make sure your answers are accurate."
 related: false
 ---
 

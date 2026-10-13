@@ -1,6 +1,7 @@
 ---
 title: Life Path Number Meanings
 description: Uncover the significance of numerology life path numbers and how they shape your destiny. Discover insights to lead a more fulfilling life journey.
+og_image: "/assets/numerology-header.jpg"
 hero_eyebrow: Numerology
 blocks:
 - type: text

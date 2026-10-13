@@ -1,6 +1,7 @@
 ---
 title: Karmic Lessons
 description: Karmic Lessons A Karmic Lesson is a determinant in numerology revealed by the numbers in the name that are missing in the name at birth. The absence of a…
+og_image: "/assets/numerology-header.jpg"
 blocks:
 - type: text
   body: '## Karmic Lessons

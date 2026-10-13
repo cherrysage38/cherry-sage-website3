@@ -1,5 +1,6 @@
 ---
 title: "Five Steps to Intuitive Healing.: Step Five: Listen to Your Dreams"
+seo_title: "Intuitive Healing, Step Five: Listen to Your Dreams"
 category: "Natural Medicine"
 author: "Judith Orloff, MD"
 date: "2017-07-13"

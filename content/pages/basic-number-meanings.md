@@ -1,6 +1,7 @@
 ---
 title: Basic Number Meanings
 description: Basic Numbers - Purchase Full-Life Numerology Profiles, Numerology Compatibility Profiles and much more… Following are the basic characteristics of numbers…
+og_image: "/assets/numerology-header.jpg"
 hero_eyebrow: Numerology
 blocks:
 - type: text

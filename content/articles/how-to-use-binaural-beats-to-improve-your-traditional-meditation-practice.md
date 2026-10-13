@@ -1,5 +1,6 @@
 ---
 title: "How To Use Binaural Beats To Improve Your Traditional Meditation Practice"
+seo_title: "How to Use Binaural Beats to Deepen Your Meditation"
 category: "Meditation"
 author: "Chris Connard"
 date: "2017-07-13"

@@ -7,7 +7,7 @@ date: "2012-12-14"
 image: "/assets/blog/about-auras-what-we-know-about-the-human-energy-field-card.jpg"
 image_alt: "A serene woman with eyes closed, surrounded by a rainbow-colored glow"
 seo_title: "About Auras - What We Know About the Human Energy Field"
-description: "About Auras - What We Know About the Human Energy Field"
+description: "What is an aura? A plain guide to the human energy field: what auras are, what their colors can mean, and what we know about the energy around us."
 related: false
 ---
 

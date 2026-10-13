@@ -1,5 +1,6 @@
 ---
 title: "Intuition: Intuition and Psychic Energy - Where Do They Come From?"
+seo_title: "Intuition and Psychic Energy: Where Do They Come From?"
 category: "Psychic & Paranormal"
 author: "Sonia Choquette"
 date: "2017-07-13"
