@@ -1,27 +1,29 @@
 ---
-title: "Psychic Predictions–When You Just Should Not Know the Future"
-category: "Predicting Dates or Timelines"
+title: Psychic Predictions–When You Just Should Not Know the Future
+seo_title: Psychic Predictions--When You Just Should Not Know the Future
+description: Psychic predictions you should not know. Understanding when a psychic should not predict the future.
+date: 2009-11-23
+category: Predicting Dates or Timelines
 topics:
-  - "Psychic Readings"
-date: "2009-11-23"
-image: "/assets/blog/psychic-predictions-when-you-just-should-not-know-card.jpg"
-image_alt: "A closed wooden door at the end of a warm, sunlit stone hallway, with light glowing beneath it"
-seo_title: "Psychic Predictions--When You Just Should Not Know the Future"
-description: "Psychic predictions you should not know. Understanding when a psychic should not predict the future."
+  - Psychic Readings
+author: ''
+image: /assets/blog/psychic-predictions-when-you-just-should-not-know-card.jpg
+image_alt: A closed wooden door at the end of a warm, sunlit stone hallway, with light glowing beneath it
 related: false
+related_posts: []
+pillar: ''
+hidden: false
+featured: false
+featured_until: ''
 ---
 
 I know it’s only Monday and Thanksgiving is in a few days, so there hasn’t quite been a theme of the week established yet. But today, during one of my readings I was reminded of when some  psychic predictions should not be known and why.  This is a perfect example because my client has really made some real progress with her beau and it’s because a certain eventuality or outcome could not be known. This is going back months now because, of course, we all want to know if the relationship we are in is going to work out. This is one of the most popular burning questions we have.
 
-![](/assets/blog/square.png)
-
-![](/assets/blog/real-psychic-readings-2-main.jpg)
+![](/assets/Psychic_Predictions_Should_I_Call.jpg)
 
 Well, a good reason why you cannot know some things, and I say cannot because it’s more of a value judgment if I say should not, I will explain.  I will not be given certain information about the future if you are NOT meant to know the information  at that moment.  For instance, my client needed to know a while back where her relationship was going. Something more definite like, will they make it? But, I was not given this eventuality in past sessions. But the information I did receive indicated that she had to make a change. It wasn’t a matter of waiting for an optimal outcome or more like believing it will happen.
 
 If I were to tell her, “oh yes, everything is going to work out just the way you want,” well then she would walk around  happy-go-lucky believing that, well, everything was going to work out.  Those of you who know me well know I would never say anything like that to begin with.
-
-![](/assets/blog/banner_blog.jpg)
 
 First of all, knowing the future changes the future. More specifically, your knowledge of what can and will happen exerts an influence on upcoming life events. Your action or inaction will affect the flow of energy and once you know or think you know something that will occur in the future, you most definitely can change or alter it. Sometimes we can change what looks negative into something positive.
 
