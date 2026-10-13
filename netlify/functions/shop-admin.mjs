@@ -59,7 +59,7 @@ export default async (req) => {
         p_kind: kind,
         p_duration_minutes: kind === "minutes" && d.durationMinutes != null ? Math.round(Number(d.durationMinutes)) : null,
         p_description: d.description != null ? String(d.description) : null,
-        p_report_fields: kind === "report" && Array.isArray(d.reportFields)
+        p_report_fields: Array.isArray(d.reportFields)      // a phone reading may have questions too (2026-10-12)
           ? d.reportFields.slice(0, 20).map((f) => ({
               key: String(f.key || "").slice(0, 31),
               label: String(f.label || "").slice(0, 200),

@@ -1,5 +1,6 @@
 ---
 title: "Psychic Mediums: How Psychic Mediums Contact the Spirit World and Communicate with our Loved Ones"
+seo_title: "How Psychic Mediums Contact the Spirit World | Cherry Sage"
 category: "Psychic Medium"
 author: "Russel Steward"
 date: "2017-07-13"

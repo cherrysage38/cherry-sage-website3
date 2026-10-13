@@ -1,9 +1,11 @@
 ---
 title: "Psychic Readings–Are There Any Authentic Psychics With Accurate Timelines?"
 category: "Predicting Dates or Timelines"
+topics:
+  - "Finding a Genuine Psychic"
 date: "2023-07-14"
 image: "/assets/blog/clock-timelines-min-768x576.jpeg"
-seo_title: "Psychic Readings--Are There Any Authentic Psychics With Accurate Time Lines?"
+seo_title: "Can Any Psychic Give Accurate Timelines? | Cherry Sage"
 description: "Psychic predictions of time lines is something that is not an entitlement. If you are given accurate psychic time lines, it is a gift. Humbly accept it."
 related: true
 ---

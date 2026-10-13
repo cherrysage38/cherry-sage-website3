@@ -1,10 +1,12 @@
 ---
 title: "A Caring Warning About Psychic Scams: Protecting Those Who’ve Been Scammed"
 category: "Gypsy Scams"
+topics:
+  - "Finding a Genuine Psychic"
 date: "2009-12-05"
 image: "/assets/blog/how-to-not-fall-prey-to-psychic-scams-card.jpg"
 image_alt: "A half-gold, half-black mask on a desk beside a laptop, a candle and a deck of cards"
-seo_title: "A Caring Warning About Psychic Scams: Protecting Those Who've Been Scammed"
+seo_title: "A Caring Warning About Psychic Scams | Cherry Sage"
 description: "Details of another horrible psychic scammer in Texas and more. Unbelievable and unconscionable tactics are related in this post."
 related: true
 ---

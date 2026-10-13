@@ -1,6 +1,8 @@
 ---
 title: "What Is Karma?"
 category: "Other World"
+topics:
+  - "Karma & Past Lives"
 date: "2023-07-25"
 image: "/assets/blog/karma-768x512.jpg"
 seo_title: "What Is Karma? A Clear, Simple Explanation"

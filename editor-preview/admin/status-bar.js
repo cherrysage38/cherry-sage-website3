@@ -5,7 +5,10 @@
    exactly as shown. (A message bar at the top was tried first; Bev found the tags enough.)
    Sits beside the editor (Sveltia CMS) without changing it: the tags are drawn on our own see-through
    layer next to the title. Reads the site's public GitHub history only (open editor drafts and their
-   files); changes nothing. */
+   files); changes nothing.
+   Featured posts (Bev, 2026-10-12): in Blog Posts, the featured post gets a gold "FEATURED until …" tag,
+   and once its 60 days (or chosen end date) run out it gets "FEATURED · EXPIRED" and a message at the top
+   asks whether to feature another. Reads /featured.json, which the site build writes. */
 (function(){
   var REPO='cherrysage38/cherry-sage-website3';
   var PULLS='https://api.github.com/repos/'+REPO+'/pulls?state=open&per_page=100';
@@ -40,8 +43,46 @@
     return titles[key];
   }
 
+  // Which post is featured, and which features have ended, as of the last site build.
+  var feat=null, featAt=0;
+  function featured(){
+    if(feat && Date.now()-featAt<60000) return feat;
+    featAt=Date.now();
+    feat=fetch('/featured.json?'+featAt,{cache:'no-store'}).then(function(r){ return r.ok?r.json():{}; }).catch(function(){ return {}; });
+    return feat;
+  }
+  var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function day(d){ var m=/^(\d{4})-(\d{2})-(\d{2})/.exec(d||''); return m?MON[+m[2]-1]+' '+(+m[3]):''; }
+  var STYLE={
+    draft:'border:1.5px solid #8A5A00;color:#8A5A00;background:#FFF3D6',
+    feat:'border:1.5px solid #8A6A12;color:#5C4500;background:#F7E7B4',
+    ended:'border:1.5px solid #8a8072;color:#5c544a;background:#EFEAE2'
+  };
+
+  // The "feature another?" message, shown on the Blog Posts list while a feature has ended and no other
+  // post is featured. Dismiss hides it for that ended feature.
+  var note=null;
+  function hideNote(){ if(note){ note.remove(); note=null; } }
+  function showNote(p){
+    var key='cs_feat_seen:'+p.slug+':'+p.until;
+    try{ if(localStorage.getItem(key)) return; }catch(e){}
+    if(note) return;
+    note=document.createElement('div');
+    note.style.cssText='position:fixed;top:64px;left:50%;transform:translateX(-50%);z-index:2147483000;max-width:min(560px,92vw);'+
+      'background:#FFFDF8;border:1.5px solid #8A6A12;border-radius:12px;box-shadow:0 10px 30px -12px rgba(0,0,0,.35);'+
+      'padding:12px 14px;font:14px/1.45 system-ui,sans-serif;color:#2b2620;display:flex;gap:12px;align-items:flex-start';
+    var t=document.createElement('div');
+    t.innerHTML='<strong>Featured post ended.</strong> "'+p.title.replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; })+
+      '" was featured until '+day(p.until)+'. Would you like to feature another? Open a post, tick <em>Feature at the top of the Blog</em>, and Publish. '+
+      'If not, the newest post stays at the top.';
+    var x=document.createElement('button'); x.type='button'; x.textContent='Dismiss';
+    x.style.cssText='flex:none;font:600 13px system-ui,sans-serif;border:1px solid #8a8072;background:#fff;border-radius:8px;padding:5px 10px;cursor:pointer';
+    x.addEventListener('click',function(){ try{ localStorage.setItem(key,'1'); }catch(e){} hideNote(); });
+    note.appendChild(t); note.appendChild(x); document.body.appendChild(note);
+  }
+
   var layer=null, tagged=[], observer=null, seq=0;
-  function clearTags(){ seq++; tagged=[]; if(layer) layer.innerHTML=''; if(observer){ observer.disconnect(); observer=null; } }
+  function clearTags(){ seq++; tagged=[]; hideNote(); if(layer) layer.innerHTML=''; if(observer){ observer.disconnect(); observer=null; } }
   function findTitle(str){
     var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null), node;
     while((node=walker.nextNode())){
@@ -57,6 +98,7 @@
     if(!layer){ layer=document.createElement('div'); layer.setAttribute('aria-hidden','true');
       layer.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:2147482999'; document.body.appendChild(layer); }
     layer.innerHTML='';
+    var next=new Map();      // a post with two tags (featured and draft) shows them side by side
     tagged.forEach(function(t){
       var el=(t.el&&document.contains(t.el))?t.el:findTitle(t.title); t.el=el; if(!el) return;
       var r=el.getBoundingClientRect(); if(!r.width||r.bottom<0||r.top>innerHeight) return;
@@ -64,20 +106,29 @@
       var range=document.createRange(); range.selectNodeContents(el); var tr=range.getBoundingClientRect();
       var right=tr.width?Math.min(tr.right,r.right):r.right;
       var b=document.createElement('span');
-      b.textContent='DRAFT';
+      b.textContent=t.label||'DRAFT';
       b.style.cssText='position:fixed;font:700 11px/1 system-ui,sans-serif;letter-spacing:.05em;padding:4px 7px;border-radius:999px;'+
-        'border:1.5px solid #8A5A00;color:#8A5A00;background:#FFF3D6;white-space:nowrap';
-      b.style.top=Math.round(r.top+r.height/2-10)+'px'; b.style.left=Math.round(Math.min(right+8, innerWidth-70))+'px';
+        (STYLE[t.kind]||STYLE.draft)+';white-space:nowrap';
+      var left=next.has(el)?next.get(el):right+8;
+      b.style.top=Math.round(r.top+r.height/2-10)+'px'; b.style.left=Math.round(Math.min(left, innerWidth-70))+'px';
       layer.appendChild(b);
+      next.set(el, left+b.getBoundingClientRect().width+6);
     });
   }
   function tagList(kind){
     clearTags(); var me=seq;
-    drafts().then(function(d){
+    var fp=kind==='blog'?featured():Promise.resolve({});
+    var dp=drafts().then(function(d){
       var mine=d.filter(function(x){ return x.kind===kind; });
       return Promise.all(mine.map(listTitle));
-    }).then(function(found){ if(me!==seq) return;
-      tagged=found.filter(Boolean).map(function(title){ return {title:title, el:null}; });
+    }).catch(function(){ return []; });
+    Promise.all([fp,dp]).then(function(res){ if(me!==seq) return;
+      var f=res[0]||{}, found=res[1]||[];
+      tagged=[];
+      if(f.featured) tagged.push({title:f.featured.title, el:null, kind:'feat', label:'\u2605 FEATURED'+(f.featured.until?' until '+day(f.featured.until):'')});
+      (f.ended||[]).forEach(function(p){ if(!f.featured||p.slug!==f.featured.slug) tagged.push({title:p.title, el:null, kind:'ended', label:'FEATURED \u00b7 EXPIRED'}); });
+      if(!f.featured && f.ended && f.ended.length) showNote(f.ended[0]);
+      found.filter(Boolean).forEach(function(title){ tagged.push({title:title, el:null, kind:'draft'}); });
       if(!tagged.length) return;
       draw();
       var pending=0;
@@ -97,7 +148,7 @@
     if(list) tagList(list[1]); else clearTags();
   }
   window.addEventListener('hashchange',function(){ check(false); });
-  window.addEventListener('focus',function(){ pulls=null; check(true); });   // e.g. after saving in another tab
+  window.addEventListener('focus',function(){ pulls=null; feat=null; check(true); });   // e.g. after saving in another tab
   window.addEventListener('scroll',function(){ if(tagged.length) draw(); },true);
   window.addEventListener('resize',function(){ if(tagged.length) draw(); });
   setInterval(function(){ check(false); },1000);          // the editor changes screens without always firing hashchange

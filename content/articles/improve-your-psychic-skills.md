@@ -1,5 +1,6 @@
 ---
 title: "Improve Your Psychic Skills: A Basic Guide on How to Enhance Your Own Psychic Awareness"
+seo_title: "Improve Your Psychic Skills: A Basic Guide | Cherry Sage"
 category: "Psychic & Paranormal"
 author: "Russel Steward"
 image: "/assets/img/migrated/improve-your-psychic-skills-improve-your-psychic-skills.jpg"

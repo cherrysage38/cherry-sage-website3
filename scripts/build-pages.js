@@ -203,7 +203,9 @@ function renderBlock(block, i, pageSlug) {
   }
 }
 
-function renderPage({ slug, title, seo_title, description, hero_eyebrow, hero_lede, blocksHtml }) {
+function renderPage({ slug, title, seo_title, description, og_image, hero_eyebrow, hero_lede, blocksHtml }) {
+  // Share picture for Facebook, texts etc. (Bev, 2026-10-13): og_image in the page file, else Cherry's portrait, like the main pages.
+  const shareImg = `https://cherrysage.com${esc(og_image || "/assets/bev_portrait.jpg")}`;
   // The Google title can differ from the big heading on the page (Bev, 2026-10-10, Love & Relationships).
   const headTitle = seo_title ? esc(seo_title) : `${esc(title)} — Cherry Sage`;
   const url = `https://cherrysage.com/${slug}.html`;
@@ -232,6 +234,11 @@ ${GENERATED_MARKER}
 <meta property="og:title" content="${headTitle}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${url}">
+<meta property="og:image" content="${shareImg}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${headTitle}">
+<meta name="twitter:description" content="${esc(description)}">
+<meta name="twitter:image" content="${shareImg}">
 <meta name="theme-color" content="#6E1A28">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -321,6 +328,7 @@ function main() {
       slug,
       title: data.title,
       seo_title: data.seo_title,
+      og_image: data.og_image,
       description: data.description,
       hero_eyebrow: data.hero_eyebrow,
       hero_lede: data.hero_lede,

@@ -1,6 +1,8 @@
 ---
 title: "Karma and Past Lives: Exploring the Intertwined Journey of Cause and Effect"
 category: "Karma & Past Lives"
+topics:
+  - "Other World"
 date: "2023-07-25"
 image: "/assets/blog/karma-min-768x509.jpeg"
 seo_title: "Karma and Past Lives: How They Are Connected"

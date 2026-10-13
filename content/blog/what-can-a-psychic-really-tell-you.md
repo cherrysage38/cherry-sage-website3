@@ -1,6 +1,8 @@
 ---
 title: "Psychic Readings — What Can A Psychic Really Tell You?"
-category: "Featured Articles"
+category: "Psychic Readings"
+topics:
+  - "Finding a Genuine Psychic"
 date: "2023-07-22"
 image: "/assets/blog/what-can-a-psychic-really-tell-you-card.jpg"
 image_alt: "A man looking at floating pictures of love, home, family, travel and career"

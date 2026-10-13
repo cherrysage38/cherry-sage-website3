@@ -1,6 +1,8 @@
 ---
 title: "Facing the Future with Accurate Psychic Predictions"
 category: "Predicting Dates or Timelines"
+topics:
+  - "Psychic Readings"
 date: "2023-07-15"
 image: "/assets/blog/Rectangle-7-min-300x294.png"
 seo_title: "Accurate Psychic Predictions: What to Expect"

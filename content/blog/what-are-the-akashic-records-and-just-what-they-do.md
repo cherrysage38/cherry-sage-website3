@@ -1,6 +1,8 @@
 ---
 title: "What Are the Akashic Records and What Do They Do?"
-category: "Featured Articles"
+category: "Other World"
+topics:
+  - "Karma & Past Lives"
 date: "2012-12-17"
 image: "/assets/blog/what-are-the-akashic-records-and-just-what-they-do-card.jpg"
 image_alt: "An open glowing book in a vast library of shelves filled with light"

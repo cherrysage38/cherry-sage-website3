@@ -3,7 +3,9 @@ title: Can a Psychic Tell If Someone Is Thinking About You?
 seo_title: Can a Psychic Tell If Someone Is Thinking About You?
 description: Can a psychic tell if someone is thinking about you? Cherry Sage explains how she uses clairvoyance, clairaudience, and Tarot to look at thoughts and feelings.
 date: 2026-10-11
-category: Psychic Readings
+category: "Psychic Readings"
+topics:
+  - "Love & Relationships"
 author: Psychic Cherry Sage
 image: /assets/blog/superconscious-mind-min-768x512.jpeg
 related: true

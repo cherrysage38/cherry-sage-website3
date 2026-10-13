@@ -53,6 +53,12 @@
 .ck-cart-item{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 1.2rem;
   border:1px solid var(--line-strong);border-radius:var(--r);background:var(--cream)}
 .ck-cart-item-name{font-weight:600;color:var(--oxblood)}
+.ck-cart-answers{margin:.3rem 0 .2rem;font-size:.85rem;color:var(--ink-soft);line-height:1.45}
+.ck-q{display:grid;gap:.7rem;margin-top:-.3rem;padding:1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:var(--paper,#fffdf8)}
+.ck-q-head{margin:0;font-weight:600;color:var(--oxblood);font-size:.95rem}
+.ck-q-l{display:grid;gap:.3rem;font-size:.9rem;color:var(--ink-soft)}
+.ck-q-note{font-size:.82rem;font-style:italic}
+.ck-q .ck-field{width:100%;box-sizing:border-box}
 .ck-cart-item-price{font-family:var(--font-display);font-weight:600;color:var(--ink)}
 .ck-cart-remove{background:none;border:0;color:var(--cherry);font-size:.8rem;cursor:pointer;text-decoration:underline;padding:0}
 .ck-cart-empty{text-align:center;padding:2.5rem 1rem;color:var(--ink-soft)}
@@ -142,7 +148,7 @@
           <input type="text" name="name" placeholder="Your name" required class="ck-field">
           <input type="email" name="email" placeholder="Your email" required class="ck-field">
           <input type="tel" name="phone" placeholder="Phone (optional)" class="ck-field">
-          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+          <input type="text" name="cs_hp_field" tabindex="-1" autocomplete="off" aria-hidden="true" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <button class="btn btn-primary" type="submit">Continue to Payment</button>
           <p id="ckNote" class="ck-note" hidden></p>
         </form>
@@ -248,6 +254,110 @@
     document.getElementById('ckLine2').classList.toggle('done', step>2);
   }
 
+  // The customer's answers from a report or reading form, shown under the item so they can see they
+  // went through (Bev, 2026-10-12). They are sent with the order either way.
+  var ANSWER_LABELS={fullname:'Full name at birth',dob:'Date of birth',email:'Email',current_name:'Current name'};
+  function answersHtml(details){
+    if(!details || typeof details!=='object') return '';
+    var out=Object.keys(details).map(function(k){
+      var v=String(details[k]||''); if(!v) return '';
+      var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(v);
+      if(m) v=new Date(+m[1],+m[2]-1,+m[3]).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+      var label=ANSWER_LABELS[k] || k.replace(/^q_/,'').replace(/_/g,' ').replace(/^./,function(c){ return c.toUpperCase(); });
+      return esc(label)+': '+esc(v);
+    }).filter(Boolean);
+    return out.length ? '<div class="ck-cart-answers">'+out.join('<br>')+'</div>' : '';
+  }
+
+  // The questions for a report or reading (birth name, date of birth ...) are answered here, under the
+  // item, instead of on a form before the cart (Bev, 2026-10-12: that form did not work in some browsers
+  // with privacy add-ons). The wording comes from Manage Products. Answers are kept as they are typed and
+  // sent with the order, so they reach the order emails.
+  var productInfo={}, infoState='loading', answers={};
+  var EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function loadProductInfo(){
+    var ids=(window.CSCart?window.CSCart.get():[]).map(function(it){ return String(it.readingProductId||''); })
+      .filter(function(id){ return /^[0-9a-f-]{36}$/i.test(id); });
+    if(!ids.length){ infoState='ok'; return; }
+    fetch(SUPABASE_URL+'/rest/v1/reading_products?select=id,report_fields,duration_minutes&id=in.('+ids.join(',')+')',{
+      headers:{apikey:SUPABASE_ANON,'Accept-Profile':'cherry_sage'}
+    }).then(function(r){ if(!r.ok) throw new Error('load'); return r.json(); })
+      .then(function(rows){
+        (rows||[]).forEach(function(p){ productInfo[p.id]={ fields:Array.isArray(p.report_fields)?p.report_fields:[], phone:p.duration_minutes!=null }; });
+        infoState='ok'; renderCart();
+      }).catch(function(){ infoState='failed'; renderCart(); });
+  }
+  function currentAnswers(it){ return Object.assign({}, (it.details&&typeof it.details==='object')?it.details:{}, answers[it.lineId]||{}); }
+  function detailsFor(it){
+    var d=currentAnswers(it), out={}, any=false;
+    Object.keys(d).forEach(function(k){ var v=String(d[k]==null?'':d[k]).trim(); if(v){ out[k]=v; any=true; } });
+    return any?out:null;
+  }
+  function saveAnswer(lineId,key,value){
+    answers[lineId]=answers[lineId]||{}; answers[lineId][key]=value;
+    try{
+      var all=JSON.parse(localStorage.getItem('cs_cart')||'[]');
+      all.forEach(function(it){ if(it.lineId===lineId) it.details=Object.assign({}, it.details||{}, answers[lineId]); });
+      localStorage.setItem('cs_cart', JSON.stringify(all));
+    }catch(e){ /* kept in memory for this visit */ }
+  }
+  function splitLabel(label){
+    // "(fill in only if ...)" at the end shows as a small note, and the question is not marked optional
+    var m=/^(.*?)\s*\(([^()]*\bonly if\b[^()]*)\)\s*$/i.exec(label||'');
+    return m ? {text:m[1], note:m[2].charAt(0).toUpperCase()+m[2].slice(1)+'.'} : null;
+  }
+  function needsAnswers(it){ return !!(it.details && typeof it.details==='object'); }
+  function questionsHtml(it){
+    var info=productInfo[it.readingProductId];
+    if(!info){
+      if(infoState!=='failed' || !needsAnswers(it)) return '';
+      return detailsFor(it) ? answersHtml(detailsFor(it))
+        : '<p class="ck-note" style="margin:-.3rem 0 0">We could not load the questions for this item. Please refresh the page, or try another browser.</p>';
+    }
+    if(!info.fields.length) return '';
+    var cur=currentAnswers(it);
+    return '<div class="ck-q" data-line="'+esc(it.lineId)+'"><p class="ck-q-head">'+
+      (info.phone?'Cherry needs these details before your call':'Your details for this report')+'</p>'+
+      info.fields.map(function(f){
+        var sl=splitLabel(f.label), text=sl?sl.text:(f.label||'')+(f.required?'':' (optional)');
+        var type=f.type==='date'?'date':f.type==='email'?'email':'text', val=esc(cur[f.key]||'');
+        var input=f.type==='textarea'
+          ? '<textarea rows="3" class="ck-field" data-key="'+esc(f.key)+'"'+(f.required?' data-req="1"':'')+'>'+val+'</textarea>'
+          : '<input type="'+type+'" class="ck-field" data-key="'+esc(f.key)+'"'+(f.required?' data-req="1"':'')+' value="'+val+'">';
+        return '<label class="ck-q-l">'+esc(text)+(sl?'<span class="ck-q-note">'+esc(sl.note)+'</span>':'')+input+'</label>';
+      }).join('')+'</div>';
+  }
+  // First unanswered required question (or bad email), so checkout can stop and point to it.
+  function checkAnswers(){
+    var items=window.CSCart.get();
+    for(var i=0;i<items.length;i++){
+      var it=items[i], info=productInfo[it.readingProductId];
+      if(!info){
+        if(needsAnswers(it) && !detailsFor(it)){
+          return {msg: infoState==='loading' ? 'One moment, the questions for '+it.name+' are still loading. Please try again.'
+                                             : 'We could not load the questions for '+it.name+'. Please refresh the page, or try another browser.'};
+        }
+        continue;
+      }
+      var d=detailsFor(it)||{};
+      for(var j=0;j<info.fields.length;j++){
+        var f=info.fields[j], v=d[f.key]||'', sl=splitLabel(f.label), label=sl?sl.text:f.label;
+        if(f.required && !v) return {msg:'Please answer for '+it.name+': '+label, line:it.lineId, key:f.key};
+        if(v && f.type==='email' && !EMAIL_RE.test(v)) return {msg:'Please enter a valid email for '+it.name+'.', line:it.lineId, key:f.key};
+      }
+    }
+    return null;
+  }
+  function pointTo(bad){
+    if(!bad.line) return;
+    var box=itemsBox.querySelector('.ck-q[data-line="'+bad.line+'"]'), field=box&&box.querySelector('[data-key="'+bad.key+'"]');
+    if(field){ field.scrollIntoView({behavior:'smooth',block:'center'}); field.focus({preventScroll:true}); }
+  }
+  itemsBox.addEventListener('input', function(e){
+    var key=e.target.getAttribute && e.target.getAttribute('data-key'), box=e.target.closest && e.target.closest('.ck-q');
+    if(key && box) saveAnswer(box.getAttribute('data-line'), key, e.target.value);
+  });
+
   function renderCart(){
     var items = window.CSCart ? window.CSCart.get() : [];
     var empty = document.getElementById('ckSideEmpty');
@@ -266,7 +376,7 @@
       return '<div class="ck-cart-item">'+
         '<div><div class="ck-cart-item-name">'+esc(it.name)+'</div>'+
         '<button type="button" class="ck-cart-remove" data-line="'+it.lineId+'">Remove</button></div>'+
-        '<div class="ck-cart-item-price">'+money(it.priceCents)+'</div></div>';
+        '<div class="ck-cart-item-price">'+money(it.priceCents)+'</div></div>'+questionsHtml(it);
     }).join('');
     stepInfo.classList.remove('ck-locked');
     empty.hidden=true;
@@ -286,6 +396,7 @@
   });
 
   renderCart();
+  loadProductInfo();
 
   var form=document.getElementById('ckForm');
   form.addEventListener('submit', function(e){
@@ -294,13 +405,15 @@
     var email=(form.email.value||'').trim();
     var items = window.CSCart.get();
     if(!items.length){ note.hidden=false; note.textContent='Your cart is empty.'; return; }
+    var bad=checkAnswers();
+    if(bad){ note.hidden=false; note.textContent=bad.msg; pointTo(bad); return; }
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ note.hidden=false; note.textContent='Please enter a valid email address.'; return; }
     if(!form.name.value.trim()){ note.hidden=false; note.textContent='Please enter your name.'; return; }
-    if(form.website.value){ return; }
+    if(form.cs_hp_field.value){ return; }
     note.hidden=true; btn.disabled=true; btn.textContent='Preparing…';
     fetch('/.netlify/functions/cart-start',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
       name:form.name.value.trim(), email:email, phone:form.phone.value.trim(),
-      items: items.map(function(it){ return {readingProductId:it.readingProductId, details:it.details}; })
+      items: items.map(function(it){ return {readingProductId:it.readingProductId, details:detailsFor(it)}; })
     })}).then(function(r){return r.json().then(function(d){return {ok:r.ok, data:d};});})
     .then(function(res){
       if(!res.ok||!res.data.ok){
@@ -370,6 +483,8 @@
     var payNote=document.getElementById('ckPayNote'), payBtn=this;
     if(!currentCustomer){ payNote.hidden=false; payNote.textContent='Something went wrong, please start over.'; return; }
     if(!cloverInstance){ payNote.hidden=false; payNote.textContent='Payment form is not ready yet, please wait a moment and try again.'; return; }
+    var bad=checkAnswers();      // answers can still be changed after "Continue to Payment"
+    if(bad){ payNote.hidden=false; payNote.textContent=bad.msg; pointTo(bad); return; }
     payNote.hidden=true; payBtn.disabled=true; payBtn.textContent='Processing…';
     var items = window.CSCart.get();
     cloverInstance.createToken().then(function(result){
@@ -380,8 +495,9 @@
       }
       fetch('/.netlify/functions/cart-charge',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
         customerId:currentCustomer,
-        items: items.map(function(it){ return {readingProductId:it.readingProductId, details:it.details}; }),
-        cardToken:result.token, couponCode:appliedCoupon
+        items: items.map(function(it){ return {readingProductId:it.readingProductId, details:detailsFor(it)}; }),
+        cardToken:result.token, couponCode:appliedCoupon,
+        name:form.name.value.trim(), email:(form.email.value||'').trim()      // for the receipt
       })}).then(function(r){return r.json().then(function(d){return {ok:r.ok, data:d};});})
       .then(function(res){
         if(!res.ok||!res.data.ok){
@@ -430,8 +546,17 @@
   btn.addEventListener('click',function(e){
     e.preventDefault();
     var hdr=document.querySelector('.site-header'); var off=(hdr?hdr.getBoundingClientRect().height:0)+16;
+    // Bev, 2026-10-12: the questions for a reading sit above "Your information", and this jumped past
+    // them. If a required answer is still empty, go to that question first.
+    var todo=[].filter.call(document.querySelectorAll('.ck-q [data-req]'), function(f){ return !String(f.value||'').trim(); })[0];
+    if(todo){
+      var box=todo.closest('.ck-q')||todo;
+      window.scrollTo({top:box.getBoundingClientRect().top+window.pageYOffset-off, behavior:'smooth'});
+      setTimeout(function(){ try{ todo.focus({preventScroll:true}); }catch(err){} },450);
+      return;
+    }
     window.scrollTo({top:step.getBoundingClientRect().top+window.pageYOffset-off, behavior:'smooth'});
-    var first=step.querySelector('input:not([type=hidden]):not([name=website]), button.ck-pcard, button');
+    var first=step.querySelector('input:not([type=hidden]):not([name=cs_hp_field]), button.ck-pcard, button');
     if(first && !step.classList.contains('ck-locked')){ setTimeout(function(){ try{ first.focus({preventScroll:true}); }catch(err){} },450); }
   });
 })();

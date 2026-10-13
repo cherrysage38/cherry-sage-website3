@@ -117,7 +117,7 @@
   var SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0b2V1aWt4b3FsaG5lYmdzeWdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0ODM4NTMsImV4cCI6MjA5NjA1OTg1M30.Cy0uf8hm-Biea7a1V3bLQBz70f1oyhP83vHDjefTce8';
   function money(cents){ return '$'+((cents||0)/100).toFixed(2).replace(/\.00$/,''); }
 
-  fetch(SUPABASE_URL+'/rest/v1/reading_products?select=id,name,price_cents,active,description,show_in_shop,sort_order,duration_minutes,requires_scheduling', {
+  fetch(SUPABASE_URL+'/rest/v1/reading_products?select=id,name,price_cents,active,description,show_in_shop,sort_order,duration_minutes,requires_scheduling,report_fields', {
     headers:{apikey:SUPABASE_ANON, 'Accept-Profile':'cherry_sage'}
   }).then(function(r){return r.json();}).then(function(products){
     if(!products || !products.length || !products.forEach) return;
@@ -173,9 +173,12 @@
         var price=document.createElement('span'); price.className='pcard-price'; price.textContent=money(p.price_cents);
         body.appendChild(h3); body.appendChild(price);
         if(p.description){ var d=document.createElement('p'); d.textContent=p.description; body.appendChild(d); }
+        // A phone reading with questions (e.g. birth details for numerology) is answered at checkout:
+        // an empty "details" tells the cart to ask them (2026-10-12).
+        var asks=Array.isArray(p.report_fields) && p.report_fields.length>0;
         if(isMinutes){
           var b=document.createElement('button'); b.type='button'; b.className='btn btn-primary'; b.textContent='Add to Cart';
-          b.addEventListener('click', function(){ window.CSCart.add({readingProductId:p.id,name:p.name,priceCents:p.price_cents}); location.href='/cart.html'; });
+          b.addEventListener('click', function(){ window.CSCart.add({readingProductId:p.id,name:p.name,priceCents:p.price_cents,details:asks?{}:null}); location.href='/cart.html'; });
           body.appendChild(b);
         } else {
           var a=document.createElement('a'); a.className='btn btn-primary'; a.href='/report?p='+encodeURIComponent(p.id); a.innerHTML='View &amp; request &rarr;';

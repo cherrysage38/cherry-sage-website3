@@ -1,6 +1,8 @@
 ---
 title: "9 Amazing Tips About Your Numerology Health! What Does Your Life Path Number Reading Tell You about Your Health?"
 category: "Numerology"
+topics:
+  - "Energy & Healing"
 date: "2019-12-05"
 image: "/assets/blog/numerology-blk-white-768x528.jpg"
 seo_title: "What Your Life Path Number Says About Your Health"

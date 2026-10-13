@@ -1,5 +1,6 @@
 ---
 title: "Kundalini Yoga: Kundalini Yoga - Techniques and Pitfalls"
+seo_title: "Kundalini Yoga: Techniques and Pitfalls | Cherry Sage"
 category: "Yoga"
 author: "Dipankar Khannat"
 date: "2017-07-13"

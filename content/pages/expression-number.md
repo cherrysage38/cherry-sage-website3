@@ -1,6 +1,7 @@
 ---
 title: The Expression Number
 description: Unlock your full potential with numerology! Purchase Full-Life Numerology Profiles and Compatibility Profiles to discover your unique Expression vibration…
+og_image: "/assets/numerology-header.jpg"
 hero_eyebrow: Numerology
 blocks:
 - type: text

@@ -1,5 +1,6 @@
 ---
 title: "Real Psychic Readings and Why It's Not So Easy to Find An Authentic Psychic"
+seo_title: "Why It's Not So Easy to Find an Authentic Psychic"
 category: "Psychic Readings"
 author: "Cherry Sage"
 date: "2017-07-13"
