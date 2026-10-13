@@ -21,7 +21,7 @@ Are you struggling with your love life? Do your career-related worries keep you 
 
 If you are new to REAL psychic readings, the thought of allowing someone to figure out your future can be daunting. But once you get to know what a delightful experience it is, you will recommend it to others as well.  Think of a real psychic as a guide, a truth teller who will provide you with truthful answers to your burning questions.
 
-Many people nowadays get**psychic readings**, and this is because there are countless benefits of using this great practice. In this post, we will hint at the top reasons why you should consider a psychic reading. Let’s go.
+Many people nowadays get **psychic readings**, and this is because there are countless benefits of using this great practice. In this post, we will hint at the top reasons why you should consider a psychic reading. Let’s go.
 
 ## Psychic Readings Bring Positivity to Your Life
 
