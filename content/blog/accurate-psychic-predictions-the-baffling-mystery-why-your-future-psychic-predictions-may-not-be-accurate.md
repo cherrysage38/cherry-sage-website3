@@ -53,7 +53,7 @@ One point I want to strongly emphasize: when you request information from a spir
 
 Fake psychics fabricate their readings, and this kind of reading should be avoided. They pretend to be able to answer every one of your questions, and you ask as if they have all the answers. People who have called networks often get a false sense of accuracy because the fake psychic is "acting" all-knowing, trained to answer your questions from scripts, and you are being conditioned to believe you are getting answers from a true spiritual source. You are not.
 
-What you've got is a warehouse of psychics who have been corporatized and streamlined for your enjoyment, managed on a large scale for profit. It's not about real psychic readings; it's about managing so-called psychic advisers to pretend to be magical, otherworldly seers, when nothing could be further from the truth. This is why so many people have become disillusioned with psychics: the predictions never happen, because they were only pretending in the first place.
+What you've got is a warehouse of psychics who have been corporatized and streamlined for your enjoyment, managed on a large scale for profit. It's not about real readings; it's about managing so-called psychic advisers to pretend to be magical, otherworldly seers, when nothing could be further from the truth. This is why so many people have become disillusioned with psychics: the predictions never happen, because they were only pretending in the first place.
 
 ## How does a real psychic see the future?
 

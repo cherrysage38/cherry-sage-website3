@@ -53,11 +53,11 @@ That is what I have found with my clients. They are usually either new to psychi
 
 ## How do you choose the right psychic?
 
-You have to be discerning. You have to take responsibility for your life and be a part of your reading, because your spirit and intuition are equally at play in a genuine psychic reading. You are part of it, not separate from it. A real psychic reading can open you up to a spiritual awareness that will empower you in your life.
+You have to be discerning. You have to take responsibility for your life and be a part of your reading, because your spirit and intuition are equally at play in a genuine psychic reading. You are part of it, not separate from it. A real reading can open you up to a spiritual awareness that will empower you in your life.
 
-A real psychic reading was never intended to substitute for you fully engaging in all the choices and actions of life. Think of life as a school. You are here to learn and to grow, and that cannot happen if you are not fully engaged. Never use a psychic as a substitute for life choices, because this limits you, and we are all limitless beings capable of tremendous achievements.
+A real reading was never intended to substitute for you fully engaging in all the choices and actions of life. Think of life as a school. You are here to learn and to grow, and that cannot happen if you are not fully engaged. Never use a psychic as a substitute for life choices, because this limits you, and we are all limitless beings capable of tremendous achievements.
 
-There are real psychics who understand their true role in this kind of service. But it is a service: the seeker has to know how to use a psychic reading for their benefit, and the real psychic intuitive has the responsibility to hold to a high standard. With your awareness, a real psychic reading can work wonders.
+There are real psychics who understand their true role in this kind of service. But it is a service: the seeker has to know how to use a psychic reading for their benefit, and the real psychic intuitive has the responsibility to hold to a high standard. With your awareness, a real reading can work wonders.
 
 ## What should you check before you call a psychic?
 
