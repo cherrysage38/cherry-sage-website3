@@ -49,7 +49,7 @@ These aren’t isolated cases. Every reading benefits from aligned energy—it�
 
 ### **The Science of Energy Alignment**
 
-*Studies from organizations like the HeartMath Institute reveal that coherence in emotional and energetic states enhances intuition by over 30%.* This means that when your energy is balanced, your psychic connection is naturally amplified, making it easier for me to tune into the vibrations that hold your answers.
+When your energy is balanced, your psychic connection is naturally amplified, making it easier for me to tune into the vibrations that hold your answers.
 
 Grounding techniques, mindfulness, and intentional breathing aren’t just spiritual practices; they’re scientifically validated methods to create energy flow. When your heart, mind, and spirit align, it creates a frequency that’s not only calming but also deeply illuminating.
 

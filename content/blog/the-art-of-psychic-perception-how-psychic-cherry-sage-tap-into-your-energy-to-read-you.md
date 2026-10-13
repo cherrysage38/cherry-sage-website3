@@ -35,7 +35,7 @@ Here’s a little breakdown of what I might notice:
 
 The beauty of reading these subtle energy shifts is that it offers a map to your true self. This map allows us to explore what needs healing, what needs to change, and what is already aligned with your highest purpose.
 
-**Fun fact:** According to a 2017 study published in the *Psychology Today* journal, *energy reading can be linked to heightened emotional intelligence*. Essentially, this means that psychics like me are actually tuning into the deep emotional intelligence that you carry, whether you realize it or not. (Source: Psychology Today, 2017\)
+Psychics like me are tuning into the deep emotional intelligence that you carry, whether you realize it or not.
 
 ### **Your Future Can Change, Right Here, Right Now**
 

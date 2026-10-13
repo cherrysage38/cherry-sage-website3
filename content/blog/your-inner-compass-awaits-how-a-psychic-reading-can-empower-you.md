@@ -36,8 +36,6 @@ True empowerment lies in nurturing spiritual self-awareness. By understanding yo
 
 ### **The Role of Spirituality**
 
-*A 2023 survey by Gallup revealed that 41% of adults in the U.S. have turned to spiritual practices for emotional well-being, highlighting a growing need for spiritual clarity. Similarly, findings from the Journal of Spirituality in Mental Health suggest that individuals engaging in spiritual guidance report enhanced life satisfaction and resilience.*
-
 Clairvoyant and clairaudient messages are like whispers from the universe, nudging you toward your higher self. These messages are shared to illuminate what is already within your reach, guiding you gently toward greater understanding and clarity.
 
 ### **The Healing Journey of Psychic Sessions**
