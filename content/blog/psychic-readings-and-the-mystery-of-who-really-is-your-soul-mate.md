@@ -30,7 +30,7 @@ In the beginning, our souls split into two (twins).  One half feminine, the othe
 
 I would love to hear your experiences with your soul mates.
 
-*Cherry Sage has a proven track record for providing [accurate psychic readings](https://cherrysage.com/), tarot and numerology readings for 17 years (since 1999\). She believes that real psychic readings are what seekers really want and is reflected by her loyal client base in hundreds of genuine reviews on her website.  Cherry specifically deals with answering questions regarding love, relationships, career and your life’s blueprint.  Call Cherry at 301-474-1681 for precise, accurate details as well as accurate predictions. Call Cherry to unravel your soul’s code. Visit https://cherrysage.com.*
+*Cherry Sage has a proven track record for providing [accurate psychic readings](https://cherrysage.com/), tarot and numerology readings for over two decades. She believes that real psychic readings are what seekers really want and is reflected by her loyal client base in hundreds of genuine reviews on her website.  Cherry specifically deals with answering questions regarding love, relationships, career and your life’s blueprint.  Call Cherry at 301-474-1681 for precise, accurate details as well as accurate predictions. Call Cherry to unravel your soul’s code. Visit https://cherrysage.com.*
 
 —————————————
 
