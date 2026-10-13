@@ -48,7 +48,7 @@ Have you ever tried to fight against the tide? Not fun, right? When you’re in 
 - **Step 2:** If you get a double-digit number, reduce it to a single digit. For example, 15 becomes 1\+5 \= 6\.
 - **Step 3:** That single-digit number represents your personal year!
 
-I recommend having a [**full numerology reading Online**](/) to explore more deeply how each year’s number influences your unique spiritual growth.
+I recommend having a [full numerology reading Online](/numerology) to explore more deeply how each year’s number influences your unique spiritual growth.
 
 ## **Your Personal Year: A Guiding Light**
 

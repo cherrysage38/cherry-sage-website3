@@ -39,7 +39,7 @@ The beauty of reading these subtle energy shifts is that it offers a map to your
 
 ### **Your Future Can Change, Right Here, Right Now**
 
-So, now that we understand [**how do psychics read people**](/), what happens next? Here’s the thing: tapping into your energy isn’t about predicting an unchangeable future—it’s about creating the future you want. Once we look into your energy and identify areas that need healing, we can create a path forward that aligns with your highest self. It’s not about *telling you* what will happen; it’s about *guiding* you toward making conscious decisions that lead to growth.
+So, now that we understand [how do psychics read people](/psychic-reading), what happens next? Here’s the thing: tapping into your energy isn’t about predicting an unchangeable future—it’s about creating the future you want. Once we look into your energy and identify areas that need healing, we can create a path forward that aligns with your highest self. It’s not about *telling you* what will happen; it’s about *guiding* you toward making conscious decisions that lead to growth.
 
 The readings I offer aren’t just about looking back at your past. They help you understand your present, while giving you the tools to step into a future that’s more balanced and purposeful. Together, we can work through challenges, ease emotional burdens, and open the door to new possibilities.
 

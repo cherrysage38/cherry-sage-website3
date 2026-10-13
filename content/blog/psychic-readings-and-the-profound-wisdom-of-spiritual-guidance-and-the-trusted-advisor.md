@@ -34,4 +34,4 @@ As we stand at the crossroads of our lives, let us embrace the profound wisdom t
 
 *Cherry Sage is a renowned psychic and intuitive advisor, celebrated for her exceptional abilities and compassionate guidance. With over two decades of professional experience, Cherry has touched the lives of countless individuals, offering them clarity, insight, and spiritual support.  Cherry is the trusted advisor of thousands of people around the world.*
 
-*What sets Cherry apart is not only her profound psychic insights but also her warm and nurturing approach. She understands the delicate nature of the human experience and endeavors to provide a safe space for her clients to explore their deepest concerns.  Book an appointment with [Cherry Sage](https://cherrysage.com/) today!*
+*What sets Cherry apart is not only her profound psychic insights but also her warm and nurturing approach. She understands the delicate nature of the human experience and endeavors to provide a safe space for her clients to explore their deepest concerns.  Book an appointment with Cherry Sage today!*

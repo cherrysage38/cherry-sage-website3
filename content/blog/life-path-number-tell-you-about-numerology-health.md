@@ -112,4 +112,4 @@ Avoid: processed or fast food, lethargy, and isolation.
 
 ## Final Note
 
-If you want to know what numerology says about your health, life, relationships, or career consider getting in touch with Cherry Sage, a psychic reading professional and numerologist. You can also get **[professional numerology readings online](https://cherrysage.com/)** on your phone or laptop.  Try Cherry’s Free Instant Numerology Calculator [here](/).
+If you want to know what numerology says about your health, life, relationships, or career consider getting in touch with Cherry Sage, a psychic reading professional and numerologist. You can also get **[professional numerology readings online](/numerology)** on your phone or laptop.  Try Cherry’s Free Instant Numerology Calculator [here](/).

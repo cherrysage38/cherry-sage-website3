@@ -40,6 +40,6 @@ Here’s the thing I always remind my clients when they ask **can psychics predi
 
 I know that many of you reading this may be going through tough times. Maybe you’re questioning the direction of your life or wondering if things will ever get better. Let me remind you—the future is full of possibilities, not limitations. When you seek out a psychic reading, it’s not about finding out what will happen for sure, but about discovering the energies and choices that are open to you.
 
-So, [**can psychics predict the future**](/)? Yes, we can tune into potential outcomes. But what truly matters is the light you carry within you and the choices you make. I’m here as your guide, but ultimately, you are the one who shapes the beautiful path ahead.
+So, [can psychics predict the future](/psychic-reading)? Yes, we can tune into potential outcomes. But what truly matters is the light you carry within you and the choices you make. I’m here as your guide, but ultimately, you are the one who shapes the beautiful path ahead.
 
 Let me leave you with this: No matter where you are in your journey, I’m here for you. Sometimes, it’s just about having a little faith in the process—and in yourself. Keep trusting, and keep shining. The best is yet to come.

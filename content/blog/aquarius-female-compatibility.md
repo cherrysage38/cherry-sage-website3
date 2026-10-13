@@ -31,4 +31,4 @@ Aquarius women are often considered among the most striking in the zodiac, with 
 
 Motherhood doesn't come as naturally to her as it does to some signs, she likes to spread her energy across many people and interests rather than devote it all to one. But she earns her children's full trust and confidence, she's skilled at reassuring young minds and can turn tears into laughter in minutes. She won't smother her kids with affection or nag constantly, but they will always be genuinely well cared for.
 
-Want to know how your own chart lines up with someone you're curious about? [Book a reading with Cherry Sage](https://cherrysage.com/book-appointment.html) for personal insight into your compatibility.
+Want to know how your own chart lines up with someone you're curious about? [Book a reading with Cherry Sage](/book-appointment.html) for personal insight into your compatibility.

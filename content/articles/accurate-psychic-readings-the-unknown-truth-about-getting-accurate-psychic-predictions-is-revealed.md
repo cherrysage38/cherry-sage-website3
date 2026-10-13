@@ -26,4 +26,4 @@ There are a number of purveyors of this type of psychic reading, and unfortunate
 <strong>About author:</strong>  
 Cherry Sage owns and operates one of the top quality psychic web sites on the internet today. Her main focus is authenticity, honesty and integrity. One of her missions is to make sure that everyone looking for accurate psychic readings or tarot card reading will be able to find certified authenticity and quality service–to change the existing “imitation” psychic paradigm. Her many followers trust in her advice and her accurate psychic predictions. You can read hundreds of inspiring testimonials to her accurate psychic readings on her website here: Cherry Sage.
 
-> [Homepage](https://cherrysage.com/)
+> [Homepage](/)

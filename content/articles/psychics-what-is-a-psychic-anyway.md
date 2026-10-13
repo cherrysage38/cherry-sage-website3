@@ -32,4 +32,4 @@ Cherry Sage owns and operates one of the top quality psychic web sites on the in
 
 Cherry Sage is a professionally trained master psychic, tarot card reader and numerologist. She is an author who currently has her own live weekly radio show and continues to provide exceptional services to her growing customer base. Please visit her website where you will find very helpful articles to keep serious seekers of psychic advice informed and up-to-date regarding the psychic world.
 
-> [Homepage](https://cherrysage.com/)
+> [Homepage](/)
