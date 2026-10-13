@@ -19,7 +19,7 @@ Perhaps you have not heard from someone in a while, but you cannot stop thinking
 
 Wouldn't it be nice if people simply told you what they were thinking? Of course, sometimes they do—and then you have to figure out what they meant by that, too.
 
-I have been reading professionally since 1999. Questions about love and relationships are central to my work, and understanding what is going on with the other person is an important part of that. But once you know someone is thinking about you, there is usually another question waiting right behind it: What are they thinking, and why?
+I have been reading professionally for over two decades. Questions about love and relationships are central to my work, and understanding what is going on with the other person is an important part of that. But once you know someone is thinking about you, there is usually another question waiting right behind it: What are they thinking, and why?
 
 ## How can I tell if someone is thinking about you?
 

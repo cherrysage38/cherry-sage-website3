@@ -10,7 +10,7 @@ blocks:
   - question: How does a reading work?
     answer: 'I knew you would ask that, and that is why I have a page devoted to this question. Please see [How It Works](/how-it-works).'
   - question: What kind of psychic are you?
-    answer: 'This is a very good question to ask, because there are different types of psychic, intuitive, spiritual and mediumship readings, and not every reader has the same abilities. I am a psychic intuitive with heightened abilities as an empath, clairvoyant and clairaudient. I am also a professional numerologist. I have been practicing professionally since 1999, when cherrysage.com was born.'
+    answer: 'This is a very good question to ask, because there are different types of psychic, intuitive, spiritual and mediumship readings, and not every reader has the same abilities. I am a psychic intuitive with heightened abilities as an empath, clairvoyant and clairaudient. I am also a professional numerologist. I have been practicing professionally since cherrysage.com was born.'
   - question: Do you need my date of birth? Do you connect with loved ones who have passed?
     answer: 'My readings do not require dates of birth. I am not a medium, and I do not connect with those who have crossed over to communicate with surviving loved ones. I am not an astrologer. Sometimes, during a reading, I will ask for the month and day someone was born. I ask occasionally to determine that person’s Personal Year vibration. This can be helpful to establish your personal energy focus for a particular year, usually the year we are in. It is in no way needed to read the energy of the people in question during a session.'
   - question: How do you read me and the people in my question?
