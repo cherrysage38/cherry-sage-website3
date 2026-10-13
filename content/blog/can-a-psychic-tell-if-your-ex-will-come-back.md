@@ -13,7 +13,9 @@ pillar: love-and-relationships
 hidden: false
 ---
 
-**Yes. A psychic reading can reveal whether your ex is moving toward a return, what they are thinking and feeling, and what is standing in the way of reconciliation. I use clairvoyance, clairaudience, and telepathy to read the connection and its direction. Seeing a return and causing someone to return are different things: your ex still has free will, and so do you.**
+**Can a psychic tell if your ex will come back?**
+
+Yes. A psychic reading can reveal whether your ex is moving toward a return, what they are thinking and feeling, and what is standing in the way of reconciliation. I use clairvoyance, clairaudience, and telepathy to read the connection and its direction. Seeing a return and causing someone to return are different things: your ex still has free will, and so do you.
 
 When you still love someone, “Will my ex come back?” can feel like the only question that matters. You want to know whether the silence is temporary, whether the breakup was really the end, and whether you are holding on to something that still has a future.
 
