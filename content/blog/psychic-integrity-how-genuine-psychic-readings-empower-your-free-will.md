@@ -34,7 +34,7 @@ That moment of clarity was a turning point for Katie. She walked away from the s
 
 ## How does a genuine psychic reading respect your free will?
 
-When you come to me for a reading, it's essential that you feel a sense of peace, not fear. Genuine psychic readings acknowledge your free will. I believe in the power of your choices. My role is not to tell you exactly what will happen, but to guide you through the possibilities, offering clarity, insight and support.
+When you come to me for a reading, it's essential that you feel a sense of peace, not fear. Genuine readings acknowledge your free will. I believe in the power of your choices. My role is not to tell you exactly what will happen, but to guide you through the possibilities, offering clarity, insight and support.
 
 *Your journey is personal, and it's yours alone.* What I offer is insight into the energies around you, helping you see the choices available and the emotions that may be clouding your judgment. But the decision to act or not to act is yours. This respect for your free will ensures that the healing process is empowering rather than disempowering.
 
