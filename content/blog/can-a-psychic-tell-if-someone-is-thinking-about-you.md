@@ -13,7 +13,9 @@ pillar: love-and-relationships
 hidden: false
 ---
 
-**Yes. A psychic reading can reveal whether someone is thinking about you, the feelings connected to those thoughts, and what they mean for your relationship. To look at thoughts and feelings, I use clairvoyance and clairaudience, with Tarot to clarify what comes through.**
+**Can a psychic tell if someone is thinking about you?**
+
+Yes. A psychic reading can reveal whether someone is thinking about you, the feelings connected to those thoughts, and what they mean for your relationship. To look at thoughts and feelings, I use clairvoyance and clairaudience, with Tarot to clarify what comes through.
 
 Perhaps you have not heard from someone in a while, but you cannot stop thinking about them. Or you have met someone new, and you are wondering whether you made the same impression on them that they made on you. You replay the conversation, remember the look on their face, and then try to decide whether you imagined the whole thing.
 

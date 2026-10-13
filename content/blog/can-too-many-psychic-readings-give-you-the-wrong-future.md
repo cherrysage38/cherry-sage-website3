@@ -13,7 +13,9 @@ hidden: false
 pillar: real-and-genuine-psychic-readings
 ---
 
-**Yes, too many psychic readings can sometimes give you the wrong impression about your future. Not because there is anything wrong with getting psychic readings, but because repeatedly asking the same question—especially of different psychics—can eventually create more confusion than clarity. A good psychic reading should help you understand what is happening and where things appear to be going. Sometimes the best thing you can do after a reading is give the situation some breathing room and let life unfold.**
+**Can too many psychic readings give you the wrong future?**
+
+Yes, too many psychic readings can sometimes give you the wrong impression about your future. Not because there is anything wrong with getting psychic readings, but because repeatedly asking the same question—especially of different psychics—can eventually create more confusion than clarity. A good psychic reading should help you understand what is happening and where things appear to be going. Sometimes the best thing you can do after a reading is give the situation some breathing room and let life unfold.
 
 I’ve been giving psychic readings for many years, and there is something I’ve seen happen more times than I can count. Someone has a reading, gets an answer to the question that’s been troubling them, hangs up the phone—and then asks somebody else the very same question.
 
