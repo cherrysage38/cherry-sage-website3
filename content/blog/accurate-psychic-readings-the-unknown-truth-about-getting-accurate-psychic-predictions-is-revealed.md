@@ -8,6 +8,7 @@ image: "/assets/articles/accurate-psychic-readings-the-unknown-truth-about-getti
 seo_title: "The Truth About Getting Accurate Psychic Predictions"
 description: "Getting an accurate psychic reading is harder than you might think. Surprising facts about real readings, and how to make sure your answers are accurate."
 related: false
+pillar: real-and-genuine-psychic-readings
 ---
 
 ![](/assets/img/migrated/how-to-calculate-your-personal-year-how-to-spot-a-fake-psychic-1-1.jpg)

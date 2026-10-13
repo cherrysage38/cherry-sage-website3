@@ -4,6 +4,7 @@ seo_title: "How to Find a Real, Accurate Psychic | Cherry Sage"
 description: "How can you tell a real psychic from a fake one? Cherry Sage explains what a genuine reading looks like, how accurate readings are, and the warning signs of a psychic scam."
 hero_eyebrow: ""
 hero_lede: "Honest advice on finding a psychic you can trust."
+guide_line: "Start there for honest advice on telling a real psychic from a fake one."
 blocks:
   - type: "text"
     article: "true"
@@ -23,7 +24,7 @@ blocks:
 
       Psychics aren’t magicians. There are no real Merlins walking around with all the answers! We’re human beings with gifts that allow us to perceive information beyond ordinary observation. What matters is understanding the information we receive and communicating it in a way that is useful to the person asking.
 
-      A genuine reading can be encouraging. It can also raise questions you hadn’t considered, or tell you something you weren’t hoping for. That honesty is one of the clearest signs you’re speaking with someone real.
+      A genuine reading can be encouraging. It can also raise questions you hadn’t considered, or tell you something you weren’t hoping for. That honesty is one of the clearest signs you’re speaking with someone real. I go into more detail in [What Is a Professional Psychic Reading?](/real-psychic-readings-what-is-a-professional-psychic-reading-and-why-should-i-want-one)
 
       ## What are the warning signs of a fake psychic?
 
@@ -36,7 +37,7 @@ blocks:
       - follows a script, or gives answers that could fit anyone;
       - keeps you calling over and over with hope that never turns into anything real.
 
-      Many people working as psychic advisers are not real at all. Their job is to keep you on the line, not to help you. They give you hope that keeps you calling until you see that what they said was never true. Then you’re left hurt, disillusioned, and sometimes in debt.
+      Many people working as psychic advisers are not real at all. Their job is to keep you on the line, not to help you. They give you hope that keeps you calling until you see that what they said was never true. Then you’re left hurt, disillusioned, and sometimes in debt. You can read more in [How to Spot a Fake Psychic](/how-to-spot-a-fake-psychic-changing-the-imitation-psychic-paradigm) and [Is Your Psychic Accurate or Just Selling You a Dream?](/how-to-tell-if-your-psychic-is-really-accurate-or-just-selling-you-a-dream)
 
       ## How do psychic scams work?
 
@@ -76,9 +77,14 @@ blocks:
       - **Check their history.** How long have they been reading? How long has their website been up? Search their name and see what others say about them.
       - **Find one adviser and stay with them.** When you find a professional who is good for you, you don’t need to go from one to the next.
 
+      I share more tips in [Why It’s Not So Easy to Find an Authentic Psychic, and Tips to Find One](/real-psychic-readings-and-why-its-not-so-easy-to-find-an-authentic-psychic-and-tips-to-find-one).
+
       ## How do I work with my clients?
 
       My readings are focused on the specific questions you bring. I use clairvoyance and clairaudience, communication with my Spirit Guides, and Tarot when it helps to clarify what comes through. I tell you plainly what I receive, with care, so you have something meaningful to work with. You can read more about how a reading with me works on my [Psychic Reading](/psychic-reading) page.
+  - type: "pillar_posts"
+    heading: "More on finding a real psychic"
+    intro: ""
   - type: "cta_text"
     heading: "Looking for an honest reading?"
     body: "When you’re ready for real answers, a reading with me is a phone call away."

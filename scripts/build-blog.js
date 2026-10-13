@@ -89,16 +89,19 @@ function plainExcerpt(md, len = 140) {
 // (e.g. pillar: love-and-relationships). The post links back to the page, and the page lists its
 // posts by itself (see the pillar_posts section in build-pages.js).
 const PAGES_DIR = join(ROOT, "content", "pages");
-function pillarTitle(pillar) {
+function pillarData(pillar) {
   const f = join(PAGES_DIR, `${pillar}.md`);
-  if (!existsSync(f)) return "";
-  return parseFrontMatter(readFileSync(f, "utf8")).data.title || "";
+  if (!existsSync(f)) return {};
+  return parseFrontMatter(readFileSync(f, "utf8")).data || {};
+}
+function pillarTitle(pillar) {
+  return pillarData(pillar).title || "";
 }
 function pillarBox(pillar) {
   if (!pillar) return "";
   const title = pillarTitle(pillar);
   if (!title) { console.warn(`[build-blog] pillar "${pillar}" has no page in content/pages; no guide link added.`); return ""; }
-  return `<aside class="post-pillar reveal" style="max-width:760px;margin:2rem auto 0;background:var(--cream);border:1px solid var(--gold);border-radius:var(--r-lg,16px);padding:1.1rem 1.4rem"><p style="margin:0">This post is part of my guide to <a href="/${esc(pillar)}"><strong>${esc(title)}</strong></a>. Start there for more on love, relationships and what a reading can show you.</p></aside>`;
+  return `<aside class="post-pillar reveal" style="max-width:760px;margin:2rem auto 0;background:var(--cream);border:1px solid var(--gold);border-radius:var(--r-lg,16px);padding:1.1rem 1.4rem"><p style="margin:0">This post is part of my guide to <a href="/${esc(pillar)}"><strong>${esc(title)}</strong></a>. ${esc(pillarData(pillar).guide_line || "Start there for more on love, relationships and what a reading can show you.")}</p></aside>`;
 }
 
 // Answer-engine markup: every "## Question?" heading in a pillar post, paired with the first

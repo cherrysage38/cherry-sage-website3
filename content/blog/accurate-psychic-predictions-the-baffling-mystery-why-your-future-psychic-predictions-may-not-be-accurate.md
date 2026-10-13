@@ -8,6 +8,7 @@ image: "/assets/blog/accurate-psychic-predictions-card.jpg"
 seo_title: "Why Accurate Psychic Predictions Sometimes Miss"
 description: "Why do some psychic predictions turn out wrong? Learn what can change a prediction and how to get more accurate answers from your reading."
 related: false
+pillar: real-and-genuine-psychic-readings
 ---
 
 I have been providing [professional psychic readings](https://cherrysage.com) since 1999 and I have discovered there is a great deal of confusion regarding the accuracy of [psychic predictions](https://cherrysage.com).  Most people would probably say, if a psychic makes a prediction, it's reasonable to expect that what they said would happen, actually happens.  And if a psychic predicts something, we naturally assume it must have been a vision or other spiritual connection so how could it be wrong. Many people assume psychic prediction accuracy should be pretty foolproof.

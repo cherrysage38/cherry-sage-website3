@@ -10,7 +10,7 @@ author: ''
 image: /assets/img/migrated/real-psychic-readings-and-why-its-not-so-easy-to-find-an-authentic-psychic-and-tips-to-find-one-real-psychic-r.jpg
 related: false
 related_posts: []
-pillar: ''
+pillar: real-and-genuine-psychic-readings
 hidden: false
 ---
 

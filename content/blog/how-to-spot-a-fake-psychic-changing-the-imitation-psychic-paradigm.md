@@ -8,6 +8,7 @@ image: "/assets/blog/bright-sun-rise-768x505.jpeg"
 seo_title: "How to Spot a Fake Psychic | Cherry Sage"
 description: "The psychic industry is replete with con artists and fakes. Who is really on the other end of your telephone or behind…"
 related: true
+pillar: real-and-genuine-psychic-readings
 ---
 
 ![](/assets/blog/how-to-spot-a-fake-psychic.jpg)

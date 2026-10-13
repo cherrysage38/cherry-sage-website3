@@ -9,6 +9,7 @@ image_alt: "A calendar with days crossed off and one date circled, beside a wris
 seo_title: "Accurate Psychic Reading, Wrong Dates: Why Timing Slips"
 description: "Your reading came true, but not on the date predicted? Why timing is the hardest part of a psychic prediction, and what that means for your reading."
 related: true
+pillar: real-and-genuine-psychic-readings
 ---
 
 ## Accurate Psychic Predictions: My Psychic Reading Was Accurate, The Dates Were Wrong!
