@@ -1,16 +1,21 @@
 ---
-title: "Get Accurate Psychic Readings from a Real Psychic Source"
-category: "Psychic Readings"
-topics:
-  - "Finding a Genuine Psychic"
-date: "2022-11-16"
-image: "/assets/blog/lady-looks-garden-768x512.jpeg"
-seo_title: "Get an Accurate Reading from a Real Psychic"
+title: Get Accurate Psychic Readings from a Real Psychic Source
+seo_title: Get an Accurate Reading from a Real Psychic
 description: "Why get a reading from a real psychic? How an accurate psychic reading can calm anxiety, bring clarity, help you prepare for what's ahead, and find closure."
+date: 2022-11-16
+category: Psychic Readings
+topics:
+  - Finding a Genuine Psychic
+author: ''
+image: /assets/blog/lady-looks-garden-768x512.jpeg
+image_alt: ''
 related: true
+related_posts: []
+pillar: ''
+hidden: false
+featured: false
+featured_until: ''
 ---
-
-![Accurate Psychic Reading image](/assets/blog/lady-looks-garden-1.jpeg)
 
 **Why get a psychic reading from a real psychic?**
 

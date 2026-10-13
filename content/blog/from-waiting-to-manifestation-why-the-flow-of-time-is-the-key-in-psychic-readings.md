@@ -15,7 +15,7 @@ pillar: ''
 hidden: false
 ---
 
-Have you ever wondered why some predictions seem to happen right away, while others take months—or even years—to manifest?</em>It’s a question I’ve encountered often in my work as a spiritual counselor. _A study by Pew Research Center in 2021 found that 41% of Americans believe in psychic abilities, with many seeking clarity on timing-related issues._
+Have you ever wondered why some predictions seem to happen right away, while others take months—or even years—to manifest?</em> It’s a question I’ve encountered often in my work as a spiritual counselor.
 
 Timing plays a pivotal role in the accuracy of **genuine psychic readings**, and understanding this can be deeply healing and reassuring as you navigate life’s uncertainties.
 
@@ -32,8 +32,6 @@ Think of timing as layers in spiritual consciousness. In some cases, you’re re
 Other times, the spiritual layers require more alignment. Let’s say a reading highlights a career shift. That shift may depend on your actions—updating your skills, seeking opportunities, or letting go of doubts. Such situations remind us that while **genuine psychic readings** illuminate our path, we must actively participate in our journey.
 
 ### **Conversational Scenarios: Why Timing Varies**
-
-_A study by Psychic Guild once revealed that 65% of people reported seeing predictions manifest within 6-12 months, aligning with the idea that timing depends on personal and external alignment._
 
 Let me share an example from one of my sessions (with details altered to protect privacy). _A client once asked about their financial situation. The reading revealed an upcoming windfall, but it took two years to materialize. Why? They needed time to resolve lingering financial habits and make space for abundance to flow into their life._
 

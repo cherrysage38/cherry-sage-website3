@@ -32,7 +32,7 @@ Don't fool yourself. There are people with genuine psychic ability who have no s
 
 Psychics can say the same things, which may give you a secure feeling that what they are saying must be accurate. Wrong.
 
-Being a professional and authentic psychic counselor, I have found that when you call a psychic network with hundreds or thousands of readers, you will hear basically the same broad picture over and over, because you have encountered a scripted reading, not an authentic one. By scripted, I mean they have familiarized themselves with certain responses based on what you are asking.
+As a professional psychic counselor, I have found that when you call a psychic network with hundreds or thousands of readers, you will hear basically the same broad picture over and over, because you have encountered a scripted reading, not an authentic one. By scripted, I mean they have familiarized themselves with certain responses based on what you are asking.
 
 You may not be aware that psychic hotlines used to be how most people got their psychic advice. These psychics were provided with scripts, manuals and handbooks: literal scripts for what to say about every aspect of life you can imagine. Thousands memorized these scripts and made them their own. So each fake psychic you call will give you a variation on a familiar theme. There is an arsenal of these readers out there, just waiting for you to call so they can confuse you.
 
@@ -42,11 +42,11 @@ The script tells you exactly what you are eager to hear: the person you are call
 
 If you call a number of psychics and they are saying different things, the differences are in the details. You are now calling one after another to see if one verifies the other. The broad picture is the same, but the details are all different, and you end up more confused than when you set out to get clarity.
 
-In a scripted reading, the reader is telling you what you want to hear, not what you need to hear. In an authentic, [real psychic reading](/psychic-reading), the psychic intuitive is accessing information on a spiritual level. People seem to forget this. Through a real psychic, you are getting guided information that originates from higher consciousness. You will hear what is necessary for you to know to go forward and reach balanced solutions in your life.
+In a scripted reading, the reader is telling you what you want to hear, not what you need to hear. In an authentic, [real psychic reading](/psychic-reading), the psychic intuitive is accessing information on a spiritual level. People seem to forget this. Through them, you are getting guided information that originates from higher consciousness. You will hear what is necessary for you to know to go forward and reach balanced solutions in your life.
 
 You are not meant to know everything you want to know, like whether you will marry someone you just met, when you will be living together, or how many kids you will have. You assume that's the next step because you were told they were your soul mate, so now you want all the details about the future. That, by the way, takes you off course, like following a false trail. Spiritual channels, which psychics are supposed to be, cannot guarantee your future. You will find yourself asking questions psychics don't have the answers to, and fake psychics will be happy to provide false answers. The details they can only fabricate. That's why they say different things.
 
-Having a realistic idea of what to expect from a real psychic reading will give you a much more valuable experience. You have to have the correct mindset to receive higher guidance. A scripted reading is fortune telling, an "entertainment" form of psychic reading that dominates the psychic industry today. The gypsy psychic scam takes the fake reading to a whole other level: it exists for the sole purpose of conning you out of every single dime, often until you have nothing left.
+Having a realistic idea of what to expect from a real reading will give you a much more valuable experience. You have to have the correct mindset to receive higher guidance. A scripted reading is fortune telling, an "entertainment" form of psychic reading that dominates the psychic industry today. The gypsy psychic scam takes the fake reading to a whole other level: it exists for the sole purpose of conning you out of every single dime, often until you have nothing left.
 
 ## Can a psychic really tell the future?
 
@@ -56,4 +56,4 @@ I have found it rare that an "assumed" psychic can accurately tell the future. I
 
 I have covered these topics thoroughly in my other articles, [How to Spot a Fake Psychic](/how-to-spot-a-fake-psychic-changing-the-imitation-psychic-paradigm) and [Why It's Not So Easy to Find an Authentic Psychic](/real-psychic-readings-and-why-its-not-so-easy-to-find-an-authentic-psychic-and-tips-to-find-one). Please read these before calling or going to see a psychic, as well as [What Can a Psychic Really Tell You?](/what-can-a-psychic-really-tell-you)
 
-*Cherry Sage has been providing authentic and accurate psychic readings for over two decades. Her main focus is authenticity, honesty and integrity, and one of her missions is to change the existing "imitation" psychic paradigm. You can read hundreds of her clients' [testimonials](/testimonials) on her site.*
+*Cherry Sage has been providing authentic, accurate readings for over two decades. Her main focus is authenticity, honesty and integrity, and one of her missions is to change the existing "imitation" psychic paradigm. You can read hundreds of her clients' [testimonials](/testimonials) on her site.*

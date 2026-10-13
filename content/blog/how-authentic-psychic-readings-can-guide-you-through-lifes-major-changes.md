@@ -25,7 +25,7 @@ When we go through life’s uncertainties, it can feel like a heavy fog on our s
 
 *Here’s the truth: while I can’t predict the future with 100% certainty, I can offer you the path to see the bigger picture. By tapping into your energy field, I can reveal hidden opportunities and pathways you may not have considered. Fear thrives in the unknown, but once we bring awareness to those fears, they lose their power. My readings help you connect with your inner strength, letting you embrace change with courage and hope.*
 
-<em>A study published by the American Psychological Association found that individuals who actively engage in spiritual practices and seek guidance during times of transition experience reduced stress and a greater sense of control (Source: APA).</em>This is the power of guidance—whether from spiritual sources, personal intuition, or psychic insight.
+This is the power of guidance—whether from spiritual sources, personal intuition, or psychic insight.
 
 ### **The Role of Guidance in Career, Relationships, and Spiritual Growth**
 

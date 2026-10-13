@@ -22,7 +22,7 @@ To start, all you need is your birthdate and the current year. Add the digits of
 
 *I hear it all the time: “Why is this important, Cherry?”* Well, your personal year is like an energetic map that shows the path you’re on for the next 12 months. It’s your opportunity to align your actions with your true purpose. Some years are for change and transformation, others for reflection or celebration. Knowing your personal year helps you plan your next steps, stay aligned, and move forward gracefully.
 
-*Did you know that according to a study by the International Numerology Association, 72% of people who actively tracked their personal year cycles reported feeling more connected to their purpose and decisions? Yes, that’s right! You can use numerology as a tool to better unde*rstand the flow of your life.
+You can use numerology as a tool to better understand the flow of your life.
 
 ### **What Can Each Personal Year Teach You?**
 
