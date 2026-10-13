@@ -19,8 +19,6 @@ featured_until: ''
 
 I know it’s only Monday and Thanksgiving is in a few days, so there hasn’t quite been a theme of the week established yet. But today, during one of my readings I was reminded of when some  psychic predictions should not be known and why.  This is a perfect example because my client has really made some real progress with her beau and it’s because a certain eventuality or outcome could not be known. This is going back months now because, of course, we all want to know if the relationship we are in is going to work out. This is one of the most popular burning questions we have.
 
-![](/assets/Psychic_Predictions_Should_I_Call.jpg)
-
 Well, a good reason why you cannot know some things, and I say cannot because it’s more of a value judgment if I say should not, I will explain.  I will not be given certain information about the future if you are NOT meant to know the information  at that moment.  For instance, my client needed to know a while back where her relationship was going. Something more definite like, will they make it? But, I was not given this eventuality in past sessions. But the information I did receive indicated that she had to make a change. It wasn’t a matter of waiting for an optimal outcome or more like believing it will happen.
 
 If I were to tell her, “oh yes, everything is going to work out just the way you want,” well then she would walk around  happy-go-lucky believing that, well, everything was going to work out.  Those of you who know me well know I would never say anything like that to begin with.

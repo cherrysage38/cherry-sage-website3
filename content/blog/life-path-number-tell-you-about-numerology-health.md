@@ -12,8 +12,6 @@ related: true
 
 Ever wondered what your numerology health numbers are?  Feeling sluggish, uninspired or just plain sick?  Numerology holds a special place in many cultures in discovering a person’s strengths and weaknesses, emotional reactions, inner desires, natural talents, and the ability to form bonds with others.   One thing that goes hand in hand with all your traits and tendencies in numerology is your numerology health. A numerology reading by a professional reading psychic or numerologist, can help you gain insight into the health problems that you may have now and in the future or in which season you are more likely to fall sick or foods that may have the potential to boost your health or cause health complications.
 
-![Numerology Health image](/assets/blog/Main-Image_Website.jpg)
-
 If you know your Life Path Number, here’s what numerology has to say about your health:
 
 ## 9 Numerology Health Life Tips

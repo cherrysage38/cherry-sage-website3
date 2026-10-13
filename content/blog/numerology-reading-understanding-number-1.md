@@ -10,7 +10,7 @@ related: true
 
 ## NUMBER 1\.
 
-![](/assets/blog/roman-numeral-1-300x200.jpeg)As you may know, I am a professional numerologist with over two decades of experience giving numerology readings.  I am an expert.  I’m going to do an individual post on each number meaning —1 through 9— including the two master numbers 11 and 22\.
+As you may know, I am a professional numerologist with over two decades of experience giving numerology readings.  I am an expert.  I’m going to do an individual post on each number meaning —1 through 9— including the two master numbers 11 and 22\.
 
 In numerology, the Number 1 is considered a powerful and influential number, representing new beginnings, leadership, creativity, independence, and self-confidence. It is often associated with ambition, achievement, and success.
 

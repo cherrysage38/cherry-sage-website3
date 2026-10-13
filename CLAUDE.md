@@ -8,6 +8,8 @@ Writing: plain and warm.
   - Blog posts, guest articles and Readings pages: do not mention it. If Bev's own text includes it,
     point it out to her and ask before keeping it.
   - Only the homepage, Meet Cherry Sage and Psychic Reading pages may mention it, once each.
+- Blog posts have one picture only, the featured image (front matter `image`). No pictures inside the post
+  text (Bev, 2026-10-13).
 - Pages and posts open with the reader's question in bold, then the plain answer right under it
   (not the answer alone). Question-style headings below follow the same pattern.
 
