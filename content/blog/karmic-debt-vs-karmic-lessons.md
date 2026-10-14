@@ -2,7 +2,7 @@
 title: "Karmic Debt vs. Karmic Lessons: What Is the Difference in Numerology?"
 seo_title: Karmic Debt vs. Karmic Lessons in Numerology | Cherry Sage
 description: Learn how karmic debts differ from karmic lessons in numerology, how each is calculated, and what the numbers mean within your complete chart.
-date: 2026-10-18
+date: 2026-10-17
 category: Numerology
 author: Cherry Sage
 image: /assets/blog/karmic-debt-vs-karmic-lessons.jpg
