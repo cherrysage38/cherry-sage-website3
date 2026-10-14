@@ -6,6 +6,7 @@ image: "/assets/blog/Numbers-Featured-Image-768x406.jpeg"
 seo_title: "Numerology Number 1 Meaning: Traits and Life Path"
 description: "What does the number 1 mean in numerology? Leadership, independence and new beginnings, plus what a balanced and an out-of-balance 1 looks like."
 related: true
+pillar: numerology
 ---
 
 **What does the number 1 mean in numerology?**

@@ -7,6 +7,7 @@ image_alt: "A large golden number 9 beside old books and white petals, with a su
 seo_title: "Numerology: What a 9 Personal Year Means for You"
 description: "In a 9 Personal Year? It's a year for letting go and completion before a new beginning. What it means, and why it's not the time to start something new."
 related: true
+pillar: numerology
 ---
 
 **What does a 9 Personal Year mean?**

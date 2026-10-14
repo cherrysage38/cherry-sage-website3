@@ -6,6 +6,7 @@ image: "/assets/blog/Number-3-self-expression-min-768x512.jpeg"
 seo_title: "Numerology Number 3 Meaning: Traits and Life Path"
 description: "What does the number 3 mean in numerology? Creativity, self-expression and the voice, plus the signs of overbalanced and underbalanced 3 energy."
 related: true
+pillar: numerology
 ---
 
 **What does the number 3 mean in numerology?**

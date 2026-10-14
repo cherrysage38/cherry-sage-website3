@@ -6,6 +6,7 @@ image: "/assets/blog/Full-Numerology-Readings-Online-768x433.jpg"
 seo_title: "Your Personal Year in Numerology: How It Shapes Your Path"
 description: "What is your Personal Year in numerology? What each year from 1 to 9 brings, how to find yours, and how to move with its energy instead of against it."
 related: true
+pillar: numerology
 ---
 
 **What is your Personal Year in numerology?**
