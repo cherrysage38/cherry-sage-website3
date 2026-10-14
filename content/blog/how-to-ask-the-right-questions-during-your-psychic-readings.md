@@ -1,7 +1,7 @@
 ---
 title: How to Ask the Right Questions During Your Psychic Readings
 seo_title: How to Ask the Right Questions in a Psychic Reading
-description: Today I did a reading for a lady whose energy felt very scattered, stressed and confused. In order to receive clear and…
+description: "How do you get clear answers from a psychic reading? Come calm and open, write your questions down, don't rush, and ask what you can change, not just when."
 date: 2023-07-26
 category: Psychic Readings
 author: ''
@@ -10,29 +10,39 @@ related: true
 hidden: false
 ---
 
-Today I did a reading for a lady whose energy felt very scattered, stressed and confused.  In order to receive clear and accurate messages from Spirit there is a way to approach your psychic reading for that purpose.  Although I strive to give everyone a clear and powerful reading, those seeking psychic advice and messages should be aware that it’s necessary for them to be calm, receptive and breathing.  When you call a psychic, have your questions ready.  Write them down.
+**How do you get clear answers from your psychic reading?**
 
-Preparing good questions also means noticing when you’re asking the same one over and over. I explain why [too many psychic readings can leave you more confused about your future](/can-too-many-psychic-readings-give-you-the-wrong-future), and when it helps to give a reading time to unfold.
+Come to your reading calm, open and breathing, with your questions written down. To receive clear and accurate messages from Spirit, there is a way to approach your reading. I strive to give everyone a clear and powerful reading, but it helps so much when you are calm and receptive, and when you know what you want to ask.
 
-Take deep breaths and calm yourself.  Call with a sense of openness because you don’t want to be resistant to the information that is flowing.  Resistance to your messages is like a clog in the energy stream (obstructing the energy flow)—making it more challenging for me to “see” or “feel” clearly the messages coming through.
+## Why does your state of mind matter in a reading?
 
-The client felt rushed and before I could get to the info about her question I could see the anxiety and her feelings that she was not going to get the desired outcome.  These feelings are real to her and of course my desire is to help her.  But today, I felt I could do little to help her because I sensed emotional blocks hindering the reception to the information.  Fear that she was not going hear what she wanted and a RESISTANCE to undesired information.  This made for a stressful reading and makes it difficult to access her auric energy impeding the smooth flow of messages.  This is another reason why I will not read when a person is crying and very upset.  All those emotions block an open channel.  You must be calm for your reading.  ***Breathe.***
+Today I did a reading for a lady whose energy felt very scattered, stressed and confused. She felt rushed, and before I could get to the information about her question, I could see her anxiety and her feeling that she was not going to get the outcome she wanted. Those feelings are real to her, and of course my desire is to help her.
 
-## Here are some tips to getting clear and powerful messages from your psychic reading:
+But today I felt I could do little to help, because I sensed emotional blocks keeping her from receiving the information: fear that she would not hear what she wanted, and RESISTANCE to anything she didn't want to hear. That made for a stressful reading, and it made it hard to reach her auric energy and let the messages flow smoothly.
 
-1. Take responsibility for opening up your own spirit connection before beginning your reading.  Relax.
-2. Write down your questions beforehand.  Having clear questions get clear answers.
-3. Do Not Rush. Give it the time it needs.
-4. Ask questions that are clear and steer clear from asking questions like when am I going to get or have what I want.  Your psychic cannot answer questions like that.  When your desires manifest is in direct correlation to your thoughts, decisions and actions.  Not just fate.  Waiting for fate stops your rhythmic flow.  We all have a rhythm.  During your reading you can find out if you are flowing with it or not flowing with it.  If you stop your rhythmic flow in hopes for a specific outcome and just try to wait it out, it will not happen.
-5. Psychic readings can offer a little magic in your life because it shines a light on internal and external forces that are affecting your life, be it your love life, career or financial outlook—even if you are not aware of these forces.  These forces are what you bring to the table whether you are conscious of it or not.  Here is where I try to bring clarity and inspiration to your life.
-6. Your future is an extension of your consciousness in the present.  During your reading, you are bringing your consciousness to the table and all of your hopes, wishes and dreams.  I am opening the door to your consciousness and looking inside to see what the possible future might be, but more importantly the answers you seek.  You are an integral part of the future and what could manifest.  I am the sight that shines light on your path.  You are tasked with being at cause to that creation.
+Resistance to your messages is like a clog in the energy stream. It blocks the flow and makes it harder for me to "see" or "feel" clearly the messages coming through. This is also why I will not read when a person is crying and very upset. All those emotions block an open channel. You must be calm for your reading. ***Breathe.***
 
-In short, my client was feeling helpless and couldn’t see the light because she wasn’t trusting where she was being led.  She wasn’t seeing, locked in fear.  I had to let her know that her anxiety over her desired outcome was interfering with her ability to see, know or believe that it was even possible.  There was so much I wanted to tell her but she was blocked by fear and impatience.  This is why it’s important to be prepared so that you can get the best possible psychic reading and spiritual guidance.
+So take deep breaths and calm yourself. Call with a sense of openness, because you don't want to resist the information that is flowing. When you call a psychic, have your questions ready. Write them down.
 
-In conclusion, be a part of the process.  Your choices are creating your destiny.  I will guide you based on what I see may be your real obstacles to fulfillment.  But be assured fulfillment is definitely possible.  What you want can manifest when you get out of your own way.  Are you ready for clarity? Clarity awaits you when you are ready to embrace it fully.
+Preparing good questions also means noticing when you're asking the same one over and over. I explain why [too many psychic readings can leave you more confused about your future](/can-too-many-psychic-readings-give-you-the-wrong-future), and when it helps to give a reading time to unfold.
 
-Recommended Reading:  [Future Psychic Predictions.](/facing-the-future-with-accurate-psychic-predictions)
+## What are my tips for getting clear and powerful messages?
 
-*Cherry Sage is a renowned psychic and intuitive advisor, celebrated for her exceptional abilities and compassionate guidance. With over two decades of professional experience, Cherry has touched the lives of countless individuals, offering them clarity, insight, and spiritual support.  Cherry is the trusted advisor of hundreds of people around the world.*
+1. **Open your own spirit connection before your reading begins.** Take responsibility for it. Relax.
+2. **Write down your questions beforehand.** Clear questions get clear answers.
+3. **Do not rush.** Give the reading the time it needs.
+4. **Avoid questions like "When am I going to get what I want?"** Your psychic cannot answer questions like that. When your desires manifest is directly tied to your thoughts, decisions and actions, not just fate. Waiting for fate stops your rhythmic flow. We all have a rhythm, and in your reading you can find out whether you are flowing with it or not. If you stop your flow in hopes of a specific outcome and just try to wait it out, it will not happen.
+5. **Let the reading shine a light on what is affecting you.** A reading can bring a little magic into your life, because it shows the inner and outer forces affecting your love life, career or finances, even forces you aren't aware of. You bring these forces to the table whether you are conscious of them or not. This is where I try to bring clarity and inspiration to your life.
+6. **Remember that you are part of your future.** Your future is an extension of your consciousness in the present. In your reading, you bring your consciousness to the table, with all your hopes, wishes and dreams. I open the door to your consciousness and look inside to see the possible future and, more importantly, the answers you seek. You are an integral part of what could manifest. I am the sight that shines light on your path; you are the one who creates it.
 
-*What sets Cherry apart is not only her profound psychic insights but also her warm and nurturing approach. She understands the delicate nature of the human experience and endeavors to provide a safe space for her clients to explore their deepest concerns.  Book an appointment with Cherry Sage today!*
+## What happened with my client?
+
+In short, she felt helpless and couldn't see the light because she wasn't trusting where she was being led. She was locked in fear. I had to let her know that her anxiety over the outcome she wanted was getting in the way of her ability to see, know or believe it was even possible. There was so much I wanted to tell her, but she was blocked by fear and impatience. This is why it's important to be prepared: so you get the best possible reading and spiritual guidance.
+
+## How can you be part of the process?
+
+Your choices are creating your destiny. I will guide you based on what I see may be your real obstacles to fulfillment, but be assured that fulfillment is definitely possible. What you want can manifest when you get out of your own way. Are you ready for clarity? Clarity awaits you when you are ready to embrace it fully.
+
+Recommended reading: [Facing the Future with Accurate Psychic Predictions](/facing-the-future-with-accurate-psychic-predictions)
+
+*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. [Book a reading with Cherry Sage](/book-appointment).*
