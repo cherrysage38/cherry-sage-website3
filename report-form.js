@@ -79,6 +79,7 @@
     var infoP = infoCard ? infoCard.querySelector('p') : null;
     var priceEl = infoCard ? infoCard.querySelector('strong') : null;
     if (p.description) { if (lede) lede.textContent = p.description; if (infoP) infoP.textContent = p.description; }
+    else if (generic && lede) lede.textContent = ''; // no description: never leave the "loading" words showing
     if (priceEl) priceEl.textContent = money(p.price_cents);
 
     if (p.active === false) {
