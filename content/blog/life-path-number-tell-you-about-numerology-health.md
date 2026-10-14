@@ -8,6 +8,7 @@ image: "/assets/blog/numerology-blk-white-768x528.jpg"
 seo_title: "What Your Life Path Number Says About Your Health"
 description: "What does your Life Path number say about your health? Numerology's health tendencies, best foods and life tips for each number from 1 to 9."
 related: true
+hidden: true
 ---
 
 **What does your Life Path number say about your health?**
