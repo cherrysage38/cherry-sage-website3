@@ -1,5 +1,5 @@
 ---
-title: Numerology Karmic Debt 13,14,19
+title: Numerology Karmic Debt 13, 14, 16 and 19
 description: A karmic debt is a significant difficulty encountered in this life as payment for the misapplication of energies in a past life. This is a very important…
 og_image: "/assets/numerology-header.jpg"
 blocks:
