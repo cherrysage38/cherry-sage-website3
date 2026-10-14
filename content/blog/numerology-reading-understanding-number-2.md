@@ -6,6 +6,7 @@ image: "/assets/blog/numerology-slider-min-768x210.jpeg"
 seo_title: "Numerology Number 2 Meaning: Traits and Life Path"
 description: "What does the number 2 mean in numerology? Harmony, diplomacy and relationships, plus the signs of overbalanced and underbalanced 2 energy."
 related: true
+pillar: numerology
 ---
 
 **What does the number 2 mean in numerology?**

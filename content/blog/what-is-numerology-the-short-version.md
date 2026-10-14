@@ -6,6 +6,7 @@ image: "/assets/blog/WhatIsNumerologyimage-768x576.jpeg"
 seo_title: "What Is Numerology? A Quick, Clear Explanation"
 description: "What is numerology? A short, clear explanation of how numbers carry their own energy, and what a numerology reading can reveal about you and your purpose."
 related: true
+pillar: numerology
 ---
 
 **What is numerology?**
