@@ -172,7 +172,12 @@
         var h3=document.createElement('h3'); h3.textContent=p.name;
         var price=document.createElement('span'); price.className='pcard-price'; price.textContent=money(p.price_cents);
         body.appendChild(h3); body.appendChild(price);
-        if(p.description){ var d=document.createElement('p'); d.textContent=p.description; body.appendChild(d); }
+        // A phone reading with no Dashboard description gets the standard line, and a First Time offer says
+        // it is for first-time callers only (Bev, 2026-10-14). Same lines as its own page (report-form.js).
+        var descText=p.description || (isMinutes ? (/first[\s-]*time/i.test(p.name)
+          ? 'For first-time callers only: new clients who have never had a reading with Cherry Sage before.'
+          : 'An honest, in-depth phone reading with Cherry, one on one.') : '');
+        if(descText){ var d=document.createElement('p'); d.textContent=descText; body.appendChild(d); }
         // A phone reading with questions (e.g. birth details for numerology) is answered at checkout:
         // an empty "details" tells the cart to ask them (2026-10-12).
         var asks=Array.isArray(p.report_fields) && p.report_fields.length>0;
