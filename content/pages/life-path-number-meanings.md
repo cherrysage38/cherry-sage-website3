@@ -4,6 +4,9 @@ description: Uncover the significance of numerology life path numbers and how th
 og_image: "/assets/numerology-header.jpg"
 hero_eyebrow: Numerology
 blocks:
+- type: lifepath_tool
+  heading: Find your Life Path number
+  intro: Enter your birth date for a quick preview of your Life Path, calculated the way Cherry does it.
 - type: text
   body: |
     ## What is Your Life Path?

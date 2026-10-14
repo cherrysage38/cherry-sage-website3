@@ -244,6 +244,25 @@
       expression: reduce(nameSum(name))
     };
   }
+  // Life Path calculator (Bev, 2026-10-13): birth date only, a short preview of the Life Path.
+  // Month, day and year are reduced separately keeping 11, 22 and 33, then added and reduced again.
+  var lf=document.getElementById('lpForm');
+  if(lf){ lf.addEventListener('submit',function(e){
+    e.preventDefault();
+    var d=document.getElementById('lpDate').value, note=document.getElementById('lpNote'), out=document.getElementById('lpResult');
+    if(!d||!/^\d{4}-\d{2}-\d{2}$/.test(d)){ note.textContent='Please enter your full birth date.'; note.hidden=false; out.hidden=true; return; }
+    note.hidden=true;
+    var total=lifePathTotal(d), n=reduce(total);
+    var shown=(total>9 && total!==n) ? (total+'/'+n) : String(n);
+    out.innerHTML='<div style="font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)">Your Life Path</div>'+
+      '<div style="font-family:var(--font-display,Georgia,serif);font-size:3.2rem;line-height:1.1;color:var(--oxblood);margin:.2rem 0">'+shown+'</div>'+
+      '<p style="margin:.2rem auto .9rem;max-width:520px">'+(LP[n]||'')+'</p>'+
+      '<p style="font-size:.95rem;color:var(--ink-soft);margin:0 auto 1rem;max-width:560px">This is just a glimpse. Your Life Path is one of four core numbers, and your birth name, cycles and challenges all shape how it plays out for you.</p>'+
+      '<div style="display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center">'+
+      '<a class="btn btn-gold" href="/report-full-life-numerology-profile">Full-Life Numerology Report</a>'+
+      '<a class="btn btn-primary" href="/shop#numerology">Full Life Numerology Reading by Phone</a></div>';
+    out.hidden=false;
+  }); }
   var cf=document.getElementById('cpForm');
   if(cf){ cf.addEventListener('submit',function(e){
     e.preventDefault();

@@ -176,6 +176,25 @@ function renderBlock(block, i, pageSlug) {
         .join("");
       return `<section class="section section-tint"><div class="wrap">${heading}<div class="blk-gallery reveal">${figs}</div></div></section>`;
     }
+    case "lifepath_tool": {
+      // Free Life Path preview (Bev, 2026-10-13). The calculation lives in app.js (looks for #lpForm).
+      const heading = esc(block.heading || "Find your Life Path number");
+      const field = "padding:.7rem 1rem;border:1px solid var(--line-strong);border-radius:999px;font-family:var(--font-body);font-size:1rem;box-sizing:border-box";
+      return `<section class="section" id="life-path-calculator"><div class="wrap">
+  <div class="card reveal" style="max-width:680px;margin:0 auto;text-align:center">
+    <span class="chip">Free · Cherry's method</span>
+    <h2>${heading}</h2>
+    <p>${esc(block.intro || "Enter your birth date for a quick preview of your Life Path.")}</p>
+    <form id="lpForm" novalidate style="display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;align-items:center;margin:.8rem 0">
+      <input type="date" id="lpDate" required aria-label="Your birth date" style="${field}">
+      <button class="btn btn-gold" type="submit">Show my Life Path</button>
+    </form>
+    <p id="lpNote" hidden role="alert" style="color:var(--oxblood);margin:.4rem 0 0"></p>
+    <div id="lpResult" hidden aria-live="polite" style="margin-top:1.2rem"></div>
+    <p style="font-size:.78rem;color:var(--ink-soft);margin:.8rem 0 0">Nothing you type here is saved or sent anywhere.</p>
+  </div>
+</div></section>`;
+    }
     case "compat_tool": {
       // The calculator itself lives in app.js (looks for #cpForm); this is just the form.
       const heading = esc(block.heading || "See how your numbers meet");
@@ -275,7 +294,7 @@ ${renderFooter(FOOTER_DATA)}
   <span class="cw-status" title="Cherry is Online"><span class="status-dot"></span>Chat with Ivy</span>
   <span class="cw-bubble"><img src="assets/mark-clean.png" alt=""></span>
 </div>
-<script src="app.js?v=15"></script>
+<script src="app.js?v=16"></script>
 <script src="embers.js?v=5"></script>
 <script src="magic.js?v=2"></script>
 <script src="funnel.js?v=12"></script>
