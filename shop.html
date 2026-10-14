@@ -204,10 +204,27 @@
         }
         else if(after) after.after(card); else grid.appendChild(card);
       });
+
+    // Each phone reading has its own page, as the WordPress shop did (Bev, 2026-10-14): the name and
+    // picture link to /reading/<name>; the phone numerology reading keeps one fixed address that other
+    // pages link to. Same rule as report-form.js.
+    function slugify(n){ return String(n||'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
+    document.querySelectorAll('.pcard[data-pid]').forEach(function(card){
+      var p=byId[card.getAttribute('data-pid')]; if(!p || p.duration_minutes==null) return;
+      var url='/reading/'+(/numerology/i.test(p.name) ? 'full-life-numerology-reading-by-phone' : slugify(p.name));
+      var h3=card.querySelector('h3');
+      if(h3 && !h3.querySelector('a')){ var a=document.createElement('a'); a.href=url; a.textContent=h3.textContent; a.style.cssText='color:inherit;text-decoration:none'; h3.textContent=''; h3.appendChild(a); }
+      var img=card.querySelector('.pcard-img');
+      if(img){ img.style.cursor='pointer'; img.addEventListener('click', function(){ location.href=url; }); }
+      var more=card.querySelector('.pcard-more');
+      if(!more){ more=document.createElement('a'); more.className='pcard-more'; more.href=url; more.textContent='About this reading →';
+        more.style.cssText='display:inline-block;margin:0 0 .8rem;font-size:.92rem;color:var(--cherry)';
+        var b=card.querySelector('.pcard-body button, .pcard-body .btn'); if(b) b.parentNode.insertBefore(more,b); }
+    });
   }).catch(function(){ /* the static text stays as a safe fallback */ });
 })();
 </script>
-<script src="app.js?v=17"></script>
+<script src="app.js?v=18"></script>
 <script src="embers.js?v=5"></script>
 <script src="magic.js?v=2"></script>
 <script src="funnel.js?v=12"></script>
