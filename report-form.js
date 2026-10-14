@@ -80,7 +80,9 @@
     var priceEl = infoCard ? infoCard.querySelector('strong') : null;
     // Minutes products usually have no description in Manage Products; the shop cards show this line for
     // them, so their own pages do too (Bev, 2026-10-14). A description written in the Dashboard wins.
-    if (!p.description && phone && phonePage) p.description = 'An honest, in-depth phone reading with Cherry, one on one.';
+    if (!p.description && phone && phonePage) p.description = /first[\s-]*time/i.test(p.name || '')
+      ? 'For first-time callers only: new clients who have never had a reading with Cherry Sage before.'
+      : 'An honest, in-depth phone reading with Cherry, one on one.';
     if (p.description) { if (lede) lede.textContent = p.description; if (infoP) infoP.textContent = p.description; }
     else if (generic && lede) lede.textContent = ''; // no description: never leave the "loading" words showing
     if (priceEl) priceEl.textContent = money(p.price_cents);
