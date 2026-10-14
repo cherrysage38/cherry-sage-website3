@@ -803,3 +803,6 @@
 /2024/*    /blog.html    301
 /2025/*    /blog.html    301
 /2026/*    /blog.html    301
+
+# Phone readings: each has its own page, /reading/<product name> (Bev, 2026-10-14)
+/reading/*    /reading.html    200

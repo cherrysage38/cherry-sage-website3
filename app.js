@@ -261,7 +261,7 @@
       '<p style="font-size:.95rem;color:var(--ink-soft);margin:0 auto 1rem;max-width:560px">This is just a glimpse. Your Life Path is one of four core numbers, and your birth name, cycles and challenges all shape how it plays out for you.</p>'+
       '<div style="display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center">'+
       '<a class="btn btn-gold" href="/report-full-life-numerology-profile">Full-Life Numerology Report</a>'+
-      '<a class="btn btn-primary" href="/shop#numerology">Full Life Numerology Reading by Phone</a></div>';
+      '<a class="btn btn-primary" href="/reading/full-life-numerology-reading-by-phone">Full Life Numerology Reading by Phone</a></div>';
     out.hidden=false;
   }); }
   var cf=document.getElementById('cpForm');
