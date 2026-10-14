@@ -437,3 +437,35 @@ window.CSCart = (function(){
   }
   if(document.body) add(); else document.addEventListener('DOMContentLoaded',add);
 })();
+
+/* Back to top (Bev, 2026-10-13): long pages and posts get a round arrow button that appears once the
+   visitor has scrolled down, and glides back to the top when tapped. Sits on the right, above the
+   Chat with Ivy button and its "Click to chat" note. */
+(function(){
+  if (document.getElementById('csTopBtn')) return;
+  var b=document.createElement('button');
+  b.id='csTopBtn'; b.type='button'; b.setAttribute('aria-label','Back to top'); b.title='Back to top';
+  b.innerHTML='<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>';
+  b.style.cssText='position:fixed;right:22px;bottom:140px;z-index:902;width:46px;height:46px;border-radius:50%;'+
+    'display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;'+
+    'background:#FFFDF8;color:#6E1A28;border:1px solid #C9A24A;box-shadow:0 8px 26px -12px rgba(74,15,25,.55);'+
+    'opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s ease,transform .25s ease';
+  function place(){ b.style.bottom = (window.innerWidth < 640 ? 112 : 140) + 'px'; b.style.right = (window.innerWidth < 640 ? 14 : 22) + 'px'; }
+  var ticking=false;
+  function update(){
+    ticking=false;
+    var show = window.scrollY > Math.max(600, window.innerHeight * 0.8);
+    b.style.opacity = show ? '1' : '0';
+    b.style.pointerEvents = show ? 'auto' : 'none';
+    b.style.transform = show ? 'translateY(0)' : 'translateY(8px)';
+    b.tabIndex = show ? 0 : -1;
+  }
+  b.addEventListener('click', function(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+  function add(){ document.body.appendChild(b); place(); update(); }
+  window.addEventListener('scroll', function(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener('resize', place);
+  if (document.body) add(); else document.addEventListener('DOMContentLoaded', add);
+})();
