@@ -8,24 +8,36 @@ description: "How to calculate your Personal Year number in numerology, step by 
 related: false
 ---
 
-OK, since I like to find out what your personal year is when you call, I’m providing you a quick little lesson on how to do this calculation yourself.  Then when you call, you can tell me your Personal Year number.  I’ll double check of course.
+**How do you calculate your Personal Year number?**
 
-You will need your month and your day of birth. You will add this to the Universal Year vibration. I’ll show you how to do it.
+Add your birth month and birth day to the Universal Year, which is the sum of the digits of the year you are looking at. Reduce each part to a single digit along the way, except the master numbers 11 and 22, then reduce the total. Use the current year, not your birth year; using your birth year gives you your Life Path instead.
 
-Suppose you were born October 17, 1973.  The year we are going to calculate this for is this year, 2009 NOT the year you were born–that’s important, if you use your birth year, the number you will calculate would be your Life Path.
+Since I like to find out your Personal Year when you call, here's a quick lesson on how to do this calculation yourself. Then, when you call, you can tell me your Personal Year number. I'll double-check, of course.
 
-We will add 10 + 17 + 11.   The 10 we get from the tenth month (October), 17 we get from the day, and 11 we get from the universal year by adding 2 + 0 + 0 + 9.   The universal year calculation is determined by just adding the numbers in the year you are analyzing.   In numerology, you have to add all the numbers together to get a single digit with just two exceptions. When the number is 11 or 22. We do not reduce master numbers 11 and 22 to a single digit.
+## What do you need to calculate your Personal Year?
 
-So for this person we have some further calculations to do. We have not yet reduced the 10 and 17.
+You will need your month and day of birth. You add these to the Universal Year vibration. I'll show you how.
 
-10=1, 17=8. Now that we have reduced 10 to 1 and 17 to 8 we are ready to find the Personal Year vibration for 2009.
+## How does the calculation work? A worked example
 
-1 + 8 + 11 = 20/2. Yes, we do have to reduce 20 to a 2.  2+0=2.  Remember, do not reduce the 11 from the universal year. Next year, in 2010, the universal year will be 3.
+Suppose you were born October 17, 1973, and we want your Personal Year for 2009. Remember to use the year you are analyzing, NOT the year you were born. That's important: if you use your birth year, the number you calculate will be your Life Path.
 
-The reason we do not reduce master numbers is because we will get a much more accurate final calculation. You see, if we reduced 11 to 2, our final result would have been an 11 (which is a master number). But it would not be a true master number in this case. We get 20/2 as the final number and trust me, it makes a difference what the two digits behind any single digit is. What if we had a 10/1 or a 28/1 or a 37/1. Each one of these double-digits have specific meanings which are different from each other. It’s like having 3 different colors of blue. You have to be able to interpret the different variations in a particular energy and the number “behind” the final digit or even master number which can be very significant. This discussion I will save for another time.
+We add 10 + 17 + 11. The 10 comes from the tenth month (October), the 17 from the day, and the 11 from the Universal Year, found by adding 2 + 0 + 0 + 9. The Universal Year is simply the sum of the digits in the year you are analyzing.
 
-So, those born on October 17, 1973 will be in a 20/2 Personal Year in the year 2009.
+In numerology, you add all the numbers together until you get a single digit, with just two exceptions: 11 and 22. We do not reduce the master numbers 11 and 22 to a single digit.
 
-Try calculating yours. I’ll have my numerology program, which calculates your Karmic Accumulation now, calculate Personal Years on my main site for you very soon.  Get your Karmic accumulation now using my numerology calculator page here:  [Numerology Reading](#).  But practice, it’s fun! Now you’ll need to know what each personal year number vibration means.  Coming soon.
+So for this person, we still have to reduce the 10 and the 17: 10 = 1, and 17 = 8. Now we are ready to find the Personal Year vibration for 2009:
 
-Can you figure out how to calculate your [Life Path](#)?  Hint:  you’ll need your month, day and year of birth.
+1 + 8 + 11 = 20/2. Yes, we do reduce 20 to 2 (2 + 0 = 2). Just remember not to reduce the 11 from the Universal Year. (In 2010, the Universal Year was 3.)
+
+So someone born on October 17 was in a 20/2 Personal Year in 2009.
+
+## Why don't we reduce the master numbers?
+
+Because we get a much more accurate final result. If we had reduced 11 to 2, our final result would have been 11, a master number, but not a true master number in this case. Instead we get 20/2, and trust me, the two digits behind any single digit make a difference. What if we had a 10/1, a 28/1 or a 37/1? Each of these double digits has its own specific meaning. It's like having three different shades of blue. You have to be able to interpret the variations in a particular energy, and the number "behind" the final digit, or even behind a master number, can be very significant. That discussion I'll save for another time.
+
+## What should you try next?
+
+Try calculating yours. It's fun! To learn what each Personal Year number means, read [Discover Your Personal Year in Numerology](/discover-your-personal-year-in-numerology-how-it-shapes-your-path). You can also find your Karmic Accumulation with my free [Karmic Accumulation Reading](/free-karmic-reading).
+
+Can you figure out how to calculate your Life Path? Hint: you'll need your month, day and year of birth. Or use my free [Life Path Calculator](/life-path).
