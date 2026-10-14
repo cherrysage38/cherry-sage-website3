@@ -18,8 +18,6 @@ Take deep breaths and calm yourself.  Call with a sense of openness because you 
 
 The client felt rushed and before I could get to the info about her question I could see the anxiety and her feelings that she was not going to get the desired outcome.  These feelings are real to her and of course my desire is to help her.  But today, I felt I could do little to help her because I sensed emotional blocks hindering the reception to the information.  Fear that she was not going hear what she wanted and a RESISTANCE to undesired information.  This made for a stressful reading and makes it difficult to access her auric energy impeding the smooth flow of messages.  This is another reason why I will not read when a person is crying and very upset.  All those emotions block an open channel.  You must be calm for your reading.  ***Breathe.***
 
-![meditating on the beach](/assets/blog/meditating-at-beach-min-300x200.jpeg)
-
 ## Here are some tips to getting clear and powerful messages from your psychic reading:
 
 1. Take responsibility for opening up your own spirit connection before beginning your reading.  Relax.

@@ -11,8 +11,6 @@ related: true
 pillar: real-and-genuine-psychic-readings
 ---
 
-![](/assets/blog/how-to-spot-a-fake-psychic.jpg)
-
 **How can you spot a fake psychic?**
 
 Be wary of a psychic who tells you exactly what you want to hear and leaves you feeling almost intoxicated after the call, or who says you have a curse that only they can remove for a price. If it sounds too good to be true, most likely it is. The proof is really in the reading and its outcomes, and in developing a relationship with a few trusted advisers who have connected with you and whose insights have proven accurate for you.

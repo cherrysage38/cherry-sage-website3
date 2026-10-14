@@ -10,8 +10,6 @@ description: "Is your future fixed once a psychic predicts it? Why the future is
 related: true
 ---
 
-![psychic](/assets/blog/women-240x300.png)
-
 **Is your future fixed once a psychic predicts it?**
 
 No. Apart from certain karmic events that are meant to happen, the future is not locked in. What a psychic sees about your future is based on your present energy and the free will choices you and others are about to make. If you don't like what is seen, that is your opportunity to make changes that can affect the outcome. And never just wait for a prediction as if it were guaranteed; let it go, and let it flow.

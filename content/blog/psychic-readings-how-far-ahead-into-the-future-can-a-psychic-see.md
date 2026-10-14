@@ -26,8 +26,6 @@ For me personally, it took many years to realize how spiritually gifted I was, t
 
 All this is to say that every psychic is different, and there is no manual for discovering your gift. Certain experiences will prompt you to investigate further, which leads to study and learning. But everyone who becomes a psychic reader has the task of learning about their gift, and then finding out whether it is their purpose to offer it to others by developing the skill to do so.
 
-![Psychic sees the future](/assets/blog/eye-sees-future-3.jpeg)
-
 ## Why is predicting the future the hardest part of a reading?
 
 Predicting the future through [psychic readings](/psychic-reading) is by far the most challenging part, because there is only so much of the exact future you are meant to know in advance, and I have found that very few people have the ability to predict it. The past and the present are readily accessible to talented psychics, because, think of it this way, they have already been written.

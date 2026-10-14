@@ -11,8 +11,6 @@ related: true
 pillar: real-and-genuine-psychic-readings
 ---
 
-![future psychic timelines](/assets/blog/clock-timelines-min-300x225.jpeg)
-
 **Are there any authentic psychics who can give accurate timelines?**
 
 Yes, sometimes, but no psychic can give you accurate dates every time. A real psychic gets what they get, and dates are some of the things they receive only SOMETIMES. Whether a date can be known depends on you and your situation at the time of the reading. If it can be known, it will be revealed; if not, it won't be, even if you call 100 psychics. If you are given an accurate timeline, it is a gift, not an entitlement.
