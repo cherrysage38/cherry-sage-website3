@@ -28,9 +28,9 @@ It's simple, my friend. All you need is your birth date and the current year. Ad
 
 Here's a quick peek at what each year represents:
 
-- **Year 1:** New beginnings, fresh starts and taking risks. A year to plant seeds for the future.
-- **Year 2:** Patience and partnerships. Building relationships and finding harmony.
-- **Year 3:** Creativity, self-expression and fun. The year for joy and celebrating your individuality.
+- **Year 1:** New beginnings, fresh starts and taking risks. A year to plant seeds for the future. (More on [Number 1](/numerology-reading-understanding-number-1).)
+- **Year 2:** Patience and partnerships. Building relationships and finding harmony. (More on [Number 2](/numerology-reading-understanding-number-2).)
+- **Year 3:** Creativity, self-expression and fun. The year for joy and celebrating your individuality. (More on [Number 3](/numerology-reading-what-is-the-meaning-of-number-3).)
 - **Year 4:** Hard work and structure. This year asks you to lay the groundwork for long-term success.
 - **Year 5:** Freedom, adventure and change. You'll feel the need to shake things up and explore.
 - **Year 6:** Love, responsibility and home. Focus on your relationships and nurturing your surroundings.
