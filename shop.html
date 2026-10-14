@@ -167,7 +167,7 @@
         var body=document.createElement('div'); body.className='pcard-body';
         if(isPhoneNumerology){
           var tag=document.createElement('span'); tag.className='pcard-tag';
-          tag.textContent='Featured \u00b7 Live by phone \u00b7 '+p.duration_minutes+' minutes'; body.appendChild(tag);
+          tag.textContent='Live by phone \u00b7 '+p.duration_minutes+' minutes'; body.appendChild(tag);
         }
         var h3=document.createElement('h3'); h3.textContent=p.name;
         var price=document.createElement('span'); price.className='pcard-price'; price.textContent=money(p.price_cents);
@@ -181,13 +181,25 @@
         // A phone reading with questions (e.g. birth details for numerology) is answered at checkout:
         // an empty "details" tells the cart to ask them (2026-10-12).
         var asks=Array.isArray(p.report_fields) && p.report_fields.length>0;
-        if(isMinutes){
+        if(isPhoneNumerology){
+          // The featured phone numerology reading opens its own page, which says what Cherry will ask
+          // (Bev, 2026-10-14: "View and request would be nice").
+          var v=document.createElement('a'); v.className='btn btn-primary'; v.href='/reading/full-life-numerology-reading-by-phone'; v.innerHTML='View &amp; request &rarr;';
+          body.appendChild(v);
+        } else if(isMinutes){
           var b=document.createElement('button'); b.type='button'; b.className='btn btn-primary'; b.textContent='Add to Cart';
           b.addEventListener('click', function(){ window.CSCart.add({readingProductId:p.id,name:p.name,priceCents:p.price_cents,details:asks?{}:null}); location.href='/cart.html'; });
           body.appendChild(b);
         } else {
           var a=document.createElement('a'); a.className='btn btn-primary'; a.href='/report?p='+encodeURIComponent(p.id); a.innerHTML='View &amp; request &rarr;';
           body.appendChild(a);
+        }
+        if(isPhoneNumerology){
+          // a gold "Featured" badge on the photo, easy to see on a phone (Bev, 2026-10-14)
+          img.style.position='relative';
+          var badge=document.createElement('span'); badge.textContent='Featured';
+          badge.style.cssText='position:absolute;top:14px;left:14px;background:var(--gold,#C9A24A);color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .8rem;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.18)';
+          img.appendChild(badge);
         }
         card.appendChild(img); card.appendChild(body);
         // A new minutes product goes right after the longest one that is not longer than it
@@ -222,7 +234,7 @@
       var img=card.querySelector('.pcard-img');
       if(img){ img.style.cursor='pointer'; img.addEventListener('click', function(){ location.href=url; }); }
       var more=card.querySelector('.pcard-more');
-      if(!more){ more=document.createElement('a'); more.className='pcard-more'; more.href=url; more.textContent='About this reading →';
+      if(!more && !card.classList.contains('pcard-featured')){ more=document.createElement('a'); more.className='pcard-more'; more.href=url; more.textContent='About this reading →';
         more.style.cssText='display:inline-block;margin:0 0 .8rem;font-size:.92rem;color:var(--cherry)';
         var b=card.querySelector('.pcard-body button, .pcard-body .btn'); if(b) b.parentNode.insertBefore(more,b); }
     });
