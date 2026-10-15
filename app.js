@@ -288,13 +288,16 @@
         '<strong>'+who+'</strong></div>'+
         '<p style="color:var(--ink-soft);margin:.3rem 0 0;font-size:.95rem">'+meaning+'</p></div>';
     }
+    // Cherry's own Soul Urge is 3, so her personal note shows only here, on the Compatibility page.
+    var CHERRY_SU3=' <em>A note from Cherry: You might be surprised that I was also a singer and model. It is what I moved to NYC to do. But the funny thing is, I returned back to Maryland a psychic! Go figure.</em>';
+    function meaningFor(k,num,list){ return (list[num]||'')+(k==='soulUrge'&&num===3?CHERRY_SU3:''); }
     var out=ASPECTS.map(function(a){
       var k=a[0], x=p1[k], y=p2[k];
       return '<div class="card" style="padding:1.2rem 1.4rem">'+
         '<h4 style="margin:0">'+a[1]+'</h4>'+
         '<p style="margin:.1rem 0 .9rem;color:var(--ink-soft);font-size:.9rem">'+a[2]+'</p>'+
         '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">'+
-          side(who1,x,a[3][x]||'')+side(who2,y,a[3][y]||'')+
+          side(who1,x,meaningFor(k,x,a[3]))+side(who2,y,meaningFor(k,y,a[3]))+
         '</div>'+
         '<p style="margin:1rem 0 0;padding-top:.8rem;border-top:1px solid var(--line-strong)"><strong>How you meet: </strong>'+meetNote(x,y)+'</p>'+
       '</div>';
