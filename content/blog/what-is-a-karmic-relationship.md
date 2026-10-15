@@ -1,19 +1,19 @@
 ---
-title: "What Is Karma? Karmic Relationships and Numerology Explained"
-seo_title: What Is Karma? Karmic Relationships & Numerology | Cherry Sage
+title: "What Is a Karmic Relationship? Karma, Relationships and Numerology Explained"
+seo_title: What Is a Karmic Relationship? | Cherry Sage
 description: Understand karma, karmic relationships, and how these spiritual concepts differ from karmic debts and karmic lessons in numerology.
 date: 2026-10-17
-category: Numerology
+category: Love & Relationships
 topics:
   - "Karma & Past Lives"
 author: Cherry Sage
-image: /assets/blog/karma-karmic-relationships-numerology.jpg
+image: /assets/blog/what-is-a-karmic-relationship.jpg
 related: true
-pillar: numerology
+pillar: love-and-relationships
 hidden: false
 ---
 
-**What is karma, and how does it connect to karmic relationships and numerology?**
+**What is karma?**
 
 Karma is the broader concept of action and its consequences. Karmic debts and karmic lessons are specific interpretive categories within certain numerology systems. They are ways of examining karmic themes—not a complete account of karma itself.
 
