@@ -4,7 +4,7 @@ seo_title: "Numerology Readings & Number Meanings | Cherry Sage"
 description: "What can numerology tell you? Cherry Sage explains your Life Path, Expression, Soul Urge, karmic debts and karmic lessons, with free tools and full readings."
 og_image: "/assets/numerology-header.jpg"
 hero_eyebrow: "Numerology · the map in your name and birth date"
-hero_lede: "Your birth date and the name you were given hold a real map. Here is how I read it, with free tools to begin."
+hero_lede: "Your birth date and the name you were given hold your Soul’s Code. Here is how I read it, with free tools to begin."
 guide_line: "Start there for more on your numbers and what they reveal about your life."
 blocks:
   - type: "text"
