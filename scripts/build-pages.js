@@ -95,7 +95,10 @@ function renderBlocks(blocks, pageSlug) {
     if (!article.length) return;
     const inner = article.map((b) => b.type === "side_card"
       ? `<aside class="blk-side-card">${b.tag ? `<span class="chip">${esc(b.tag)}</span>` : ""}<h3>${esc(b.title)}</h3><p>${esc(b.text)}</p></aside>`
-      : `${b.heading ? `<h2>${esc(b.heading)}</h2>` : ""}${mdBlock(b.body)}`).join("");
+      // eyebrow: a small gold line over a large heading, the opening the Tarot page uses (Bev, 2026-10-15)
+      : b.eyebrow
+        ? `<p class="eyebrow" style="margin:0 0 .8rem;line-height:1.5">${esc(b.eyebrow)}</p><h2 style="font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.12;color:var(--oxblood);margin:0 0 .6rem">${esc(b.heading)}</h2>${mdBlock(b.body)}`
+        : `${b.heading ? `<h2>${esc(b.heading)}</h2>` : ""}${mdBlock(b.body)}`).join("");
     // tight: "true" lets a short opening heading sit close to what follows (Bev, 2026-10-15, Meet and Compatibility)
     const tight = article.some((b) => String(b.tight) === "true") ? ' style="padding-bottom:0"' : "";
     out.push(`<section class="section"${tight}><div class="wrap"><div class="blk-prose blk-article reveal">${leadQuestion(inner)}</div></div></section>`);

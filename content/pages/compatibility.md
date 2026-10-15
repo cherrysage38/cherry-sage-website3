@@ -8,6 +8,7 @@ blocks:
   - type: text
     article: "true"
     tight: "true"
+    eyebrow: "Compatibility, read through numbers"
     heading: Are Your Numbers Compatible?
     body: |-
       Numerology compares the numbers in both your names and birth dates. It shows where you connect naturally and where you may need more patience. Enter both below to see.

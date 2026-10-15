@@ -7,6 +7,7 @@ blocks:
   - type: "text"
     article: "true"
     tight: "true"
+    eyebrow: "My story, in my own words"
     heading: "Who Is Cherry Sage?"
     body: |-
       I'm a professional psychic: a clairvoyant, clairaudient, empath and numerologist who reads with honesty and care. This is the story of how I came to this work.
