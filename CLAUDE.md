@@ -33,6 +33,13 @@ Writing: plain and warm.
 - Passwords, API keys, tokens, for anyone. Never print them and never put them in a file. This
   repository may be public, so anything committed here can be read by anyone.
 
+## If RJ stops working with Bev (Bev, 2026-10-15)
+- Bev owns every account (GitHub, Netlify, Supabase, Groq). RJ is a Developer on Supabase only.
+- When she says RJ is gone: remove him from Supabase, then change the database master key
+  (service_role / secret) and any other keys he may have seen, one at a time, keeping the site
+  working. The site itself uses only SUPABASE_URL and SUPABASE_ANON_KEY. Bev pastes new keys into
+  Netlify herself; never ask her to share them.
+
 ## Safe to do
 - Page wording, images, colors, spacing, layout
 - Guest articles, blog posts, FAQ, testimonials (content lives in `content/articles`,
