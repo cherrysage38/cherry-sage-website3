@@ -6,6 +6,13 @@ og_image: "/assets/numerology-header.jpg"
 hero_eyebrow: ''
 hero_lede: ''
 blocks:
+  - type: text
+    article: "true"
+    tight: "true"
+    eyebrow: "Compatibility, read through numbers"
+    heading: Are Your Numbers Compatible?
+    body: |-
+      Numerology compares the numbers in both your names and birth dates. It shows where you connect naturally and where you may need more patience. Enter both below to see.
   - type: compat_tool
     heading: See how your numbers meet
   - type: text
@@ -164,4 +171,16 @@ blocks:
     button_label: Get Your Full Compatibility Report
     button_link: /report-compatibility-love-report
     button_style: primary
+  - type: text
+    article: "true"
+    heading: What people are saying about their numerology profiles
+    body: |-
+      > “Talking to u last year was the catalyst to many good things in my life so I thank you very much….”
+      > —Andrea
+
+      > “Thank You so much for my short profile – I love it – it is so me, I even acknowledge the negative sides of me which I am aware of….”
+      > —Elaine
+
+      > “Thank you very much for the reading, it is so complete I can’t imagine something like that. It was really great once more thank you so much. There is truth in it, which is so amazing.”
+      > —Regards from Jakarta….Irma
 ---
