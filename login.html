@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sign In — Cherry Sage</title>
 <meta name="description" content="Sign in to your Cherry Sage account to see your order and appointment history.">
-<link rel="canonical" href="https://cherrysage.com/login.html">
+<link rel="canonical" href="https://cherrysage.com/login">
 <meta name="robots" content="noindex,follow">
 <meta name="theme-color" content="#6E1A28">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -231,7 +231,7 @@
     if(password!==passwordConfirm){ err.hidden=false; err.textContent='Those two passwords do not match, please check and try again.'; return; }
     err.hidden=true; btn.disabled=true; btn.textContent='Creating Account…';
     withTimeout(
-      sb.auth.signUp({ email: email, password: password, options: { emailRedirectTo: 'https://cherrysage.com/login.html' } }),
+      sb.auth.signUp({ email: email, password: password, options: { emailRedirectTo: 'https://cherrysage.com/login' } }),
       15000
     ).then(function(res){
       if(res.error){
@@ -283,7 +283,7 @@
       var email=(form.email.value||'').trim();
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ noteEl.hidden=false; noteEl.textContent='Please enter a valid email address.'; return; }
       noteEl.hidden=true; btn.disabled=true; btn.textContent='Sending…';
-      withTimeout(sb.auth.signInWithOtp({ email: email, options: { emailRedirectTo: 'https://cherrysage.com/account.html' } }), 15000).then(function(res){
+      withTimeout(sb.auth.signInWithOtp({ email: email, options: { emailRedirectTo: 'https://cherrysage.com/account' } }), 15000).then(function(res){
         btn.disabled=false; btn.textContent=formId==='lgLoginLinkForm' ? 'Send Sign-In Link' : 'Send Me a Link';
         noteEl.hidden=false;
         noteEl.textContent = res.error ? (res.error.message||'Could not send the link, please try again.') : ('Sent, check '+email+' and open it on this device.');
@@ -307,7 +307,7 @@
     var email=(forgotForm.email.value||'').trim();
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ forgotNote.hidden=false; forgotNote.textContent='Please enter a valid email address.'; return; }
     forgotNote.hidden=true; btn.disabled=true; btn.textContent='Sending…';
-    withTimeout(sb.auth.resetPasswordForEmail(email, { redirectTo: 'https://cherrysage.com/account.html?reset=1' }), 15000).then(function(res){
+    withTimeout(sb.auth.resetPasswordForEmail(email, { redirectTo: 'https://cherrysage.com/account?reset=1' }), 15000).then(function(res){
       btn.disabled=false; btn.textContent='Send Reset Link';
       forgotNote.hidden=false;
       forgotNote.textContent = res.error ? (res.error.message||'Could not send the reset link, please try again.') : ('Sent, check '+email+' for a link to set a new password.');

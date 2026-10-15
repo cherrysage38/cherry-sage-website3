@@ -234,7 +234,7 @@ function renderPage({ slug, title, seo_title, description, og_image, hero_eyebro
   const shareImg = `https://cherrysage.com${esc(og_image || "/assets/bev_portrait.jpg")}`;
   // The Google title can differ from the big heading on the page (Bev, 2026-10-10, Love & Relationships).
   const headTitle = seo_title ? esc(seo_title) : `${esc(title)} — Cherry Sage`;
-  const url = `https://cherrysage.com/${slug}.html`;
+  const url = `https://cherrysage.com/${slug}`;
   const eyebrow = hero_eyebrow ? `<p class="eyebrow">${esc(hero_eyebrow)}</p>` : "";
   const lede = hero_lede ? `<p class="lede">${esc(hero_lede)}</p>` : "";
   return `<!doctype html>
@@ -307,7 +307,7 @@ ${renderFooter(FOOTER_DATA)}
 
 function addToSitemap(slug) {
   let xml = readFileSync(SITEMAP, "utf8");
-  const url = `https://cherrysage.com/${slug}.html`;
+  const url = `https://cherrysage.com/${slug}`;
   if (xml.includes(`<loc>${url}</loc>`)) return;
   const today = new Date().toISOString().slice(0, 10);
   const entry = `  <url><loc>${url}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>\n`;
