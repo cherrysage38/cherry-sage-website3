@@ -3,8 +3,8 @@ title: Numerology Compatibility Reports
 seo_title: Numerology Compatibility Reports | Cherry Sage
 description: Explore your connection with a numerology compatibility report. Understand your numbers together, from emotional needs and communication to relationship potential.
 og_image: "/assets/numerology-header.jpg"
-hero_eyebrow: ''
-hero_lede: ''
+hero_eyebrow: "Numerology for two people"
+hero_lede: "Explore your connection, from emotional needs and communication to relationship potential."
 blocks:
   - type: text
     article: "true"
