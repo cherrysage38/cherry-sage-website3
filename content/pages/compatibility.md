@@ -2,21 +2,22 @@
 title: Numerology Compatibility Reports
 seo_title: Numerology Compatibility Reports | Cherry Sage
 description: Explore your connection with a numerology compatibility report. Understand your numbers together, from emotional needs and communication to relationship potential.
-og_image: "/assets/numerology-header.jpg"
-hero_eyebrow: "Numerology for two people"
-hero_lede: "Explore your connection, from emotional needs and communication to relationship potential."
+hero_eyebrow: Numerology for two people
+hero_lede: Explore your connection, from emotional needs and communication to relationship potential.
 blocks:
   - type: text
-    article: "true"
-    tight: "true"
-    eyebrow: "Compatibility, read through numbers"
     heading: Are Your Numbers Compatible?
-    body: |-
-      Numerology compares the numbers in both your names and birth dates. It shows where you connect naturally and where you may need more patience. Enter both below to see.
+    body: Numerology compares the numbers in both your names and birth dates. It shows where you connect naturally and where you may need more patience. Enter both below to see.
+    boxed: false
+    article: true
+    button_label: ''
+    button_link: ''
+    button_style: primary
+    eyebrow: Compatibility, read through numbers
+    tight: 'true'
   - type: compat_tool
     heading: See how your numbers meet
   - type: text
-    article: "true"
     heading: Did you take a peek at your compatibility? I know you did. Well… are you compatible?
     body: |-
       Did the numbers confirm that irresistible attraction—or help explain why a simple conversation sometimes turns into a competitive sport?
@@ -24,11 +25,12 @@ blocks:
       Before you celebrate—or reconsider your dinner plans—there’s more to compatibility than matching two Life Path numbers. Your Soul Urge reveals what you need deep down, while your Expression adds another layer to how you approach life. Together, your charts offer an early look at where you connect, where you clash, and what you might learn about each other.
 
       And yes, you can check your best friend, too. Sometimes you want to understand why someone gets you. Sometimes you want to understand why they get on your nerves.
+    boxed: false
+    article: true
     button_label: Explore the Full Compatibility Report
-    button_link: "#report"
+    button_link: '#report'
     button_style: primary
   - type: text
-    article: "true"
     heading: So, what do your numbers see in each other?
     body: |-
       Sometimes attraction makes perfect sense. You feel comfortable together, conversation flows, and neither of you has to explain every little thing.
@@ -42,8 +44,12 @@ blocks:
       Nobody has stopped caring. But somebody may already be composing a very long text.
 
       Understanding those differences early can help you recognize what you are actually responding to.
+    boxed: false
+    article: true
+    button_label: ''
+    button_link: ''
+    button_style: primary
   - type: text
-    article: "true"
     heading: There’s more to you than your Life Path
     body: |-
       Your [Life Path](/life-path-number-meanings) is an important part of your [numerology chart](/numerology). But if that one number explained everything, people would be considerably easier to figure out—and my readings would be very short.
@@ -57,29 +63,37 @@ blocks:
       Meanwhile, you are wondering why they haven’t noticed that you would occasionally like to be fussed over.
 
       A fuller comparison gives us more to work with than “You’re a 3, and he’s a 7. Good luck.”
+    boxed: false
+    article: true
+    button_label: ''
+    button_link: ''
+    button_style: primary
   - type: text
-    article: "true"
     heading: Let me show you what I mean—with my own numbers
     body: |-
-      My **Life Path is 11**. There’s no great surprise that my path led me to become a psychic intuitive, inspired by Truth. That spiritual sensitivity is central to the work I do.
+      My **Life Path is 38/11**. There’s no great surprise that my path led me to become a psychic intuitive, inspired by Truth. That spiritual sensitivity is central to the work I do.
 
       But that isn’t all there is to me.
 
-      My **Soul Urge is 3**. It’s a good thing that 3 lives here, because I love to talk and express myself. I graduated from an arts high school that prepared me for a career in the performing arts, then moved to New York City, where I worked as a singer and model. There’s that self-expression of the 3.
+      My **Soul Urge is 30/3**. It’s a good thing that 3 lives here, because I love to talk and express myself. I graduated from an arts high school that prepared me for a career in the performing arts, then moved to New York City, where I worked as a singer and model. There’s that self-expression of the 3.
 
       Ironically, I returned home to Maryland as a psychic. Go figure.
 
       The expression found another outlet: readings, writing, and sharing what I see and understand. That 3 still has plenty to say.
 
-      My **Expression is 6**. There’s the nurturer. I care about people, love making a home, and am actually quite a homebody. Yes, the woman looking into your future also enjoys being in her own kitchen.
+      My **Expression is 24/6**. There’s the nurturer. I care about people, love making a home, and am actually quite a homebody. Yes, the woman looking into your future also enjoys being in her own kitchen.
 
       And my **Birthday Number is 17/8**. Well, there’s the businesswoman.
 
       Put those together and you get a fuller picture: the intuitive, the communicator, the nurturer, and the businesswoman. All me. Knowing only that I’m an 11 would leave quite a bit out.
 
       **Now imagine comparing two people with that same attention to detail.** We’re looking beyond whether your Life Paths get along. We’re exploring how one person’s inner needs meet the other’s way of expressing themselves—and how the different parts of each person work together within the relationship.
+    boxed: false
+    article: true
+    button_label: ''
+    button_link: ''
+    button_style: primary
   - type: text
-    article: "true"
     heading: What can a full compatibility report help you understand?
     body: |-
       The free calculator gives you a first look. A full compatibility report develops the comparison in greater depth, exploring how the numbers in both charts relate.
@@ -97,7 +111,14 @@ blocks:
       *Oh. That’s why we keep having that conversation.*
 
       Understanding a pattern gives you somewhere to begin. You can talk about it, respond differently, and see whether both of you are willing to make room for the other.
+    boxed: false
+    article: true
+    button_label: ''
+    button_link: ''
+    button_style: primary
   - type: report_offer
+    heading: ''
+    intro: ''
     anchor: report
     offers:
       - tag: Compatibility report
@@ -106,15 +127,15 @@ blocks:
         text: A written look at the numbers between two people, drawn from Cherry’s own methods. You enter both full birth names and birth dates when you order.
         button_label: Get Your Full Compatibility Report
         button_link: /report-compatibility-love-report
-        featured: "true"
+        featured: true
       - tag: Report bundle
         name: Full-Life Numerology Profile and Compatibility Love Report
         price: $34
         text: Your own Full-Life Numerology Profile together with the Compatibility Love Report for the two of you.
         button_label: Order the bundle
         button_link: /report-full-life-numerology-profile-and-compatibility-l
+        featured: false
   - type: text
-    article: "true"
     heading: Great chemistry. Now, can you get along?
     body: |-
       Attraction can get your attention very quickly. Learning how someone handles disappointment, responsibility, disagreement, and your perfectly reasonable request takes a little longer.
@@ -126,8 +147,12 @@ blocks:
       A promising comparison does not do the communicating for you. And a challenging comparison does not automatically mean you should cancel the wedding—or the second date.
 
       Sometimes differences give a relationship balance. Sometimes they become the subject of the same argument every Thursday. How you handle them matters.
+    boxed: false
+    article: true
+    button_label: ''
+    button_link: ''
+    button_style: primary
   - type: text
-    article: "true"
     heading: Your best friend counts, too
     body: |-
       Compatibility is useful beyond romance.
@@ -139,8 +164,12 @@ blocks:
       Comparing your charts can offer another perspective on those dynamics. Where do you work well together? What does each person contribute? Why does something that feels effortless to you seem so difficult to them?
 
       You don’t have to be falling in love to want to understand another person.
+    boxed: false
+    article: true
+    button_label: ''
+    button_link: ''
+    button_style: primary
   - type: text
-    article: "true"
     heading: But does he love me—and when will he call?
     body: |-
       Now we’re getting to the questions I hear every day.
@@ -154,11 +183,12 @@ blocks:
       Bring me the question that matters to you. You don’t have to disguise “Does he want a future with me?” as a general inquiry about your spiritual development.
 
       We can get to the point.
+    boxed: false
+    article: true
     button_label: Explore Love & Relationship Readings
     button_link: /love-and-relationships
     button_style: secondary
   - type: text
-    article: "true"
     heading: Curious about the two of you?
     body: |-
       Start with a peek. Then, if you want to understand more, explore your full compatibility report.
@@ -168,11 +198,12 @@ blocks:
       You already know there’s a connection.
 
       Let’s explore how your numbers fit together.
+    boxed: false
+    article: true
     button_label: Get Your Full Compatibility Report
     button_link: /report-compatibility-love-report
     button_style: primary
   - type: text
-    article: "true"
     heading: What people are saying about their numerology profiles
     body: |-
       > “Talking to u last year was the catalyst to many good things in my life so I thank you very much….”
@@ -183,4 +214,10 @@ blocks:
 
       > “Thank you very much for the reading, it is so complete I can’t imagine something like that. It was really great once more thank you so much. There is truth in it, which is so amazing.”
       > —Regards from Jakarta….Irma
+    boxed: false
+    article: true
+    button_label: ''
+    button_link: ''
+    button_style: primary
+og_image: /assets/numerology-header.jpg
 ---
