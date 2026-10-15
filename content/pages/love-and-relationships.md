@@ -49,7 +49,7 @@ blocks:
 
       Sometimes a couple needs time apart to gain perspective. Sometimes feelings remain, but the relationship has become unhealthy. And sometimes the person who left has made a decision that the person left behind simply isn't ready to accept. A psychic reading may help clarify those differences.
 
-      For a closer look at prediction and reconciliation, see my article [Can a Psychic Tell If Your Ex Will Come Back?](/can-a-psychic-tell-if-your-ex-will-come-back) I've also written about [whether psychics really have the power to bring a lover back into your life](/do-psychics-really-have-the-power-to-bring-a-lover-back-into-your-life). There is an important difference between perceiving the possibility of reconciliation and claiming to make someone return. Nobody should promise to override another person's free will.
+      For a closer look at prediction and reconciliation, see my article [Can a Psychic Tell If Your Ex Will Come Back?](/can-a-psychic-tell-if-your-ex-will-come-back.html) I've also written about [whether psychics really have the power to bring a lover back into your life](/do-psychics-really-have-the-power-to-bring-a-lover-back-into-your-life.html). There is an important difference between perceiving the possibility of reconciliation and claiming to make someone return. Nobody should promise to override another person's free will.
 
       ## Where Is This Relationship Going?
     boxed: false
@@ -112,13 +112,13 @@ blocks:
 
       My approach is personal and direct. I use clairvoyance, clairaudience, Tarot, and numerology as appropriate to the questions you're asking. I don't believe every reading needs vague spiritual language or dramatic declarations. If you want to know whether someone is likely to call, whether a relationship is moving toward commitment, or whether reconciliation appears possible, that's what we'll discuss.
 
-      I won't promise a particular outcome simply because it's the one you want. I also won't tell you that you need a spell, ritual, or expensive additional service to change someone else's feelings. A good reading should provide meaningful insight, not make you dependent on a psychic. You can learn more about my broader approach on my [Psychic Reading page](/psychic-reading).
+      I won't promise a particular outcome simply because it's the one you want. I also won't tell you that you need a spell, ritual, or expensive additional service to change someone else's feelings. A good reading should provide meaningful insight, not make you dependent on a psychic. You can learn more about my broader approach on my [Psychic Reading page](/psychic-reading.html).
 
       ## Ready for Clarity About Your Love Life?
 
       Whether you're wondering if an ex will return, questioning your partner's feelings, hoping for a new relationship, or trying to understand where an existing relationship is headed, we can talk about it. You don't have to have everything figured out before you call. That's often the reason you're calling in the first place.
 
-      If you're ready for an honest love and relationship psychic reading, [book a reading with Cherry Sage](/book-appointment).
+      If you're ready for an honest love and relationship psychic reading, [book a reading with Cherry Sage](/book-appointment.html).
 
       Let's look at what's really happening—and where things may be going.
 
@@ -132,5 +132,5 @@ blocks:
     heading: Ready for a straight answer?
     body: Book your reading and let's talk about what's really going on.
     button_label: Book a Reading
-    button_link: /book-appointment
+    button_link: /book-appointment.html
 ---

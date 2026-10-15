@@ -45,7 +45,7 @@ With this compassionate approach, you’ll feel at ease, knowing that your emoti
 
 ### **Embracing Healing: Let Your Shadow Self Be Your Teacher**
 
-Healing your shadow self through psychic readings isn’t about eliminating the parts of yourself you don’t like. Remember, [real psychic readings](/psychic-reading) are not about fixing you; they are about helping you see the beauty in every part of yourself, including the parts you’ve hidden away. It’s about accepting them, understanding them, and finding peace with who you truly are. Your shadow is not your enemy; it’s a part of your soul’s journey, waiting for the light of your conscious awareness.
+Healing your shadow self through psychic readings isn’t about eliminating the parts of yourself you don’t like. Remember, [real psychic readings](/psychic-reading.html) are not about fixing you; they are about helping you see the beauty in every part of yourself, including the parts you’ve hidden away. It’s about accepting them, understanding them, and finding peace with who you truly are. Your shadow is not your enemy; it’s a part of your soul’s journey, waiting for the light of your conscious awareness.
 
 ## **Parting Note: Find Your Peace**
 

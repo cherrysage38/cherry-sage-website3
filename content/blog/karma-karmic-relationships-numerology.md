@@ -46,7 +46,7 @@ Numerology provides a particular framework for interpreting patterns. Within the
 
 You can have experiences you understand as karmic without having one of the four karmic debt numbers in a particular chart position. Likewise, having no missing-name lessons does not mean every choice you make is free of consequences.
 
-For an explanation of those specific numbers, how they are calculated, and what they mean, read **[Karmic Debt vs. Karmic Lessons: What Is the Difference in Numerology?](/karmic-debt-vs-karmic-lessons)**
+For an explanation of those specific numbers, how they are calculated, and what they mean, read **[Karmic Debt vs. Karmic Lessons: What Is the Difference in Numerology?](/karmic-debt-vs-karmic-lessons.html)**
 
 Your numerology chart is not an itemized statement of everything your soul has ever done.
 

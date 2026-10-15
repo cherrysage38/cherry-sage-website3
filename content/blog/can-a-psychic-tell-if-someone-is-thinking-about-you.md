@@ -25,7 +25,7 @@ I have been reading professionally for over two decades. Questions about love an
 
 ## How can I tell if someone is thinking about you?
 
-I use clairvoyance and clairaudience to look at thoughts and feelings, and Tarot to clarify what comes through. You can learn more about [my approach to psychic readings](/psychic-reading) and how I tune into the people involved in your question.
+I use clairvoyance and clairaudience to look at thoughts and feelings, and Tarot to clarify what comes through. You can learn more about [my approach to psychic readings](/psychic-reading.html) and how I tune into the people involved in your question.
 
 I also experience telepathy, but for me it happens spontaneously, at random. It is not something I switch on at will.
 
@@ -57,7 +57,7 @@ Then, as things unfold, notice how they communicate with you. When they do reach
 
 Thinking about you and deciding to return are different things. An ex can remember you, miss you, or think about the breakup while still working through what they want to do next.
 
-If reconciliation is your real concern, say so. That lets us look beyond whether you are on their mind and into the possibility of renewed contact or a reunion. I explore that question in [Can a Psychic Tell If Your Ex Will Come Back?](/can-a-psychic-tell-if-your-ex-will-come-back).
+If reconciliation is your real concern, say so. That lets us look beyond whether you are on their mind and into the possibility of renewed contact or a reunion. I explore that question in [Can a Psychic Tell If Your Ex Will Come Back?](/can-a-psychic-tell-if-your-ex-will-come-back.html).
 
 Consider a hypothetical ex who thinks fondly about the good times but remains unwilling to address the issue that ended the relationship. Now consider an ex who is thinking about how to apologize and ask for another chance. Both are thinking about you. What you need to understand is where those thoughts are leading.
 
@@ -77,4 +77,4 @@ You do not need to turn up with a perfectly prepared interview. Tell me what is 
 
 Sometimes the answer brings reassurance. Sometimes it helps you understand a situation differently. My intention is to tell you plainly what I read, with care, so you have something meaningful to work with.
 
-If you want to explore someone's thoughts, feelings, and the connection between you, [book a love and relationship reading with me](/love-and-relationships). We can look at what is on their mind and what it means for the question that matters to you.
+If you want to explore someone's thoughts, feelings, and the connection between you, [book a love and relationship reading with me](/love-and-relationships.html). We can look at what is on their mind and what it means for the question that matters to you.

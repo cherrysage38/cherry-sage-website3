@@ -59,6 +59,6 @@ Yes. Other readings do show certain outcomes, the probability of events based on
 
 Lessons must be learned; they cannot be bypassed. If you are in a difficult situation with another person, you are being called to take stock of yourself and your own destiny: to be at cause in your life instead of at the mercy of circumstances.
 
-Be careful of knowing too much of the future. Seek psychic insight that points you toward resolution, not just toward when you will get what you want. The universe does not work that way. You may also like my post, [My Psychic Reading Was Accurate, The Dates Were Wrong!](/accurate-psychic-predictions-my-reading-was-accurate-the-dates-were-wrong)
+Be careful of knowing too much of the future. Seek psychic insight that points you toward resolution, not just toward when you will get what you want. The universe does not work that way. You may also like my post, [My Psychic Reading Was Accurate, The Dates Were Wrong!](/accurate-psychic-predictions-my-reading-was-accurate-the-dates-were-wrong.html)
 
-*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. [Book a reading with Cherry Sage](/book-appointment).*
+*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. [Book a reading with Cherry Sage](/book-appointment.html).*

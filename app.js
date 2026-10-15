@@ -206,7 +206,7 @@
     debtsFound.filter(function(d,i){return debtsFound.indexOf(d)===i;}).forEach(function(d){
       out.push(card('Karmic Debt', d, KARMIC_DEBT[d]));
     });
-    out.push('<div style="text-align:center;margin-top:.4rem"><a class="btn btn-primary" href="/shop">Go deeper with Cherry</a></div>');
+    out.push('<div style="text-align:center;margin-top:.4rem"><a class="btn btn-primary" href="/shop.html">Go deeper with Cherry</a></div>');
 
     var resultEl=document.getElementById('lpResult');
     resultEl.innerHTML=out.join('');
@@ -257,10 +257,10 @@
     out.innerHTML='<div style="font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)">Your Life Path</div>'+
       '<div style="font-family:var(--font-display,Georgia,serif);font-size:3.2rem;line-height:1.1;color:var(--oxblood);margin:.2rem 0">'+shown+'</div>'+
       '<p style="margin:.2rem auto .9rem;max-width:520px">'+(LP[n]||'')+'</p>'+
-      ([13,14,16,19].indexOf(total)>=0 ? '<div style="margin:0 auto 1rem;max-width:520px;padding:.8rem 1rem;border:1px solid var(--gold,#C9A24A);border-radius:14px;background:var(--cream,#FBF5EA)"><strong style="color:var(--oxblood)">You have a Karmic Debt number: '+shown+'.</strong><br>See what it means on the <a href="/karmic-debts">Karmic Debts</a> page.</div>' : '')+
+      ([13,14,16,19].indexOf(total)>=0 ? '<div style="margin:0 auto 1rem;max-width:520px;padding:.8rem 1rem;border:1px solid var(--gold,#C9A24A);border-radius:14px;background:var(--cream,#FBF5EA)"><strong style="color:var(--oxblood)">You have a Karmic Debt number: '+shown+'.</strong><br>See what it means on the <a href="/karmic-debts.html">Karmic Debts</a> page.</div>' : '')+
       '<p style="font-size:.95rem;color:var(--ink-soft);margin:0 auto 1rem;max-width:560px">This is just a glimpse. Your Life Path is one of four core numbers, and your birth name, cycles and challenges all shape how it plays out for you.</p>'+
       '<div style="display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center">'+
-      '<a class="btn btn-gold" href="/report-full-life-numerology-profile">Full-Life Numerology Report</a>'+
+      '<a class="btn btn-gold" href="/report-full-life-numerology-profile.html">Full-Life Numerology Report</a>'+
       '<a class="btn btn-primary" href="/reading/full-life-numerology-reading-by-phone">Full Life Numerology Reading by Phone</a></div>';
     out.hidden=false;
   }); }
@@ -301,7 +301,7 @@
     });
     out.push('<p style="font-size:.85rem;color:var(--ink-soft);text-align:center;margin:.2rem 0 0">For reflection. Numbers show tendencies, not a verdict on any relationship.</p>');
     out.push('<div style="text-align:center"><p style="margin:.2rem 0 .7rem">Cherry\'s <strong>Compatibility Love Report</strong> goes much deeper, written just for the two of you.</p>'+
-      '<a class="btn btn-gold" href="/report-compatibility-love-report">See the Love Report</a></div>');
+      '<a class="btn btn-gold" href="/report-compatibility-love-report.html">See the Love Report</a></div>');
     var res=document.getElementById('cpResult');
     res.innerHTML=out.join('');
     res.hidden=false;

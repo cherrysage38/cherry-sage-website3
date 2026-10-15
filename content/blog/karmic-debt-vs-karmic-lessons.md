@@ -38,13 +38,13 @@ In the system discussed here, the distinction looks like this:
 
 A person can have both. Having neither does not mean that person has finished learning everything life has to teach.
 
-Also, the ordinary phrase “a karmic lesson” can mean almost any spiritually meaningful experience. That broader use is different from **[Karmic Lessons](/karmic-lessons) as a named numerology calculation**.
+Also, the ordinary phrase “a karmic lesson” can mean almost any spiritually meaningful experience. That broader use is different from **[Karmic Lessons](/karmic-lessons.html) as a named numerology calculation**.
 
 A difficult relationship may teach you something without establishing a missing number in your birth name.
 
 ## What are the four karmic debt numbers?
 
-The four commonly recognized karmic debt numbers in this framework are **[13, 14, 16, and 19](/karmic-debts)**. They reduce to 4, 5, 7, and 1 respectively, which is why you will often see them written with both numbers: 13/4, 14/5, 16/7, and 19/1.
+The four commonly recognized karmic debt numbers in this framework are **[13, 14, 16, and 19](/karmic-debts.html)**. They reduce to 4, 5, 7, and 1 respectively, which is why you will often see them written with both numbers: 13/4, 14/5, 16/7, and 19/1.
 
 The number before the slash matters. It preserves information that disappears if you look only at the final digit.
 

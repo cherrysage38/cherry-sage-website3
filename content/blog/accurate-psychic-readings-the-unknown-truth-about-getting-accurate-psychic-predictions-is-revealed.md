@@ -23,7 +23,7 @@ First, make sure you are dealing with a real psychic. That is the number one fac
 
 Accurate readings are not as easy to find as you may think, even though finding available psychics is as easy as going online and typing "psychics" into a search engine. The results are numerous, and choosing from all the options is a challenge. If you are thinking you might as well pick one at random and hope for the best, rethink that. Getting an accurate reading is NOT a simple process, and choosing randomly can result in inaccurate readings and leave you more frustrated than when you started out looking for psychic answers, or what I would more accurately describe as real spiritual and intuitive answers.
 
-I have been giving [psychic readings](/psychic-reading), numerology and tarot readings for many years now. I started as an apprentice, which lasted six years before I began offering my talents and knowledge professionally. Since opening my site, I have probably given more than 20,000 professional readings. I also get psychic readings myself and have done quite a bit of research, so I know firsthand what is out there. Today I want to share what anyone should know when looking for an accurate reading.
+I have been giving [psychic readings](/psychic-reading.html), numerology and tarot readings for many years now. I started as an apprentice, which lasted six years before I began offering my talents and knowledge professionally. Since opening my site, I have probably given more than 20,000 professional readings. I also get psychic readings myself and have done quite a bit of research, so I know firsthand what is out there. Today I want to share what anyone should know when looking for an accurate reading.
 
 ## What makes a psychic reading accurate?
 
@@ -53,4 +53,4 @@ If you want an accurate reading, please clear your mind and relax before your se
 
 If you are calling a psychic only to be amused, you will find plenty of that out there. If you want an accurate reading, do some research to find a professional.
 
-*Cherry Sage has been providing accurate readings for over two decades. Her main focus is authenticity, honesty and integrity, and one of her missions is to change the existing "imitation" psychic paradigm. You can read hundreds of her clients' [testimonials](/testimonials) on her site.*
+*Cherry Sage has been providing accurate readings for over two decades. Her main focus is authenticity, honesty and integrity, and one of her missions is to change the existing "imitation" psychic paradigm. You can read hundreds of her clients' [testimonials](/testimonials.html) on her site.*

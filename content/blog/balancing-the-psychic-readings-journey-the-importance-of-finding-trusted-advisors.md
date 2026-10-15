@@ -34,7 +34,7 @@ Psychic advisors have their own strengths, areas of expertise, and preferred met
 
 ## Building a Supportive Network:
 
-Having one or two [trusted psychic advisors](/psychic-reading) forms the core of your spiritual support network. These advisors can provide a sense of stability, acting as a sounding board for your concerns, aspirations, and spiritual growth; so, they can become confidants who understand your journey and can offer guidance through both joyful and challenging times. A supportive network of trusted advisors offers a sense of continuity, encouragement, and a safe space to explore your spiritual path.
+Having one or two [trusted psychic advisors](/psychic-reading.html) forms the core of your spiritual support network. These advisors can provide a sense of stability, acting as a sounding board for your concerns, aspirations, and spiritual growth; so, they can become confidants who understand your journey and can offer guidance through both joyful and challenging times. A supportive network of trusted advisors offers a sense of continuity, encouragement, and a safe space to explore your spiritual path.
 
 ## Conclusion:
 

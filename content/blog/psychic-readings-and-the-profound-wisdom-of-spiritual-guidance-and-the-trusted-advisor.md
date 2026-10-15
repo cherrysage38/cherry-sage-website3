@@ -24,7 +24,7 @@ Psychic readings, often met with skepticism by some, are a unique form of spirit
 
 The value of a trusted advisor in this realm cannot be overstated. An authentic spiritual guide is not only someone with the ability to glimpse into the ethereal but also an individual of unwavering honesty. In a world filled with uncertainties, the reliability of spiritual advice hinges on the integrity of the advisor. It is not about sugarcoating the truth or offering false promises; it is about presenting a raw, unfiltered reflection of the energies at play.
 
-Part of being an honest advisor is recognizing when another reading will not add clarity. I explain [why too many psychic readings can leave you confused](/can-too-many-psychic-readings-give-you-the-wrong-future), and why a trusted psychic may sometimes advise you to let life unfold before asking again.
+Part of being an honest advisor is recognizing when another reading will not add clarity. I explain [why too many psychic readings can leave you confused](/can-too-many-psychic-readings-give-you-the-wrong-future.html), and why a trusted psychic may sometimes advise you to let life unfold before asking again.
 
 Moreover, a trustworthy spiritual advisor understands the delicate nature of the human spirit. They recognize that the journey of self-discovery is as much about empowerment as it is about foresight. In delivering their insights, they inspire seekers to embrace their own agency, fostering a sense of control and resilience in the face of challenges. The power lies not in predicting a predetermined destiny but in providing the tools to shape one’s own path.
 

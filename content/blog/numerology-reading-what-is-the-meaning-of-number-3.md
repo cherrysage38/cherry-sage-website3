@@ -37,7 +37,7 @@ Extravagant, opinionated, silly, ostentatious, boastful, gossipy, superficial, o
 
 When, on the other hand, they have difficulty developing their abilities, they may retreat into themselves. They may feel uncomfortable in social situations and prefer to hide their feelings rather than express them. They may seem moody or taciturn. If others hurt them, they may become critical or demeaning.
 
-As I've mentioned in my other posts on the numbers, it all depends on where your 3 sits in your numerology chart. Is it your Soul Urge, your Expression, your Life Path, your Birthday Number? Could it also be a [karmic lesson](/karmic-lessons), or a missing number? Your Soul's Map is exactly that: a map of your soul's journey, where it's been and where it's going. Who you are, and who you could be.
+As I've mentioned in my other posts on the numbers, it all depends on where your 3 sits in your numerology chart. Is it your Soul Urge, your Expression, your Life Path, your Birthday Number? Could it also be a [karmic lesson](/karmic-lessons.html), or a missing number? Your Soul's Map is exactly that: a map of your soul's journey, where it's been and where it's going. Who you are, and who you could be.
 
 ## What does underbalanced 3 energy look like?
 
@@ -47,6 +47,6 @@ I've found that even when a 3 is underbalanced, there are times when they can op
 
 ## Why does it matter where your 3 appears?
 
-In a [numerology reading](/numerology), WHERE your 3 energy sits among the four core elements of your **Soul's Map** (Life Path, Soul Urge, Expression and Birthday Number) is important. Expert analysis of these placements is key to getting the full picture of yourself, or of someone in your life. You can also read about [Number 1](/numerology-reading-understanding-number-1) and [Number 2](/numerology-reading-understanding-number-2).
+In a [numerology reading](/numerology.html), WHERE your 3 energy sits among the four core elements of your **Soul's Map** (Life Path, Soul Urge, Expression and Birthday Number) is important. Expert analysis of these placements is key to getting the full picture of yourself, or of someone in your life. You can also read about [Number 1](/numerology-reading-understanding-number-1.html) and [Number 2](/numerology-reading-understanding-number-2.html).
 
-I can crack the code of your **Soul's Map**, so you learn who you are, all your beautiful intricacies, and how to use them to navigate life. [Contact me](/contact) today for a psychic or numerology reading.
+I can crack the code of your **Soul's Map**, so you learn who you are, all your beautiful intricacies, and how to use them to navigate life. [Contact me](/contact.html) today for a psychic or numerology reading.

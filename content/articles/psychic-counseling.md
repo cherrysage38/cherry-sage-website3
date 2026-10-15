@@ -10,7 +10,7 @@ Psychic Counseling is a serious topic, or at least it should be. Im not talking 
 
 The use of psychic abilities to help someone improve their situation is nothing new. The rich and powerful often have advisors that warn them of potential difficulties and give them tips on how to get around them.
 
-What I am presenting here goes one step further than that. Using [psychic counseling](/psychic-reading) as a way to help a person not only avoid dangers, but address deep emotional issues and make better choices. A process that is not as one-way as traditional psychic work, where the psychic tells the person what they perceive, with little meaningful interaction and almost no personal growth on the side of the client.
+What I am presenting here goes one step further than that. Using [psychic counseling](/psychic-reading.html) as a way to help a person not only avoid dangers, but address deep emotional issues and make better choices. A process that is not as one-way as traditional psychic work, where the psychic tells the person what they perceive, with little meaningful interaction and almost no personal growth on the side of the client.
 
 The counselor should provide more than raw psychic information. The person being helped should be coached to develop their own skills and intuitions, to use their own psychic skills and talents to better their life. They should be aided in, not just making good decisions right now, but in knowing how to make good choices in the future.
 

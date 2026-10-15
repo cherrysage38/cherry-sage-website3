@@ -47,6 +47,6 @@ When you connect with your spiritual consciousness, love transforms from a desti
 
 ## **Walking the Path of Love with Clarity**
 
-Love is a sacred path that invites you to explore the depths of your being. [Accurate love readings](/love-and-relationships) help align you with your heart’s truest desires, paving the way for relationships that nourish your soul. As a psychic advisor, my role is to guide you gently through this journey, helping you find clarity and peace in love.
+Love is a sacred path that invites you to explore the depths of your being. [Accurate love readings](/love-and-relationships.html) help align you with your heart’s truest desires, paving the way for relationships that nourish your soul. As a psychic advisor, my role is to guide you gently through this journey, helping you find clarity and peace in love.
 
 Remember, the answers you seek are already within you. With gentle guidance and spiritual insight, you can uncover the love that resonates with your higher self. Trust your heart’s wisdom, and know that the universe will conspire to fulfill your most cherished dreams.

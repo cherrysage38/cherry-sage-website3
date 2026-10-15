@@ -39,6 +39,6 @@ Apathetic, careless, cowardly, inactive, rude, inconsiderate, unmoved, vacillati
 
 ## Why does it matter where your 2 appears?
 
-WHERE your 2 energy sits among the four core elements of your **Soul's Map** (Life Path, Soul Urge, Expression and Birthday Number) is important. Expert analysis of these placements is key to getting the full picture of yourself, or of someone in your life. You can also read about [Number 1](/numerology-reading-understanding-number-1) and [Number 3](/numerology-reading-what-is-the-meaning-of-number-3).
+WHERE your 2 energy sits among the four core elements of your **Soul's Map** (Life Path, Soul Urge, Expression and Birthday Number) is important. Expert analysis of these placements is key to getting the full picture of yourself, or of someone in your life. You can also read about [Number 1](/numerology-reading-understanding-number-1.html) and [Number 3](/numerology-reading-what-is-the-meaning-of-number-3.html).
 
-I can crack the code of your **Soul's Map**, so you learn who you are, all your beautiful intricacies, and how to use them to navigate life. [Contact me](/contact) today for a psychic or [numerology reading](/numerology).
+I can crack the code of your **Soul's Map**, so you learn who you are, all your beautiful intricacies, and how to use them to navigate life. [Contact me](/contact.html) today for a psychic or [numerology reading](/numerology.html).

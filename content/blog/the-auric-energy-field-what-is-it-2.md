@@ -27,4 +27,4 @@ Upon physical death, a person usually finds themselves in their Etheric or Energ
 
 Eventually, after fulfilling their desires within the Astral realm, the Astral Body begins to “fade” away, giving way exclusively to the Mental Body—the immortal Spirit, reflecting the true image of “God” within a human being. This marks the culmination of a profound spiritual journey for the individual.
 
-Suggested reading:  [Aura Part 1:  What is it and Why is It So Important.](/aura-part-1-what-is-it-and-why-is-it-so-important)
+Suggested reading:  [Aura Part 1:  What is it and Why is It So Important.](/aura-part-1-what-is-it-and-why-is-it-so-important.html)

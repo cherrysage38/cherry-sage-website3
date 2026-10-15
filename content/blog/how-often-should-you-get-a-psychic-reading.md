@@ -101,7 +101,7 @@ Now you are comparing predictions, remembering which person gave which date, and
 
 Before seeking another opinion, ask yourself what you need from it. Are you looking for an explanation you did not receive, or searching until someone says what you want to hear?
 
-I discuss this more fully in [Can Too Many Psychic Readings Give You the Wrong Future?](/can-too-many-psychic-readings-give-you-the-wrong-future).
+I discuss this more fully in [Can Too Many Psychic Readings Give You the Wrong Future?](/can-too-many-psychic-readings-give-you-the-wrong-future.html).
 
 ## How can you make your next reading more useful?
 
@@ -125,4 +125,4 @@ Before calling, ask yourself:
 
 Your answers will usually tell you more about whether it is time than counting the days will.
 
-If you have a specific question you would like to explore, you can [learn about a psychic reading with me](/psychic-reading). We can begin with what is concerning you and look at what you need to understand next.
+If you have a specific question you would like to explore, you can [learn about a psychic reading with me](/psychic-reading.html). We can begin with what is concerning you and look at what you need to understand next.

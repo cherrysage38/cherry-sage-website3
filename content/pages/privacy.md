@@ -31,10 +31,10 @@ blocks:
   - type: "text"
     boxed: true
     heading: "Your choices"
-    body: "You can ask us at any time to see, correct, or delete the information we hold about you. We'll do it, except for anything we must keep by law, such as payment records. To ask, [contact Cherry](/contact).\n\nIf this policy changes, we'll update this page."
+    body: "You can ask us at any time to see, correct, or delete the information we hold about you. We'll do it, except for anything we must keep by law, such as payment records. To ask, [contact Cherry](/contact.html).\n\nIf this policy changes, we'll update this page."
   - type: "cta_text"
     heading: "Questions about your privacy?"
     body: "Cherry is happy to answer them personally."
     button_label: "Contact Cherry"
-    button_link: "/contact"
+    button_link: "/contact.html"
 ---

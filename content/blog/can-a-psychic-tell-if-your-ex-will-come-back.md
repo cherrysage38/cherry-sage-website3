@@ -33,7 +33,7 @@ The question is bigger than whether your ex misses you. I want to look at the di
 
 For example, imagine two people who separate after an argument. One wants to talk but feels embarrassed about what was said. Now imagine a breakup after months of disagreement about commitment, with neither person willing to change. Both situations can involve affection. The paths toward reconciliation are quite different.
 
-That context matters. You can learn more about [my approach to psychic readings](/psychic-reading), including how I tune into a question and explain what I sense. My job is to give you a clear reading, even when the answer needs more explanation than a simple yes.
+That context matters. You can learn more about [my approach to psychic readings](/psychic-reading.html), including how I tune into a question and explain what I sense. My job is to give you a clear reading, even when the answer needs more explanation than a simple yes.
 
 ## Does seeing a return mean the relationship will work this time?
 
@@ -57,7 +57,7 @@ I know a date can feel comforting. It gives the waiting a finish line. But if ev
 
 No. Predicting a return means seeing where a connection is heading. Claiming to cause that return is claiming power over another person’s choice.
 
-I address that separate issue in [Do Psychics Really Have the Power to Bring a Lover Back Into Your Life?](/do-psychics-really-have-the-power-to-bring-a-lover-back-into-your-life). Here, the question is whether reconciliation appears possible and what it could mean for you. Your ex would still have to choose to return, and you would still have to decide whether to welcome them.
+I address that separate issue in [Do Psychics Really Have the Power to Bring a Lover Back Into Your Life?](/do-psychics-really-have-the-power-to-bring-a-lover-back-into-your-life.html). Here, the question is whether reconciliation appears possible and what it could mean for you. Your ex would still have to choose to return, and you would still have to decide whether to welcome them.
 
 Your choice belongs in this conversation. When you miss someone terribly, it is easy to focus entirely on whether they will want you again. But would the relationship they are offering meet your needs? Are you being asked to accept the same arrangement that hurt you before? A possible reunion does not remove those questions.
 
@@ -79,6 +79,6 @@ And please remember: you are allowed to change your mind. The person you were im
 
 A useful love reading can help you examine the possibility of reconciliation alongside its obstacles and your own choices. “Will my ex come back?” is a reasonable place to begin. “What would that return mean for me?” helps us go further.
 
-If you want to explore your situation, [book a love and relationship reading with me](/love-and-relationships). We can look at the direction I sense, what may be blocking progress, and what you need to understand before deciding your next step.
+If you want to explore your situation, [book a love and relationship reading with me](/love-and-relationships.html). We can look at the direction I sense, what may be blocking progress, and what you need to understand before deciding your next step.
 
 I will tell you plainly what I read, with care. Sometimes there is a path back. Sometimes the answer asks you to reconsider what you are waiting for. The purpose is to help you understand the relationship and make your own decision about what comes next.

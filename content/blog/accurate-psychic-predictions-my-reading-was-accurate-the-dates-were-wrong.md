@@ -18,7 +18,7 @@ Because timing is one of the hardest things to see, and so much of what we want 
 
 Everyone would like to know WHEN something they want, or are waiting for, will happen. This desire is human nature, and it burns inside us as strongly as thirst or hunger, especially when it concerns a matter dear to your heart. Who wouldn't want to know the exact date they will meet their true love, marry and have children, or land that dream job?
 
-You are not alone in this desire. [Psychic predictions](/psychic-reading) can be very accurate in the information that is seen during your reading. However, time and time again, I get to the core of a reading and, without fail, the client wants to know WHEN what I am seeing is going to happen. I've often heard myself saying, "So now you want to know when, right?"
+You are not alone in this desire. [Psychic predictions](/psychic-reading.html) can be very accurate in the information that is seen during your reading. However, time and time again, I get to the core of a reading and, without fail, the client wants to know WHEN what I am seeing is going to happen. I've often heard myself saying, "So now you want to know when, right?"
 
 ## Can a psychic predict exactly when something will happen?
 
@@ -48,4 +48,4 @@ Life is not about entitlement; it is about meeting our obstacles with strength a
 
 So don't get it mixed up. Psychics are not here to guarantee your future and date-stamp it, but to reveal it to you, to let you know you are on the right track, or to help you find your way. When it is time for you to know when, you will be given that information. Respect your professional psychic's skill, honesty and integrity in telling you what can be seen and what cannot.
 
-*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. [Book a reading with Cherry Sage](/book-appointment).*
+*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. [Book a reading with Cherry Sage](/book-appointment.html).*

@@ -84,7 +84,7 @@ Sometimes simply becoming self-aware is empowering in itself. Becoming aware of 
 - **That they will do spells for you.** Spells to change the course of events, or to change or harm another person supposedly for your benefit, will only bring negative karma on you and that psychic, and the karmic consequences could be devastating. This is totally unethical.
 - **That they can make something happen for you.** That is simply false. A psychic advisor has no special powers to control your fate or anyone else's behavior.
 
-Psychic advisors are supposed to be spiritual people who have chosen to help others with their developed gifts, never using those gifts to boost their own ego, control another's will, or make you psychologically dependent. Those types are out there. Beware of psychics who say they need to do "energy work" on you through long meditations at a great cost. If they tell you that you have a negative block or a curse, that is a notorious psychic scam. If you meet a psychic like this, even one who does seem to have psychic ability, do yourself a favor and hang up or leave immediately. To learn more, read my post [How to Spot a Fake Psychic](/how-to-spot-a-fake-psychic-changing-the-imitation-psychic-paradigm).
+Psychic advisors are supposed to be spiritual people who have chosen to help others with their developed gifts, never using those gifts to boost their own ego, control another's will, or make you psychologically dependent. Those types are out there. Beware of psychics who say they need to do "energy work" on you through long meditations at a great cost. If they tell you that you have a negative block or a curse, that is a notorious psychic scam. If you meet a psychic like this, even one who does seem to have psychic ability, do yourself a favor and hang up or leave immediately. To learn more, read my post [How to Spot a Fake Psychic](/how-to-spot-a-fake-psychic-changing-the-imitation-psychic-paradigm.html).
 
 ## How do you choose the right psychic?
 
@@ -92,4 +92,4 @@ Know your psychic, and have a clear idea of what you need to know so you can mak
 
 Do your homework, ask the right questions, and understand a psychic's limits. No one but God is all-knowing and 100% accurate. Ignore anyone who makes those claims.
 
-*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. She was a Featured Expert in the Ask the Expert column in Spin Magazine. [Book a reading with Cherry Sage](/book-appointment).*
+*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. She was a Featured Expert in the Ask the Expert column in Spin Magazine. [Book a reading with Cherry Sage](/book-appointment.html).*

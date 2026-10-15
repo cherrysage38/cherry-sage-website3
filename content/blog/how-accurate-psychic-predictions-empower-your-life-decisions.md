@@ -20,7 +20,7 @@ Are you now more in tune with my offerings? Let me share some more updates with 
 
 ## **How Psychic Predictions Help You Navigate Key Life Decisions?**
 
-When you’re standing at a crossroads, it can feel overwhelming. Should you take that offer? Should you make that move? Should you end things? In times like these, [accurate psychic predictions](/psychic-reading) can provide the sense of guidance you need to make an informed decision. But the key is understanding that these predictions aren’t set in stone—they’re meant to be guiding lights that illuminate your path. They help you see what’s possible, the energies surrounding you, and what could be the most empowering choice for your growth.
+When you’re standing at a crossroads, it can feel overwhelming. Should you take that offer? Should you make that move? Should you end things? In times like these, [accurate psychic predictions](/psychic-reading.html) can provide the sense of guidance you need to make an informed decision. But the key is understanding that these predictions aren’t set in stone—they’re meant to be guiding lights that illuminate your path. They help you see what’s possible, the energies surrounding you, and what could be the most empowering choice for your growth.
 
 Psychic predictions act as signposts, pointing out potential paths based on your current energy and the forces at play.
 

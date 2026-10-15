@@ -47,7 +47,7 @@ So how do you know who is real and who is not based on feedback? That is not to 
 
 Even if you are speaking with a gifted, authentic psychic, you and that particular psychic may not connect well. That is different from the psychic being fake.
 
-There are many reasons why a particular psychic may not connect with you. They may not be rested and ready to take calls, or you may not be relaxed and ready to receive truthful information, or in some other way you may be blocking the flow of what is being channeled, which skews the information on either side. [Psychic readings](/psychic-reading) are not an exact science. Intuition is relied upon to conduct an accurate reading, and the reading goes much better when both the psychic adviser and client are relaxed and ready to receive.
+There are many reasons why a particular psychic may not connect with you. They may not be rested and ready to take calls, or you may not be relaxed and ready to receive truthful information, or in some other way you may be blocking the flow of what is being channeled, which skews the information on either side. [Psychic readings](/psychic-reading.html) are not an exact science. Intuition is relied upon to conduct an accurate reading, and the reading goes much better when both the psychic adviser and client are relaxed and ready to receive.
 
 I personally find it difficult to connect with a client who wants to hear a certain thing, and I have many times experienced a client trying to guide the reading. So see your authentic psychic adviser as someone who wants to help you, and be ready to assist in the flow of information.
 

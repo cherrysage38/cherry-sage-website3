@@ -39,6 +39,6 @@ Because we get a much more accurate final result. If we had reduced 11 to 2, our
 
 ## What should you try next?
 
-Try calculating yours. It's fun! To learn what each Personal Year number means, read [Discover Your Personal Year in Numerology](/discover-your-personal-year-in-numerology-how-it-shapes-your-path). You can also find your Karmic Accumulation with my free [Karmic Accumulation Reading](/free-karmic-reading).
+Try calculating yours. It's fun! To learn what each Personal Year number means, read [Discover Your Personal Year in Numerology](/discover-your-personal-year-in-numerology-how-it-shapes-your-path.html). You can also find your Karmic Accumulation with my free [Karmic Accumulation Reading](/free-karmic-reading.html).
 
-Can you figure out how to calculate your Life Path? Hint: you'll need your month, day and year of birth. Or use my free [Life Path Calculator](/life-path).
+Can you figure out how to calculate your Life Path? Hint: you'll need your month, day and year of birth. Or use my free [Life Path Calculator](/life-path.html).

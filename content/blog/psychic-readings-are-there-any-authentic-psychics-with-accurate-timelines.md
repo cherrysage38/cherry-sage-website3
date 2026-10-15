@@ -15,7 +15,7 @@ pillar: real-and-genuine-psychic-readings
 
 Yes, sometimes, but no psychic can give you accurate dates every time. A real psychic gets what they get, and dates are some of the things they receive only SOMETIMES. Whether a date can be known depends on you and your situation at the time of the reading. If it can be known, it will be revealed; if not, it won't be, even if you call 100 psychics. If you are given an accurate timeline, it is a gift, not an entitlement.
 
-There is so much information you can gain from [accurate psychic readings](/psychic-reading), but the most desired piece of information is the timeline, the date something will happen. In my years of giving psychic readings, I have found this is the single MOST WANTED thing people want to know. WHEN?
+There is so much information you can gain from [accurate psychic readings](/psychic-reading.html), but the most desired piece of information is the timeline, the date something will happen. In my years of giving psychic readings, I have found this is the single MOST WANTED thing people want to know. WHEN?
 
 ## Why can't a psychic always tell you when?
 
@@ -47,6 +47,6 @@ The fake psychic industry is the reason most people believe what they believe ab
 
 Most of my posts come from questions my visitors ask me, and this question asks you to look at why it is being asked. If it is so hard to find a psychic who gives accurate dates, it is reasonable to conclude that accurate timelines are specific to each person being read, depending on whether that information can be known at the time of the reading or is restricted. If it can, it will be revealed; if not, it won't be, even if you call 100 psychics. Psychics are not all-knowing superhumans. They are here to help within certain limits, set by Spirit, a powerful source of unlimited wisdom.
 
-The Truth is the only path to happiness. It is no wonder there is so much unhappiness in the world: not everyone wants to see the truth! Which makes you wonder why someone would go to a psychic in the first place, if it is not the truth they seek. A psychic reading is not about when you will have what you want. Please also read my post, [My Psychic Reading Was Accurate, The Dates Were Wrong!](/accurate-psychic-predictions-my-reading-was-accurate-the-dates-were-wrong)
+The Truth is the only path to happiness. It is no wonder there is so much unhappiness in the world: not everyone wants to see the truth! Which makes you wonder why someone would go to a psychic in the first place, if it is not the truth they seek. A psychic reading is not about when you will have what you want. Please also read my post, [My Psychic Reading Was Accurate, The Dates Were Wrong!](/accurate-psychic-predictions-my-reading-was-accurate-the-dates-were-wrong.html)
 
-*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. [Book a reading with Cherry Sage](/book-appointment).*
+*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. [Book a reading with Cherry Sage](/book-appointment.html).*

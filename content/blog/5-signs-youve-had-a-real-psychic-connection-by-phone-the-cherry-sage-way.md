@@ -59,7 +59,7 @@ Sometimes the most powerful part of a reading is not the words but the space bet
 
 Many of my clients have shared, *"I felt like you just understood me without me saying much."* That's because in a real connection, your energy speaks louder than your voice. I listen to what your spirit is saying, and that's where real healing begins.
 
-Even across distance, a [psychic reading by phone](/psychic-reading) can tune into your energy field and reveal what your soul wants you to know. You don't need to explain every detail. The truth finds its way through the quiet.
+Even across distance, a [psychic reading by phone](/psychic-reading.html) can tune into your energy field and reveal what your soul wants you to know. You don't need to explain every detail. The truth finds its way through the quiet.
 
 ## Have you felt it too?
 
@@ -69,4 +69,4 @@ And sometimes it's not just about what's said. It's about what was felt between 
 
 Now I ask you: *when was the last time you truly felt seen, even with your eyes closed?*
 
-If you're facing a moment of uncertainty, I'd be glad to guide you through it. [Book a reading with me](/book-appointment).
+If you're facing a moment of uncertainty, I'd be glad to guide you through it. [Book a reading with me](/book-appointment.html).

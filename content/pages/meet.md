@@ -86,7 +86,7 @@ blocks:
     body: |-
       My psychic readings are focused on the questions my clients bring to me. I don’t generally give open-ended, general readings because I believe a clear, specific question is essential to receiving useful information. Sometimes I’ll rephrase a question to make it clearer when communicating with my Spirit Guides. If a situation is particularly complicated, I may ask for some background, but I don’t need someone to tell me their entire life story before we begin.
 
-      I work primarily with clairvoyance, clairaudience, and Tarot, drawing on abilities and techniques I’ve developed over many years. Numerology remains another important part of my work, and I offer a separate, detailed [Full Life Numerology Reading](/shop#numerology) that explores a person’s life through numerical patterns and forecasting. Unlike my question-focused psychic readings, the Full Life Numerology Reading doesn’t require clients to prepare questions.
+      I work primarily with clairvoyance, clairaudience, and Tarot, drawing on abilities and techniques I’ve developed over many years. Numerology remains another important part of my work, and I offer a separate, detailed [Full Life Numerology Reading](/shop.html#numerology) that explores a person’s life through numerical patterns and forecasting. Unlike my question-focused psychic readings, the Full Life Numerology Reading doesn’t require clients to prepare questions.
 
       Every client and every situation is different. My responsibility is to listen carefully, interpret the information I receive, and help people understand what I’m seeing as clearly as possible. I don’t pretend to know everything, and I certainly don’t claim to be a magician. What I bring to my work is a combination of natural psychic abilities, years of study, extensive practical experience, and a genuine interest in helping people understand their lives.
   - type: "text"
@@ -102,7 +102,7 @@ blocks:
     article: "true"
     heading: "Would You Like a Reading With Me?"
     body: |-
-      If you’re facing a situation that’s troubling you, [wondering about a relationship](/love-and-relationships), or looking for clarity about what lies ahead, I’d be happy to help you explore your questions. You can learn more about how I work on my [Psychic Reading](/psychic-reading) page, or explore my [Tarot Card Readings](/tarot.html) and [Numerology Readings](/numerology.html) to find the service that best suits your needs.
+      If you’re facing a situation that’s troubling you, [wondering about a relationship](/love-and-relationships.html), or looking for clarity about what lies ahead, I’d be happy to help you explore your questions. You can learn more about how I work on my [Psychic Reading](/psychic-reading.html) page, or explore my [Tarot Card Readings](/tarot.html) and [Numerology Readings](/numerology.html) to find the service that best suits your needs.
 
       I look forward to hearing from you.
 
@@ -131,5 +131,5 @@ blocks:
     heading: "Let's talk soon"
     body: "When you're ready, a real reading with me is a phone call away."
     button_label: "Book a Reading"
-    button_link: "/book-appointment"
+    button_link: "/book-appointment.html"
 ---

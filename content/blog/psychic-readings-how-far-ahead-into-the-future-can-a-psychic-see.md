@@ -28,7 +28,7 @@ All this is to say that every psychic is different, and there is no manual for d
 
 ## Why is predicting the future the hardest part of a reading?
 
-Predicting the future through [psychic readings](/psychic-reading) is by far the most challenging part, because there is only so much of the exact future you are meant to know in advance, and I have found that very few people have the ability to predict it. The past and the present are readily accessible to talented psychics, because, think of it this way, they have already been written.
+Predicting the future through [psychic readings](/psychic-reading.html) is by far the most challenging part, because there is only so much of the exact future you are meant to know in advance, and I have found that very few people have the ability to predict it. The past and the present are readily accessible to talented psychics, because, think of it this way, they have already been written.
 
 Some psychics try to give you details of the future simply because you are asking. And some people ask away, thinking, wow, I'm talking to a psychic, they know everything that is going to happen. THAT IS WRONG. It's a misconception. Ask yourself why you want to know a particular thing about the future. You may want to know when you are going to be with that special someone. You just "need" to know now. You may say, why should I call a psychic if they can't tell me what is going to happen?
 
@@ -46,7 +46,7 @@ Sometimes clients try to force an answer out of a psychic, and this approach is 
 
 This happens a lot on psychic networks. A real psychic on a network is sometimes not strong enough to buck the trend of feel-good readings, and if they do, they get the wrath of a person not ready to deal with the truth, and sometimes negative feedback when the dates the person was "waiting" for don't happen. If you think you are supposed to have a guarantee of the date something you want will happen, you are mistaken. Psychics are not responsible for your self-gratification.
 
-If you find yourself consulting several psychics for a more reassuring date, read [Can Too Many Psychic Readings Give You the Wrong Future?](/can-too-many-psychic-readings-give-you-the-wrong-future) Repeatedly checking the same prediction can create confusion when the situation itself has not changed.
+If you find yourself consulting several psychics for a more reassuring date, read [Can Too Many Psychic Readings Give You the Wrong Future?](/can-too-many-psychic-readings-give-you-the-wrong-future.html) Repeatedly checking the same prediction can create confusion when the situation itself has not changed.
 
 ## So how far ahead can a psychic really see?
 
@@ -62,10 +62,10 @@ In short, your psychic will see what you are supposed to know, and no matter who
 
 ## Can numerology show your future too?
 
-[Numerology readings](/numerology), which I have studied for many years and do professionally, can also reveal a great deal of future potential, karmic debts, and the challenges you will face in this life. In numerology, there are fixed cycles, and the significant influences affecting your life are revealed. Knowing these things is very helpful. Numerology can be used as a predictor and a powerful indicator of your life's potential, or even of obstacles to fulfillment.
+[Numerology readings](/numerology.html), which I have studied for many years and do professionally, can also reveal a great deal of future potential, karmic debts, and the challenges you will face in this life. In numerology, there are fixed cycles, and the significant influences affecting your life are revealed. Knowing these things is very helpful. Numerology can be used as a predictor and a powerful indicator of your life's potential, or even of obstacles to fulfillment.
 
 Respect the process of getting an accurate psychic reading. Be open and ready to receive information from higher consciousness, and don't try to force information, because you are not entitled to know everything that will happen to you in the future. You could not grow if you knew everything. But you can know many things that will help you manifest the future you want. There is so much you can learn if you are willing.
 
-I've covered some of these subjects in greater depth in other posts. Recommended reading: [My Psychic Reading Was Accurate, The Dates Were Wrong!](/accurate-psychic-predictions-my-reading-was-accurate-the-dates-were-wrong) and [Why Your Future Psychic Predictions May Not Be Accurate](/accurate-psychic-predictions-the-baffling-mystery-why-your-future-psychic-predictions-may-not-be-accurate).
+I've covered some of these subjects in greater depth in other posts. Recommended reading: [My Psychic Reading Was Accurate, The Dates Were Wrong!](/accurate-psychic-predictions-my-reading-was-accurate-the-dates-were-wrong.html) and [Why Your Future Psychic Predictions May Not Be Accurate](/accurate-psychic-predictions-the-baffling-mystery-why-your-future-psychic-predictions-may-not-be-accurate.html).
 
-*Cherry Sage has been providing accurate psychic predictions for over two decades. Her main focus is authenticity, honesty and integrity, and one of her missions is to change the existing "imitation" psychic paradigm. You can read hundreds of her clients' [testimonials](/testimonials) on her site.*
+*Cherry Sage has been providing accurate psychic predictions for over two decades. Her main focus is authenticity, honesty and integrity, and one of her missions is to change the existing "imitation" psychic paradigm. You can read hundreds of her clients' [testimonials](/testimonials.html) on her site.*

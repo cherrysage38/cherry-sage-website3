@@ -51,6 +51,6 @@ There are no magicians out there who can "fix" us or the problems that will conf
 
 Tell you the truth. People call me for honest answers and accurate psychic readings, and they can always count on me to tell them the truth. Some people are not ready to hear it, and I understand this all too well.
 
-In life, there is always hope. But relying on people who make false claims and bring false hope will only delay the realization of what is true, which is inevitable. You can be strong, accept what you cannot control, and grow; or you can stall your progress on this journey, your life. The choice is yours. Yes, the choice is yours. You may also like my post, [Can a Psychic Tell If Your Ex Will Come Back?](/can-a-psychic-tell-if-your-ex-will-come-back)
+In life, there is always hope. But relying on people who make false claims and bring false hope will only delay the realization of what is true, which is inevitable. You can be strong, accept what you cannot control, and grow; or you can stall your progress on this journey, your life. The choice is yours. Yes, the choice is yours. You may also like my post, [Can a Psychic Tell If Your Ex Will Come Back?](/can-a-psychic-tell-if-your-ex-will-come-back.html)
 
-*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. [Book a reading with Cherry Sage](/book-appointment).*
+*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. [Book a reading with Cherry Sage](/book-appointment.html).*

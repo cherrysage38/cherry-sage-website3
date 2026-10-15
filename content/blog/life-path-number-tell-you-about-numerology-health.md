@@ -17,7 +17,7 @@ In numerology, your Life Path number points to the health tendencies you may nee
 
 Feeling sluggish, uninspired or just plain sick? Numerology holds a special place in many cultures for discovering a person's strengths and weaknesses, emotional reactions, inner desires, natural talents, and ability to form bonds with others. Your numerology health goes hand in hand with all your traits and tendencies.
 
-If you know your Life Path number, here's what numerology has to say about your health. (Don't know it yet? Try my free [Life Path Calculator](/life-path).)
+If you know your Life Path number, here's what numerology has to say about your health. (Don't know it yet? Try my free [Life Path Calculator](/life-path.html).)
 
 ## What does Life Path Number 1 say about your health?
 
@@ -84,4 +84,4 @@ If you know your Life Path number, here's what numerology has to say about your 
 
 ## How can you learn more about your numerology health?
 
-If you want to know what numerology says about your health, life, relationships or career, I'd love to help. You can get a [professional numerology reading](/numerology) by phone, wherever you are.
+If you want to know what numerology says about your health, life, relationships or career, I'd love to help. You can get a [professional numerology reading](/numerology.html) by phone, wherever you are.

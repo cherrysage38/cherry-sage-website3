@@ -38,6 +38,6 @@ Each day, new victims who feel helpless and vulnerable are ensnared by these pre
 
 ## What can you do if this has happened to you?
 
-If you find yourself in a similar situation, please don't hesitate to [reach out to me](/contact). I empathize with your pain, even though recovering your lost money may be unlikely.
+If you find yourself in a similar situation, please don't hesitate to [reach out to me](/contact.html). I empathize with your pain, even though recovering your lost money may be unlikely.
 
 Remember: a genuine psychic advisor will never ask you to buy things, open credit lines, or pay to remove a curse. Your safety and well-being are my top priorities, and I am here to support you through this challenging time.

@@ -19,7 +19,7 @@ When you’re unsure about your career, it can feel like you’re carrying a hea
 
 ### **Guidance Through Career Blocks**
 
-Career blocks often arise when we feel disconnected from our true calling. Many people come to me when they face indecision, burnout, or a lack of clarity about their career goals. *A client of mine, for example, was stuck in a job that drained her energy. Despite her best efforts, she couldn’t see a way out. After a session of **[accurate psychic readings](/psychic-reading),** we uncovered the underlying fears that were holding her back. This reading gave her the courage to make the necessary changes, leading her to a career path that resonated with her true passions and strengths.*
+Career blocks often arise when we feel disconnected from our true calling. Many people come to me when they face indecision, burnout, or a lack of clarity about their career goals. *A client of mine, for example, was stuck in a job that drained her energy. Despite her best efforts, she couldn’t see a way out. After a session of **[accurate psychic readings](/psychic-reading.html),** we uncovered the underlying fears that were holding her back. This reading gave her the courage to make the necessary changes, leading her to a career path that resonated with her true passions and strengths.*
 
 With the insights provided through psychic readings, we can uncover the root cause of your struggles and create a healing pathway forward. Psychic readings help you release any emotional blocks or limiting beliefs that may be preventing you from achieving success.
 

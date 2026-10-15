@@ -54,7 +54,7 @@ ${arr(s.cards).map((c) => `      <div class="card reveal"><span class="chip">${e
     return `
     ${head(s)}
     <div class="sit-grid">
-${arr(s.cards).map((c) => `      <a class="sit-card reveal" href="${href(c.link || "/shop")}"><p class="sit-q">${esc(c.quote)}</p><span class="sit-cta">${esc(c.label)}</span></a>`).join("\n")}
+${arr(s.cards).map((c) => `      <a class="sit-card reveal" href="${href(c.link || "/shop.html")}"><p class="sit-q">${esc(c.quote)}</p><span class="sit-cta">${esc(c.label)}</span></a>`).join("\n")}
     </div>
   `;
   },

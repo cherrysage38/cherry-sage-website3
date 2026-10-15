@@ -43,4 +43,4 @@ Bitter breakups, the sudden loss of loved ones, and worries about the future can
 
 To me, you are not just a client. You are a passionate individual who deserves peace, clarity and a happy life. I go above and beyond to ease your anxious thoughts and raise the quality of your consciousness and your life. After working with me, you will find the strength to face obstacles and the motivation you need to shape a bright future.
 
-*Interested in an accurate reading? [Book a reading with me](/book-appointment), or give me, Cherry, a call at **301-474-1681** and let's set up an appointment.*
+*Interested in an accurate reading? [Book a reading with me](/book-appointment.html), or give me, Cherry, a call at **301-474-1681** and let's set up an appointment.*

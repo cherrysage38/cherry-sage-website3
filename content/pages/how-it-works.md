@@ -17,7 +17,7 @@ blocks:
   - type: "text"
     boxed: true
     heading: "On the day of your reading"
-    body: "At your arranged time, call Cherry at 301-474-1681.\n\n[Book a Reading](/book-appointment) · [Shop](/shop) · [Contact Cherry](/contact)"
+    body: "At your arranged time, call Cherry at 301-474-1681.\n\n[Book a Reading](/book-appointment.html) · [Shop](/shop.html) · [Contact Cherry](/contact.html)"
   - type: "text"
     boxed: true
     body: "First-time callers get a special introductory offer on their first call."
@@ -38,5 +38,5 @@ blocks:
     heading: "Ready for clarity?"
     body: "Your first step is a quiet one. Book your reading and let the answers you're seeking find their way to you."
     button_label: "Book a Reading"
-    button_link: "/book-appointment"
+    button_link: "/book-appointment.html"
 ---

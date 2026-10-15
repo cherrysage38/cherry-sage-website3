@@ -140,10 +140,10 @@ function renderBlock(block, i, pageSlug) {
     }
     case "cta_text": {
       const body = block.body ? `<p>${esc(block.body)}</p>` : "";
-      return `<section class="section section-dark cta"><div class="wrap reveal"><h2>${esc(block.heading)}</h2>${body}<a class="btn btn-gold" href="${esc(block.button_link || "/book-appointment")}">${esc(block.button_label || "Book a Reading")}</a></div></section>`;
+      return `<section class="section section-dark cta"><div class="wrap reveal"><h2>${esc(block.heading)}</h2>${body}<a class="btn btn-gold" href="${esc(block.button_link || "/book-appointment.html")}">${esc(block.button_label || "Book a Reading")}</a></div></section>`;
     }
     case "cta_image": {
-      return `<a class="img-banner dark" href="${esc(block.link || "/shop")}"><img src="${esc(block.image)}" alt="${esc(block.alt_text || "")}"></a>`;
+      return `<a class="img-banner dark" href="${esc(block.link || "/shop.html")}"><img src="${esc(block.image)}" alt="${esc(block.alt_text || "")}"></a>`;
     }
     case "feature_cards": {
       const eyebrow = block.eyebrow ? `<p class="eyebrow">${esc(block.eyebrow)}</p>` : "";
@@ -166,7 +166,7 @@ function renderBlock(block, i, pageSlug) {
       const posts = pillarPosts(pageSlug);
       if (!posts.length) return "";
       const intro = block.intro ? `<p style="color:var(--ink-soft)">${esc(block.intro)}</p>` : "";
-      const items = posts.map((p) => `<li><a href="/${esc(p.slug)}"><strong>${esc(p.title)}</strong></a>${p.description ? ` — ${esc(p.description)}` : ""}</li>`).join("");
+      const items = posts.map((p) => `<li><a href="/${esc(p.slug)}.html"><strong>${esc(p.title)}</strong></a>${p.description ? ` — ${esc(p.description)}` : ""}</li>`).join("");
       return `<section class="section"><div class="wrap"><div class="section-head reveal"><h2>${esc(block.heading || "Explore your questions")}</h2></div><div class="blk-prose reveal">${intro}<ul>${items}</ul></div></div></section>`;
     }
     case "gallery": {
@@ -279,8 +279,8 @@ ${GENERATED_MARKER}
     <a class="brand" href="/" aria-label="Cherry Sage home"><img src="assets/logo-horizontal.png" alt="Cherry Sage — Psychic, Tarot, Numerology"></a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
     <nav class="primary-nav" id="primaryNav" aria-label="Primary">
-      <ul><li class="has-dropdown"><a href="/meet">About</a><ul class="dropdown"><li><a href="/meet">Meet Cherry</a></li><li><a href="/how-it-works">How It Works</a></li><li><a href="/faqs">FAQs</a></li></ul></li><li class="has-dropdown"><a href="/psychic-reading">Readings</a><ul class="dropdown"><li><a href="/psychic-reading">Psychic Reading</a></li><li><a href="/love-and-relationships">Love &amp; Relationship Readings</a></li><li><a href="/real-and-genuine-psychic-readings">How to Find a Real Psychic</a></li><li><a href="/tarot">Tarot Card Reading</a></li><li><a href="/compatibility">Compatibility</a></li><li><a href="/book-appointment">Book a Reading</a></li></ul></li><li class="has-dropdown"><a href="/numerology">Numerology</a><ul class="dropdown"><li><a href="/free-karmic-reading">Free Numerology Reading</a></li><li><a href="/life-path-number-meanings">Life Path Number Meanings</a></li><li><a href="/basic-number-meanings">Basic Number Meanings</a></li><li><a href="/expression-number">Expression Number</a></li><li><a href="/soul-urge-number">Soul Urge Number</a></li><li><a href="/birthday-number">Birthday Number</a></li><li><a href="/karmic-lessons">Karmic Lessons</a></li><li><a href="/karmic-debts">Karmic Debts</a></li></ul></li><li class="has-dropdown"><a href="/testimonials">Reviews</a><ul class="dropdown"><li><a href="/feedback">Leave Feedback</a></li></ul></li><li class="has-dropdown"><a href="/blog">Blog</a><ul class="dropdown"><li><a href="/articles">Guest Articles</a></li></ul></li><li class="has-dropdown"><a href="/tarot-pull">Free Tools</a><ul class="dropdown"><li><a href="/tarot-pull">Free Tarot Pull</a></li><li><a href="/tarot-spread">Free Tarot Spread</a></li><li><a href="/life-path">Life Path Calculator</a></li><li><a href="/horoscope">Daily Horoscope</a></li></ul></li><li><a href="/shop">Shop</a></li><li><a href="/contact">Contact</a></li><li><a href="/account" class="nav-utility">My Account</a></li></ul>
-      <a class="btn btn-primary" href="/book-appointment">Book a Reading</a>
+      <ul><li class="has-dropdown"><a href="/meet.html">About</a><ul class="dropdown"><li><a href="/meet.html">Meet Cherry</a></li><li><a href="/how-it-works.html">How It Works</a></li><li><a href="/faqs.html">FAQs</a></li></ul></li><li class="has-dropdown"><a href="/psychic-reading.html">Readings</a><ul class="dropdown"><li><a href="/psychic-reading.html">Psychic Reading</a></li><li><a href="/love-and-relationships.html">Love &amp; Relationship Readings</a></li><li><a href="/real-and-genuine-psychic-readings.html">How to Find a Real Psychic</a></li><li><a href="/tarot.html">Tarot Card Reading</a></li><li><a href="/compatibility.html">Compatibility</a></li><li><a href="/book-appointment.html">Book a Reading</a></li></ul></li><li class="has-dropdown"><a href="/numerology.html">Numerology</a><ul class="dropdown"><li><a href="/free-karmic-reading.html">Free Numerology Reading</a></li><li><a href="/life-path-number-meanings.html">Life Path Number Meanings</a></li><li><a href="/basic-number-meanings.html">Basic Number Meanings</a></li><li><a href="/expression-number.html">Expression Number</a></li><li><a href="/soul-urge-number.html">Soul Urge Number</a></li><li><a href="/birthday-number.html">Birthday Number</a></li><li><a href="/karmic-lessons.html">Karmic Lessons</a></li><li><a href="/karmic-debts.html">Karmic Debts</a></li></ul></li><li class="has-dropdown"><a href="/testimonials.html">Reviews</a><ul class="dropdown"><li><a href="/feedback.html">Leave Feedback</a></li></ul></li><li class="has-dropdown"><a href="/blog.html">Blog</a><ul class="dropdown"><li><a href="/articles.html">Guest Articles</a></li></ul></li><li class="has-dropdown"><a href="/tarot-pull.html">Free Tools</a><ul class="dropdown"><li><a href="/tarot-pull.html">Free Tarot Pull</a></li><li><a href="/tarot-spread.html">Free Tarot Spread</a></li><li><a href="/life-path.html">Life Path Calculator</a></li><li><a href="/horoscope.html">Daily Horoscope</a></li></ul></li><li><a href="/shop.html">Shop</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/account.html" class="nav-utility">My Account</a></li></ul>
+      <a class="btn btn-primary" href="/book-appointment.html">Book a Reading</a>
     </nav>
   </div>
 </header>
@@ -294,10 +294,10 @@ ${renderFooter(FOOTER_DATA)}
   <span class="cw-status" title="Cherry is Online"><span class="status-dot"></span>Chat with Ivy</span>
   <span class="cw-bubble"><img src="assets/mark-clean.png" alt=""></span>
 </div>
-<script src="app.js?v=18"></script>
+<script src="app.js?v=19"></script>
 <script src="embers.js?v=5"></script>
 <script src="magic.js?v=2"></script>
-<script src="funnel.js?v=12"></script>
+<script src="funnel.js?v=13"></script>
 <script src="chat.js?v=10"></script>
 <script src="status.js?v=3"></script>
 </body>

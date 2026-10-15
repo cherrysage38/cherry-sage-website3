@@ -76,4 +76,4 @@ Not many people achieve this bond, because if both partners are not evolved enou
 
 It is my belief that a reader may "see" the strong connection or bond between two souls, but no reader or astrologer can tell you if that person is your twin flame. This unique relationship is between you, the other person, and God.
 
-*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. [Book a reading with Cherry Sage](/book-appointment).*
+*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. [Book a reading with Cherry Sage](/book-appointment.html).*

@@ -75,7 +75,7 @@ One psychic may be strongly clairvoyant and receive information visually. Anothe
 
 Two talented psychics looking at the same relationship may even pick up different parts of the situation. One may see the emotional connection very clearly while another picks up the obstacles preventing the relationship from moving forward.
 
-That doesn’t automatically mean one of them isn’t genuine. I discuss this further in my article on [real and genuine psychic readings](/real-and-genuine-psychic-readings).
+That doesn’t automatically mean one of them isn’t genuine. I discuss this further in my article on [real and genuine psychic readings](/real-and-genuine-psychic-readings.html).
 
 But when you consult psychic after psychic, _you_ suddenly have the job of sorting through all those different impressions and predictions.
 
@@ -93,7 +93,7 @@ But if I gave you a reading Tuesday and you’re calling Thursday to ask whether
 
 People think. People reconsider. They miss you. They become angry, get over it, become nostalgic, talk to friends, change their minds and sometimes stubbornly resist doing exactly what they eventually wind up doing.
 
-If you’re wondering about timing, I also explain [how far ahead into the future a psychic can see](/psychic-readings-how-far-ahead-into-the-future-can-a-psychic-see).
+If you’re wondering about timing, I also explain [how far ahead into the future a psychic can see](/psychic-readings-how-far-ahead-into-the-future-can-a-psychic-see.html).
 
 Human beings are complicated.
 
@@ -105,7 +105,7 @@ This may be the most important thing I can tell you.
 
 After a good psychic reading, **give life a chance to happen.**
 
-There can be a real advantage to finding [a psychic whose ability and honesty you’ve learned to trust](/psychic-readings-and-the-profound-wisdom-of-spiritual-guidance-and-the-trusted-advisor). Many of my clients have stayed with me for years, and one advantage is that I already know the history. I don’t have to rediscover the entire situation every time we talk.
+There can be a real advantage to finding [a psychic whose ability and honesty you’ve learned to trust](/psychic-readings-and-the-profound-wisdom-of-spiritual-guidance-and-the-trusted-advisor.html). Many of my clients have stayed with me for years, and one advantage is that I already know the history. I don’t have to rediscover the entire situation every time we talk.
 
 A trusted psychic also shouldn’t be afraid to tell you when you’re asking the same question too much.
 
@@ -117,7 +117,7 @@ Let the future have enough time to become the present.
 
 Too many psychic readings can’t simply _give_ you a different future. But they can leave you confused about the future that’s actually unfolding.
 
-Get your reading. Ask the questions you really want answered. Listen carefully. If you’d like help preparing, here’s how to [get the most from your psychic reading](/how-to-ask-the-right-questions-during-your-psychic-readings).
+Get your reading. Ask the questions you really want answered. Listen carefully. If you’d like help preparing, here’s how to [get the most from your psychic reading](/how-to-ask-the-right-questions-during-your-psychic-readings.html).
 
 Then give the information—and your life—some breathing room.
 

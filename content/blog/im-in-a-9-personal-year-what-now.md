@@ -16,7 +16,7 @@ A 9 Personal Year is a time for letting go, completion and preparing for a new p
 
 As you may have learned, we all have many personal vibrations that affect our lives, and numerology offers specific readings of this energy: past, present and future. You could be in a 3 Personal Year, or a 1 Personal Year. Each year's vibration carries a different, considerable influence for that year.
 
-For instance, if you are in a 7 Personal Year, it would be a year for personal reflection. You will find yourself more introspective and less influenced by outside circumstances, or your circumstances will cause you to think and analyze more than usual. And since this vibration is so internal, those who want to be more dynamic, or in causation mode, may find themselves forced to be more introspective. (You'll find a short guide to every Personal Year in [Discover Your Personal Year in Numerology](/discover-your-personal-year-in-numerology-how-it-shapes-your-path).)
+For instance, if you are in a 7 Personal Year, it would be a year for personal reflection. You will find yourself more introspective and less influenced by outside circumstances, or your circumstances will cause you to think and analyze more than usual. And since this vibration is so internal, those who want to be more dynamic, or in causation mode, may find themselves forced to be more introspective. (You'll find a short guide to every Personal Year in [Discover Your Personal Year in Numerology](/discover-your-personal-year-in-numerology-how-it-shapes-your-path.html).)
 
 ## Why does a 9 year feel like an ending?
 
@@ -36,4 +36,4 @@ The 9 Personal Year warns against starting new relationships or businesses, beca
 
 Going with the flow, even if it's bumpy, will make it easier. Holding on holds us back. A 9 Personal Year can be fulfilling, if you are willing to cooperate with the universe's call to action: something better, improved and even more fulfilling is ahead, if you can just let go.
 
-Not sure which Personal Year you're in? Here's [how to calculate your Personal Year](/how-to-calculate-your-personal-year).
+Not sure which Personal Year you're in? Here's [how to calculate your Personal Year](/how-to-calculate-your-personal-year.html).

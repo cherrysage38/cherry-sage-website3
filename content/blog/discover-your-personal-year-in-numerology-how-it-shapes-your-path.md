@@ -19,7 +19,7 @@ Let's dive in!
 
 ## How do you find your Personal Year?
 
-It's simple, my friend. All you need is your birth date and the current year. Add the digits of your birth month, your birth day and the current year together, then reduce that number to a single digit or a master number. That's your Personal Year number! It's an exciting process to connect with. Don't worry if it sounds a bit cryptic now; I'll guide you every step of the way, and you'll find a full worked example in [How to Calculate Your Personal Year](/how-to-calculate-your-personal-year).
+It's simple, my friend. All you need is your birth date and the current year. Add the digits of your birth month, your birth day and the current year together, then reduce that number to a single digit or a master number. That's your Personal Year number! It's an exciting process to connect with. Don't worry if it sounds a bit cryptic now; I'll guide you every step of the way, and you'll find a full worked example in [How to Calculate Your Personal Year](/how-to-calculate-your-personal-year.html).
 
 ## Why should you care about your Personal Year?
 
@@ -29,15 +29,15 @@ It's simple, my friend. All you need is your birth date and the current year. Ad
 
 Here's a quick peek at what each year represents:
 
-- **Year 1:** New beginnings, fresh starts and taking risks. A year to plant seeds for the future. (More on [Number 1](/numerology-reading-understanding-number-1).)
-- **Year 2:** Patience and partnerships. Building relationships and finding harmony. (More on [Number 2](/numerology-reading-understanding-number-2).)
-- **Year 3:** Creativity, self-expression and fun. The year for joy and celebrating your individuality. (More on [Number 3](/numerology-reading-what-is-the-meaning-of-number-3).)
+- **Year 1:** New beginnings, fresh starts and taking risks. A year to plant seeds for the future. (More on [Number 1](/numerology-reading-understanding-number-1.html).)
+- **Year 2:** Patience and partnerships. Building relationships and finding harmony. (More on [Number 2](/numerology-reading-understanding-number-2.html).)
+- **Year 3:** Creativity, self-expression and fun. The year for joy and celebrating your individuality. (More on [Number 3](/numerology-reading-what-is-the-meaning-of-number-3.html).)
 - **Year 4:** Hard work and structure. This year asks you to lay the groundwork for long-term success.
 - **Year 5:** Freedom, adventure and change. You'll feel the need to shake things up and explore.
 - **Year 6:** Love, responsibility and home. Focus on your relationships and nurturing your surroundings.
 - **Year 7:** Spiritual growth and introspection. A time to deepen your connection with your soul.
 - **Year 8:** Power, material success and ambition. A year of leadership and manifestation.
-- **Year 9:** Completion and closure. You're wrapping up cycles and getting ready for new chapters. (I write more about this year in [I'm in a 9 Personal Year, What Now?](/im-in-a-9-personal-year-what-now))
+- **Year 9:** Completion and closure. You're wrapping up cycles and getting ready for new chapters. (I write more about this year in [I'm in a 9 Personal Year, What Now?](/im-in-a-9-personal-year-what-now.html))
 
 ## How do you live in flow with your Personal Year?
 
@@ -51,7 +51,7 @@ I once had a humorous situation with a client who insisted they weren't in a 4 y
 - **Step 2:** If you get a double-digit number, reduce it to a single digit. For example, 15 becomes 1 + 5 = 6.
 - **Step 3:** That single digit is your Personal Year!
 
-I recommend a [full numerology reading](/numerology) to explore more deeply how each year's number influences your unique spiritual growth.
+I recommend a [full numerology reading](/numerology.html) to explore more deeply how each year's number influences your unique spiritual growth.
 
 ## Why is your Personal Year a guiding light?
 

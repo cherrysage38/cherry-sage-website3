@@ -52,6 +52,6 @@ With that privacy, you can open up in a way that is both calming and empowering.
 
 ## What does honoring your free will look like in every session?
 
-The most powerful readings come from a place of trust, honesty and integrity. As a spiritual counselor, my priority is to honor your free will. When a reading does that, it becomes a sacred exchange: a moment of clarity that leads you toward a future where you are in control. Real empowerment comes from trusting yourself, listening to your intuition, and making choices aligned with your highest good. You can read more about how I work on my [Psychic Reading](/psychic-reading) page.
+The most powerful readings come from a place of trust, honesty and integrity. As a spiritual counselor, my priority is to honor your free will. When a reading does that, it becomes a sacred exchange: a moment of clarity that leads you toward a future where you are in control. Real empowerment comes from trusting yourself, listening to your intuition, and making choices aligned with your highest good. You can read more about how I work on my [Psychic Reading](/psychic-reading.html) page.
 
 Remember, you are the creator of your path, and my role is to offer insight. I want to help you see what's available to you, but the power to move forward is in your hands. You are the one who decides how to proceed, what to embrace, and how to heal.

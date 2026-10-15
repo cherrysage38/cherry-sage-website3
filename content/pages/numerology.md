@@ -29,7 +29,7 @@ blocks:
 
       ## What is your Life Path number?
 
-      Your Life Path number is like a map of your soul's journey. It comes from your full birth date, and it is the central number in numerology: the path, the purpose and the lessons your life is built around. Those with a Life Path 1 are often natural-born leaders, while a Life Path 4 tends to be grounded, stable and dependable. Your Life Path also shapes your relationships, your career and even your health. Try the free calculator below, then read [what each Life Path number means](/life-path-number-meanings).
+      Your Life Path number is like a map of your soul's journey. It comes from your full birth date, and it is the central number in numerology: the path, the purpose and the lessons your life is built around. Those with a Life Path 1 are often natural-born leaders, while a Life Path 4 tends to be grounded, stable and dependable. Your Life Path also shapes your relationships, your career and even your health. Try the free calculator below, then read [what each Life Path number means](/life-path-number-meanings.html).
   - type: "lifepath_tool"
     heading: "Find your Life Path number"
     intro: "Enter your birth date for a quick, free preview of your Life Path."
@@ -41,12 +41,12 @@ blocks:
 
       Your Life Path is the center, but a full chart reads many numbers together. These are the elements I read:
 
-      - **[Expression](/expression-number):** drawn from every letter of your full birth name. What you are here to build and express in this lifetime.
-      - **[Soul Urge](/soul-urge-number):** drawn from the vowels in your name. What your heart most deeply wants, beneath the surface.
-      - **[Birthday Number](/birthday-number):** the day of the month you were born. A specific gift or talent you carry with you.
-      - **[Basic Number Meanings](/basic-number-meanings):** the core meaning of each number, one through nine and the master numbers. The alphabet numerology speaks in.
-      - **[Karmic Lessons](/karmic-lessons):** the numbers missing from your name, pointing to the lessons your soul came here to learn.
-      - **[Karmic Debts](/karmic-debts):** the numbers 13, 14, 16 and 19, carried energy asking to be balanced in this life.
+      - **[Expression](/expression-number.html):** drawn from every letter of your full birth name. What you are here to build and express in this lifetime.
+      - **[Soul Urge](/soul-urge-number.html):** drawn from the vowels in your name. What your heart most deeply wants, beneath the surface.
+      - **[Birthday Number](/birthday-number.html):** the day of the month you were born. A specific gift or talent you carry with you.
+      - **[Basic Number Meanings](/basic-number-meanings.html):** the core meaning of each number, one through nine and the master numbers. The alphabet numerology speaks in.
+      - **[Karmic Lessons](/karmic-lessons.html):** the numbers missing from your name, pointing to the lessons your soul came here to learn.
+      - **[Karmic Debts](/karmic-debts.html):** the numbers 13, 14, 16 and 19, carried energy asking to be balanced in this life.
 
       Each of these is one piece of the picture, not the whole of it. Read on its own, any single number can only tell you so much.
 
@@ -54,14 +54,14 @@ blocks:
 
       A karmic lesson comes from a number missing from your name at birth. It shows an area of life that needs extra attention to balance that number's energy. A karmic debt is much heavier: a significant difficulty met in this life as payment for the misuse of energies in a past life. When 13/4, 14/5, 16/7 or 19/1 appears in your core numbers, that debt may be one of the forces shaping your life, until you accept it and do the work to balance it. A karmic lesson is much less dominating than a karmic debt.
 
-      To see the energy you have carried and gathered across this lifetime, try my free [Karmic Accumulation Reading](/free-karmic-reading), the sum of the missing numbers in your name.
+      To see the energy you have carried and gathered across this lifetime, try my free [Karmic Accumulation Reading](/free-karmic-reading.html), the sum of the missing numbers in your name.
 
       ## What is a Full Life Numerology reading?
 
       It is my complete reading of your numbers, every element above read together, so you see how they work with and against each other in your life. You can have it two ways:
 
       - **Live by phone:** a [Full Life Numerology reading by phone](/reading/full-life-numerology-reading-by-phone), always 60 minutes, where I read your chart with you and you can ask questions as we go.
-      - **As a written report:** a [Full-Life Numerology Profile](/report-full-life-numerology-profile), with [compatibility and other reports](/shop#numerology) in the shop.
+      - **As a written report:** a [Full-Life Numerology Profile](/report-full-life-numerology-profile.html), with [compatibility and other reports](/shop.html#numerology) in the shop.
   - type: "quote"
     quote: "Numerology is an intensely practical system designed to provide a unique insight into human personality and its potential, but it is much more than that. It is a valuable means whereby our intuition and extrasensory perception (ESP) can develop and, in turn, improve all-around psychic awareness."
     name: "David A. Phillips"

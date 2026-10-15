@@ -24,7 +24,7 @@ Resistance to your messages is like a clog in the energy stream. It blocks the f
 
 So take deep breaths and calm yourself. Call with a sense of openness, because you don't want to resist the information that is flowing. When you call a psychic, have your questions ready. Write them down.
 
-Preparing good questions also means noticing when you're asking the same one over and over. I explain why [too many psychic readings can leave you more confused about your future](/can-too-many-psychic-readings-give-you-the-wrong-future), and when it helps to give a reading time to unfold.
+Preparing good questions also means noticing when you're asking the same one over and over. I explain why [too many psychic readings can leave you more confused about your future](/can-too-many-psychic-readings-give-you-the-wrong-future.html), and when it helps to give a reading time to unfold.
 
 ## What are my tips for getting clear and powerful messages?
 
@@ -43,6 +43,6 @@ In short, she felt helpless and couldn't see the light because she wasn't trusti
 
 Your choices are creating your destiny. I will guide you based on what I see may be your real obstacles to fulfillment, but be assured that fulfillment is definitely possible. What you want can manifest when you get out of your own way. Are you ready for clarity? Clarity awaits you when you are ready to embrace it fully.
 
-Recommended reading: [Facing the Future with Accurate Psychic Predictions](/facing-the-future-with-accurate-psychic-predictions)
+Recommended reading: [Facing the Future with Accurate Psychic Predictions](/facing-the-future-with-accurate-psychic-predictions.html)
 
-*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. [Book a reading with Cherry Sage](/book-appointment).*
+*Cherry Sage is a psychic and intuitive advisor with over two decades of professional experience, offering clarity, insight and spiritual support to people around the world in a warm, caring and safe space. [Book a reading with Cherry Sage](/book-appointment.html).*
