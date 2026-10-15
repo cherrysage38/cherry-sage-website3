@@ -2,16 +2,15 @@
 title: "How to Find a Real, Accurate Psychic"
 seo_title: "How to Find a Real, Accurate Psychic | Cherry Sage"
 description: "How can you tell a real psychic from a fake one? Cherry Sage explains what a genuine reading looks like, how accurate readings are, and the warning signs of a psychic scam."
-hero_eyebrow: ""
+hero_eyebrow: "Before you choose a psychic"
 hero_lede: "Honest advice on finding a psychic you can trust."
 guide_line: "Start there for honest advice on telling a real psychic from a fake one."
 blocks:
   - type: "text"
     article: "true"
-    heading: ""
+    eyebrow: "What to look for"
+    heading: "How do you find a real, accurate psychic?"
     body: |-
-      **How do you find a real, accurate psychic?**
-
       Look for a professional with a long track record, a clear way of working, and respect for your free will. A real psychic tells you what they genuinely receive, even when it isn’t what you were hoping to hear. A real psychic won’t promise guaranteed outcomes, won’t ask you for money to remove a curse or “cleanse” your energy, and won’t keep you calling with stories designed to make you feel good.
 
       I’m a professional psychic, and some of my clients have been calling me for more than twenty years. I’ve also been on the other side of the phone. Over the years I’ve had readings from dozens of so-called psychic advisers, and I’ve seen exactly how people who are not real work their magic.

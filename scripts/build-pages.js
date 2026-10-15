@@ -79,6 +79,14 @@ function leadQuestion(html) {
   if (!m) return html;
   return m[1] + `<p class="lead-question" style="font-size:1.28em;line-height:1.4;margin:0 0 .6rem"><strong>${m[2]}</strong></p>` + html.slice(m[0].length);
 }
+// Optional button under a Text section (Bev, 2026-10-15, Compatibility): "primary" is the gold
+// buy button, "secondary" the quieter outlined one, so a reading link never competes with the report.
+function textButton(b) {
+  if (!b || !b.button_label || !b.button_link) return "";
+  const cls = b.button_style === "secondary" ? "btn btn-ghost" : "btn btn-gold";
+  return `<div class="btn-row" style="margin:1.4rem 0 .4rem"><a class="${cls}" href="${esc(b.button_link)}">${esc(b.button_label)}</a></div>`;
+}
+
 function renderBlocks(blocks, pageSlug) {
   const out = [];
   let run = [];
@@ -97,8 +105,8 @@ function renderBlocks(blocks, pageSlug) {
       ? `<aside class="blk-side-card">${b.tag ? `<span class="chip">${esc(b.tag)}</span>` : ""}<h3>${esc(b.title)}</h3><p>${esc(b.text)}</p></aside>`
       // eyebrow: a small gold line over a large heading, the opening the Tarot page uses (Bev, 2026-10-15)
       : b.eyebrow
-        ? `<p class="eyebrow" style="margin:0 0 .8rem;line-height:1.5">${esc(b.eyebrow)}</p><h2 style="font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.12;color:var(--oxblood);margin:0 0 .6rem">${esc(b.heading)}</h2>${mdBlock(b.body)}`
-        : `${b.heading ? `<h2>${esc(b.heading)}</h2>` : ""}${mdBlock(b.body)}`).join("");
+        ? `<p class="eyebrow" style="margin:0 0 .8rem;line-height:1.5">${esc(b.eyebrow)}</p><h2 style="font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.12;color:var(--oxblood);margin:0 0 .6rem">${esc(b.heading)}</h2>${mdBlock(b.body)}${textButton(b)}`
+        : `${b.heading ? `<h2>${esc(b.heading)}</h2>` : ""}${mdBlock(b.body)}${textButton(b)}`).join("");
     // tight: "true" lets a short opening heading sit close to what follows (Bev, 2026-10-15, Meet and Compatibility)
     const tight = article.some((b) => String(b.tight) === "true") ? ' style="padding-bottom:0"' : "";
     out.push(`<section class="section"${tight}><div class="wrap"><div class="blk-prose blk-article reveal">${leadQuestion(inner)}</div></div></section>`);
@@ -132,7 +140,7 @@ function renderBlock(block, i, pageSlug) {
         : "";
       // article: true (Love & Relationships, 2026-10-10) styles ## headings inside the text as article subheads
       const cls = String(block.article) === "true" ? "blk-prose blk-article" : "blk-prose";
-      return `<section class="section"><div class="wrap">${heading}<div class="${cls} reveal">${mdBlock(block.body)}</div></div></section>`;
+      return `<section class="section"><div class="wrap">${heading}<div class="${cls} reveal">${mdBlock(block.body)}${textButton(block)}</div></div></section>`;
     }
     case "image_text": {
       const side = block.image_position === "right" ? " right" : "";
@@ -173,6 +181,21 @@ function renderBlock(block, i, pageSlug) {
         .map((it) => `<div class="blk-faq-item"><h3>${esc(it.question)}</h3>${mdBlock(it.answer)}</div>`)
         .join("");
       return `<section class="section"><div class="wrap"><div class="section-head reveal"><h2>${esc(block.heading || "Frequently Asked Questions")}</h2></div><div class="reveal">${items}</div></div></section>`;
+    }
+    case "report_offer": {
+      // Report cards with price and an order button (Bev, 2026-10-15, Compatibility). Prices here are
+      // typed in the page, so keep them the same as the product in the Dashboard.
+      const heading = block.heading ? `<div class="section-head reveal"><h2>${esc(block.heading)}</h2></div>` : "";
+      const intro = block.intro ? `<p style="max-width:680px;margin:0 auto 1.4rem;text-align:center">${esc(block.intro)}</p>` : "";
+      const offers = block.offers || [];
+      const cards = offers.map((o) => {
+        const main = String(o.featured) === "true";
+        const tag = o.tag ? `<span class="chip" style="align-self:flex-start">${esc(o.tag)}</span>` : "";
+        const btn = `<a class="btn ${main ? "btn-gold" : "btn-ghost"}" href="${esc(o.button_link)}">${esc(o.button_label || "Order now")}</a>`;
+        return `<div class="card reveal" style="text-align:left;display:flex;flex-direction:column;gap:.5rem${main ? ";border-color:var(--gold);box-shadow:var(--shadow-sm)" : ""}">${tag}<h3 style="margin:.2rem 0 0">${esc(o.name)}</h3><div style="font-family:var(--font-display);font-size:2.2rem;line-height:1.1;color:var(--oxblood)">${esc(o.price)}</div><p style="margin:0;flex:1">${esc(o.text)}</p><div style="margin-top:.6rem">${btn}</div></div>`;
+      }).join("");
+      const cols = offers.length > 1 ? "grid-2" : "";
+      return `<section class="section section-tint" id="${esc(block.anchor || "report")}"><div class="wrap" style="max-width:900px">${heading}${intro}<div class="grid ${cols}" style="gap:1.6rem">${cards}</div></div></section>`;
     }
     case "pillar_posts": {
       const posts = pillarPosts(pageSlug);
