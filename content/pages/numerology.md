@@ -37,6 +37,8 @@ blocks:
     article: "true"
     heading: ""
     body: |-
+      Want to see exactly how your numbers are made? My free [Number Breakdown](/numerology-breakdown.html) shows every letter and digit of your Life Path, Expression and Soul Urge, reduced step by step.
+
       ## What other numbers make up your numerology chart?
 
       Your Life Path is the center, but a full chart reads many numbers together. These are the elements I read:
