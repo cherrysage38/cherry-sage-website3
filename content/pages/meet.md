@@ -4,6 +4,12 @@ seo_title: "Meet Cherry Sage | My Story & Psychic Journey"
 description: "Discover Cherry Sage’s journey from sensitive child and spiritual seeker to professional clairvoyant, clairaudient, empath, and numerologist."
 hero_lede: "Clairvoyant, Clairaudient, Empath and Numerologist"
 blocks:
+  - type: "text"
+    article: "true"
+    tight: "true"
+    heading: "Who Is Cherry Sage?"
+    body: |-
+      I'm a professional psychic: a clairvoyant, clairaudient, empath and numerologist who reads with honesty and care. This is the story of how I came to this work.
   - type: "image_text"
     body: |-
       My journey began long before I ever considered giving psychic readings for a living. In fact, becoming a psychic wasn’t something I had planned at all. My story began with a little girl who was extraordinarily sensitive to the people around her, a twelve-year-old who couldn’t understand the purpose of life if we were simply going to die, and a teenager whose discovery of reincarnation would change the way she understood existence.

@@ -96,7 +96,9 @@ function renderBlocks(blocks, pageSlug) {
     const inner = article.map((b) => b.type === "side_card"
       ? `<aside class="blk-side-card">${b.tag ? `<span class="chip">${esc(b.tag)}</span>` : ""}<h3>${esc(b.title)}</h3><p>${esc(b.text)}</p></aside>`
       : `${b.heading ? `<h2>${esc(b.heading)}</h2>` : ""}${mdBlock(b.body)}`).join("");
-    out.push(`<section class="section"><div class="wrap"><div class="blk-prose blk-article reveal">${leadQuestion(inner)}</div></div></section>`);
+    // tight: "true" lets a short opening heading sit close to what follows (Bev, 2026-10-15, Meet and Compatibility)
+    const tight = article.some((b) => String(b.tight) === "true") ? ' style="padding-bottom:0"' : "";
+    out.push(`<section class="section"${tight}><div class="wrap"><div class="blk-prose blk-article reveal">${leadQuestion(inner)}</div></div></section>`);
     article = [];
   };
   blocks.forEach((b, i) => {
@@ -126,7 +128,7 @@ function renderBlock(block, i, pageSlug) {
       const side = block.image_position === "right" ? " right" : "";
       const heading = block.heading ? `<h2>${esc(block.heading)}</h2>` : "";
       const body = esc(block.body).replace(/\n/g, "<br>");
-      return `<section class="section"><div class="wrap"><div class="blk-imgtext${side} reveal">
+      return `<section class="section"><div class="wrap"><div class="blk-imgtext${side} reveal" style="align-items:start">
         <div><img src="${esc(block.image)}" alt="${esc(block.image_alt || block.heading || "")}"></div>
         <div>${heading}<p>${body}</p></div>
       </div></div></section>`;
