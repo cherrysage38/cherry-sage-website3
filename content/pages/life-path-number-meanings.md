@@ -53,6 +53,8 @@ blocks:
 
     Upon closer analysis of the Numerology Chart, elaboration of some of the subtleties involved are revealed.
 
+    Does the description feel incomplete? Read [Why Doesn’t My Life Path Number Sound Like Me?](/why-doesnt-my-life-path-number-sound-like-me)
+
     Related Blog Posts: [9 Personal Year- I’m in a 9 Personal Year, Now What?](/im-in-a-9-personal-year-what-now)
 - type: cta_text
   heading: Go deeper with your own numbers
