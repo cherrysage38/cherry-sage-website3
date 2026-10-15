@@ -99,7 +99,14 @@ function renderBlocks(blocks, pageSlug) {
     // tight: "true" lets a short opening heading sit close to what follows (Bev, 2026-10-15, Meet and Compatibility)
     const tight = article.some((b) => String(b.tight) === "true") ? ' style="padding-bottom:0"' : "";
     out.push(`<section class="section"${tight}><div class="wrap"><div class="blk-prose blk-article reveal">${leadQuestion(inner)}</div></div></section>`);
+    afterTight = !!tight;
     article = [];
+  };
+  // ...and the section right after it starts close underneath (Bev, 2026-10-15, /meet "close the gap")
+  let afterTight = false;
+  const pushBlock = (html) => {
+    out.push(afterTight ? html.replace(/^<section class="([^"]*)"/, '<section class="$1" style="padding-top:1.6rem"') : html);
+    afterTight = false;
   };
   blocks.forEach((b, i) => {
     const inArticle = b && ((b.type === "text" && String(b.article) === "true" && !b.boxed) || b.type === "side_card");
@@ -107,7 +114,7 @@ function renderBlocks(blocks, pageSlug) {
     flushArticle();
     if (b && b.type === "text" && b.boxed) { run.push(b); return; }
     flush();
-    out.push(renderBlock(b, i, pageSlug));
+    pushBlock(renderBlock(b, i, pageSlug));
   });
   flushArticle();
   flush();
