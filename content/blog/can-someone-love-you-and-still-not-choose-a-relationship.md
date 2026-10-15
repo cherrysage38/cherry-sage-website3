@@ -2,7 +2,7 @@
 title: "Can Someone Love You and Still Not Choose a Relationship?"
 seo_title: "Can Someone Love You but Not Choose a Relationship? | Cherry Sage"
 description: "Someone can love you without choosing commitment. Cherry Sage explains feelings, intentions, patience, and making your own choice about the relationship."
-date: 2026-10-22
+date: 2026-10-15
 category: Love & Relationships
 author: Cherry Sage
 image: /assets/blog/can-someone-love-you-and-still-not-choose-a-relationship.jpg
