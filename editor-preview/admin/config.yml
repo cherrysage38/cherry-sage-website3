@@ -270,6 +270,9 @@ collections:
               - { label: "Text", name: "body", widget: "markdown", editor_components: ["image", "code-block"] }
               - { label: "Show in a box", name: "boxed", widget: "boolean", required: false, default: false, hint: "Puts this section in a cream box with a gold border. Boxed sections next to each other sit together in one column." }
               - { label: "Article style headings", name: "article", widget: "boolean", required: false, default: false, hint: "For a long section written like an article: headings typed with ## in the text are drawn a little smaller, with space above them." }
+              - { label: "Button text (optional)", name: "button_label", widget: "string", required: false, hint: "Adds a button under this text. Fill in the button link too." }
+              - { label: "Button link (optional)", name: "button_link", widget: "string", required: false, hint: "e.g. /report-compatibility-love-report, or #report to jump to the report cards on this page" }
+              - { label: "Button style", name: "button_style", widget: "select", required: false, default: "primary", options: [{ label: "Gold (main offer)", value: "primary" }, { label: "Outlined (secondary)", value: "secondary" }] }
           - label: "Side Card"
             name: "side_card"
             widget: "object"
@@ -347,6 +350,27 @@ collections:
             summary: "Compatibility Calculator"
             fields:
               - { label: "Heading (optional)", name: "heading", widget: "string", required: false, hint: "Leave empty for \"See how your numbers meet\". The calculator itself fills in underneath. Use it once per page." }
+          - label: "Report Offer"
+            name: "report_offer"
+            widget: "object"
+            summary: "Report Offer — {{fields.heading}}"
+            hint: "Cards with a report's name, price and order button. Prices are typed here, so keep them the same as in the Dashboard."
+            fields:
+              - { label: "Heading (optional)", name: "heading", widget: "string", required: false }
+              - { label: "Short intro (optional)", name: "intro", widget: "text", required: false }
+              - { label: "Jump link name", name: "anchor", widget: "string", required: false, default: "report", hint: "Buttons elsewhere on the page can link to #report to jump here." }
+              - label: "Reports"
+                name: "offers"
+                widget: "list"
+                summary: "{{fields.name}} — {{fields.price}}"
+                fields:
+                  - { label: "Small tag (optional)", name: "tag", widget: "string", required: false }
+                  - { label: "Report name", name: "name", widget: "string" }
+                  - { label: "Price", name: "price", widget: "string", hint: "e.g. $29" }
+                  - { label: "Text", name: "text", widget: "text" }
+                  - { label: "Button text", name: "button_label", widget: "string" }
+                  - { label: "Button link", name: "button_link", widget: "string" }
+                  - { label: "Main offer (gold button)", name: "featured", widget: "boolean", required: false, default: false }
           - label: "Guide Posts (fills itself)"
             name: "pillar_posts"
             widget: "object"
