@@ -95,9 +95,21 @@ function renderBlocks(blocks, pageSlug) {
     if (!article.length) return;
     const inner = article.map((b) => b.type === "side_card"
       ? `<aside class="blk-side-card">${b.tag ? `<span class="chip">${esc(b.tag)}</span>` : ""}<h3>${esc(b.title)}</h3><p>${esc(b.text)}</p></aside>`
-      : `${b.heading ? `<h2>${esc(b.heading)}</h2>` : ""}${mdBlock(b.body)}`).join("");
-    out.push(`<section class="section"><div class="wrap"><div class="blk-prose blk-article reveal">${leadQuestion(inner)}</div></div></section>`);
+      // eyebrow: a small gold line over a large heading, the opening the Tarot page uses (Bev, 2026-10-15)
+      : b.eyebrow
+        ? `<p class="eyebrow" style="margin:0 0 .8rem;line-height:1.5">${esc(b.eyebrow)}</p><h2 style="font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.12;color:var(--oxblood);margin:0 0 .6rem">${esc(b.heading)}</h2>${mdBlock(b.body)}`
+        : `${b.heading ? `<h2>${esc(b.heading)}</h2>` : ""}${mdBlock(b.body)}`).join("");
+    // tight: "true" lets a short opening heading sit close to what follows (Bev, 2026-10-15, Meet and Compatibility)
+    const tight = article.some((b) => String(b.tight) === "true") ? ' style="padding-bottom:0"' : "";
+    out.push(`<section class="section"${tight}><div class="wrap"><div class="blk-prose blk-article reveal">${leadQuestion(inner)}</div></div></section>`);
+    afterTight = !!tight;
     article = [];
+  };
+  // ...and the section right after it starts close underneath (Bev, 2026-10-15, /meet "close the gap")
+  let afterTight = false;
+  const pushBlock = (html) => {
+    out.push(afterTight ? html.replace(/^<section class="([^"]*)"/, '<section class="$1" style="padding-top:1.6rem"') : html);
+    afterTight = false;
   };
   blocks.forEach((b, i) => {
     const inArticle = b && ((b.type === "text" && String(b.article) === "true" && !b.boxed) || b.type === "side_card");
@@ -105,7 +117,7 @@ function renderBlocks(blocks, pageSlug) {
     flushArticle();
     if (b && b.type === "text" && b.boxed) { run.push(b); return; }
     flush();
-    out.push(renderBlock(b, i, pageSlug));
+    pushBlock(renderBlock(b, i, pageSlug));
   });
   flushArticle();
   flush();
@@ -126,7 +138,7 @@ function renderBlock(block, i, pageSlug) {
       const side = block.image_position === "right" ? " right" : "";
       const heading = block.heading ? `<h2>${esc(block.heading)}</h2>` : "";
       const body = esc(block.body).replace(/\n/g, "<br>");
-      return `<section class="section"><div class="wrap"><div class="blk-imgtext${side} reveal">
+      return `<section class="section"><div class="wrap"><div class="blk-imgtext${side} reveal" style="align-items:start">
         <div><img src="${esc(block.image)}" alt="${esc(block.image_alt || block.heading || "")}"></div>
         <div>${heading}<p>${body}</p></div>
       </div></div></section>`;
@@ -202,7 +214,7 @@ function renderBlock(block, i, pageSlug) {
       return `<section class="section" id="compatibility-calculator"><div class="wrap">
   <div class="card reveal" style="max-width:760px;margin:0 auto;text-align:center">
     <span class="chip">Free · Cherry's method</span>
-    <h2>${heading}</h2>
+    <h3 style="font-size:clamp(1.3rem,2.2vw,1.6rem);margin:.5rem 0 .4rem">${heading}</h3>
     <p>Enter both full names exactly as recorded on the birth certificate (first, middle and last, up to four names; no confirmation or married names) and both birth dates to compare your Life Path, Soul Urge and Expression numbers.</p>
     <form id="cpForm" novalidate style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:.8rem 0;text-align:left">
       <fieldset style="border:0;padding:0;margin:0;display:grid;gap:.6rem">

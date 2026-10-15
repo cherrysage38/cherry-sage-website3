@@ -4,6 +4,13 @@ seo_title: "Meet Cherry Sage | My Story & Psychic Journey"
 description: "Discover Cherry Sage’s journey from sensitive child and spiritual seeker to professional clairvoyant, clairaudient, empath, and numerologist."
 hero_lede: "Clairvoyant, Clairaudient, Empath and Numerologist"
 blocks:
+  - type: "text"
+    article: "true"
+    tight: "true"
+    eyebrow: "My story, in my own words"
+    heading: "Who Is Cherry Sage?"
+    body: |-
+      I'm a professional psychic: a clairvoyant, clairaudient, empath and numerologist, reading for clients since 1999. This is the story of how I came to this work.
   - type: "image_text"
     body: |-
       My journey began long before I ever considered giving psychic readings for a living. In fact, becoming a psychic wasn’t something I had planned at all. My story began with a little girl who was extraordinarily sensitive to the people around her, a twelve-year-old who couldn’t understand the purpose of life if we were simply going to die, and a teenager whose discovery of reincarnation would change the way she understood existence.
@@ -68,7 +75,7 @@ blocks:
 
       By then, I was also having visions of myself working from home full-time. I could see a future in which I would build my own business while still being present for my son. I remember telling him, “Mommy is going to be working from home and I will be taking you to school and picking you up.” I wasn’t simply imagining a convenient arrangement. I could see that life ahead of me, and I believed it was going to happen.
 
-      I eventually returned home to Maryland equipped with something I never could have anticipated when I left: years of spiritual study, extensive experience reading people, and a much more developed understanding of my psychic abilities. I had gone to New York to pursue show business and came home a spiritual guide. In time, I quit my job and started my professional psychic reading business in 1999. That same year, Spin Magazine found my site and invited me to be their “Ask the Expert” guest.
+      I eventually returned home to Maryland equipped with something I never could have anticipated when I left: years of spiritual study, extensive experience reading people, and a much more developed understanding of my psychic abilities. I had gone to New York to pursue show business and came home a spiritual guide. In time, I quit my job and started my professional psychic reading business. That same year, Spin Magazine found my site and invited me to be their “Ask the Expert” guest.
 
       And here I am today.
   - type: "text"
