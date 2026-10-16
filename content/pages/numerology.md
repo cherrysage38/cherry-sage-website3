@@ -37,7 +37,7 @@ blocks:
     article: "true"
     heading: ""
     body: |-
-      Want to see exactly how your numbers are made? My free [Number Breakdown](/numerology-breakdown.html) shows every letter and digit of your Life Path, Expression and Soul Urge, reduced step by step.
+      Want to see exactly how your numbers are made? My free [Number Breakdown](/numerology-breakdown) shows every letter and digit of your Life Path, Expression and Soul Urge, reduced step by step.
 
       ## What other numbers make up your numerology chart?
 
