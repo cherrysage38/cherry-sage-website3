@@ -39,6 +39,8 @@ columns:
         url: /tarot-spread
       - label: Life Path Calculator
         url: /life-path
+      - label: Number Breakdown
+        url: /numerology-breakdown
       - label: Karmic Accumulation
         url: /free-karmic-reading
       - label: Daily Horoscope
