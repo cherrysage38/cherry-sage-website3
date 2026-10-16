@@ -46,7 +46,7 @@ blocks:
 
     Their imagination and creativity allows some 9s to adopt the arts. Others make excellent scientists, and still others are businessmen. The world is truly their oyster.
 
-    Check out her Karmic Lessons as this will reveal something about why she came back as a double 8. [These pages are still being constructed, please bookmark and check back later.]
+    Check out her [Karmic Lessons](/karmic-lessons) as this will reveal something about why she came back as a double 8.
 
     ## UNDERSTANDING THE EXPRESSION
 

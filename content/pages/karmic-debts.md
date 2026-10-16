@@ -70,11 +70,5 @@ blocks:
     One of the central lessons for people with the 19 Karmic Debt is that you stubbornly resist help. Much of your independence is self-imposed; you simply don’t want to listen to others, or to accept the help or advice of others. The 19 Karmic Debt can become a self imposed prison if you do not open up to the reality or interdependence and the mutual need for love.
 
 
-    The most important lesson for the 19 Karmic Debt is: While you seek to stand on your own feet, you are still a human being, deeply connected with others and in need of the support, assistance, and human understanding that all people need. Those with the 19 Karmic Debt will learn the hard way that “no man is an island,” and that we are, indeed, “all bits of the main!”
-
-
-    .~.~.~.~.~.~.~.~.~.
-
-
-    Also related terms: birthday number, life path, soul urge, heart’s desire, expression, master numbers, karmic debts , karmic lessons, online numerology reading, numerology reading, free numerology, free numerology reading, numerology chart, numerology compatibility, astro-numerology, name numerology, free numerology report, numerology profiles, karmic debts, online numerology, numerology software, Chaldean numerology, numerology forecast, chinese numerology, numerology prediction, free numerology prediction. See also, What Is Numerology page. Articles are constantly being added with regard to these and other related online numerology reading terminology.'
+    The most important lesson for the 19 Karmic Debt is: While you seek to stand on your own feet, you are still a human being, deeply connected with others and in need of the support, assistance, and human understanding that all people need. Those with the 19 Karmic Debt will learn the hard way that “no man is an island,” and that we are, indeed, “all bits of the main!”'
 ---
