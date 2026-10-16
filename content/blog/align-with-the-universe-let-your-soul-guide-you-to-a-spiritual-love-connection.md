@@ -9,6 +9,7 @@ image_alt: "A couple sitting together on a hillside, watching the sun set over a
 seo_title: "Let Your Soul Guide You to a Spiritual Love Connection"
 description: "Looking for soulful love? How a psychic reading can help you understand your heart's true desires and recognize a real spiritual connection."
 related: true
+pillar: love-and-relationships
 ---
 
 *Is there such a thing as an **accurate love reading**? Let me share a moment that might illuminate the answer.*

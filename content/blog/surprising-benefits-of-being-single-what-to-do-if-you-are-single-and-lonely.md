@@ -7,6 +7,7 @@ image_alt: "A smiling woman relaxing with a cup of tea in a wicker chair on a su
 seo_title: "Surprising Benefits of Being Single | Cherry Sage"
 description: "There comes a point in your life when you will want/need to be in a relationship. The special kind that makes you feel…"
 related: false
+pillar: love-and-relationships
 ---
 
 There comes a point in your life when you will want/need to be in a relationship.  The special kind that makes you feel like smiling for no reason, staring off into space or tripping over your own feet even, because you sort of get lost with the emotions and thoughts and good feelings.  And those are nice experiences to have.  But perhaps better to have when we want them as oppose to need them.  But,  sometimes you start to believe that you are alone because there is no one waiting there when you come home at the end of your day. You come home, the house is empty, no one is there to say hello, no one is there to say goodnight.  Are you really alone?
