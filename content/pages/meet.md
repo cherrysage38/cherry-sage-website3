@@ -109,7 +109,7 @@ blocks:
     article: "true"
     heading: "Would You Like a Reading With Me?"
     body: |-
-      If you’re facing a situation that’s troubling you, [wondering about a relationship](/love-and-relationships), or looking for clarity about what lies ahead, I’d be happy to help you explore your questions. You can learn more about how I work on my [Psychic Reading](/psychic-reading) page, or explore my [Tarot Card Readings](/tarot.html) and [Numerology Readings](/numerology.html) to find the service that best suits your needs.
+      If you’re facing a situation that’s troubling you, [wondering about a relationship](/love-and-relationships), or looking for clarity about what lies ahead, I’d be happy to help you explore your questions. You can learn more about how I work on my [Psychic Reading](/psychic-reading) page, or explore my [Tarot Card Readings](/tarot) and [Numerology Readings](/numerology) to find the service that best suits your needs.
 
       I look forward to hearing from you.
 
