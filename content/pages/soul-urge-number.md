@@ -40,7 +40,7 @@ blocks:
 
     **What is your heart’s desire?** What number does your soul vibrate to? Or the one you love, what number does his/her soul/heart vibrate to? Is it in harmony with yours?
 
-    In Numerology, the Soul Urge is a person’s inner motivation, what he really wants out of life. His inner nature is usually revealed to others, but sometimes it is hidden within. It is the urge, longing of the inner soul or self.
+    In Numerology, the Soul Urge is a person’s inner motivation, what he really wants out of life. His inner nature is usually revealed to others, but sometimes it is hidden within. It is the urge, longing of the inner soul or self. Your Soul Urge is one part of your full [numerology chart](/numerology).
 
     Positive attitudes are exhibited by feelings and inclinations which will be most helpful in making progress, whereas the exaggeration or denial of the positive feelings and inclinations produces negative effects which act as deterrents to progress.
 

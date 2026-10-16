@@ -36,6 +36,6 @@ Many people turn to spiritual tools—whether it’s tarot, astrology, or medita
 
 As we wrap up, remember that tarot is just one path among many that can guide you to your higher self. While the Bible gives us caution regarding practices that can lead us astray, it also encourages us to seek wisdom and divine knowledge. Tarot, like any spiritual tool, can be used to connect us to that wisdom, if we approach it with pure intentions and a respectful heart.
 
-So, I encourage you to ask yourself: *What do I truly seek in my life?* Clarity? Peace? Direction? If you’re feeling lost or uncertain, perhaps a tarot reading could offer you some insight into the steps that would bring you closer to your divine purpose. It’s not about fate—it’s about the *choices* we make, and how we move forward with grace and understanding.
+So, I encourage you to ask yourself: *What do I truly seek in my life?* Clarity? Peace? Direction? If you’re feeling lost or uncertain, perhaps a [Tarot reading](/tarot) could offer you some insight into the steps that would bring you closer to your divine purpose. It’s not about fate—it’s about the *choices* we make, and how we move forward with grace and understanding.
 
 Sending you all love, light, and peace on your journey.

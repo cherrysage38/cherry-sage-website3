@@ -45,7 +45,7 @@ blocks:
 
     ## Understanding The Life Path
 
-    In Numerology, the Life Path is the major lesson to be learned in this life, the central focus of a person’s existence — the defined path which will provide the maximum in growth and development. This is the most important part of the 4 core elements.
+    In Numerology, the Life Path is the major lesson to be learned in this life, the central focus of a person’s existence — the defined path which will provide the maximum in growth and development. This is the most important part of the 4 core elements, the center of [your numerology chart](/numerology).
 
     If the individual is expressing positively (and most people are), these characteristics should be readily apparent. If any of the characteristics are not expressed or even visible in a latent way, there is probably some negativity present.
 
