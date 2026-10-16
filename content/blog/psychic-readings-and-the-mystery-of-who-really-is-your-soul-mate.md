@@ -8,6 +8,7 @@ image: "/assets/blog/soul-mate-768x384.jpg"
 seo_title: "Can a Psychic Tell You Who Your Soul Mate Is?"
 description: "Who really is your soul mate? We are born into soul groups and have many soul mates, and the twin flame is the other half of your soul. What a psychic can see."
 related: true
+pillar: love-and-relationships
 ---
 
 **Who really is your soul mate?**
