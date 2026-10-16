@@ -13,5 +13,5 @@ blocks:
     These traits, however, are filtered through the personality and reveal themselves with differing hues and idiosyncracies, depending on the personality number or secret self. Traits become particularly pronounced or stressed during cycles such as personal year, month, essence; corresponding, of course, to the missing number. This too, is also true of long-term cycles that have the same number as the missing number. A more complete picture of the life begins to take form which could indicate the potential of long-term difficulty regarding that energy.
 
 
-    A Karmic Lesson is much less dominating than a karmic debt.'
+    A Karmic Lesson is much less dominating than a [karmic debt](/karmic-debts). Both are read together with the rest of [your numerology](/numerology).'
 ---

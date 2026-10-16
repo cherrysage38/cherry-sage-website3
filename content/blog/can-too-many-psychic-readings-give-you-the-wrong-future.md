@@ -71,7 +71,7 @@ At that point, another reading probably isn’t going to give you greater clarit
 
 Every psychic doesn’t receive information in exactly the same way.
 
-One psychic may be strongly clairvoyant and receive information visually. Another may be clairaudient. Someone else may work primarily with Tarot cards, while another psychic may be especially sensitive to emotions and energy.
+One psychic may be strongly clairvoyant and receive information visually. Another may be clairaudient. Someone else may work primarily with Tarot cards, while another psychic may be especially sensitive to emotions and energy. (If you’re curious, here is [how I receive information in my own psychic readings](/psychic-reading).)
 
 Two talented psychics looking at the same relationship may even pick up different parts of the situation. One may see the emotional connection very clearly while another picks up the obstacles preventing the relationship from moving forward.
 

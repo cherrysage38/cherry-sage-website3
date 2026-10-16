@@ -5,7 +5,7 @@ og_image: "/assets/numerology-header.jpg"
 blocks:
 - type: text
   boxed: true
-  body: 'I advise you to read the description of your karmic debt with caution. This is just one isolated delineation and by no means gives you a complete picture of your spiritual core or your soul''s journey. I recommend purchasing a [Full-Life Numerology report](/report-full-life-numerology-profile) or [calling me for an in-depth reading](/reading/full-life-numerology-reading-by-phone).
+  body: 'I advise you to read the description of your karmic debt with caution. This is just one isolated delineation and by no means gives you a complete picture of your spiritual core or your soul''s journey. A karmic debt only makes full sense when it is read with [your whole numerology chart](/numerology). I recommend purchasing a [Full-Life Numerology report](/report-full-life-numerology-profile) or [calling me for an in-depth reading](/reading/full-life-numerology-reading-by-phone).
 
 
     Also a must read: my free [Karmic Accumulation Reading](/free-karmic-reading), the sum total of the missing numbers ([Karmic Lessons](/karmic-lessons)) in your name.'

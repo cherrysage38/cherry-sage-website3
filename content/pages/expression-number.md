@@ -50,7 +50,7 @@ blocks:
 
     ## UNDERSTANDING THE EXPRESSION
 
-    In Numerology, the **Expression** is a person’s potential natural abilities.
+    In Numerology, the **Expression** is a person’s potential natural abilities. It is one of the core numbers I read in [a full numerology chart](/numerology).
 
     The natural capabilities and talents are significant in determining the type of work in which the subject will be most productive and content. If the subject is involved with work in which his productivity is poor and his satisfaction minimal, these innate abilities may be only occasionally or partially manifested.
 
