@@ -1,14 +1,19 @@
 ---
-title: "Why Doesn’t My Life Path Number Sound Like Me?"
-seo_title: "Why Doesn’t My Life Path Number Sound Like Me? | Cherry Sage"
-description: "Life Path description doesn’t fit? Explore how your other numbers, balanced and unbalanced traits, and the full chart shape a more personal interpretation."
+title: Why Doesn’t My Life Path Number Sound Like Me?
+seo_title: Why Doesn’t My Life Path Number Sound Like Me? | Cherry Sage
+description: Life Path description doesn’t fit? Explore how your other numbers, balanced and unbalanced traits, and the full chart shape a more personal interpretation.
 date: 2026-10-20
 category: Numerology
+topics: []
 author: Cherry Sage
-image: /assets/blog/why-doesnt-my-life-path-number-sound-like-me.jpg
+image: /assets/why-doesnt-my-life-path-number-sound-like-me.jpg
+image_alt: ''
 related: true
+related_posts: []
 pillar: numerology
 hidden: false
+featured: false
+featured_until: ''
 ---
 
 **Why doesn’t my Life Path number sound like me?**
