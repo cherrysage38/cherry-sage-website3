@@ -223,7 +223,12 @@ collections:
     summary: "{{hidden | ternary('HIDDEN · ', '')}}{{title}} — {{category}}"
     # Newest first in the editor list. The sort menu still offers title and topic.
     sortable_fields: { fields: ["date", "title", "category"], default: { field: "date", direction: "descending" } }
-    view_filters: [{ label: "Featured", field: "featured", pattern: true }]
+    # Filter menu (Bev, 2026-10-17): Scheduled = dated after today, still waiting to appear on the site.
+    # The editor works out "today" by itself each time, so nothing needs updating. Hidden = "Hide from site" ticked.
+    view_filters:
+      - { label: "Featured", field: "featured", pattern: true }
+      - { label: "Scheduled", field: "date", gt: "{{today}}" }
+      - { label: "Hidden", field: "hidden", pattern: true }
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "The post's headline." }
       - { label: "Meta title (optional)", name: "seo_title", widget: "string", required: false, hint: "The title Google shows in search results. Leave blank and it uses the title above followed by Cherry Sage." }
