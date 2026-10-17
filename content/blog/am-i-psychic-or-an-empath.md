@@ -2,7 +2,7 @@
 title: "Am I Psychic or an Empath? Understanding What You Feel"
 seo_title: Am I Psychic or an Empath? | Cherry Sage
 description: Explore empathy, psychic sensitivity, and how to understand what you feel, with Cherry Sage’s childhood experience and practical guidance for beginners.
-date: 2026-10-24
+date: 2026-10-17
 category: Psychic Readings
 topics: []
 author: Cherry Sage
