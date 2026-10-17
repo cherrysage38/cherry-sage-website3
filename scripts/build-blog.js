@@ -325,8 +325,8 @@ function removeFromSitemap(slug) {
 
 // Scheduled posts (Bev, 2026-10-10): a post dated after today stays off the site, like a hidden one,
 // until the morning of its date. "Today" is Cherry's day in Eastern time, so a post dated the 11th
-// appears on the 11th wherever the build runs. The daily timer (.github/workflows/scheduled-posts.yml)
-// rebuilds the site each morning a post is due.
+// appears on the 11th wherever the build runs. The morning timer (netlify/functions/scheduled-posts.mjs)
+// reads scheduled.json, which lists the dates still waiting, and rebuilds the site when one arrives.
 function todayEastern() {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 }
@@ -371,6 +371,7 @@ function main() {
   let newest = null;
   const hiddenSlugs = new Set();
   const featuredPosts = [];
+  const waitingDates = new Set();
 
   // First pass: read every post so each page can link to its category neighbours.
   const all = [];
@@ -394,6 +395,7 @@ function main() {
     }
 
     if (isScheduled(data)) {
+      waitingDates.add(String(data.date).slice(0, 10));
       hiddenSlugs.add(slug);
       blogHtml = hidePost(slug, blogHtml);
       changed = true;
@@ -444,7 +446,7 @@ function main() {
     const info = { slug, title: data.title, category: data.category, image: data.image, date: data.date, excerpt: plainExcerpt(body, 120) };
     if (!newest || (data.date + slug) > (newest.date + newest.slug)) newest = info;
     if (data.featured === "true") {
-      // No end date yet: the morning job (release-scheduled.js) writes one 60 days on; until then it's on.
+      // No end date: it stays featured until the box is unticked.
       const until = /^\d{4}-\d{2}-\d{2}/.test(data.featured_until || "") ? data.featured_until.slice(0, 10) : "";
       featuredPosts.push({ ...info, until });
     }
@@ -473,6 +475,8 @@ function main() {
   else if (newest) blogHtml = upsertFeatured(blogHtml, newest, hiddenSlugs);
   const pick = (p) => p && { slug: p.slug, title: p.title, until: p.until };
   writeFileSync(join(ROOT, "featured.json"), JSON.stringify({ featured: pick(running) || null, ended: ended.map(pick) }) + "\n");
+  // Dates only, no titles: this file is public.
+  writeFileSync(join(ROOT, "scheduled.json"), JSON.stringify({ waiting: [...waitingDates].sort() }) + "\n");
   if (changed) writeFileSync(BLOG_HTML, blogHtml);
 }
 

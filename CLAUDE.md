@@ -62,7 +62,8 @@ Writing: plain and warm.
   `netlify/functions/deploy-succeeded.mjs` summarizes the new commits and files them. Write clear
   commit messages, because they are what those summaries are made from.
 - Scheduled blog posts: a post dated after today (Eastern) is held off the site by `build-blog.js`.
-  Each morning `.github/workflows/scheduled-posts.yml` runs `scripts/release-scheduled.js`, which notes any
-  post that has come due in `content/.scheduled-log` and commits it; that commit makes Netlify rebuild.
+  The build lists the waiting dates in `/scheduled.json`. Each morning `netlify/functions/scheduled-posts.mjs`
+  reads it and, when a date has arrived (or a featured post's end date has passed), calls the Netlify build
+  hook in `SCHEDULED_POSTS_BUILD_HOOK`. Nothing is committed: `main` only accepts pull requests.
 - The shop and the report order pages read live product data from the database. Product
   names, prices, descriptions and report questions are edited in the Dashboard, not in files.
